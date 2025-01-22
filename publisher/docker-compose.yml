@@ -1,0 +1,45 @@
+services:
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: nginx-8.3-publisher
+    restart: always
+    ports:
+      - ${PUBLISHER_PORT}:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./conf.d/:/etc/nginx/conf.d/
+      - ./laravel-app:/var/www/html/
+    depends_on:
+      - php-fpm
+    links:
+      - php-fpm
+    networks:
+      - publisher
+
+  php-fpm:
+    # NOTE: change it with the preferred PHP version
+    image: joseluisq/php-fpm:8.3
+    container_name: fpm-8.3-publisher
+    restart: unless-stopped
+    environment:
+      - "ENV_SUBSTITUTION_ENABLE=true"
+      - "PHP_MEMORY_LIMIT=512M"
+      - "PHP_FPM_LISTEN=9001"
+      - "PHP_SESSION_GC_MAXLIFETIME=7200"
+      - "PHP_DISABLE_EXTENSIONS=psr"
+    volumes:
+      - ./laravel-app:/var/www/html/
+    networks:
+      - publisher
+      - amqp_net
+      - db_net
+
+networks:
+  amqp_net:
+    name: amqp_net
+    external: true
+  publisher:
+    name: publisher
+  db_net:
+    name: db_net
+    external: true
