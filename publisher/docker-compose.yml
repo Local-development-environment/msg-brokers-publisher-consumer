@@ -17,8 +17,7 @@ services:
       - publisher
 
   php-fpm:
-    # NOTE: change it with the preferred PHP version
-    image: joseluisq/php-fpm:8.3
+    image: jose-modified/php-fpm:8.3
     container_name: fpm-8.3-publisher
     restart: unless-stopped
     environment:
