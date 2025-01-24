@@ -2,9 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\AMQP\AMQPConnection;
 use Illuminate\Console\Command;
-use PhpAmqpLib\Connection\AMQPStreamConnection;
-use PhpAmqpLib\Message\AMQPMessage;
 
 class PublisherCommand extends Command
 {
@@ -26,26 +25,13 @@ class PublisherCommand extends Command
      * Execute the console command.
      * @throws \Exception
      */
-    public function handle(): int
+    public function handle(AMQPConnection $connection): int
     {
-        $connection = new AMQPStreamConnection('rabbitmq', 5672, 'guest', 'guest','local');
-
-        $channel = $connection->channel();
-
-        $data = 'hello world';
-
-        $msg = new AMQPMessage(
-            $data,
-            array('delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT)
-        );
-
-        $channel->basic_publish($msg, '', 'task_queue');
-
-        echo ' [x] Sent ', $data, "\n";
-
-        $channel->close();
-
-        $connection->close();
+        $data = [
+            'message' => 'Hello World from artisan command',
+            'from' => 'artisan'
+        ];
+        $connection->publish('my_queue', $data);
 
         return Command::SUCCESS;
     }

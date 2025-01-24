@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\AMQP\AMQPConnection;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -10,14 +10,16 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
+     * @throws \Exception
      */
-    public function run(): void
+    public function run(AMQPConnection $connection): void
     {
+        $connection->publish('my_queue', 'Hello World');
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+//        User::factory()->create([
+//            'name' => 'Test User',
+//            'email' => 'test@example.com',
+//        ]);
     }
 }
