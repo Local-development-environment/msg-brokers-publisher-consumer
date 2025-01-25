@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\AMQP\AMQPConnection;
+use App\AMQP\AMQPClient;
 use Illuminate\Console\Command;
 
 class PublisherCommand extends Command
@@ -25,13 +25,13 @@ class PublisherCommand extends Command
      * Execute the console command.
      * @throws \Exception
      */
-    public function handle(AMQPConnection $connection): int
+    public function handle(AMQPClient $connection): int
     {
         $data = [
             'message' => 'Hello World from artisan command',
             'from' => 'artisan'
         ];
-        $connection->publish('my_queue', $data);
+        $connection->publish('my_queue_1', $data);
 
         return Command::SUCCESS;
     }

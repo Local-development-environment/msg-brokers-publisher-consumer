@@ -10,7 +10,7 @@ use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AbstractConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
-final class AMQPConnection
+final class AMQPClient
 {
     public AbstractConnection $connection;
 
@@ -28,25 +28,11 @@ final class AMQPConnection
             $message = $this->createMessage($message);
         }
 
-        $channel = $this->connection->channel();
-        $channel->basic_publish($message, '', 'task_queue');
-        $channel->close();
-        $this->connection->close();
-
+        $channel = $this->send($queue, $message);
+        $this->close($channel);
         Log::info("[{$queue}] Published message", [
             'body' => $message->getBody()
         ]);
-    }
-
-    private function createMessage($message): AMQPMessage
-    {
-        if (is_array($message)) {
-            $message = json_encode($message);
-        } elseif (!is_string($message)) {
-            $message = strval($message);
-        }
-
-        return new AMQPMessage($message);
     }
 
     /**
@@ -68,8 +54,7 @@ final class AMQPConnection
             $channel->wait();
         }
 
-        $channel->close();
-        $this->connection->close();
+        $this->close($channel);
     }
 
     private function prepareConsume(string $queue, \Closure $callback): AMQPChannel
@@ -78,5 +63,33 @@ final class AMQPConnection
         $channel->queue_declare($queue, durable: true, auto_delete: false);
         $channel->basic_consume($queue, callback: $callback);
         return $channel;
+    }
+
+    private function send(string $queue, AMQPMessage $message): AMQPChannel
+    {
+        $channel = $this->connection->channel();
+        $channel->queue_declare($queue, durable: true, auto_delete: false);
+        $channel->basic_publish($message, '', $queue);
+        return $channel;
+    }
+
+    /**
+     * @throws \Exception
+     */
+    private function close(AMQPChannel $channel): void
+    {
+        $channel->close();
+        $this->connection->close();
+    }
+
+    private function createMessage($message): AMQPMessage
+    {
+        if (is_array($message)) {
+            $message = json_encode($message);
+        } elseif (!is_string($message)) {
+            $message = strval($message);
+        }
+
+        return new AMQPMessage($message);
     }
 }
