@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\AMQP\AMQPConnection;
 use Illuminate\Console\Command;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use Symfony\Component\Console\Command\Command as CommandAlias;
@@ -26,9 +27,10 @@ class ConsumerCommand extends Command
      * Execute the console command.
      * @throws \Exception
      */
-    public function handle(): int
+    public function handle(AMQPConnection $connection): int
     {
-        $connection = new AMQPStreamConnection('rabbitmq', 5672, 'guest', 'guest','local');
+//        $connection = new AMQPStreamConnection('rabbitmq', 5672, 'guest', 'guest','local');
+        $connection->consume();
         $channel = $connection->channel();
         $channel->queue_declare('task_queue', false, true, false, false);
 
