@@ -3,7 +3,6 @@
 namespace App\AMQP;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Foundation\Application;
 use PhpAmqpLib\Connection\AbstractConnection;
 use PhpAmqpLib\Connection\AMQPConnectionConfig;
 use PhpAmqpLib\Connection\AMQPConnectionFactory;
@@ -15,7 +14,7 @@ class AMQPServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-
+        //
     }
 
     /**

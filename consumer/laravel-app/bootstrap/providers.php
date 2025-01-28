@@ -1,6 +1,6 @@
 <?php
 
 return [
-    App\Providers\AMQPModuleServiceProvider::class,
+    \App\AMQP\AMQPServiceProvider::class,
     App\Providers\AppServiceProvider::class,
 ];

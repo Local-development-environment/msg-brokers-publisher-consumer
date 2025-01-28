@@ -27,8 +27,11 @@ services:
       - "PHP_FPM_LISTEN=9000"
       - "PHP_SESSION_GC_MAXLIFETIME=7200"
       - "PHP_DISABLE_EXTENSIONS=psr"
+    expose:
+      - "9000"
     volumes:
       - ./laravel-app:/var/www/html/
+#      - ../publisher/laravel-app:/var/www/html/
     networks:
       - consumer
       - amqp_net
