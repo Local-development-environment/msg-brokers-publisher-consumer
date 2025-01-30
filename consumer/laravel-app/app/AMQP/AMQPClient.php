@@ -35,6 +35,36 @@ final class AMQPClient
         ]);
     }
 
+    /**
+     * @throws \Exception
+     */
+    public function consume(string $queue, \Closure $callback): void
+    {
+        $this->connection = App::make(AbstractConnection::class);
+
+        $channel = $this->prepareConsume($queue, function (AMQPMessage $message) use ($queue, $callback) {
+            Log::info("[{$queue}] Received message", [
+                'body' => $message->getBody()
+            ]);
+            $message->ack();
+            return $callback(json_decode($message->getBody(), true));
+        });
+
+        while ($channel->is_open()) {
+            $channel->wait();
+        }
+
+        $this->close($channel);
+    }
+
+    private function prepareConsume(string $queue, \Closure $callback): AMQPChannel
+    {
+        $channel = $this->connection->channel();
+        $channel->queue_declare($queue, durable: true, auto_delete: false);
+        $channel->basic_consume($queue, callback: $callback);
+        return $channel;
+    }
+
     private function send(string $queue, AMQPMessage $message): AMQPChannel
     {
         $channel = $this->connection->channel();
