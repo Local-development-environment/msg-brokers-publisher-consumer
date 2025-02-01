@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\AMQP\AMQPClient;
 use Illuminate\Console\Command;
+use function Laravel\Prompts\select;
 
 class PublisherCommand extends Command
 {
@@ -27,11 +28,18 @@ class PublisherCommand extends Command
      */
     public function handle(AMQPClient $connection): int
     {
-        $data = [
-            'message' => 'Hello World from artisan command',
-            'from' => 'artisan'
-        ];
-        $connection->publish('my_queue_1', $data);
+        $queue = select(
+            label: 'What a queue do you want to use?',
+            options: [
+                'jewellery:store' => 'Jewellery store',
+                'jewellery:update' => 'Jewellery update',
+                'my_queue' => 'my_queue',
+                'my_queue_1' => 'my_queue_1',
+            ],
+        );
+
+        $data = config('data-mock-rabbitmq.jewellery');
+        $connection->publish($queue, $data);
 
         return Command::SUCCESS;
     }

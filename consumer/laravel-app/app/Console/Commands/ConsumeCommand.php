@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\AMQP\AMQPClient;
 use Illuminate\Console\Command;
+use function Laravel\Prompts\select;
+use function Laravel\Prompts\text;
 
 class ConsumeCommand extends Command
 {
@@ -26,6 +28,15 @@ class ConsumeCommand extends Command
      */
     public function handle(AMQPClient $connection)
     {
+        $queue = select(
+            label: 'What is a queue you need?',
+            options: [
+                'jewellery:store' => 'Jewellery store',
+                'jewellery:update' => 'Jewellery update',
+                'my_queue' => 'my_queue',
+                'my_queue_1' => 'my_queue_1',
+            ],
+        );
         $callback = function ($msg) {
 
             dd($msg);
@@ -34,6 +45,6 @@ class ConsumeCommand extends Command
             echo " [x] Done\n";
         };
 
-        $data = $connection->consume('my_queue_1', $callback);
+        $data = $connection->consume($queue, $callback);
     }
 }
