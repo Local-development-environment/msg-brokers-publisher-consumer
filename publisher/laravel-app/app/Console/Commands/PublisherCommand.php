@@ -31,10 +31,8 @@ class PublisherCommand extends Command
         $queue = select(
             label: 'What a queue do you want to use?',
             options: [
-                'jewellery:store' => 'Jewellery store',
-                'jewellery:update' => 'Jewellery update',
-                'my_queue' => 'my_queue',
-                'my_queue_1' => 'my_queue_1',
+                'jewellery.store' => 'Jewellery store',
+                'jewellery.update' => 'Jewellery update',
             ],
         );
 

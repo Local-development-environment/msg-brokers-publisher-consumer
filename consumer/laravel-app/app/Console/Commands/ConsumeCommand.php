@@ -33,8 +33,6 @@ class ConsumeCommand extends Command
             options: [
                 'jewellery:store' => 'Jewellery store',
                 'jewellery:update' => 'Jewellery update',
-                'my_queue' => 'my_queue',
-                'my_queue_1' => 'my_queue_1',
             ],
         );
         $callback = function ($msg) {
@@ -45,6 +43,6 @@ class ConsumeCommand extends Command
             echo " [x] Done\n";
         };
 
-        $data = $connection->consume($queue, $callback);
+        $connection->consume($queue, $callback);
     }
 }
