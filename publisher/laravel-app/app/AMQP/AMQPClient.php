@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AbstractConnection;
 use PhpAmqpLib\Message\AMQPMessage;
+use Random\RandomException;
 
 final class AMQPClient
 {
@@ -29,6 +30,7 @@ final class AMQPClient
         }
 
         $channel = $this->send($queue, $message);
+
         $this->close($channel);
         Log::info("[{$queue}] Published message", [
             'body' => $message->getBody()
@@ -44,7 +46,7 @@ final class AMQPClient
 
         $channel = $this->prepareConsume($queue, function (AMQPMessage $message) use ($queue, $callback) {
             Log::info("[{$queue}] Received message", [
-                'body' => $message->getBody()
+                'body' => $message->getBody(),
             ]);
             $message->ack();
             return $callback(json_decode($message->getBody(), true));
@@ -82,14 +84,20 @@ final class AMQPClient
         $this->connection->close();
     }
 
+    /**
+     * @throws RandomException
+     */
     private function createMessage($message): AMQPMessage
     {
+        $partNumber = 'no';
+
         if (is_array($message)) {
+            $partNumber = $message['0']['data']['attributes']['part_number'] ?? 0;
             $message = json_encode($message);
         } elseif (!is_string($message)) {
             $message = strval($message);
         }
 
-        return new AMQPMessage($message);
+        return new AMQPMessage($message, ['message_id' => $partNumber]);
     }
 }
