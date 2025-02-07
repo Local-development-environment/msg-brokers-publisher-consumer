@@ -92,8 +92,8 @@ final class AMQPClient
         $partNumber = 'no';
 
         if (is_array($message)) {
-            $partNumber = $message['0']['data']['attributes']['part_number'] ?? 0;
-            $message = json_encode($message);
+            $partNumber = $message['data']['attributes']['part_number'] ?? 0;
+            $message = json_encode($message, JSON_UNESCAPED_UNICODE);
         } elseif (!is_string($message)) {
             $message = strval($message);
         }

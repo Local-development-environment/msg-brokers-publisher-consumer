@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\AMQP;
 
 use Illuminate\Support\ServiceProvider;
@@ -8,7 +10,7 @@ use PhpAmqpLib\Connection\AbstractConnection;
 use PhpAmqpLib\Connection\AMQPConnectionConfig;
 use PhpAmqpLib\Connection\AMQPConnectionFactory;
 
-class AMQPServiceProvider extends ServiceProvider
+final class AMQPServiceProvider extends ServiceProvider
 {
     /**
      * Register services.

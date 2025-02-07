@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Console\Commands;
 
 use App\AMQP\AMQPClient;
@@ -10,7 +12,7 @@ use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 use Symfony\Component\Console\Command\Command as CommandAlias;
 
-class ConsumerCommand extends Command
+final class ConsumerCommand extends Command
 {
     /**
      * The name and signature of the console command.

@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Console\Commands;
 
 use App\AMQP\AMQPClient;
 use Illuminate\Console\Command;
 use function Laravel\Prompts\select;
 
-class PublisherCommand extends Command
+final class PublisherCommand extends Command
 {
     /**
      * The name and signature of the console command.
