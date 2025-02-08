@@ -1,14 +1,33 @@
 <?php
 
 return [
-//    [
+    [
         'data' => [
             'type' => 'jewelleries',
             'attributes' => [
                 'prcs_metal_sample' => 925,
                 'prcs_metal_colour' => 'белый',
                 'prcs_metal' => 'серебро',
-                'jewellery_category' => 'браслет',
+                'jewellery_category' => 'цепи',
+                'name' => 'Цепь из серебра, плетение Бисмарк, 925 проба',
+                'description' => 'Цепь из серебра, плетение Бисмарк без вставок',
+                'part_number' => '968140504',
+                'approx_weight' => '8.47 грамма',
+                'is_active' => 1
+            ],
+            'relationships' => [
+                'coverages' => ['родирование']
+            ]
+        ]
+    ],
+    [
+        'data' => [
+            'type' => 'jewelleries',
+            'attributes' => [
+                'prcs_metal_sample' => 925,
+                'prcs_metal_colour' => 'белый',
+                'prcs_metal' => 'серебро',
+                'jewellery_category' => 'браслеты',
                 'name' => 'Браслет из серебра с фианитами',
                 'description' => 'Браслет из серебра с фианитами',
                 'part_number' => '94051012',
@@ -81,5 +100,32 @@ return [
                 'earring_props' => []
             ]
         ]
-//    ]
+    ],
+    [
+        'data' => [
+            'type' => 'jewelleries',
+            'attributes' => [
+                'prcs_metal_sample' => 585,
+                'prcs_metal_colour' => 'красный',
+                'prcs_metal' => 'золото',
+                'jewellery_category' => 'кольца',
+                'name' => 'Кольцо из золота',
+                'description' => 'Кольцо из красного золота',
+                'part_number' => '019424',
+                'approx_weight' => '1.09 грамма',
+                'is_active' => 1
+            ],
+            'relationships' => [
+                'coverages' => [
+                    'алмазная грань'
+                ],
+                'inserts' => [
+                    []
+                ],
+                'ring_props' => [
+                    'sizes' => []
+                ],
+            ]
+        ]
+    ]
 ];
