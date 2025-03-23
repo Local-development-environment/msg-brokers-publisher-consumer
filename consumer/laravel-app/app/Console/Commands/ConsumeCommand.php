@@ -44,5 +44,7 @@ class ConsumeCommand extends Command
         };
 
         $connection->consume($queue, $callback);
+
+        return Command::SUCCESS;
     }
 }

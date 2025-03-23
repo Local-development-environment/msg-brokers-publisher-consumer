@@ -41,6 +41,7 @@ networks:
     external: true
   publisher:
     name: publisher
+    external: true
   db_net:
     name: db_net
     external: true

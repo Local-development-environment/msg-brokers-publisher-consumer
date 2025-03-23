@@ -84,9 +84,6 @@ final class AMQPClient
         $this->connection->close();
     }
 
-    /**
-     * @throws RandomException
-     */
     private function createMessage($message): AMQPMessage
     {
         $partNumber = 'no';

@@ -39,7 +39,7 @@ final class PublisherCommand extends Command
         );
 
         $data = config('data-mock-rabbitmq.jewellery');
-        $connection->publish($queue, $data[0]);
+        $connection->publish($queue, $data[1]);
 
         return Command::SUCCESS;
     }

@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'uvi' => [
+        'token' => env('UVI_TOKEN'),
+        'base_uri' => env('UVI_BASE_URI'),
+    ],
 ];

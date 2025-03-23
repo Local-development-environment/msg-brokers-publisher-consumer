@@ -11,7 +11,7 @@ return [
                 'jewellery_category' => 'цепи',
                 'name' => 'Цепь из серебра, плетение Бисмарк, 925 проба',
                 'description' => 'Цепь из серебра, плетение Бисмарк без вставок',
-                'part_number' => '968140504',
+                'part_number' => '552020702',
                 'approx_weight' => '8.47 грамма',
                 'is_active' => 1
             ],
@@ -51,9 +51,6 @@ return [
                         ],
                     ]
                 ],
-                'ring_props' => [
-                    'sizes' => []
-                ],
                 'bracelet_props' => [
                     'body_part' => 'для рук',
                     'sizes' => [
@@ -84,20 +81,6 @@ return [
                     ],
                     'weavings' => []
                 ],
-                'brooch_props' => [],
-                'tie_clip_props' => [],
-                'chain_props' => [
-                    'sizes' => [],
-                    'weaving' => []
-                ],
-                'cuff_link_props' => [],
-                'necklace_props' => [
-                    'sizes' => [],
-                ],
-                'pendant_props' => [],
-                'charm_pendant_props' => [],
-                'piercing_props' => [],
-                'earring_props' => []
             ]
         ]
     ],
