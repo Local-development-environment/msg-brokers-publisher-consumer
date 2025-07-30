@@ -23,6 +23,6 @@ class GetAllJewelleries extends Request
     public function resolveEndpoint(): string
     {
 //        dd($this->params);
-        return '/jewelleries' . '?' . $this->params;
+        return '/jewelleries' . $this->params;
     }
 }
