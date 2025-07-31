@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inserts.insert_metrics', function (Blueprint $table) {
+        Schema::create('medias.jw_media_producers', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantity');
-            $table->decimal('weight', 8, 3);
-            $table->string('weight_unit')->default('карат');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inserts.insert_metrics');
+        Schema::dropIfExists('medias.jw_media_producers');
     }
 };

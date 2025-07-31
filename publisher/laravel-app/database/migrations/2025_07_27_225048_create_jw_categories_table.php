@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inserts.stone_types', function (Blueprint $table) {
+        Schema::create('jewelleries.jw_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('description');
             $table->string('slug')->unique();
-            $table->boolean('is_active');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inserts.stone_types');
+        Schema::dropIfExists('jewelleries.jw_categories');
     }
 };

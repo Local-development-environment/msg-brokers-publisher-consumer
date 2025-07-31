@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('stone_colour_id');
             $table->unsignedBigInteger('stone_shape_id');
             $table->string('name');
+            $table->string('slug')->unique();
             $table->timestamps();
 
             $table->foreign('stone_id')->references('id')->on('inserts.stones');

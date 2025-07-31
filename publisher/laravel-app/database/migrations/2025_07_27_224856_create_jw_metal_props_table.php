@@ -11,18 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('metals.prcs_metal_props', function (Blueprint $table) {
+        Schema::create('metals.jw_prcs_metal_props', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('prcs_metal_id');
             $table->unsignedBigInteger('prcs_metal_hallmark_id');
             $table->unsignedBigInteger('prcs_metal_colour_id');
+            $table->string('name');
+            $table->string('slug');
             $table->timestamps();
 
             $table->foreign('prcs_metal_id')->references('id')->on('metals.prcs_metals');
             $table->foreign('prcs_metal_hallmark_id')->references('id')->on('metals.prcs_metal_hallmarks');
             $table->foreign('prcs_metal_colour_id')->references('id')->on('metals.prcs_metal_colours');
 
-            $table->unique(['prcs_metal_id', 'prcs_metal_hallmark_id', 'prcs_metal_colour_id'], 'unique_prcs_metal_props');
+            $table->unique(['prcs_metal_id', 'prcs_metal_hallmark_id', 'prcs_metal_colour_id'], 'unique_jw_prcs_metal_props');
         });
     }
 
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('metals.prcs_metal_props');
+        Schema::dropIfExists('metals.jw_prcs_metal_props');
     }
 };

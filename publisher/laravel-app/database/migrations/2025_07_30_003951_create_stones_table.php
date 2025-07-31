@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('stone_type_id');
             $table->string('name')->unique();
             $table->string('description');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->boolean('is_natural');
             $table->boolean('is_active');
             $table->timestamps();

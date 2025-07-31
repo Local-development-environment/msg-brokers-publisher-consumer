@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inserts.stone_types', function (Blueprint $table) {
+        Schema::create('medias.video_types', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('description');
             $table->string('slug')->unique();
-            $table->boolean('is_active');
+            $table->string('extension')->unique();
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inserts.stone_types');
+        Schema::dropIfExists('medias.video_types');
     }
 };

@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jewelleries.jewellery_categories', function (Blueprint $table) {
+        Schema::create('coverages.jw_coverages', function (Blueprint $table) {
             $table->id();
-            $table->string('category_code')->unique();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('slug');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jewelleries.jewellery_categories');
+        Schema::dropIfExists('coverages.jw_coverages');
     }
 };
