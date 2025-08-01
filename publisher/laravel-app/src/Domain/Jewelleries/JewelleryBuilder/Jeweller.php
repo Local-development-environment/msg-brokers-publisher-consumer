@@ -11,7 +11,7 @@ final class Jeweller
         return $builder
             ->addCategory()
             ->addPrcsMetal()
-            ->addPrcsMetalSample()
+            ->addPrcsMetalHallmark()
             ->addPrcsMetalCoverage()
             ->addPrcsMetalColour()
             ->addDescription()

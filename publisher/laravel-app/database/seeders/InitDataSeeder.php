@@ -78,6 +78,12 @@ class InitDataSeeder extends Seeder
         $chain_sizes = config('data-seed.data_items.chain_sizes');
         $bracelet_sizes = config('data-seed.data_items.bracelet_sizes');
         $necklace_sizes = config('data-seed.data_items.necklace_sizes');
+        $body_parts = config('data-seed.data_items.body_parts');
+        $prcs_metals = config('data-seed.data_items.prcs_metals');
+        $metal_hallmarks = config('data-seed.data_items.prcs_metal_hallmarks');
+        $metal_colours = config('data-seed.data_items.prcs_metal_colours');
+        $jw_coverages = config('data-seed.data_items.jw_coverages');
+
 //        dd($categories);
         foreach ($categories as $category) {
             DB::table('jewelleries.jw_categories')->insert([
@@ -107,6 +113,37 @@ class InitDataSeeder extends Seeder
             DB::table('properties.jw_clasps')->insert([
                 'name' => $clasp,
                 'slug' => Str::slug($clasp),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($body_parts as $body_part) {
+            DB::table('properties.body_parts')->insert([
+                'name' => $body_part,
+                'slug' => Str::slug($body_part),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($prcs_metals as $metal) {
+            DB::table('metals.prcs_metals')->insert([
+                'name' => $metal,
+                'slug' => Str::slug($metal),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($metal_hallmarks as $hallmark) {
+            DB::table('metals.prcs_metal_hallmarks')->insert([
+                'value' => $hallmark,
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($metal_colours as $colour) {
+            DB::table('metals.prcs_metal_colours')->insert([
+                'name' => $colour,
+                'slug' => Str::slug($colour),
                 'created_at' => now(),
             ]);
         }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('slug')->unique();
             $table->boolean('is_natural');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
 
             $table->foreign('stone_type_id')->references('id')->on('inserts.stone_types');

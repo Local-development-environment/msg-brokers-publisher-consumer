@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('metals.prcs_metal_hallmarks', function (Blueprint $table) {
             $table->id();
             $table->integer('value')->unique();
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

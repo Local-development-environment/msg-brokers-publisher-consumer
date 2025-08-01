@@ -8,7 +8,7 @@ interface JewelleryBuilderInterface
 {
     public function addPrcsMetal(): jewelleryBuilderInterface;
 
-    public function addPrcsMetalSample(): jewelleryBuilderInterface;
+    public function addPrcsMetalHallmark(): jewelleryBuilderInterface;
 
     public function addPrcsMetalColour(): jewelleryBuilderInterface;
 

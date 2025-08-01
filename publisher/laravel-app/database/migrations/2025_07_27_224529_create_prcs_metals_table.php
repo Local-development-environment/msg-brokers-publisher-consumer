@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('metals.prcs_metals', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug');
-            $table->boolean('is_active');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

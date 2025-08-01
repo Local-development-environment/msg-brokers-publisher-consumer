@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('extension');
             $table->string('src');
             $table->string('alt')->nullable();
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
 
             $table->foreign('jw_picture_id')->references('id')->on('medias.jw_pictures');
