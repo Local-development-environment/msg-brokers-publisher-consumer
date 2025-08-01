@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('properties.ring_sizes', function (Blueprint $table) {
             $table->id();
-            $table->decimal('value', 3, 1)->unique();
+            $table->decimal('value', 4, 1)->unique();
             $table->string('unit')->default('mm');
             $table->timestamps();
         });
