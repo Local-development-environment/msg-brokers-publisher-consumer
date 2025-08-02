@@ -19,8 +19,9 @@ final class Jeweller
             ->addWeight()
             ->addJewelleryName()
             ->addIsActive()
-            ->addProperty()
             ->addInsert()
+            ->addProperty()
+//            ->addInsert()
             ->getJewellery()
             ;
     }

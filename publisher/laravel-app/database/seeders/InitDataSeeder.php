@@ -16,6 +16,10 @@ class InitDataSeeder extends Seeder
     public function run(): void
     {
         Schema::disableForeignKeyConstraints();
+        DB::table('properties.jw_bead_metrics')->truncate();
+        DB::table('properties.jw_bead_props')->truncate();
+        DB::table('properties.bead_sizes')->truncate();
+        DB::table('properties.bead_bases')->truncate();
         DB::table('properties.jw_necklace_metrics')->truncate();
         DB::table('properties.jw_necklace_props')->truncate();
         DB::table('properties.necklace_sizes')->truncate();
@@ -29,6 +33,7 @@ class InitDataSeeder extends Seeder
         DB::table('properties.jw_weavings')->truncate();
         DB::table('properties.jw_bracelet_props')->truncate();
         DB::table('properties.body_parts')->truncate();
+        DB::table('properties.bracelet_bases')->truncate();
         DB::table('properties.jw_clasps')->truncate();
         DB::table('properties.jw_ring_metrics')->truncate();
         DB::table('properties.jw_ring_props')->truncate();
@@ -71,18 +76,21 @@ class InitDataSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         $categories = config('data-seed.data_items.jw_categories');
-        $weaves = config('data-seed.data_items.jw_weavings');
+        $weavings = config('data-seed.data_items.jw_weavings');
         $earring_clasps = config('data-seed.data_items.earring_clasps');
         $jw_clasps = config('data-seed.data_items.jw_clasps');
         $ring_sizes = config('data-seed.data_items.ring_sizes');
         $chain_sizes = config('data-seed.data_items.chain_sizes');
         $bracelet_sizes = config('data-seed.data_items.bracelet_sizes');
         $necklace_sizes = config('data-seed.data_items.necklace_sizes');
+        $bead_sizes = config('data-seed.data_items.bead_sizes');
         $body_parts = config('data-seed.data_items.body_parts');
         $prcs_metals = config('data-seed.data_items.prcs_metals');
         $metal_hallmarks = config('data-seed.data_items.prcs_metal_hallmarks');
         $metal_colours = config('data-seed.data_items.prcs_metal_colours');
         $jw_coverages = config('data-seed.data_items.jw_coverages');
+        $bracelet_bases = config('data-seed.data_items.bracelet_bases');
+        $bead_bases = config('data-seed.data_items.bead_bases');
 
 //        dd($categories);
         foreach ($categories as $category) {
@@ -93,10 +101,35 @@ class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach ($weaves as $weave) {
+        foreach ($jw_coverages as $coverage) {
+            DB::table('coverages.jw_coverages')->insert([
+                'name' => $coverage,
+                'slug' =>Str::slug($coverage, '-'),
+                'is_active' => 1,
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($weavings as $weave) {
             DB::table('properties.jw_weavings')->insert([
                 'name' => $weave,
                 'slug' => Str::slug($weave),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($bracelet_bases as $base) {
+            DB::table('properties.bracelet_bases')->insert([
+                'name' => $base,
+                'slug' => Str::slug($base),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($bead_bases as $base) {
+            DB::table('properties.bead_bases')->insert([
+                'name' => $base,
+                'slug' => Str::slug($base),
                 'created_at' => now(),
             ]);
         }
@@ -172,6 +205,13 @@ class InitDataSeeder extends Seeder
         foreach ($necklace_sizes as $necklace_size) {
             DB::table('properties.necklace_sizes')->insert([
                 'value' => $necklace_size['value'],
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($bead_sizes as $size) {
+            DB::table('properties.bead_sizes')->insert([
+                'value' => $size['value'],
                 'created_at' => now(),
             ]);
         }

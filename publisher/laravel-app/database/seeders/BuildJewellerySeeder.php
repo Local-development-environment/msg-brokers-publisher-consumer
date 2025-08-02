@@ -15,7 +15,10 @@ class BuildJewellerySeeder extends Seeder
     public function run(): void
     {
         $jeweller = new Jeweller();
-        $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
-        dump([$builder]);
+//        $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
+//        dump([$builder]);
+        for ($i = 0; $i < 10000; $i++) {
+            $jeweller->buildJewellery(new BaseJewelleryBuilder());
+        }
     }
 }
