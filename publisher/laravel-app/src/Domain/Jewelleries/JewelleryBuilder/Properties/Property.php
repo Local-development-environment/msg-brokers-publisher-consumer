@@ -8,11 +8,11 @@ use Illuminate\Support\Arr;
 
 final class Property
 {
-    public function getProperties(string $category, string $metal, array $stone): array
+    public function getProperties(string $category, string $metal, array $insert): array
     {
         return [
             'name-function' => $this->getNameFunction($category),
-            'parameters' => $this->getProps($category, $metal, $stone),
+            'parameters' => $this->getProps($category, $metal, $insert),
         ];
     }
 
@@ -34,7 +34,7 @@ final class Property
         };
     }
 
-    private function getProps(string $category, string $metal, array $stone): array
+    private function getProps(string $category, string $metal, array $insert): array
     {
         if ($category === 'браслеты') {
             if ($metal === 'золото') {
@@ -59,7 +59,7 @@ final class Property
                 'weaving' => $this->getWeaving(),
                 'body_part' => $this->getBodyPart(),
                 'bracelet_sizes' => data_get($sizePrices, '*.size'),
-                'bracelet_bases' => $this->getBraceletBase($stone),
+                'bracelet_bases' => $this->getBraceletBase($insert),
                 'quantity' => data_get($sizePrices, '*.quantity'),
                 'price' => data_get($sizePrices, '*.price')
             ];
@@ -106,11 +106,11 @@ final class Property
 
     }
 
-    private function getBraceletBase(array $stone): string
+    private function getBraceletBase(array $insert): string
     {
-        if ($stone) {
-            if (count($stone) === 1) {
-                if ($stone[0]['stone'] === 'жемчуг') {
+        if ($insert) {
+            if (count($insert) === 1) {
+                if ($insert[0]['stone'] === 'жемчуг') {
                     $braceletBases = array_diff(config('data-seed.data_items.bracelet_bases'), ['металлическая','шнурок']);
                     dd($braceletBases);
                     return Arr::random($braceletBases);
