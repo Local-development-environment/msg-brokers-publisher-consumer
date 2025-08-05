@@ -21,6 +21,8 @@ return new class extends Migration
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
             $table->foreign('earring_clasp_id')->references('id')->on('properties.earring_clasps');
+
+            $table->unique(['jewellery_id', 'earring_clasp_id'], 'earring_clasp_unique');
         });
     }
 

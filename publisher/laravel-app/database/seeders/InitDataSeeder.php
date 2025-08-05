@@ -38,6 +38,8 @@ class InitDataSeeder extends Seeder
         DB::table('properties.jw_ring_metrics')->truncate();
         DB::table('properties.jw_ring_props')->truncate();
         DB::table('properties.ring_sizes')->truncate();
+        DB::table('properties.jw_earrings')->truncate();
+        DB::table('properties.earring_types')->truncate();
         DB::table('properties.jw_earring_props')->truncate();
         DB::table('properties.earring_clasps')->truncate();
         DB::table('properties.jw_piercing_props')->truncate();
@@ -78,6 +80,7 @@ class InitDataSeeder extends Seeder
         $categories = config('data-seed.data_items.jw_categories');
         $weavings = config('data-seed.data_items.jw_weavings');
         $earring_clasps = config('data-seed.data_items.earring_clasps');
+        $earring_types = config('data-seed.data_items.earring_types');
         $jw_clasps = config('data-seed.data_items.jw_clasps');
         $ring_sizes = config('data-seed.data_items.ring_sizes');
         $chain_sizes = config('data-seed.data_items.chain_sizes');
@@ -136,8 +139,18 @@ class InitDataSeeder extends Seeder
 
         foreach ($earring_clasps as $clasp) {
             DB::table('properties.earring_clasps')->insert([
-                'name' => $clasp,
-                'slug' => Str::slug($clasp),
+                'name' => $clasp['name'],
+                'slug' => Str::slug($clasp['name']),
+                'description' => $clasp['description'],
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($earring_types as $type) {
+            DB::table('properties.earring_types')->insert([
+                'name' => $type['name'],
+                'slug' => Str::slug($type['name']),
+                'description' => $type['description'],
                 'created_at' => now(),
             ]);
         }
