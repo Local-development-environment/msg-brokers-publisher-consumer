@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('properties.necklace_sizes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('length_name_id');
             $table->decimal('value', 4, 1)->unique();
             $table->string('unit')->default('sm');
             $table->timestamps();
+
+            $table->foreign('length_name_id')->references('id')->on('properties.length_names');
         });
     }
 

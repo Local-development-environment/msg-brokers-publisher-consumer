@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties.chain_sizes', function (Blueprint $table) {
+        Schema::create('properties.length_names', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('length_name_id');
-            $table->decimal('value', 4, 1)->unique();
-            $table->string('unit')->default('sm');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
+            $table->text('description');
             $table->timestamps();
-
-            $table->foreign('length_name_id')->references('id')->on('properties.length_names');
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('properties.chain_sizes');
+        Schema::dropIfExists('properties.length_names');
     }
 };

@@ -27,6 +27,7 @@ class InitDataSeeder extends Seeder
         DB::table('properties.jw_chain_metrics')->truncate();
         DB::table('properties.jw_chain_props')->truncate();
         DB::table('properties.chain_sizes')->truncate();
+        DB::table('properties.length_names')->truncate();
         DB::table('properties.jw_bracelet_weavings')->truncate();
         DB::table('properties.jw_bracelet_metrics')->truncate();
         DB::table('properties.bracelet_sizes')->truncate();
@@ -94,6 +95,7 @@ class InitDataSeeder extends Seeder
         $jw_coverages = config('data-seed.data_items.jw_coverages');
         $bracelet_bases = config('data-seed.data_items.bracelet_bases');
         $bead_bases = config('data-seed.data_items.bead_bases');
+        $length_names = config('data-seed.data_items.length_names');
 
 //        dd($categories);
         foreach ($categories as $category) {
@@ -107,7 +109,7 @@ class InitDataSeeder extends Seeder
         foreach ($jw_coverages as $coverage) {
             DB::table('coverages.jw_coverages')->insert([
                 'name' => $coverage,
-                'slug' =>Str::slug($coverage, '-'),
+                'slug' => Str::slug($coverage, '-'),
                 'is_active' => 1,
                 'created_at' => now(),
             ]);
@@ -116,7 +118,7 @@ class InitDataSeeder extends Seeder
         foreach ($weavings as $weave) {
             DB::table('properties.jw_weavings')->insert([
                 'name' => $weave,
-                'slug' => Str::slug($weave),
+                'slug' => Str::slug($weave, '-'),
                 'created_at' => now(),
             ]);
         }
@@ -124,7 +126,7 @@ class InitDataSeeder extends Seeder
         foreach ($bracelet_bases as $base) {
             DB::table('properties.bracelet_bases')->insert([
                 'name' => $base,
-                'slug' => Str::slug($base),
+                'slug' => Str::slug($base, '-'),
                 'created_at' => now(),
             ]);
         }
@@ -132,7 +134,7 @@ class InitDataSeeder extends Seeder
         foreach ($bead_bases as $base) {
             DB::table('properties.bead_bases')->insert([
                 'name' => $base,
-                'slug' => Str::slug($base),
+                'slug' => Str::slug($base, '-'),
                 'created_at' => now(),
             ]);
         }
@@ -140,7 +142,7 @@ class InitDataSeeder extends Seeder
         foreach ($earring_clasps as $clasp) {
             DB::table('properties.earring_clasps')->insert([
                 'name' => $clasp['name'],
-                'slug' => Str::slug($clasp['name']),
+                'slug' => Str::slug($clasp['name'], '-'),
                 'description' => $clasp['description'],
                 'created_at' => now(),
             ]);
@@ -149,7 +151,7 @@ class InitDataSeeder extends Seeder
         foreach ($earring_types as $type) {
             DB::table('properties.earring_types')->insert([
                 'name' => $type['name'],
-                'slug' => Str::slug($type['name']),
+                'slug' => Str::slug($type['name'], '-'),
                 'description' => $type['description'],
                 'created_at' => now(),
             ]);
@@ -158,7 +160,7 @@ class InitDataSeeder extends Seeder
         foreach ($jw_clasps as $clasp) {
             DB::table('properties.jw_clasps')->insert([
                 'name' => $clasp,
-                'slug' => Str::slug($clasp),
+                'slug' => Str::slug($clasp, '-'),
                 'created_at' => now(),
             ]);
         }
@@ -166,7 +168,7 @@ class InitDataSeeder extends Seeder
         foreach ($body_parts as $body_part) {
             DB::table('properties.body_parts')->insert([
                 'name' => $body_part,
-                'slug' => Str::slug($body_part),
+                'slug' => Str::slug($body_part, '-'),
                 'created_at' => now(),
             ]);
         }
@@ -174,7 +176,7 @@ class InitDataSeeder extends Seeder
         foreach ($prcs_metals as $metal) {
             DB::table('metals.prcs_metals')->insert([
                 'name' => $metal,
-                'slug' => Str::slug($metal),
+                'slug' => Str::slug($metal, '-'),
                 'created_at' => now(),
             ]);
         }
@@ -189,7 +191,7 @@ class InitDataSeeder extends Seeder
         foreach ($metal_colours as $colour) {
             DB::table('metals.prcs_metal_colours')->insert([
                 'name' => $colour,
-                'slug' => Str::slug($colour),
+                'slug' => Str::slug($colour, '-'),
                 'created_at' => now(),
             ]);
         }
@@ -201,8 +203,17 @@ class InitDataSeeder extends Seeder
             ]);
         }
 
+        foreach ($length_names as $length_name) {
+            DB::table('properties.length_names')->insert([
+                'name' => $length_name['name'],
+                'slug' => Str::slug($length_name['name'], '-'),
+                'description' => Str::slug($length_name['description'], '-'),
+            ]);
+        }
+
         foreach ($chain_sizes as $chain_size) {
             DB::table('properties.chain_sizes')->insert([
+                'length_name_id' => $this->lengthNameId($chain_size['value']),
                 'value' => $chain_size['value'],
                 'created_at' => now(),
             ]);
@@ -217,6 +228,7 @@ class InitDataSeeder extends Seeder
 
         foreach ($necklace_sizes as $necklace_size) {
             DB::table('properties.necklace_sizes')->insert([
+                'length_name_id' => $this->lengthNameId($necklace_size['value']),
                 'value' => $necklace_size['value'],
                 'created_at' => now(),
             ]);
@@ -224,9 +236,31 @@ class InitDataSeeder extends Seeder
 
         foreach ($bead_sizes as $size) {
             DB::table('properties.bead_sizes')->insert([
+                'length_name_id' => $this->lengthNameId($size['value']),
                 'value' => $size['value'],
                 'created_at' => now(),
             ]);
         }
+    }
+
+    private function lengthNameId($size): int
+    {
+        if ($size <= 35) {
+            return DB::table('properties.length_names')->where('name', 'коллар')->value('id');
+        }
+        if ($size <= 45) {
+            return DB::table('properties.length_names')->where('name', 'чокер')->value('id');
+        }
+        if ($size <= 55) {
+            return DB::table('properties.length_names')->where('name', 'принцесса')->value('id');
+        }
+        if ($size <= 65) {
+            return DB::table('properties.length_names')->where('name', 'матине')->value('id');
+        }
+        if ($size <= 85) {
+            return DB::table('properties.length_names')->where('name', 'опера')->value('id');
+        }
+
+        return DB::table('properties.length_names')->where('name', 'роп')->value('id');
     }
 }

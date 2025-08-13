@@ -117,10 +117,10 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
 
     public function addProperty(): jewelleryBuilderInterface
     {
-        $this->baseJewellery->property = (new Property())
-            ->getProperties(
-                $this->baseJewellery->category, $this->baseJewellery->prcsMetal, $this->baseJewellery->insert
-            );
+        $property = new Property();
+
+        $properties = get_object_vars($this->baseJewellery);
+        $this->baseJewellery->property = $property->getProperties($properties);
 
         return $this;
     }
@@ -149,7 +149,7 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         $jewellery['approx_weight'] = $this->baseJewellery->weight;
         $jewellery['is_active'] = $this->baseJewellery->isActive;
         $jewellery['props'] = $this->baseJewellery->property;
-        $jewellery['jw_jewellery'] = $this->baseJewellery->insert;
+        $jewellery['jw_insert'] = $this->baseJewellery->insert;
 
         return $jewellery;
     }
