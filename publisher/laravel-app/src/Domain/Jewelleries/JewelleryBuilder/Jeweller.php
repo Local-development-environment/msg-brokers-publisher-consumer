@@ -9,7 +9,7 @@ final class Jeweller
     public function buildJewellery(JewelleryBuilderInterface $builder): array
     {
         return $builder
-            ->addCategory()
+            ->reset()
             ->addPrcsMetal()
             ->addPrcsMetalHallmark()
             ->addPrcsMetalCoverage()
@@ -17,11 +17,11 @@ final class Jeweller
             ->addDescription()
             ->addPartNumber()
             ->addWeight()
-            ->addJewelleryName()
             ->addIsActive()
+            ->addCategory()
             ->addInsert()
             ->addProperty()
-//            ->addInsert()
+            ->addJewelleryName()
             ->getJewellery()
             ;
     }

@@ -6,6 +6,7 @@ namespace Domain\Jewelleries\JewelleryBuilder;
 
 interface JewelleryBuilderInterface
 {
+    public function reset(): jewelleryBuilderInterface;
     public function addPrcsMetal(): jewelleryBuilderInterface;
 
     public function addPrcsMetalHallmark(): jewelleryBuilderInterface;

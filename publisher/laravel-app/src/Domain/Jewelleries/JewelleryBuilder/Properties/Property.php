@@ -112,7 +112,7 @@ final class Property
             if (count($insert) === 1) {
                 if ($insert[0]['stone'] === 'жемчуг') {
                     $braceletBases = array_diff(config('data-seed.data_items.bracelet_bases'), ['металлическая','шнурок']);
-                    dd($braceletBases);
+//                    dd($braceletBases);
                     return Arr::random($braceletBases);
                 }
             }

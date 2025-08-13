@@ -22,9 +22,11 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
 {
     protected \stdClass $baseJewellery;
 
-    public function reset(): void
+    public function reset(): jewelleryBuilderInterface
     {
         $this->baseJewellery = new \stdClass();
+
+        return $this;
     }
 
     public function addPrcsMetal(): jewelleryBuilderInterface
@@ -37,14 +39,16 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
 
     public function addPrcsMetalHallmark(): jewelleryBuilderInterface
     {
-        $this->baseJewellery->prcsMetalHallmark = (new Hallmark())->getHallmark($this->baseJewellery->prcsMetal);
+        $hallmark = new Hallmark();
+        $this->baseJewellery->prcsMetalHallmark = $hallmark->getHallmark($this->baseJewellery->prcsMetal);
 
         return $this;
     }
 
     public function addPrcsMetalColour(): jewelleryBuilderInterface
     {
-        $this->baseJewellery->prcsMetalColour = (new Colour())
+        $colour = new Colour();
+        $this->baseJewellery->prcsMetalColour = $colour
             ->getColour($this->baseJewellery->prcsMetal, $this->baseJewellery->prcsMetalCoverage);
 
         return $this;
@@ -52,40 +56,42 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
 
     public function addCategory(): jewelleryBuilderInterface
     {
-        $this->reset();
-        $this->baseJewellery->category = (new Category())->getCategory();
+        $category = new Category();
+        $this->baseJewellery->category = $category->getCategory();
 
         return $this;
     }
 
     public function addPrcsMetalCoverage(): jewelleryBuilderInterface
     {
-        $this->baseJewellery->prcsMetalCoverage = (new Coverage())->getCoverages($this->baseJewellery->prcsMetal);
+        $coverage = new Coverage();
+        $this->baseJewellery->prcsMetalCoverage = $coverage->getCoverages($this->baseJewellery->prcsMetal);
 
         return $this;
     }
 
     public function addWeight(): jewelleryBuilderInterface
     {
-        $this->baseJewellery->weight = (new Weight())->getWeight();
+        $weight = new Weight();
+        $this->baseJewellery->weight = $weight->getWeight();
 
         return $this;
     }
 
     public function addJewelleryName(): jewelleryBuilderInterface
     {
-        $name = $this->baseJewellery->category . ' ' . $this->baseJewellery->prcsMetal . ' ' .
-            $this->baseJewellery->prcsMetalHallmark . ' проба цвет ' . $this->baseJewellery->prcsMetalColour . ' артикул ' .
-            $this->baseJewellery->partNumber . ' вес ' . $this->baseJewellery->weight . ' гр.';
+        $properties = get_object_vars($this->baseJewellery);
+        $jewelleryName = new JewelleryName();
 
-        $this->baseJewellery->jewelleryName = (new JewelleryName())->getJewelleryName($name);
+        $this->baseJewellery->jewelleryName = $jewelleryName->getJewelleryName($properties);
 
         return $this;
     }
 
     public function addDescription(): jewelleryBuilderInterface
     {
-        $this->baseJewellery->description = (new Description())->getDescription();
+        $description = new Description();
+        $this->baseJewellery->description = $description->getDescription();
 
         return $this;
     }
@@ -95,14 +101,16 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
      */
     public function addPartNumber(): jewelleryBuilderInterface
     {
-        $this->baseJewellery->partNumber = (new PartNumber())->getPartNumber();
+        $partNumber = new PartNumber();
+        $this->baseJewellery->partNumber = $partNumber->getPartNumber();
 
         return $this;
     }
 
     public function addIsActive(): jewelleryBuilderInterface
     {
-        $this->baseJewellery->isActive = (new IsActive())->getIsActive();
+        $isActive = new IsActive();
+        $this->baseJewellery->isActive = $isActive->getIsActive();
 
         return $this;
     }
@@ -122,7 +130,8 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
      */
     public function addInsert(): jewelleryBuilderInterface
     {
-        $this->baseJewellery->insert = (new Insert())->getInsert($this->baseJewellery->category);
+        $insert = new Insert();
+        $this->baseJewellery->insert = $insert->getInsert($this->baseJewellery->category);
 
         return $this;
     }
