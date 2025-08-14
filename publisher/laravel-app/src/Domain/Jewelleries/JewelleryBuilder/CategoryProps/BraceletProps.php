@@ -5,10 +5,14 @@ declare(strict_types=1);
 namespace Domain\Jewelleries\JewelleryBuilder\CategoryProps;
 
 use Domain\Jewelleries\JewelleryBuilder\CategoryPropsBuilderInterface;
+use Domain\Jewelleries\JewelleryBuilder\MetalPriceDifferentiationTrait;
+use Domain\Jewelleries\JewelleryBuilder\SizePricePropsTrait;
 use Illuminate\Support\Arr;
 
 final readonly class BraceletProps implements CategoryPropsBuilderInterface
 {
+    use SizePricePropsTrait, MetalPriceDifferentiationTrait;
+
     public function __construct(private array $properties)
     {
     }
@@ -18,19 +22,9 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
         $metal = $this->properties['prcsMetal'];
         $insert = $this->properties['insert'];
 
-
-        if ($metal === 'золото') {
-            $price = round(rand(70000, 400000), -1);
-        } elseif ($metal === 'серебро') {
-            $price = round(rand(11000, 80000), -1);
-        } elseif ($metal === 'платина') {
-            $price = round(rand(75000, 365000), -1);
-        } else {
-            $price = round(rand(60000, 355000), -1);
-        }
-
         $clasps = config('data-seed.data_items.jw_clasps');
-        $sizePrices = $this->getBraceletSizePrice($price);
+        $sizes = data_get(config('data-seed.data_items.bracelet_sizes'), '*.value');
+        $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), $sizes);
 
         return [
             'size_price_quantity' => $sizePrices,
@@ -42,18 +36,6 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
             'quantity' => data_get($sizePrices, '*.quantity'),
             'price' => data_get($sizePrices, '*.price')
         ];
-    }
-
-    private function getBraceletSizePrice($price): array
-    {
-        $sizes = data_get(config('data-seed.data_items.bracelet_sizes'), '*.value');
-        $tmp = [];
-        foreach ($sizes as $size) {
-            $priceSize = $price + ($price * (($size - 15) * 0.01));
-            $tmp[] = ['size' => $size, 'price' => round($priceSize, -1), 'quantity' => rand(0, 10)];
-        }
-
-        return Arr::random($tmp, rand(3, count($sizes)));
     }
 
     private function getWeaving(): array

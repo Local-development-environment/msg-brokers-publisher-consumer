@@ -14,6 +14,7 @@ final readonly class BroochProps implements CategoryPropsBuilderInterface
 
     public function getProps(): array
     {
-        return $this->properties;
+        $prop = $this->properties;
+        return ['it\'s not ready'];
     }
 }

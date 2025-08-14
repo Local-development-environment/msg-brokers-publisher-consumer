@@ -65,7 +65,9 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
     public function addPrcsMetalCoverage(): jewelleryBuilderInterface
     {
         $coverage = new Coverage();
-        $this->baseJewellery->prcsMetalCoverage = $coverage->getCoverages($this->baseJewellery->prcsMetal);
+        $this->baseJewellery->prcsMetalCoverage = $coverage->getCoverages(
+            $this->baseJewellery->prcsMetal, $this->baseJewellery->category
+        );
 
         return $this;
     }

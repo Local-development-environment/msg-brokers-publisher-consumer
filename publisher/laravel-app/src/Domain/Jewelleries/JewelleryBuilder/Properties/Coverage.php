@@ -6,7 +6,7 @@ namespace Domain\Jewelleries\JewelleryBuilder\Properties;
 
 final class Coverage
 {
-    public function getCoverages($metal): array
+    public function getCoverages($metal, $category): array
     {
         $goldenCoverage = [[], ['родирование']];
         $silverCoverage = [[], ['родирование'], ['золочение'], ['оксидирование']];
@@ -21,7 +21,7 @@ final class Coverage
             $coverage = [];
         }
 
-        $anotherCoverage = $this->randCoverage($coverage);
+        $anotherCoverage = $this->randCoverage($category);
 
         if ($anotherCoverage) {
             $coverage[] = $anotherCoverage;
@@ -84,22 +84,26 @@ final class Coverage
         return $tmp[array_rand($tmp)];
     }
 
-    private function randCoverage($entries) {
+    private function randCoverage($category)
+    {
+//        dd($category);
+        if ($category !== 'бусы') {
+            $tmp = [];
 
-        $tmp = [];
+            for ($x = 1; $x <= 20; $x++) {
+                $tmp[] = '';
+            }
 
-        for ($x = 1; $x <= 20; $x++) {
-            $tmp[] = '';
+            for ($x = 1; $x <= 4; $x++) {
+                $tmp[] = 'алмазная грань';
+            }
+
+            for ($x = 1; $x <= 2; $x++) {
+                $tmp[] = 'эмаль';
+            }
+
+            return $tmp[array_rand($tmp)];
         }
-
-        for ($x = 1; $x <= 4; $x++) {
-            $tmp[] = 'алмазная грань';
-        }
-
-        for ($x = 1; $x <= 2; $x++) {
-            $tmp[] = 'эмаль';
-        }
-
-        return $tmp[array_rand($tmp)];
+        return [];
     }
 }
