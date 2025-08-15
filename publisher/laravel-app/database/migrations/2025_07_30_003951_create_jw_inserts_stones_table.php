@@ -11,13 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inserts.stone_types', function (Blueprint $table) {
+        Schema::create('jw_inserts.stones', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('type_origin_id');
             $table->string('name')->unique();
+            $table->string('alt_name');
             $table->string('description');
             $table->string('slug')->unique();
-            $table->boolean('is_active')->default(false);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
+
+            $table->foreign('type_origin_id')->references('id')->on('jw_inserts.type_origins');
         });
     }
 
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inserts.stone_types');
+        Schema::dropIfExists('jw_inserts.stones');
     }
 };

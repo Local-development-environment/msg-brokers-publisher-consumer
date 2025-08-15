@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_inserts.metrics', function (Blueprint $table) {
+        Schema::create('jw_inserts.optional_infos', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantity');
-            $table->decimal('weight', 8, 3);
-            $table->string('unit')->default('карат');
+            $table->unsignedBigInteger('metric_id')->unique();
+            $table->json('info');
             $table->timestamps();
+
+            $table->foreign('metric_id')->references('id')->on('jw_inserts.metrics');
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_inserts.metrics');
+        Schema::dropIfExists('jw_inserts.optional_infos');
     }
 };
