@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inserts.stone_shapes', function (Blueprint $table) {
+        Schema::create('jw_inserts.optical_effects', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('description');
-            $table->string('slug')->unique();
-            $table->boolean('is_active')->default(false);
+            $table->unsignedBigInteger('stone_id')->unique();
+            $table->string('name');
+            $table->string('slug');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inserts.stone_shapes');
+        Schema::dropIfExists('jw_inserts.optical_effects');
     }
 };

@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_inserts.metrics', function (Blueprint $table) {
+        Schema::create('jw_inserts.stone_families', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantity');
-            $table->decimal('weight', 8, 3);
-            $table->string('unit')->default('карат');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
+            $table->text('description')->unique();
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_inserts.metrics');
+        Schema::dropIfExists('jw_inserts.stone_families');
     }
 };

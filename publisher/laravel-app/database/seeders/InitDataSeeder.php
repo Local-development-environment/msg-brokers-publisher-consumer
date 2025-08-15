@@ -62,14 +62,21 @@ class InitDataSeeder extends Seeder
         DB::table('medias.jw_medias')->truncate();
         DB::table('medias.jw_media_producers')->truncate();
         DB::table('medias.jw_media_categories')->truncate();
-        DB::table('inserts.jw_inserts')->truncate();
-        DB::table('inserts.jw_insert_metrics')->truncate();
-        DB::table('inserts.insert_visual_details')->truncate();
-        DB::table('inserts.stone_shapes')->truncate();
-        DB::table('inserts.stone_colours')->truncate();
-        DB::table('inserts.stones')->truncate();
-        DB::table('inserts.diamond_details')->truncate();
-        DB::table('inserts.stone_types')->truncate();
+        DB::table('jw_inserts.type_origins')->truncate();
+        DB::table('jw_inserts.stones')->truncate();
+        DB::table('jw_inserts.optical_effects')->truncate();
+        DB::table('jw_inserts.colours')->truncate();
+        DB::table('jw_inserts.facets')->truncate();
+        DB::table('jw_inserts.insert_stones')->truncate();
+        DB::table('jw_inserts.metrics')->truncate();
+        DB::table('jw_inserts.optional_infos')->truncate();
+        DB::table('jw_inserts.inserts')->truncate();
+        DB::table('jw_inserts.stone_families')->truncate();
+        DB::table('jw_inserts.stone_groups')->truncate();
+        DB::table('jw_inserts.stone_grades')->truncate();
+        DB::table('jw_inserts.natural_stones')->truncate();
+        DB::table('jw_inserts.grown_stones')->truncate();
+        DB::table('jw_inserts.imitation_stones')->truncate();
         DB::table('jewelleries.jewelleries')->truncate();
         DB::table('jewelleries.jw_categories')->truncate();
         DB::table('metals.jw_prcs_metal_props')->truncate();
@@ -97,7 +104,72 @@ class InitDataSeeder extends Seeder
         $bead_bases = config('data-seed.data_items.bead_bases');
         $length_names = config('data-seed.data_items.length_names');
 
-//        dd($categories);
+        $jwInsertsTypeOrigins = config('data-seed.stones-seed.origins');
+        $jwInsertsStoneColours = config('data-seed.stones-seed.stone_colours');
+        $jwInsertsStoneFacets = config('data-seed.stones-seed.stone_facets');
+        $jwInsertsStoneFamilies = config('data-seed.stones-seed.family');
+        $jwInsertsStoneGroups = config('data-seed.stones-seed.groups');
+        $jwInsertsStoneGrades = config('data-seed.stones-seed.grades');
+
+//        dd($jwInsertsTypeOrigins);
+
+        foreach ($jwInsertsStoneGrades as $grade) {
+            DB::table('jw_inserts.stone_grades')->insert([
+                'name' => $grade['name'],
+                'slug' => Str::slug($grade['name'], '-'),
+                'description' => $grade['description'],
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($jwInsertsStoneGroups as $group) {
+            DB::table('jw_inserts.stone_groups')->insert([
+                'name' => $group['name'],
+                'slug' => Str::slug($group['name'], '-'),
+                'description' => $group['description'],
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($jwInsertsStoneFamilies as $family) {
+            DB::table('jw_inserts.stone_families')->insert([
+                'name' => $family['name'],
+                'slug' => Str::slug($family['name'], '-'),
+                'description' => $family['description'],
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($jwInsertsStoneFacets as $facet) {
+            DB::table('jw_inserts.facets')->insert([
+                'name' => $facet['name'],
+                'slug' => Str::slug($facet['name'], '-'),
+                'description' => $facet['description'],
+                'is_active' => true,
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($jwInsertsStoneColours as $colour) {
+            DB::table('jw_inserts.colours')->insert([
+                'name' => $colour['name'],
+                'slug' => Str::slug($colour['name'], '-'),
+                'description' => $colour['description'],
+                'is_active' => true,
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($jwInsertsTypeOrigins as $origin) {
+            DB::table('jw_inserts.type_origins')->insert([
+                'name' => $origin['name'],
+                'slug' => Str::slug($origin['name'], '-'),
+                'description' => $origin['description'],
+                'is_active' => true,
+                'created_at' => now(),
+            ]);
+        }
+
         foreach ($categories as $category) {
             DB::table('jewelleries.jw_categories')->insert([
                 'name' => $category,

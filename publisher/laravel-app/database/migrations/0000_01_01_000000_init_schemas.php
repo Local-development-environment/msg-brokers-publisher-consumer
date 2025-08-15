@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
 //        DB::statement('CREATE SCHEMA public');
-        DB::statement('CREATE SCHEMA inserts');
+        DB::statement('CREATE SCHEMA jw_inserts');
         DB::statement('CREATE SCHEMA jewelleries');
         DB::statement('CREATE SCHEMA metals');
         DB::statement('CREATE SCHEMA medias');
@@ -27,7 +27,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement('DROP SCHEMA IF EXISTS inserts CASCADE');
+        DB::statement('DROP SCHEMA IF EXISTS jw_inserts CASCADE');
         DB::statement('DROP SCHEMA IF EXISTS jewelleries CASCADE');
         DB::statement('DROP SCHEMA IF EXISTS metals CASCADE');
         DB::statement('DROP SCHEMA IF EXISTS medias CASCADE');
