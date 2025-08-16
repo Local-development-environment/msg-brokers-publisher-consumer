@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('jw_inserts.optical_effects', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('stone_id')->unique();
             $table->string('name');
             $table->string('slug');
             $table->text('description');

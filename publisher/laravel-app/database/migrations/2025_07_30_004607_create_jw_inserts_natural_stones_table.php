@@ -15,16 +15,14 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('stone_id');
             $table->unsignedBigInteger('stone_group_id');
-            $table->unsignedBigInteger('stone_grade_id');
             $table->unsignedBigInteger('stone_family_id');
             $table->timestamps();
 
             $table->foreign('stone_id')->references('id')->on('jw_inserts.stones');
             $table->foreign('stone_group_id')->references('id')->on('jw_inserts.stone_groups');
-            $table->foreign('stone_grade_id')->references('id')->on('jw_inserts.stone_grades');
             $table->foreign('stone_family_id')->references('id')->on('jw_inserts.stone_families');
 
-            $table->unique(['stone_id', 'stone_group_id', 'stone_family_id', 'stone_grade_id'], 'natural_stones_unique');
+            $table->unique(['stone_id', 'stone_group_id', 'stone_family_id'], 'natural_stones_unique');
         });
     }
 
