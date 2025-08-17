@@ -113,7 +113,9 @@ class InitDataSeeder extends Seeder
         $jwInsertsStoneGroups = config('data-seed.insert-seed.items-seed.groups');
         $jwInsertsStoneGrades = config('data-seed.insert-seed.items-seed.grades');
         $jwInsertsOpticalEffects = config('data-seed.insert-seed.items-seed.optical_effects');
-        $jwInsertsStones = config('data-seed.insert-seed.nature-stones-seed.stones');
+        $jwInsertsNaturalStones = config('data-seed.insert-seed.nature-stones-seed.stones');
+        $jwInsertsGrownStones = config('data-seed.insert-seed.grown-stones-seed.stones');
+        $jwInsertsImitationStones = config('data-seed.insert-seed.imitation-stones-seed.stones');
 
 //        dd($jwInsertsTypeOrigins);
 
@@ -184,8 +186,7 @@ class InitDataSeeder extends Seeder
         }
 
         $typeOriginId = DB::table('jw_inserts.type_origins')->where('name', '=', 'природные')->value('id');
-        foreach ($jwInsertsStones as $stone) {
-            dump($stone);
+        foreach ($jwInsertsNaturalStones as $stone) {
             $stoneId = DB::table('jw_inserts.stones')->insertGetId([
                 'type_origin_id' => $typeOriginId,
                 'name' => $stone['name'],
@@ -218,6 +219,59 @@ class InitDataSeeder extends Seeder
                     'created_at' => now(),
                 ]);
             }
+        }
+
+        $typeGrownId = DB::table('jw_inserts.type_origins')->where('name', '=', 'выращенные')->value('id');
+        foreach ($jwInsertsGrownStones as $stone) {
+            $stoneId = DB::table('jw_inserts.stones')->insertGetId([
+                'type_origin_id' => $typeGrownId,
+                'name' => $stone['name'],
+                'alt_name' => $stone['alt_name'],
+                'slug' => Str::slug($stone['name'], '-'),
+                'description' => $stone['description'],
+                'created_at' => now(),
+            ]);
+
+            if ($stone['optical_effect']) {
+                DB::table('jw_inserts.optical_effect_stone')->insert([
+                    'stone_id' => $stoneId,
+                    'optical_effect_id' => DB::table('jw_inserts.optical_effects')
+                        ->where('name', $stone['optical_effect'])->value('id'),
+                    'created_at' => now(),
+                ]);
+            }
+
+            DB::table('jw_inserts.grown_stones')->insertGetId([
+                'stone_id' => $stoneId,
+                'stone_family_id' => DB::table('jw_inserts.stone_families')->where('name', $stone['family'])->value('id'),
+                'created_at' => now(),
+            ]);
+        }
+
+        $typeImitationId = DB::table('jw_inserts.type_origins')->where('name', '=', 'имитация')->value('id');
+        foreach ($jwInsertsImitationStones as $stone) {
+            $stoneId = DB::table('jw_inserts.stones')->insertGetId([
+                'type_origin_id' => $typeImitationId,
+                'name' => $stone['name'],
+                'alt_name' => $stone['alt_name'],
+                'slug' => Str::slug($stone['name'], '-'),
+                'description' => $stone['description'],
+                'created_at' => now(),
+            ]);
+
+            if ($stone['optical_effect']) {
+                DB::table('jw_inserts.optical_effect_stone')->insert([
+                    'stone_id' => $stoneId,
+                    'optical_effect_id' => DB::table('jw_inserts.optical_effects')
+                        ->where('name', $stone['optical_effect'])->value('id'),
+                    'created_at' => now(),
+                ]);
+            }
+
+            DB::table('jw_inserts.imitation_stones')->insertGetId([
+                'stone_id' => $stoneId,
+                'created_at' => now(),
+            ]);
         }
 
         foreach ($categories as $category) {
