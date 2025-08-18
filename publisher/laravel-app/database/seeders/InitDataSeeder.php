@@ -204,7 +204,7 @@ class InitDataSeeder extends Seeder
                     'created_at' => now(),
                 ]);
             }
-
+            dump($stone);
             $naturalStoneId = DB::table('jw_inserts.natural_stones')->insertGetId([
                 'stone_id' => $stoneId,
                 'stone_group_id' => DB::table('jw_inserts.stone_groups')->where('name', $stone['group'])->value('id'),
