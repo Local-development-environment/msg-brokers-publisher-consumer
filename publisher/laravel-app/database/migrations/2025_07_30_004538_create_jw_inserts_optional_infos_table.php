@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('jw_inserts.optional_infos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('metric_id')->unique();
+            $table->unsignedBigInteger('insert_stone_id')->unique();
             $table->json('info');
             $table->timestamps();
 
-            $table->foreign('metric_id')->references('id')->on('jw_inserts.metrics');
+            $table->foreign('insert_stone_id')->references('id')->on('jw_inserts.insert_stones');
         });
     }
 
