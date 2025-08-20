@@ -20,6 +20,7 @@ return new class extends Migration
         DB::statement('CREATE SCHEMA properties');
         DB::statement('CREATE SCHEMA coverages');
         DB::statement('CREATE SCHEMA promotions');
+        DB::statement('CREATE SCHEMA jw_views');
     }
 
     /**
@@ -34,5 +35,6 @@ return new class extends Migration
         DB::statement('DROP SCHEMA IF EXISTS properties CASCADE');
         DB::statement('DROP SCHEMA IF EXISTS coverages CASCADE');
         DB::statement('DROP SCHEMA IF EXISTS promotions CASCADE');
+        DB::statement('DROP SCHEMA IF EXISTS jw_views CASCADE');
     }
 };

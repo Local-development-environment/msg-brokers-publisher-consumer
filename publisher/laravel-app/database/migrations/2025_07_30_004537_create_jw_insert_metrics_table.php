@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->decimal('weight', 8, 3);
             $table->string('unit')->default('карат');
+            $table->jsonb('dimensions');
             $table->timestamps();
         });
     }

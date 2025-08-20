@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace Domain\Jewelleries\JewelleryBuilder\Properties;
 
+use Domain\Jewelleries\JewelleryBuilder\ProbabilityCoefficientsTrait;
 use Random\RandomException;
 
 final class Insert
 {
+    use ProbabilityCoefficientsTrait;
+
     /**
      * @throws RandomException
      */
     public function getInsert($category): array
     {
-        $insertCount = $this->randCountWithProbability();
-
+        $insertCount = $this->randInsertsAmount();
         $inserts = [];
 
         if ($insertCount && $category !== 'цепи') {
@@ -33,38 +35,9 @@ final class Insert
                     ]
                 ];
             }
-        } else {
-            $inserts = [];
         }
 
         return $inserts;
-    }
-
-    private function randCountWithProbability(): int
-    {
-        $tmp = [];
-
-        for ($x = 1; $x <= 10; $x++) {
-            $tmp[] = 1;
-        }
-
-        for ($x = 1; $x <= 5; $x++) {
-            $tmp[] = 0;
-        }
-
-        for ($x = 1; $x <= 7; $x++) {
-            $tmp[] = 2;
-        }
-
-        for ($x = 1; $x <= 3; $x++) {
-            $tmp[] = 3;
-        }
-
-        for ($x = 1; $x <= 1; $x++) {
-            $tmp[] = 4;
-        }
-
-        return $tmp[array_rand($tmp)];
     }
 
     private function randColourProbability($stone): string

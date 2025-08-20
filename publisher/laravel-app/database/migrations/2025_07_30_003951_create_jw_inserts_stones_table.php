@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('type_origin_id');
             $table->string('name')->unique();
             $table->string('alt_name');
-            $table->string('description');
+            $table->text('description');
             $table->string('slug')->unique();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
