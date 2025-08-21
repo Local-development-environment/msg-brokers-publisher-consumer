@@ -76,6 +76,9 @@ return [
         ['name' => 'коричневый', 'description' => ''],
         ['name' => 'зеленовато-синий', 'description' => ''],
         ['name' => 'фиолетовый', 'description' => ''],
+        ['name' => 'многоцветный', 'description' => ''],
+        ['name' => 'оранжевый', 'description' => ''],
+        ['name' => 'серый', 'description' => ''],
     ],
     'stone_facets' => [
         ['name' => 'ашер', 'description' => 'Способ огранки «Ашер» очень похож на изумрудную огранку, но с большим количеством уровней.'],

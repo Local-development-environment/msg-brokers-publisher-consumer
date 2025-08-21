@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domain\Jewelleries\JewelleryBuilder\Properties;
 
 use Domain\Jewelleries\JewelleryBuilder\ProbabilityCoefficientsTrait;
+use Illuminate\Support\Facades\DB;
 use Random\RandomException;
 
 final class Insert
@@ -21,11 +22,11 @@ final class Insert
 
         if ($insertCount && $category !== 'цепи') {
             for ($i = 0; $i < $insertCount; $i++) {
-                $stone = $this->randStoneWithProbability();
+                $stone = DB::table('jw_inserts.stones')->where('id', $this->randNaturalStone())->first()->name;
                 $shape = $this->randShapeProbability($stone);
                 $inserts[] = [
                     'stone' => $stone,
-                    'insert_colour' => $this->randColourProbability($stone),
+                    'insert_colour' => $this->randColourStone($stone)['colour'],
                     'insert_shape' => $shape,
                     'insert_property' => [
                         'quantity' => $this->randQuantityProbability($stone),
@@ -38,59 +39,6 @@ final class Insert
         }
 
         return $inserts;
-    }
-
-    private function randColourProbability($stone): string
-    {
-        $tmp = [];
-
-        if ($stone === 'бриллиант' || $stone === 'фианит') {
-            $tmp[] = 'бесцветный';
-        }
-        elseif ($stone === 'гранат') {
-            $tmp[] = 'красный';
-        }
-        elseif ($stone === 'топаз') {
-            $tmp[] = 'голубой';
-        }
-        elseif ($stone === 'сапфир') {
-            $tmp[] = 'синий';
-        }
-        elseif ($stone === 'жемчуг') {
-            $tmp[] = 'белый';
-        }
-
-        return $tmp[array_rand($tmp)];
-    }
-
-    private function randStoneWithProbability(): string{
-        $tmp = [];
-
-        for ($x = 1; $x <= 10; $x++) {
-            $tmp[] = 'бриллиант';
-        }
-
-        for ($x = 1; $x <= 8; $x++) {
-            $tmp[] = 'фианит';
-        }
-
-        for ($x = 1; $x <= 3; $x++) {
-            $tmp[] = 'топаз';
-        }
-
-        for ($x = 1; $x <= 3; $x++) {
-            $tmp[] = 'сапфир';
-        }
-
-        for ($x = 1; $x <= 3; $x++) {
-            $tmp[] = 'гранат';
-        }
-
-        for ($x = 1; $x <= 2; $x++) {
-            $tmp[] = 'жемчуг';
-        }
-
-        return $tmp[array_rand($tmp)];
     }
 
     private function randShapeProbability($stone): string
