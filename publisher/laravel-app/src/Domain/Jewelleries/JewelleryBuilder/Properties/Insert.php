@@ -23,7 +23,7 @@ final class Insert
         if ($insertCount && $category !== 'цепи') {
             for ($i = 0; $i < $insertCount; $i++) {
                 $stone = DB::table('jw_inserts.stones')->where('id', $this->randNaturalStone())->first()->name;
-                $shape = $this->randShapeProbability($stone);
+                $shape = $this->randShapeStone($stone);
                 $inserts[] = [
                     'stone' => $stone,
                     'insert_colour' => $this->randColourStone($stone)['colour'],
@@ -39,51 +39,6 @@ final class Insert
         }
 
         return $inserts;
-    }
-
-    private function randShapeProbability($stone): string
-    {
-        $shapes = ['круг','овал','маркиз','груша','сердце'];
-        $tmp = [];
-
-        if ($stone === 'бриллиант' || $stone === 'фианит') {
-            $tmp[] = 'круг';
-        } else {
-            foreach($shapes as $shape) {
-                if ($shape === 'круг') {
-                    for ($x = 1; $x <= 5; $x++) {
-                        $tmp[] = $shape;
-                    }
-                }
-//                dump($shape);
-                if ($shape === 'овал') {
-                    for ($x = 1; $x <= 5; $x++) {
-                        $tmp[] = $shape;
-                    }
-                }
-
-                if ($shape === 'сердце') {
-                    for ($x = 1; $x <= 5; $x++) {
-                        $tmp[] = $shape;
-                    }
-                }
-
-                if ($shape === 'маркиз') {
-                    for ($x = 1; $x <= 5; $x++) {
-                        $tmp[] = $shape;
-                    }
-                }
-
-                if ($shape === 'груша') {
-                    for ($x = 1; $x <= 5; $x++) {
-                        $tmp[] = $shape;
-                    }
-                }
-            }
-        }
-
-//        dd($tmp);
-        return $tmp[array_rand($tmp)];
     }
 
     /**

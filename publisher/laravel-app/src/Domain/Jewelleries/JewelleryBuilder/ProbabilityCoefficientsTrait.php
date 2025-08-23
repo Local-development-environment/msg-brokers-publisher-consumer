@@ -67,7 +67,6 @@ trait ProbabilityCoefficientsTrait
 
     public function randColourStone(string $stone): array
     {
-        dump($stone);
         $items = config('data-seed.insert-seed.nature-stones-seed.stones');
         $tmp = [];
 
@@ -80,11 +79,55 @@ trait ProbabilityCoefficientsTrait
                 }
             }
         }
-        dump($stone);
-        dump($tmp);
+
         return [
             'id' => DB::table('jw_inserts.colours')->where('name', $tmp[array_rand($tmp)])->first()->id,
             'colour' => $tmp[array_rand($tmp)],
         ];
+    }
+
+    public function randShapeStone($stone): string
+    {
+        $shapes = ['круг','овал','маркиз','груша','сердце'];
+        $tmp = [];
+
+        if ($stone === 'бриллиант' || $stone === 'фианит') {
+            $tmp[] = 'круг';
+        } else {
+            foreach($shapes as $shape) {
+                if ($shape === 'круг') {
+                    for ($x = 1; $x <= 5; $x++) {
+                        $tmp[] = $shape;
+                    }
+                }
+//                dump($shape);
+                if ($shape === 'овал') {
+                    for ($x = 1; $x <= 5; $x++) {
+                        $tmp[] = $shape;
+                    }
+                }
+
+                if ($shape === 'сердце') {
+                    for ($x = 1; $x <= 5; $x++) {
+                        $tmp[] = $shape;
+                    }
+                }
+
+                if ($shape === 'маркиз') {
+                    for ($x = 1; $x <= 5; $x++) {
+                        $tmp[] = $shape;
+                    }
+                }
+
+                if ($shape === 'груша') {
+                    for ($x = 1; $x <= 5; $x++) {
+                        $tmp[] = $shape;
+                    }
+                }
+            }
+        }
+
+//        dd($tmp);
+        return $tmp[array_rand($tmp)];
     }
 }
