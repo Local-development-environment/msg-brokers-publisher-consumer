@@ -26,10 +26,14 @@ services:
       - "PHP_FPM_LISTEN=9001"
       - "PHP_SESSION_GC_MAXLIFETIME=7200"
       - "PHP_DISABLE_EXTENSIONS=psr"
+#       - "PHP_IDE_CONFIG: serverName=Docker"
     expose:
-      - "9001"
+      - "9003"
     volumes:
       - ./laravel-app:/var/www/html/
+#       - ./xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     networks:
       - publisher
       - amqp_net

@@ -51,8 +51,9 @@ class InitDataSeeder extends Seeder
         DB::table('properties.jw_brooch_props')->truncate();
         DB::table('promotions.jewellery_jw_promotion')->truncate();
         DB::table('promotions.jw_promotions')->truncate();
-        DB::table('coverages.jewellery_jw_coverage')->truncate();
-        DB::table('coverages.jw_coverages')->truncate();
+        DB::table('jw_coverages.coverage_jewellery')->truncate();
+        DB::table('jw_coverages.coverages')->truncate();
+        DB::table('jw_coverages.coverage_types')->truncate();
         DB::table('medias.jw_set_pictures')->truncate();
         DB::table('medias.jw_pictures')->truncate();
         DB::table('medias.jw_set_video_types')->truncate();
@@ -102,6 +103,7 @@ class InitDataSeeder extends Seeder
         $metal_hallmarks = config('data-seed.data_items.prcs_metal_hallmarks');
         $metal_colours = config('data-seed.data_items.prcs_metal_colours');
         $jw_coverages = config('data-seed.data_items.jw_coverages');
+        $jwCoverageTypes = config('data-seed.data_items.jw_coverage_types');
         $bracelet_bases = config('data-seed.data_items.bracelet_bases');
         $bead_bases = config('data-seed.data_items.bead_bases');
         $length_names = config('data-seed.data_items.length_names');
@@ -282,10 +284,19 @@ class InitDataSeeder extends Seeder
             ]);
         }
 
+        foreach ($jwCoverageTypes as $type) {
+            DB::table('jw_coverages.coverage_types')->insert([
+                'name' => $type,
+                'slug' => Str::slug($type, '-'),
+                'created_at' => now(),
+            ]);
+        }
+
         foreach ($jw_coverages as $coverage) {
-            DB::table('coverages.jw_coverages')->insert([
-                'name' => $coverage,
-                'slug' => Str::slug($coverage, '-'),
+            DB::table('jw_coverages.coverages')->insert([
+                'coverage_type_id' => DB::table('jw_coverages.coverage_types')->where('name', $coverage['type'])->value('id'),
+                'name' => $coverage['coverage'],
+                'slug' => Str::slug($coverage['coverage'], '-'),
                 'is_active' => 1,
                 'created_at' => now(),
             ]);
