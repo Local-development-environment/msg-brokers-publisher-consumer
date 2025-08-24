@@ -6,8 +6,16 @@ return [
         'серьги','цепи','бусы'
     ],
     'medias' => [
-        'video_types' => [
-            'video/ogv', 'video/webm', 'video/mp4'
+        'jw_video_types' => [
+            [
+                'name' => 'video/ogv', 'extension' => 'ogv'
+            ],
+            [
+                'name' => 'video/webm', 'extension' => 'webm'
+            ],
+            [
+                'name' => 'video/mp4', 'extension' => 'mp4'
+            ]
         ],
         'jw_media_producers' => [
             'manager', 'customer'
@@ -277,7 +285,7 @@ return [
             'rate' => 0,
         ],
     ],
-    'prcs_metal_colours' => [
+    'colours' => [
         'желтый','белый','красный','комбинированный','платиновый оттенок', 'черненый белый'
     ],
     'jw_coverage_types' => [
@@ -305,7 +313,7 @@ return [
             'type' => 'защитное',
         ],
     ],
-    'prcs_metal_hallmarks' => [
+    'hallmarks' => [
         375,500,585,750,875,916,958,999,800,830,925,960,850,900,950
     ],
     'jw_metals' => [

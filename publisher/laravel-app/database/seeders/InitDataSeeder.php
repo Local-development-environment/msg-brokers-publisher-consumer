@@ -100,15 +100,171 @@ class InitDataSeeder extends Seeder
         $necklace_sizes = config('data-seed.data_items.necklace_sizes');
         $bead_sizes = config('data-seed.data_items.bead_sizes');
         $body_parts = config('data-seed.data_items.body_parts');
-        $jw_metals = config('data-seed.data_items.jw_metals');
-        $metal_hallmarks = config('data-seed.data_items.prcs_metal_hallmarks');
-        $metal_colours = config('data-seed.data_items.prcs_metal_colours');
         $jw_coverages = config('data-seed.data_items.jw_coverages');
         $jwCoverageTypes = config('data-seed.data_items.jw_coverage_types');
         $bracelet_bases = config('data-seed.data_items.bracelet_bases');
         $bead_bases = config('data-seed.data_items.bead_bases');
         $length_names = config('data-seed.data_items.length_names');
 
+        $this->jwInsertsSeed();
+        $this->jwMediasSeed();
+
+        foreach ($categories as $category) {
+            DB::table('jewelleries.categories')->insert([
+                'name' => $category,
+                'slug' => Str::slug($category, '-'),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($jwCoverageTypes as $type) {
+            DB::table('jw_coverages.coverage_types')->insert([
+                'name' => $type,
+                'slug' => Str::slug($type, '-'),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($jw_coverages as $coverage) {
+            DB::table('jw_coverages.coverages')->insert([
+                'coverage_type_id' => DB::table('jw_coverages.coverage_types')->where('name', $coverage['type'])->value('id'),
+                'name' => $coverage['coverage'],
+                'slug' => Str::slug($coverage['coverage'], '-'),
+                'is_active' => 1,
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($weavings as $weave) {
+            DB::table('properties.jw_weavings')->insert([
+                'name' => $weave,
+                'slug' => Str::slug($weave, '-'),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($bracelet_bases as $base) {
+            DB::table('properties.bracelet_bases')->insert([
+                'name' => $base,
+                'slug' => Str::slug($base, '-'),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($bead_bases as $base) {
+            DB::table('properties.bead_bases')->insert([
+                'name' => $base,
+                'slug' => Str::slug($base, '-'),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($earring_clasps as $clasp) {
+            DB::table('properties.earring_clasps')->insert([
+                'name' => $clasp['name'],
+                'slug' => Str::slug($clasp['name'], '-'),
+                'description' => $clasp['description'],
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($earring_types as $type) {
+            DB::table('properties.earring_types')->insert([
+                'name' => $type['name'],
+                'slug' => Str::slug($type['name'], '-'),
+                'description' => $type['description'],
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($jw_clasps as $clasp) {
+            DB::table('properties.jw_clasps')->insert([
+                'name' => $clasp,
+                'slug' => Str::slug($clasp, '-'),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($body_parts as $body_part) {
+            DB::table('properties.body_parts')->insert([
+                'name' => $body_part,
+                'slug' => Str::slug($body_part, '-'),
+                'created_at' => now(),
+            ]);
+        }
+
+        $this->jwMetalsSeed();
+
+        foreach ($ring_sizes as $ring_size) {
+            DB::table('properties.ring_sizes')->insert([
+                'value' => $ring_size['value'],
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($length_names as $length_name) {
+            DB::table('properties.length_names')->insert([
+                'name' => $length_name['name'],
+                'slug' => Str::slug($length_name['name'], '-'),
+                'description' => Str::slug($length_name['description'], '-'),
+            ]);
+        }
+
+        foreach ($chain_sizes as $chain_size) {
+            DB::table('properties.chain_sizes')->insert([
+                'length_name_id' => $this->lengthNameId($chain_size['value']),
+                'value' => $chain_size['value'],
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($bracelet_sizes as $bracelet_size) {
+            DB::table('properties.bracelet_sizes')->insert([
+                'value' => $bracelet_size['value'],
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($necklace_sizes as $necklace_size) {
+            DB::table('properties.necklace_sizes')->insert([
+                'length_name_id' => $this->lengthNameId($necklace_size['value']),
+                'value' => $necklace_size['value'],
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($bead_sizes as $size) {
+            DB::table('properties.bead_sizes')->insert([
+                'length_name_id' => $this->lengthNameId($size['value']),
+                'value' => $size['value'],
+                'created_at' => now(),
+            ]);
+        }
+    }
+
+    private function lengthNameId($size): int
+    {
+        if ($size <= 35) {
+            return DB::table('properties.length_names')->where('name', 'коллар')->value('id');
+        }
+        if ($size <= 45) {
+            return DB::table('properties.length_names')->where('name', 'чокер')->value('id');
+        }
+        if ($size <= 55) {
+            return DB::table('properties.length_names')->where('name', 'принцесса')->value('id');
+        }
+        if ($size <= 65) {
+            return DB::table('properties.length_names')->where('name', 'матине')->value('id');
+        }
+        if ($size <= 85) {
+            return DB::table('properties.length_names')->where('name', 'опера')->value('id');
+        }
+
+        return DB::table('properties.length_names')->where('name', 'роп')->value('id');
+    }
+
+    private function jwInsertsSeed(): void
+    {
         $jwInsertsTypeOrigins = config('data-seed.insert-seed.items-seed.origins');
         $jwInsertsStoneColours = config('data-seed.insert-seed.items-seed.stone_colours');
         $jwInsertsStoneFacets = config('data-seed.insert-seed.items-seed.stone_facets');
@@ -119,8 +275,6 @@ class InitDataSeeder extends Seeder
         $jwInsertsNaturalStones = config('data-seed.insert-seed.nature-stones-seed.stones');
         $jwInsertsGrownStones = config('data-seed.insert-seed.grown-stones-seed.stones');
         $jwInsertsImitationStones = config('data-seed.insert-seed.imitation-stones-seed.stones');
-
-//        dd($jwInsertsTypeOrigins);
 
         foreach ($jwInsertsOpticalEffects as $effect) {
             DB::table('jw_inserts.optical_effects')->insert([
@@ -207,7 +361,6 @@ class InitDataSeeder extends Seeder
                     'created_at' => now(),
                 ]);
             }
-            dump($stone);
             $naturalStoneId = DB::table('jw_inserts.natural_stones')->insertGetId([
                 'stone_id' => $stoneId,
                 'stone_group_id' => DB::table('jw_inserts.stone_groups')->where('name', $stone['group'])->value('id'),
@@ -276,90 +429,13 @@ class InitDataSeeder extends Seeder
                 'created_at' => now(),
             ]);
         }
+    }
 
-        foreach ($categories as $category) {
-            DB::table('jewelleries.categories')->insert([
-                'name' => $category,
-                'slug' => Str::slug($category, '-'),
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($jwCoverageTypes as $type) {
-            DB::table('jw_coverages.coverage_types')->insert([
-                'name' => $type,
-                'slug' => Str::slug($type, '-'),
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($jw_coverages as $coverage) {
-            DB::table('jw_coverages.coverages')->insert([
-                'coverage_type_id' => DB::table('jw_coverages.coverage_types')->where('name', $coverage['type'])->value('id'),
-                'name' => $coverage['coverage'],
-                'slug' => Str::slug($coverage['coverage'], '-'),
-                'is_active' => 1,
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($weavings as $weave) {
-            DB::table('properties.jw_weavings')->insert([
-                'name' => $weave,
-                'slug' => Str::slug($weave, '-'),
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($bracelet_bases as $base) {
-            DB::table('properties.bracelet_bases')->insert([
-                'name' => $base,
-                'slug' => Str::slug($base, '-'),
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($bead_bases as $base) {
-            DB::table('properties.bead_bases')->insert([
-                'name' => $base,
-                'slug' => Str::slug($base, '-'),
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($earring_clasps as $clasp) {
-            DB::table('properties.earring_clasps')->insert([
-                'name' => $clasp['name'],
-                'slug' => Str::slug($clasp['name'], '-'),
-                'description' => $clasp['description'],
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($earring_types as $type) {
-            DB::table('properties.earring_types')->insert([
-                'name' => $type['name'],
-                'slug' => Str::slug($type['name'], '-'),
-                'description' => $type['description'],
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($jw_clasps as $clasp) {
-            DB::table('properties.jw_clasps')->insert([
-                'name' => $clasp,
-                'slug' => Str::slug($clasp, '-'),
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($body_parts as $body_part) {
-            DB::table('properties.body_parts')->insert([
-                'name' => $body_part,
-                'slug' => Str::slug($body_part, '-'),
-                'created_at' => now(),
-            ]);
-        }
+    private function jwMetalsSeed(): void
+    {
+        $jw_metals = config('data-seed.data_items.jw_metals');
+        $jw_metal_hallmarks = config('data-seed.data_items.hallmarks');
+        $jw_metal_colours = config('data-seed.data_items.colours');
 
         foreach ($jw_metals as $metal) {
             DB::table('jw_metals.metals')->insert([
@@ -369,86 +445,50 @@ class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach ($metal_hallmarks as $hallmark) {
+        foreach ($jw_metal_hallmarks as $hallmark) {
             DB::table('jw_metals.hallmarks')->insert([
                 'value' => $hallmark,
                 'created_at' => now(),
             ]);
         }
 
-        foreach ($metal_colours as $colour) {
+        foreach ($jw_metal_colours as $colour) {
             DB::table('jw_metals.colours')->insert([
                 'name' => $colour,
                 'slug' => Str::slug($colour, '-'),
                 'created_at' => now(),
             ]);
         }
-
-        foreach ($ring_sizes as $ring_size) {
-            DB::table('properties.ring_sizes')->insert([
-                'value' => $ring_size['value'],
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($length_names as $length_name) {
-            DB::table('properties.length_names')->insert([
-                'name' => $length_name['name'],
-                'slug' => Str::slug($length_name['name'], '-'),
-                'description' => Str::slug($length_name['description'], '-'),
-            ]);
-        }
-
-        foreach ($chain_sizes as $chain_size) {
-            DB::table('properties.chain_sizes')->insert([
-                'length_name_id' => $this->lengthNameId($chain_size['value']),
-                'value' => $chain_size['value'],
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($bracelet_sizes as $bracelet_size) {
-            DB::table('properties.bracelet_sizes')->insert([
-                'value' => $bracelet_size['value'],
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($necklace_sizes as $necklace_size) {
-            DB::table('properties.necklace_sizes')->insert([
-                'length_name_id' => $this->lengthNameId($necklace_size['value']),
-                'value' => $necklace_size['value'],
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($bead_sizes as $size) {
-            DB::table('properties.bead_sizes')->insert([
-                'length_name_id' => $this->lengthNameId($size['value']),
-                'value' => $size['value'],
-                'created_at' => now(),
-            ]);
-        }
     }
 
-    private function lengthNameId($size): int
+    private function jwMediasSeed(): void
     {
-        if ($size <= 35) {
-            return DB::table('properties.length_names')->where('name', 'коллар')->value('id');
-        }
-        if ($size <= 45) {
-            return DB::table('properties.length_names')->where('name', 'чокер')->value('id');
-        }
-        if ($size <= 55) {
-            return DB::table('properties.length_names')->where('name', 'принцесса')->value('id');
-        }
-        if ($size <= 65) {
-            return DB::table('properties.length_names')->where('name', 'матине')->value('id');
-        }
-        if ($size <= 85) {
-            return DB::table('properties.length_names')->where('name', 'опера')->value('id');
+        $jwMediaCategories = config('data-seed.data_items.medias.jw_media_categories');
+        $jwMediaProducers = config('data-seed.data_items.medias.jw_media_producers');
+        $jwMediaVideoTypes = config('data-seed.data_items.medias.jw_video_types');
+
+        foreach ($jwMediaCategories as $category) {
+            DB::table('jw_medias.categories')->insert([
+                'name' => $category,
+                'slug' => Str::slug($category, '-'),
+                'created_at' => now(),
+            ]);
         }
 
-        return DB::table('properties.length_names')->where('name', 'роп')->value('id');
+        foreach ($jwMediaProducers as $producer) {
+            DB::table('jw_medias.producers')->insert([
+                'name' => $producer,
+                'slug' => Str::slug($producer, '-'),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($jwMediaVideoTypes as $videoType) {
+            DB::table('jw_medias.video_types')->insert([
+                'name' => $videoType['name'],
+                'extension' => $videoType['extension'],
+                'created_at' => now(),
+            ]);
+        }
     }
 }

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('jw_medias.video_types', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('slug')->unique();
             $table->string('extension')->unique();
             $table->timestamps();
         });
