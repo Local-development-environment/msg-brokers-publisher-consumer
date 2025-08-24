@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('metals.prcs_metals', function (Blueprint $table) {
+        Schema::create('jw_metals.hallmarks', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('slug')->unique();
+            $table->integer('value')->unique();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('metals.prcs_metals');
+        Schema::dropIfExists('jw_metals.hallmarks');
     }
 };

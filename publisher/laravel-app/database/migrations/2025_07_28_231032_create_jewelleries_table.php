@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('jewelleries.jewelleries', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('jw_prcs_metal_prop_id');
-            $table->unsignedBigInteger('jw_category_id');
+            $table->unsignedBigInteger('category_id');
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description');
@@ -23,8 +22,7 @@ return new class extends Migration
             $table->boolean('is_active')->default(true);
             $table->timestamps();
 
-            $table->foreign('jw_prcs_metal_prop_id')->references('id')->on('metals.jw_prcs_metal_props');
-            $table->foreign('jw_category_id')->references('id')->on('jewelleries.jw_categories');
+            $table->foreign('category_id')->references('id')->on('jewelleries.categories');
         });
     }
 
