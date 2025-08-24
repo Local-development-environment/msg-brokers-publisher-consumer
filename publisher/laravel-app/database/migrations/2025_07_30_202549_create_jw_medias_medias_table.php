@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medias.jw_medias', function (Blueprint $table) {
+        Schema::create('jw_medias.medias', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('jewellery_id');
-            $table->unsignedBigInteger('jw_media_category_id');
-            $table->unsignedBigInteger('jw_media_producer_id');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('producer_id');
             $table->timestamps();
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
-            $table->foreign('jw_media_category_id')->references('id')->on('medias.jw_media_categories');
-            $table->foreign('jw_media_producer_id')->references('id')->on('medias.jw_media_producers');
+            $table->foreign('category_id')->references('id')->on('jw_medias.categories');
+            $table->foreign('producer_id')->references('id')->on('jw_medias.producers');
 
-            $table->unique(['jewellery_id', 'jw_media_category_id', 'jw_media_producer_id'], 'unique_jw_medias');
+            $table->unique(['jewellery_id', 'category_id', 'producer_id'], 'unique_jw_medias_medias');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medias.jw_medias');
+        Schema::dropIfExists('jw_medias.medias');
     }
 };

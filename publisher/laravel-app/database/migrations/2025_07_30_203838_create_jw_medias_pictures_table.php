@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medias.jw_set_pictures', function (Blueprint $table) {
+        Schema::create('jw_medias.pictures', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('jw_picture_id');
+            $table->unsignedBigInteger('picture_media_id');
             $table->string('name');
             $table->string('extension');
             $table->string('src');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('is_active')->default(false);
             $table->timestamps();
 
-            $table->foreign('jw_picture_id')->references('id')->on('medias.jw_pictures');
+            $table->foreign('picture_media_id')->references('id')->on('jw_medias.picture_medias');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medias.jw_set_pictures');
+        Schema::dropIfExists('jw_medias.pictures');
     }
 };

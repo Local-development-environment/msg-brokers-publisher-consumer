@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medias.jw_media_categories', function (Blueprint $table) {
+        Schema::create('jw_medias.categories', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medias.jw_media_categories');
+        Schema::dropIfExists('jw_medias.categories');
     }
 };

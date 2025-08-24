@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medias.jw_pictures', function (Blueprint $table) {
+        Schema::create('jw_medias.producers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('jw_media_id');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
             $table->timestamps();
-
-            $table->foreign('jw_media_id')->references('id')->on('medias.jw_medias')->cascadeOnDelete();
         });
     }
 
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medias.jw_pictures');
+        Schema::dropIfExists('jw_medias.producers');
     }
 };

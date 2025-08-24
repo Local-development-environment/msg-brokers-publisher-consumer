@@ -54,15 +54,15 @@ class InitDataSeeder extends Seeder
         DB::table('jw_coverages.coverage_jewellery')->truncate();
         DB::table('jw_coverages.coverages')->truncate();
         DB::table('jw_coverages.coverage_types')->truncate();
-        DB::table('medias.jw_set_pictures')->truncate();
-        DB::table('medias.jw_pictures')->truncate();
-        DB::table('medias.jw_set_video_types')->truncate();
-        DB::table('medias.jw_set_videos')->truncate();
-        DB::table('medias.jw_videos')->truncate();
-        DB::table('medias.video_types')->truncate();
-        DB::table('medias.jw_medias')->truncate();
-        DB::table('medias.jw_media_producers')->truncate();
-        DB::table('medias.jw_media_categories')->truncate();
+        DB::table('jw_medias.pictures')->truncate();
+        DB::table('jw_medias.picture_medias')->truncate();
+        DB::table('jw_medias.video_details')->truncate();
+        DB::table('jw_medias.videos')->truncate();
+        DB::table('jw_medias.video_medias')->truncate();
+        DB::table('jw_medias.video_types')->truncate();
+        DB::table('jw_medias.medias')->truncate();
+        DB::table('jw_medias.producers')->truncate();
+        DB::table('jw_medias.categories')->truncate();
         DB::table('jw_inserts.type_origins')->truncate();
         DB::table('jw_inserts.stones')->truncate();
         DB::table('jw_inserts.optical_effects')->truncate();
@@ -81,11 +81,12 @@ class InitDataSeeder extends Seeder
         DB::table('jw_inserts.grown_stones')->truncate();
         DB::table('jw_inserts.imitation_stones')->truncate();
         DB::table('jewelleries.jewelleries')->truncate();
-        DB::table('jewelleries.jw_categories')->truncate();
-        DB::table('metals.jw_prcs_metal_props')->truncate();
-        DB::table('metals.prcs_metal_colours')->truncate();
-        DB::table('metals.prcs_metal_hallmarks')->truncate();
-        DB::table('metals.prcs_metals')->truncate();
+        DB::table('jewelleries.categories')->truncate();
+        DB::table('jw_metals.metal_details')->truncate();
+        DB::table('jw_metals.colours')->truncate();
+        DB::table('jw_metals.hallmarks')->truncate();
+        DB::table('jw_metals.metals')->truncate();
+        DB::table('jw_metals.jewellery_metal_detail')->truncate();
         Schema::enableForeignKeyConstraints();
 
         $categories = config('data-seed.data_items.jw_categories');
@@ -99,7 +100,7 @@ class InitDataSeeder extends Seeder
         $necklace_sizes = config('data-seed.data_items.necklace_sizes');
         $bead_sizes = config('data-seed.data_items.bead_sizes');
         $body_parts = config('data-seed.data_items.body_parts');
-        $prcs_metals = config('data-seed.data_items.prcs_metals');
+        $jw_metals = config('data-seed.data_items.jw_metals');
         $metal_hallmarks = config('data-seed.data_items.prcs_metal_hallmarks');
         $metal_colours = config('data-seed.data_items.prcs_metal_colours');
         $jw_coverages = config('data-seed.data_items.jw_coverages');
@@ -277,7 +278,7 @@ class InitDataSeeder extends Seeder
         }
 
         foreach ($categories as $category) {
-            DB::table('jewelleries.jw_categories')->insert([
+            DB::table('jewelleries.categories')->insert([
                 'name' => $category,
                 'slug' => Str::slug($category, '-'),
                 'created_at' => now(),
@@ -360,8 +361,8 @@ class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach ($prcs_metals as $metal) {
-            DB::table('metals.prcs_metals')->insert([
+        foreach ($jw_metals as $metal) {
+            DB::table('jw_metals.metals')->insert([
                 'name' => $metal,
                 'slug' => Str::slug($metal, '-'),
                 'created_at' => now(),
@@ -369,14 +370,14 @@ class InitDataSeeder extends Seeder
         }
 
         foreach ($metal_hallmarks as $hallmark) {
-            DB::table('metals.prcs_metal_hallmarks')->insert([
+            DB::table('jw_metals.hallmarks')->insert([
                 'value' => $hallmark,
                 'created_at' => now(),
             ]);
         }
 
         foreach ($metal_colours as $colour) {
-            DB::table('metals.prcs_metal_colours')->insert([
+            DB::table('jw_metals.colours')->insert([
                 'name' => $colour,
                 'slug' => Str::slug($colour, '-'),
                 'created_at' => now(),

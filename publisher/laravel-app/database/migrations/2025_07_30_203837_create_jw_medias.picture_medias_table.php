@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medias.video_types', function (Blueprint $table) {
+        Schema::create('jw_medias.picture_medias', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('slug')->unique();
-            $table->string('extension')->unique();
+            $table->unsignedBigInteger('media_id');
             $table->timestamps();
+
+            $table->foreign('media_id')->references('id')->on('jw_medias.medias')->cascadeOnDelete();
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medias.video_types');
+        Schema::dropIfExists('jw_medias.picture_medias');
     }
 };
