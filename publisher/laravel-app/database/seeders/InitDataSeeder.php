@@ -49,8 +49,8 @@ class InitDataSeeder extends Seeder
         DB::table('properties.jw_cuff_link_props')->truncate();
         DB::table('properties.jw_tie_clip_props')->truncate();
         DB::table('properties.jw_brooch_props')->truncate();
-        DB::table('promotions.jewellery_jw_promotion')->truncate();
-        DB::table('promotions.jw_promotions')->truncate();
+        DB::table('jw_promotions.jewellery_promotion')->truncate();
+        DB::table('jw_promotions.promotions')->truncate();
         DB::table('jw_coverages.coverage_jewellery')->truncate();
         DB::table('jw_coverages.coverages')->truncate();
         DB::table('jw_coverages.coverage_types')->truncate();
@@ -105,9 +105,21 @@ class InitDataSeeder extends Seeder
         $bracelet_bases = config('data-seed.data_items.bracelet_bases');
         $bead_bases = config('data-seed.data_items.bead_bases');
         $length_names = config('data-seed.data_items.length_names');
+        $promotions = config('data-seed.data_items.jw_promotions');
 
         $this->jwInsertsSeed();
         $this->jwMediasSeed();
+
+        foreach ($promotions as $promotion) {
+            DB::table('jw_promotions.promotions')->insert([
+                'name' => $promotion['name'],
+                'description' => $promotion['description'],
+                'slug' => Str::slug($promotion['name'], '-'),
+                'rate' => $promotion['rate'],
+                'is_active' => true,
+                'created_at' => now(),
+            ]);
+        }
 
         foreach ($categories as $category) {
             DB::table('jewelleries.categories')->insert([

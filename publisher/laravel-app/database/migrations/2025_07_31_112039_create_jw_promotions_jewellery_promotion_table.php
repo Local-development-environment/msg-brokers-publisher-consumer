@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('promotions.jewellery_jw_promotion', function (Blueprint $table) {
+        Schema::create('jw_promotions.jewellery_promotion', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('jewellery_id');
-            $table->unsignedBigInteger('jw_promotion_id');
+            $table->unsignedBigInteger('promotion_id');
             $table->smallInteger('priority');
             $table->dateTime('start');
             $table->dateTime('end');
             $table->timestamps();
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
-            $table->foreign('jw_promotion_id')->references('id')->on('promotions.jw_promotions');
+            $table->foreign('promotion_id')->references('id')->on('jw_promotions.promotions');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('promotions.jewellery_jw_promotion');
+        Schema::dropIfExists('jw_promotions.jewellery_promotion');
     }
 };
