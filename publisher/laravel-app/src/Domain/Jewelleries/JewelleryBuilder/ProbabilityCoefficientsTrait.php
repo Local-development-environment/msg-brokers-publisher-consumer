@@ -45,16 +45,19 @@ trait ProbabilityCoefficientsTrait
         $jwOrnamentalID = DB::table('jw_inserts.stone_groups')->where('name', 'ювелирно-поделочные')->first()->id;
 //        $ornamentalID = DB::table('jw_inserts.stone_groups')->where('name', 'поделочные')->first()->id;
 
-        for ($x = 1; $x <= 50; $x++) {
+        for ($x = 1; $x <= 55; $x++) {
             $groupIds[] = $preciousID;
         }
+
         for ($x = 1; $x <= 30; $x++) {
             $groupIds[] = $jewelleryID;
         }
+
         for ($x = 1; $x <= 10; $x++) {
             $groupIds[] = $jwOrnamentalID;
         }
-//        for ($x = 1; $x <= 10; $x++) {
+
+//        for ($x = 1; $x <= 5; $x++) {
 //            $groupIds[] = $ornamentalID;
 //        }
 

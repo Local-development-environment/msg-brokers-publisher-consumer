@@ -10,6 +10,6 @@ final class Category
 {
     public function getCategory(): string
     {
-        return DB::table('jewelleries.jw_categories')->get()->random()->name;
+        return DB::table('jewelleries.categories')->get()->random()->name;
     }
 }

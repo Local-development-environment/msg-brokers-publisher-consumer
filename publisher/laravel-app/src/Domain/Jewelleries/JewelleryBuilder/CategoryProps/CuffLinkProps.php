@@ -15,6 +15,6 @@ final readonly class CuffLinkProps implements CategoryPropsBuilderInterface
     public function getProps(): array
     {
         $prop = $this->properties;
-        return ['it\'s not ready'];
+        return [];
     }
 }

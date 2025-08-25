@@ -26,9 +26,10 @@ final class Insert
                 $shape = $this->randShapeStone($stone);
                 $inserts[] = [
                     'stone' => $stone,
-                    'insert_colour' => $this->randColourStone($stone)['colour'],
-                    'insert_shape' => $shape,
-                    'insert_property' => [
+                    'colour' => $this->randColourStone($stone)['colour'],
+                    'facet' => $shape,
+                    'optional_info' => $this->getOptionalInfo($stone),
+                    'metrics' => [
                         'quantity' => $this->randQuantityProbability($stone),
                         'weight' => $this->randWeightProbability($stone),
                         'weight_unit' => 'карат',
@@ -39,6 +40,19 @@ final class Insert
         }
 
         return $inserts;
+    }
+
+    private function getOptionalInfo(string $stone): array
+    {
+        if ($stone === 'бриллиант') {
+            return [
+                'clarity' => '2',
+                'purity' => '1',
+                'facet' => 'A'
+            ];
+        } else {
+            return [];
+        }
     }
 
     /**

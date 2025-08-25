@@ -43,12 +43,12 @@ class InitDataSeeder extends Seeder
         DB::table('properties.earring_types')->truncate();
         DB::table('properties.jw_earring_props')->truncate();
         DB::table('properties.earring_clasps')->truncate();
-        DB::table('properties.jw_piercing_props')->truncate();
-        DB::table('properties.jw_charm_pendant_props')->truncate();
-        DB::table('properties.jw_pendant_props')->truncate();
-        DB::table('properties.jw_cuff_link_props')->truncate();
-        DB::table('properties.jw_tie_clip_props')->truncate();
-        DB::table('properties.jw_brooch_props')->truncate();
+        DB::table('jw_properties.piercings')->truncate();
+        DB::table('jw_properties.charm_pendants')->truncate();
+        DB::table('jw_properties.pendants')->truncate();
+        DB::table('jw_properties.cuff_links')->truncate();
+        DB::table('jw_properties.tie_clips')->truncate();
+        DB::table('jw_properties.brooches')->truncate();
         DB::table('jw_promotions.jewellery_promotion')->truncate();
         DB::table('jw_promotions.promotions')->truncate();
         DB::table('jw_coverages.coverage_jewellery')->truncate();

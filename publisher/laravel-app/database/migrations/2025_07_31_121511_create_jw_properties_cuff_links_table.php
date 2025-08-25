@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties.jw_pendant_props', function (Blueprint $table) {
+        Schema::create('jw_properties.cuff_links', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('jewellery_id');
             $table->integer('quantity');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('properties.jw_pendant_props');
+        Schema::dropIfExists('jw_properties.cuff_links');
     }
 };

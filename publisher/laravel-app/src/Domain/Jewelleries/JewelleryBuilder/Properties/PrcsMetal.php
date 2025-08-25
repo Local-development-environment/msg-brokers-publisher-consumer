@@ -10,7 +10,7 @@ final class PrcsMetal
 {
     public function getMetal(): string
     {
-        $metals = DB::table('metals.prcs_metals')->get()->pluck('name')->toArray();
+        $metals = DB::table('jw_metals.metals')->get()->pluck('name')->toArray();
         return $this->randWithProbability($metals);
     }
 
@@ -20,25 +20,25 @@ final class PrcsMetal
 
         foreach($entries as $entry) {
             if ($entry === 'золото') {
-                for ($x = 1; $x <= 10; $x++) {
+                for ($x = 1; $x <= 50; $x++) {
                     $tmp[] = $entry;
                 }
             }
 
             if ($entry === 'серебро') {
-                for ($x = 1; $x <= 8; $x++) {
+                for ($x = 1; $x <= 35; $x++) {
                     $tmp[] = $entry;
                 }
             }
 
             if ($entry === 'платина') {
-                for ($x = 1; $x <= 4; $x++) {
+                for ($x = 1; $x <= 10; $x++) {
                     $tmp[] = $entry;
                 }
             }
 
             if ($entry === 'палладий') {
-                for ($x = 1; $x <= 2; $x++) {
+                for ($x = 1; $x <= 5; $x++) {
                     $tmp[] = $entry;
                 }
             }
