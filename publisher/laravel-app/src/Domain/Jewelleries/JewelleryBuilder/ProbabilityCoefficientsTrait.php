@@ -63,7 +63,7 @@ trait ProbabilityCoefficientsTrait
 
         $randGroupId = $groupIds[array_rand($groupIds)];
 
-        $stoneIds = DB::table('jw_views.v_inserts')->where('stone_group_id', $randGroupId)->pluck('st_id')->toArray();
+        $stoneIds = DB::table('jw_inserts.natural_stones')->where('stone_group_id', $randGroupId)->pluck('stone_id')->toArray();
 
         return $stoneIds[array_rand($stoneIds)];
     }
