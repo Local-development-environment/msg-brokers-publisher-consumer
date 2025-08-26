@@ -13,7 +13,8 @@ class VInsertController extends Controller
      */
     public function index()
     {
-        $vInserts = VInsert::take(10)->get();
+        $vInserts = VInsert::all();
+//        $vInserts = VInsert::take(10)->get();
 //        dd(VInsertResource::collection($vInserts));
         return VInsertResource::collection($vInserts);
     }

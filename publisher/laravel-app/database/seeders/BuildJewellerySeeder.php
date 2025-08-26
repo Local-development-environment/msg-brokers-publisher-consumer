@@ -21,7 +21,7 @@ class BuildJewellerySeeder extends Seeder
         $jeweller = new Jeweller();
 //        $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
 //        dump([$builder]);
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
 //            dump($i);
             $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
 
