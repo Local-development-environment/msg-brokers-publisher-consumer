@@ -19,6 +19,7 @@ return new class extends Migration
                 cte_inserts as (
                     select
                         i.id,
+                        i.jewellery_id,
                         st.id as stone_id,
                         st.name as stone_name,
                         concat(
@@ -46,6 +47,9 @@ return new class extends Migration
                         ic.id as stone_colour_id,
                         ic.name as stone_colour_name,
                         ic.description as stone_colour_description,
+                        ifc.id as stone_facet_id,
+                        ifc.name as stone_facet_name,
+                        ifc.description as stone_facet_description,
                         im.id as stone_metric_id,
                         im.quantity as stone_quantity,
                         im.weight as stone_weight,
@@ -73,6 +77,7 @@ return new class extends Migration
 
                     select
                         i.id,
+                        i.jewellery_id,
                         st.id as stone_id,
                         st.name as stone_name,
                         concat(
@@ -100,6 +105,9 @@ return new class extends Migration
                         ic.id as stone_colour_id,
                         ic.name as stone_colour_name,
                         ic.description as stone_colour_description,
+                        ifc.id as stone_facet_id,
+                        ifc.name as stone_facet_name,
+                        ifc.description as stone_facet_description,
                         im.id as stone_metric_id,
                         im.quantity as stone_quantity,
                         im.weight as stone_weight,
@@ -124,6 +132,7 @@ return new class extends Migration
 
                     select
                         i.id,
+                        i.jewellery_id,
                         st.id as stone_id,
                         st.name as stone_name,
                         concat(
@@ -151,6 +160,9 @@ return new class extends Migration
                         ic.id as stone_colour_id,
                         ic.name as stone_colour_name,
                         ic.description as stone_colour_description,
+                        ifc.id as stone_facet_id,
+                        ifc.name as stone_facet_name,
+                        ifc.description as stone_facet_description,
                         im.id as stone_metric_id,
                         im.quantity as stone_quantity,
                         im.weight as stone_weight,
@@ -172,6 +184,7 @@ return new class extends Migration
                 )
             select
                 ci.id,
+                ci.jewellery_id,
                 ci.stone_id,
                 ci.stone_name,
                 ci.stone_full_name,
@@ -195,6 +208,9 @@ return new class extends Migration
                 ci.stone_colour_id,
                 ci.stone_colour_name,
                 ci.stone_colour_description,
+                ci.stone_facet_id,
+                ci.stone_facet_name,
+                ci.stone_facet_description,
                 ci.stone_metric_id,
                 ci.stone_quantity,
                 ci.stone_weight,

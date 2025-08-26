@@ -3,35 +3,45 @@
 namespace App\Http\Site\Inserts\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Site\Inserts\Resources\VInsertCollection;
 use App\Http\Site\Inserts\Resources\VInsertResource;
-use Domain\Inserts\InsertViews\Models\VInsert;
+use Domain\Inserts\InsertViews\Services\VInsertService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class VInsertController extends Controller
 {
+    public function __construct(public VInsertService $service)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        $vInserts = VInsert::take(10)->get();
-//        $vInserts = VInsert::take(10)->get();
-//        dd(VInsertResource::collection($vInserts));
-        return VInsertResource::collection($vInserts);
+        $data = $request->all();
+        $items = $this->service->index($data);
+
+        return (new VInsertCollection($items))->response();
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Request $request, int $id): JsonResponse
+    {
+        $data = $request->all();
+        data_set($data, 'id', $id);
+        $model = $this->service->show($data, $id);
+
+        return (new VInsertResource($model))->response();
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
     {
         //
     }

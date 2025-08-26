@@ -8,5 +8,5 @@ class VInsert extends Model
 {
     protected $table = 'jw_views.v_inserts';
 
-    public const string TYPE_RESOURCE = 'VInserts';
+    public const string TYPE_RESOURCE = 'v-inserts';
 }
