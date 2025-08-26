@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Site\Inserts\Controllers;
 
-use App\Http\Resources\VInsertResource;
-use App\Models\VInsert;
+use App\Http\Controllers\Controller;
+use App\Http\Site\Inserts\Resources\VInsertResource;
+use Domain\Inserts\InsertViews\Models\VInsert;
 use Illuminate\Http\Request;
 
 class VInsertController extends Controller
@@ -13,7 +14,7 @@ class VInsertController extends Controller
      */
     public function index()
     {
-        $vInserts = VInsert::all();
+        $vInserts = VInsert::take(10)->get();
 //        $vInserts = VInsert::take(10)->get();
 //        dd(VInsertResource::collection($vInserts));
         return VInsertResource::collection($vInserts);

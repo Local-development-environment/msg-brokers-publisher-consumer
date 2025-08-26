@@ -16,59 +16,42 @@ return new class extends Migration
             <<<'SQL'
             CREATE VIEW jw_views.v_inserts AS
             with
-                cte_stones as (
+                cte_inserts as (
                     select
-                        jsonb_agg(
-                            jsonb_build_object(
-                                'stone', jsonb_build_object(
-                                    'id', st.id,
-                                    'name', st.name,
-                                    'full_name', concat(
-                                        st.name, ', ', oe.name, ', ', jwto.name, ', ', sgr.name, ', ', sg.name, ', ', 
-                                        'разновидность: ', sf.name, ', цвет: ', ic.name, ', огранка: ', ifc.name, 
-                                        ', кол-во: ', im.quantity, ', вес: ', im.weight, ' ', im.unit
-                                    ),
-                                    'alt_name', st.alt_name,
-                                    'description', st.description
-                                ),
-                                'origin', jsonb_build_object(
-                                    'name', jwto.name,
-                                    'description',jwto.description
-                                ),
-                                'opt_effect', jsonb_build_object(
-                                    'name', oe.name,
-                                    'description', oe.description,
-                                    'id', oe.id
-                                ),
-                                'classification', jsonb_build_object(
-                                    'grade_name', sg.name,
-                                    'grade_description', sg.description,
-                                    'grade_id', sg.id,
-                                    'group_name', sgr.name,
-                                    'group_description', sgr.description,
-                                    'group_id', sgr.id
-                                ),
-                                'family', jsonb_build_object(
-                                    'name', sf.name,
-                                    'description', sf.description,
-                                    'id', sf.id
-                                ),
-                                'exterior', jsonb_build_object(
-                                    'colour', ic.name,
-                                    'colour_description', ic.description,
-                                    'facet', ifc.name,
-                                    'facet_description', ifc.description
-                                ),
-                                'inserts', jsonb_build_object(
-                                    'insert_id', i.id,
-                                    'quantity', im.quantity,
-                                    'weight', im.weight,
-                                    'unit', im.unit,
-                                    'dimensions', im.dimensions,
-                                    'optional_info', oi.info
-                                )
-                            )
-                        ) as insert_details
+                        i.id,
+                        st.id as stone_id,
+                        st.name as stone_name,
+                        concat(
+                            st.name, ', ', oe.name, ', ', jwto.name, ', ', sgr.name, ', ', sg.name, ', ', 
+                            'разновидность: ', sf.name, ', цвет: ', ic.name, ', огранка: ', ifc.name, 
+                            ', кол-во: ', im.quantity, ', вес: ', im.weight, ' ', im.unit
+                        ) as stone_full_name,
+                        st.alt_name as stone_alt_name,
+                        st.description as stone_description,
+                        jwto.id as origin_id,
+                        jwto.name as origin_name,
+                        jwto.description as origin_description,
+                        oe.id as optical_effect_id,
+                        oe.name as optical_effect_name,
+                        oe.description as optical_effect_description,
+                        sg.id as stone_grade_id,
+                        sg.name as stone_grade_name,
+                        sg.description as stone_grade_description,
+                        sgr.id as stone_group_id,
+                        sgr.name as stone_group_name,
+                        sgr.description as stone_group_description,
+                        sf.id as stone_family_id,
+                        sf.name as stone_family_name,
+                        sf.description as stone_family_description,
+                        ic.id as stone_colour_id,
+                        ic.name as stone_colour_name,
+                        ic.description as stone_colour_description,
+                        im.id as stone_metric_id,
+                        im.quantity as stone_quantity,
+                        im.weight as stone_weight,
+                        im.unit as stone_unit,
+                        im.dimensions as stone_dimensions,
+                        oi.info as stone_optional_info
                     from
                         jw_inserts.stones as st
                     join jw_inserts.type_origins as jwto on st.type_origin_id = jwto.id
@@ -85,62 +68,44 @@ return new class extends Migration
                     join jw_inserts.inserts as i on ist.id = i.insert_stone_id
                     join jw_inserts.metrics as im on i.metric_id = im.id
                     left join jw_inserts.optional_infos as oi on i.id = oi.insert_id
-                    group by i.jewellery_id
 
                     union all
 
                     select
-                        jsonb_agg(
-                            jsonb_build_object(
-                                'stone', jsonb_build_object(
-                                    'id', st.id,
-                                    'name', st.name,
-                                    'full_name', concat(
-                                        st.name, ', ', oe.name, ', ', jwto.name, ', ', null, ', ', null, ', ', 
-                                        'разновидность: ', sf.name, ', цвет: ', ic.name, ', огранка: ', ifc.name, 
-                                        ', кол-во: ', im.quantity, ', вес: ', im.weight, ' ', im.unit
-                                    ),
-                                    'alt_name', st.alt_name,
-                                    'description', st.description
-                                ),
-                                'origin', jsonb_build_object(
-                                    'name', jwto.name,
-                                    'description',jwto.description
-                                ),
-                                'opt_effect', jsonb_build_object(
-                                    'name', oe.name,
-                                    'description', oe.description,
-                                    'id', oe.id
-                                ),
-                                'classification', jsonb_build_object(
-                                    'grade_name', null,
-                                    'grade_description', null,
-                                    'grade_id', null,
-                                    'group_name', null,
-                                    'group_description', null,
-                                    'group_id', null
-                                ),
-                                'family', jsonb_build_object(
-                                    'name', sf.name,
-                                    'description', sf.description,
-                                    'id', sf.id
-                                ),
-                                'exterior', jsonb_build_object(
-                                    'colour', ic.name,
-                                    'colour_description', ic.description,
-                                    'facet', ifc.name,
-                                    'facet_description', ifc.description
-                                ),
-                                'inserts', jsonb_build_object(
-                                    'insert_id', i.id,
-                                    'quantity', im.quantity,
-                                    'weight', im.weight,
-                                    'unit', im.unit,
-                                    'dimensions', im.dimensions,
-                                    'optional_info', oi.info
-                                )
-                            )
-                        ) as insert_details
+                        i.id,
+                        st.id as stone_id,
+                        st.name as stone_name,
+                        concat(
+                            st.name, ', ', oe.name, ', ', jwto.name, ', ', 
+                            'разновидность: ', sf.name, ', цвет: ', ic.name, ', огранка: ', ifc.name, 
+                            ', кол-во: ', im.quantity, ', вес: ', im.weight, ' ', im.unit
+                        ) as full_name,
+                        st.alt_name as stone_alt_name,
+                        st.description as stone_description,
+                        jwto.id as origin_id,
+                        jwto.name as origin_name,
+                        jwto.description as origin_description,
+                        oe.id as optical_effect_id,
+                        oe.name as optical_effect_name,
+                        oe.description as optical_effect_description,
+                        null as stone_grade_id,
+                        null as stone_grade_name,
+                        null as stone_grade_description,
+                        null as stone_group_id,
+                        null as stone_group_name,
+                        null as stone_group_description,
+                        sf.id as stone_family_id,
+                        sf.name as stone_family_name,
+                        sf.description as stone_family_description,
+                        ic.id as stone_colour_id,
+                        ic.name as stone_colour_name,
+                        ic.description as stone_colour_description,
+                        im.id as stone_metric_id,
+                        im.quantity as stone_quantity,
+                        im.weight as stone_weight,
+                        im.unit as stone_unit,
+                        im.dimensions as stone_dimensions,
+                        oi.info as stone_optional_info
                     from
                         jw_inserts.stones as st
                     join jw_inserts.type_origins as jwto on st.type_origin_id = jwto.id
@@ -154,62 +119,44 @@ return new class extends Migration
                     join jw_inserts.inserts as i on ist.id = i.insert_stone_id
                     join jw_inserts.metrics as im on i.metric_id = im.id
                     left join jw_inserts.optional_infos as oi on i.id = oi.insert_id
-                    group by i.jewellery_id
 
                     union all
 
                     select
-                        jsonb_agg(
-                            jsonb_build_object(
-                                'stone', jsonb_build_object(
-                                    'id', st.id,
-                                    'name', st.name,
-                                    'full_name', concat(
-                                        st.name, ', ', oe.name, ', ', jwto.name, ', ', null, ', ', null, ', ', 
-                                        'разновидность: ', null, ', цвет: ', ic.name, ', огранка: ', ifc.name, 
-                                        ', кол-во: ', im.quantity, ', вес: ', im.weight, ' ', im.unit
-                                    ),
-                                    'alt_name', st.alt_name,
-                                    'description', st.description
-                                ),
-                                'origin', jsonb_build_object(
-                                    'name', jwto.name,
-                                    'description',jwto.description
-                                ),
-                                'opt_effect', jsonb_build_object(
-                                    'name', oe.name,
-                                    'description', oe.description,
-                                    'id', oe.id
-                                ),
-                                'classification', jsonb_build_object(
-                                    'grade_name', null,
-                                    'grade_description', null,
-                                    'grade_id', null,
-                                    'group_name', null,
-                                    'group_description', null,
-                                    'group_id', null
-                                ),
-                                'family', jsonb_build_object(
-                                    'name', null,
-                                    'description', null,
-                                    'id', null
-                                ),
-                                'exterior', jsonb_build_object(
-                                    'colour', ic.name,
-                                    'colour_description', ic.description,
-                                    'facet', ifc.name,
-                                    'facet_description', ifc.description
-                                ),
-                                'inserts', jsonb_build_object(
-                                    'insert_id', i.id,
-                                    'quantity', im.quantity,
-                                    'weight', im.weight,
-                                    'unit', im.unit,
-                                    'dimensions', im.dimensions,
-                                    'optional_info', oi.info
-                                )
-                            )
-                        ) as insert_details
+                        i.id,
+                        st.id as stone_id,
+                        st.name as stone_name,
+                        concat(
+                            st.name, ', ', oe.name, ', ', jwto.name, ', ', 
+                            ', цвет: ', ic.name, ', огранка: ', ifc.name, 
+                            ', кол-во: ', im.quantity, ', вес: ', im.weight, ' ', im.unit
+                        ) as stone_full_name,
+                        st.alt_name as stone_alt_name,
+                        st.description as stone_description,
+                        jwto.id as origin_id,
+                        jwto.name as origin_name,
+                        jwto.description as origin_description,
+                        oe.id as optical_effect_id,
+                        oe.name as optical_effect_name,
+                        oe.description as optical_effect_description,
+                        null as stone_grade_id,
+                        null as stone_grade_name,
+                        null as stone_grade_description,
+                        null as stone_group_id,
+                        null as stone_group_name,
+                        null as stone_group_description,
+                        null as stone_family_id,
+                        null as stone_family_name,
+                        null as stone_family_description,
+                        ic.id as stone_colour_id,
+                        ic.name as stone_colour_name,
+                        ic.description as stone_colour_description,
+                        im.id as stone_metric_id,
+                        im.quantity as stone_quantity,
+                        im.weight as stone_weight,
+                        im.unit as stone_unit,
+                        im.dimensions as stone_dimensions,
+                        oi.info as stone_optional_info
                     from
                         jw_inserts.stones as st
                     join jw_inserts.type_origins as jwto on st.type_origin_id = jwto.id
@@ -222,13 +169,40 @@ return new class extends Migration
                     join jw_inserts.inserts as i on ist.id = i.insert_stone_id
                     join jw_inserts.metrics as im on i.metric_id = im.id
                     left join jw_inserts.optional_infos as oi on i.id = oi.insert_id
-                    group by i.jewellery_id
                 )
             select
-                cs.insert_details
+                ci.id,
+                ci.stone_id,
+                ci.stone_name,
+                ci.stone_full_name,
+                ci.stone_alt_name,
+                ci.stone_description,
+                ci.origin_id,
+                ci.origin_name,
+                ci.origin_description,
+                ci.optical_effect_id,
+                ci.optical_effect_name,
+                ci.optical_effect_description,
+                ci.stone_grade_id,
+                ci.stone_grade_name,
+                ci.stone_grade_description,
+                ci.stone_group_id,
+                ci.stone_group_name,
+                ci.stone_group_description,
+                ci.stone_family_id,
+                ci.stone_family_name,
+                ci.stone_family_description,
+                ci.stone_colour_id,
+                ci.stone_colour_name,
+                ci.stone_colour_description,
+                ci.stone_metric_id,
+                ci.stone_quantity,
+                ci.stone_weight,
+                ci.stone_unit,
+                ci.stone_dimensions,
+                ci.stone_optional_info
             from
-                cte_stones as cs
-            -- where stone_group_id = 1
+                cte_inserts as ci
             SQL
         );
     }
