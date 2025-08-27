@@ -38,7 +38,22 @@ services:
       - publisher
       - amqp_net
       - db_net
+      - redis_net
 
+  redis_publisher_db:
+    image: redis:7.2-alpine3.18
+    container_name: redis-publisher
+    ports:
+        - "6381:6379"
+    volumes:
+        - redis_publisher_data:/data
+    restart: unless-stopped
+    networks:
+        - redis_net
+
+
+volumes:
+  redis_publisher_data:
 networks:
   amqp_net:
     name: amqp_net
@@ -49,3 +64,6 @@ networks:
   db_net:
     name: db_net
     external: true
+  redis_net:
+    name: redis_net
+

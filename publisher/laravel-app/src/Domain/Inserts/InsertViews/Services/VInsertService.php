@@ -1,16 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Domain\Inserts\InsertViews\Services;
 
 use Domain\Inserts\InsertViews\Models\VInsert;
-use Domain\Inserts\InsertViews\Repositories\VInsertRepository;
+use Domain\Shared\CachedRepositoryInterface;
 use Illuminate\Contracts\Pagination\Paginator;
-use Illuminate\Database\Eloquent\Model;
 
 class VInsertService
 {
     public function __construct(
-        public VInsertRepository $repository
+        public CachedRepositoryInterface $repository
     ) {
     }
 
@@ -19,8 +20,8 @@ class VInsertService
         return $this->repository->index($data);
     }
 
-    public function show(array $data, int $id): Model|VInsert
+    public function show(array $data, int $id): VInsert
     {
-        return $this->repository->show($id, $data);
+        return $this->repository->show($data, $id);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Domain\Inserts\InsertViews\Repositories;
 
 use Domain\Inserts\InsertViews\Models\VInsert;
@@ -8,7 +10,7 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Contracts\Pagination\Paginator;
 
-class VInsertRepository
+final class VInsertRepository
 {
     public function index(array $data): Paginator
     {
@@ -33,7 +35,7 @@ class VInsertRepository
             ->appends($data);
     }
 
-    public function show(int $id, array $data): Model|VInsert
+    public function show(array $data, int $id): VInsert
     {
         return QueryBuilder::for(VInsert::class)
             ->where('id', $id)

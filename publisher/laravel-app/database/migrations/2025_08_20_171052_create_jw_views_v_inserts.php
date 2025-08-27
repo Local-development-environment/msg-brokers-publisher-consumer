@@ -14,7 +14,7 @@ return new class extends Migration
     {
         DB::statement(
             <<<'SQL'
-            CREATE VIEW jw_views.v_inserts AS
+            CREATE MATERIALIZED VIEW jw_views.v_inserts AS
             with
                 cte_inserts as (
                     select
@@ -219,6 +219,8 @@ return new class extends Migration
                 ci.stone_optional_info
             from
                 cte_inserts as ci
+            with data
+            
             SQL
         );
     }
@@ -228,6 +230,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement('DROP VIEW jw_views.v_inserts;');
+        DB::statement('DROP MATERIALIZED VIEW jw_views.v_inserts;');
     }
 };
