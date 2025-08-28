@@ -129,8 +129,40 @@ return new class extends Migration
                         join jw_metals.colours jwc on jwmd.colour_id = jwc.id
                         join jw_metals.hallmarks jwh on jwmd.hallmark_id = jwh.id
                         group by jj.id,jwjmd.jewellery_id
+                    ),
+                    cte_jw_props as (
+                        select
+                            jj.id,jwb.jewellery_id as jewellery_id,
+                            null as weaving,
+                            null as clasp,
+                            cast(null as json) as earring_clasp,
+                            jwb.quantity as quantity,
+                            cast(jwb.price as decimal(10, 2)) as avg_price,
+                            cast(jwb.price as decimal(10, 2)) as max_price,
+                            cast(jwb.price as decimal(10, 2)) as min_price,
+                            null as sizes
+                        from
+                            jw_properties.brooches as jwb
+                        join jewelleries.jewelleries as jj on jwb.jewellery_id = jj.id
+                        join jewelleries.categories as jc on jj.category_id = jc.id
+                        
+                        union all
+
+                        select
+                            jj.id,jwchp.jewellery_id as jewellery_id,
+                            null as weaving,
+                            null as clasp,
+                            cast(null as json) as earring_clasp,
+                            jwchp.quantity as quantity,
+                            cast(jwchp.price as decimal(10, 2)) as avg_price,
+                            cast(jwchp.price as decimal(10, 2)) as max_price,
+                            cast(jwchp.price as decimal(10, 2)) as min_price,
+                            null as sizes
+                        from
+                            jw_properties.charm_pendants as jwchp
+                        join jewelleries.jewelleries as jj on jwchp.jewellery_id = jj.id
+                        join jewelleries.categories as jc on jj.category_id = jc.id
                     )
-                
                 select
                     jj.id,
                     jj.category_id,
@@ -143,6 +175,14 @@ return new class extends Migration
                     jj.is_active,
                     jj.created_at,
                     jj.updated_at,
+                    cjp.weaving,
+                    cjp.clasp,
+                    cjp.earring_clasp,
+                    cjp.quantity,
+                    cjp.avg_price,
+                    cjp.max_price,
+                    cjp.min_price,
+                    cjp.sizes,
                     cjwi.inserts,
                     cjwc.coverages,
                     cjm.metals
@@ -151,7 +191,7 @@ return new class extends Migration
                 left join cte_jw_inserts as cjwi on jj.id = cjwi.jewellery_id
                 left join cte_jw_coverages as cjwc on jj.id = cjwc.jewellery_id
                 left join cte_jw_metals as cjm on jj.id = cjm.jewellery_id
-                            
+                left join cte_jw_props as cjp on  jj.id = cjp.jewellery_id
                 with data
             SQL
         );

@@ -19,13 +19,14 @@ final readonly class BroochProps implements CategoryPropsBuilderInterface
     public function getProps(): array
     {
         $properties = $this->properties;
-//        dd($properties);
+
         return [
             'quantity' => $this->getQuantity(),
             'price' => $this->getPriceDifferentiation($properties['prcsMetal']),
             'dimensions' => [
                 'высота' => fake()->randomFloat(1, 3, 6) . ' см',
-                'ширина' => fake()->randomFloat(1, 2, 4) . ' см'
+                'ширина' => fake()->randomFloat(1, 2, 4) . ' см',
+                'толщина' => fake()->randomFloat(1, 1, 2) . ' мм',
             ],
         ];
     }

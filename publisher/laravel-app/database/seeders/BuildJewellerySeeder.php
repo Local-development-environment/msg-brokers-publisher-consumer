@@ -165,12 +165,20 @@ class BuildJewellerySeeder extends Seeder
         }
     }
 
+    /**
+     * @throws \JsonException
+     */
     private function addProperty(array $jewelleryData, int $jewelleryId): void
     {
         if ($jewelleryData['props']) {
             if ($jewelleryData['jw_category'] === 'броши') {
                 $this->addBrooches($jewelleryData, $jewelleryId);
-//                dump($jewelleryData['props']);
+            }
+        }
+
+        if ($jewelleryData['props']) {
+            if ($jewelleryData['jw_category'] === 'подвески-шарм') {
+                $this->addCharmPendants($jewelleryData, $jewelleryId);
             }
         }
     }
@@ -180,8 +188,21 @@ class BuildJewellerySeeder extends Seeder
      */
     private function addBrooches(array $jewelleryData, int $jewelleryId): void
     {
-//        dd($jewelleryData['props']['parameters']['price']);
         DB::table('jw_properties.brooches')->insertGetId([
+            'jewellery_id' => $jewelleryId,
+            'quantity' => $jewelleryData['props']['parameters']['quantity'],
+            'price' => $jewelleryData['props']['parameters']['price'],
+            'dimensions' => json_encode($jewelleryData['props']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
+            'created_at' => now()
+        ]);
+    }
+
+    /**
+     * @throws \JsonException
+     */
+    private function addCharmPendants(array $jewelleryData, int $jewelleryId): void
+    {
+        DB::table('jw_properties.charm_pendants')->insertGetId([
             'jewellery_id' => $jewelleryId,
             'quantity' => $jewelleryData['props']['parameters']['quantity'],
             'price' => $jewelleryData['props']['parameters']['price'],
