@@ -162,6 +162,74 @@ return new class extends Migration
                             jw_properties.charm_pendants as jwchp
                         join jewelleries.jewelleries as jj on jwchp.jewellery_id = jj.id
                         join jewelleries.categories as jc on jj.category_id = jc.id
+                        
+                        union all
+
+                        select
+                            jj.id,jwtc.jewellery_id as jewellery_id,
+                            null as weaving,
+                            null as clasp,
+                            cast(null as json) as earring_clasp,
+                            jwtc.quantity as quantity,
+                            cast(jwtc.price as decimal(10, 2)) as avg_price,
+                            cast(jwtc.price as decimal(10, 2)) as max_price,
+                            cast(jwtc.price as decimal(10, 2)) as min_price,
+                            null as sizes
+                        from
+                            jw_properties.tie_clips as jwtc
+                        join jewelleries.jewelleries as jj on jwtc.jewellery_id = jj.id
+                        join jewelleries.categories as jc on jj.category_id = jc.id
+                        
+                        union all
+
+                        select
+                            jj.id,jwp.jewellery_id as jewellery_id,
+                            null as weaving,
+                            null as clasp,
+                            cast(null as json) as earring_clasp,
+                            jwp.quantity as quantity,
+                            cast(jwp.price as decimal(10, 2)) as avg_price,
+                            cast(jwp.price as decimal(10, 2)) as max_price,
+                            cast(jwp.price as decimal(10, 2)) as min_price,
+                            null as sizes
+                        from
+                            jw_properties.pendants as jwp
+                        join jewelleries.jewelleries as jj on jwp.jewellery_id = jj.id
+                        join jewelleries.categories as jc on jj.category_id = jc.id
+                        
+                        union all 
+                        
+                        select
+                            jj.id,jwcl.jewellery_id as jewellery_id,
+                            null as weaving,
+                            null as clasp,
+                            cast(null as json) as earring_clasp,
+                            jwcl.quantity as quantity,
+                            cast(jwcl.price as decimal(10, 2)) as avg_price,
+                            cast(jwcl.price as decimal(10, 2)) as max_price,
+                            cast(jwcl.price as decimal(10, 2)) as min_price,
+                            null as sizes
+                        from
+                            jw_properties.cuff_links as jwcl
+                        join jewelleries.jewelleries as jj on jwcl.jewellery_id = jj.id
+                        join jewelleries.categories as jc on jj.category_id = jc.id
+                        
+                        union all 
+                        
+                        select
+                            jj.id,jwprc.jewellery_id as jewellery_id,
+                            null as weaving,
+                            null as clasp,
+                            cast(null as json) as earring_clasp,
+                            jwprc.quantity as quantity,
+                            cast(jwprc.price as decimal(10, 2)) as avg_price,
+                            cast(jwprc.price as decimal(10, 2)) as max_price,
+                            cast(jwprc.price as decimal(10, 2)) as min_price,
+                            null as sizes
+                        from
+                            jw_properties.piercings as jwprc
+                        join jewelleries.jewelleries as jj on jwprc.jewellery_id = jj.id
+                        join jewelleries.categories as jc on jj.category_id = jc.id
                     )
                 select
                     jj.id,

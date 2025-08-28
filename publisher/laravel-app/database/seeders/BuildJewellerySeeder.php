@@ -181,6 +181,30 @@ class BuildJewellerySeeder extends Seeder
                 $this->addCharmPendants($jewelleryData, $jewelleryId);
             }
         }
+
+        if ($jewelleryData['props']) {
+            if ($jewelleryData['jw_category'] === 'зажим для галстука') {
+                $this->addTieClips($jewelleryData, $jewelleryId);
+            }
+        }
+
+        if ($jewelleryData['props']) {
+            if ($jewelleryData['jw_category'] === 'подвески') {
+                $this->addPendants($jewelleryData, $jewelleryId);
+            }
+        }
+
+        if ($jewelleryData['props']) {
+            if ($jewelleryData['jw_category'] === 'запонки') {
+                $this->addCuffLinks($jewelleryData, $jewelleryId);
+            }
+        }
+
+        if ($jewelleryData['props']) {
+            if ($jewelleryData['jw_category'] === 'пирсинг') {
+                $this->addPiercings($jewelleryData, $jewelleryId);
+            }
+        }
     }
 
     /**
@@ -207,6 +231,54 @@ class BuildJewellerySeeder extends Seeder
             'quantity' => $jewelleryData['props']['parameters']['quantity'],
             'price' => $jewelleryData['props']['parameters']['price'],
             'dimensions' => json_encode($jewelleryData['props']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
+            'created_at' => now()
+        ]);
+    }
+
+    /**
+     * @throws \JsonException
+     */
+    private function addPendants(array $jewelleryData, int $jewelleryId): void
+    {
+        DB::table('jw_properties.pendants')->insertGetId([
+            'jewellery_id' => $jewelleryId,
+            'quantity' => $jewelleryData['props']['parameters']['quantity'],
+            'price' => $jewelleryData['props']['parameters']['price'],
+            'dimensions' => json_encode($jewelleryData['props']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
+            'created_at' => now()
+        ]);
+    }
+
+    /**
+     * @throws \JsonException
+     */
+    private function addTieClips(array $jewelleryData, int $jewelleryId): void
+    {
+        DB::table('jw_properties.tie_clips')->insertGetId([
+            'jewellery_id' => $jewelleryId,
+            'quantity' => $jewelleryData['props']['parameters']['quantity'],
+            'price' => $jewelleryData['props']['parameters']['price'],
+            'dimensions' => json_encode($jewelleryData['props']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
+            'created_at' => now()
+        ]);
+    }
+
+    private function addCuffLinks(array $jewelleryData, int $jewelleryId): void
+    {
+        DB::table('jw_properties.cuff_links')->insertGetId([
+            'jewellery_id' => $jewelleryId,
+            'quantity' => $jewelleryData['props']['parameters']['quantity'],
+            'price' => $jewelleryData['props']['parameters']['price'],
+            'created_at' => now()
+        ]);
+    }
+
+    private function addPiercings(array $jewelleryData, int $jewelleryId): void
+    {
+        DB::table('jw_properties.piercings')->insertGetId([
+            'jewellery_id' => $jewelleryId,
+            'quantity' => $jewelleryData['props']['parameters']['quantity'],
+            'price' => $jewelleryData['props']['parameters']['price'],
             'created_at' => now()
         ]);
     }

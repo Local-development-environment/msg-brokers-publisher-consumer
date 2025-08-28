@@ -26,7 +26,6 @@ final readonly class BroochProps implements CategoryPropsBuilderInterface
             'dimensions' => [
                 'высота' => fake()->randomFloat(1, 3, 6) . ' см',
                 'ширина' => fake()->randomFloat(1, 2, 4) . ' см',
-                'толщина' => fake()->randomFloat(1, 1, 2) . ' мм',
             ],
         ];
     }

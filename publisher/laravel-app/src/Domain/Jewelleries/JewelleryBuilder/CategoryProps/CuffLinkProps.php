@@ -5,16 +5,24 @@ declare(strict_types=1);
 namespace Domain\Jewelleries\JewelleryBuilder\CategoryProps;
 
 use Domain\Jewelleries\JewelleryBuilder\CategoryPropsBuilderInterface;
+use Domain\Jewelleries\JewelleryBuilder\MetalPriceDifferentiationTrait;
+use Domain\Jewelleries\JewelleryBuilder\SizePricePropsTrait;
 
 final readonly class CuffLinkProps implements CategoryPropsBuilderInterface
 {
+    use SizePricePropsTrait, MetalPriceDifferentiationTrait;
+
     public function __construct(private array $properties)
     {
     }
 
     public function getProps(): array
     {
-        $prop = $this->properties;
-        return [];
+        $properties = $this->properties;
+
+        return [
+            'quantity' => $this->getQuantity(),
+            'price' => $this->getPriceDifferentiation($properties['prcsMetal']),
+        ];
     }
 }

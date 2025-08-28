@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('jewellery_id');
             $table->integer('quantity');
             $table->decimal('price', 10, 2);
+            $table->jsonb('dimensions');
             $table->timestamps();
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
