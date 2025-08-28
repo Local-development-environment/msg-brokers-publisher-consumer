@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Domain\Inserts\InsertViews\Repositories;
 
 use Domain\Inserts\InsertViews\Models\VInsert;
-use Illuminate\Database\Eloquent\Model;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Contracts\Pagination\Paginator;
 
-final class VInsertRepository
+final class VInsertRepository implements VInsertCachedRepositoryInterface
 {
     public function index(array $data): Paginator
     {

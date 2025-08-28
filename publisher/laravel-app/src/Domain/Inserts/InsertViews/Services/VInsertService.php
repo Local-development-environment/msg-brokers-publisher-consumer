@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Domain\Inserts\InsertViews\Services;
 
 use Domain\Inserts\InsertViews\Models\VInsert;
-use Domain\Shared\CachedRepositoryInterface;
+use Domain\Inserts\InsertViews\Repositories\VInsertCachedRepositoryInterface;
 use Illuminate\Contracts\Pagination\Paginator;
 
 class VInsertService
 {
     public function __construct(
-        public CachedRepositoryInterface $repository
+        public VInsertCachedRepositoryInterface $repository
     ) {
     }
 

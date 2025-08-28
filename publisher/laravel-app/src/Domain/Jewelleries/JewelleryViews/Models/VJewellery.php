@@ -10,5 +10,5 @@ final class VJewellery extends Model
 {
     const string TYPE_RESOURCE = 'vJewelleries';
 
-    protected $table = 'jw_views.jewelleries';
+    protected $table = 'jw_views.v_jewelleries';
 }

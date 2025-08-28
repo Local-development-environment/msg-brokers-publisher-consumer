@@ -6,11 +6,10 @@ namespace Domain\Inserts\InsertViews\Repositories;
 
 use Domain\Inserts\InsertViews\Models\VInsert;
 use Domain\Shared\AbstractCachedRepository;
-use Domain\Shared\CachedRepositoryInterface;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Facades\Cache;
 
-final class VInsertCachedRepository extends AbstractCachedRepository implements CachedRepositoryInterface
+final class VInsertCachedRepository extends AbstractCachedRepository implements VInsertCachedRepositoryInterface
 {
     public function __construct(
         public VInsertRepository $repository
