@@ -26,7 +26,7 @@ class BuildJewellerySeeder extends Seeder
             $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
 
             $this->addJewellery($builder);
-            dump($builder);
+//            dump($builder);
         }
 
         DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
@@ -54,6 +54,7 @@ class BuildJewellerySeeder extends Seeder
         $this->addInsert($jewelleryData, $jewelleryId);
         $this->addMetal($jewelleryData, $jewelleryId);
         $this->addCoverage($jewelleryData, $jewelleryId);
+        $this->addProperty($jewelleryData, $jewelleryId);
     }
 
     /**
@@ -162,5 +163,30 @@ class BuildJewellerySeeder extends Seeder
                 'created_at' => now()
             ]);
         }
+    }
+
+    private function addProperty(array $jewelleryData, int $jewelleryId): void
+    {
+        if ($jewelleryData['props']) {
+            if ($jewelleryData['jw_category'] === 'броши') {
+                $this->addBrooches($jewelleryData, $jewelleryId);
+//                dump($jewelleryData['props']);
+            }
+        }
+    }
+
+    /**
+     * @throws \JsonException
+     */
+    private function addBrooches(array $jewelleryData, int $jewelleryId): void
+    {
+//        dd($jewelleryData['props']['parameters']['price']);
+        DB::table('jw_properties.brooches')->insertGetId([
+            'jewellery_id' => $jewelleryId,
+            'quantity' => $jewelleryData['props']['parameters']['quantity'],
+            'price' => $jewelleryData['props']['parameters']['price'],
+            'dimensions' => json_encode($jewelleryData['props']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
+            'created_at' => now()
+        ]);
     }
 }

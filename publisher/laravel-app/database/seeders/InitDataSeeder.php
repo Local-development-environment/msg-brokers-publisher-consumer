@@ -218,7 +218,7 @@ class InitDataSeeder extends Seeder
             DB::table('properties.length_names')->insert([
                 'name' => $length_name['name'],
                 'slug' => Str::slug($length_name['name'], '-'),
-                'description' => Str::slug($length_name['description'], '-'),
+                'description' => $length_name['description']
             ]);
         }
 

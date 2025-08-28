@@ -18,4 +18,9 @@ trait SizePricePropsTrait
 
         return Arr::random($tmp, rand(3, count($sizes)));
     }
+
+    protected function getQuantity(): int
+    {
+        return rand(0, 10);
+    }
 }

@@ -109,6 +109,7 @@ return new class extends Migration
                                     jsonb_agg(
                                         jsonb_build_object(
                                             'metal_details_id', jwjmd.metal_detail_id,
+                                            'metal_details', concat_ws(' ',jwm.name,'цвет',jwc.name,'проба',jwh.value),
                                             'metal_id', jwm.id,
                                             'metal', jwm.name,
                                             'colour_id', jwc.id,

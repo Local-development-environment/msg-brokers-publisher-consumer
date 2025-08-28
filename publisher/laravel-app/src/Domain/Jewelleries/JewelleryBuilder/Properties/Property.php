@@ -20,18 +20,18 @@ final class Property
     private function getNameFunction($category): string
     {
         return match ($category) {
-            'браслеты' => 'getBraceletProps',
-            'броши' => 'getBroochProps',
+            'браслеты'           => 'getBraceletProps',
+            'броши'              => 'getBroochProps',
             'зажим для галстука' => 'getTieClipProps',
-            'запонки' => 'getCuffLinkProps',
-            'колье' => 'getNecklaceProps',
-            'кольца' => 'getRingProps',
-            'пирсинг' => 'getPiercingProps',
-            'подвески' => 'getPendantProps',
-            'подвески-шарм' => 'getCharmPendantProps',
-            'серьги' => 'getEarringProps',
-            'цепи' => 'getChainProps',
-            'бусы' => 'getBeadProps',
+            'запонки'            => 'getCuffLinkProps',
+            'колье'              => 'getNecklaceProps',
+            'кольца'             => 'getRingProps',
+            'пирсинг'            => 'getPiercingProps',
+            'подвески'           => 'getPendantProps',
+            'подвески-шарм'      => 'getCharmPendantProps',
+            'серьги'             => 'getEarringProps',
+            'цепи'               => 'getChainProps',
+            'бусы'               => 'getBeadProps',
         };
     }
 
