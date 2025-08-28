@@ -6,8 +6,11 @@ namespace Domain\Jewelleries\JewelleryBuilder\Properties;
 
 final class Colour
 {
-    public function getColour($metal, $coverages): string
+    public function getColour($properties): string
     {
+        $metal = $properties['prcsMetal'];
+        $coverages = $properties['prcsMetalCoverage'];
+
         if ($metal === 'золото' && in_array('родирование', $coverages)) {
             $colour = 'белый';
         }

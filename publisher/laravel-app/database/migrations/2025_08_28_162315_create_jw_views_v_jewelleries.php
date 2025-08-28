@@ -1,8 +1,7 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -100,6 +99,35 @@ return new class extends Migration
                         join jw_coverages.coverages as jwc on jwcj.coverage_id = jwc.id
                         join jw_coverages.coverage_types ct on jwc.coverage_type_id = ct.id
                         group by jj.id,jwcj.jewellery_id
+                    ),
+                    cte_jw_metals as (
+                        select
+                            case
+                                when jwjmd.jewellery_id isnull then
+                                    null
+                                else
+                                    jsonb_agg(
+                                        jsonb_build_object(
+                                            'metal_details_id', jwjmd.metal_detail_id,
+                                            'metal_id', jwm.id,
+                                            'metal', jwm.name,
+                                            'colour_id', jwc.id,
+                                            'colour', jwc.name,
+                                            'hallmark_id', jwh.id,
+                                            'hallmark', jwh.value
+                                        )
+                                    )
+                                end
+                            as metals,
+                            jj.id as jewellery_id
+                        from
+                            jewelleries.jewelleries as jj
+                        left join jw_metals.jewellery_metal_detail as jwjmd on jj.id = jwjmd.jewellery_id
+                        left join jw_metals.metal_details as jwmd on jwjmd.metal_detail_id = jwmd.id
+                        join jw_metals.metals jwm on jwmd.metal_id = jwm.id
+                        join jw_metals.colours jwc on jwmd.colour_id = jwc.id
+                        join jw_metals.hallmarks jwh on jwmd.hallmark_id = jwh.id
+                        group by jj.id,jwjmd.jewellery_id
                     )
                 
                 select
@@ -115,11 +143,13 @@ return new class extends Migration
                     jj.created_at,
                     jj.updated_at,
                     cjwi.inserts,
-                    cjwc.coverages
+                    cjwc.coverages,
+                    cjm.metals
                 from jewelleries.jewelleries as jj
                 join jewelleries.categories as jc on jj.category_id = jc.id
                 left join cte_jw_inserts as cjwi on jj.id = cjwi.jewellery_id
                 left join cte_jw_coverages as cjwc on jj.id = cjwc.jewellery_id
+                left join cte_jw_metals as cjm on jj.id = cjm.jewellery_id
                             
                 with data
             SQL

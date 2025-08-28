@@ -47,9 +47,10 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
 
     public function addPrcsMetalColour(): jewelleryBuilderInterface
     {
+        $properties = get_object_vars($this->baseJewellery);
         $colour = new Colour();
         $this->baseJewellery->prcsMetalColour = $colour
-            ->getColour($this->baseJewellery->prcsMetal, $this->baseJewellery->prcsMetalCoverage);
+            ->getColour($properties);
 
         return $this;
     }
@@ -64,10 +65,9 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
 
     public function addPrcsMetalCoverage(): jewelleryBuilderInterface
     {
+        $properties = get_object_vars($this->baseJewellery);
         $coverage = new Coverage();
-        $this->baseJewellery->prcsMetalCoverage = $coverage->getCoverages(
-            $this->baseJewellery->prcsMetal, $this->baseJewellery->category
-        );
+        $this->baseJewellery->prcsMetalCoverage = $coverage->getCoverages($properties);
 
         return $this;
     }

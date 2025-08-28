@@ -6,8 +6,12 @@ namespace Domain\Jewelleries\JewelleryBuilder\Properties;
 
 final class Coverage
 {
-    public function getCoverages($metal, $category): array
+    public function getCoverages($properties): array
     {
+//        dd($properties);
+        $metal = $properties['prcsMetal'];
+        $category = $properties['category'];
+
         $goldenCoverage = [[], ['родирование']];
         $silverCoverage = [[], ['родирование'], ['золочение'], ['оксидирование']];
 

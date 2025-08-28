@@ -26,8 +26,12 @@ class BuildJewellerySeeder extends Seeder
             $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
 
             $this->addJewellery($builder);
-//            dump($builder);
+            dump($builder);
         }
+
+        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
+        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_jewelleries;');
+
     }
 
     /**
@@ -48,8 +52,8 @@ class BuildJewellerySeeder extends Seeder
         ]);
 
         $this->addInsert($jewelleryData, $jewelleryId);
+        $this->addMetal($jewelleryData, $jewelleryId);
         $this->addCoverage($jewelleryData, $jewelleryId);
-
     }
 
     /**
@@ -108,13 +112,55 @@ class BuildJewellerySeeder extends Seeder
     {
         if ($jewelleryData['jw_coverage']) {
             foreach ($jewelleryData['jw_coverage'] as $coverage) {
-                dump('j' . $jewelleryId);
                 $coverageId = DB::table('jw_coverages.coverages')->where('name',$coverage)->value('id');
                 DB::table('jw_coverages.coverage_jewellery')->insertGetId([
                     'jewellery_id' => $jewelleryId,
                     'coverage_id' => $coverageId,
                 ]);
             }
+        }
+    }
+
+    private function addMetal(array $jewelleryData, int $jewelleryId): void
+    {
+        $metal = $jewelleryData['prcs_metal_prop']['prcs_metal'];
+        $colour = $jewelleryData['prcs_metal_prop']['prcs_metal_colour'];
+        $hallmark = $jewelleryData['prcs_metal_prop']['prcs_metal_hallmark'];
+
+        if ($jewelleryData['prcs_metal_prop']) {
+            $metal_id = DB::table('jw_metals.metals')->where('name',$metal)->value('id');
+            $colour_id = DB::table('jw_metals.colours')->where('name',$colour)->value('id');
+            $hallmark_id = DB::table('jw_metals.hallmarks')->where('value',$hallmark)->value('id');
+            if (DB::table('jw_inserts.insert_stones')->count() !== 0) {
+                $checkUnique = DB::table('jw_metals.metal_details')
+                    ->where('metal_id', $metal_id)
+                    ->where('colour_id', $colour_id)
+                    ->where('hallmark_id', $hallmark_id)
+                    ->count();
+//                        dd($checkUnique);
+            } else {
+                $checkUnique = 0;
+            }
+
+            if ($checkUnique === 0) {
+                $metalDetailId = DB::table('jw_metals.metal_details')->insertGetId([
+                    'metal_id' => DB::table('jw_metals.metals')->where('name',$metal)->value('id'),
+                    'colour_id' => DB::table('jw_metals.colours')->where('name',$colour)->value('id'),
+                    'hallmark_id' => DB::table('jw_metals.hallmarks')->where('value',$hallmark)->value('id'),
+                    'created_at' => now(),
+                ]);
+            } else {
+                $metalDetailId = DB::table('jw_metals.metal_details')->where('metal_id', $metal_id)
+                    ->where('colour_id', $colour_id)
+                    ->where('hallmark_id', $hallmark_id)->value('id');
+//                        dump('********************************************' . $stoneId);
+            }
+
+            DB::table('jw_metals.jewellery_metal_detail')->insert([
+                'metal_detail_id' => $metalDetailId,
+                'jewellery_id' => $jewelleryId,
+                'created_at' => now()
+            ]);
         }
     }
 }
