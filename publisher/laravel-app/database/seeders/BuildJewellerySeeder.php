@@ -48,6 +48,7 @@ class BuildJewellerySeeder extends Seeder
         ]);
 
         $this->addInsert($jewelleryData, $jewelleryId);
+        $this->addCoverage($jewelleryData, $jewelleryId);
 
     }
 
@@ -98,6 +99,20 @@ class BuildJewellerySeeder extends Seeder
                     'jewellery_id' => $jewelleryId,
                     'metric_id' => $metricId,
                     'created_at' => now()
+                ]);
+            }
+        }
+    }
+
+    private function addCoverage(array $jewelleryData, int $jewelleryId): void
+    {
+        if ($jewelleryData['jw_coverage']) {
+            foreach ($jewelleryData['jw_coverage'] as $coverage) {
+                dump('j' . $jewelleryId);
+                $coverageId = DB::table('jw_coverages.coverages')->where('name',$coverage)->value('id');
+                DB::table('jw_coverages.coverage_jewellery')->insertGetId([
+                    'jewellery_id' => $jewelleryId,
+                    'coverage_id' => $coverageId,
                 ]);
             }
         }
