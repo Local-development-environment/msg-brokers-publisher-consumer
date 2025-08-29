@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties.bracelet_bases', function (Blueprint $table) {
+        Schema::create('jw_properties.bracelet_bases', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('properties.bracelet_bases');
+        Schema::dropIfExists('jw_properties.bracelet_bases');
     }
 };

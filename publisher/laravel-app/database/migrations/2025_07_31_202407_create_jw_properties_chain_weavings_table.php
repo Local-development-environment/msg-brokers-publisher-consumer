@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties.jw_bracelet_weavings', function (Blueprint $table) {
+        Schema::create('jw_properties.chain_weavings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('bracelet_weaving_id');
-            $table->unsignedBigInteger('jw_bracelet_prop_id');
+            $table->unsignedBigInteger('weaving_id');
+            $table->unsignedBigInteger('chain_id');
             $table->string('fullness');
             $table->float('diameter', 3, 2);
             $table->timestamps();
 
-            $table->foreign('bracelet_weaving_id')->references('id')->on('properties.jw_bracelet_weavings');
-            $table->foreign('jw_bracelet_prop_id')->references('id')->on('properties.jw_bracelet_props');
+            $table->foreign('weaving_id')->references('id')->on('jw_properties.weavings')->cascadeOnDelete();
+            $table->foreign('chain_id')->references('id')->on('jw_properties.chains')->cascadeOnDelete();
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('properties.jw_bracelet_weavings');
+        Schema::dropIfExists('jw_properties.chain_weavings');
     }
 };

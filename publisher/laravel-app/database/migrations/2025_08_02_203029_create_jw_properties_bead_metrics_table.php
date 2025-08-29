@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties.jw_necklace_metrics', function (Blueprint $table) {
+        Schema::create('jw_properties.bead_metrics', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('necklace_size_id');
-            $table->unsignedBigInteger('jw_necklace_prop_id');
+            $table->unsignedBigInteger('bead_size_id');
+            $table->unsignedBigInteger('bead_id');
             $table->integer('quantity');
             $table->decimal('price', 10, 2);
             $table->timestamps();
 
-            $table->foreign('necklace_size_id')->references('id')->on('properties.necklace_sizes');
-            $table->foreign('jw_necklace_prop_id')->references('id')->on('properties.jw_necklace_props');
+            $table->foreign('bead_size_id')->references('id')->on('jw_properties.bead_sizes')->cascadeOnDelete();
+            $table->foreign('bead_id')->references('id')->on('jw_properties.beads')->cascadeOnDelete();
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('properties.jw_necklace_metrics');
+        Schema::dropIfExists('jw_properties.bead_metrics');
     }
 };

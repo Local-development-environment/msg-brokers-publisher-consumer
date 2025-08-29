@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties.necklace_sizes', function (Blueprint $table) {
+        Schema::create('jw_properties.necklace_sizes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('length_name_id');
             $table->decimal('value', 4, 1)->unique();
             $table->string('unit')->default('sm');
             $table->timestamps();
 
-            $table->foreign('length_name_id')->references('id')->on('properties.length_names');
+            $table->foreign('length_name_id')->references('id')->on('jw_properties.length_names')->cascadeOnDelete();
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('properties.necklace_sizes');
+        Schema::dropIfExists('jw_properties.necklace_sizes');
     }
 };

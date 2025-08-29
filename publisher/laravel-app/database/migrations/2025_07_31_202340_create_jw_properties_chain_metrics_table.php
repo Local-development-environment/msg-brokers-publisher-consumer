@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties.jw_chain_metrics', function (Blueprint $table) {
+        Schema::create('jw_properties.chain_metrics', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('chain_size_id');
-            $table->unsignedBigInteger('jw_chain_prop_id');
+            $table->unsignedBigInteger('chain_id');
             $table->integer('quantity');
             $table->decimal('price', 10, 2);
             $table->timestamps();
 
-            $table->foreign('chain_size_id')->references('id')->on('properties.chain_sizes');
-            $table->foreign('jw_chain_prop_id')->references('id')->on('properties.jw_chain_props');
+            $table->foreign('chain_size_id')->references('id')->on('jw_properties.chain_sizes')->cascadeOnDelete();
+            $table->foreign('chain_id')->references('id')->on('jw_properties.chains')->cascadeOnDelete();
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('properties.jw_chain_metrics');
+        Schema::dropIfExists('jw_properties.chain_metrics');
     }
 };

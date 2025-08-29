@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties.bead_sizes', function (Blueprint $table) {
+        Schema::create('jw_properties.bead_bases', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('length_name_id');
-            $table->decimal('value', 4, 1)->unique();
-            $table->string('unit')->default('sm');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
             $table->timestamps();
-
-            $table->foreign('length_name_id')->references('id')->on('properties.length_names');
         });
     }
 
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('properties.bead_sizes');
+        Schema::dropIfExists('jw_properties.bead_bases');
     }
 };
