@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('jewellery_id');
             $table->unsignedBigInteger('body_part_id');
-            $table->json('dimensions');
+            $table->jsonb('dimensions');
             $table->timestamps();
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');

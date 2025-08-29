@@ -247,6 +247,37 @@ return new class extends Migration
                         join jw_properties.earring_clasps as jwerc on jwerr.earring_clasp_id = jwerc.id
                         join jw_properties.earring_earring_type as jweet on jwerr.id = jweet.earring_id
                         join jw_properties.earring_types as jwet on jweet.earring_type_id = jwet.id
+                        
+                        union all
+                        
+                        select
+                            jj.id,jwrng.jewellery_id as jewellery_id,
+                            jsonb_build_object(
+                                'ring_id', jwrng.id,
+                                'body_part_id', jwbp.id,
+                                'body_part', jwbp.name,
+                                'dimensions', jwrng.dimensions,
+                                'size_price_quantity',
+                                jsonb_agg(
+                                    jsonb_build_object(
+                                        'size', jwrs.value,
+                                        'price', jwrm.price,
+                                        'quantity', jwrm.quantity
+                                    )
+                                )
+                            ) as spec_props,
+                            sum(jwrm.quantity) as quantity,
+                            cast(avg(jwrm.price) as decimal(10, 2)) as avg_price,
+                            cast(max(jwrm.price) as decimal(10, 2)) as max_price,
+                            cast(min(jwrm.price) as decimal(10, 2)) as min_price
+                        from
+                            jw_properties.rings as jwrng
+                        join jewelleries.jewelleries as jj on jwrng.jewellery_id = jj.id
+                        join jewelleries.categories as jc on jj.category_id = jc.id
+                        join jw_properties.body_parts as jwbp on jwrng.body_part_id = jwbp.id
+                        left join jw_properties.ring_metrics as jwrm on jwrng.id = jwrm.ring_id
+                        left join jw_properties.ring_sizes as jwrs on jwrm.ring_size_id = jwrs.id
+                        group by jj.id,jwrng.jewellery_id,jwrng.id,jwbp.id
                     )
                 select
                     jj.id,
@@ -274,6 +305,7 @@ return new class extends Migration
                 left join cte_jw_coverages as cjwc on jj.id = cjwc.jewellery_id
                 left join cte_jw_metals as cjm on jj.id = cjm.jewellery_id
                 left join cte_jw_props as cjp on  jj.id = cjp.jewellery_id
+                order by jj.id
                 with data
             SQL
         );
