@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties.jw_earring_props', function (Blueprint $table) {
+        Schema::create('jw_properties.earrings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('jewellery_id');
             $table->unsignedBigInteger('earring_clasp_id');
             $table->integer('quantity');
             $table->decimal('price', 10, 2);
+            $table->jsonb('dimensions');
             $table->timestamps();
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
-            $table->foreign('earring_clasp_id')->references('id')->on('properties.earring_clasps');
+            $table->foreign('earring_clasp_id')->references('id')->on('jw_properties.earring_clasps');
 
             $table->unique(['jewellery_id', 'earring_clasp_id'], 'earring_clasp_unique');
         });
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('properties.jw_earring_props');
+        Schema::dropIfExists('jw_properties.earrings');
     }
 };

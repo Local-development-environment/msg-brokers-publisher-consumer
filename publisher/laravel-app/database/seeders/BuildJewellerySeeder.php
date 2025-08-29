@@ -205,6 +205,12 @@ class BuildJewellerySeeder extends Seeder
                 $this->addPiercings($jewelleryData, $jewelleryId);
             }
         }
+
+        if ($jewelleryData['props']) {
+            if ($jewelleryData['jw_category'] === 'серьги') {
+                $this->addEarrings($jewelleryData, $jewelleryId);
+            }
+        }
     }
 
     /**
@@ -279,6 +285,30 @@ class BuildJewellerySeeder extends Seeder
             'jewellery_id' => $jewelleryId,
             'quantity' => $jewelleryData['props']['parameters']['quantity'],
             'price' => $jewelleryData['props']['parameters']['price'],
+            'created_at' => now()
+        ]);
+    }
+
+    /**
+     * @throws \JsonException
+     */
+    private function addEarrings(array $jewelleryData, int $jewelleryId): void
+    {
+        $claspId = DB::table('jw_properties.earring_clasps')->where('name',$jewelleryData['props']['parameters']['clasp'])->value('id');
+        $typeId = DB::table('jw_properties.earring_types')->where('name',$jewelleryData['props']['parameters']['earring_type'])->value('id');
+
+        $earringId = DB::table('jw_properties.earrings')->insertGetId([
+            'jewellery_id' => $jewelleryId,
+            'earring_clasp_id' => $claspId,
+            'quantity' => $jewelleryData['props']['parameters']['quantity'],
+            'price' => $jewelleryData['props']['parameters']['price'],
+            'dimensions' => json_encode($jewelleryData['props']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
+            'created_at' => now()
+        ]);
+
+        DB::table('jw_properties.earring_earring_type')->insertGetId([
+            'earring_id' => $earringId,
+            'earring_type_id' => $typeId,
             'created_at' => now()
         ]);
     }

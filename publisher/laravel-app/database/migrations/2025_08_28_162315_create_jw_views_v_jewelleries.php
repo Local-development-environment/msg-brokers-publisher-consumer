@@ -133,14 +133,13 @@ return new class extends Migration
                     cte_jw_props as (
                         select
                             jj.id,jwb.jewellery_id as jewellery_id,
-                            null as weaving,
-                            null as clasp,
-                            cast(null as json) as earring_clasp,
+                            jsonb_build_object(
+                                'brooch_id', jwb.id
+                            ) as spec_props,
                             jwb.quantity as quantity,
                             cast(jwb.price as decimal(10, 2)) as avg_price,
                             cast(jwb.price as decimal(10, 2)) as max_price,
-                            cast(jwb.price as decimal(10, 2)) as min_price,
-                            null as sizes
+                            cast(jwb.price as decimal(10, 2)) as min_price
                         from
                             jw_properties.brooches as jwb
                         join jewelleries.jewelleries as jj on jwb.jewellery_id = jj.id
@@ -150,14 +149,13 @@ return new class extends Migration
 
                         select
                             jj.id,jwchp.jewellery_id as jewellery_id,
-                            null as weaving,
-                            null as clasp,
-                            cast(null as json) as earring_clasp,
+                            jsonb_build_object(
+                                'charm_pendant_id', jwchp.id
+                            ) as spec_props,
                             jwchp.quantity as quantity,
                             cast(jwchp.price as decimal(10, 2)) as avg_price,
                             cast(jwchp.price as decimal(10, 2)) as max_price,
-                            cast(jwchp.price as decimal(10, 2)) as min_price,
-                            null as sizes
+                            cast(jwchp.price as decimal(10, 2)) as min_price
                         from
                             jw_properties.charm_pendants as jwchp
                         join jewelleries.jewelleries as jj on jwchp.jewellery_id = jj.id
@@ -167,14 +165,13 @@ return new class extends Migration
 
                         select
                             jj.id,jwtc.jewellery_id as jewellery_id,
-                            null as weaving,
-                            null as clasp,
-                            cast(null as json) as earring_clasp,
+                            jsonb_build_object(
+                                'tie_clip_id', jwtc.id
+                            ) as spec_props,
                             jwtc.quantity as quantity,
                             cast(jwtc.price as decimal(10, 2)) as avg_price,
                             cast(jwtc.price as decimal(10, 2)) as max_price,
-                            cast(jwtc.price as decimal(10, 2)) as min_price,
-                            null as sizes
+                            cast(jwtc.price as decimal(10, 2)) as min_price
                         from
                             jw_properties.tie_clips as jwtc
                         join jewelleries.jewelleries as jj on jwtc.jewellery_id = jj.id
@@ -184,14 +181,13 @@ return new class extends Migration
 
                         select
                             jj.id,jwp.jewellery_id as jewellery_id,
-                            null as weaving,
-                            null as clasp,
-                            cast(null as json) as earring_clasp,
+                            jsonb_build_object(
+                                'pendant_id', jwp.id
+                            ) as spec_props,
                             jwp.quantity as quantity,
                             cast(jwp.price as decimal(10, 2)) as avg_price,
                             cast(jwp.price as decimal(10, 2)) as max_price,
-                            cast(jwp.price as decimal(10, 2)) as min_price,
-                            null as sizes
+                            cast(jwp.price as decimal(10, 2)) as min_price
                         from
                             jw_properties.pendants as jwp
                         join jewelleries.jewelleries as jj on jwp.jewellery_id = jj.id
@@ -201,14 +197,13 @@ return new class extends Migration
                         
                         select
                             jj.id,jwcl.jewellery_id as jewellery_id,
-                            null as weaving,
-                            null as clasp,
-                            cast(null as json) as earring_clasp,
+                            jsonb_build_object(
+                                'cuff_links_id', jwcl.id
+                            ) as spec_props,
                             jwcl.quantity as quantity,
                             cast(jwcl.price as decimal(10, 2)) as avg_price,
                             cast(jwcl.price as decimal(10, 2)) as max_price,
-                            cast(jwcl.price as decimal(10, 2)) as min_price,
-                            null as sizes
+                            cast(jwcl.price as decimal(10, 2)) as min_price
                         from
                             jw_properties.cuff_links as jwcl
                         join jewelleries.jewelleries as jj on jwcl.jewellery_id = jj.id
@@ -218,18 +213,40 @@ return new class extends Migration
                         
                         select
                             jj.id,jwprc.jewellery_id as jewellery_id,
-                            null as weaving,
-                            null as clasp,
-                            cast(null as json) as earring_clasp,
+                            jsonb_build_object(
+                                'piercing_id', jwprc.id
+                            ) as spec_props,
                             jwprc.quantity as quantity,
                             cast(jwprc.price as decimal(10, 2)) as avg_price,
                             cast(jwprc.price as decimal(10, 2)) as max_price,
-                            cast(jwprc.price as decimal(10, 2)) as min_price,
-                            null as sizes
+                            cast(jwprc.price as decimal(10, 2)) as min_price
                         from
                             jw_properties.piercings as jwprc
                         join jewelleries.jewelleries as jj on jwprc.jewellery_id = jj.id
                         join jewelleries.categories as jc on jj.category_id = jc.id
+                        
+                        union all 
+                        
+                        select
+                            jj.id,jwerr.jewellery_id as jewellery_id,
+                            jsonb_build_object(
+                                'earring_id', jwerr.id,
+                                'earring_clasp_id', jwerc.id,
+                                'earring_clasp', jwerc.name,
+                                'earring_type_id', jwet.id,
+                                'earring_type', jwet.name
+                            ) as spec_props,
+                            jwerr.quantity as quantity,
+                            cast(jwerr.price as decimal(10, 2)) as avg_price,
+                            cast(jwerr.price as decimal(10, 2)) as max_price,
+                            cast(jwerr.price as decimal(10, 2)) as min_price
+                        from
+                            jw_properties.earrings as jwerr
+                        join jewelleries.jewelleries as jj on jwerr.jewellery_id = jj.id
+                        join jewelleries.categories as jc on jj.category_id = jc.id
+                        join jw_properties.earring_clasps as jwerc on jwerr.earring_clasp_id = jwerc.id
+                        join jw_properties.earring_earring_type as jweet on jwerr.id = jweet.earring_id
+                        join jw_properties.earring_types as jwet on jweet.earring_type_id = jwet.id
                     )
                 select
                     jj.id,
@@ -243,14 +260,11 @@ return new class extends Migration
                     jj.is_active,
                     jj.created_at,
                     jj.updated_at,
-                    cjp.weaving,
-                    cjp.clasp,
-                    cjp.earring_clasp,
                     cjp.quantity,
                     cjp.avg_price,
                     cjp.max_price,
                     cjp.min_price,
-                    cjp.sizes,
+                    cjp.spec_props,
                     cjwi.inserts,
                     cjwc.coverages,
                     cjm.metals
