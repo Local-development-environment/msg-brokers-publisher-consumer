@@ -278,6 +278,46 @@ return new class extends Migration
                         left join jw_properties.ring_metrics as jwrm on jwrng.id = jwrm.ring_id
                         left join jw_properties.ring_sizes as jwrs on jwrm.ring_size_id = jwrs.id
                         group by jj.id,jwrng.jewellery_id,jwrng.id,jwbp.id
+                        
+                        union all
+
+                        select
+                            jj.id,jwbrc.jewellery_id as jewellery_id,
+                            jsonb_build_object(
+                                'bracelet_id', jwbrc.id,
+                                'body_part_id', jwbp.id,
+                                'body_part', jwbp.name,
+                                'weaving_id', jww.id,
+                                'weaving', jww.name,
+                                'clasp_id', jwcls.id,
+                                'clasp', jwcls.name,
+                                'base_id', jwbb.id,
+                                'base', jwbb.name,
+                                'size_price_quantity',
+                                jsonb_agg(
+                                    jsonb_build_object(
+                                        'size', jwbs.value,
+                                        'price', jwbm.price,
+                                        'quantity', jwbm.quantity
+                                    )
+                                )
+                            ) as spec_props,
+                            sum(jwbm.quantity) as quantity,
+                            cast(avg(jwbm.price) as decimal(10, 2)) as avg_price,
+                            cast(max(jwbm.price) as decimal(10, 2)) as max_price,
+                            cast(min(jwbm.price) as decimal(10, 2)) as min_price
+                        from
+                            jw_properties.bracelets as jwbrc
+                        join jewelleries.jewelleries as jj on jwbrc.jewellery_id = jj.id
+                        join jewelleries.categories as jc on jj.category_id = jc.id
+                        join jw_properties.body_parts as jwbp on jwbrc.body_part_id = jwbp.id
+                        join jw_properties.bracelet_bases as jwbb on jwbrc.bracelet_base_id = jwbb.id
+                        join jw_properties.clasps as jwcls on jwbrc.clasp_id = jwcls.id
+                        left join jw_properties.bracelet_metrics as jwbm on jwbrc.id = jwbm.bracelet_id
+                        left join jw_properties.bracelet_sizes as jwbs on jwbm.bracelet_size_id = jwbs.id
+                        left join jw_properties.bracelet_weavings as jwbw on jwbrc.id = jwbw.bracelet_id
+                        left join jw_properties.weavings as jww on jwbw.weaving_id = jww.id
+                        group by jj.id,jwbrc.jewellery_id,jwbrc.id,jwbp.id,jww.id,jwcls.id,jwbb.id
                     )
                 select
                     jj.id,
@@ -306,6 +346,7 @@ return new class extends Migration
                 left join cte_jw_metals as cjm on jj.id = cjm.jewellery_id
                 left join cte_jw_props as cjp on  jj.id = cjp.jewellery_id
                 order by jj.id
+                
                 with data
             SQL
         );

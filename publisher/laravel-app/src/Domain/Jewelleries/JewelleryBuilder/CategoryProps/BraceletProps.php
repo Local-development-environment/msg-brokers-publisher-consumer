@@ -47,7 +47,7 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
             return [
                 'weaving' => Arr::random($weavings),
                 'fullness' => Arr::random(['полнотелая', 'полнотелая', 'полнотелая', 'пустотелая']),
-                'wire_diameter' => fake()->randomFloat(1, 0.5, 1.5) . ' мм'
+                'wire_diameter' => fake()->randomFloat(1, 0.5, 1.5)
             ];
         } else {
             return [];

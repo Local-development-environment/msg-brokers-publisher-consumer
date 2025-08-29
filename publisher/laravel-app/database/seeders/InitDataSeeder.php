@@ -16,26 +16,26 @@ class InitDataSeeder extends Seeder
     public function run(): void
     {
         Schema::disableForeignKeyConstraints();
-        DB::table('properties.jw_bead_metrics')->truncate();
-        DB::table('properties.jw_bead_props')->truncate();
-        DB::table('properties.bead_sizes')->truncate();
-        DB::table('properties.bead_bases')->truncate();
-        DB::table('properties.jw_necklace_metrics')->truncate();
-        DB::table('properties.jw_necklace_props')->truncate();
-        DB::table('properties.necklace_sizes')->truncate();
-        DB::table('properties.jw_chain_weavings')->truncate();
-        DB::table('properties.jw_chain_metrics')->truncate();
-        DB::table('properties.jw_chain_props')->truncate();
-        DB::table('properties.chain_sizes')->truncate();
-        DB::table('properties.length_names')->truncate();
-        DB::table('properties.jw_bracelet_weavings')->truncate();
-        DB::table('properties.jw_bracelet_metrics')->truncate();
-        DB::table('properties.bracelet_sizes')->truncate();
-        DB::table('properties.jw_weavings')->truncate();
-        DB::table('properties.jw_bracelet_props')->truncate();
+        DB::table('jw_properties.bead_metrics')->truncate();
+        DB::table('jw_properties.beads')->truncate();
+        DB::table('jw_properties.bead_sizes')->truncate();
+        DB::table('jw_properties.bead_bases')->truncate();
+        DB::table('jw_properties.necklace_metrics')->truncate();
+        DB::table('jw_properties.necklaces')->truncate();
+        DB::table('jw_properties.necklace_sizes')->truncate();
+        DB::table('jw_properties.chain_weavings')->truncate();
+        DB::table('jw_properties.chain_metrics')->truncate();
+        DB::table('jw_properties.chains')->truncate();
+        DB::table('jw_properties.chain_sizes')->truncate();
+        DB::table('jw_properties.length_names')->truncate();
+        DB::table('jw_properties.bracelet_weavings')->truncate();
+        DB::table('jw_properties.bracelet_metrics')->truncate();
+        DB::table('jw_properties.bracelet_sizes')->truncate();
+        DB::table('jw_properties.weavings')->truncate();
+        DB::table('jw_properties.bracelets')->truncate();
         DB::table('jw_properties.body_parts')->truncate();
-        DB::table('properties.bracelet_bases')->truncate();
-        DB::table('properties.jw_clasps')->truncate();
+        DB::table('jw_properties.bracelet_bases')->truncate();
+        DB::table('jw_properties.clasps')->truncate();
         DB::table('jw_properties.ring_metrics')->truncate();
         DB::table('jw_properties.rings')->truncate();
         DB::table('jw_properties.ring_sizes')->truncate();
@@ -148,7 +148,7 @@ class InitDataSeeder extends Seeder
         }
 
         foreach ($weavings as $weave) {
-            DB::table('properties.jw_weavings')->insert([
+            DB::table('jw_properties.weavings')->insert([
                 'name' => $weave,
                 'slug' => Str::slug($weave, '-'),
                 'created_at' => now(),
@@ -156,7 +156,7 @@ class InitDataSeeder extends Seeder
         }
 
         foreach ($bracelet_bases as $base) {
-            DB::table('properties.bracelet_bases')->insert([
+            DB::table('jw_properties.bracelet_bases')->insert([
                 'name' => $base,
                 'slug' => Str::slug($base, '-'),
                 'created_at' => now(),
@@ -164,7 +164,7 @@ class InitDataSeeder extends Seeder
         }
 
         foreach ($bead_bases as $base) {
-            DB::table('properties.bead_bases')->insert([
+            DB::table('jw_properties.bead_bases')->insert([
                 'name' => $base,
                 'slug' => Str::slug($base, '-'),
                 'created_at' => now(),
@@ -190,7 +190,7 @@ class InitDataSeeder extends Seeder
         }
 
         foreach ($jw_clasps as $clasp) {
-            DB::table('properties.jw_clasps')->insert([
+            DB::table('jw_properties.clasps')->insert([
                 'name' => $clasp,
                 'slug' => Str::slug($clasp, '-'),
                 'created_at' => now(),
@@ -215,7 +215,7 @@ class InitDataSeeder extends Seeder
         }
 
         foreach ($length_names as $length_name) {
-            DB::table('properties.length_names')->insert([
+            DB::table('jw_properties.length_names')->insert([
                 'name' => $length_name['name'],
                 'slug' => Str::slug($length_name['name'], '-'),
                 'description' => $length_name['description']
@@ -223,7 +223,7 @@ class InitDataSeeder extends Seeder
         }
 
         foreach ($chain_sizes as $chain_size) {
-            DB::table('properties.chain_sizes')->insert([
+            DB::table('jw_properties.chain_sizes')->insert([
                 'length_name_id' => $this->lengthNameId($chain_size['value']),
                 'value' => $chain_size['value'],
                 'created_at' => now(),
@@ -231,14 +231,14 @@ class InitDataSeeder extends Seeder
         }
 
         foreach ($bracelet_sizes as $bracelet_size) {
-            DB::table('properties.bracelet_sizes')->insert([
+            DB::table('jw_properties.bracelet_sizes')->insert([
                 'value' => $bracelet_size['value'],
                 'created_at' => now(),
             ]);
         }
 
         foreach ($necklace_sizes as $necklace_size) {
-            DB::table('properties.necklace_sizes')->insert([
+            DB::table('jw_properties.necklace_sizes')->insert([
                 'length_name_id' => $this->lengthNameId($necklace_size['value']),
                 'value' => $necklace_size['value'],
                 'created_at' => now(),
@@ -246,7 +246,7 @@ class InitDataSeeder extends Seeder
         }
 
         foreach ($bead_sizes as $size) {
-            DB::table('properties.bead_sizes')->insert([
+            DB::table('jw_properties.bead_sizes')->insert([
                 'length_name_id' => $this->lengthNameId($size['value']),
                 'value' => $size['value'],
                 'created_at' => now(),
@@ -257,22 +257,22 @@ class InitDataSeeder extends Seeder
     private function lengthNameId($size): int
     {
         if ($size <= 35) {
-            return DB::table('properties.length_names')->where('name', 'коллар')->value('id');
+            return DB::table('jw_properties.length_names')->where('name', 'коллар')->value('id');
         }
         if ($size <= 45) {
-            return DB::table('properties.length_names')->where('name', 'чокер')->value('id');
+            return DB::table('jw_properties.length_names')->where('name', 'чокер')->value('id');
         }
         if ($size <= 55) {
-            return DB::table('properties.length_names')->where('name', 'принцесса')->value('id');
+            return DB::table('jw_properties.length_names')->where('name', 'принцесса')->value('id');
         }
         if ($size <= 65) {
-            return DB::table('properties.length_names')->where('name', 'матине')->value('id');
+            return DB::table('jw_properties.length_names')->where('name', 'матине')->value('id');
         }
         if ($size <= 85) {
-            return DB::table('properties.length_names')->where('name', 'опера')->value('id');
+            return DB::table('jw_properties.length_names')->where('name', 'опера')->value('id');
         }
 
-        return DB::table('properties.length_names')->where('name', 'роп')->value('id');
+        return DB::table('jw_properties.length_names')->where('name', 'роп')->value('id');
     }
 
     private function jwInsertsSeed(): void

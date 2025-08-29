@@ -217,6 +217,12 @@ class BuildJewellerySeeder extends Seeder
                 $this->addRings($jewelleryData, $jewelleryId);
             }
         }
+
+        if ($jewelleryData['props']) {
+            if ($jewelleryData['jw_category'] === 'браслеты') {
+                $this->addBracelets($jewelleryData, $jewelleryId);
+            }
+        }
     }
 
     /**
@@ -348,6 +354,46 @@ class BuildJewellerySeeder extends Seeder
                 'created_at' => now()
             ]);
         }
+    }
 
+    private function addBracelets(array $jewelleryData, int $jewelleryId): void
+    {
+//        dd($jewelleryData['props']);
+        $bodyPartId = DB::table('jw_properties.body_parts')
+            ->where('name',$jewelleryData['props']['parameters']['body_part'])
+            ->value('id');
+
+
+        $braceletId = DB::table('jw_properties.bracelets')->insertGetId([
+            'jewellery_id' => $jewelleryId,
+            'body_part_id' => $bodyPartId,
+            'clasp_id' => DB::table('jw_properties.clasps')->where('name',$jewelleryData['props']['parameters']['clasp'])->value('id'),
+            'bracelet_base_id' => DB::table('jw_properties.bracelet_bases')->where('name',$jewelleryData['props']['parameters']['bracelet_bases'])->value('id'),
+            'created_at' => now()
+        ]);
+
+        if ($jewelleryData['props']['parameters']['weaving']) {
+            DB::table('jw_properties.bracelet_weavings')->insertGetId([
+                'bracelet_id' => $braceletId,
+                'weaving_id' => DB::table('jw_properties.weavings')
+                    ->where('name',$jewelleryData['props']['parameters']['weaving']['weaving'])
+                    ->value('id'),
+                'fullness' => $jewelleryData['props']['parameters']['weaving']['fullness'],
+                'diameter' => $jewelleryData['props']['parameters']['weaving']['wire_diameter'],
+                'created_at' => now()
+            ]);
+        }
+
+        foreach ($jewelleryData['props']['parameters']['size_price_quantity'] as $sizePriceQuantity) {
+//            dump($jewelleryData);
+
+            DB::table('jw_properties.bracelet_metrics')->insertGetId([
+                'bracelet_id' => $braceletId,
+                'bracelet_size_id' => DB::table('jw_properties.bracelet_sizes')->where('value',$sizePriceQuantity['size'])->value('id'),
+                'quantity' => $sizePriceQuantity['quantity'],
+                'price' => $sizePriceQuantity['price'],
+                'created_at' => now()
+            ]);
+        }
     }
 }

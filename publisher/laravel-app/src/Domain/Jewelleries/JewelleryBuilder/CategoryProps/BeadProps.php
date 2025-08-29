@@ -48,6 +48,6 @@ final readonly class BeadProps implements CategoryPropsBuilderInterface
 
     private function getBeadBase(): string
     {
-        return DB::table('properties.bead_bases')->get()->random()->name;
+        return DB::table('jw_properties.bead_bases')->get()->random()->name;
     }
 }
