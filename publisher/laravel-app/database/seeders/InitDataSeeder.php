@@ -33,12 +33,12 @@ class InitDataSeeder extends Seeder
         DB::table('properties.bracelet_sizes')->truncate();
         DB::table('properties.jw_weavings')->truncate();
         DB::table('properties.jw_bracelet_props')->truncate();
-        DB::table('properties.body_parts')->truncate();
+        DB::table('jw_properties.body_parts')->truncate();
         DB::table('properties.bracelet_bases')->truncate();
         DB::table('properties.jw_clasps')->truncate();
-        DB::table('properties.jw_ring_metrics')->truncate();
-        DB::table('properties.jw_ring_props')->truncate();
-        DB::table('properties.ring_sizes')->truncate();
+        DB::table('jw_properties.ring_metrics')->truncate();
+        DB::table('jw_properties.rings')->truncate();
+        DB::table('jw_properties.ring_sizes')->truncate();
         DB::table('jw_properties.earrings')->truncate();
         DB::table('jw_properties.earring_types')->truncate();
         DB::table('jw_properties.earrings')->truncate();
@@ -198,7 +198,7 @@ class InitDataSeeder extends Seeder
         }
 
         foreach ($body_parts as $body_part) {
-            DB::table('properties.body_parts')->insert([
+            DB::table('jw_properties.body_parts')->insert([
                 'name' => $body_part,
                 'slug' => Str::slug($body_part, '-'),
                 'created_at' => now(),
@@ -208,7 +208,7 @@ class InitDataSeeder extends Seeder
         $this->jwMetalsSeed();
 
         foreach ($ring_sizes as $ring_size) {
-            DB::table('properties.ring_sizes')->insert([
+            DB::table('jw_properties.ring_sizes')->insert([
                 'value' => $ring_size['value'],
                 'created_at' => now(),
             ]);

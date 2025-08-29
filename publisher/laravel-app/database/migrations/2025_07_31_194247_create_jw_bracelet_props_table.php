@@ -21,7 +21,7 @@ return new class extends Migration
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
             $table->foreign('jw_clasp_id')->references('id')->on('properties.jw_clasps');
-            $table->foreign('body_part_id')->references('id')->on('properties.body_parts');
+            $table->foreign('body_part_id')->references('id')->on('jw_properties.body_parts');
             $table->foreign('bracelet_base_id')->references('id')->on('properties.bracelet_bases');
         });
     }

@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties.jw_ring_props', function (Blueprint $table) {
+        Schema::create('jw_properties.rings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('jewellery_id');
+            $table->unsignedBigInteger('body_part_id');
             $table->json('dimensions');
             $table->timestamps();
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
+            $table->foreign('body_part_id')->references('id')->on('jw_properties.body_parts');
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('properties.jw_ring_props');
+        Schema::dropIfExists('jw_properties.rings');
     }
 };

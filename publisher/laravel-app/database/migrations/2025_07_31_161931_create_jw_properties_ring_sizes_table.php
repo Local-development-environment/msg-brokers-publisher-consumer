@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties.ring_sizes', function (Blueprint $table) {
+        Schema::create('jw_properties.ring_sizes', function (Blueprint $table) {
             $table->id();
             $table->decimal('value', 4, 1)->unique();
             $table->string('unit')->default('mm');
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('properties.ring_sizes');
+        Schema::dropIfExists('jw_properties.ring_sizes');
     }
 };

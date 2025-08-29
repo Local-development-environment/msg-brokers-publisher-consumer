@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties.body_parts', function (Blueprint $table) {
+        Schema::create('jw_properties.body_parts', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('properties.body_parts');
+        Schema::dropIfExists('jw_properties.body_parts');
     }
 };
