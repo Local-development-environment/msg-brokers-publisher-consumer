@@ -16,19 +16,19 @@ trait ProbabilityCoefficientsTrait
             $tmp[] = 1;
         }
 
-        for ($x = 1; $x <= 25; $x++) {
+        for ($x = 1; $x <= 20; $x++) {
             $tmp[] = 0;
         }
 
-        for ($x = 1; $x <= 20; $x++) {
+        for ($x = 1; $x <= 30; $x++) {
             $tmp[] = 2;
         }
 
-        for ($x = 1; $x <= 10; $x++) {
+        for ($x = 1; $x <= 7; $x++) {
             $tmp[] = 3;
         }
 
-        for ($x = 1; $x <= 5; $x++) {
+        for ($x = 1; $x <= 3; $x++) {
             $tmp[] = 4;
         }
 

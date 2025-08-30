@@ -318,6 +318,112 @@ return new class extends Migration
                         left join jw_properties.bracelet_weavings as jwbw on jwbrc.id = jwbw.bracelet_id
                         left join jw_properties.weavings as jww on jwbw.weaving_id = jww.id
                         group by jj.id,jwbrc.jewellery_id,jwbrc.id,jwbp.id,jww.id,jwcls.id,jwbb.id
+                        
+                        union all
+                        
+                        select
+                            jj.id,jwch.jewellery_id as jewellery_id,
+                            jsonb_build_object(
+                                    'chain_id', jwch.id,
+                                    'weaving_id', jww.id,
+                                    'weaving', jww.name,
+                                    'clasp_id', jwcls.id,
+                                    'clasp', jwcls.name,
+                                    'size_price_quantity',
+                                    jsonb_agg(
+                                        jsonb_build_object(
+                                            'size', jwchs.value,
+                                            'price', jwchm.price,
+                                            'quantity', jwchm.quantity,
+                                            'length_name_id', jwln.id,
+                                            'length_name', jwln.name
+                                        )
+                                    )
+                            ) as spec_props,
+                            sum(jwchm.quantity) as quantity,
+                            cast(avg(jwchm.price) as decimal(10, 2)) as avg_price,
+                            cast(max(jwchm.price) as decimal(10, 2)) as max_price,
+                            cast(min(jwchm.price) as decimal(10, 2)) as min_price
+                        from
+                            jw_properties.chains as jwch
+                        join jewelleries.jewelleries as jj on jwch.jewellery_id = jj.id
+                        join jewelleries.categories as jc on jj.category_id = jc.id
+                        join jw_properties.clasps as jwcls on jwch.clasp_id = jwcls.id
+                        left join jw_properties.chain_metrics as jwchm on jwch.id = jwchm.chain_id
+                        left join jw_properties.chain_sizes as jwchs on jwchm.chain_size_id = jwchs.id
+                        join jw_properties.length_names as jwln on jwchs.length_name_id = jwln.id
+                        left join jw_properties.chain_weavings as jwchw on jwch.id = jwchw.chain_id
+                        left join jw_properties.weavings as jww on jwchw.weaving_id = jww.id
+                        group by jj.id,jwch.jewellery_id,jwch.id,jww.id,jwcls.id
+                        
+                        union all
+
+                        select
+                            jj.id,jwnck.jewellery_id as jewellery_id,
+                            jsonb_build_object(
+                                'necklace_id', jwnck.id,
+                                'clasp_id', jwcls.id,
+                                'clasp', jwcls.name,
+                                'size_price_quantity',
+                                jsonb_agg(
+                                    jsonb_build_object(
+                                        'size', jwncks.value,
+                                        'price', jwnckm.price,
+                                        'quantity', jwnckm.quantity,
+                                        'length_name_id', jwln.id,
+                                        'length_name', jwln.name
+                                    )
+                                )
+                            ) as spec_props,
+                            sum(jwnckm.quantity) as quantity,
+                            cast(avg(jwnckm.price) as decimal(10, 2)) as avg_price,
+                            cast(max(jwnckm.price) as decimal(10, 2)) as max_price,
+                            cast(min(jwnckm.price) as decimal(10, 2)) as min_price
+                        from
+                            jw_properties.necklaces as jwnck
+                        join jewelleries.jewelleries as jj on jwnck.jewellery_id = jj.id
+                        join jewelleries.categories as jc on jj.category_id = jc.id
+                        join jw_properties.clasps as jwcls on jwnck.clasp_id = jwcls.id
+                        left join jw_properties.necklace_metrics as jwnckm on jwnck.id = jwnckm.necklace_id
+                        left join jw_properties.necklace_sizes as jwncks on jwnckm.necklace_size_id = jwncks.id
+                        join jw_properties.length_names as jwln on jwncks.length_name_id = jwln.id
+                        group by jj.id,jwnck.jewellery_id,jwnck.id,jwcls.id
+                    
+                        union all
+                    
+                        select
+                            jj.id,jwbd.jewellery_id as jewellery_id,
+                            jsonb_build_object(
+                                'bead_id', jwbd.id,
+                                'clasp_id', jwcls.id,
+                                'clasp', jwcls.name,
+                                'base_id', jwbb.id,
+                                'base', jwbb.name,
+                                'size_price_quantity',
+                                jsonb_agg(
+                                    jsonb_build_object(
+                                        'size', jwbds.value,
+                                        'price', jwbdm.price,
+                                        'quantity', jwbdm.quantity,
+                                        'length_name_id', jwln.id,
+                                        'length_name', jwln.name
+                                    )
+                                )
+                            ) as spec_props,
+                            sum(jwbdm.quantity) as quantity,
+                            cast(avg(jwbdm.price) as decimal(10, 2)) as avg_price,
+                            cast(max(jwbdm.price) as decimal(10, 2)) as max_price,
+                            cast(min(jwbdm.price) as decimal(10, 2)) as min_price
+                        from
+                            jw_properties.beads as jwbd
+                        join jewelleries.jewelleries as jj on jwbd.jewellery_id = jj.id
+                        join jewelleries.categories as jc on jj.category_id = jc.id
+                        join jw_properties.bead_bases as jwbb on jwbd.bead_base_id = jwbb.id
+                        join jw_properties.clasps as jwcls on jwbd.clasp_id = jwcls.id
+                        left join jw_properties.bead_metrics as jwbdm on jwbd.id = jwbdm.bead_id
+                        left join jw_properties.bead_sizes as jwbds on jwbdm.bead_size_id = jwbds.id
+                        join jw_properties.length_names as jwln on jwbds.length_name_id = jwln.id
+                        group by jj.id,jwbd.jewellery_id,jwbd.id,jwcls.id,jwbb.id
                     )
                 select
                     jj.id,
