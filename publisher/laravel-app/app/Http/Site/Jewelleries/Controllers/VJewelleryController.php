@@ -20,10 +20,18 @@ class VJewelleryController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        $data = $request->all();
-        $items = $this->service->index($data);
+        $params = $request->all();
+        $items = $this->service->index($params);
 
-        return (new VJewelleryCollection($items))->response();
+        return (new VJewelleryCollection($items['data']))
+            ->additional(
+                ['menu' =>
+                    [
+                        $items['menu']
+                    ]
+                ]
+            )
+            ->response();
     }
 
     /**
@@ -31,9 +39,9 @@ class VJewelleryController extends Controller
      */
     public function show(Request $request, int $id): JsonResponse
     {
-        $data = $request->all();
-        data_set($data, 'id', $id);
-        $model = $this->service->show($data, $id);
+        $params = $request->all();
+        data_set($params, 'id', $id);
+        $model = $this->service->show($params, $id);
 
         return (new VJewelleryResource($model))->response();
     }
