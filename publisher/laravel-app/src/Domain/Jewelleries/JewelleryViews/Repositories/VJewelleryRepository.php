@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domain\Jewelleries\JewelleryViews\Repositories;
 
 use Domain\Jewelleries\JewelleryViews\Models\VJewellery;
+use Domain\Shared\CustomFilters\CoverageFilter;
 use Domain\Shared\CustomFilters\MetalFilter;
 use Domain\Shared\CustomFilters\PriceFilter;
 use Domain\Shared\CustomFilters\StoneFilter;
@@ -31,6 +32,7 @@ final class VJewelleryRepository implements VJewelleryCachedRepositoryInterface
             'categories' => $this->getCategoryMenu($params),
             'price' => $this->getPriceMenu($params),
             'metals' => $this->getMetalMenu($params),
+            'coverages' => $this->getCoverageMenu($params),
         ];
 
         return collect([
@@ -97,6 +99,30 @@ final class VJewelleryRepository implements VJewelleryCachedRepositoryInterface
 
     }
 
+    private function getCoverageMenu(array $params): array
+    {
+        $request = app()['request'];
+        $newRequest = Request::createFrom($request);
+        $newRequest->merge($this->removeFilter($params, 'coverage_id'));
+
+        return $this->getVJewelleryBuilder($newRequest)
+            ->selectRaw('distinct c.id, c.name')
+            ->crossJoin(DB::raw(
+                "JSON_TABLE(
+                coverages,
+                '$[*]'
+                COLUMNS(
+                    id INT PATH '$[*].coverage_id',
+                    name varchar(50) PATH '$[*].coverage'
+                )
+            ) c"
+            ))
+            ->get()
+            ->toArray()
+            ;
+
+    }
+
     private function getVJewelleryBuilder(Request $request): QueryBuilder
     {
         return QueryBuilder::for(VJewellery::query(), $request)
@@ -107,6 +133,7 @@ final class VJewelleryRepository implements VJewelleryCachedRepositoryInterface
                 AllowedFilter::exact('approx_weight'),
                 AllowedFilter::custom('price', new PriceFilter),
                 AllowedFilter::custom('metal_id', new MetalFilter),
+                AllowedFilter::custom('coverage_id', new CoverageFilter),
                 'is_active', 'jewellery'
             ]);
     }
