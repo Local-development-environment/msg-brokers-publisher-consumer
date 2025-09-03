@@ -18,6 +18,6 @@ return [
     [
         'interface'      => VJewelleryCachedRepositoryInterface::class,
         'implementation' => VJewelleryRepository::class,
-        'cache'          => VJewelleryCachedRepository::class
+//        'cache'          => VJewelleryCachedRepository::class
     ],
 ];

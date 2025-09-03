@@ -37,7 +37,7 @@ services:
     networks:
       - publisher
       - amqp_net
-      - db_net
+      - db_net_psql17
       - redis_net
 
   redis_publisher_db:
@@ -61,8 +61,8 @@ networks:
   publisher:
     name: publisher
     # external: true
-  db_net:
-    name: db_net
+  db_net_psql17:
+    name: db_net_psql17
     external: true
   redis_net:
     name: redis_net

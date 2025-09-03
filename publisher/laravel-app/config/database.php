@@ -115,7 +115,7 @@ return [
         'pgsql_pub' => [
             'driver' => 'pgsql',
             'url' => env('DB_URL'),
-            'host' => env('DB_HOST', 'db_16'),
+            'host' => env('DB_HOST', 'db_17'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE_PUB', 'test_db'),
             'username' => env('DB_USERNAME_PUB', 'root'),

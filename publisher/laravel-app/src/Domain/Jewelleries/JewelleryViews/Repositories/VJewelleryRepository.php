@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Domain\Jewelleries\JewelleryViews\Repositories;
 
 use Domain\Jewelleries\JewelleryViews\Models\VJewellery;
+use Domain\Shared\CustomFilters\MetalFilter;
 use Domain\Shared\CustomFilters\PriceFilter;
+use Domain\Shared\CustomFilters\StoneFilter;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -28,6 +30,7 @@ final class VJewelleryRepository implements VJewelleryCachedRepositoryInterface
         $menu = [
             'categories' => $this->getCategoryMenu($params),
             'price' => $this->getPriceMenu($params),
+            'metals' => $this->getMetalMenu($params),
         ];
 
         return collect([
@@ -70,6 +73,30 @@ final class VJewelleryRepository implements VJewelleryCachedRepositoryInterface
             ->toArray();
     }
 
+    private function getMetalMenu(array $params): array
+    {
+        $request = app()['request'];
+        $newRequest = Request::createFrom($request);
+        $newRequest->merge($this->removeFilter($params, 'metal_id'));
+
+        return $this->getVJewelleryBuilder($newRequest)
+            ->selectRaw('distinct m.id, m.name')
+            ->crossJoin(DB::raw(
+                "JSON_TABLE(
+                metals,
+                '$[*]'
+                COLUMNS(
+                    id INT PATH '$[*].metal_id',
+                    name varchar(50) PATH '$[*].metal'
+                )
+            ) m"
+            ))
+            ->get()
+            ->toArray()
+            ;
+
+    }
+
     private function getVJewelleryBuilder(Request $request): QueryBuilder
     {
         return QueryBuilder::for(VJewellery::query(), $request)
@@ -79,6 +106,7 @@ final class VJewelleryRepository implements VJewelleryCachedRepositoryInterface
                 AllowedFilter::exact('category_id'),
                 AllowedFilter::exact('approx_weight'),
                 AllowedFilter::custom('price', new PriceFilter),
+                AllowedFilter::custom('metal_id', new MetalFilter),
                 'is_active', 'jewellery'
             ]);
     }
