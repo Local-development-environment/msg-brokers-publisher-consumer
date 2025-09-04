@@ -16,22 +16,20 @@ final class StoneFilter implements Filter
      */
     public function __invoke(Builder $query, mixed $value, string $property): void
     {
-//        if (is_array($value)) {
-//            $query->whereNotNull('metals')->where(function (Builder $query) use ($value) {
-//                foreach ($value as $key => $item) {
-//                    $item = (int)$item;
-//
-//                    if (!$key) {
-//                        $query->whereNotNull('coverages')->whereRaw("JSON_CONTAINS(`coverages`, '{\"coverage_id\": $item}', '$')");
-//                    } else {
-//                        $query->whereNotNull('coverages')->orWhereRaw("JSON_CONTAINS(`coverages`, '{\"coverage_id\": $item}', '$')");
-//                    }
-//                }
-//            });
-//        } else {
-//            $query->where(function (Builder $query) use ($value) {
-//                $query->whereNotNull('coverages')->whereRaw("JSON_CONTAINS(`coverages`, '{\"coverage_id\": $value}', '$')");
-//            });
-//        }
+        if (is_array($value)) {
+            $query->whereNotNull('inserts')->where(function (Builder $query) use ($value) {
+                foreach ($value as $key => $item) {
+                    $item = (int)$item;
+
+                    if (!$key) {
+                        $query->whereRaw("jw_views.v_jewelleries.inserts @@ '$[*].stone.id == $item'");
+                    } else {
+                        $query->orWhereRaw("jw_views.v_jewelleries.inserts @@ '$[*].stone.id == $item'");
+                    }
+                }
+            });
+        } else {
+            $query->whereNotNull('inserts')->whereRaw("jw_views.v_jewelleries.inserts @@ '$[*].stone.id == $value'");
+        }
     }
 }

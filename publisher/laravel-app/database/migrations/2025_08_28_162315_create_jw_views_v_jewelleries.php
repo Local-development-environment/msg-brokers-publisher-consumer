@@ -23,7 +23,7 @@ return new class extends Migration
                                     jsonb_agg(
                                         jsonb_build_object(
                                             'stone', jsonb_build_object(
-                                                'id', jwvi.id,
+                                                'id', jwvi.stone_id,
                                                 'name', jwvi.stone_name,
                                                 'alt_name', jwvi.stone_alt_name,
                                                 'description', jwvi.stone_description
