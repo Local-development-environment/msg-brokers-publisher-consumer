@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Domain\Jewelleries\JewelleryViews\Repositories;
 
 use Domain\Jewelleries\JewelleryViews\Models\VJewellery;
-use Domain\Shared\AbstractCachedRepository;
-use Illuminate\Contracts\Pagination\Paginator;
+use Domain\Shared\Repositories\AbstractCachedRepository;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 

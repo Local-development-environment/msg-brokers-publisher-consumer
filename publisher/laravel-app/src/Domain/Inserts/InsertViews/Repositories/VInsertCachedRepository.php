@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Domain\Inserts\InsertViews\Repositories;
 
 use Domain\Inserts\InsertViews\Models\VInsert;
-use Domain\Shared\AbstractCachedRepository;
+use Domain\Shared\Repositories\AbstractCachedRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Facades\Cache;
 

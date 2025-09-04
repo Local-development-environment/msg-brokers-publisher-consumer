@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Domain\Shared;
+namespace Domain\Shared\Repositories;
 
 abstract class AbstractCachedRepository
 {
