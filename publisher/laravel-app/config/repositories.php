@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
+use Domain\Inserts\InsertViews\Repositories\VInsertCachedRepository;
 use Domain\Inserts\InsertViews\Repositories\VInsertCachedRepositoryInterface;
 use Domain\Inserts\InsertViews\Repositories\VInsertRepository;
-use Domain\Inserts\InsertViews\Repositories\VInsertCachedRepository;
-use Domain\Jewelleries\JewelleryViews\Repositories\VJewelleryCachedRepository;
 use Domain\Jewelleries\JewelleryViews\Repositories\VJewelleryCachedRepositoryInterface;
 use Domain\Jewelleries\JewelleryViews\Repositories\VJewelleryRepository;
 

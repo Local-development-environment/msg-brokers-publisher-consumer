@@ -2,10 +2,11 @@
 
 namespace App\Http\Site\Jewelleries\Resources;
 
+use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use Domain\Jewelleries\JewelleryViews\Enums\VJewelleryEnum;
 use Domain\Jewelleries\JewelleryViews\Models\VJewellery;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 
 /**
  * @mixin VJewellery
@@ -24,7 +25,7 @@ class VJewelleryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => VJewellery::TYPE_RESOURCE,
+            'type' => VJewelleryEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
         ];
     }

@@ -15,7 +15,7 @@ abstract class AbstractMenuRepository
         $newRequest = Request::createFrom($request);
 
         $filters = data_get($params, 'filter');
-//        dd($filters);
+
         if ($filters && is_array($filters)) {
             if (array_key_exists($key, $filters) !== null) {
                 Arr::forget($params, 'filter.' . $key);
@@ -24,17 +24,6 @@ abstract class AbstractMenuRepository
             return $newRequest;
         }
 
-
-//        if ($filters) {
-//            if (count($filters) > 1) {
-//                $lastKey = array_key_last($filters);
-//                Arr::forget($data, 'filter.' . $lastKey);
-//            } else {
-//                Arr::forget($data, 'filter');
-//            }
-//        }
-
         return $newRequest->merge($params);
-//        return $params;
     }
 }

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\Jewelleries\JewelleryViews\Repositories;
 
+use Domain\Jewelleries\Categories\Enums\CategoryEnum;
+use Domain\Jewelleries\JewelleryViews\Enums\VJewelleryEnum;
+use Domain\Jewelleries\JewelleryViews\Enums\VJewelleryFilterEnum;
 use Domain\Jewelleries\JewelleryViews\Models\VJewellery;
 use Domain\Shared\CustomFilters\CoverageFilter;
 use Domain\Shared\CustomFilters\FamilyFilter;
@@ -11,9 +14,7 @@ use Domain\Shared\CustomFilters\MetalFilter;
 use Domain\Shared\CustomFilters\PriceFilter;
 use Domain\Shared\CustomFilters\StoneFilter;
 use Domain\Shared\Repositories\AbstractMenuRepository;
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -59,7 +60,7 @@ final class VJewelleryRepository extends AbstractMenuRepository implements VJewe
     private function getCategoryMenu(array $params): array
     {
         return $this->getVJewelleryBuilder($this->getRequestWithoutFilterItem($params, 'category_id'))
-            ->join('jewelleries.categories as jc', 'category_id', '=', 'jc.id')
+            ->join(CategoryEnum::TABLE_NAME->value . ' as jc', VJewelleryEnum::FK_CATEGORY->value, '=', 'jc.id')
             ->select('jc.id', 'jc.name')
             ->groupBy('jc.id')
             ->get()
@@ -168,15 +169,15 @@ final class VJewelleryRepository extends AbstractMenuRepository implements VJewe
     {
         return QueryBuilder::for(VJewellery::query(), $request)
             ->allowedFilters([
-                AllowedFilter::exact('id'),
-                AllowedFilter::exact('part_number'),
-                AllowedFilter::exact('category_id'),
-                AllowedFilter::exact('approx_weight'),
-                AllowedFilter::custom('price', new PriceFilter),
-                AllowedFilter::custom('metal_id', new MetalFilter),
-                AllowedFilter::custom('coverage_id', new CoverageFilter),
-                AllowedFilter::custom('stone_id', new StoneFilter),
-                AllowedFilter::custom('family_id', new FamilyFilter),
+                AllowedFilter::exact(VJewelleryFilterEnum::PK_ITSELF->value),
+                AllowedFilter::exact(VJewelleryFilterEnum::PART_NUMBER->value),
+                AllowedFilter::exact(VJewelleryFilterEnum::FK_CATEGORY->value),
+                AllowedFilter::exact(VJewelleryFilterEnum::APPROX_WEIGHT->value),
+                AllowedFilter::custom(VJewelleryFilterEnum::PRICE_RANGE->value, new PriceFilter),
+                AllowedFilter::custom(VJewelleryFilterEnum::JSON_METAL->value, new MetalFilter),
+                AllowedFilter::custom(VJewelleryFilterEnum::JSON_COVERAGE->value, new CoverageFilter),
+                AllowedFilter::custom(VJewelleryFilterEnum::JSON_STONE->value, new StoneFilter),
+                AllowedFilter::custom(VJewelleryFilterEnum::JSON_STONE_FAMILY->value, new FamilyFilter),
                 'is_active', 'jewellery'
             ]);
     }
