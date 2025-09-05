@@ -13,4 +13,5 @@ enum VJewelleryFilterEnum: string
     case PART_NUMBER       = 'part_number';
     case APPROX_WEIGHT     = 'approx_weight';
     case PRICE_RANGE       = 'price_range';
+    case JSON_STONE_GROUP  = 'group_id';
 }

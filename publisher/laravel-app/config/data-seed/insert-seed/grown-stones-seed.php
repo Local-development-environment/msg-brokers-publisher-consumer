@@ -10,31 +10,29 @@ return [
             'origin' => 'выращенные',
             'colour' => [
                 [
-                    [
-                        'colour' => 'оранжевый',
-                        'probability' => 20,
-                    ],
-                    [
-                        'colour' => 'синий',
-                        'probability' => 20,
-                    ],
-                    [
-                        'colour' => 'желтый',
-                        'probability' => 15,
-                    ],
-                    [
-                        'colour' => 'фиолетовый',
-                        'probability' => 15,
-                    ],
-                    [
-                        'colour' => 'розовый',
-                        'probability' => 15,
-                    ],
-                    [
-                        'colour' => 'зеленый',
-                        'probability' => 15,
-                    ],
-                ]
+                    'colour' => 'оранжевый',
+                    'probability' => 20,
+                ],
+                [
+                    'colour' => 'синий',
+                    'probability' => 20,
+                ],
+                [
+                    'colour' => 'желтый',
+                    'probability' => 15,
+                ],
+                [
+                    'colour' => 'фиолетовый',
+                    'probability' => 15,
+                ],
+                [
+                    'colour' => 'розовый',
+                    'probability' => 15,
+                ],
+                [
+                    'colour' => 'зеленый',
+                    'probability' => 15,
+                ],
             ],
             'optical_effect' => null,
         ],
@@ -46,11 +44,9 @@ return [
             'origin' => 'выращенные',
             'colour' => [
                 [
-                    [
-                        'colour' => 'синий',
-                        'probability' => 20,
-                    ],
-                ]
+                    'colour' => 'синий',
+                    'probability' => 20,
+                ],
             ],
             'optical_effect' => 'изменчивость цвета',
         ],
@@ -62,11 +58,9 @@ return [
             'origin' => 'выращенные',
             'colour' => [
                 [
-                    [
-                        'colour' => 'бесцветный',
-                        'probability' => 20,
-                    ],
-                ]
+                    'colour' => 'бесцветный',
+                    'probability' => 20,
+                ],
             ],
             'optical_effect' => null,
         ]

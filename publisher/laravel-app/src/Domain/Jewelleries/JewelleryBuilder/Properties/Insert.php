@@ -19,7 +19,7 @@ final class Insert
     {
         $insertCount = $this->randInsertsAmount();
         $inserts = [];
-
+//        dd(DB::table('jw_inserts.stones')->where('id', $this->randNaturalStone())->first()->name);
         if ($insertCount && $category !== 'цепи') {
             for ($i = 0; $i < $insertCount; $i++) {
                 $stone = DB::table('jw_inserts.stones')->where('id', $this->randNaturalStone())->first()->name;

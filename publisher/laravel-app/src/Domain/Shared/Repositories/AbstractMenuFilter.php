@@ -7,7 +7,7 @@ namespace Domain\Shared\Repositories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
-abstract class AbstractMenuRepository
+abstract class AbstractMenuFilter
 {
     protected function getRequestWithoutFilterItem(array $params, string $key): Request
     {
