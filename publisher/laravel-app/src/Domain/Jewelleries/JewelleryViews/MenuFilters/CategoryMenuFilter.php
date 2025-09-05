@@ -8,15 +8,11 @@ use Domain\Jewelleries\Categories\Enums\CategoryEnum;
 use Domain\Jewelleries\JewelleryViews\Enums\VJewelleryEnum;
 use Spatie\QueryBuilder\QueryBuilder;
 
-final class CategoryMenuFilter
+final readonly class CategoryMenuFilter
 {
-    public function __construct(private QueryBuilder $query)
+    public function __invoke(QueryBuilder $queryBuilder): array
     {
-    }
-
-    public function getCategoryMenu(): array
-    {
-        return $this->query
+        return $queryBuilder
             ->join(CategoryEnum::TABLE_NAME->value . ' as jc', VJewelleryEnum::FK_CATEGORY->value, '=', 'jc.id')
             ->select('jc.id', 'jc.name')
             ->groupBy('jc.id')
