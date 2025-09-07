@@ -23,6 +23,7 @@ final readonly class MetalMenuFilter
                 )
             ) m"
             ))
+            ->orderBy('m.id')
             ->get()
             ->toArray();
     }

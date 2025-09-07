@@ -16,6 +16,7 @@ final readonly class CategoryMenuFilter
             ->join(CategoryEnum::TABLE_NAME->value . ' as jc', VJewelleryEnum::FK_CATEGORY->value, '=', 'jc.id')
             ->select('jc.id', 'jc.name')
             ->groupBy('jc.id')
+            ->orderBy('jc.id')
             ->get()
             ->toArray();
     }

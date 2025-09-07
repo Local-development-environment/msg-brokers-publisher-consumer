@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\Jewelleries\JewelleryViews\MenuFilters;
 
-use Domain\Jewelleries\JewelleryViews\Enums\VJewelleryFilterEnum;
 use Illuminate\Support\Facades\DB;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -28,6 +27,7 @@ final class InsertStoneMenuFilter implements MenuFilterInterface
             ) s"
             ))
             ->join('jw_inserts.stone_families', 's.id', '=', 'jw_inserts.stone_families.id')
+            ->orderBy('s.id')
             ->get()
             ->toArray();
     }

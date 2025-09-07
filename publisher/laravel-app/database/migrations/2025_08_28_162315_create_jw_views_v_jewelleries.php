@@ -27,7 +27,7 @@ return new class extends Migration
                                                 'name', jwvi.stone_name,
                                                 'alt_name', jwvi.stone_alt_name,
                                                 'description', jwvi.stone_description
-                                                         ),
+                                            ),
                                             'origin', jsonb_build_object(
                                                 'id', jwvi.origin_id,
                                                 'name', jwvi.origin_name,

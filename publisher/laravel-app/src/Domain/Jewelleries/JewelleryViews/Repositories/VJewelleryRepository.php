@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Jewelleries\JewelleryViews\Repositories;
 
-use Domain\Jewelleries\JewelleryViews\Enums\VJewelleryFilterEnum;
+use Domain\Jewelleries\JewelleryViews\Enums\VJewelleryFilterParamNameEnum;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\ApproxWeightRangeMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\CategoryMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\CoverageMenuFilter;
@@ -55,16 +55,16 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
     {
         return QueryBuilder::for(VJewellery::query(), $request)
             ->allowedFilters([
-                AllowedFilter::exact(VJewelleryFilterEnum::PK_ITSELF->value),
-                AllowedFilter::exact(VJewelleryFilterEnum::PART_NUMBER->value),
-                AllowedFilter::exact(VJewelleryFilterEnum::FK_CATEGORY->value),
-                AllowedFilter::custom(VJewelleryFilterEnum::APPROX_WEIGHT->value, new ApproxWeightFilter()),
-                AllowedFilter::custom(VJewelleryFilterEnum::PRICE_RANGE->value, new PriceFilter),
-                AllowedFilter::custom(VJewelleryFilterEnum::JSON_METAL->value, new MetalFilter),
-                AllowedFilter::custom(VJewelleryFilterEnum::JSON_COVERAGE->value, new CoverageFilter),
-                AllowedFilter::custom(VJewelleryFilterEnum::JSON_STONE->value, new StoneFilter),
-                AllowedFilter::custom(VJewelleryFilterEnum::JSON_STONE_FAMILY->value, new FamilyFilter),
-                AllowedFilter::custom(VJewelleryFilterEnum::JSON_STONE_GROUP->value, new ClassifierGroupFilter),
+                AllowedFilter::exact(VJewelleryFilterParamNameEnum::PK_ITSELF->value),
+                AllowedFilter::exact(VJewelleryFilterParamNameEnum::PART_NUMBER->value),
+                AllowedFilter::exact(VJewelleryFilterParamNameEnum::FK_CATEGORY->value),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::APPROX_WEIGHT->value, new ApproxWeightFilter()),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::PRICE_RANGE->value, new PriceFilter),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_METAL->value, new MetalFilter),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_COVERAGE->value, new CoverageFilter),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_STONE->value, new StoneFilter),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_STONE_FAMILY->value, new FamilyFilter),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_STONE_GROUP->value, new ClassifierGroupFilter),
                 'is_active', 'jewellery'
             ]);
     }
@@ -80,29 +80,29 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
     {
         return [
             'categories' => $this->getMenuItems(
-                CategoryMenuFilter::class, $params, VJewelleryFilterEnum::FK_CATEGORY->value
+                CategoryMenuFilter::class, $params, VJewelleryFilterParamNameEnum::FK_CATEGORY->value
             ),
             'price_range' => $this->getMenuItems(
-                PriceRangeMenuFilter::class, $params, VJewelleryFilterEnum::PRICE_RANGE->value
+                PriceRangeMenuFilter::class, $params, VJewelleryFilterParamNameEnum::PRICE_RANGE->value
             ),
             'approx_weight_range' => $this->getMenuItems(
-                ApproxWeightRangeMenuFilter::class, $params, VJewelleryFilterEnum::APPROX_WEIGHT->value
+                ApproxWeightRangeMenuFilter::class, $params, VJewelleryFilterParamNameEnum::APPROX_WEIGHT->value
             ),
             'metals' => $this->getMenuItems(
-                MetalMenuFilter::class, $params, VJewelleryFilterEnum::JSON_METAL->value
+                MetalMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_METAL->value
             ),
             'coverages' => $this->getMenuItems(
-                CoverageMenuFilter::class, $params, VJewelleryFilterEnum::JSON_COVERAGE->value
+                CoverageMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_COVERAGE->value
             ),
             'inserts' => [
                 'stones' => $this->getMenuItems(
-                    InsertStoneMenuFilter::class, $params, VJewelleryFilterEnum::JSON_STONE->value
+                    InsertStoneMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_STONE->value
                 ),
                 'families' => $this->getMenuItems(
-                    InsertFamilyMenuFilter::class, $params, VJewelleryFilterEnum::JSON_STONE_FAMILY->value
+                    InsertFamilyMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_STONE_FAMILY->value
                 ),
                 'groups' => $this->getMenuItems(
-                    InsertStoneGroupMenuFilter::class, $params, VJewelleryFilterEnum::JSON_STONE_GROUP->value
+                    InsertStoneGroupMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_STONE_GROUP->value
                 )
             ]
         ];

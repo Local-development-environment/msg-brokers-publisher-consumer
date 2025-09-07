@@ -23,6 +23,7 @@ final class CoverageMenuFilter implements MenuFilterInterface
                 )
             ) c"
             ))
+            ->orderBy('c.id')
             ->get()
             ->toArray();
     }

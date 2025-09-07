@@ -26,6 +26,7 @@ final class InsertStoneGroupMenuFilter implements MenuFilterInterface
             ) g"
             ))
             ->join('jw_inserts.stone_groups', 'g.id', '=', 'jw_inserts.stone_groups.id')
+            ->orderBy('g.id')
             ->get()
             ->toArray();
     }

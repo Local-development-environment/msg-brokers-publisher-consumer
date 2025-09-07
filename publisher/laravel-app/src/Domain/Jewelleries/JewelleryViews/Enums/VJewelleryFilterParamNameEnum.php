@@ -2,7 +2,7 @@
 
 namespace Domain\Jewelleries\JewelleryViews\Enums;
 
-enum VJewelleryFilterEnum: string
+enum VJewelleryFilterParamNameEnum: string
 {
     case PK_ITSELF         = 'id';
     case FK_CATEGORY       = 'category_id';
