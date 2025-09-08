@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Shared\Resources\Traits;
 
-use App\Http\Admin\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
+use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Resources\MissingValue;
