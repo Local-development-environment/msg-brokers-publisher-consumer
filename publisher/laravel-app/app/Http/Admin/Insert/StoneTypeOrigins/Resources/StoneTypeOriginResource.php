@@ -5,6 +5,7 @@ namespace App\Http\Admin\Insert\StoneTypeOrigins\Resources;
 use App\Http\Admin\Insert\Stones\Resources\StoneCollection;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginEnum;
+use Domain\Inserts\TypeOrigins\Enums\TypeOriginNameRoutesEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginRelationshipsEnum;
 use Domain\Inserts\TypeOrigins\Models\TypeOrigin;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class StoneTypeOriginResource extends JsonResource
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 TypeOriginRelationshipsEnum::STONES->value => $this->sectionRelationships(
-                    'stone-type-origin.stones',
+                    TypeOriginNameRoutesEnum::RELATED_TO_STONES->value,
                     StoneCollection::class
                 )
             ]

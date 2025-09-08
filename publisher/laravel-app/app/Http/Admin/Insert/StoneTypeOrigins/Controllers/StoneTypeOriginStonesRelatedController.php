@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Admin\Insert\StoneTypeOrigins\Controllers;
 
 use App\Http\Admin\Insert\Stones\Resources\StoneCollection;

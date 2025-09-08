@@ -1,0 +1,47 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Domain\Inserts\Stones\Repositories;
+
+use Domain\Inserts\Stones\Models\Stone;
+use Illuminate\Contracts\Pagination\Paginator;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
+
+final class StoneRepository
+{
+    public function index(array $data): Paginator
+    {
+        return QueryBuilder::for(Stone::class)
+            ->allowedIncludes(['typeOrigin','imitationStone'])
+            ->allowedFilters([
+                AllowedFilter::exact('id')
+            ])
+            ->paginate($data['per_page'] ?? null)
+            ->appends($data);
+    }
+
+    public function store(array $data): Stone
+    {
+        return Stone::create($data);
+    }
+
+    public function show(array $data, int $id): Stone
+    {
+        return QueryBuilder::for(Stone::class)
+            ->where('id', $id)
+            ->allowedIncludes(['typeOrigin','imitationStone'])
+            ->firstOrFail();
+    }
+
+    public function update(array $data, int $id): void
+    {
+        Stone::find($id)->update($data);
+    }
+
+    public function destroy(int $id): void
+    {
+        Stone::findOrFail($id)->delete();
+    }
+}

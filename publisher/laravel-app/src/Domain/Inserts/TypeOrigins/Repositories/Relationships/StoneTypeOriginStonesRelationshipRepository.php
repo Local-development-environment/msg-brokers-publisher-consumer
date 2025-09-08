@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\TypeOrigins\Repositories\Relationships;
 
-use Domain\Inserts\Stones\Models\Stone;
 use Domain\Inserts\TypeOrigins\Models\TypeOrigin;
 use Illuminate\Database\Eloquent\Collection;
 

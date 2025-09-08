@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Admin\Jewelleries\Jewellery\Controllers;
+namespace App\Http\Admin\Jewellery\Jewelleries\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

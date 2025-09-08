@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Http\Admin\Jewelleries\Jewellery\Controllers\JewelleryController;
+use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryController;
 
 /*************************** JEWELLERIES *************************/
 // CRUD

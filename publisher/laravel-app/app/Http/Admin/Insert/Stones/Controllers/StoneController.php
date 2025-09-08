@@ -2,17 +2,29 @@
 
 namespace App\Http\Admin\Insert\Stones\Controllers;
 
+use App\Http\Admin\Insert\Stones\Resources\StoneCollection;
 use App\Http\Controllers\Controller;
+use Domain\Inserts\ImitationStones\Models\ImitationStone;
+use Domain\Inserts\Stones\Models\Stone;
+use Domain\Inserts\Stones\Services\StoneService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class StoneController extends Controller
 {
+    public function __construct(public StoneService $service)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        //
+        $data = $request->all();
+        $items = $this->service->index($data);
+
+        return (new StoneCollection($items))->response();
     }
 
     /**

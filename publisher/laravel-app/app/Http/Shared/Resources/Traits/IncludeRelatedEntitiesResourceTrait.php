@@ -42,7 +42,7 @@ trait IncludeRelatedEntitiesResourceTrait
         foreach ($relations as $key => $relation) {
             if ($relation instanceof Model) {
                 // set glob_id unique virtual attribute to exclude duplicates into included section
-                $relation->setAttribute('glob_id', $relation->getTable() . '-' . $relation->get('id'));
+                $relation->setAttribute('glob_id', $relation->getTable() . '-' . $relation->id);
 
                 $newRelations[] = $key::collection([$relation]);
             }

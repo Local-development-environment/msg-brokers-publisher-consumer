@@ -5,6 +5,7 @@ namespace App\Http\Admin\Insert\StoneTypeOrigins\Controllers;
 use App\Http\Admin\Insert\StoneTypeOrigins\Resources\StoneTypeOriginCollection;
 use App\Http\Controllers\Controller;
 use Domain\Inserts\TypeOrigins\Services\StoneTypeOriginService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class StoneTypeOriginController extends Controller
@@ -16,7 +17,7 @@ class StoneTypeOriginController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request): JsonResponse
     {
         $data = $request->all();
         $items = $this->insertService->index($data);

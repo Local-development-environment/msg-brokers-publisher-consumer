@@ -2,9 +2,11 @@
 
 namespace App\Http\Admin\Insert\Stones\Resources;
 
+use App\Http\Admin\Insert\ImitationStones\Resources\ImitationStoneResource;
 use App\Http\Admin\Insert\StoneTypeOrigins\Resources\StoneTypeOriginResource;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\Inserts\Stones\Enums\StoneEnum;
+use Domain\Inserts\Stones\Enums\StoneNameRoutesEnum;
 use Domain\Inserts\Stones\Enums\StoneRelationshipsEnum;
 use Domain\Inserts\Stones\Models\Stone;
 use Illuminate\Http\Request;
@@ -28,15 +30,20 @@ class StoneResource extends JsonResource
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 StoneRelationshipsEnum::TYPE_ORIGIN->value => $this->sectionRelationships(
-                    'stones.stone-type-origin',
+                    StoneNameRoutesEnum::RELATED_TO_STONE_TYPE_ORIGIN->value,
                     StoneTypeOriginResource::class
-                )
+                ),
+                StoneRelationshipsEnum::IMITATION_STONE->value => $this->sectionRelationships(
+                    StoneNameRoutesEnum::RELATED_TO_IMITATION_STONE->value,
+                    ImitationStoneResource::class
+                ),
             ]
         ];
     }
 protected function relations(): array
 {
     return [
-        StoneTypeOriginResource::class => $this->whenLoaded(StoneRelationshipsEnum::TYPE_ORIGIN->value)
+        StoneTypeOriginResource::class => $this->whenLoaded(StoneRelationshipsEnum::TYPE_ORIGIN->value),
+        ImitationStoneResource::class => $this->whenLoaded(StoneRelationshipsEnum::IMITATION_STONE->value),
     ];
 }}
