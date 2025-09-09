@@ -17,6 +17,10 @@ class StoneGrownStoneRelatedController extends Controller
     {
         $model = $this->service->index($id);
 
-        return (new GrownStoneResource($model))->response();
+        if ($model) {
+            return (new GrownStoneResource($model))->response();
+        } else {
+            return response()->json()->setStatusCode(204);
+        }
     }
 }

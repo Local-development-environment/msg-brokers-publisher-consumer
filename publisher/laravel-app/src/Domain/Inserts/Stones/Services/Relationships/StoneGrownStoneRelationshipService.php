@@ -13,7 +13,7 @@ final class StoneGrownStoneRelationshipService
     {
     }
 
-    public function index($id): GrownStone
+    public function index($id): GrownStone|null
     {
         return $this->repository->index($id);
     }

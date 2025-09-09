@@ -9,8 +9,8 @@ enum NaturalStoneGradeNameRoutsEnum: string
     case CRUD_POST                           = 'natural-stone-grades.post';
     case CRUD_PATCH                          = 'natural-stone-grades.patch';
     case CRUD_DELETE                         = 'natural-stone-grades.delete';
-    case RELATED_TO_STONE                    = 'natural-stone-grades.natural-stone';
-    case RELATIONSHIP_TO_STONE               = 'natural-stone-grades.relationships.natural-stone';
-    case RELATED_TO_STONE_FAMILY             = 'natural-stone-grades.stone-grade';
-    case RELATIONSHIP_TO_STONE_FAMILY        = 'natural-stone-grades.relationships.stone-grade';
+    case RELATED_TO_NATURAL_STONE            = 'natural-stone-grade.natural-stone';
+    case RELATIONSHIP_TO_NATURAL_STONE       = 'natural-stone-grade.relationships.natural-stone';
+    case RELATED_TO_STONE_GRADE             = 'natural-stone-grades.stone-grade';
+    case RELATIONSHIP_TO_STONE_GRADE        = 'natural-stone-grades.relationships.stone-grade';
 }

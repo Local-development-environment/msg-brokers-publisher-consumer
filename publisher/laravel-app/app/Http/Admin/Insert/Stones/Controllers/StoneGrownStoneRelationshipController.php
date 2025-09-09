@@ -16,7 +16,10 @@ class StoneGrownStoneRelationshipController extends Controller
     public function index(int $id): JsonResponse
     {
         $model = $this->service->index($id);
-
-        return (new ApiEntityIdentifierResource($model))->response();
+        if ($model) {
+            return (new ApiEntityIdentifierResource($model))->response();
+        } else {
+            return response()->json()->setStatusCode(204);
+        }
     }
 }

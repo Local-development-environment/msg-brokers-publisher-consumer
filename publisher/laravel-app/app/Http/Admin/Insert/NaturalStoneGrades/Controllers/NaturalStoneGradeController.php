@@ -2,17 +2,27 @@
 
 namespace App\Http\Admin\Insert\NaturalStoneGrades\Controllers;
 
+use App\Http\Admin\Insert\NaturalStoneGrades\Resources\NaturalStoneGradeCollection;
 use App\Http\Controllers\Controller;
+use Domain\Inserts\NaturalStoneGrades\Services\NaturalStoneGradeService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class NaturalStoneGradeController extends Controller
 {
+    public function __construct(public NaturalStoneGradeService $insertService)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        //
+        $data = $request->all();
+        $items = $this->insertService->index($data);
+
+        return (new NaturalStoneGradeCollection($items))->response();
     }
 
     /**

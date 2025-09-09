@@ -13,6 +13,10 @@ use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneStoneRelatio
 use App\Http\Admin\Insert\Inserts\Controllers\InsertController;
 use App\Http\Admin\Insert\InsertStones\Controllers\InsertStoneController;
 use App\Http\Admin\Insert\NaturalStoneGrades\Controllers\NaturalStoneGradeController;
+use App\Http\Admin\Insert\NaturalStoneGrades\Controllers\NaturalStoneGradeNaturalStoneRelatedController;
+use App\Http\Admin\Insert\NaturalStoneGrades\Controllers\NaturalStoneGradeNaturalStoneRelationshipController;
+use App\Http\Admin\Insert\NaturalStoneGrades\Controllers\NaturalStoneGradesStoneGradeRelatedController;
+use App\Http\Admin\Insert\NaturalStoneGrades\Controllers\NaturalStoneGradesStoneGradeRelationshipController;
 use App\Http\Admin\Insert\NaturalStones\Controllers\NaturalStoneController;
 use App\Http\Admin\Insert\OpticalEffects\Controllers\OpticalEffectController;
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStoneController;
@@ -43,6 +47,7 @@ use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRela
 use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRelationshipController;
 use Domain\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
+use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeNameRoutsEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeNameRoutesEnum;
 use Domain\Inserts\Stones\Enums\StoneNameRoutesEnum;
@@ -188,6 +193,19 @@ Route::patch('natural-stone-grades/{id}', [NaturalStoneGradeController::class,'u
 Route::delete('natural-stone-grades/{id}', [NaturalStoneGradeController::class,'destroy']);
 
 // RELATIONSHIPS
+//  one-to-one NaturalStoneGrade to NaturalStone
+Route::get('natural-stone-grades/{id}/relationships/natural-stone', [
+    NaturalStoneGradeNaturalStoneRelationshipController::class, 'index'
+])->name(NaturalStoneGradeNameRoutsEnum::RELATIONSHIP_TO_NATURAL_STONE->value);
+Route::get('natural-stone-grades/{id}/stone', [NaturalStoneGradeNaturalStoneRelatedController::class, 'index'])
+    ->name(NaturalStoneGradeNameRoutsEnum::RELATED_TO_NATURAL_STONE->value);
+
+//  many-to-one NaturalStoneGrade to StoneGrade
+Route::get('natural-stone-grades/{id}/relationships/stone-grade', [
+    NaturalStoneGradesStoneGradeRelationshipController::class, 'index'
+])->name(NaturalStoneGradeNameRoutsEnum::RELATIONSHIP_TO_STONE_GRADE->value);
+Route::get('natural-stone-grades/{id}/stone-grade', [NaturalStoneGradesStoneGradeRelatedController::class, 'index'])
+    ->name(NaturalStoneGradeNameRoutsEnum::RELATED_TO_STONE_GRADE->value);
 
 /*************************** IMITATION STONES *************************/
 // CRUD
@@ -203,7 +221,7 @@ Route::delete('imitation-stones/{id}', [ImitationStoneController::class,'destroy
 ->name(ImitationStoneNameRoutesEnum::CRUD_DELETE->value);
 
 // RELATIONSHIPS
-//  one-to-many ImitationStone to Stone
+//  one-to-one ImitationStone to Stone
 Route::get('imitation-stones/{id}/relationships/stone', [ImitationStoneStoneRelationshipController::class, 'index'])
     ->name(ImitationStoneNameRoutesEnum::RELATIONSHIP_TO_STONE->value);
 //Route::patch('imitation-stones/{id}/relationships/stone', [ImitationStoneStoneRelationshipController::class, 'update'])
@@ -256,7 +274,7 @@ Route::get('stone-grades/{id}/relationships/natural-stone-grades', [
 ])->name(StoneGradeNameRoutesEnum::RELATIONSHIP_TO_NATURAL_STONE_GRADES->value);
 //Route::patch('stone-grades/{id}/relationships/grown-stones', [StoneGradeNaturalStoneGradesRelationshipController::class, 'update'])
 //    ->name('stone-grade.relationships.natural-stone-grades');
-Route::get('stone-families/{id}/natural-stone-grades', [StoneGradeNaturalStoneGradesRelatedController::class, 'index'])
+Route::get('stone-grades/{id}/natural-stone-grades', [StoneGradeNaturalStoneGradesRelatedController::class, 'index'])
     ->name(StoneGradeNameRoutesEnum::RELATED_TO_NATURAL_STONE_GRADES->value);
 
 /*************************** STONE FAMILIES *************************/

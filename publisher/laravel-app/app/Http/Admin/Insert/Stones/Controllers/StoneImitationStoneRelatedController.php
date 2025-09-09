@@ -4,6 +4,7 @@ namespace App\Http\Admin\Insert\Stones\Controllers;
 
 use App\Http\Admin\Insert\ImitationStones\Resources\ImitationStoneResource;
 use App\Http\Controllers\Controller;
+use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
 use Domain\Inserts\Stones\Services\Relationships\StoneImitationStoneRelationshipService;
 use Illuminate\Http\JsonResponse;
 
@@ -17,6 +18,10 @@ class StoneImitationStoneRelatedController extends Controller
     {
         $model = $this->service->index($id);
 
-        return (new ImitationStoneResource($model))->response();
+        if ($model) {
+            return (new ImitationStoneResource($model))->response();
+        } else {
+            return response()->json()->setStatusCode(204);
+        }
     }
 }

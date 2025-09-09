@@ -17,6 +17,11 @@ class StoneNaturalStoneRelatedController extends Controller
     {
         $model = $this->service->index($id);
 
-        return (new NaturalStoneResource($model))->response();
+        if ($model) {
+            return (new NaturalStoneResource($model))->response();
+        } else {
+            return response()->json()->setStatusCode(204);
+        }
+
     }
 }

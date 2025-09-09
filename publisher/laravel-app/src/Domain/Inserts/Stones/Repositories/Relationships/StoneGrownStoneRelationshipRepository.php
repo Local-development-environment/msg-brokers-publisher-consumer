@@ -9,7 +9,7 @@ use Domain\Inserts\Stones\Models\Stone;
 
 final class StoneGrownStoneRelationshipRepository
 {
-    public function index(int $id): GrownStone
+    public function index(int $id): GrownStone|null
     {
         return Stone::find($id)->grownStone;
     }

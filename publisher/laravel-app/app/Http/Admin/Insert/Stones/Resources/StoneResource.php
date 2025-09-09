@@ -50,12 +50,14 @@ class StoneResource extends JsonResource
             ]
         ];
     }
-protected function relations(): array
-{
-    return [
-        StoneTypeOriginResource::class => $this->whenLoaded(StoneRelationshipsEnum::TYPE_ORIGIN->value),
-        ImitationStoneResource::class => $this->whenLoaded(StoneRelationshipsEnum::IMITATION_STONE->value),
-        GrownStoneResource::class => $this->whenLoaded(StoneRelationshipsEnum::GROWN_STONE->value),
-        NaturalStoneResource::class => $this->whenLoaded(StoneRelationshipsEnum::NATURAL_STONE->value),
-    ];
-}}
+
+    protected function relations(): array
+    {
+        return [
+            StoneTypeOriginResource::class => $this->whenLoaded(StoneRelationshipsEnum::TYPE_ORIGIN->value),
+            ImitationStoneResource::class => $this->whenLoaded(StoneRelationshipsEnum::IMITATION_STONE->value),
+            GrownStoneResource::class => $this->whenLoaded(StoneRelationshipsEnum::GROWN_STONE->value),
+            NaturalStoneResource::class => $this->whenLoaded(StoneRelationshipsEnum::NATURAL_STONE->value),
+        ];
+    }
+}
