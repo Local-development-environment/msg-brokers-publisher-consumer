@@ -25,6 +25,8 @@ use App\Http\Admin\Insert\StoneFamilies\Controllers\StoneFamilyGrownStonesRelati
 use App\Http\Admin\Insert\StoneFamilies\Controllers\StoneFamilyNaturalStonesRelatedController;
 use App\Http\Admin\Insert\StoneFamilies\Controllers\StoneFamilyNaturalStonesRelationshipController;
 use App\Http\Admin\Insert\StoneGrades\Controllers\StoneGradeController;
+use App\Http\Admin\Insert\StoneGrades\Controllers\StoneGradeNaturalStoneGradesRelatedController;
+use App\Http\Admin\Insert\StoneGrades\Controllers\StoneGradeNaturalStoneGradesRelationshipController;
 use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupController;
 use App\Http\Admin\Insert\StoneMetrics\Controllers\StoneMetricController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneController;
@@ -42,6 +44,7 @@ use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRela
 use Domain\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
+use Domain\Inserts\StoneGrades\Enums\StoneGradeNameRoutesEnum;
 use Domain\Inserts\Stones\Enums\StoneNameRoutesEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginNameRoutesEnum;
 
@@ -247,6 +250,14 @@ Route::patch('stone-grades/{id}', [StoneGradeController::class,'update']);
 Route::delete('stone-grades/{id}', [StoneGradeController::class,'destroy']);
 
 // RELATIONSHIPS
+//  one-to-many StoneGrade to NaturalStoneGrades
+Route::get('stone-grades/{id}/relationships/natural-stone-grades', [
+    StoneGradeNaturalStoneGradesRelationshipController::class, 'index'
+])->name(StoneGradeNameRoutesEnum::RELATIONSHIP_TO_NATURAL_STONE_GRADES->value);
+//Route::patch('stone-grades/{id}/relationships/grown-stones', [StoneGradeNaturalStoneGradesRelationshipController::class, 'update'])
+//    ->name('stone-grade.relationships.natural-stone-grades');
+Route::get('stone-families/{id}/natural-stone-grades', [StoneGradeNaturalStoneGradesRelatedController::class, 'index'])
+    ->name(StoneGradeNameRoutesEnum::RELATED_TO_NATURAL_STONE_GRADES->value);
 
 /*************************** STONE FAMILIES *************************/
 // CRUD

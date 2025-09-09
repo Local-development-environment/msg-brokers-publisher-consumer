@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\TypeOrigins\Repositories;
 
+use Domain\Inserts\TypeOrigins\Enums\TypeOriginEnum;
+use Domain\Inserts\TypeOrigins\Enums\TypeOriginRelationshipsEnum;
 use Domain\Inserts\TypeOrigins\Models\TypeOrigin;
 use Illuminate\Contracts\Pagination\Paginator;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -14,9 +16,9 @@ final class StoneTypeOriginRepository
     public function index(array $data): Paginator
     {
         return QueryBuilder::for(TypeOrigin::class)
-            ->allowedIncludes(['stones'])
+            ->allowedIncludes([TypeOriginRelationshipsEnum::STONES->value])
             ->allowedFilters([
-                AllowedFilter::exact('id')
+                AllowedFilter::exact(TypeOriginEnum::PRIMARY_KEY->value),
             ])
             ->paginate($data['per_page'] ?? null)
             ->appends($data);
@@ -31,7 +33,7 @@ final class StoneTypeOriginRepository
     {
         return QueryBuilder::for(TypeOrigin::class)
             ->where('id', $id)
-            ->allowedIncludes(['stones'])
+            ->allowedIncludes([TypeOriginRelationshipsEnum::STONES->value])
             ->firstOrFail();
     }
 
