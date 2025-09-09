@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\Stones\Repositories;
 
+use Domain\Inserts\Stones\Enums\StoneRelationshipsEnum;
 use Domain\Inserts\Stones\Models\Stone;
 use Illuminate\Contracts\Pagination\Paginator;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -14,7 +15,12 @@ final class StoneRepository
     public function index(array $data): Paginator
     {
         return QueryBuilder::for(Stone::class)
-            ->allowedIncludes(['typeOrigin','imitationStone'])
+            ->allowedIncludes([
+                StoneRelationshipsEnum::TYPE_ORIGIN->value,
+                StoneRelationshipsEnum::IMITATION_STONE->value,
+                StoneRelationshipsEnum::GROWN_STONE->value,
+                StoneRelationshipsEnum::NATURAL_STONE->value
+            ])
             ->allowedFilters([
                 AllowedFilter::exact('id')
             ])
@@ -31,7 +37,12 @@ final class StoneRepository
     {
         return QueryBuilder::for(Stone::class)
             ->where('id', $id)
-            ->allowedIncludes(['typeOrigin','imitationStone'])
+            ->allowedIncludes([
+                StoneRelationshipsEnum::TYPE_ORIGIN->value,
+                StoneRelationshipsEnum::IMITATION_STONE->value,
+                StoneRelationshipsEnum::GROWN_STONE->value,
+                StoneRelationshipsEnum::NATURAL_STONE->value
+            ])
             ->firstOrFail();
     }
 

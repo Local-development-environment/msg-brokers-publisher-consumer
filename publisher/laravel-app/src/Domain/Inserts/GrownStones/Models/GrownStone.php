@@ -21,6 +21,6 @@ class GrownStone extends Model
 
     public function stone(): BelongsTo
     {
-        return $this->hasOne(Stone::class);
+        return $this->belongsTo(Stone::class);
     }
 }

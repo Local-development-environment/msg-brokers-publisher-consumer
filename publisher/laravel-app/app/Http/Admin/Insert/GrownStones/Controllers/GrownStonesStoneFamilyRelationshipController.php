@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Admin\Insert\Stones\Controllers;
+namespace App\Http\Admin\Insert\GrownStones\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
-use Domain\Inserts\Stones\Services\Relationships\StoneImitationStoneRelationshipService;
+use Domain\Inserts\GrownStones\Services\Relationships\GrownStonesStoneFamilyRelationshipService;
 use Illuminate\Http\JsonResponse;
 
-class StoneImitationStoneRelationshipsController extends Controller
+class GrownStonesStoneFamilyRelationshipController extends Controller
 {
-    public function __construct(public StoneImitationStoneRelationshipService $service)
+    public function __construct(public GrownStonesStoneFamilyRelationshipService $service)
     {
     }
 

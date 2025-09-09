@@ -7,7 +7,7 @@ use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
 use Domain\Inserts\TypeOrigins\Services\Relationships\StoneTypeOriginStonesRelationshipService;
 use Illuminate\Http\JsonResponse;
 
-class StoneTypeOriginStonesRelationshipsController extends Controller
+class StoneTypeOriginStonesRelationshipController extends Controller
 {
     public function __construct(public StoneTypeOriginStonesRelationshipService $service)
     {

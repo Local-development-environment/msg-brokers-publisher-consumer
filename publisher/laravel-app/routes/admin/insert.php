@@ -3,9 +3,13 @@
 declare(strict_types=1);
 
 use App\Http\Admin\Insert\GrownStones\Controllers\GrownStoneController;
+use App\Http\Admin\Insert\GrownStones\Controllers\GrownStonesStoneFamilyRelatedController;
+use App\Http\Admin\Insert\GrownStones\Controllers\GrownStonesStoneFamilyRelationshipController;
+use App\Http\Admin\Insert\GrownStones\Controllers\GrownStoneStoneRelatedController;
+use App\Http\Admin\Insert\GrownStones\Controllers\GrownStoneStoneRelationshipController;
 use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneController;
 use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneStoneRelatedController;
-use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneStoneRelationshipsController;
+use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneStoneRelationshipController;
 use App\Http\Admin\Insert\Inserts\Controllers\InsertController;
 use App\Http\Admin\Insert\InsertStones\Controllers\InsertStoneController;
 use App\Http\Admin\Insert\NaturalStoneGrades\Controllers\NaturalStoneGradeController;
@@ -16,18 +20,28 @@ use App\Http\Admin\Insert\OptionalInfos\Controllers\OptionalInfoController;
 use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourController;
 use App\Http\Admin\Insert\StoneFacets\Controllers\StoneFacetController;
 use App\Http\Admin\Insert\StoneFamilies\Controllers\StoneFamilyController;
+use App\Http\Admin\Insert\StoneFamilies\Controllers\StoneFamilyGrownStonesRelatedController;
+use App\Http\Admin\Insert\StoneFamilies\Controllers\StoneFamilyGrownStonesRelationshipController;
+use App\Http\Admin\Insert\StoneFamilies\Controllers\StoneFamilyNaturalStonesRelatedController;
+use App\Http\Admin\Insert\StoneFamilies\Controllers\StoneFamilyNaturalStonesRelationshipController;
 use App\Http\Admin\Insert\StoneGrades\Controllers\StoneGradeController;
 use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupController;
 use App\Http\Admin\Insert\StoneMetrics\Controllers\StoneMetricController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneController;
+use App\Http\Admin\Insert\Stones\Controllers\StoneGrownStoneRelatedController;
+use App\Http\Admin\Insert\Stones\Controllers\StoneGrownStoneRelationshipController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneImitationStoneRelatedController;
-use App\Http\Admin\Insert\Stones\Controllers\StoneImitationStoneRelationshipsController;
+use App\Http\Admin\Insert\Stones\Controllers\StoneImitationStoneRelationshipController;
+use App\Http\Admin\Insert\Stones\Controllers\StoneNaturalStoneRelatedController;
+use App\Http\Admin\Insert\Stones\Controllers\StoneNaturalStoneRelationshipController;
 use App\Http\Admin\Insert\Stones\Controllers\StonesTypeOriginStoneRelatedController;
-use App\Http\Admin\Insert\Stones\Controllers\StonesTypeOriginStoneRelationshipsController;
+use App\Http\Admin\Insert\Stones\Controllers\StonesTypeOriginStoneRelationshipController;
 use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginController;
 use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRelatedController;
-use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRelationshipsController;
+use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRelationshipController;
+use Domain\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
+use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
 use Domain\Inserts\Stones\Enums\StoneNameRoutesEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginNameRoutesEnum;
 
@@ -66,20 +80,36 @@ Route::delete('stones/{id}', [StoneController::class,'destroy'])
 
 // RELATIONSHIPS
 //  many-to-one Stones to StoneTypeOrigin
-Route::get('stones/{id}/relationships/stone-type-origin', [StonesTypeOriginStoneRelationshipsController::class, 'index'])
+Route::get('stones/{id}/relationships/stone-type-origin', [StonesTypeOriginStoneRelationshipController::class, 'index'])
     ->name(StoneNameRoutesEnum::RELATIONSHIP_TO_STONE_TYPE_ORIGIN->value);
-//Route::patch('stones/{id}/relationships/stone-type-origin', [StonesTypeOriginStoneRelationshipsController::class, 'update'])
+//Route::patch('stones/{id}/relationships/stone-type-origin', [StonesTypeOriginStoneRelationshipController::class, 'update'])
 //    ->name('stones.relationships.stone-type-origin');
 Route::get('stones/{id}/stone-type-origin', [StonesTypeOriginStoneRelatedController::class, 'index'])
     ->name(StoneNameRoutesEnum::RELATED_TO_STONE_TYPE_ORIGIN->value);
 
 //  one-to-one Stone to ImitationStone
-Route::get('stones/{id}/relationships/imitation-stone', [StoneImitationStoneRelationshipsController::class, 'index'])
+Route::get('stones/{id}/relationships/imitation-stone', [StoneImitationStoneRelationshipController::class, 'index'])
     ->name(StoneNameRoutesEnum::RELATIONSHIP_TO_IMITATION_STONE->value);
-//Route::patch('stones/{id}/relationships/stone-type-origin', [StoneImitationStoneRelationshipsController::class, 'update'])
-//    ->name('stones.relationships.imitation-stone');
+//Route::patch('stones/{id}/relationships/stone-type-origin', [StoneImitationStoneRelationshipController::class, 'update'])
+//    ->name('stone.relationships.imitation-stone');
 Route::get('stones/{id}/imitation-stone', [StoneImitationStoneRelatedController::class, 'index'])
     ->name(StoneNameRoutesEnum::RELATED_TO_IMITATION_STONE->value);
+
+//  one-to-one Stone to GrownStone
+Route::get('stones/{id}/relationships/grown-stone', [StoneGrownStoneRelationshipController::class, 'index'])
+    ->name(StoneNameRoutesEnum::RELATIONSHIP_TO_GROWN_STONE->value);
+//Route::patch('stones/{id}/relationships/stone-type-origin', [StoneGrownStoneRelationshipController::class, 'update'])
+//    ->name('stone.relationships.grown-stone');
+Route::get('stones/{id}/grown-stone', [StoneGrownStoneRelatedController::class, 'index'])
+    ->name(StoneNameRoutesEnum::RELATED_TO_GROWN_STONE->value);
+
+//  one-to-one Stone to NaturalStone
+Route::get('stones/{id}/relationships/natural-stone', [StoneNaturalStoneRelationshipController::class, 'index'])
+    ->name(StoneNameRoutesEnum::RELATIONSHIP_TO_NATURAL_STONE->value);
+//Route::patch('stones/{id}/relationships/stone-type-origin', [StoneNaturalStoneRelationshipsController::class, 'update'])
+//    ->name('stone.relationships.natural-stone');
+Route::get('stones/{id}/natural-stone', [StoneNaturalStoneRelatedController::class, 'index'])
+    ->name(StoneNameRoutesEnum::RELATED_TO_NATURAL_STONE->value);
 
 /*************************** STONE COLOURS *************************/
 // CRUD
@@ -120,6 +150,21 @@ Route::patch('grown-stones/{id}', [GrownStoneController::class,'update']);
 Route::delete('grown-stones/{id}', [GrownStoneController::class,'destroy']);
 
 // RELATIONSHIPS
+//  one-to-one GrownStone to Stone
+Route::get('grown-stones/{id}/relationships/stone', [GrownStoneStoneRelationshipController::class, 'index'])
+    ->name(GrownStoneNameRoutesEnum::RELATIONSHIP_TO_STONE->value);
+//Route::patch('grown-stones/{id}/relationships/stone', [GrownStoneStoneRelationshipController::class, 'update'])
+//    ->name('grown-stone.relationships.stone');
+Route::get('grown-stones/{id}/stone', [GrownStoneStoneRelatedController::class, 'index'])
+    ->name(GrownStoneNameRoutesEnum::RELATED_TO_STONE->value);
+
+//  many-to-one GrownStones to StoneFamily
+Route::get('grown-stones/{id}/relationships/stone-family', [GrownStonesStoneFamilyRelationshipController::class, 'index'])
+    ->name(GrownStoneNameRoutesEnum::RELATIONSHIP_TO_STONE_FAMILY->value);
+//Route::patch('grown-stones/{id}/relationships/stone-family', [GrownStoneStoneFamilyRelationshipController::class, 'update'])
+//    ->name('grown-stones.relationships.stone-family');
+Route::get('grown-stones/{id}/stone-family', [GrownStonesStoneFamilyRelatedController::class, 'index'])
+    ->name(GrownStoneNameRoutesEnum::RELATED_TO_STONE_FAMILY->value);
 
 /*************************** NATURAL STONES *************************/
 // CRUD
@@ -155,10 +200,10 @@ Route::delete('imitation-stones/{id}', [ImitationStoneController::class,'destroy
 ->name(ImitationStoneNameRoutesEnum::CRUD_DELETE->value);
 
 // RELATIONSHIPS
-//  one-to-many StoneTypeOrigin to Stones
-Route::get('imitation-stones/{id}/relationships/stone', [ImitationStoneStoneRelationshipsController::class, 'index'])
+//  one-to-many ImitationStone to Stone
+Route::get('imitation-stones/{id}/relationships/stone', [ImitationStoneStoneRelationshipController::class, 'index'])
     ->name(ImitationStoneNameRoutesEnum::RELATIONSHIP_TO_STONE->value);
-//Route::patch('imitation-stones/{id}/relationships/stone', [ImitationStoneStoneRelationshipsController::class, 'update'])
+//Route::patch('imitation-stones/{id}/relationships/stone', [ImitationStoneStoneRelationshipController::class, 'update'])
 //    ->name('stone-type-origin.relationships.stones');
 Route::get('imitation-stones/{id}/stone', [ImitationStoneStoneRelatedController::class, 'index'])
     ->name(ImitationStoneNameRoutesEnum::RELATED_TO_STONE->value);
@@ -212,6 +257,21 @@ Route::patch('stone-families/{id}', [StoneFamilyController::class,'update']);
 Route::delete('stone-families/{id}', [StoneFamilyController::class,'destroy']);
 
 // RELATIONSHIPS
+//  one-to-many StoneFamily to GrownStones
+Route::get('stone-families/{id}/relationships/grown-stones', [StoneFamilyGrownStonesRelationshipController::class, 'index'])
+    ->name(StoneFamilyNameRoutesEnum::RELATIONSHIP_TO_GROWN_STONES->value);
+//Route::patch('stone-families/{id}/relationships/grown-stones', [StoneFamilyGrownStonesRelationshipController::class, 'update'])
+//    ->name('stone-family.relationships.grown-stones');
+Route::get('stone-families/{id}/grown-stones', [StoneFamilyGrownStonesRelatedController::class, 'index'])
+    ->name(StoneFamilyNameRoutesEnum::RELATED_TO_GROWN_STONES->value);
+
+//  one-to-many StoneFamily to NaturalStones
+Route::get('stone-families/{id}/relationships/natural-stones', [StoneFamilyNaturalStonesRelationshipController::class, 'index'])
+    ->name(StoneFamilyNameRoutesEnum::RELATIONSHIP_TO_NATURAL_STONES->value);
+//Route::patch('stone-families/{id}/relationships/natural-stones', [StoneFamilyNaturalStonesRelationshipController::class, 'update'])
+//    ->name('stone-family.relationships.natural-stones');
+Route::get('stone-families/{id}/natural-stones', [StoneFamilyNaturalStonesRelatedController::class, 'index'])
+    ->name(StoneFamilyNameRoutesEnum::RELATED_TO_NATURAL_STONES->value);
 
 /*************************** STONE GROUPS *************************/
 // CRUD
@@ -238,9 +298,9 @@ Route::delete('stone-type-origins/{id}', [StoneTypeOriginController::class,'dest
 
 // RELATIONSHIPS
 //  one-to-many StoneTypeOrigin to Stones
-Route::get('stone-type-origins/{id}/relationships/stones', [StoneTypeOriginStonesRelationshipsController::class, 'index'])
+Route::get('stone-type-origins/{id}/relationships/stones', [StoneTypeOriginStonesRelationshipController::class, 'index'])
     ->name(TypeOriginNameRoutesEnum::RELATIONSHIP_TO_STONES->value);
-//Route::patch('stone-type-origins/{id}/relationships/stones', [StoneTypeOriginStonesRelationshipsController::class, 'update'])
+//Route::patch('stone-type-origins/{id}/relationships/stones', [StoneTypeOriginStonesRelationshipController::class, 'update'])
 //    ->name('stone-type-origin.relationships.stones');
 Route::get('stone-type-origins/{id}/stones', [StoneTypeOriginStonesRelatedController::class, 'index'])
     ->name(TypeOriginNameRoutesEnum::RELATED_TO_STONES->value);

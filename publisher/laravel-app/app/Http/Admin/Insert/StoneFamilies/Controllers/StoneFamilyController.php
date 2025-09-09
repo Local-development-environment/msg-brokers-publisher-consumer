@@ -2,17 +2,27 @@
 
 namespace App\Http\Admin\Insert\StoneFamilies\Controllers;
 
+use App\Http\Admin\Insert\StoneFamilies\Resources\StoneFamilyCollection;
 use App\Http\Controllers\Controller;
+use Domain\Inserts\StoneFamilies\Services\StoneFamilyService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class StoneFamilyController extends Controller
 {
+    public function __construct(public StoneFamilyService $insertService)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        //
+        $data = $request->all();
+        $items = $this->insertService->index($data);
+
+        return (new StoneFamilyCollection($items))->response();
     }
 
     /**

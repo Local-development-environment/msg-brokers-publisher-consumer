@@ -2,7 +2,7 @@
 
 namespace Domain\Inserts\StoneFamilies\Enums;
 
-enum StoneFamilyNameRouteEnum: string
+enum StoneFamilyNameRoutesEnum: string
 {
     case CRUD_INDEX                     = 'stone-families.index';
     case CRUD_SHOW                      = 'stone-families.show';

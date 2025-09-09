@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Domain\Inserts\StoneFamilies\Services;
+namespace Domain\Inserts\GrownStones\Services;
 
-use Domain\Inserts\StoneFamilies\Models\StoneFamily;
-use Domain\Inserts\StoneFamilies\Repositories\StoneFamilyRepository;
+use Domain\Inserts\GrownStones\Models\GrownStone;
+use Domain\Inserts\GrownStones\Repositories\GrownStoneRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Throwable;
 
-final class StoneFamilyService
+final class GrownStoneService
 {
     public function __construct(
-        public StoneFamilyRepository $repository,
-//        public StoneTypeOriginPipeline $pipeline
+        public GrownStoneRepository $repository,
+//        public GrownStonePipeline $pipeline
     ) {}
 
     public function index(array $data): Paginator
@@ -24,12 +24,12 @@ final class StoneFamilyService
     /**
      * @throws Throwable
      */
-    public function store(array $data): StoneFamily
+    public function store(array $data): GrownStone
     {
 //        return $this->pipeline->store($data);
     }
 
-    public function show(array $data, int $id): StoneFamily
+    public function show(array $data, int $id): GrownStone
     {
         return $this->repository->show($data, $id);
     }
