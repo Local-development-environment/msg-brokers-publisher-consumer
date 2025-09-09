@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ImitationStone extends Model
 {
-    protected $table = ImitationStoneEnum::TABLE_NAME->value;
+    protected $table = ImitationStoneEnum::TABLE->value;
 
-    public const string TYPE_RESOURCE = ImitationStoneEnum::TYPE_RESOURCE->value;
+    public const string TYPE_RESOURCE = ImitationStoneEnum::RESOURCE->value;
 
     public function stone(): BelongsTo
     {
