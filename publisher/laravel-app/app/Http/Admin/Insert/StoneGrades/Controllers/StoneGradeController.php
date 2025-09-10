@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class StoneGradeController extends Controller
 {
-    public function __construct(public StoneGradeService $insertService)
+    public function __construct(public StoneGradeService $service)
     {
     }
 
@@ -20,7 +20,7 @@ class StoneGradeController extends Controller
     public function index(Request $request): JsonResponse
     {
         $data = $request->all();
-        $items = $this->insertService->index($data);
+        $items = $this->service->index($data);
 
         return (new StoneGradeCollection($items))->response();
     }

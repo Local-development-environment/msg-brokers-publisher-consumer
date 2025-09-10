@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class StoneTypeOriginController extends Controller
 {
-    public function __construct(public StoneTypeOriginService $insertService)
+    public function __construct(public StoneTypeOriginService $service)
     {
     }
 
@@ -20,7 +20,7 @@ class StoneTypeOriginController extends Controller
     public function index(Request $request): JsonResponse
     {
         $data = $request->all();
-        $items = $this->insertService->index($data);
+        $items = $this->service->index($data);
 
         return (new StoneTypeOriginCollection($items))->response();
     }

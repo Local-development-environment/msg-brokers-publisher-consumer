@@ -5,7 +5,7 @@ namespace App\Http\Admin\Insert\StoneFamilies\Resources;
 use App\Http\Admin\Insert\GrownStones\Resources\GrownStoneResource;
 use App\Http\Admin\Insert\NaturalStones\Resources\NaturalStoneResource;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
-use Domain\Inserts\StoneFamilies\Enums\StoneFamilyEnum;
+use Domain\Inserts\StoneFamilies\Enums\StoneGroupEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyRelationshipsEnum;
 use Domain\Inserts\StoneFamilies\Models\StoneFamily;
@@ -26,7 +26,7 @@ class StoneFamilyResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => StoneFamilyEnum::RESOURCE->value,
+            'type' => StoneGroupEnum::RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 StoneFamilyRelationshipsEnum::GROWN_STONES->value => $this->sectionRelationships(

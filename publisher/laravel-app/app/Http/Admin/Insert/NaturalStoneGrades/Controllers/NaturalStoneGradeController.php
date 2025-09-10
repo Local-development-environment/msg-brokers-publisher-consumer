@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class NaturalStoneGradeController extends Controller
 {
-    public function __construct(public NaturalStoneGradeService $insertService)
+    public function __construct(public NaturalStoneGradeService $service)
     {
     }
 
@@ -20,7 +20,7 @@ class NaturalStoneGradeController extends Controller
     public function index(Request $request): JsonResponse
     {
         $data = $request->all();
-        $items = $this->insertService->index($data);
+        $items = $this->service->index($data);
 
         return (new NaturalStoneGradeCollection($items))->response();
     }

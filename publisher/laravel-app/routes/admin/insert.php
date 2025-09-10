@@ -32,6 +32,8 @@ use App\Http\Admin\Insert\StoneGrades\Controllers\StoneGradeController;
 use App\Http\Admin\Insert\StoneGrades\Controllers\StoneGradeNaturalStoneGradesRelatedController;
 use App\Http\Admin\Insert\StoneGrades\Controllers\StoneGradeNaturalStoneGradesRelationshipController;
 use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupController;
+use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupNaturalStonesRelatedController;
+use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupNaturalStonesRelationshipController;
 use App\Http\Admin\Insert\StoneMetrics\Controllers\StoneMetricController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneGrownStoneRelatedController;
@@ -50,6 +52,7 @@ use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
 use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeNameRoutsEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeNameRoutesEnum;
+use Domain\Inserts\StoneGroups\Enums\StoneGroupNameRoutesEnum;
 use Domain\Inserts\Stones\Enums\StoneNameRoutesEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginNameRoutesEnum;
 
@@ -311,6 +314,11 @@ Route::patch('stone-groups/{id}', [StoneGroupController::class,'update']);
 Route::delete('stone-groups/{id}', [StoneGroupController::class,'destroy']);
 
 // RELATIONSHIPS
+//  one-to-many StoneGroup to NaturalStones
+Route::get('stone-groups/{id}/relationships/natural-stones', [StoneGroupNaturalStonesRelationshipController::class, 'index'])
+    ->name(StoneGroupNameRoutesEnum::RELATIONSHIP_TO_NATURAL_STONES->value);
+Route::get('stone-groups/{id}/natural-stones', [StoneGroupNaturalStonesRelatedController::class, 'index'])
+    ->name(StoneGroupNameRoutesEnum::RELATED_TO_NATURAL_STONES->value);
 
 /*************************** STONE TYPE ORIGINS *************************/
 // CRUD

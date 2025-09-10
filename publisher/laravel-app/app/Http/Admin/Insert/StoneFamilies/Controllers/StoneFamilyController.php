@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class StoneFamilyController extends Controller
 {
-    public function __construct(public StoneFamilyService $insertService)
+    public function __construct(public StoneFamilyService $service)
     {
     }
 
@@ -20,7 +20,7 @@ class StoneFamilyController extends Controller
     public function index(Request $request): JsonResponse
     {
         $data = $request->all();
-        $items = $this->insertService->index($data);
+        $items = $this->service->index($data);
 
         return (new StoneFamilyCollection($items))->response();
     }
