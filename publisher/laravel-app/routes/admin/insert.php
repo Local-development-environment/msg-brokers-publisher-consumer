@@ -19,6 +19,8 @@ use App\Http\Admin\Insert\NaturalStoneGrades\Controllers\NaturalStoneGradesStone
 use App\Http\Admin\Insert\NaturalStoneGrades\Controllers\NaturalStoneGradesStoneGradeRelationshipController;
 use App\Http\Admin\Insert\NaturalStones\Controllers\NaturalStoneController;
 use App\Http\Admin\Insert\OpticalEffects\Controllers\OpticalEffectController;
+use App\Http\Admin\Insert\OpticalEffects\Controllers\OpticalEffectOpticalEffectStonesRelatedController;
+use App\Http\Admin\Insert\OpticalEffects\Controllers\OpticalEffectOpticalEffectStonesRelationshipController;
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStoneController;
 use App\Http\Admin\Insert\OptionalInfos\Controllers\OptionalInfoController;
 use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourController;
@@ -50,6 +52,7 @@ use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRela
 use Domain\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
 use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeNameRoutsEnum;
+use Domain\Inserts\OpticalEffects\Enums\OpticalEffectNameRoutesEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeNameRoutesEnum;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupNameRoutesEnum;
@@ -241,6 +244,14 @@ Route::patch('optical-effects/{id}', [OpticalEffectController::class,'update']);
 Route::delete('optical-effects/{id}', [OpticalEffectController::class,'destroy']);
 
 // RELATIONSHIPS
+//  one-to-many OpticalEffect to OpticalEffectStones
+Route::get('optical-effects/{id}/relationships/optical-effect-stones', [
+    OpticalEffectOpticalEffectStonesRelationshipController::class, 'index'
+])->name(OpticalEffectNameRoutesEnum::RELATIONSHIP_TO_OPTICAL_EFFECT_STONES->value);
+Route::get('optical-effects/{id}/optical-effect-stones', [
+    OpticalEffectOpticalEffectStonesRelatedController::class, 'index'
+])->name(OpticalEffectNameRoutesEnum::RELATED_TO_OPTICAL_EFFECT_STONES->value);
+
 
 /*************************** OPTICAL EFFECT STONES *************************/
 // CRUD

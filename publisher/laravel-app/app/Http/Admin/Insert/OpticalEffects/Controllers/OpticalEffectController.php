@@ -2,17 +2,27 @@
 
 namespace App\Http\Admin\Insert\OpticalEffects\Controllers;
 
+use App\Http\Admin\Insert\OpticalEffects\Resources\OpticalEffectCollection;
 use App\Http\Controllers\Controller;
+use Domain\Inserts\OpticalEffects\Services\OpticalEffectService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class OpticalEffectController extends Controller
 {
+    public function __construct(public OpticalEffectService $service)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        //
+        $data = $request->all();
+        $items = $this->service->index($data);
+
+        return (new OpticalEffectCollection($items))->response();
     }
 
     /**
