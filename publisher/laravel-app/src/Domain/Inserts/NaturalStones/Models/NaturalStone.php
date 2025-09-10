@@ -34,6 +34,6 @@ class NaturalStone extends Model
 
     public function stoneGroup(): BelongsTo
     {
-        return $this->hasOne(StoneGroup::class);
+        return $this->BelongsTo(StoneGroup::class);
     }
 }

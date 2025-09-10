@@ -146,7 +146,6 @@ trait ProbabilityCoefficientsTrait
         $tmp = [];
 
         foreach ($items as $item) {
-            dump($item);
             if ($item['name'] === $stone) {
                 foreach ($item['colour'] as $colour) {
                     for ($i = 0; $i < $colour['probability']; $i++) {

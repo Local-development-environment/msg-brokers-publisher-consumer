@@ -18,6 +18,14 @@ use App\Http\Admin\Insert\NaturalStoneGrades\Controllers\NaturalStoneGradeNatura
 use App\Http\Admin\Insert\NaturalStoneGrades\Controllers\NaturalStoneGradesStoneGradeRelatedController;
 use App\Http\Admin\Insert\NaturalStoneGrades\Controllers\NaturalStoneGradesStoneGradeRelationshipController;
 use App\Http\Admin\Insert\NaturalStones\Controllers\NaturalStoneController;
+use App\Http\Admin\Insert\NaturalStones\Controllers\NaturalStoneNaturalStoneGradeRelatedController;
+use App\Http\Admin\Insert\NaturalStones\Controllers\NaturalStoneNaturalStoneGradeRelationshipController;
+use App\Http\Admin\Insert\NaturalStones\Controllers\NaturalStonesStoneFamilyRelatedController;
+use App\Http\Admin\Insert\NaturalStones\Controllers\NaturalStonesStoneFamilyRelationshipController;
+use App\Http\Admin\Insert\NaturalStones\Controllers\NaturalStonesStoneGroupRelatedController;
+use App\Http\Admin\Insert\NaturalStones\Controllers\NaturalStonesStoneGroupRelationshipController;
+use App\Http\Admin\Insert\NaturalStones\Controllers\NaturalStoneStoneRelatedController;
+use App\Http\Admin\Insert\NaturalStones\Controllers\NaturalStoneStoneRelationshipController;
 use App\Http\Admin\Insert\OpticalEffects\Controllers\OpticalEffectController;
 use App\Http\Admin\Insert\OpticalEffects\Controllers\OpticalEffectOpticalEffectStonesRelatedController;
 use App\Http\Admin\Insert\OpticalEffects\Controllers\OpticalEffectOpticalEffectStonesRelationshipController;
@@ -56,6 +64,7 @@ use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRela
 use Domain\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
 use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeNameRoutsEnum;
+use Domain\Inserts\NaturalStones\Enums\NaturalStoneNameRoutesEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectNameRoutesEnum;
 use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneNameRoutesEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
@@ -195,6 +204,33 @@ Route::patch('natural-stones/{id}', [NaturalStoneController::class,'update']);
 Route::delete('natural-stones/{id}', [NaturalStoneController::class,'destroy']);
 
 // RELATIONSHIPS
+//  one-to-one NaturalStone to Stone
+Route::get('natural-stones/{id}/relationships/stone', [
+    NaturalStoneStoneRelationshipController::class, 'index'
+])->name(NaturalStoneNameRoutesEnum::RELATIONSHIP_TO_STONE->value);
+Route::get('natural-stones/{id}/stone', [NaturalStoneStoneRelatedController::class, 'index'])
+    ->name(NaturalStoneNameRoutesEnum::RELATED_TO_STONE->value);
+
+//  one-to-one NaturalStone to NaturalStoneGrade
+Route::get('natural-stones/{id}/relationships/natural-stone-grade', [
+    NaturalStoneNaturalStoneGradeRelationshipController::class, 'index'
+])->name(NaturalStoneNameRoutesEnum::RELATIONSHIP_TO_NATURAL_STONE_GRADE->value);
+Route::get('natural-stones/{id}/natural-stone-grade', [NaturalStoneNaturalStoneGradeRelatedController::class, 'index'])
+    ->name(NaturalStoneNameRoutesEnum::RELATED_TO_NATURAL_STONE_GRADE->value);
+
+//  many-to-one Natural to StoneGroup
+Route::get('natural-stones/{id}/relationships/stone-group', [
+    NaturalStonesStoneGroupRelationshipController::class, 'index'
+])->name(NaturalStoneNameRoutesEnum::RELATIONSHIP_TO_STONE_GROUP->value);
+Route::get('natural-stones/{id}/stone-group', [NaturalStonesStoneGroupRelatedController::class, 'index'])
+    ->name(NaturalStoneNameRoutesEnum::RELATED_TO_STONE_GROUP->value);
+
+//  many-to-one Natural to StoneGroup
+Route::get('natural-stones/{id}/relationships/stone-family', [
+    NaturalStonesStoneFamilyRelationshipController::class, 'index'
+])->name(NaturalStoneNameRoutesEnum::RELATIONSHIP_TO_STONE_FAMILY->value);
+Route::get('natural-stones/{id}/stone-family', [NaturalStonesStoneFamilyRelatedController::class, 'index'])
+    ->name(NaturalStoneNameRoutesEnum::RELATED_TO_STONE_FAMILY->value);
 
 /*************************** NATURAL STONE GRADES *************************/
 // CRUD
@@ -214,7 +250,7 @@ Route::delete('natural-stone-grades/{id}', [NaturalStoneGradeController::class,'
 Route::get('natural-stone-grades/{id}/relationships/natural-stone', [
     NaturalStoneGradeNaturalStoneRelationshipController::class, 'index'
 ])->name(NaturalStoneGradeNameRoutsEnum::RELATIONSHIP_TO_NATURAL_STONE->value);
-Route::get('natural-stone-grades/{id}/stone', [NaturalStoneGradeNaturalStoneRelatedController::class, 'index'])
+Route::get('natural-stone-grades/{id}/natural-stone', [NaturalStoneGradeNaturalStoneRelatedController::class, 'index'])
     ->name(NaturalStoneGradeNameRoutsEnum::RELATED_TO_NATURAL_STONE->value);
 
 //  many-to-one NaturalStoneGrade to StoneGrade

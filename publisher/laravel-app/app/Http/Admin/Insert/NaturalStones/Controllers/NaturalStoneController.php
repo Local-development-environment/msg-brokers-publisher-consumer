@@ -2,17 +2,27 @@
 
 namespace App\Http\Admin\Insert\NaturalStones\Controllers;
 
+use App\Http\Admin\Insert\NaturalStones\Resources\NaturalStoneCollection;
 use App\Http\Controllers\Controller;
+use Domain\Inserts\NaturalStones\Services\NaturalStoneService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class NaturalStoneController extends Controller
 {
+    public function __construct(public NaturalStoneService $service)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        //
+        $data = $request->all();
+        $items = $this->service->index($data);
+
+        return (new NaturalStoneCollection($items))->response();
     }
 
     /**

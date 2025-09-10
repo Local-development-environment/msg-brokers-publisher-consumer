@@ -4,8 +4,10 @@ namespace Domain\Inserts\NaturalStones\Enums;
 
 enum NaturalStoneEnum: string
 {
-    case RESOURCE = 'naturalStones';
-    case TABLE = 'jw_inserts.natural_stones';
-    case PRIMARY_KEY   = 'id';
-    case FK_STONES     = 'jw_inserts.natural_stones.stone_id';
+    case RESOURCE        = 'naturalStones';
+    case TABLE           = 'jw_inserts.natural_stones';
+    case PRIMARY_KEY     = 'id';
+    case FK_STONES       = 'stone_id';
+    case FK_STONE_GROUP  = 'stone_group_id';
+    case FK_STONE_FAMILY = 'stone_family_id';
 }
