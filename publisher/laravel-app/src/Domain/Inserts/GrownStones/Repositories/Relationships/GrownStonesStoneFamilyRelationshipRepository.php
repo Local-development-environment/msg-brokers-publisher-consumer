@@ -11,6 +11,6 @@ final class GrownStonesStoneFamilyRelationshipRepository
 {
     public function index(int $id): StoneFamily
     {
-        return GrownStone::find($id)->stoneFamily;
+        return GrownStone::findOrFail($id)->stoneFamily;
     }
 }

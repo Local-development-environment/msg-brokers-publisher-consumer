@@ -37,7 +37,7 @@ final class ImitationStoneRepository
 
     public function update(array $data, int $id): void
     {
-        ImitationStone::find($id)->update($data);
+        ImitationStone::findOrFail($id)->update($data);
     }
 
     public function destroy(int $id): void

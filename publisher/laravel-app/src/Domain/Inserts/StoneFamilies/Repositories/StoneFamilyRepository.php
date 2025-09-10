@@ -45,7 +45,7 @@ final class StoneFamilyRepository
 
     public function update(array $data, int $id): void
     {
-        StoneFamily::find($id)->update($data);
+        StoneFamily::findOrFail($id)->update($data);
     }
 
     public function destroy(int $id): void

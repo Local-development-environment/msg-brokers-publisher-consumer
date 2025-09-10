@@ -11,6 +11,6 @@ final class OpticalEffectStoneStoneRelationshipRepository
 {
     public function index(int $id): Stone
     {
-        return OpticalEffectStone::find($id)->stone;
+        return OpticalEffectStone::findOrFail($id)->stone;
     }
 }

@@ -11,6 +11,6 @@ final class StonesTypeOriginStoneRelationshipRepository
 {
     public function index(int $id): TypeOrigin
     {
-        return Stone::find($id)->typeOrigin;
+        return Stone::findOrFail($id)->typeOrigin;
     }
 }

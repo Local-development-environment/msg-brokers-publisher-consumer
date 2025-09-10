@@ -45,7 +45,7 @@ final class GrownStoneRepository
 
     public function update(array $data, int $id): void
     {
-        GrownStone::find($id)->update($data);
+        GrownStone::findOrFail($id)->update($data);
     }
 
     public function destroy(int $id): void

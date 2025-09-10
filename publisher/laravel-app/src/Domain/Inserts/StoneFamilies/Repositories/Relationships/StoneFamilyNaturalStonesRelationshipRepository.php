@@ -11,6 +11,6 @@ final class StoneFamilyNaturalStonesRelationshipRepository
 {
     public function index(int $id): Collection
     {
-        return StoneFamily::find($id)->naturalStones;
+        return StoneFamily::findOrFail($id)->naturalStones;
     }
 }

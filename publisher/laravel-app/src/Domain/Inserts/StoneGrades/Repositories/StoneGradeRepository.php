@@ -39,7 +39,7 @@ final class StoneGradeRepository
 
     public function update(array $data, int $id): void
     {
-        StoneGrade::find($id)->update($data);
+        StoneGrade::findOrFail($id)->update($data);
     }
 
     public function destroy(int $id): void

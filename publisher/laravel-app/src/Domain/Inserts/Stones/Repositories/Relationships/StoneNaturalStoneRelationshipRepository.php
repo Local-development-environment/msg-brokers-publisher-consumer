@@ -11,6 +11,6 @@ final class StoneNaturalStoneRelationshipRepository
 {
     public function index(int $id): NaturalStone|null
     {
-        return Stone::find($id)->naturalStone;
+        return Stone::findOrFail($id)->naturalStone;
     }
 }

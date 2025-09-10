@@ -45,7 +45,7 @@ final class NaturalStoneGradeRepository
 
     public function update(array $data, int $id): void
     {
-        NaturalStoneGrade::find($id)->update($data);
+        NaturalStoneGrade::findOrFail($id)->update($data);
     }
 
     public function destroy(int $id): void

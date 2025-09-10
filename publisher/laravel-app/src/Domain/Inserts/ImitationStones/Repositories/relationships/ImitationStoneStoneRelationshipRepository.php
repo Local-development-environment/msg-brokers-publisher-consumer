@@ -11,6 +11,6 @@ final class ImitationStoneStoneRelationshipRepository
 {
     public function index(int $id): Stone
     {
-        return ImitationStone::find($id)->stone;
+        return ImitationStone::findOrFail($id)->stone;
     }
 }

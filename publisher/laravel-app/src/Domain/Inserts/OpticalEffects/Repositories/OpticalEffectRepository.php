@@ -39,7 +39,7 @@ final class OpticalEffectRepository
 
     public function update(array $data, int $id): void
     {
-        OpticalEffect::find($id)->update($data);
+        OpticalEffect::findOrFail($id)->update($data);
     }
 
     public function destroy(int $id): void

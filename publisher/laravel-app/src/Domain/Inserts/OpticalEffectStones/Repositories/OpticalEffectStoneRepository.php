@@ -45,7 +45,7 @@ final class OpticalEffectStoneRepository
 
     public function update(array $data, int $id): void
     {
-        OpticalEffectStone::find($id)->update($data);
+        OpticalEffectStone::findOrFail($id)->update($data);
     }
 
     public function destroy(int $id): void

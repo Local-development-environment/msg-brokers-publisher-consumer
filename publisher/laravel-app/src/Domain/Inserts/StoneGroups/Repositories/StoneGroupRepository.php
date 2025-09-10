@@ -39,7 +39,7 @@ final class StoneGroupRepository
 
     public function update(array $data, int $id): void
     {
-        StoneGroup::find($id)->update($data);
+        StoneGroup::findOrFail($id)->update($data);
     }
 
     public function destroy(int $id): void
