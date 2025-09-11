@@ -2,6 +2,7 @@
 
 namespace Domain\Inserts\StoneColours\Models;
 
+use Domain\Inserts\InsertStones\Enums\InsertStoneEnum;
 use Domain\Inserts\InsertStones\Models\InsertStone;
 use Domain\Inserts\StoneColours\Enums\StoneColourEnum;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,6 @@ class StoneColour extends Model
 
     public function insertStones(): HasMany
     {
-        return $this->hasMany(InsertStone::class);
+        return $this->hasMany(InsertStone::class, InsertStoneEnum::FK_STONE_COLOUR->value);
     }
 }

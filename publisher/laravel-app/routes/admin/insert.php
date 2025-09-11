@@ -44,6 +44,8 @@ use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStoneSton
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStoneStoneRelationshipController;
 use App\Http\Admin\Insert\OptionalInfos\Controllers\OptionalInfoController;
 use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourController;
+use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourInsertStonesRelatedController;
+use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourInsertStonesRelationshipController;
 use App\Http\Admin\Insert\StoneFacets\Controllers\StoneFacetController;
 use App\Http\Admin\Insert\StoneFamilies\Controllers\StoneFamilyController;
 use App\Http\Admin\Insert\StoneFamilies\Controllers\StoneFamilyGrownStonesRelatedController;
@@ -76,6 +78,7 @@ use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeNameRoutsEnum;
 use Domain\Inserts\NaturalStones\Enums\NaturalStoneNameRoutesEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectNameRoutesEnum;
 use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneNameRoutesEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourNameRoutesEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeNameRoutesEnum;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupNameRoutesEnum;
@@ -180,6 +183,11 @@ Route::patch('stone-colours/{id}', [StoneColourController::class,'update']);
 Route::delete('stone-colours/{id}', [StoneColourController::class,'destroy']);
 
 // RELATIONSHIPS
+//  one-to-many InsertStone to Inserts
+Route::get('stone-colours/{id}/relationships/insert-stones', [StoneColourInsertStonesRelationshipController::class, 'index'])
+    ->name(StoneColourNameRoutesEnum::RELATIONSHIP_TO_INSERT_STONES->value);
+Route::get('stone-colours/{id}/insert-stones', [StoneColourInsertStonesRelatedController::class, 'index'])
+    ->name(StoneColourNameRoutesEnum::RELATED_TO_INSERT_STONES->value);
 
 /*************************** STONE METRICS *************************/
 // CRUD

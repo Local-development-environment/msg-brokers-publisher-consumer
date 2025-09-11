@@ -2,17 +2,27 @@
 
 namespace App\Http\Admin\Insert\StoneColours\Controllers;
 
+use App\Http\Admin\Insert\StoneColours\Resources\StoneColourCollection;
 use App\Http\Controllers\Controller;
+use Domain\Inserts\StoneColours\Services\StoneColourService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class StoneColourController extends Controller
 {
+    public function __construct(public StoneColourService $service)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        //
+        $data = $request->all();
+        $items = $this->service->index($data);
+
+        return (new StoneColourCollection($items))->response();
     }
 
     /**
