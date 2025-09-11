@@ -2,8 +2,9 @@
 
 namespace Domain\Inserts\StoneMetrics\Models;
 
+use Domain\Inserts\Inserts\Enums\InsertEnum;
+use Domain\Inserts\Inserts\Models\Insert;
 use Domain\Inserts\StoneMetrics\Enums\StoneMetricEnum;
-use Domain\Jewelleries\JewelleryBuilder\Properties\Insert;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -13,8 +14,8 @@ class StoneMetric extends Model
 
     public const string TYPE_RESOURCE = StoneMetricEnum::RESOURCE->value;
 
-    public function inserts(): HasOne
+    public function insert(): HasOne
     {
-        return $this->hasOne(Insert::class);
+        return $this->hasOne(Insert::class, InsertEnum::FK_METRIC->value);
     }
 }

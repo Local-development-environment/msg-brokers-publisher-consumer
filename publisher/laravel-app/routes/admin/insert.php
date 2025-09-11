@@ -61,6 +61,8 @@ use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupController;
 use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupNaturalStonesRelatedController;
 use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupNaturalStonesRelationshipController;
 use App\Http\Admin\Insert\StoneMetrics\Controllers\StoneMetricController;
+use App\Http\Admin\Insert\StoneMetrics\Controllers\StoneMetricInsertRelatedController;
+use App\Http\Admin\Insert\StoneMetrics\Controllers\StoneMetricInsertRelationshipController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneGrownStoneRelatedController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneGrownStoneRelationshipController;
@@ -201,6 +203,11 @@ Route::patch('stone-metrics/{id}', [StoneMetricController::class,'update']);
 Route::delete('stone-metrics/{id}', [StoneMetricController::class,'destroy']);
 
 // RELATIONSHIPS
+//  one-to-one StoneMetric to Insert
+Route::get('stone-metrics/{id}/relationships/insert', [StoneMetricInsertRelationshipController::class, 'index'])
+    ->name(StoneNameRoutesEnum::RELATIONSHIP_TO_NATURAL_STONE->value);
+Route::get('stone-metrics/{id}/insert', [StoneMetricInsertRelatedController::class, 'index'])
+    ->name(StoneNameRoutesEnum::RELATED_TO_NATURAL_STONE->value);
 
 /*************************** STONE FACETS *************************/
 // CRUD

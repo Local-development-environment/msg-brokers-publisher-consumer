@@ -2,17 +2,27 @@
 
 namespace App\Http\Admin\Insert\StoneMetrics\Controllers;
 
+use App\Http\Admin\Insert\StoneMetrics\Resources\StoneMetricCollection;
 use App\Http\Controllers\Controller;
+use Domain\Inserts\StoneMetrics\Services\StoneMetricService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class StoneMetricController extends Controller
 {
+    public function __construct(public StoneMetricService $service)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        //
+        $data = $request->all();
+        $items = $this->service->index($data);
+
+        return (new StoneMetricCollection($items))->response();
     }
 
     /**
