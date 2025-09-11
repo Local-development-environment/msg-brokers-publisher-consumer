@@ -13,7 +13,7 @@ class StoneColour extends Model
 
     public const string TYPE_RESOURCE = StoneColourEnum::RESOURCE->value;
 
-    public function stoneInserts(): HasMany
+    public function insertStones(): HasMany
     {
         return $this->hasMany(InsertStone::class);
     }

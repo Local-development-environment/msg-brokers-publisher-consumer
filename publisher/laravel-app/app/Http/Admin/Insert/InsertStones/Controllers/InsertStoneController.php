@@ -2,17 +2,27 @@
 
 namespace App\Http\Admin\Insert\InsertStones\Controllers;
 
+use App\Http\Admin\Insert\InsertStones\Resources\InsertStoneCollection;
 use App\Http\Controllers\Controller;
+use Domain\Inserts\InsertStones\Services\InsertStoneService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class InsertStoneController extends Controller
 {
+    public function __construct(public InsertStoneService $service)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        //
+        $data = $request->all();
+        $items = $this->service->index($data);
+
+        return (new InsertStoneCollection($items))->response();
     }
 
     /**

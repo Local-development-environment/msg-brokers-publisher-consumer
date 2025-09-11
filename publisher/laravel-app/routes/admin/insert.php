@@ -12,6 +12,14 @@ use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneStoneRelated
 use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneStoneRelationshipController;
 use App\Http\Admin\Insert\Inserts\Controllers\InsertController;
 use App\Http\Admin\Insert\InsertStones\Controllers\InsertStoneController;
+use App\Http\Admin\Insert\InsertStones\Controllers\InsertStoneInsertsRelatedController;
+use App\Http\Admin\Insert\InsertStones\Controllers\InsertStoneInsertsRelationshipController;
+use App\Http\Admin\Insert\InsertStones\Controllers\InsertStonesStoneColourRelatedController;
+use App\Http\Admin\Insert\InsertStones\Controllers\InsertStonesStoneColourRelationshipController;
+use App\Http\Admin\Insert\InsertStones\Controllers\InsertStonesStoneFacetRelatedController;
+use App\Http\Admin\Insert\InsertStones\Controllers\InsertStonesStoneFacetRelationshipController;
+use App\Http\Admin\Insert\InsertStones\Controllers\InsertStonesStoneRelatedController;
+use App\Http\Admin\Insert\InsertStones\Controllers\InsertStonesStoneRelationshipController;
 use App\Http\Admin\Insert\NaturalStoneGrades\Controllers\NaturalStoneGradeController;
 use App\Http\Admin\Insert\NaturalStoneGrades\Controllers\NaturalStoneGradeNaturalStoneRelatedController;
 use App\Http\Admin\Insert\NaturalStoneGrades\Controllers\NaturalStoneGradeNaturalStoneRelationshipController;
@@ -63,6 +71,7 @@ use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRela
 use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRelationshipController;
 use Domain\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
+use Domain\Inserts\InsertStones\Enums\InsertStoneNameRoutesEnum;
 use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeNameRoutsEnum;
 use Domain\Inserts\NaturalStones\Enums\NaturalStoneNameRoutesEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectNameRoutesEnum;
@@ -92,6 +101,29 @@ Route::patch('insert-stones/{id}', [InsertStoneController::class,'update']);
 Route::delete('insert-stones/{id}', [InsertStoneController::class,'destroy']);
 
 // RELATIONSHIPS
+//  many-to-one InsertStones to Stone
+Route::get('insert-stones/{id}/relationships/stone', [InsertStonesStoneRelationshipController::class, 'index'])
+    ->name(InsertStoneNameRoutesEnum::RELATIONSHIP_TO_STONE->value);
+Route::get('insert-stones/{id}/stone', [InsertStonesStoneRelatedController::class, 'index'])
+    ->name(InsertStoneNameRoutesEnum::RELATED_TO_STONE->value);
+
+//  many-to-one InsertStones to StoneColour
+Route::get('insert-stones/{id}/relationships/stone-colour', [InsertStonesStoneColourRelationshipController::class, 'index'])
+    ->name(InsertStoneNameRoutesEnum::RELATIONSHIP_TO_STONE_COLOUR->value);
+Route::get('insert-stones/{id}/stone-colour', [InsertStonesStoneColourRelatedController::class, 'index'])
+    ->name(InsertStoneNameRoutesEnum::RELATED_TO_STONE_COLOUR->value);
+
+//  many-to-one InsertStones to StoneFacet
+Route::get('insert-stones/{id}/relationships/stone-facet', [InsertStonesStoneFacetRelationshipController::class, 'index'])
+    ->name(InsertStoneNameRoutesEnum::RELATIONSHIP_TO_STONE_FACET->value);
+Route::get('insert-stones/{id}/stone-facet', [InsertStonesStoneFacetRelatedController::class, 'index'])
+    ->name(InsertStoneNameRoutesEnum::RELATED_TO_STONE_FACET->value);
+
+//  one-to-many InsertStone to Inserts
+Route::get('insert-stones/{id}/relationships/inserts', [InsertStoneInsertsRelationshipController::class, 'index'])
+    ->name(InsertStoneNameRoutesEnum::RELATIONSHIP_TO_INSERTS->value);
+Route::get('insert-stones/{id}/inserts', [InsertStoneInsertsRelatedController::class, 'index'])
+    ->name(InsertStoneNameRoutesEnum::RELATED_TO_INSERTS->value);
 
 /*************************** STONES *************************/
 // CRUD
