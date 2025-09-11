@@ -11,6 +11,14 @@ use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneController;
 use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneStoneRelatedController;
 use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneStoneRelationshipController;
 use App\Http\Admin\Insert\Inserts\Controllers\InsertController;
+use App\Http\Admin\Insert\Inserts\Controllers\InsertOptionalInfoRelatedController;
+use App\Http\Admin\Insert\Inserts\Controllers\InsertOptionalInfoRelationshipController;
+use App\Http\Admin\Insert\Inserts\Controllers\InsertsInsertStoneRelatedController;
+use App\Http\Admin\Insert\Inserts\Controllers\InsertsInsertStoneRelationshipController;
+use App\Http\Admin\Insert\Inserts\Controllers\InsertsJewelleryRelatedController;
+use App\Http\Admin\Insert\Inserts\Controllers\InsertsJewelleryRelationshipController;
+use App\Http\Admin\Insert\Inserts\Controllers\InsertStoneMetricRelatedController;
+use App\Http\Admin\Insert\Inserts\Controllers\InsertStoneMetricRelationshipController;
 use App\Http\Admin\Insert\InsertStones\Controllers\InsertStoneController;
 use App\Http\Admin\Insert\InsertStones\Controllers\InsertStoneInsertsRelatedController;
 use App\Http\Admin\Insert\InsertStones\Controllers\InsertStoneInsertsRelationshipController;
@@ -79,6 +87,8 @@ use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRela
 use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRelationshipController;
 use Domain\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
+use Domain\Inserts\Inserts\Enums\InsertEnum;
+use Domain\Inserts\Inserts\Enums\InsertNameRoutesEnum;
 use Domain\Inserts\InsertStones\Enums\InsertStoneNameRoutesEnum;
 use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeNameRoutsEnum;
 use Domain\Inserts\NaturalStones\Enums\NaturalStoneNameRoutesEnum;
@@ -96,13 +106,36 @@ use Domain\Inserts\TypeOrigins\Enums\TypeOriginNameRoutesEnum;
 
 /*************************** INSERTS *************************/
 // CRUD
-Route::get('inserts', [InsertController::class,'index']);
-Route::get('inserts/{id}', [InsertController::class,'show']);
-Route::post('inserts', [InsertController::class,'store']);
-Route::patch('inserts/{id}', [InsertController::class,'update']);
-Route::delete('inserts/{id}', [InsertController::class,'destroy']);
+Route::get('inserts', [InsertController::class,'index'])->name(InsertNameRoutesEnum::CRUD_INDEX->value);
+Route::get('inserts/{id}', [InsertController::class,'show'])->name(InsertNameRoutesEnum::CRUD_SHOW->value);
+Route::post('inserts', [InsertController::class,'store'])->name(InsertNameRoutesEnum::CRUD_POST->value);
+Route::patch('inserts/{id}', [InsertController::class,'update'])->name(InsertNameRoutesEnum::CRUD_PATCH->value);
+Route::delete('inserts/{id}', [InsertController::class,'destroy'])->name(InsertNameRoutesEnum::CRUD_DELETE->value) ;
 
 // RELATIONSHIPS
+//  one-to-one Insert to OptionalInfo
+Route::get('inserts/{id}/relationships/optional-info', [InsertOptionalInfoRelationshipController::class, 'index'])
+    ->name(InsertNameRoutesEnum::RELATIONSHIP_TO_OPTIONAL_INFO->value);
+Route::get('inserts/{id}/optional-info', [InsertOptionalInfoRelatedController::class, 'index'])
+    ->name(InsertNameRoutesEnum::RELATED_TO_OPTIONAL_INFO->value);
+
+//  one-to-one Insert to StoneMetric
+Route::get('inserts/{id}/relationships/stone-metric', [InsertStoneMetricRelationshipController::class, 'index'])
+    ->name(InsertNameRoutesEnum::RELATIONSHIP_TO_METRIC->value);
+Route::get('inserts/{id}/stone-metric', [InsertStoneMetricRelatedController::class, 'index'])
+    ->name(InsertNameRoutesEnum::RELATED_TO_METRIC->value);
+
+//  many-to-one Inserts to InsertStone
+Route::get('inserts/{id}/relationships/jewellery', [InsertsInsertStoneRelationshipController::class, 'index'])
+    ->name(InsertNameRoutesEnum::RELATIONSHIP_TO_INSERT_STONE->value);
+Route::get('inserts/{id}/jewellery', [InsertsInsertStoneRelatedController::class, 'index'])
+    ->name(InsertNameRoutesEnum::RELATED_TO_INSERT_STONE->value);
+
+//  many-to-one Inserts to InsertStone
+Route::get('inserts/{id}/relationships/insert-stone', [InsertsJewelleryRelationshipController::class, 'index'])
+    ->name(InsertNameRoutesEnum::RELATIONSHIP_TO_JEWELLERY->value);
+Route::get('inserts/{id}/insert-stone', [InsertsJewelleryRelatedController::class, 'index'])
+    ->name(InsertNameRoutesEnum::RELATED_TO_JEWELLERY->value);
 
 /*************************** INSERT STONES *************************/
 // CRUD

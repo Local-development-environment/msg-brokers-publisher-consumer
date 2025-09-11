@@ -24,7 +24,7 @@ class Insert extends Model
 
     public function stoneMetric(): BelongsTo
     {
-        return $this->belongsTo(StoneMetric::class);
+        return $this->belongsTo(StoneMetric::class, InsertEnum::FK_METRIC->value);
     }
 
     public function optionalInfo(): HasOne

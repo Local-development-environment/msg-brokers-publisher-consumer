@@ -3,17 +3,27 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Inserts\Controllers;
 
+use App\Http\Admin\Insert\Inserts\Resources\InsertCollection;
 use App\Http\Controllers\Controller;
+use Domain\Inserts\Inserts\Services\InsertService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 final class InsertController extends Controller
 {
+    public function __construct(public InsertService $service)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        //
+        $data = $request->all();
+        $items = $this->service->index($data);
+
+        return (new InsertCollection($items))->response();
     }
 
     /**
