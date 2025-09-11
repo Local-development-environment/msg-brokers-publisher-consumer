@@ -22,9 +22,9 @@ class Insert extends Model
         return $this->belongsTo(Jewellery::class);
     }
 
-    public function metric(): BelongsTo
+    public function stoneMetric(): BelongsTo
     {
-        return $this->belongsTo(StoneMetric::class, 'metric_id');
+        return $this->belongsTo(StoneMetric::class);
     }
 
     public function optionalInfo(): HasOne

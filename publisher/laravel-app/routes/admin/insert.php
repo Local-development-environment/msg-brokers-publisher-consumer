@@ -43,6 +43,8 @@ use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStonesOpt
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStoneStoneRelatedController;
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStoneStoneRelationshipController;
 use App\Http\Admin\Insert\OptionalInfos\Controllers\OptionalInfoController;
+use App\Http\Admin\Insert\OptionalInfos\Controllers\OptionalInfoInsertRelatedController;
+use App\Http\Admin\Insert\OptionalInfos\Controllers\OptionalInfoInsertRelationshipController;
 use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourController;
 use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourInsertStonesRelatedController;
 use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourInsertStonesRelationshipController;
@@ -82,11 +84,13 @@ use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeNameRoutsEnum;
 use Domain\Inserts\NaturalStones\Enums\NaturalStoneNameRoutesEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectNameRoutesEnum;
 use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneNameRoutesEnum;
+use Domain\Inserts\OptionalInfos\Enums\OptionalInfoNameRoutesEnum;
 use Domain\Inserts\StoneColours\Enums\StoneColourNameRoutesEnum;
 use Domain\Inserts\StoneFacets\Enums\StoneFacetNameRoutesEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeNameRoutesEnum;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupNameRoutesEnum;
+use Domain\Inserts\StoneMetrics\Enums\StoneMetricNameRoutesEnum;
 use Domain\Inserts\Stones\Enums\StoneNameRoutesEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginNameRoutesEnum;
 
@@ -196,26 +200,36 @@ Route::get('stone-colours/{id}/insert-stones', [StoneColourInsertStonesRelatedCo
 
 /*************************** STONE METRICS *************************/
 // CRUD
-Route::get('stone-metrics', [StoneMetricController::class,'index']);
-Route::get('stone-metrics/{id}', [StoneMetricController::class,'show']);
-Route::post('stone-metrics', [StoneMetricController::class,'store']);
-Route::patch('stone-metrics/{id}', [StoneMetricController::class,'update']);
-Route::delete('stone-metrics/{id}', [StoneMetricController::class,'destroy']);
+Route::get('stone-metrics', [StoneMetricController::class,'index'])
+    ->name(StoneMetricNameRoutesEnum::CRUD_INDEX);
+Route::get('stone-metrics/{id}', [StoneMetricController::class,'show'])
+    ->name(StoneMetricNameRoutesEnum::CRUD_SHOW);
+Route::post('stone-metrics', [StoneMetricController::class,'store'])
+    ->name(StoneMetricNameRoutesEnum::CRUD_POST);
+Route::patch('stone-metrics/{id}', [StoneMetricController::class,'update'])
+    ->name(StoneMetricNameRoutesEnum::CRUD_PATCH);
+Route::delete('stone-metrics/{id}', [StoneMetricController::class,'destroy'])
+    ->name(StoneMetricNameRoutesEnum::CRUD_DELETE);
 
 // RELATIONSHIPS
 //  one-to-one StoneMetric to Insert
 Route::get('stone-metrics/{id}/relationships/insert', [StoneMetricInsertRelationshipController::class, 'index'])
-    ->name(StoneNameRoutesEnum::RELATIONSHIP_TO_NATURAL_STONE->value);
+    ->name(StoneMetricNameRoutesEnum::RELATIONSHIP_TO_INSERT->value);
 Route::get('stone-metrics/{id}/insert', [StoneMetricInsertRelatedController::class, 'index'])
-    ->name(StoneNameRoutesEnum::RELATED_TO_NATURAL_STONE->value);
+    ->name(StoneMetricNameRoutesEnum::RELATED_TO_INSERT->value);
 
 /*************************** STONE FACETS *************************/
 // CRUD
-Route::get('stone-facets', [StoneFacetController::class,'index']);
-Route::get('stone-facets/{id}', [StoneFacetController::class,'show']);
-Route::post('stone-facets', [StoneFacetController::class,'store']);
-Route::patch('stone-facets/{id}', [StoneFacetController::class,'update']);
-Route::delete('stone-facets/{id}', [StoneFacetController::class,'destroy']);
+Route::get('stone-facets', [StoneFacetController::class,'index'])
+    ->name(StoneFacetNameRoutesEnum::CRUD_INDEX->value);
+Route::get('stone-facets/{id}', [StoneFacetController::class,'show'])
+    ->name(StoneFacetNameRoutesEnum::CRUD_SHOW->value);
+Route::post('stone-facets', [StoneFacetController::class,'store'])
+    ->name(StoneFacetNameRoutesEnum::CRUD_POST->value);
+Route::patch('stone-facets/{id}', [StoneFacetController::class,'update'])
+    ->name(StoneFacetNameRoutesEnum::CRUD_PATCH->value);
+Route::delete('stone-facets/{id}', [StoneFacetController::class,'destroy'])
+    ->name(StoneFacetNameRoutesEnum::CRUD_DELETE->value);
 
 // RELATIONSHIPS
 //  one-to-many StoneFacet to InsertStones
@@ -252,11 +266,16 @@ Route::get('grown-stones/{id}/stone-family', [GrownStonesStoneFamilyRelatedContr
 
 /*************************** NATURAL STONES *************************/
 // CRUD
-Route::get('natural-stones', [NaturalStoneController::class,'index']);
-Route::get('natural-stones/{id}', [NaturalStoneController::class,'show']);
-Route::post('natural-stones', [NaturalStoneController::class,'store']);
-Route::patch('natural-stones/{id}', [NaturalStoneController::class,'update']);
-Route::delete('natural-stones/{id}', [NaturalStoneController::class,'destroy']);
+Route::get('natural-stones', [NaturalStoneController::class,'index'])
+    ->name(NaturalStoneNameRoutesEnum::CRUD_INDEX->value);
+Route::get('natural-stones/{id}', [NaturalStoneController::class,'show'])
+    ->name(NaturalStoneNameRoutesEnum::CRUD_SHOW->value);
+Route::post('natural-stones', [NaturalStoneController::class,'store'])
+    ->name(NaturalStoneNameRoutesEnum::CRUD_POST->value);
+Route::patch('natural-stones/{id}', [NaturalStoneController::class,'update'])
+    ->name(NaturalStoneNameRoutesEnum::CRUD_PATCH->value);
+Route::delete('natural-stones/{id}', [NaturalStoneController::class,'destroy'])
+    ->name(NaturalStoneNameRoutesEnum::CRUD_DELETE->value);
 
 // RELATIONSHIPS
 //  one-to-one NaturalStone to Stone
@@ -390,13 +409,23 @@ Route::get('optical-effect-stones/{id}/stone', [OpticalEffectStoneStoneRelatedCo
 
 /*************************** OPTIONAL INFOS *************************/
 // CRUD
-Route::get('optional-infos', [OptionalInfoController::class,'index']);
-Route::get('optional-infos/{id}', [OptionalInfoController::class,'show']);
-Route::post('optional-infos', [OptionalInfoController::class,'store']);
-Route::patch('optional-infos/{id}', [OptionalInfoController::class,'update']);
-Route::delete('optional-infos/{id}', [OptionalInfoController::class,'destroy']);
+Route::get('optional-infos', [OptionalInfoController::class,'index'])
+    ->name(OptionalInfoNameRoutesEnum::CRUD_INDEX->value);
+Route::get('optional-infos/{id}', [OptionalInfoController::class,'show'])
+    ->name(OptionalInfoNameRoutesEnum::CRUD_SHOW->value);
+Route::post('optional-infos', [OptionalInfoController::class,'store'])
+    ->name(OptionalInfoNameRoutesEnum::CRUD_POST->value);
+Route::patch('optional-infos/{id}', [OptionalInfoController::class,'update'])
+    ->name(OptionalInfoNameRoutesEnum::CRUD_PATCH->value);
+Route::delete('optional-infos/{id}', [OptionalInfoController::class,'destroy'])
+    ->name(OptionalInfoNameRoutesEnum::CRUD_DELETE->value);
 
 // RELATIONSHIPS
+//  one-to-one OptionalInfo to Insert
+Route::get('optional-infos/{id}/relationships/insert', [OptionalInfoInsertRelationshipController::class, 'index'])
+    ->name(OptionalInfoNameRoutesEnum::RELATIONSHIP_TO_INSERT->value);
+Route::get('optional-infos/{id}/insert', [OptionalInfoInsertRelatedController::class, 'index'])
+    ->name(OptionalInfoNameRoutesEnum::RELATED_TO_INSERT->value);
 
 /*************************** STONE GRADES *************************/
 // CRUD

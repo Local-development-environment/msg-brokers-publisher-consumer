@@ -9,6 +9,6 @@ enum StoneMetricNameRoutesEnum: string
     case CRUD_POST               = 'stone-metrics.post';
     case CRUD_PATCH              = 'stone-metrics.patch';
     case CRUD_DELETE             = 'stone-metrics.delete';
-    case RELATIONSHIP_TO_INSERT_STONES   = 'stone-metric.relationships.inserts';
-    case RELATED_TO_INSERT_STONES   = 'stone-metric.inserts';
+    case RELATIONSHIP_TO_INSERT   = 'stone-metric.relationships.insert';
+    case RELATED_TO_INSERT   = 'stone-metric.insert';
 }
