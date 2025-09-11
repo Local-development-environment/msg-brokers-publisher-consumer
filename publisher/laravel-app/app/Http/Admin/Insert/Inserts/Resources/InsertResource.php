@@ -23,10 +23,10 @@ class InsertResource extends JsonResource
             'type' => InsertEnum::RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
-                InsertRelationshipsEnum::JEWELLERY->value => $this->sectionRelationships(
-                    InsertNameRoutesEnum::RELATED_TO_JEWELLERY->value,
-                    JewelleryResource::class
-                ),
+//                InsertRelationshipsEnum::JEWELLERY->value => $this->sectionRelationships(
+//                    InsertNameRoutesEnum::RELATED_TO_JEWELLERY->value,
+//                    JewelleryResource::class
+//                ),
                 InsertRelationshipsEnum::OPTIONAL_INFO->value => $this->sectionRelationships(
                     InsertNameRoutesEnum::RELATED_TO_OPTIONAL_INFO->value,
                     OptionalInfoResource::class
@@ -46,7 +46,7 @@ class InsertResource extends JsonResource
     protected function relations(): array
     {
         return [
-            JewelleryResource::class => $this->whenLoaded(InsertRelationshipsEnum::JEWELLERY->value),
+//            JewelleryResource::class => $this->whenLoaded(InsertRelationshipsEnum::JEWELLERY->value),
             OptionalInfoResource::class => $this->whenLoaded(InsertRelationshipsEnum::OPTIONAL_INFO->value),
             InsertStoneResource::class => $this->whenLoaded(InsertRelationshipsEnum::INSERT_STONE->value),
             StoneMetricResource::class => $this->whenLoaded(InsertRelationshipsEnum::METRIC->value),

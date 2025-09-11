@@ -11,6 +11,6 @@ final class InsertsInsertStoneRelationshipRepository
 {
     public function index(int $id): InsertStone
     {
-        return Insert::findOrFail($id)->optionalInfo;
+        return Insert::findOrFail($id)->insertStone;
     }
 }

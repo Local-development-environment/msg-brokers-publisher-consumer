@@ -99,11 +99,16 @@ class BuildJewellerySeeder extends Seeder
                     'created_at' => now()
                 ]);
 
-                DB::table('jw_inserts.inserts')->insert([
+                $insertId = DB::table('jw_inserts.inserts')->insertGetId([
                     'insert_stone_id' => $stoneId,
                     'jewellery_id' => $jewelleryId,
                     'metric_id' => $metricId,
                     'created_at' => now()
+                ]);
+
+                DB::table('jw_inserts.optional_infos')->insertGetId([
+                    'insert_id' => $insertId,
+                    'info' => json_encode($jewelleryInsert['optional_info']),
                 ]);
             }
         }

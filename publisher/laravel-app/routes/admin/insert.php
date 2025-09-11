@@ -126,16 +126,16 @@ Route::get('inserts/{id}/stone-metric', [InsertStoneMetricRelatedController::cla
     ->name(InsertNameRoutesEnum::RELATED_TO_METRIC->value);
 
 //  many-to-one Inserts to InsertStone
-Route::get('inserts/{id}/relationships/jewellery', [InsertsInsertStoneRelationshipController::class, 'index'])
-    ->name(InsertNameRoutesEnum::RELATIONSHIP_TO_INSERT_STONE->value);
-Route::get('inserts/{id}/jewellery', [InsertsInsertStoneRelatedController::class, 'index'])
-    ->name(InsertNameRoutesEnum::RELATED_TO_INSERT_STONE->value);
+Route::get('inserts/{id}/relationships/jewellery', [InsertsJewelleryRelationshipController::class, 'index'])
+    ->name(InsertNameRoutesEnum::RELATIONSHIP_TO_JEWELLERY->value);
+Route::get('inserts/{id}/jewellery', [InsertsJewelleryRelatedController::class, 'index'])
+    ->name(InsertNameRoutesEnum::RELATED_TO_JEWELLERY->value);
 
 //  many-to-one Inserts to InsertStone
-Route::get('inserts/{id}/relationships/insert-stone', [InsertsJewelleryRelationshipController::class, 'index'])
-    ->name(InsertNameRoutesEnum::RELATIONSHIP_TO_JEWELLERY->value);
-Route::get('inserts/{id}/insert-stone', [InsertsJewelleryRelatedController::class, 'index'])
-    ->name(InsertNameRoutesEnum::RELATED_TO_JEWELLERY->value);
+Route::get('inserts/{id}/relationships/insert-stone', [InsertsInsertStoneRelationshipController::class, 'index'])
+    ->name(InsertNameRoutesEnum::RELATIONSHIP_TO_INSERT_STONE->value);
+Route::get('inserts/{id}/insert-stone', [InsertsInsertStoneRelatedController::class, 'index'])
+    ->name(InsertNameRoutesEnum::RELATED_TO_INSERT_STONE->value);
 
 /*************************** INSERT STONES *************************/
 // CRUD

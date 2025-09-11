@@ -34,7 +34,7 @@ final class Insert
                         'weight' => $this->randWeightProbability($stone),
                         'weight_unit' => 'карат',
                         'dimensions' => $this->randDimensionsProbability($shape)
-                    ]
+                    ],
                 ];
             }
         }
@@ -51,7 +51,12 @@ final class Insert
                 'facet' => 'A'
             ];
         } else {
-            return [];
+            return [
+                'info' => [
+                    'name' => fake()->name,
+                    'description' => fake()->realText(100,1)
+                ],
+            ];
         }
     }
 

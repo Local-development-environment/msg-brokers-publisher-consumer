@@ -5,7 +5,6 @@ namespace Domain\Inserts\Inserts\Models;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
 use Domain\Inserts\InsertStones\Models\InsertStone;
 use Domain\Inserts\OptionalInfos\Models\OptionalInfo;
-use Domain\Inserts\StoneMetrics\Enums\StoneMetricEnum;
 use Domain\Inserts\StoneMetrics\Models\StoneMetric;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
