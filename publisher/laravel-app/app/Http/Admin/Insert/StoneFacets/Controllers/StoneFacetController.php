@@ -2,17 +2,27 @@
 
 namespace App\Http\Admin\Insert\StoneFacets\Controllers;
 
+use App\Http\Admin\Insert\StoneFacets\Resources\StoneFacetCollection;
 use App\Http\Controllers\Controller;
+use Domain\Inserts\StoneFacets\Services\StoneFacetService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class StoneFacetController extends Controller
 {
+    public function __construct(public StoneFacetService $service)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        //
+        $data = $request->all();
+        $items = $this->service->index($data);
+
+        return (new StoneFacetCollection($items))->response();
     }
 
     /**

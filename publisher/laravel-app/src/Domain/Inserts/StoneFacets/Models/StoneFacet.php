@@ -2,6 +2,7 @@
 
 namespace Domain\Inserts\StoneFacets\Models;
 
+use Domain\Inserts\InsertStones\Enums\InsertStoneEnum;
 use Domain\Inserts\InsertStones\Models\InsertStone;
 use Domain\Inserts\StoneFacets\Enums\StoneFacetEnum;
 use Illuminate\Database\Eloquent\Model;
@@ -13,8 +14,8 @@ class StoneFacet extends Model
 
     public const string TYPE_RESOURCE = StoneFacetEnum::RESOURCE->value;
 
-    public function stoneInserts(): HasMany
+    public function insertStones(): HasMany
     {
-        return $this->hasMany(InsertStone::class);
+        return $this->hasMany(InsertStone::class, InsertStoneEnum::FK_STONE_FACET->value);
     }
 }
