@@ -17,10 +17,6 @@ class StoneNaturalStoneRelationshipController extends Controller
     {
         $model = $this->service->index($id);
 
-        if ($model) {
-            return (new ApiEntityIdentifierResource($model))->response();
-        } else {
-            return response()->json()->setStatusCode(204);
-        }
+        return $model ? (new ApiEntityIdentifierResource($model))->response() : response()->json()->setStatusCode(204);
     }
 }

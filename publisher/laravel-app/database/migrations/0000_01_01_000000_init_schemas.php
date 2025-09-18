@@ -21,6 +21,7 @@ return new class extends Migration
         DB::statement('CREATE SCHEMA jw_coverages');
         DB::statement('CREATE SCHEMA jw_promotions');
         DB::statement('CREATE SCHEMA jw_views');
+        DB::statement('CREATE SCHEMA jw_users');
     }
 
     /**
@@ -36,5 +37,6 @@ return new class extends Migration
         DB::statement('DROP SCHEMA IF EXISTS jw_coverages CASCADE');
         DB::statement('DROP SCHEMA IF EXISTS jw_promotions CASCADE');
         DB::statement('DROP SCHEMA IF EXISTS jw_views CASCADE');
+        DB::statement('DROP SCHEMA IF EXISTS jw_users CASCADE');
     }
 };

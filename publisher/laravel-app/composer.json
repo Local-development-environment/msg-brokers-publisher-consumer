@@ -10,6 +10,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "php-amqplib/php-amqplib": "^3.7",
+        "php-open-source-saver/jwt-auth": "^2.8",
         "saloonphp/laravel-plugin": "^3.0",
         "saloonphp/saloon": "^3.0",
         "spatie/laravel-query-builder": "^6.3"

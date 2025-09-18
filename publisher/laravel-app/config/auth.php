@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
     /*
@@ -14,8 +16,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => env('AUTH_GUARD', 'web'),
-        'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
+        'guard' => env('AUTH_GUARD', 'admin'),
+        'passwords' => env('AUTH_PASSWORD_BROKER', 'admins'),
     ],
 
     /*
@@ -36,10 +38,26 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
+//        'web' => [
+//            'driver' => 'session',
+//            'provider' => 'users',
+//        ],
+        'admin' => [
+            'driver' => 'jwt',
+            'provider' => 'admins',
         ],
+        'employee' => [
+            'driver' => 'jwt',
+            'provider' => 'employees',
+        ],
+        'customer' => [
+            'driver' => 'jwt',
+            'provider' => 'customers',
+        ],
+//        'api' => [
+//            'driver' => 'jwt',
+//            'provider' => 'users',
+//        ],
     ],
 
     /*
@@ -60,9 +78,25 @@ return [
     */
 
     'providers' => [
-        'users' => [
+//        'users' => [
+//            'driver' => 'eloquent',
+//            'model' => env('AUTH_MODEL', App\Models\User::class),
+//        ],
+        'employees' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => env('AUTH_EMPLOYEES', Domain\Users\Employees\Models\Employee::class),
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_ADMINS', \Domain\Auth\AuthAdmins\Models\VAdmin::class),
+        ],
+//        'admins' => [
+//            'driver' => 'eloquent',
+//            'model' => env('AUTH_ADMINS', Domain\Users\Admins\Models\Admin::class),
+//        ],
+        'customers' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_CUSTOMERS', Domain\Users\Customers\Models\Customer::class),
         ],
 
         // 'users' => [
@@ -91,12 +125,30 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+//        'users' => [
+//            'provider' => 'users',
+//            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+//            'expire' => 60,
+//            'throttle' => 60,
+//        ],
+        'admins' => [
+            'provider' => 'admins',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
             'throttle' => 60,
         ],
+        'employees' => [
+            'provider' => 'employees',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'customers' => [
+            'provider' => 'customers',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ]
     ],
 
     /*

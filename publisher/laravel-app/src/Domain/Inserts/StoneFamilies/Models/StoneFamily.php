@@ -6,6 +6,7 @@ use Domain\Inserts\GrownStones\Models\GrownStone;
 use Domain\Inserts\NaturalStones\Models\NaturalStone;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyEnum;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class StoneFamily extends Model
@@ -16,11 +17,11 @@ class StoneFamily extends Model
 
     public function grownStones(): HasMany
     {
-        return $this->belongsTo(GrownStone::class);
+        return $this->hasMany(GrownStone::class);
     }
 
     public function naturalStones(): HasMany
     {
-        return $this->belongsTo(NaturalStone::class);
+        return $this->hasMany(NaturalStone::class);
     }
 }

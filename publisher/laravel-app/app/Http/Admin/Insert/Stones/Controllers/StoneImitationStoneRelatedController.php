@@ -18,10 +18,6 @@ class StoneImitationStoneRelatedController extends Controller
     {
         $model = $this->service->index($id);
 
-        if ($model) {
-            return (new ImitationStoneResource($model))->response();
-        } else {
-            return response()->json()->setStatusCode(204);
-        }
+        return $model ? (new ImitationStoneResource($model))->response() : response()->json()->setStatusCode(204);
     }
 }

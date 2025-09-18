@@ -1,5 +1,6 @@
-<?php
+<?php /** @noinspection PhpInconsistentReturnPointsInspection */
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -17,6 +18,8 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::middleware('api')->prefix('api')->group(base_path('routes/api.php'));
             /****SITE****/
             Route::middleware('api')->prefix('api/site')->group(base_path('routes/site.php'));
+            /****AUTH****/
+            Route::middleware('api')->prefix('api/auth')->group(base_path('routes/users.php'));
             /****ADMIN****/
             Route::middleware('api')->prefix('api/admin')->group(base_path('routes/admin/jewellery.php'));
             Route::middleware('api')->prefix('api/admin')->group(base_path('routes/admin/insert.php'));
@@ -29,10 +32,17 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->render(function (NotFoundHttpException  $e, $request) {
-            if ($request->is('api/*')) {
+            if ($request->is(array('api/*'))) {
                 return response()->json([
                     'message' => $e->getMessage(),
                 ], 404);
+            }
+        });
+        $exceptions->render(function (AuthenticationException $e, Request $request) {
+            if ($request->is(array('api/*'))) {
+                return response()->json([
+                    'message' => $e->getMessage(),
+                ], 401);
             }
         });
     })->create();
