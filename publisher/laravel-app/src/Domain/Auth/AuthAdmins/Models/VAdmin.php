@@ -7,7 +7,7 @@ use Domain\Shared\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
-class VAdmin  extends BaseModel implements JWTSubject
+class VAdmin extends BaseModel implements JWTSubject
 {
     protected $table = AuthAdminEnum::TABLE->value;
 

@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use Domain\Jewelleries\JewelleryViews\Models\VJewellery;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
@@ -16,7 +14,8 @@ class SQLTestSeeder extends Seeder
      */
     public function run(): void
     {
-//        dd(Config::array('data-seed.insert-seed'));
+        dd(\Auth::guard('api')->check());
+        dd(\Auth::guard('api')->user());
         dd(data_get(Config::array('data-seed.insert-seed'), '*.stones.*'));
         $stones = DB::table('jw_inserts.stones AS s')
             ->select(

@@ -38,7 +38,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 ], 404);
             }
         });
-        $exceptions->render(function (AuthenticationException $e, Request $request) {
+        $exceptions->render(function (AuthenticationException $e, $request) {
             if ($request->is(array('api/*'))) {
                 return response()->json([
                     'message' => $e->getMessage(),

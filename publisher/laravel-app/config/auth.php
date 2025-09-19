@@ -78,25 +78,17 @@ return [
     */
 
     'providers' => [
-//        'users' => [
-//            'driver' => 'eloquent',
-//            'model' => env('AUTH_MODEL', App\Models\User::class),
-//        ],
         'employees' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_EMPLOYEES', Domain\Users\Employees\Models\Employee::class),
+            'model' => env('AUTH_EMPLOYEES', \Domain\Auth\AuthEmployees\Models\VEmployee::class),
         ],
         'admins' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_ADMINS', \Domain\Auth\AuthAdmins\Models\VAdmin::class),
         ],
-//        'admins' => [
-//            'driver' => 'eloquent',
-//            'model' => env('AUTH_ADMINS', Domain\Users\Admins\Models\Admin::class),
-//        ],
         'customers' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_CUSTOMERS', Domain\Users\Customers\Models\Customer::class),
+            'model' => env('AUTH_CUSTOMERS', Domain\Auth\AuthCustomers\Models\VCustomer::class),
         ],
 
         // 'users' => [
