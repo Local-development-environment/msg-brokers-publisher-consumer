@@ -1,8 +1,8 @@
 <?php
 
-namespace Domain\Auth\AuthCustomers\Enums;
+namespace Domain\Auth\Customers\Enums;
 
-enum AuthCustomerEnum: string
+enum VCustomerEnum: string
 {
     case RESOURCE     = 'vCustomers';
     case TABLE        = 'jw_users.v_customers';

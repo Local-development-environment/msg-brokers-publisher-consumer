@@ -80,15 +80,15 @@ return [
     'providers' => [
         'employees' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_EMPLOYEES', \Domain\Auth\AuthEmployees\Models\VEmployee::class),
+            'model' => env('AUTH_EMPLOYEES', \Domain\Auth\Employees\Models\Employee::class),
         ],
         'admins' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_ADMINS', \Domain\Auth\AuthAdmins\Models\VAdmin::class),
+            'model' => env('AUTH_ADMINS', \Domain\Auth\Admins\Models\Admin::class),
         ],
         'customers' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_CUSTOMERS', Domain\Auth\AuthCustomers\Models\VCustomer::class),
+            'model' => env('AUTH_CUSTOMERS', Domain\Auth\Customers\Models\Customer::class),
         ],
 
         // 'users' => [

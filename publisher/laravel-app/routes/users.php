@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-use App\Http\Auth\Admins\Controllers\AdminAuthController;
-use App\Http\Auth\Customers\Controllers\CustomerAuthController;
-use App\Http\Auth\Employees\Controllers\EmployeeAuthController;
+use App\Http\Auth\Admins\Controllers\AdminController;
+use App\Http\Auth\Customers\Controllers\CustomerController;
+use App\Http\Auth\Employees\Controllers\EmployeeController;
 
 Route::group([
     'prefix' => 'employees'
 ], function () {
     /*****************  AUTH EMPLOYEES ROUTES **************/
-    Route::post('/register', [EmployeeAuthController::class, 'register']);
-    Route::post('/login', [EmployeeAuthController::class, 'login']);
-    Route::post('/logout', [EmployeeAuthController::class, 'logout'])->middleware('auth:employee');
-    Route::patch('/refresh', [EmployeeAuthController::class, 'refresh'])->middleware('auth:employee');
-    Route::get('/profile', [EmployeeAuthController::class, 'profile'])->middleware('auth:employee');
+    Route::post('/register', [EmployeeController::class, 'register']);
+    Route::post('/login', [EmployeeController::class, 'login']);
+    Route::post('/logout', [EmployeeController::class, 'logout'])->middleware('auth:employee');
+    Route::patch('/refresh', [EmployeeController::class, 'refresh'])->middleware('auth:employee');
+    Route::get('/profile', [EmployeeController::class, 'profile'])->middleware('auth:employee');
 //
 //    Route::post('/password-forgot', [EmployeeForgotPasswordController::class, 'forgot']);
 //    Route::view('/password/email', 'auth.reset_password')->name('password.reset');
@@ -25,11 +25,11 @@ Route::group([
     'prefix' => 'admins'
 ], function () {
     /*****************  AUTH ADMINS ROUTES **************/
-    Route::post('/register', [AdminAuthController::class, 'register']);
-    Route::post('/login', [AdminAuthController::class, 'login']);
-    Route::post('/logout', [AdminAuthController::class, 'logout'])->middleware('auth:admin');
-    Route::patch('/refresh', [AdminAuthController::class, 'refresh'])->middleware('auth:admin');
-    Route::get('/profile', [AdminAuthController::class, 'profile'])->middleware('auth:admin');
+    Route::post('/register', [AdminController::class, 'register']);
+    Route::post('/login', [AdminController::class, 'login']);
+    Route::post('/logout', [AdminController::class, 'logout'])->middleware('auth:admin');
+    Route::patch('/refresh', [AdminController::class, 'refresh'])->middleware('auth:admin');
+    Route::get('/profile', [AdminController::class, 'profile'])->middleware('auth:admin');
 //
 //    Route::post('/password-forgot', [AdminForgotPasswordController::class, 'forgot']);
 //    Route::view('/password/email', 'auth.reset_password')->name('password.reset');
@@ -40,11 +40,11 @@ Route::group([
     'prefix' => 'customers'
 ], function () {
     /*****************  AUTH EMPLOYEES ROUTES **************/
-    Route::post('/register', [CustomerAuthController::class, 'register']);
-    Route::post('/login', [CustomerAuthController::class, 'login']);
-    Route::post('/logout', [CustomerAuthController::class, 'logout'])->middleware('auth:customer');
-    Route::patch('/refresh', [CustomerAuthController::class, 'refresh'])->middleware('auth:customer');
-    Route::get('/profile', [CustomerAuthController::class, 'profile'])->middleware('auth:customer');
+    Route::post('/register', [CustomerController::class, 'register']);
+    Route::post('/login', [CustomerController::class, 'login']);
+    Route::post('/logout', [CustomerController::class, 'logout'])->middleware('auth:customer');
+    Route::patch('/refresh', [CustomerController::class, 'refresh'])->middleware('auth:customer');
+    Route::get('/profile', [CustomerController::class, 'profile'])->middleware('auth:customer');
 //
 //    Route::post('/password-forgot', [EmployeeForgotPasswordController::class, 'forgot']);
 //    Route::view('/password/email', 'auth.reset_password')->name('password.reset');

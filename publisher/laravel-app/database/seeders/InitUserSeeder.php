@@ -30,7 +30,6 @@ class InitUserSeeder extends Seeder
 
         $genders = ['мужчина', 'женщина'];
         $userTypes = ['employee','customer','admin'];
-        $users = [];
 
         foreach ($genders as $gender) {
             DB::table('jw_users.genders')->insert([
@@ -46,14 +45,11 @@ class InitUserSeeder extends Seeder
             ]);
         }
         $faker = Factory::create();
-//        dd(DB::table('jw_users.genders')->pluck('id')->random());
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 15; $i++) {
             $genderId = DB::table('jw_users.genders')->pluck('id')->random();
-            $phoneId = DB::table('jw_users.user_phones')->insertGetId([
-                'phone' => $faker->e164PhoneNumber,
-                'created_at' => now(),
-            ]);
+
+            $phoneId = $this->storePhoneNumber();
 
             $userId = DB::table('jw_users.users')->insertGetId([
                 'phone_id' => $phoneId,
@@ -65,86 +61,95 @@ class InitUserSeeder extends Seeder
                 'created_at' => now(),
             ]);
 
-            $authUser = DB::table('jw_users.auth_users')->insertGetId([
-                'user_id' => $userId,
-                'user_type_id' => DB::table('jw_users.user_types')->where('name', 'employee')->first()->id,
-                'created_at' => now(),
-            ]);
+            if ($i < 5) {
+                $authUser = DB::table('jw_users.auth_users')->insertGetId([
+                    'user_id' => $userId,
+                    'user_type_id' => DB::table('jw_users.user_types')->where('name', 'employee')->first()->id,
+                    'created_at' => now(),
+                ]);
 
-            DB::table('jw_users.employees')->insert([
-                'auth_user_id' => $authUser,
-                'work_email' => $faker->email,
-                'work_phone' => $faker->e164PhoneNumber,
-                'password' => bcrypt('password'),
-                'birthday' => $faker->dateTimeBetween('-50 years', '-20 years'),
-                'experience' => $faker->numberBetween(1,10),
-                'position' => $faker->jobTitle,
-                'created_at' => now(),
-            ]);
+                DB::table('jw_users.employees')->insert([
+                    'auth_user_id' => $authUser,
+                    'work_email' => $faker->email,
+                    'work_phone' => $this->getPhoneNumber(),
+                    'password' => bcrypt('password'),
+                    'birthday' => $faker->dateTimeBetween('-50 years', '-20 years'),
+                    'experience' => $faker->numberBetween(1,10),
+                    'position' => $faker->jobTitle,
+                    'created_at' => now(),
+                ]);
+            } elseif ($i < 10) {
+                $authUser = DB::table('jw_users.auth_users')->insertGetId([
+                    'user_id' => $userId,
+                    'user_type_id' => DB::table('jw_users.user_types')->where('name', 'customer')->first()->id,
+                    'created_at' => now(),
+                ]);
+
+                DB::table('jw_users.customers')->insert([
+                    'auth_user_id' => $authUser,
+                    'personal_email' => $faker->email,
+                    'password' => bcrypt('password'),
+                    'birthday' => $faker->dateTimeBetween('-50 years', '-20 years'),
+                    'created_at' => now(),
+                ]);
+            } else {
+                $authUser = DB::table('jw_users.auth_users')->insertGetId([
+                    'user_id' => $userId,
+                    'user_type_id' => DB::table('jw_users.user_types')->where('name', 'admin')->first()->id,
+                    'created_at' => now(),
+                ]);
+
+                DB::table('jw_users.admins')->insert([
+                    'auth_user_id' => $authUser,
+                    'work_email' => $faker->email,
+                    'work_phone' => $this->getPhoneNumber(),
+                    'password' => bcrypt('password'),
+                    'created_at' => now(),
+                ]);
+            }
         }
 
-        for ($i = 0; $i < 5; $i++) {
-            $genderId = DB::table('jw_users.genders')->pluck('id')->random();
-            $phoneId = DB::table('jw_users.user_phones')->insertGetId([
-                'phone' => $faker->e164PhoneNumber,
-                'created_at' => now(),
-            ]);
+        $this->additionalAuth();
+    }
 
-            $userId = DB::table('jw_users.users')->insertGetId([
-                'phone_id' => $phoneId,
-                'gender_id' => $genderId,
-                'first_name' => ($genderId === 1) ? $faker->firstNameMale : $faker->firstNameFemale,
-                'middle_name' => $faker->firstNameMale,
-                'last_name' => $faker->lastName,
-                'is_active' => 1,
-                'created_at' => now(),
-            ]);
+    private function storePhoneNumber(): string
+    {
+        $phone = $this->getPhoneNumber();
 
-            $authUser = DB::table('jw_users.auth_users')->insertGetId([
-                'user_id' => $userId,
-                'user_type_id' => DB::table('jw_users.user_types')->where('name', 'admin')->first()->id,
-                'created_at' => now(),
-            ]);
+        return DB::table('jw_users.user_phones')->insertGetId([
+            'phone' => $phone,
+            'created_at' => now(),
+        ]);
+    }
 
-            DB::table('jw_users.admins')->insert([
-                'auth_user_id' => $authUser,
-                'work_email' => $faker->email,
-                'work_phone' => $faker->e164PhoneNumber,
-                'password' => bcrypt('password'),
-                'created_at' => now(),
-            ]);
-        }
+    private function getPhoneNumber(): string
+    {
+        $code = Factory::create()->randomDigitNotNull;
 
-        for ($i = 0; $i < 5; $i++) {
-            $genderId = DB::table('jw_users.genders')->pluck('id')->random();
-            $phoneId = DB::table('jw_users.user_phones')->insertGetId([
-                'phone' => $faker->e164PhoneNumber,
-                'created_at' => now(),
-            ]);
+        return '+' . $code . Factory::create()->numerify('(###)###-####');
+    }
 
-            $userId = DB::table('jw_users.users')->insertGetId([
-                'phone_id' => $phoneId,
-                'gender_id' => $genderId,
-                'first_name' => ($genderId === 1) ? $faker->firstNameMale : $faker->firstNameFemale,
-                'middle_name' => $faker->firstNameMale,
-                'last_name' => $faker->lastName,
-                'is_active' => 1,
-                'created_at' => now(),
-            ]);
+    private function additionalAuth(): void
+    {
+        $adminUserId = DB::table('jw_users.auth_users')
+            ->where('user_type_id', DB::table('jw_users.user_types')->where('name', 'admin')->first()->id)
+            ->first()->user_id;
 
-            $authUser = DB::table('jw_users.auth_users')->insertGetId([
-                'user_id' => $userId,
-                'user_type_id' => DB::table('jw_users.user_types')->where('name', 'customer')->first()->id,
-                'created_at' => now(),
-            ]);
+        dump($adminUserId);
 
-            DB::table('jw_users.customers')->insert([
-                'auth_user_id' => $authUser,
-                'personal_email' => $faker->email,
-                'password' => bcrypt('password'),
-                'birthday' => $faker->dateTimeBetween('-50 years', '-20 years'),
-                'created_at' => now(),
-            ]);
-        }
+        $authUser = DB::table('jw_users.auth_users')->insertGetId([
+            'user_id' => $adminUserId,
+            'user_type_id' => DB::table('jw_users.user_types')->where('name', 'customer')->first()->id,
+            'created_at' => now(),
+        ]);
+
+        DB::table('jw_users.customers')->insert([
+            'auth_user_id' => $authUser,
+            'personal_email' => Factory::create()->email,
+            'password' => bcrypt('password'),
+            'birthday' => Factory::create()->dateTimeBetween('-50 years', '-20 years'),
+            'created_at' => now(),
+        ]);
+
     }
 }

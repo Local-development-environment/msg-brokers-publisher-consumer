@@ -1,8 +1,8 @@
 <?php
 
-namespace Domain\Auth\AuthEmployees\Enums;
+namespace Domain\Auth\Employees\Enums;
 
-enum AuthEmployeeEnum: string
+enum VEmployeeEnum: string
 {
     case RESOURCE     = 'vEmployees';
     case TABLE        = 'jw_users.v_employees';

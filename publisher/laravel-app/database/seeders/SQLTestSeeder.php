@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
@@ -14,8 +15,10 @@ class SQLTestSeeder extends Seeder
      */
     public function run(): void
     {
-        dd(\Auth::guard('api')->check());
-        dd(\Auth::guard('api')->user());
+        dump(Factory::create()->e164PhoneNumber);
+        preg_match_all('/\d+/', Factory::create()->e164PhoneNumber, $matches);
+        dd(implode('',$matches[0]));
+
         dd(data_get(Config::array('data-seed.insert-seed'), '*.stones.*'));
         $stones = DB::table('jw_inserts.stones AS s')
             ->select(

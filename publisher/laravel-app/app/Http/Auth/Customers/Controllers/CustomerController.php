@@ -1,42 +1,42 @@
 <?php
 
-namespace App\Http\Auth\Employees\Controllers;
+namespace App\Http\Auth\Customers\Controllers;
 
-use App\Http\Auth\Employees\Requests\EmployeeLoginRequest;
-use App\Http\Auth\Employees\Requests\EmployeeRegisterRequest;
+use App\Http\Auth\Customers\Requests\CustomerLoginRequest;
+use App\Http\Auth\Customers\Requests\CustomerRegisterRequest;
 use App\Http\Auth\Shared\Controllers\BaseAuthController;
-use Domain\Users\Employees\Models\Employee;
+use Domain\Users\Customers\Models\Customer;
 use Illuminate\Http\JsonResponse;
 
-class EmployeeAuthController extends BaseAuthController
+class CustomerController extends BaseAuthController
 {
     /**
      * Register a User.
      *
-     * @param EmployeeRegisterRequest $request
+     * @param CustomerRegisterRequest $request
      * @return JsonResponse
      */
-    public function register(EmployeeRegisterRequest $request): JsonResponse
+    public function register(CustomerRegisterRequest $request): JsonResponse
     {
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
-        $employee = Employee::create($input);
-        $success['employee'] =  $employee;
+        $customer = Customer::create($input);
+        $success['customer'] =  $customer;
 
-        return $this->sendResponse($success, 'Employee register successfully.');
+        return $this->sendResponse($success, 'Customer register successfully.');
     }
 
     /**
      * Get a JWT via given credentials.
      *
-     * @param EmployeeLoginRequest $request
+     * @param CustomerLoginRequest $request
      * @return JsonResponse
      */
-    public function login(EmployeeLoginRequest $request): JsonResponse
+    public function login(CustomerLoginRequest $request): JsonResponse
     {
-        $credentials = $request->only('work_email', 'password');
+        $credentials = $request->only('personal_email', 'password');
 
-        if (! $token = auth('employee')->attempt($credentials)) {
+        if (! $token = auth('customer')->attempt($credentials)) {
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
         }
 
@@ -52,7 +52,7 @@ class EmployeeAuthController extends BaseAuthController
      */
     public function logout(): JsonResponse
     {
-        auth('employee')->logout();
+        auth('customer')->logout();
 
         return $this->sendResponse([], 'Successfully logged out.');
     }
@@ -64,7 +64,7 @@ class EmployeeAuthController extends BaseAuthController
      */
     public function refresh(): JsonResponse
     {
-        $success = $this->respondWithToken(auth('employee')->refresh());
+        $success = $this->respondWithToken(auth('customer')->refresh());
 
         return $this->sendResponse($success, 'Refresh token return successfully.');
     }
@@ -76,7 +76,7 @@ class EmployeeAuthController extends BaseAuthController
      */
     public function profile(): JsonResponse
     {
-        $success = auth('employee')->user();
+        $success = auth('customer')->user();
 
         return $this->sendResponse($success, 'Refresh token return successfully.');
     }
@@ -94,7 +94,7 @@ class EmployeeAuthController extends BaseAuthController
             [
                 'access_token' => $token,
                 'token_type' => 'bearer',
-                'expires_in' => auth('employee')->factory()->getTTL() * 60,
+                'expires_in' => auth('customer')->factory()->getTTL() * 60,
             ]
         );
     }

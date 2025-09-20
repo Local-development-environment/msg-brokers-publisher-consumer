@@ -1,8 +1,8 @@
 <?php
 
-namespace Domain\Auth\AuthAdmins\Enums;
+namespace Domain\Auth\Admins\Enums;
 
-enum AuthAdminEnum: string
+enum VAdminEnum: string
 {
     case RESOURCE     = 'vAdmins';
     case TABLE        = 'jw_users.v_admins';
