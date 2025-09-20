@@ -132,10 +132,12 @@ class InitUserSeeder extends Seeder
     private function additionalAuth(): void
     {
         $adminUserId = DB::table('jw_users.auth_users')
-            ->where('user_type_id', DB::table('jw_users.user_types')->where('name', 'admin')->first()->id)
+            ->where('user_type_id', DB::table('jw_users.user_types')->where('name', 'admin')->pluck('id')->random())
             ->first()->user_id;
 
-        dump($adminUserId);
+        $customerUserId = DB::table('jw_users.auth_users')
+            ->where('user_type_id', DB::table('jw_users.user_types')->where('name', 'customer')->pluck('id')->random())
+            ->first()->user_id;
 
         $authUser = DB::table('jw_users.auth_users')->insertGetId([
             'user_id' => $adminUserId,
@@ -148,6 +150,23 @@ class InitUserSeeder extends Seeder
             'personal_email' => Factory::create()->email,
             'password' => bcrypt('password'),
             'birthday' => Factory::create()->dateTimeBetween('-50 years', '-20 years'),
+            'created_at' => now(),
+        ]);
+
+        $authUser = DB::table('jw_users.auth_users')->insertGetId([
+            'user_id' => $customerUserId,
+            'user_type_id' => DB::table('jw_users.user_types')->where('name', 'employee')->first()->id,
+            'created_at' => now(),
+        ]);
+
+        DB::table('jw_users.employees')->insert([
+            'auth_user_id' => $authUser,
+            'work_email' => Factory::create()->email,
+            'work_phone' => $this->getPhoneNumber(),
+            'password' => bcrypt('password'),
+            'birthday' => Factory::create()->dateTimeBetween('-50 years', '-20 years'),
+            'experience' => Factory::create()->numberBetween(1,10),
+            'position' => Factory::create()->jobTitle,
             'created_at' => now(),
         ]);
 

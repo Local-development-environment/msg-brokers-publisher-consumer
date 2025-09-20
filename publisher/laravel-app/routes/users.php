@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Auth\Admins\Controllers\AdminController;
 use App\Http\Auth\Customers\Controllers\CustomerController;
 use App\Http\Auth\Employees\Controllers\EmployeeController;
+use App\Http\Auth\Users\Controllers\VUserController;
 
 Route::group([
     'prefix' => 'employees'
