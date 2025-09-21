@@ -4,7 +4,7 @@ namespace App\Http\Auth\Users\Controllers;
 
 use App\Http\Auth\Users\Resources\VUserCollection;
 use App\Http\Controllers\Controller;
-use Domain\Auth\Users\Services\VUserService;
+use Domain\Users\VUsers\Services\VUserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 

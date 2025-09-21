@@ -16,7 +16,7 @@ return new class extends Migration
                 CREATE VIEW jw_users.v_admins AS
                 select
                     jua.id,
-                    jua.auth_user_id,
+                    jua.user_user_type_id,
                     jua.admin_email,
                     jua.admin_phone,
                     jua.password,
@@ -29,9 +29,9 @@ return new class extends Migration
                     g.name as gender
                 from
                 jw_users.admins as jua
-                join jw_users.auth_users as juau on jua.auth_user_id = juau.id
-                join jw_users.user_types as juut on juau.user_type_id = juut.id
-                join jw_users.users as juu on juau.user_id = juu.id
+                join jw_users.user_user_type as uut on jua.user_user_type_id = uut.id
+                join jw_users.user_types as juut on uut.user_type_id = juut.id
+                join jw_users.users as juu on uut.user_id = juu.id
                 join jw_users.register_phones rp on juu.register_phone_id = rp.id
                 join jw_users.genders g on juu.gender_id = g.id
             SQL

@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace App\Http\Auth\Users\Resources;
 
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
-use Domain\Auth\Users\Enums\VUserEnum;
-use Domain\Auth\Users\Models\VUser;
+use Domain\Users\VUsers\Enums\VUserEnum;
+use Domain\Users\VUsers\Models\VUser;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 

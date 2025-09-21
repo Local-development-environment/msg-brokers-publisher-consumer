@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('jw_users.employees', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('auth_user_id');
+            $table->unsignedBigInteger('user_user_type_id');
             $table->string('employee_email');
             $table->string('employee_phone');
             $table->string('password');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('position');
             $table->timestamps();
 
-            $table->foreign('auth_user_id')->references('id')->on('jw_users.auth_users');
+            $table->foreign('user_user_type_id')->references('id')->on('jw_users.user_user_type');
         });
     }
 

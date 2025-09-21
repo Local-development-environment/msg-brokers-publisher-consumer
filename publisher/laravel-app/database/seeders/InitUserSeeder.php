@@ -20,7 +20,7 @@ class InitUserSeeder extends Seeder
         DB::table('jw_users.register_phones')->truncate();
         DB::table('jw_users.user_types')->truncate();
         DB::table('jw_users.users')->truncate();
-        DB::table('jw_users.auth_users')->truncate();
+        DB::table('jw_users.user_user_type')->truncate();
         DB::table('jw_users.admins')->truncate();
         DB::table('jw_users.customers')->truncate();
         DB::table('jw_users.employees')->truncate();
@@ -60,14 +60,14 @@ class InitUserSeeder extends Seeder
             ]);
 
             if ($i < 5) {
-                $authUser = DB::table('jw_users.auth_users')->insertGetId([
+                $authUser = DB::table('jw_users.user_user_type')->insertGetId([
                     'user_id' => $userId,
                     'user_type_id' => DB::table('jw_users.user_types')->where('name', 'employee')->first()->id,
                     'created_at' => now(),
                 ]);
 
                 DB::table('jw_users.employees')->insert([
-                    'auth_user_id' => $authUser,
+                    'user_user_type_id' => $authUser,
                     'employee_email' => 'employee' . '-' . $i . '@example.com',
                     'employee_phone' => $this->getPhoneNumber(),
                     'password' => bcrypt('password'),
@@ -77,28 +77,28 @@ class InitUserSeeder extends Seeder
                     'created_at' => now(),
                 ]);
             } elseif ($i < 10) {
-                $authUser = DB::table('jw_users.auth_users')->insertGetId([
+                $authUser = DB::table('jw_users.user_user_type')->insertGetId([
                     'user_id' => $userId,
                     'user_type_id' => DB::table('jw_users.user_types')->where('name', 'customer')->first()->id,
                     'created_at' => now(),
                 ]);
 
                 DB::table('jw_users.customers')->insert([
-                    'auth_user_id' => $authUser,
+                    'user_user_type_id' => $authUser,
                     'personal_email' => 'customer' . '-' . $i . '@example.com',
                     'password' => bcrypt('password'),
                     'birthday' => $faker->dateTimeBetween('-50 years', '-20 years'),
                     'created_at' => now(),
                 ]);
             } else {
-                $authUser = DB::table('jw_users.auth_users')->insertGetId([
+                $authUser = DB::table('jw_users.user_user_type')->insertGetId([
                     'user_id' => $userId,
                     'user_type_id' => DB::table('jw_users.user_types')->where('name', 'admin')->first()->id,
                     'created_at' => now(),
                 ]);
 
                 DB::table('jw_users.admins')->insert([
-                    'auth_user_id' => $authUser,
+                    'user_user_type_id' => $authUser,
                     'admin_email' => 'admin' . '-' . $i . '@example.com',
                     'admin_phone' => $this->getPhoneNumber(),
                     'password' => bcrypt('password'),
@@ -129,36 +129,36 @@ class InitUserSeeder extends Seeder
 
     private function additionalAuth(): void
     {
-        $adminUserId = DB::table('jw_users.auth_users')
+        $adminUserId = DB::table('jw_users.user_user_type')
             ->where('user_type_id', DB::table('jw_users.user_types')->where('name', 'admin')->pluck('id')->random())
             ->first()->user_id;
 
-        $customerUserId = DB::table('jw_users.auth_users')
+        $customerUserId = DB::table('jw_users.user_user_type')
             ->where('user_type_id', DB::table('jw_users.user_types')->where('name', 'customer')->pluck('id')->random())
             ->first()->user_id;
 
-        $authUser = DB::table('jw_users.auth_users')->insertGetId([
+        $authUser = DB::table('jw_users.user_user_type')->insertGetId([
             'user_id' => $adminUserId,
             'user_type_id' => DB::table('jw_users.user_types')->where('name', 'customer')->first()->id,
             'created_at' => now(),
         ]);
 
         DB::table('jw_users.customers')->insert([
-            'auth_user_id' => $authUser,
+            'user_user_type_id' => $authUser,
             'personal_email' => 'customer' . '-' . DB::table('jw_users.users')->count() + 1 . '@example.com',
             'password' => bcrypt('password'),
             'birthday' => Factory::create()->dateTimeBetween('-50 years', '-20 years'),
             'created_at' => now(),
         ]);
 
-        $authUser = DB::table('jw_users.auth_users')->insertGetId([
+        $authUser = DB::table('jw_users.user_user_type')->insertGetId([
             'user_id' => $customerUserId,
             'user_type_id' => DB::table('jw_users.user_types')->where('name', 'employee')->first()->id,
             'created_at' => now(),
         ]);
 
         DB::table('jw_users.employees')->insert([
-            'auth_user_id' => $authUser,
+            'user_user_type_id' => $authUser,
             'employee_email' => 'employee' . '-' . DB::table('jw_users.users')->count() + 1 . '@example.com',
             'employee_phone' => $this->getPhoneNumber(),
             'password' => bcrypt('password'),

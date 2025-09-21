@@ -55,11 +55,11 @@ return new class extends Migration
                         jw_users.users as juu
                         join jw_users.genders as jug on juu.gender_id = jug.id
                         join jw_users.register_phones as jurp on juu.register_phone_id = jurp.id
-                        left join jw_users.auth_users as juau on juu.id = juau.user_id
-                        left join jw_users.user_types as juut on juau.user_type_id = juut.id
-                        left join jw_users.admins a on juau.id = a.auth_user_id
-                        left join jw_users.customers c on juau.id = c.auth_user_id
-                        left join jw_users.employees e on juau.id = e.auth_user_id
+                        left join jw_users.user_user_type as uut on juu.id = uut.user_id
+                        left join jw_users.user_types as juut on uut.user_type_id = juut.id
+                        left join jw_users.admins a on uut.id = a.user_user_type_id
+                        left join jw_users.customers c on uut.id = c.user_user_type_id
+                        left join jw_users.employees e on uut.id = e.user_user_type_id
                         group by juu.id,jug.name,jurp.phone
             SQL
         );
