@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('jw_users.employees', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('auth_user_id');
-            $table->string('work_email');
-            $table->string('work_phone');
+            $table->string('employee_email');
+            $table->string('employee_phone');
             $table->string('password');
             $table->date('birthday');
             $table->integer('experience');

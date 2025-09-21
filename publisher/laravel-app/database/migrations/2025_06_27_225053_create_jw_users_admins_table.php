@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('jw_users.admins', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('auth_user_id')->index();
-            $table->string('work_email');
-            $table->string('work_phone');
+            $table->string('admin_email');
+            $table->string('admin_phone');
             $table->string('password');
             $table->timestamps();
 

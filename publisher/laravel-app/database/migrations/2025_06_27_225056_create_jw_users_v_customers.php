@@ -23,14 +23,15 @@ return new class extends Migration
                     juu.first_name,
                     juu.middle_name,
                     juu.last_name,
-                    up.phone as personal_phone,
+                    juu.register_phone_id,
+                    rp.phone as personal_phone,
                     g.name as gender
                 from
                 jw_users.customers as juc
                 join jw_users.auth_users as juau on juc.auth_user_id = juau.id
                 join jw_users.user_types as juut on juau.user_type_id = juut.id
                 join jw_users.users as juu on juau.user_id = juu.id
-                join jw_users.user_phones up on juu.phone_id = up.id
+                join jw_users.register_phones rp on juu.register_phone_id = rp.id
                 join jw_users.genders g on juu.gender_id = g.id
             SQL
         );

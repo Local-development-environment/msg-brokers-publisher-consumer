@@ -19,31 +19,32 @@ return new class extends Migration
                         juu.first_name,
                         juu.middle_name,
                         juu.last_name,
+                        juu.register_phone_id,
                         jug.name as gender,
-                        jup.phone,
+                        jurp.phone,
                         -- c.personal_email,
                         jsonb_agg(
                             case
-                                when a.work_email notnull then
+                                when a.admin_email notnull then
                                     jsonb_build_object(
                                         'type', juut.name,
-                                        'admin_email', a.work_email,
-                                        'work_phone', a.work_phone,
-                                        'personal_phone', jup.phone
+                                        'admin_email', a.admin_email,
+                                        'admin_phone', a.admin_phone,
+                                        'personal_phone', jurp.phone
                                     )
                                 when c.personal_email notnull then
                                     jsonb_build_object(
                                         'type', juut.name,
-                                        'customer_email', c.personal_email,
-                                        'personal_phone', jup.phone,
+                                        'personal_email', c.personal_email,
+                                        'personal_phone', jurp.phone,
                                         'birthday', c.birthday
                                     )
-                                when e.work_email notnull then
+                                when e.employee_email notnull then
                                     jsonb_build_object(
                                         'type', juut.name,
-                                        'employee_email', e.work_email,
-                                        'work_phone', e.work_phone,
-                                        'personal_phone', jup.phone,
+                                        'employee_email', e.employee_email,
+                                        'employee_phone', e.employee_phone,
+                                        'personal_phone', jurp.phone,
                                         'birthday', e.birthday,
                                         'experience', e.experience,
                                         'position', e.position
@@ -53,13 +54,13 @@ return new class extends Migration
                         from
                         jw_users.users as juu
                         join jw_users.genders as jug on juu.gender_id = jug.id
-                        join jw_users.user_phones as jup on juu.phone_id = jup.id
+                        join jw_users.register_phones as jurp on juu.register_phone_id = jurp.id
                         left join jw_users.auth_users as juau on juu.id = juau.user_id
                         left join jw_users.user_types as juut on juau.user_type_id = juut.id
                         left join jw_users.admins a on juau.id = a.auth_user_id
                         left join jw_users.customers c on juau.id = c.auth_user_id
                         left join jw_users.employees e on juau.id = e.auth_user_id
-                        group by juu.id,jug.name,jup.phone
+                        group by juu.id,jug.name,jurp.phone
             SQL
         );
     }

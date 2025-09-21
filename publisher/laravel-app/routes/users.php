@@ -5,13 +5,16 @@ declare(strict_types=1);
 use App\Http\Auth\Admins\Controllers\AdminController;
 use App\Http\Auth\Customers\Controllers\CustomerController;
 use App\Http\Auth\Employees\Controllers\EmployeeController;
+use App\Http\Auth\RegisterPhones\Controllers\RegisterPhoneController;
 use App\Http\Auth\Users\Controllers\VUserController;
+
+Route::post('register-phone', [RegisterPhoneController::class, 'registerPhone']);
 
 Route::group([
     'prefix' => 'employees'
 ], function () {
     /*****************  AUTH EMPLOYEES ROUTES **************/
-    Route::post('/register', [EmployeeController::class, 'register']);
+    Route::post('/register', [EmployeeController::class, 'register'])->middleware('auth:admin');
     Route::post('/login', [EmployeeController::class, 'login']);
     Route::post('/logout', [EmployeeController::class, 'logout'])->middleware('auth:employee');
     Route::patch('/refresh', [EmployeeController::class, 'refresh'])->middleware('auth:employee');
@@ -26,7 +29,7 @@ Route::group([
     'prefix' => 'admins'
 ], function () {
     /*****************  AUTH ADMINS ROUTES **************/
-    Route::post('/register', [AdminController::class, 'register']);
+    Route::post('/register', [AdminController::class, 'register'])->middleware('auth:admin');
     Route::post('/login', [AdminController::class, 'login']);
     Route::post('/logout', [AdminController::class, 'logout'])->middleware('auth:admin');
     Route::patch('/refresh', [AdminController::class, 'refresh'])->middleware('auth:admin');

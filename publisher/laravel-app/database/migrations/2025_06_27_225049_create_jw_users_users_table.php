@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('jw_users.users', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('gender_id');
-            $table->unsignedBigInteger('phone_id');
+            $table->unsignedBigInteger('register_phone_id');
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('gender_id')->references('id')->on('jw_users.genders');
-            $table->foreign('phone_id')->references('id')->on('jw_users.user_phones');
+            $table->foreign('register_phone_id')->references('id')->on('jw_users.register_phones');
         });
     }
 

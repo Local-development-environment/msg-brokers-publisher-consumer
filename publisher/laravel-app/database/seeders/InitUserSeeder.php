@@ -3,12 +3,10 @@
 namespace Database\Seeders;
 
 use Faker\Factory;
-use Faker\Generator;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Faker\Generator as Faker;
 
 class InitUserSeeder extends Seeder
 {
@@ -19,7 +17,7 @@ class InitUserSeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
         DB::table('jw_users.genders')->truncate();
-        DB::table('jw_users.user_phones')->truncate();
+        DB::table('jw_users.register_phones')->truncate();
         DB::table('jw_users.user_types')->truncate();
         DB::table('jw_users.users')->truncate();
         DB::table('jw_users.auth_users')->truncate();
@@ -52,7 +50,7 @@ class InitUserSeeder extends Seeder
             $phoneId = $this->storePhoneNumber();
 
             $userId = DB::table('jw_users.users')->insertGetId([
-                'phone_id' => $phoneId,
+                'register_phone_id' => $phoneId,
                 'gender_id' => $genderId,
                 'first_name' => ($genderId === 1) ? $faker->firstNameMale : $faker->firstNameFemale,
                 'middle_name' => $faker->firstNameMale,
@@ -70,8 +68,8 @@ class InitUserSeeder extends Seeder
 
                 DB::table('jw_users.employees')->insert([
                     'auth_user_id' => $authUser,
-                    'work_email' => $faker->email,
-                    'work_phone' => $this->getPhoneNumber(),
+                    'employee_email' => 'employee' . '-' . $i . '@example.com',
+                    'employee_phone' => $this->getPhoneNumber(),
                     'password' => bcrypt('password'),
                     'birthday' => $faker->dateTimeBetween('-50 years', '-20 years'),
                     'experience' => $faker->numberBetween(1,10),
@@ -87,7 +85,7 @@ class InitUserSeeder extends Seeder
 
                 DB::table('jw_users.customers')->insert([
                     'auth_user_id' => $authUser,
-                    'personal_email' => $faker->email,
+                    'personal_email' => 'customer' . '-' . $i . '@example.com',
                     'password' => bcrypt('password'),
                     'birthday' => $faker->dateTimeBetween('-50 years', '-20 years'),
                     'created_at' => now(),
@@ -101,8 +99,8 @@ class InitUserSeeder extends Seeder
 
                 DB::table('jw_users.admins')->insert([
                     'auth_user_id' => $authUser,
-                    'work_email' => $faker->email,
-                    'work_phone' => $this->getPhoneNumber(),
+                    'admin_email' => 'admin' . '-' . $i . '@example.com',
+                    'admin_phone' => $this->getPhoneNumber(),
                     'password' => bcrypt('password'),
                     'created_at' => now(),
                 ]);
@@ -116,7 +114,7 @@ class InitUserSeeder extends Seeder
     {
         $phone = $this->getPhoneNumber();
 
-        return DB::table('jw_users.user_phones')->insertGetId([
+        return DB::table('jw_users.register_phones')->insertGetId([
             'phone' => $phone,
             'created_at' => now(),
         ]);
@@ -147,7 +145,7 @@ class InitUserSeeder extends Seeder
 
         DB::table('jw_users.customers')->insert([
             'auth_user_id' => $authUser,
-            'personal_email' => Factory::create()->email,
+            'personal_email' => 'customer' . '-' . DB::table('jw_users.users')->count() + 1 . '@example.com',
             'password' => bcrypt('password'),
             'birthday' => Factory::create()->dateTimeBetween('-50 years', '-20 years'),
             'created_at' => now(),
@@ -161,8 +159,8 @@ class InitUserSeeder extends Seeder
 
         DB::table('jw_users.employees')->insert([
             'auth_user_id' => $authUser,
-            'work_email' => Factory::create()->email,
-            'work_phone' => $this->getPhoneNumber(),
+            'employee_email' => 'employee' . '-' . DB::table('jw_users.users')->count() + 1 . '@example.com',
+            'employee_phone' => $this->getPhoneNumber(),
             'password' => bcrypt('password'),
             'birthday' => Factory::create()->dateTimeBetween('-50 years', '-20 years'),
             'experience' => Factory::create()->numberBetween(1,10),

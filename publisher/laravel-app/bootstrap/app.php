@@ -4,6 +4,8 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -43,6 +45,13 @@ return Application::configure(basePath: dirname(__DIR__))
                 return response()->json([
                     'message' => $e->getMessage(),
                 ], 401);
+            }
+        });
+        $exceptions->render(function (AccessDeniedHttpException $e, $request) {
+            if ($request->is(array('api/*'))) {
+                return response()->json([
+                    'message' => $e->getMessage(),
+                ], 403);
             }
         });
     })->create();

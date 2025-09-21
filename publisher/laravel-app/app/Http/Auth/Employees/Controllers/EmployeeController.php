@@ -34,7 +34,7 @@ class EmployeeController extends BaseAuthController
      */
     public function login(EmployeeLoginRequest $request): JsonResponse
     {
-        $credentials = $request->only('work_email', 'password');
+        $credentials = $request->only('employee_email', 'password');
 
         if (! $token = auth('employee')->attempt($credentials)) {
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);

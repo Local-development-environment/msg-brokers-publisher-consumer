@@ -40,7 +40,7 @@ class AdminController extends BaseAuthController
      */
     public function login(AdminLoginRequest $request): JsonResponse
     {
-        $credentials = $request->only('work_email', 'password');
+        $credentials = $request->only('admin_email', 'password');
 
         if (! $token = auth('admin')->attempt($credentials)) {
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_users.user_phones', function (Blueprint $table) {
+        Schema::create('jw_users.register_phones', function (Blueprint $table) {
             $table->id();
             $table->string('phone')->unique();
             $table->timestamps();
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_users.user_phones');
+        Schema::dropIfExists('jw_users.register_phones');
     }
 };
