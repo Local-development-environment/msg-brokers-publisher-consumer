@@ -4,6 +4,12 @@ namespace Database\Seeders;
 
 use App\Http\Integrations\UVI\Jewelleries\Requests\GetAllJewelleries;
 use App\Http\Integrations\UVI\UVIConnector;
+use Domain\Users\Admins\Models\Admin;
+use Domain\Users\Genders\Models\Gender;
+use Domain\Users\RegisterPhones\Models\RegisterPhone;
+use Domain\Users\Users\Models\User;
+use Domain\Users\UserTypes\Models\UserType;
+use Domain\Users\UserUserTypes\Models\UserUserType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Saloon\Exceptions\Request\FatalRequestException;
@@ -16,6 +22,7 @@ class TestSeeder extends Seeder
      */
     public function run(): void
     {
+//        dd(User::find(2)->registerPhone);
         $params = [
             'include' => ['jewelleryCategory','inserts'],
             'filter' => [
