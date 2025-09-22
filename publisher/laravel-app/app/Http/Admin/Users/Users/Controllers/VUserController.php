@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Auth\Users\Controllers;
+namespace App\Http\Admin\Users\Users\Controllers;
 
-use App\Http\Auth\Users\Resources\VUserCollection;
+use App\Http\Admin\Users\Users\Resources\VUserCollection;
 use App\Http\Controllers\Controller;
 use Domain\Users\VUsers\Services\VUserService;
 use Illuminate\Http\JsonResponse;
