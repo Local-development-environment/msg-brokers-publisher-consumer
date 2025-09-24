@@ -9,9 +9,12 @@ use Domain\Users\Admins\Enums\AdminEnum;
 use Domain\Users\UserUserTypes\Models\UserUserType;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
+use Spatie\Permission\Traits\HasRoles;
 
 final class Admin extends BaseModel implements JWTSubject
 {
+    use HasRoles;
+
     protected $table = AdminEnum::TABLE->value;
 
     public const string TYPE_RESOURCE = AdminEnum::RESOURCE->value;

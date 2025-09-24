@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
+use Domain\Inserts\GrownStones\Models\GrownStone;
+use Domain\Inserts\GrownStones\Policies\GrownStonePolicy;
 use Domain\Integrations\UVIJewelleries\Services\JewelleryService;
 use Domain\Integrations\UVIJewelleries\UVIJewelleryInterface;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +29,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::policy(GrownStone::class, GrownStonePolicy::class);
+
+        Gate::before(function ($user, $ability) {
+            if ($user->hasRole('super-admin')) {
+                return true;
+            }
+        });
     }
 }

@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_users.auth_users');
+        Schema::dropIfExists('jw_users.user_user_type');
     }
 };

@@ -2,11 +2,15 @@
 
 namespace Database\Seeders;
 
+use Domain\Users\Admins\Models\Admin;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 class InitUserSeeder extends Seeder
 {
@@ -24,6 +28,11 @@ class InitUserSeeder extends Seeder
         DB::table('jw_users.admins')->truncate();
         DB::table('jw_users.customers')->truncate();
         DB::table('jw_users.employees')->truncate();
+        DB::table('spatie.model_has_permissions')->truncate();
+        DB::table('spatie.model_has_roles')->truncate();
+        DB::table('spatie.permissions')->truncate();
+        DB::table('spatie.role_has_permissions')->truncate();
+        DB::table('spatie.roles')->truncate();
         Schema::enableForeignKeyConstraints();
 
         $genders = ['мужчина', 'женщина'];
@@ -108,6 +117,7 @@ class InitUserSeeder extends Seeder
         }
 
         $this->additionalAuth();
+        $this->createPermissions();
     }
 
     private function storePhoneNumber(): string
@@ -167,6 +177,24 @@ class InitUserSeeder extends Seeder
             'position' => Factory::create()->jobTitle,
             'created_at' => now(),
         ]);
+    }
 
+    private function createPermissions(): void
+    {
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
+
+        Permission::create(['name' => 'update inserts']);
+        Permission::create(['name' => 'delete inserts']);
+        Permission::create(['name' => 'view inserts']);
+
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
+
+        $admin = Role::create(['name' => 'admin']);
+        $admin->givePermissionTo('view inserts');
+
+        $superAdmin = Role::create(['name' => 'super-admin']);
+
+        Admin::find(2)->assignRole('admin');
+        Admin::find(1)->assignRole('super-admin');
     }
 }
