@@ -23,6 +23,7 @@ final class Jeweller
             ->addInsert()
             ->addProperty()
             ->addJewelleryName()
+            ->addMedia()
             ->getJewellery()
             ;
     }

@@ -216,9 +216,20 @@ return new class extends Migration
                 ci.stone_weight,
                 ci.stone_unit,
                 ci.stone_dimensions,
-                ci.stone_optional_info
+                ci.stone_optional_info,
+                weights.weight
             from
                 cte_inserts as ci
+            left join
+                (
+                    select
+                        jewellery_id,
+                        max(stone_weight) as weight
+                    from cte_inserts
+                    group by jewellery_id
+                ) as weights
+                    on ci.jewellery_id = weights.jewellery_id
+                    and ci.stone_weight = weights.weight
             with data
             
             SQL

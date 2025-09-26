@@ -3288,7 +3288,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="qxHM69X4Wmu2epxDMGnP-40" value="user_types" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;rounded=1;labelBackgroundColor=none;swimlaneFillColor=none;fillColor=#bac8d3;strokeColor=#23445d;arcSize=10;" parent="1" vertex="1">
-          <mxGeometry x="270" y="308" width="180" height="74" as="geometry" />
+          <mxGeometry x="270" y="276" width="180" height="74" as="geometry" />
         </mxCell>
         <mxCell id="qxHM69X4Wmu2epxDMGnP-41" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;rounded=1;labelBackgroundColor=none;swimlaneFillColor=none;strokeColor=default;shadow=0;" parent="qxHM69X4Wmu2epxDMGnP-40" vertex="1">
           <mxGeometry y="30" width="180" height="22" as="geometry" />
@@ -3317,7 +3317,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="qxHM69X4Wmu2epxDMGnP-47" value="&lt;b&gt;Discriminator is user_types&lt;/b&gt;" style="shape=note;size=20;whiteSpace=wrap;html=1;dashed=1;align=left;" parent="1" vertex="1">
-          <mxGeometry x="270" y="280" width="180" height="22" as="geometry" />
+          <mxGeometry x="270" y="248" width="180" height="22" as="geometry" />
         </mxCell>
         <mxCell id="qxHM69X4Wmu2epxDMGnP-48" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=1;curved=0;startArrow=ERmandOne;startFill=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;endFill=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="qxHM69X4Wmu2epxDMGnP-41" target="qHRFEDkLKxW7ACqGWTWw-5" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">

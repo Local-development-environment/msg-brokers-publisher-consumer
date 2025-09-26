@@ -32,5 +32,7 @@ interface JewelleryBuilderInterface
 
     public function addInsert(): jewelleryBuilderInterface;
 
+    public function addMedia(): jewelleryBuilderInterface;
+
     public function getJewellery(): array;
 }

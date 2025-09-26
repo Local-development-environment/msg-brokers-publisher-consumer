@@ -18,15 +18,16 @@ class BuildJewellerySeeder extends Seeder
     public function run(): void
     {
         $this->call(InitDataSeeder::class);
+
         $jeweller = new Jeweller();
 //        $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
 //        dump([$builder]);
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             dump($i);
             $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
 
             $this->addJewellery($builder);
-//            dump($builder);
+//            dd($builder);
         }
 
         DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
@@ -55,6 +56,7 @@ class BuildJewellerySeeder extends Seeder
         $this->addMetal($jewelleryData, $jewelleryId);
         $this->addCoverage($jewelleryData, $jewelleryId);
         $this->addProperty($jewelleryData, $jewelleryId);
+        $this->addMedia($jewelleryData, $jewelleryId);
     }
 
     /**
@@ -493,6 +495,66 @@ class BuildJewellerySeeder extends Seeder
                 'price' => $sizePriceQuantity['price'],
                 'created_at' => now()
             ]);
+        }
+    }
+
+    private function addMedia(array $jewelleryData, int $jewelleryId): void
+    {
+        $types = DB::table('jw_medias.video_types')->get();
+
+        foreach ($jewelleryData['jw_media'] as $keyP => $producer) {
+//            dd($keyP);
+//            dd($jewelleryData);
+            $producerId = DB::table('jw_medias.producers')->where('name',$keyP)->value('id');
+            foreach ($producer as $keyC => $category) {
+//                dd($keyC);
+                $categoryId = DB::table('jw_medias.categories')->where('name',$keyC)->value('id');
+                $mediaId = DB::table('jw_medias.medias')->insertGetId([
+                    'jewellery_id' => $jewelleryId,
+                    'category_id' => $categoryId,
+                    'producer_id' => $producerId,
+                    'created_at' => now()
+                ]);
+                if ($keyC === 'image') {
+                    $pictureMediaId = DB::table('jw_medias.picture_medias')->insertGetId([
+                        'media_id' => $mediaId,
+                        'created_at' => now()
+                    ]);
+                    foreach ($category as $keyI => $item) {
+                        DB::table('jw_medias.pictures')->insertGetId([
+                            'picture_media_id' => $pictureMediaId,
+                            'name' => $item,
+                            'extension' => 'jpg',
+                            'src' => 'https://server/' . $item,
+                            'alt' => $jewelleryData['name'],
+                            'is_active' => true,
+                            'created_at' => now()
+                        ]);
+                    }
+                } else {
+                    $videoMediaId = DB::table('jw_medias.video_medias')->insertGetId([
+                        'media_id' => $mediaId,
+                        'created_at' => now()
+                    ]);
+                    foreach ($category as $keyI => $item) {
+                        $videoId = DB::table('jw_medias.videos')->insertGetId([
+                            'video_media_id' => $videoMediaId,
+                            'name' => $item,
+                            'is_active' => true,
+                            'created_at' => now()
+                        ]);
+                        foreach ($types as $type) {
+                            DB::table('jw_medias.video_details')->insertGetId([
+                                'video_id' => $videoId,
+                                'video_type_id' => $type->id,
+                                'src' => 'https://server/' . $item . '.' . $type->extension,
+                                'created_at' => now()
+                            ]);
+                        }
+                    }
+                }
+
+            }
         }
     }
 }

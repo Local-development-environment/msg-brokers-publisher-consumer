@@ -12,6 +12,7 @@ use Domain\Jewelleries\JewelleryBuilder\Properties\Hallmark;
 use Domain\Jewelleries\JewelleryBuilder\Properties\Insert;
 use Domain\Jewelleries\JewelleryBuilder\Properties\IsActive;
 use Domain\Jewelleries\JewelleryBuilder\Properties\JewelleryName;
+use Domain\Jewelleries\JewelleryBuilder\Properties\Media;
 use Domain\Jewelleries\JewelleryBuilder\Properties\PartNumber;
 use Domain\Jewelleries\JewelleryBuilder\Properties\PrcsMetal;
 use Domain\Jewelleries\JewelleryBuilder\Properties\Property;
@@ -138,6 +139,14 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         return $this;
     }
 
+    public function addMedia(): jewelleryBuilderInterface
+    {
+        $media = new Media();
+        $this->baseJewellery->media = $media->getMedia();
+
+        return $this;
+    }
+
     public function getJewellery(): array
     {
         $jewellery['prcs_metal_prop']['prcs_metal'] = $this->baseJewellery->prcsMetal;
@@ -152,6 +161,7 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         $jewellery['is_active'] = $this->baseJewellery->isActive;
         $jewellery['props'] = $this->baseJewellery->property;
         $jewellery['jw_insert'] = $this->baseJewellery->insert;
+        $jewellery['jw_media'] = $this->baseJewellery->media;
 
         return $jewellery;
     }
