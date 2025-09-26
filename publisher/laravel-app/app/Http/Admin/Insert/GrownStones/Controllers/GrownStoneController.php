@@ -13,16 +13,16 @@ use Illuminate\Support\Facades\Auth;
 
 class GrownStoneController extends Controller
 {
-    public function __construct(public GrownStoneService $service)
+    public function __construct(public GrownStoneService $service, public GrownStone $grownStone)
     {
     }
 
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, GrownStone $grownStone): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-//        $this->authorize('viewAny', $grownStone);
+        $this->authorize('viewAny', $this->grownStone);
 
         $data = $request->all();
         $items = $this->service->index($data);
@@ -35,7 +35,7 @@ class GrownStoneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('create', $this->grownStone);
     }
 
     /**

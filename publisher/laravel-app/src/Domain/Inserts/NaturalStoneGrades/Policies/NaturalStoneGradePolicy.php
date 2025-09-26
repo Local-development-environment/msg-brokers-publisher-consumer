@@ -1,30 +1,26 @@
 <?php
-declare(strict_types=1);
 
-namespace Domain\Inserts\GrownStones\Policies;
+namespace Domain\Inserts\NaturalStoneGrades\Policies;
 
-use Domain\Inserts\GrownStones\Models\GrownStone;
+use Domain\Inserts\NaturalStoneGrades\Models\NaturalStoneGrade;
 use Domain\Users\Admins\Models\Admin;
 
-class GrownStonePolicy
+class NaturalStoneGradePolicy
 {
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(Admin $admin): bool
     {
-        if ($admin->hasRole('admin')) {
-            return true;
-        }
-        return false;
+        return true;
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(Admin $admin, GrownStone $grownStone): bool
+    public function view(Admin $admin, NaturalStoneGrade $naturalStoneGrade): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -38,7 +34,7 @@ class GrownStonePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(Admin $admin, GrownStone $grownStone): bool
+    public function update(Admin $admin, NaturalStoneGrade $naturalStoneGrade): bool
     {
         return false;
     }
@@ -46,7 +42,7 @@ class GrownStonePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(Admin $admin, GrownStone $grownStone): bool
+    public function delete(Admin $admin, NaturalStoneGrade $naturalStoneGrade): bool
     {
         return false;
     }
@@ -54,7 +50,7 @@ class GrownStonePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(Admin $admin, GrownStone $grownStone): bool
+    public function restore(Admin $admin, NaturalStoneGrade $naturalStoneGrade): bool
     {
         return false;
     }
@@ -62,7 +58,7 @@ class GrownStonePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(Admin $admin, GrownStone $grownStone): bool
+    public function forceDelete(Admin $admin, NaturalStoneGrade $naturalStoneGrade): bool
     {
         return false;
     }

@@ -4,13 +4,14 @@ namespace App\Http\Admin\Insert\StoneGrades\Controllers;
 
 use App\Http\Admin\Insert\StoneGrades\Resources\StoneGradeCollection;
 use App\Http\Controllers\Controller;
+use Domain\Inserts\StoneGrades\Models\StoneGrade;
 use Domain\Inserts\StoneGrades\Services\StoneGradeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class StoneGradeController extends Controller
 {
-    public function __construct(public StoneGradeService $service)
+    public function __construct(private StoneGradeService $service, private StoneGrade $stoneGrade)
     {
     }
 
@@ -30,7 +31,7 @@ class StoneGradeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('create', $this->stoneGrade);
     }
 
     /**
@@ -46,7 +47,7 @@ class StoneGradeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->authorize('update', $this->stoneGrade);
     }
 
     /**
@@ -54,6 +55,6 @@ class StoneGradeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->authorize('delete', $this->stoneGrade);
     }
 }

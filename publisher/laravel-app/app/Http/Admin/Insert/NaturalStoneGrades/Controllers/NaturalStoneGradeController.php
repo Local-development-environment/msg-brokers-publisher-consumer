@@ -4,13 +4,14 @@ namespace App\Http\Admin\Insert\NaturalStoneGrades\Controllers;
 
 use App\Http\Admin\Insert\NaturalStoneGrades\Resources\NaturalStoneGradeCollection;
 use App\Http\Controllers\Controller;
+use Domain\Inserts\NaturalStoneGrades\Models\NaturalStoneGrade;
 use Domain\Inserts\NaturalStoneGrades\Services\NaturalStoneGradeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class NaturalStoneGradeController extends Controller
 {
-    public function __construct(public NaturalStoneGradeService $service)
+    public function __construct(public NaturalStoneGradeService $service, public NaturalStoneGrade $naturalStoneGrade)
     {
     }
 
@@ -19,6 +20,8 @@ class NaturalStoneGradeController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
+        $this->authorize('viewAny', $this->naturalStoneGrade);
+
         $data = $request->all();
         $items = $this->service->index($data);
 
@@ -30,7 +33,7 @@ class NaturalStoneGradeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('create', $this->naturalStoneGrade);
     }
 
     /**
@@ -46,7 +49,7 @@ class NaturalStoneGradeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->authorize('update', $this->naturalStoneGrade);
     }
 
     /**
@@ -54,6 +57,6 @@ class NaturalStoneGradeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->authorize('delete', $this->naturalStoneGrade);
     }
 }

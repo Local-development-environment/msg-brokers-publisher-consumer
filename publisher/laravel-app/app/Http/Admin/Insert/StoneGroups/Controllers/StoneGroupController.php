@@ -4,13 +4,14 @@ namespace App\Http\Admin\Insert\StoneGroups\Controllers;
 
 use App\Http\Admin\Insert\StoneGroups\Resources\StoneGroupCollection;
 use App\Http\Controllers\Controller;
+use Domain\Inserts\StoneGroups\Models\StoneGroup;
 use Domain\Inserts\StoneGroups\Services\StoneGroupService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class StoneGroupController extends Controller
 {
-    public function __construct(public StoneGroupService $service)
+    public function __construct(private StoneGroupService $service, private StoneGroup $stoneGroup)
     {
     }
 
@@ -30,7 +31,7 @@ class StoneGroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('create', $this->stoneGroup);
     }
 
     /**
@@ -46,7 +47,7 @@ class StoneGroupController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->authorize('update', $this->stoneGroup);
     }
 
     /**
@@ -54,6 +55,6 @@ class StoneGroupController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->authorize('update', $this->stoneGroup);
     }
 }
