@@ -504,7 +504,7 @@ class BuildJewellerySeeder extends Seeder
 
         foreach ($jewelleryData['jw_media'] as $keyP => $producer) {
 //            dd($keyP);
-//            dd($jewelleryData);
+//            dd($jewelleryData['jw_media']['customer']['image']);
             $producerId = DB::table('jw_medias.producers')->where('name',$keyP)->value('id');
             foreach ($producer as $keyC => $category) {
 //                dd($keyC);
@@ -525,7 +525,7 @@ class BuildJewellerySeeder extends Seeder
                             'picture_media_id' => $pictureMediaId,
                             'name' => $item,
                             'extension' => 'jpg',
-                            'src' => 'https://server/' . $item,
+                            'src' => 'https://server/' . $item . '.jpg',
                             'alt' => $jewelleryData['name'],
                             'is_active' => true,
                             'created_at' => now()

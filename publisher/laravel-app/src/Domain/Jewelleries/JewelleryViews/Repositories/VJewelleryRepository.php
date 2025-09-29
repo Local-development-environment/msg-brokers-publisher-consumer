@@ -78,6 +78,7 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
 
     private function getMenu(array $params): array
     {
+//        dd($params['filter']['category_id']);
         return [
             'categories' => $this->getMenuItems(
                 CategoryMenuFilter::class, $params, VJewelleryFilterParamNameEnum::FK_CATEGORY->value
