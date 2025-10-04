@@ -185,7 +185,7 @@ class InitUserSeeder extends Seeder
 
         Permission::create(['name' => 'update inserts']);
         Permission::create(['name' => 'delete inserts']);
-        Permission::create(['name' => 'view inserts']);
+        Permission::create(['name' => 'edit inserts']);
         Permission::create(['name' => 'view inserts']);
 
         app()[PermissionRegistrar::class]->forgetCachedPermissions();

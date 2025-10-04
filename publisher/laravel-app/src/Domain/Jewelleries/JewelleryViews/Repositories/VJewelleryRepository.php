@@ -9,6 +9,7 @@ use Domain\Jewelleries\JewelleryViews\MenuFilters\ApproxWeightRangeMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\CategoryMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\CoverageMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\InsertFamilyMenuFilter;
+use Domain\Jewelleries\JewelleryViews\MenuFilters\InsertStoneColourMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\InsertStoneGroupMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\InsertStoneMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\MetalMenuFilter;
@@ -18,6 +19,8 @@ use Domain\Shared\CustomFilters\ApproxWeightFilter;
 use Domain\Shared\CustomFilters\ClassifierGroupFilter;
 use Domain\Shared\CustomFilters\CoverageFilter;
 use Domain\Shared\CustomFilters\FamilyFilter;
+use Domain\Shared\CustomFilters\InsertColourFilter;
+use Domain\Shared\CustomFilters\MetalColourFilter;
 use Domain\Shared\CustomFilters\MetalFilter;
 use Domain\Shared\CustomFilters\PriceFilter;
 use Domain\Shared\CustomFilters\StoneFilter;
@@ -65,6 +68,9 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_STONE->value, new StoneFilter),
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_STONE_FAMILY->value, new FamilyFilter),
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_STONE_GROUP->value, new ClassifierGroupFilter),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_METAL_COLOUR->value, new MetalColourFilter),
+//                AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_INSERT_COLOUR->value, new InsertColourFilter),
+                AllowedFilter::exact(VJewelleryFilterParamNameEnum::JSON_INSERT_COLOUR->value),
                 'is_active', 'jewellery'
             ]);
     }
@@ -104,6 +110,9 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
                 ),
                 'groups' => $this->getMenuItems(
                     InsertStoneGroupMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_STONE_GROUP->value
+                ),
+                'colours' => $this->getMenuItems(
+                    InsertStoneColourMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_INSERT_COLOUR->value
                 )
             ]
         ];

@@ -27,6 +27,7 @@ return new class extends Migration
                                                 'name', jwvi.stone_name,
                                                 'alt_name', jwvi.stone_alt_name,
                                                 'description', jwvi.stone_description,
+                                                'colour_id', jwvi.stone_colour_id,
                                                 'max_weight', jwvi.max_weight
                                             ),
                                             'origin', jsonb_build_object(
@@ -55,6 +56,7 @@ return new class extends Migration
                                             'exterior', jsonb_build_object(
                                                 'id', jwvi.stone_colour_id,
                                                 'colour', jwvi.stone_colour_name,
+                                                'colour_id', jwvi.stone_colour_id,
                                                 'colour_description', jwvi.stone_colour_description,
                                                 'id', stone_facet_id,
                                                 'facet', jwvi.stone_facet_name,
@@ -445,6 +447,8 @@ return new class extends Migration
                     cjp.spec_props,
                     cjwi.inserts,
                     cjwc.coverages,
+                    cast(stone_max_weight_id as integer) as stone_max_weight_id,
+                    cast(stone_max_colour_id as integer) as stone_max_colour_id,
                     cjm.metals
                 from jewelleries.jewelleries as jj
                 join jewelleries.categories as jc on jj.category_id = jc.id
@@ -452,6 +456,8 @@ return new class extends Migration
                 left join cte_jw_coverages as cjwc on jj.id = cjwc.jewellery_id
                 left join cte_jw_metals as cjm on jj.id = cjm.jewellery_id
                 left join cte_jw_props as cjp on  jj.id = cjp.jewellery_id
+                left join jsonb_path_query(cjwi.inserts, '$[*].stone ? (@.max_weight != null) .id') as stone_max_weight_id on jj.id = cjwi.jewellery_id
+                left join jsonb_path_query(cjwi.inserts, '$[*].stone ? (@.max_weight != null) .colour_id') as stone_max_colour_id on jj.id = cjwi.jewellery_id
                 order by jj.id
                 
                 with data
