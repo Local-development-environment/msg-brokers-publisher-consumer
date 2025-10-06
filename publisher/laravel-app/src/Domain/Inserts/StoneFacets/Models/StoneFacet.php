@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class StoneFacet extends Model
 {
-    protected $table = StoneFacetEnum::TABLE->value;
+    protected $table = StoneFacetEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = StoneFacetEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = StoneFacetEnum::TYPE_RESOURCE->value;
 
     public function insertStones(): HasMany
     {

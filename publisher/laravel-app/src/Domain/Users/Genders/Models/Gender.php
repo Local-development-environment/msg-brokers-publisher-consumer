@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 final class Gender extends Model
 {
-    protected $table = GenderEnum::TABLE->value;
+    protected $table = GenderEnum::TABLE_NAME->value;
 
     public const string TYPE_RESOURCE = GenderEnum::RESOURCE->value;
 

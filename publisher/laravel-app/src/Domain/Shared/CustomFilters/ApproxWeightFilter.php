@@ -15,8 +15,9 @@ final class ApproxWeightFilter implements Filter
      */
     public function __invoke(Builder $query, mixed $value, string $property): void
     {
+//        dd($value);
         $query->where(function (Builder $query) use ($value) {
-            $query->whereBetween('approx_weight', [(int)$value[0], (int)$value[1]]);
+            $query->whereBetween('approx_weight', [(float)$value[0], (float)$value[1]]);
         });
     }
 }

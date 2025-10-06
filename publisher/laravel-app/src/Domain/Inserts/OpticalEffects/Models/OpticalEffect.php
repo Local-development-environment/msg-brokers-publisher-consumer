@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class OpticalEffect extends Model
 {
-    protected $table = OpticalEffectEnum::TABLE->value;
+    protected $table = OpticalEffectEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = OpticalEffectEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = OpticalEffectEnum::TYPE_RESOURCE->value;
 
     public function opticalEffectStones(): HasMany
     {

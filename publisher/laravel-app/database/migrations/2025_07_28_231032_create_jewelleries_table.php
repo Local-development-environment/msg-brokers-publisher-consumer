@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('description');
             $table->string('part_number')->unique();
-            $table->string('approx_weight');
+            $table->decimal('approx_weight');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
 

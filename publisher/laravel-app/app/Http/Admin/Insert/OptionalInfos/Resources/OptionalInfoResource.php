@@ -20,7 +20,7 @@ class OptionalInfoResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => OptionalInfoEnum::RESOURCE->value,
+            'type' => OptionalInfoEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 OptionalInfoRelationshipsEnum::INSERT->value => $this->sectionRelationships(

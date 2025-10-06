@@ -13,9 +13,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class NaturalStone extends Model
 {
-    protected $table = NaturalStoneEnum::TABLE->value;
+    protected $table = NaturalStoneEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = NaturalStoneEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = NaturalStoneEnum::TYPE_RESOURCE->value;
 
     public function stoneFamily(): BelongsTo
     {

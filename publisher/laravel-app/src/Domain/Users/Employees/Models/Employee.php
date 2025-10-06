@@ -10,9 +10,9 @@ use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
 final class Employee extends BaseModel implements JWTSubject
 {
-    protected $table = EmployeeEnum::TABLE->value;
+    protected $table = EmployeeEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = EmployeeEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = EmployeeEnum::TYPE_RESOURCE->value;
 
     public function getJWTIdentifier()
     {

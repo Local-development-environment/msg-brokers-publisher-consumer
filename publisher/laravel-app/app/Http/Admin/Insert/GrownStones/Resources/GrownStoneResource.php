@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\GrownStones\Resources;
 
@@ -24,7 +25,7 @@ class GrownStoneResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => GrownStoneEnum::RESOURCE->value,
+            'type' => GrownStoneEnum::TYPE_TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 GrownStoneRelationshipsEnum::STONE_FAMILY->value => $this->sectionRelationships(

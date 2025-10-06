@@ -20,7 +20,7 @@ class StoneColourResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => StoneColourEnum::RESOURCE->value,
+            'type' => StoneColourEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 StoneColourRelationshipsEnum::INSERT_STONES->value => $this->sectionRelationships(

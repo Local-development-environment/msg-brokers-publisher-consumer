@@ -28,7 +28,7 @@ class InsertStoneResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => InsertStoneEnum::RESOURCE->value,
+            'type' => InsertStoneEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 InsertStoneRelationshipsEnum::STONE->value => $this->sectionRelationships(

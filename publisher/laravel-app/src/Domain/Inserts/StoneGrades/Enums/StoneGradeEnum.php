@@ -4,7 +4,7 @@ namespace Domain\Inserts\StoneGrades\Enums;
 
 enum StoneGradeEnum: string
 {
-    case RESOURCE = 'stoneGrades';
-    case TABLE = 'jw_inserts.stone_grades';
+    case TYPE_RESOURCE = 'stoneGrades';
+    case TABLE_NAME = 'jw_inserts.stone_grades';
     case PRIMARY_KEY   = 'id';
 }

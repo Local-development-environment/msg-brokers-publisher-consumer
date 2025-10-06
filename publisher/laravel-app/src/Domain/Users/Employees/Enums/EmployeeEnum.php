@@ -4,7 +4,7 @@ namespace Domain\Users\Employees\Enums;
 
 enum EmployeeEnum: string
 {
-    case RESOURCE     = 'employees';
-    case TABLE        = 'jw_users.employees';
+    case TYPE_RESOURCE     = 'employees';
+    case TABLE_NAME        = 'jw_users.employees';
     case PRIMARY_KEY  = 'id';
 }

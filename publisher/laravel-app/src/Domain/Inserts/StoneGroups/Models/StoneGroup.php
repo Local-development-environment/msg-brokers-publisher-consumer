@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class StoneGroup extends Model
 {
-    protected $table = StoneGroupEnum::TABLE->value;
+    protected $table = StoneGroupEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = StoneGroupEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = StoneGroupEnum::TYPE_RESOURCE->value;
 
     public function naturalStones(): HasMany
     {

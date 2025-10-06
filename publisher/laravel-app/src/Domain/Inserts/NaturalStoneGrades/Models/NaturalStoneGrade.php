@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class NaturalStoneGrade extends Model
 {
-    protected $table = NaturalStoneGradeEnum::TABLE->value;
+    protected $table = NaturalStoneGradeEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = NaturalStoneGradeEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = NaturalStoneGradeEnum::TYPE_RESOURCE->value;
 
     public function stoneGrade(): BelongsTo
     {

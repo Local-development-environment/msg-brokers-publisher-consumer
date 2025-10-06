@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class StoneMetric extends Model
 {
-    protected $table = StoneMetricEnum::TABLE->value;
+    protected $table = StoneMetricEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = StoneMetricEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = StoneMetricEnum::TYPE_RESOURCE->value;
 
     public function insert(): HasOne
     {

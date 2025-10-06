@@ -24,7 +24,7 @@ class VInsertResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => VInsert::TYPE_RESOURCE,
+            'type' => VInsert::TYPE_TYPE_RESOURCE,
             'attributes' => $this->attributeItems(),
         ];
     }

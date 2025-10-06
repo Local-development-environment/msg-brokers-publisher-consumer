@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OptionalInfo extends Model
 {
-    protected $table = OptionalInfoEnum::TABLE->value;
+    protected $table = OptionalInfoEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = OptionalInfoEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = OptionalInfoEnum::TYPE_RESOURCE->value;
 
     public function insert(): BelongsTo
     {

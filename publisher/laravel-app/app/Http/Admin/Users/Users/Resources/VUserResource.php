@@ -23,7 +23,7 @@ class VUserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => VUserEnum::RESOURCE->value,
+            'type' => VUserEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
         ];
     }

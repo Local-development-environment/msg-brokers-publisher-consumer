@@ -28,7 +28,7 @@ class NaturalStoneResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => NaturalStoneEnum::RESOURCE->value,
+            'type' => NaturalStoneEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 NaturalStoneRelationshipsEnum::STONE->value => $this->sectionRelationships(

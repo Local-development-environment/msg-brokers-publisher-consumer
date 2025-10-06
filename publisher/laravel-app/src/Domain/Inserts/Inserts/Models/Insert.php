@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Insert extends Model
 {
-    protected $table = InsertEnum::TABLE->value;
+    protected $table = InsertEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = InsertEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = InsertEnum::TYPE_TYPE_RESOURCE->value;
 
     public function jewellery(): BelongsTo
     {

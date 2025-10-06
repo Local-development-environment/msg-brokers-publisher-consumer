@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class VEmployee extends Model
 {
-    protected $table = VEmployeeEnum::TABLE->value;
+    protected $table = VEmployeeEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = VEmployeeEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = VEmployeeEnum::TYPE_RESOURCE->value;
 }

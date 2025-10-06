@@ -19,7 +19,6 @@ use Domain\Shared\CustomFilters\ApproxWeightFilter;
 use Domain\Shared\CustomFilters\ClassifierGroupFilter;
 use Domain\Shared\CustomFilters\CoverageFilter;
 use Domain\Shared\CustomFilters\FamilyFilter;
-use Domain\Shared\CustomFilters\InsertColourFilter;
 use Domain\Shared\CustomFilters\MetalColourFilter;
 use Domain\Shared\CustomFilters\MetalFilter;
 use Domain\Shared\CustomFilters\PriceFilter;
@@ -61,6 +60,7 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
                 AllowedFilter::exact(VJewelleryFilterParamNameEnum::PK_ITSELF->value),
                 AllowedFilter::exact(VJewelleryFilterParamNameEnum::PART_NUMBER->value),
                 AllowedFilter::exact(VJewelleryFilterParamNameEnum::FK_CATEGORY->value),
+                AllowedFilter::exact(VJewelleryFilterParamNameEnum::JSON_INSERT_COLOUR->value),
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::APPROX_WEIGHT->value, new ApproxWeightFilter()),
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::PRICE_RANGE->value, new PriceFilter),
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_METAL->value, new MetalFilter),
@@ -69,8 +69,6 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_STONE_FAMILY->value, new FamilyFilter),
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_STONE_GROUP->value, new ClassifierGroupFilter),
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_METAL_COLOUR->value, new MetalColourFilter),
-//                AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_INSERT_COLOUR->value, new InsertColourFilter),
-                AllowedFilter::exact(VJewelleryFilterParamNameEnum::JSON_INSERT_COLOUR->value),
                 'is_active', 'jewellery'
             ]);
     }
@@ -84,7 +82,7 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
 
     private function getMenu(array $params): array
     {
-//        dd($params['filter']['category_id']);
+//        dd($params['filter'][VJewelleryFilterParamNameEnum::FK_CATEGORY->value]);
         return [
             'categories' => $this->getMenuItems(
                 CategoryMenuFilter::class, $params, VJewelleryFilterParamNameEnum::FK_CATEGORY->value

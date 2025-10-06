@@ -20,7 +20,7 @@ class StoneMetricResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => StoneMetricEnum::RESOURCE->value,
+            'type' => StoneMetricEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 StoneMetricRelationshipsEnum::INSERT->value => $this->sectionRelationships(

@@ -20,7 +20,7 @@ class StoneFacetResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => StoneFacetEnum::RESOURCE->value,
+            'type' => StoneFacetEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 StoneFacetRelationshipsEnum::INSERT_STONES->value => $this->sectionRelationships(

@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OpticalEffectStone extends Model
 {
-    protected $table = OpticalEffectStoneEnum::TABLE->value;
+    protected $table = OpticalEffectStoneEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = OpticalEffectStoneEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = OpticalEffectStoneEnum::TYPE_RESOURCE->value;
 
     public function opticalEffect(): BelongsTo
     {

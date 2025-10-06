@@ -27,7 +27,7 @@ class StoneFamilyResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => StoneFamilyEnum::RESOURCE->value,
+            'type' => StoneFamilyEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 StoneFamilyRelationshipsEnum::GROWN_STONES->value => $this->sectionRelationships(

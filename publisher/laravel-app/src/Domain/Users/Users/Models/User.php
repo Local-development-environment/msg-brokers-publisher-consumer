@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 final class User extends Model
 {
-    protected $table = UserEnum::TABLE->value;
+    protected $table = UserEnum::TABLE_NAME->value;
 
     public const string TYPE_RESOURCE = UserEnum::RESOURCE->value;
 
@@ -33,7 +33,7 @@ final class User extends Model
 
     public function userTypes(): BelongsToMany
     {
-        return $this->belongsToMany(UserType::class, UserUserTypeEnum::TABLE->value);
+        return $this->belongsToMany(UserType::class, UserUserTypeEnum::TABLE_NAME->value);
     }
 
     public function registerPhone(): BelongsTo

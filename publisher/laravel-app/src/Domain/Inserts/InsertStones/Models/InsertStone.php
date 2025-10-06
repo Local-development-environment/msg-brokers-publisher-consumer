@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class InsertStone extends Model
 {
-    protected $table = InsertStoneEnum::TABLE->value;
+    protected $table = InsertStoneEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = InsertStoneEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = InsertStoneEnum::TYPE_RESOURCE->value;
 
     public function inserts(): HasMany
     {

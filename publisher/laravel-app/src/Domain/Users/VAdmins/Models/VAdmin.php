@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class VAdmin extends Model
 {
-    protected $table = VAdminEnum::TABLE->value;
+    protected $table = VAdminEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = VAdminEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = VAdminEnum::TYPE_RESOURCE->value;
 }

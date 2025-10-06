@@ -25,7 +25,7 @@ class StoneGradeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => StoneGradeEnum::RESOURCE->value,
+            'type' => StoneGradeEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 StoneGradeRelationshipsEnum::NATURAL_STONE_GRADES->value => $this->sectionRelationships(

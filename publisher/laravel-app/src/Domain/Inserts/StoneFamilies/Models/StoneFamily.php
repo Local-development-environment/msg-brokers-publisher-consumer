@@ -11,9 +11,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class StoneFamily extends Model
 {
-    protected $table = StoneFamilyEnum::TABLE->value;
+    protected $table = StoneFamilyEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = StoneFamilyEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = StoneFamilyEnum::TYPE_RESOURCE->value;
 
     public function grownStones(): HasMany
     {

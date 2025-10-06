@@ -11,9 +11,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class GrownStone extends Model
 {
-    protected $table = GrownStoneEnum::TABLE->value;
+    protected $table = GrownStoneEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = GrownStoneEnum::RESOURCE->value;
+    public const string TYPE_TYPE_RESOURCE = GrownStoneEnum::TYPE_TYPE_RESOURCE->value;
 
     public function stoneFamily(): BelongsTo
     {

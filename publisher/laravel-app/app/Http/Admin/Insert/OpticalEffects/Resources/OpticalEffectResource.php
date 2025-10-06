@@ -25,7 +25,7 @@ class OpticalEffectResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => OpticalEffectEnum::RESOURCE->value,
+            'type' => OpticalEffectEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 OpticalEffectRelationshipsEnum::OPTICAL_EFFECT_STONES->value => $this->sectionRelationships(
