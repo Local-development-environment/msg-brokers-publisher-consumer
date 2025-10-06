@@ -11,7 +11,7 @@ class StoneGroup extends Model
 {
     protected $table = StoneGroupEnum::TABLE_NAME->value;
 
-    public const string TYPE_TYPE_RESOURCE = StoneGroupEnum::TYPE_RESOURCE->value;
+    public const string TYPE_RESOURCE = StoneGroupEnum::TYPE_RESOURCE->value;
 
     public function naturalStones(): HasMany
     {

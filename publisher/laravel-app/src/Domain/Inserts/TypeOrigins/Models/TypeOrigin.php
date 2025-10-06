@@ -11,7 +11,7 @@ class TypeOrigin extends Model
 {
     protected $table = TypeOriginEnum::TABLE_NAME->value;
 
-    public const string TYPE_TYPE_RESOURCE = TypeOriginEnum::TYPE_RESOURCE->value;
+    public const string TYPE_RESOURCE = TypeOriginEnum::TYPE_RESOURCE->value;
 
     public function stones(): HasMany
     {

@@ -20,7 +20,7 @@ class ApiEntityIdentifierResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => $this->resource::TYPE_TYPE_RESOURCE,
+            'type' => $this->resource::TYPE_RESOURCE,
         ];
     }
 }

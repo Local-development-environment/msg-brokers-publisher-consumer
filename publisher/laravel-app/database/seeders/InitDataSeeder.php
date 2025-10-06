@@ -36,6 +36,7 @@ class InitDataSeeder extends Seeder
         DB::table('jw_properties.body_parts')->truncate();
         DB::table('jw_properties.bracelet_bases')->truncate();
         DB::table('jw_properties.clasps')->truncate();
+        DB::table('jw_properties.ring_fingers')->truncate();
         DB::table('jw_properties.ring_metrics')->truncate();
         DB::table('jw_properties.rings')->truncate();
         DB::table('jw_properties.ring_sizes')->truncate();
@@ -100,6 +101,7 @@ class InitDataSeeder extends Seeder
         $necklace_sizes = config('data-seed.data_items.necklace_sizes');
         $bead_sizes = config('data-seed.data_items.bead_sizes');
         $body_parts = config('data-seed.data_items.body_parts');
+        $ring_fingers = config('data-seed.data_items.ring_fingers');
         $jw_coverages = config('data-seed.data_items.jw_coverages');
         $jwCoverageTypes = config('data-seed.data_items.jw_coverage_types');
         $bracelet_bases = config('data-seed.data_items.bracelet_bases');
@@ -201,6 +203,14 @@ class InitDataSeeder extends Seeder
             DB::table('jw_properties.body_parts')->insert([
                 'name' => $body_part,
                 'slug' => Str::slug($body_part, '-'),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach ($ring_fingers as $ring_finger) {
+            DB::table('jw_properties.ring_fingers')->insert([
+                'name' => $ring_finger,
+                'slug' => Str::slug($ring_finger, '-'),
                 'created_at' => now(),
             ]);
         }

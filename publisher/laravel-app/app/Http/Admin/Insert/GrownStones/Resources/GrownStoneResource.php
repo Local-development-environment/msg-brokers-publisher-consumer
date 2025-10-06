@@ -25,7 +25,7 @@ class GrownStoneResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => GrownStoneEnum::TYPE_TYPE_RESOURCE->value,
+            'type' => GrownStoneEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 GrownStoneRelationshipsEnum::STONE_FAMILY->value => $this->sectionRelationships(

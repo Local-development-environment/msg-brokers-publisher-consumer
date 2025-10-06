@@ -25,7 +25,7 @@ class VJewelleryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => VJewelleryEnum::TYPE_TYPE_RESOURCE->value,
+            'type' => VJewelleryEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
         ];
     }

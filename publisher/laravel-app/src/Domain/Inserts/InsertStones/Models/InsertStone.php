@@ -2,6 +2,7 @@
 
 namespace Domain\Inserts\InsertStones\Models;
 
+use Domain\Inserts\Inserts\Models\Insert;
 use Domain\Inserts\InsertStones\Enums\InsertStoneEnum;
 use Domain\Inserts\StoneColours\Models\StoneColour;
 use Domain\Inserts\StoneFacets\Models\StoneFacet;
@@ -14,7 +15,7 @@ class InsertStone extends Model
 {
     protected $table = InsertStoneEnum::TABLE_NAME->value;
 
-    public const string TYPE_TYPE_RESOURCE = InsertStoneEnum::TYPE_RESOURCE->value;
+    public const string TYPE_RESOURCE = InsertStoneEnum::TYPE_RESOURCE->value;
 
     public function inserts(): HasMany
     {

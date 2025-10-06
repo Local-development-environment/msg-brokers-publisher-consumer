@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Http\Integrations\UVI\Jewelleries\Requests\GetAllJewelleries;
 use App\Http\Integrations\UVI\UVIConnector;
 use Domain\Inserts\GrownStones\Models\GrownStone;
+use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Domain\Users\Admins\Models\Admin;
 use Domain\Users\Genders\Models\Gender;
 use Domain\Users\RegisterPhones\Models\RegisterPhone;
@@ -24,7 +25,7 @@ class TestSeeder extends Seeder
      */
     public function run(): void
     {
-//        dd(GrownStone::all());
+//        dd(Jewellery::find(4)->bracelet->braceletSizes);
         $params = [
             'include' => ['jewelleryCategory','inserts'],
             'filter' => [

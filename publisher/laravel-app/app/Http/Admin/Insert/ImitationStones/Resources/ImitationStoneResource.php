@@ -25,7 +25,7 @@ class ImitationStoneResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => ImitationStoneEnum::TYPE_TYPE_RESOURCE->value,
+            'type' => ImitationStoneEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 ImitationStoneRelationshipsEnum::STONE->value => $this->sectionRelationships(

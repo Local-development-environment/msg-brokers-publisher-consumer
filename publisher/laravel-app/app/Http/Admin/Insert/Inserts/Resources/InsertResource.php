@@ -20,7 +20,7 @@ class InsertResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => InsertEnum::TYPE_TYPE_RESOURCE->value,
+            'type' => InsertEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
 //                InsertRelationshipsEnum::JEWELLERY->value => $this->sectionRelationships(

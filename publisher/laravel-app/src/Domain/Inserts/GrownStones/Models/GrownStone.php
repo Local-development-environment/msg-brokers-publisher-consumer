@@ -13,7 +13,7 @@ class GrownStone extends Model
 {
     protected $table = GrownStoneEnum::TABLE_NAME->value;
 
-    public const string TYPE_TYPE_RESOURCE = GrownStoneEnum::TYPE_TYPE_RESOURCE->value;
+    public const string TYPE_RESOURCE = GrownStoneEnum::TYPE_RESOURCE->value;
 
     public function stoneFamily(): BelongsTo
     {

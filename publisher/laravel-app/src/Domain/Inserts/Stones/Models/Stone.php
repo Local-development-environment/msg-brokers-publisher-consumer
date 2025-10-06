@@ -17,7 +17,7 @@ class Stone extends Model
 {
     protected $table = StoneEnum::TABLE_NAME->value;
 
-    public const string TYPE_TYPE_RESOURCE = StoneEnum::TYPE_RESOURCE->value;
+    public const string TYPE_RESOURCE = StoneEnum::TYPE_RESOURCE->value;
 
     public function typeOrigin(): BelongsTo
     {

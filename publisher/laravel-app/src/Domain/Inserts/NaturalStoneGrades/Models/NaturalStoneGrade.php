@@ -12,7 +12,7 @@ class NaturalStoneGrade extends Model
 {
     protected $table = NaturalStoneGradeEnum::TABLE_NAME->value;
 
-    public const string TYPE_TYPE_RESOURCE = NaturalStoneGradeEnum::TYPE_RESOURCE->value;
+    public const string TYPE_RESOURCE = NaturalStoneGradeEnum::TYPE_RESOURCE->value;
 
     public function stoneGrade(): BelongsTo
     {

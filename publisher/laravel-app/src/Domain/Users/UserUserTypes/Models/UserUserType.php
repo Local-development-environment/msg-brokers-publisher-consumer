@@ -18,7 +18,7 @@ final class UserUserType extends Model
 {
     protected $table = UserUserTypeEnum::TABLE_NAME->value;
 
-    public const string TYPE_TYPE_RESOURCE = UserUserTypeEnum::RESOURCE->value;
+    public const string TYPE_RESOURCE = UserUserTypeEnum::RESOURCE->value;
 
     public function admin(): HasOne
     {

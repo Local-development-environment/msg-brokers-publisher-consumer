@@ -11,7 +11,7 @@ class RegisterPhone extends Model
 {
     protected $table = RegisterPhoneEnum::TABLE_NAME->value;
 
-    public const string TYPE_TYPE_RESOURCE = RegisterPhoneEnum::RESOURCE->value;
+    public const string TYPE_RESOURCE = RegisterPhoneEnum::RESOURCE->value;
 
     public function user(): HasOne
     {

@@ -12,7 +12,7 @@ class StoneGrade extends Model
 {
     protected $table = StoneGradeEnum::TABLE_NAME->value;
 
-    public const string TYPE_TYPE_RESOURCE = StoneGradeEnum::TYPE_RESOURCE->value;
+    public const string TYPE_RESOURCE = StoneGradeEnum::TYPE_RESOURCE->value;
 
     public function naturalStoneGrades(): HasMany
     {

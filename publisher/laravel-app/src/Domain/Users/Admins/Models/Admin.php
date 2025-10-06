@@ -17,7 +17,7 @@ final class Admin extends BaseModel implements JWTSubject
 
     protected $table = AdminEnum::TABLE_NAME->value;
 
-    public const string TYPE_TYPE_RESOURCE = AdminEnum::TYPE_RESOURCE->value;
+    public const string TYPE_RESOURCE = AdminEnum::TYPE_RESOURCE->value;
 
     public function userUserType(): BelongsTo
     {

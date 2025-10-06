@@ -27,7 +27,7 @@ final readonly class RingProps implements CategoryPropsBuilderInterface
 
         return [
             'size_price_quantity' => $sizePrices,
-            'body_part' => $this->getBodyPart(),
+            'ring_finger' => $this->getRingFinger(),
             'ring_sizes' => data_get($sizePrices, '*.size'),
             'quantity' => data_get($sizePrices, '*.quantity'),
             'price' => data_get($sizePrices, '*.price'),
@@ -37,13 +37,13 @@ final readonly class RingProps implements CategoryPropsBuilderInterface
         ];
     }
 
-    private function getBodyPart(): string
+    private function getRingFinger(): string
     {
-        $bodyParts = config('data-seed.data_items.body_parts');
-        $prepBodyParts = array_fill(0, 20, $bodyParts[0]);
-        $prepBodyParts[] = $bodyParts[1];
+        $ringFingers = config('data-seed.data_items.ring_fingers');
+        $prepRingFingers = array_fill(0, 20, $ringFingers[0]);
+        $prepRingFingers[] = $ringFingers[1];
 
-        return Arr::random($prepBodyParts);
+        return Arr::random($prepRingFingers);
 
     }
 }

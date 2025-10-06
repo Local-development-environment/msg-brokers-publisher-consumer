@@ -12,7 +12,7 @@ class StoneColour extends Model
 {
     protected $table = StoneColourEnum::TABLE_NAME->value;
 
-    public const string TYPE_TYPE_RESOURCE = StoneColourEnum::TYPE_RESOURCE->value;
+    public const string TYPE_RESOURCE = StoneColourEnum::TYPE_RESOURCE->value;
 
     public function insertStones(): HasMany
     {

@@ -354,15 +354,15 @@ class BuildJewellerySeeder extends Seeder
      */
     private function addRings(array $jewelleryData, int $jewelleryId): void
     {
-//        dd($jewelleryData['props']['parameters']['size_price_quantity']);
-        $bodyPartId = DB::table('jw_properties.body_parts')
-            ->where('name',$jewelleryData['props']['parameters']['body_part'])
+//        dd($jewelleryData['props']['parameters']['ring_finger']);
+        $ringFingerId = DB::table('jw_properties.ring_fingers')
+            ->where('name',$jewelleryData['props']['parameters']['ring_finger'])
             ->value('id');
 
 
         $ringId = DB::table('jw_properties.rings')->insertGetId([
             'jewellery_id' => $jewelleryId,
-            'body_part_id' => $bodyPartId,
+            'ring_finger_id' => $ringFingerId,
             'dimensions' => json_encode($jewelleryData['props']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
             'created_at' => now()
         ]);

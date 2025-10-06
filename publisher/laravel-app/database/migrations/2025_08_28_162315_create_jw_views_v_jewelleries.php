@@ -257,8 +257,8 @@ return new class extends Migration
                             jj.id,jwrng.jewellery_id as jewellery_id,
                             jsonb_build_object(
                                 'ring_id', jwrng.id,
-                                'body_part_id', jwbp.id,
-                                'body_part', jwbp.name,
+                                'ring_finger_id', jwrf.id,
+                                'ring_finger', jwrf.name,
                                 'dimensions', jwrng.dimensions,
                                 'size_price_quantity',
                                 jsonb_agg(
@@ -277,10 +277,10 @@ return new class extends Migration
                             jw_properties.rings as jwrng
                         join jewelleries.jewelleries as jj on jwrng.jewellery_id = jj.id
                         join jewelleries.categories as jc on jj.category_id = jc.id
-                        join jw_properties.body_parts as jwbp on jwrng.body_part_id = jwbp.id
+                        join jw_properties.ring_fingers as jwrf on jwrng.ring_finger_id = jwrf.id
                         left join jw_properties.ring_metrics as jwrm on jwrng.id = jwrm.ring_id
                         left join jw_properties.ring_sizes as jwrs on jwrm.ring_size_id = jwrs.id
-                        group by jj.id,jwrng.jewellery_id,jwrng.id,jwbp.id
+                        group by jj.id,jwrng.jewellery_id,jwrng.id,jwrf.id
                         
                         union all
 
