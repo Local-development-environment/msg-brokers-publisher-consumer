@@ -460,8 +460,12 @@ return new class extends Migration
                 left join jsonb_path_query(cjwi.inserts, '$[*].stone ? (@.max_weight != null) .colour_id') as stone_max_colour_id on jj.id = cjwi.jewellery_id
                 order by jj.id
                 
-                with data
+                with data;
             SQL
+        );
+
+        DB::statement(
+            'CREATE UNIQUE INDEX ON jw_views.v_jewelleries(id)'
         );
     }
 

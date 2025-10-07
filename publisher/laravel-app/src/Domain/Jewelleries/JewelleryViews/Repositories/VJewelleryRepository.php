@@ -13,6 +13,7 @@ use Domain\Jewelleries\JewelleryViews\MenuFilters\InsertStoneColourMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\InsertStoneGroupMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\InsertStoneMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\MetalMenuFilter;
+use Domain\Jewelleries\JewelleryViews\MenuFilters\NoInsertMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\PriceRangeMenuFilter;
 use Domain\Jewelleries\JewelleryViews\Models\VJewellery;
 use Domain\Shared\CustomFilters\ApproxWeightFilter;
@@ -61,6 +62,7 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
                 AllowedFilter::exact(VJewelleryFilterParamNameEnum::PART_NUMBER->value),
                 AllowedFilter::exact(VJewelleryFilterParamNameEnum::FK_CATEGORY->value),
                 AllowedFilter::exact(VJewelleryFilterParamNameEnum::JSON_INSERT_COLOUR->value),
+                AllowedFilter::exact(VJewelleryFilterParamNameEnum::JSON_INSERT_IS->value)->nullable(),
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::APPROX_WEIGHT->value, new ApproxWeightFilter()),
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::PRICE_RANGE->value, new PriceFilter),
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_METAL->value, new MetalFilter),
@@ -73,7 +75,7 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
             ]);
     }
 
-    private function getMenuItems(string $className, array $params, string $nameParam): array
+    private function getMenuItems(string $className, array $params, string $nameParam): array|int
     {
         $items = new $className();
 
@@ -111,7 +113,10 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
                 ),
                 'colours' => $this->getMenuItems(
                     InsertStoneColourMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_INSERT_COLOUR->value
-                )
+                ),
+                'no_inserts' => $this->getMenuItems(
+                    NoInsertMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_INSERT_IS->value
+                ),
             ]
         ];
     }

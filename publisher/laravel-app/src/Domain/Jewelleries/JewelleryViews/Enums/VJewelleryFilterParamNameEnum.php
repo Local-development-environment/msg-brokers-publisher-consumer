@@ -16,4 +16,5 @@ enum VJewelleryFilterParamNameEnum: string
     case JSON_STONE_GROUP  = 'group_id';
     case JSON_METAL_COLOUR  = 'metal_colour_id';
     case JSON_INSERT_COLOUR  = 'stone_max_colour_id';
+    case JSON_INSERT_IS  = 'inserts';
 }

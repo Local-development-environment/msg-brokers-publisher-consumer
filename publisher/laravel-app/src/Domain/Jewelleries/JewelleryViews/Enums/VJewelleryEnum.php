@@ -8,4 +8,5 @@ enum VJewelleryEnum: string
     case TABLE_NAME    = 'jw_views.v_jewelleries';
     case FK_CATEGORY   = 'jw_views.v_jewelleries.category_id';
     case FK_STONE_COLOUR   = 'jw_views.v_jewelleries.stone_max_colour_id';
+    case PRIMARY_KEY   = 'jw_views.v_jewelleries.id';
 }
