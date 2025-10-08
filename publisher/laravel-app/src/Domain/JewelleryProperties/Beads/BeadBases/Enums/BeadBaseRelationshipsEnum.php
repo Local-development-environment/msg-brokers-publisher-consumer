@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Beads\BeadBases\Enums;
 
-enum BeadBaseRelationshipsEnum
+enum BeadBaseRelationshipsEnum: string
 {
-
+    case BEADS = 'beads';
+    case CLASPS = 'clasps';
 }

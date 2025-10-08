@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Site\Jewelleries\Resources;
 
@@ -12,7 +13,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @mixin VJewellery
  * @property mixed $id
  */
-class VJewelleryResource extends JsonResource
+final class VJewelleryResource extends JsonResource
 {
     use IncludeRelatedEntitiesResourceTrait;
 

@@ -27,6 +27,8 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::middleware('api')->prefix('api/admin')->group(base_path('routes/admin/insert.php'));
             Route::middleware('api')->prefix('api/admin')->group(base_path('routes/admin/properties.php'));
             Route::middleware('api')->prefix('api/admin')->group(base_path('routes/admin/bracelet_props.php'));
+            Route::middleware('api')->prefix('api/admin')->group(base_path('routes/admin/bead_props.php'));
+            Route::middleware('api')->prefix('api/admin')->group(base_path('routes/admin/shared_props.php'));
         }
     )
     ->withMiddleware(function (Middleware $middleware) {

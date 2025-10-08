@@ -15,6 +15,6 @@ class LengthName extends Model
 
     public function beadSizes(): HasMany
     {
-        $this->hasMany(BeadSize::class);
+        return $this->hasMany(BeadSize::class);
     }
 }

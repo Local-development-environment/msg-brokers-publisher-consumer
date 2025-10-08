@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Bead extends Model
+final class Bead extends Model
 {
     protected $table = BeadEnum::TABLE_NAME->value;
 
