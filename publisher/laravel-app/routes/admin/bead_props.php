@@ -6,6 +6,11 @@ use App\Http\Admin\BeadProperty\BeadBases\Controllers\BeadBaseBeadsRelationshipC
 use App\Http\Admin\BeadProperty\BeadBases\Controllers\BeadBaseController;
 use App\Http\Admin\BeadProperty\BeadBases\Controllers\BeadBasesClaspsRelatedController;
 use App\Http\Admin\BeadProperty\BeadBases\Controllers\BeadBasesClaspsRelationshipController;
+use App\Http\Admin\BeadProperty\BeadMetrics\Controllers\BeadMetricController;
+use App\Http\Admin\BeadProperty\BeadMetrics\Controllers\BeadMetricsBeadRelatedController;
+use App\Http\Admin\BeadProperty\BeadMetrics\Controllers\BeadMetricsBeadRelationshipController;
+use App\Http\Admin\BeadProperty\BeadMetrics\Controllers\BeadMetricsBeadSizeRelatedController;
+use App\Http\Admin\BeadProperty\BeadMetrics\Controllers\BeadMetricsBeadSizeRelationshipController;
 use App\Http\Admin\BeadProperty\BeadSizes\Controllers\BeadSizeBeadMetricsRelatedController;
 use App\Http\Admin\BeadProperty\BeadSizes\Controllers\BeadSizeBeadMetricsRelationshipController;
 use App\Http\Admin\BeadProperty\BeadSizes\Controllers\BeadSizeController;
@@ -14,6 +19,7 @@ use App\Http\Admin\BeadProperty\BeadSizes\Controllers\BeadSizesBeadsRelationship
 use App\Http\Admin\BeadProperty\BeadSizes\Controllers\BeadSizesLengthNameRelatedController;
 use App\Http\Admin\BeadProperty\BeadSizes\Controllers\BeadSizesLengthNameRelationshipController;
 use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseNameRoutesEnum;
+use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\BeadSizes\Enums\BeadSizeNameRoutesEnum;
 
 Route::group([
@@ -63,4 +69,24 @@ Route::group([
         ->name(BeadSizeNameRoutesEnum::RELATIONSHIP_TO_BEAD_METRICS->value);
     Route::get('bead-sizes/{id}/bead-metrics', [BeadSizeBeadMetricsRelatedController::class, 'index'])
         ->name(BeadSizeNameRoutesEnum::RELATED_TO_BEAD_METRICS->value);
+
+    /*************************** BEAD METRICS *************************/
+    // CRUD
+    Route::get('bead-metrics', [BeadMetricController::class, 'index'])->name(BeadMetricNameRoutesEnum::CRUD_INDEX->value);
+    Route::get('bead-metrics/{id}', [BeadMetricController::class, 'show'])->name(BeadMetricNameRoutesEnum::CRUD_SHOW->value);
+    Route::post('bead-metrics', [BeadMetricController::class, 'store'])->name(BeadMetricNameRoutesEnum::CRUD_POST->value);
+    Route::patch('bead-metrics/{id}', [BeadMetricController::class, 'update'])->name(BeadMetricNameRoutesEnum::CRUD_PATCH->value);
+    Route::delete('bead-metrics/{id}', [BeadMetricController::class, 'destroy'])->name(BeadMetricNameRoutesEnum::CRUD_DELETE->value);
+
+    // RELATIONSHIPS
+    //  many-to-one Bead Metrics to Bead
+    Route::get('bead-metrics/{id}/relationships/bead', [BeadMetricsBeadRelationshipController::class, 'index'])
+        ->name(BeadMetricNameRoutesEnum::RELATIONSHIP_TO_BEAD->value);
+    Route::get('bead-metrics/{id}/bead', [BeadMetricsBeadRelatedController::class, 'index'])
+        ->name(BeadMetricNameRoutesEnum::RELATED_TO_BEAD->value);
+    //  many-to-one Bead Metrics to Bead Size
+    Route::get('bead-metrics/{id}/relationships/bead-size', [BeadMetricsBeadSizeRelationshipController::class, 'index'])
+        ->name(BeadMetricNameRoutesEnum::RELATIONSHIP_TO_BEAD_SIZE->value);
+    Route::get('bead-metrics/{id}/bead-size', [BeadMetricsBeadSizeRelatedController::class, 'index'])
+        ->name(BeadMetricNameRoutesEnum::RELATED_TO_BEAD_SIZE->value);
 });
