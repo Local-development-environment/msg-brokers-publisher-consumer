@@ -2,6 +2,8 @@
 
 namespace App\Http\Admin\BeadProperty\BeadBases\Controllers;
 
+use App\Http\Admin\BeadProperty\BeadBases\Requests\BeadBaseStoreRequest;
+use App\Http\Admin\BeadProperty\BeadBases\Requests\BeadBaseUpdateRequest;
 use App\Http\Admin\BeadProperty\BeadBases\Resources\BeadBaseCollection;
 use App\Http\Admin\BeadProperty\BeadBases\Resources\BeadBaseResource;
 use App\Http\Controllers\Controller;
@@ -29,9 +31,9 @@ class BeadBaseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BeadBaseStoreRequest $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -49,7 +51,7 @@ class BeadBaseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(BeadBaseUpdateRequest $request, int $id)
     {
         //
     }
@@ -57,7 +59,7 @@ class BeadBaseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
         //
     }
