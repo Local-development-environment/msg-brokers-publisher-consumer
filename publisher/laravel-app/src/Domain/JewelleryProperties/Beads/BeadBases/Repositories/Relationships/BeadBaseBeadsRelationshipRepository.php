@@ -13,9 +13,4 @@ final class BeadBaseBeadsRelationshipRepository
     {
         return BeadBase::findOrFail($id)->beads;
     }
-
-    public function update(array $data, int $id): void
-    {
-
-    }
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\BeadProperty\BeadBases\Resources;
 
@@ -12,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin BeadBase */
-class BeadBaseResource extends JsonResource
+final class BeadBaseResource extends JsonResource
 {
     use IncludeRelatedEntitiesResourceTrait;
 

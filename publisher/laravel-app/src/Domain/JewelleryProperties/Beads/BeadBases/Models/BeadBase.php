@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 final class BeadBase extends Model
 {
     protected $table = BeadBaseEnum::TABLE_NAME->value;
+    protected $fillable = ['name', 'slug'];
 
     public const string TYPE_RESOURCE = BeadBaseEnum::TYPE_RESOURCE->value;
 

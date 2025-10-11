@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 final class Clasp extends Model
 {
     protected $table = ClaspEnum::TABLE_NAME->value;
+    protected $fillable = ['name', 'slug'];
 
     public const string TYPE_RESOURCE = ClaspEnum::TYPE_RESOURCE->value;
 

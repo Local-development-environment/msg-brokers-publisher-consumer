@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Database\Seeders;
 
@@ -8,7 +9,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class BuildJewellerySeeder extends Seeder
+final class BuildJewellerySeeder extends Seeder
 {
     /**
      * Run the database seeds.

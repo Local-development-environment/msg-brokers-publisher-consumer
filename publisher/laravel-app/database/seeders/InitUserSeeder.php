@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Database\Seeders;
 
@@ -12,7 +13,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 
-class InitUserSeeder extends Seeder
+final class InitUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.

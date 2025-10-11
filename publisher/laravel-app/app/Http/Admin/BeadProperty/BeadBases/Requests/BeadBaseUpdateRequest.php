@@ -1,10 +1,12 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\BeadProperty\BeadBases\Requests;
 
+use Domain\JewelleryProperties\Beads\BeadBases\Models\BeadBase;
 use Illuminate\Foundation\Http\FormRequest;
 
-class BeadBaseUpdateRequest extends FormRequest
+final class BeadBaseUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +24,12 @@ class BeadBaseUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'data'                  => ['required','array:type,attributes,relationships','min:2'],
+            'data.type'             => ['required','string','in:' . BeadBase::TYPE_RESOURCE],
+            'data.attributes'       => ['required','array:name'],
+            'data.attributes.name'  => ['required','string','unique:pgsql_pub.jw_properties.bead_bases,name'],
+            // relationships
+            'data.relationships'    => ['prohibited'],
         ];
     }
 }

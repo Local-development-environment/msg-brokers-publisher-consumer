@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Database\Seeders;
 
@@ -8,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
-class InitDataSeeder extends Seeder
+final class InitDataSeeder extends Seeder
 {
     /**
      * Run the database seeds.

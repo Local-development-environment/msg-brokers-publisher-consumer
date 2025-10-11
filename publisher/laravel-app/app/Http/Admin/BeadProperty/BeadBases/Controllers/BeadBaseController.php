@@ -8,6 +8,7 @@ use App\Http\Admin\BeadProperty\BeadBases\Requests\BeadBaseUpdateRequest;
 use App\Http\Admin\BeadProperty\BeadBases\Resources\BeadBaseCollection;
 use App\Http\Admin\BeadProperty\BeadBases\Resources\BeadBaseResource;
 use App\Http\Controllers\Controller;
+use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\BeadBases\Services\BeadBaseService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -31,10 +32,19 @@ final class BeadBaseController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * @throws \Throwable
      */
-    public function store(BeadBaseStoreRequest $request)
+    public function store(BeadBaseStoreRequest $request): JsonResponse
     {
-        dd($request->all());
+        $data = $request->all();
+
+        $model = $this->service->store($data);
+
+        return (new BeadBaseResource($model))
+            ->response()
+            ->header('Location', route(BeadBaseNameRoutesEnum::CRUD_SHOW->value, [
+                'id' => $model->id
+            ]));
     }
 
     /**
@@ -51,17 +61,25 @@ final class BeadBaseController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * @throws \Throwable
      */
-    public function update(BeadBaseUpdateRequest $request, int $id)
+    public function update(BeadBaseUpdateRequest $request, int $id): JsonResponse
     {
-        //
+        $data = $request->all();
+
+        $this->service->update($data, $id);
+
+        return response()->json(null, 204);
     }
 
     /**
      * Remove the specified resource from storage.
+     * @throws \Throwable
      */
-    public function destroy(int $id)
+    public function destroy(int $id): JsonResponse
     {
-        //
+        $this->service->destroy($id);
+
+        return response()->json(null, 204);
     }
 }

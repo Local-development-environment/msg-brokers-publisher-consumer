@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Database\Seeders;
 
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 use Saloon\Exceptions\Request\FatalRequestException;
 use Saloon\Exceptions\Request\RequestException;
 
-class TestSeeder extends Seeder
+final class TestSeeder extends Seeder
 {
     /**
      * Run the database seeds.

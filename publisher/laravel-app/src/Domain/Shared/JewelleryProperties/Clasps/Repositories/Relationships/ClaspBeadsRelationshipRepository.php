@@ -13,9 +13,4 @@ final class ClaspBeadsRelationshipRepository
     {
         return Clasp::findOrFail($id)->beads;
     }
-
-    public function update(array $data, int $id): void
-    {
-
-    }
 }
