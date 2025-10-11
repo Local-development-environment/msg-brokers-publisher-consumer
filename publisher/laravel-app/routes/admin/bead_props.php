@@ -51,11 +51,6 @@ Route::group([
         ->name(BeadBaseNameRoutesEnum::RELATIONSHIP_TO_BEADS->value);
     Route::get('bead-bases/{id}/beads', [BeadBaseBeadsRelatedController::class, 'index'])
         ->name(BeadBaseNameRoutesEnum::RELATED_TO_BEADS->value);
-    //  many-to-many Bead Bases to Clasps
-    Route::get('bead-bases/{id}/relationships/clasps', [BeadBasesClaspsRelationshipController::class, 'index'])
-        ->name(BeadBaseNameRoutesEnum::RELATIONSHIP_TO_CLASPS->value);
-    Route::get('bead-bases/{id}/clasps', [BeadBasesClaspsRelatedController::class, 'index'])
-        ->name(BeadBaseNameRoutesEnum::RELATED_TO_CLASPS->value);
 
     /*************************** BEAD SIZES *************************/
     // CRUD

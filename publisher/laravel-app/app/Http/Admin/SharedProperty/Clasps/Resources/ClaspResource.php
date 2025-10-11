@@ -31,10 +31,6 @@ class ClaspResource extends JsonResource
                 'beads' => $this->sectionRelationships(
                     ClaspNameRoutesEnum::RELATED_TO_BEADS->value,
                     BeadCollection::class
-                ),
-                'beadBases' => $this->sectionRelationships(
-                    ClaspNameRoutesEnum::RELATED_TO_BEAD_BASES->value,
-                    BeadBaseCollection::class
                 )
             ]
         ];
@@ -43,8 +39,7 @@ class ClaspResource extends JsonResource
     protected function relations(): array
     {
         return [
-            BeadCollection::class => $this->whenLoaded(ClaspRelationshipsEnum::BEADS->value),
-            BeadBaseCollection::class => $this->whenLoaded(ClaspRelationshipsEnum::BEAD_BASES->value),
+            BeadCollection::class => $this->whenLoaded(ClaspRelationshipsEnum::BEADS->value)
         ];
     }
 }

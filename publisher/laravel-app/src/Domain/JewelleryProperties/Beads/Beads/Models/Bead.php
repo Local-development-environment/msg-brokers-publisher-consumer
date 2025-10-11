@@ -23,7 +23,7 @@ final class Bead extends Model
 
     public function jewellery(): BelongsTo
     {
-        return $this->belongsTo(Jewellery::class);
+        return $this->belongsTo(Jewellery::class, 'id');
     }
 
     public function beadMetrics(): HasMany

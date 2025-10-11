@@ -17,8 +17,7 @@ final class BeadBaseRepository
     {
         return QueryBuilder::for(BeadBase::class)
             ->allowedIncludes([
-                BeadBaseRelationshipsEnum::BEADS->value,
-                BeadBaseRelationshipsEnum::CLASPS->value,
+                BeadBaseRelationshipsEnum::BEADS->value
             ])
             ->allowedFilters([
                 AllowedFilter::exact(BeadBaseEnum::PRIMARY_KEY->value)
@@ -37,8 +36,7 @@ final class BeadBaseRepository
         return QueryBuilder::for(BeadBase::class)
             ->where(BeadBaseEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
-                BeadBaseRelationshipsEnum::BEADS->value,
-                BeadBaseRelationshipsEnum::CLASPS->value,
+                BeadBaseRelationshipsEnum::BEADS->value
             ])
             ->firstOrFail();
     }

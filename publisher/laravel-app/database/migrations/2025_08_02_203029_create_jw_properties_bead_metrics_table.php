@@ -21,6 +21,8 @@ return new class extends Migration
 
             $table->foreign('bead_size_id')->references('id')->on('jw_properties.bead_sizes')->cascadeOnDelete();
             $table->foreign('bead_id')->references('id')->on('jw_properties.beads')->cascadeOnDelete();
+
+            $table->unique(['bead_size_id', 'bead_id'],'unique_bead_size_bead');
         });
     }
 

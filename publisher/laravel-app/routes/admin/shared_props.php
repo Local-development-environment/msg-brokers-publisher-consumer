@@ -5,8 +5,6 @@ declare(strict_types=1);
 use App\Http\Admin\SharedProperty\Clasps\Controllers\ClaspBeadsRelatedController;
 use App\Http\Admin\SharedProperty\Clasps\Controllers\ClaspBeadsRelationshipController;
 use App\Http\Admin\SharedProperty\Clasps\Controllers\ClaspController;
-use App\Http\Admin\SharedProperty\Clasps\Controllers\ClaspsBeadBasesRelatedController;
-use App\Http\Admin\SharedProperty\Clasps\Controllers\ClaspsBeadBasesRelationshipController;
 use App\Http\Admin\SharedProperty\LengthNames\Controllers\LengthNameBeadSizesRelatedController;
 use App\Http\Admin\SharedProperty\LengthNames\Controllers\LengthNameBeadSizesRelationshipController;
 use App\Http\Admin\SharedProperty\LengthNames\Controllers\LengthNameController;
@@ -30,11 +28,6 @@ Route::group([
         ->name(ClaspNameRoutesEnum::RELATIONSHIP_TO_BEADS->value);
     Route::get('clasps/{id}/beads', [ClaspBeadsRelatedController::class, 'index'])
         ->name(ClaspNameRoutesEnum::RELATED_TO_BEADS->value);
-    //  many-to-many Clasps to Bead Bases
-    Route::get('clasps/{id}/relationships/bead-bases', [ClaspsBeadBasesRelationshipController::class, 'index'])
-        ->name(ClaspNameRoutesEnum::RELATIONSHIP_TO_BEAD_BASES->value);
-    Route::get('clasps/{id}/bead-bases', [ClaspsBeadBasesRelatedController::class, 'index'])
-        ->name(ClaspNameRoutesEnum::RELATED_TO_BEAD_BASES->value);
 
     /*************************** LENGTH NAMES *************************/
     // CRUD

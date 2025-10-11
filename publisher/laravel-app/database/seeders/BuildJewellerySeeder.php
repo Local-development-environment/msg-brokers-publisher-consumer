@@ -478,7 +478,7 @@ class BuildJewellerySeeder extends Seeder
     private function addBeads(array $jewelleryData, int $jewelleryId): void
     {
         $beadId = DB::table('jw_properties.beads')->insertGetId([
-            'jewellery_id' => $jewelleryId,
+            'id' => $jewelleryId,
             'clasp_id' => DB::table('jw_properties.clasps')->where('name',$jewelleryData['props']['parameters']['clasp'])->value('id'),
             'bead_base_id' => DB::table('jw_properties.bead_bases')->where('name',$jewelleryData['props']['parameters']['bead_bases'])->value('id'),
             'created_at' => now()
@@ -487,7 +487,7 @@ class BuildJewellerySeeder extends Seeder
         foreach ($jewelleryData['props']['parameters']['size_price_quantity'] as $sizePriceQuantity) {
 //            dump($jewelleryData);
 
-            DB::table('jw_properties.bead_metrics')->insertGetId([
+            DB::table('jw_properties.bead_metrics')->insert([
                 'bead_id' => $beadId,
                 'bead_size_id' => DB::table('jw_properties.bead_sizes')->where('value',$sizePriceQuantity['size'])->value('id'),
                 'quantity' => $sizePriceQuantity['quantity'],

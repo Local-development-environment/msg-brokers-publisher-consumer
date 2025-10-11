@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\BeadProperty\BeadBases\Controllers;
 
@@ -7,7 +8,7 @@ use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
 use Domain\JewelleryProperties\Beads\BeadBases\Services\Relationships\BeadBaseBeadsRelationshipService;
 use Illuminate\Http\JsonResponse;
 
-class BeadBaseBeadsRelationshipController extends Controller
+final class BeadBaseBeadsRelationshipController extends Controller
 {
     public function __construct(public BeadBaseBeadsRelationshipService $service)
     {
@@ -18,12 +19,4 @@ class BeadBaseBeadsRelationshipController extends Controller
         $collection = $this->service->index($id);
         return ApiEntityIdentifierResource::collection($collection)->response();
     }
-
-//    public function update(BeadBaseBeadsUpdateRelationshipRequest $request, int $id): JsonResponse
-//    {
-//        $data = $request->all();
-//        $this->service->update($data, $id);
-//
-//        return response()->json(null, 204);
-//    }
 }

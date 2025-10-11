@@ -395,7 +395,7 @@ return new class extends Migration
                         union all
                     
                         select
-                            jj.id,jwbd.jewellery_id as jewellery_id,
+                            jj.id,jwbd.id as jewellery_id,
                             jsonb_build_object(
                                 'bead_id', jwbd.id,
                                 'clasp_id', jwcls.id,
@@ -419,14 +419,14 @@ return new class extends Migration
                             cast(min(jwbdm.price) as decimal(10, 2)) as min_price
                         from
                             jw_properties.beads as jwbd
-                        join jewelleries.jewelleries as jj on jwbd.jewellery_id = jj.id
+                        join jewelleries.jewelleries as jj on jwbd.id = jj.id
                         join jewelleries.categories as jc on jj.category_id = jc.id
                         join jw_properties.bead_bases as jwbb on jwbd.bead_base_id = jwbb.id
                         join jw_properties.clasps as jwcls on jwbd.clasp_id = jwcls.id
                         left join jw_properties.bead_metrics as jwbdm on jwbd.id = jwbdm.bead_id
                         left join jw_properties.bead_sizes as jwbds on jwbdm.bead_size_id = jwbds.id
                         join jw_properties.length_names as jwln on jwbds.length_name_id = jwln.id
-                        group by jj.id,jwbd.jewellery_id,jwbd.id,jwcls.id,jwbb.id
+                        group by jj.id,jwbd.id,jwcls.id,jwbb.id
                     )
                 select
                     jj.id,

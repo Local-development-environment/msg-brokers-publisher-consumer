@@ -7,5 +7,4 @@ namespace Domain\Shared\JewelleryProperties\Clasps\Enums;
 enum ClaspRelationshipsEnum: string
 {
     case BEADS = 'beads';
-    case BEAD_BASES = 'beadBases';
 }
