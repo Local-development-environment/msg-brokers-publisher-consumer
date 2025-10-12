@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Domain\Shared\JewelleryProperties\LengthNames\Models;
 
@@ -7,9 +8,10 @@ use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class LengthName extends Model
+final class LengthName extends Model
 {
     protected $table = LengthNameEnum::TABLE_NAME->value;
+    protected $fillable = ['name', 'slug', 'description'];
 
     public const string TYPE_RESOURCE = LengthNameEnum::TYPE_RESOURCE->value;
 

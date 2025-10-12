@@ -2,9 +2,12 @@
 
 namespace App\Http\Admin\SharedProperty\LengthNames\Controllers;
 
+use App\Http\Admin\SharedProperty\LengthNames\Requests\LengthNameStoreRequest;
+use App\Http\Admin\SharedProperty\LengthNames\Requests\LengthNameUpdateRequest;
 use App\Http\Admin\SharedProperty\LengthNames\Resources\LengthNameCollection;
 use App\Http\Admin\SharedProperty\LengthNames\Resources\LengthNameResource;
 use App\Http\Controllers\Controller;
+use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameNameRoutesEnum;
 use Domain\Shared\JewelleryProperties\LengthNames\Services\LengthNameService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -28,10 +31,19 @@ class LengthNameController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * @throws \Throwable
      */
-    public function store(Request $request)
+    public function store(LengthNameStoreRequest $request): JsonResponse
     {
-        //
+        $data = $request->all();
+
+        $model = $this->service->store($data);
+
+        return (new LengthNameResource($model))
+            ->response()
+            ->header('Location', route(LengthNameNameRoutesEnum::CRUD_SHOW->value, [
+                'id' => $model->id
+            ]));
     }
 
     /**
@@ -48,17 +60,25 @@ class LengthNameController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * @throws \Throwable
      */
-    public function update(Request $request, string $id)
+    public function update(LengthNameUpdateRequest $request, string $id): JsonResponse
     {
-        //
+        $data = $request->all();
+
+        $this->service->update($data, $id);
+
+        return response()->json(null, 204);
     }
 
     /**
      * Remove the specified resource from storage.
+     * @throws \Throwable
      */
-    public function destroy(string $id)
+    public function destroy(string $id): JsonResponse
     {
-        //
+        $this->service->destroy($id);
+
+        return response()->json(null, 204);
     }
 }
