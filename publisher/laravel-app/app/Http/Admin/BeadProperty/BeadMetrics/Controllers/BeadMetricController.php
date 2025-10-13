@@ -1,15 +1,19 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\BeadProperty\BeadMetrics\Controllers;
 
+use App\Http\Admin\BeadProperty\BeadMetrics\Requests\BeadMetricStoreRequest;
+use App\Http\Admin\BeadProperty\BeadMetrics\Requests\BeadMetricUpdateRequest;
 use App\Http\Admin\BeadProperty\BeadMetrics\Resources\BeadMetricCollection;
 use App\Http\Admin\BeadProperty\BeadMetrics\Resources\BeadMetricResource;
 use App\Http\Controllers\Controller;
+use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Services\BeadMetricService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class BeadMetricController extends Controller
+final class BeadMetricController extends Controller
 {
     public function __construct(public BeadMetricService $service)
     {
@@ -28,10 +32,19 @@ class BeadMetricController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * @throws \Throwable
      */
-    public function store(Request $request)
+    public function store(BeadMetricStoreRequest $request): JsonResponse
     {
-        //
+        $data = $request->all();
+
+        $model = $this->service->store($data);
+
+        return (new BeadMetricResource($model))
+            ->response()
+            ->header('Location', route(BeadMetricNameRoutesEnum::CRUD_SHOW->value, [
+                'id' => $model->id
+            ]));
     }
 
     /**
@@ -48,17 +61,25 @@ class BeadMetricController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * @throws \Throwable
      */
-    public function update(Request $request, string $id)
+    public function update(BeadMetricUpdateRequest $request, int $id): JsonResponse
     {
-        //
+        $data = $request->all();
+
+        $this->service->update($data, $id);
+
+        return response()->json(null, 204);
     }
 
     /**
      * Remove the specified resource from storage.
+     * @throws \Throwable
      */
-    public function destroy(string $id)
+    public function destroy(int $id): JsonResponse
     {
-        //
+        $this->service->destroy($id);
+
+        return response()->json(null, 204);
     }
 }

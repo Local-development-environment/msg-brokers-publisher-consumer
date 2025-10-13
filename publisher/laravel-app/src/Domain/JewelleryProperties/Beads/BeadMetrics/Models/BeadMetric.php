@@ -9,9 +9,10 @@ use Domain\JewelleryProperties\Beads\BeadSizes\Models\BeadSize;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class BeadMetric extends Model
+final class BeadMetric extends Model
 {
     protected $table = BeadMetricEnum::TABLE_NAME->value;
+    protected $fillable = ['bead_size_id', 'bead_id', 'quantity', 'price'];
 
     public const string TYPE_RESOURCE = BeadMetricEnum::TYPE_RESOURCE->value;
 

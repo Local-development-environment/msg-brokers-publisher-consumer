@@ -5,17 +5,12 @@ declare(strict_types=1);
 namespace Domain\JewelleryProperties\Beads\BeadMetrics\Repositories\Relationships;
 
 use Domain\JewelleryProperties\Beads\BeadMetrics\Models\BeadMetric;
-use Domain\JewelleryProperties\Beads\Beads\Models\Bead;
+use Domain\JewelleryProperties\Beads\BeadSizes\Models\BeadSize;
 
 final class BeadMetricsBeadSizeRelationshipRepository
 {
-    public function index(int $id): Bead
+    public function index(int $id): BeadSize
     {
-        return BeadMetric::findOrFail($id)->bead;
-    }
-
-    public function update(array $data, int $id): void
-    {
-
+        return BeadMetric::findOrFail($id)->beadSize;
     }
 }
