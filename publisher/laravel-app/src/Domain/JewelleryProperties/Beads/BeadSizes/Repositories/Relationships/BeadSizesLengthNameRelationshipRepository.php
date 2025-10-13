@@ -13,9 +13,4 @@ final class BeadSizesLengthNameRelationshipRepository
     {
         return BeadSize::findOrFail($id)->lengthName;
     }
-
-    public function update(array $data, int $id): void
-    {
-
-    }
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\BeadProperty\Beads\Controllers;
 
@@ -9,7 +10,7 @@ use Domain\JewelleryProperties\Beads\Beads\Services\BeadService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class BeadController extends Controller
+final class BeadController extends Controller
 {
     public function __construct(public BeadService $service)
     {

@@ -1,10 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\BeadProperty\BeadSizes\Resources;
 
 use App\Http\Admin\BeadProperty\BeadMetrics\Resources\BeadMetricCollection;
 use App\Http\Admin\BeadProperty\Beads\Resources\BeadCollection;
-use App\Http\Admin\BeadProperty\Beads\Resources\BeadResource;
 use App\Http\Admin\SharedProperty\LengthNames\Resources\LengthNameResource;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\JewelleryProperties\Beads\BeadSizes\Enums\BeadSizeNameRoutesEnum;
@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin BeadSize */
-class BeadSizeResource extends JsonResource
+final class BeadSizeResource extends JsonResource
 {
     use IncludeRelatedEntitiesResourceTrait;
 

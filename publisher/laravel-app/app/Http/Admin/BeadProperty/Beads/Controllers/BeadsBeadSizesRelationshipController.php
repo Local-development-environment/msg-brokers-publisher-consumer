@@ -1,10 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\BeadProperty\Beads\Controllers;
 
 use App\Http\Controllers\Controller;
 
-class BeadsBeadSizesRelationshipController extends Controller
+final class BeadsBeadSizesRelationshipController extends Controller
 {
     public function index()
     {

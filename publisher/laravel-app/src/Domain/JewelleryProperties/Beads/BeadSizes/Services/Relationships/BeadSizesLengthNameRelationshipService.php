@@ -17,9 +17,4 @@ final class BeadSizesLengthNameRelationshipService
     {
         return $this->repository->index($id);
     }
-
-    public function update($data, $id): void
-    {
-        $this->repository->update($data, $id);
-    }
 }

@@ -1,13 +1,23 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\BeadProperty\BeadSizes\Controllers;
 
+use App\Http\Admin\SharedProperty\LengthNames\Resources\LengthNameResource;
 use App\Http\Controllers\Controller;
+use Domain\JewelleryProperties\Beads\BeadSizes\Services\Relationships\BeadSizesLengthNameRelationshipService;
+use Illuminate\Http\JsonResponse;
 
-class BeadSizesLengthNameRelatedController extends Controller
+final class BeadSizesLengthNameRelatedController extends Controller
 {
-    public function index()
+    public function __construct(public BeadSizesLengthNameRelationshipService $service)
     {
+    }
 
+    public function index(int $id): JsonResponse
+    {
+        $model = $this->service->index($id);
+
+        return (new LengthNameResource($model))->response();
     }
 }

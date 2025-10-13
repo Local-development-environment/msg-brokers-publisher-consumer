@@ -11,11 +11,6 @@ final class BeadSizeBeadMetricsRelationshipRepository
 {
     public function index(int $id): Collection
     {
-        return BeadSize::findOrFail($id)->beads;
-    }
-
-    public function update(array $data, int $id): void
-    {
-
+        return BeadSize::findOrFail($id)->beadMetrics;
     }
 }
