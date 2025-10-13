@@ -1,9 +1,14 @@
 <?php
+declare(strict_types=1);
+
+use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
 
 return [
     'jw_categories' => [
-        'браслеты','броши','зажим для галстука','запонки','колье','кольца','пирсинг','подвески','подвески-шарм',
-        'серьги','цепи','бусы'
+        CategoryListEnum::BEADS->value, CategoryListEnum::BRACELETS->value, CategoryListEnum::BROOCHES->value,
+        CategoryListEnum::CHAINS->value, CategoryListEnum::CHARM_PENDANTS->value, CategoryListEnum::CUFF_LINKS->value,
+        CategoryListEnum::EARRINGS->value, CategoryListEnum::NECKLACES->value, CategoryListEnum::PENDANTS->value,
+        CategoryListEnum::PIERCINGS->value, CategoryListEnum::RINGS->value, CategoryListEnum::TIE_CLIPS->value
     ],
     'medias' => [
         'jw_video_types' => [

@@ -30,7 +30,7 @@ class ClaspStoreRequest extends FormRequest
             ],
             'data.attributes.name'          => ['required','string','unique:pgsql_pub.jw_properties.clasps,name'],
             // relationships
-            'data.relationships'            => ['prohibited'],
+            'data.relationships'            => ['missing'],
         ];
     }
 }

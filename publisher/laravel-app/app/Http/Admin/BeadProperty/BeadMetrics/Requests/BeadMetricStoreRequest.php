@@ -38,7 +38,7 @@ final class BeadMetricStoreRequest extends FormRequest
             'data.attributes.quantity'     => ['required','integer','min:0'],
             'data.attributes.price'        => ['required','decimal:0,2','min:0'],
             // relationships
-            'data.relationships'    => ['prohibited'],
+            'data.relationships'    => ['missing'],
         ];
     }
 

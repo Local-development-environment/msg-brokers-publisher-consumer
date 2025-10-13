@@ -30,7 +30,7 @@ final class BeadBaseStoreRequest extends FormRequest
             'data.attributes'       => ['required','array:name'],
             'data.attributes.name'  => ['required','string','unique:pgsql_pub.jw_properties.bead_bases,name'],
             // relationships
-            'data.relationships'    => ['prohibited'],
+            'data.relationships'    => ['missing'],
 //            'data.relationships'    => ['sometimes','required','array:beads'],
             // one to many Insert Colour to Inserts
 //            'data.relationships.beads'             => ['required_with:data.relationships','array:data','distinct'],

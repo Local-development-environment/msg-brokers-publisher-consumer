@@ -33,7 +33,7 @@ final class BeadSizeUpdateRequest extends FormRequest
             'data.attributes.unit'            => ['sometimes','required','string'],
             'data.attributes.length_name_id'  => ['sometimes','required','integer'],
             // relationships
-            'data.relationships'              => ['prohibited'],
+            'data.relationships'              => ['missing'],
         ];
     }
 }

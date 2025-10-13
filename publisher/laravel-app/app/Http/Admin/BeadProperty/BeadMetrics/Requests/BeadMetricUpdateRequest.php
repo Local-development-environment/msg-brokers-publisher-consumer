@@ -37,7 +37,7 @@ final class BeadMetricUpdateRequest extends FormRequest
             'data.attributes.quantity'     => ['sometimes','required','integer','min:0'],
             'data.attributes.price'        => ['sometimes','required','decimal:0,2','min:0'],
             // relationships
-            'data.relationships'    => ['prohibited'],
+            'data.relationships'    => ['missing'],
         ];
     }
 

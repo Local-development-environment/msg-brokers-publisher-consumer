@@ -31,7 +31,7 @@ class LengthNameUpdateRequest extends FormRequest
                 'sometimes','string','unique:pgsql_pub.jw_properties.length_names,description'
             ],
             // relationships
-            'data.relationships'            => ['prohibited'],
+            'data.relationships'            => ['missing'],
         ];
     }
 }

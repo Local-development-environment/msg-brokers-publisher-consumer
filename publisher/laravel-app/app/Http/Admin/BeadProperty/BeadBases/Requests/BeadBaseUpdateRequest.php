@@ -29,7 +29,7 @@ final class BeadBaseUpdateRequest extends FormRequest
             'data.attributes'       => ['required','array:name'],
             'data.attributes.name'  => ['required','string','unique:pgsql_pub.jw_properties.bead_bases,name'],
             // relationships
-            'data.relationships'    => ['prohibited'],
+            'data.relationships'    => ['missing'],
         ];
     }
 }

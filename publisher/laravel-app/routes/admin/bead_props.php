@@ -4,8 +4,6 @@ declare(strict_types=1);
 use App\Http\Admin\BeadProperty\BeadBases\Controllers\BeadBaseBeadsRelatedController;
 use App\Http\Admin\BeadProperty\BeadBases\Controllers\BeadBaseBeadsRelationshipController;
 use App\Http\Admin\BeadProperty\BeadBases\Controllers\BeadBaseController;
-use App\Http\Admin\BeadProperty\BeadBases\Controllers\BeadBasesClaspsRelatedController;
-use App\Http\Admin\BeadProperty\BeadBases\Controllers\BeadBasesClaspsRelationshipController;
 use App\Http\Admin\BeadProperty\BeadMetrics\Controllers\BeadMetricController;
 use App\Http\Admin\BeadProperty\BeadMetrics\Controllers\BeadMetricsBeadRelatedController;
 use App\Http\Admin\BeadProperty\BeadMetrics\Controllers\BeadMetricsBeadRelationshipController;

@@ -31,7 +31,7 @@ class LengthNameStoreRequest extends FormRequest
             'data.attributes.name'          => ['required','string','unique:pgsql_pub.jw_properties.length_names,name'],
             'data.attributes.description'   => ['required','string','unique:pgsql_pub.jw_properties.length_names,description'],
             // relationships
-            'data.relationships'            => ['prohibited'],
+            'data.relationships'            => ['missing'],
         ];
     }
 }

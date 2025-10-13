@@ -31,7 +31,7 @@ final class BeadSizeStoreRequest extends FormRequest
             'data.attributes.unit'  => ['required','string'],
             'data.attributes.length_name_id'  => ['required','integer','exists:pgsql_pub.jw_properties.length_names,id'],
             // relationships
-            'data.relationships'    => ['prohibited'],
+            'data.relationships'    => ['missing'],
         ];
     }
 }
