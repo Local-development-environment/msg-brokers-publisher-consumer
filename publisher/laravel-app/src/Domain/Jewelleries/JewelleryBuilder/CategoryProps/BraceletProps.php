@@ -7,6 +7,7 @@ namespace Domain\Jewelleries\JewelleryBuilder\CategoryProps;
 use Domain\Jewelleries\JewelleryBuilder\CategoryPropsBuilderInterface;
 use Domain\Jewelleries\JewelleryBuilder\MetalPriceDifferentiationTrait;
 use Domain\Jewelleries\JewelleryBuilder\SizePricePropsTrait;
+use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
 use Illuminate\Support\Arr;
 
 final readonly class BraceletProps implements CategoryPropsBuilderInterface
@@ -22,13 +23,12 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
         $metal = $this->properties['prcsMetal'];
         $insert = $this->properties['insert'];
 
-        $clasps = config('data-seed.data_items.jw_clasps');
         $sizes = data_get(config('data-seed.data_items.bracelet_sizes'), '*.value');
         $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), $sizes);
 
         return [
             'size_price_quantity' => $sizePrices,
-            'clasp' => $clasps[array_rand($clasps, 1)],
+            'clasp' => ClaspListEnum::cases()[array_rand(ClaspListEnum::cases())]->value,
             'weaving' => $this->getWeaving(),
             'body_part' => $this->getBodyPart(),
             'bracelet_sizes' => data_get($sizePrices, '*.size'),
@@ -70,7 +70,7 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
             if (count($insert) === 1) {
                 if ($insert[0]['stone'] === 'жемчуг') {
                     $braceletBases = array_diff(config('data-seed.data_items.bracelet_bases'), ['металлическая', 'шнурок']);
-//                    dd($braceletBases);
+
                     return Arr::random($braceletBases);
                 }
             }

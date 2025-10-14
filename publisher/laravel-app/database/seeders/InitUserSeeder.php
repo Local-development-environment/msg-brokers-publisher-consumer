@@ -121,7 +121,7 @@ final class InitUserSeeder extends Seeder
         $this->createPermissions();
     }
 
-    private function storePhoneNumber(): string
+    private function storePhoneNumber(): int
     {
         $phone = $this->getPhoneNumber();
 

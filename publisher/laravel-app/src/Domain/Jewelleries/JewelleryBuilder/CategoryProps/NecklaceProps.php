@@ -7,6 +7,7 @@ namespace Domain\Jewelleries\JewelleryBuilder\CategoryProps;
 use Domain\Jewelleries\JewelleryBuilder\CategoryPropsBuilderInterface;
 use Domain\Jewelleries\JewelleryBuilder\MetalPriceDifferentiationTrait;
 use Domain\Jewelleries\JewelleryBuilder\SizePricePropsTrait;
+use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
 
 final readonly class NecklaceProps implements CategoryPropsBuilderInterface
 {
@@ -21,13 +22,12 @@ final readonly class NecklaceProps implements CategoryPropsBuilderInterface
         $metal = $this->properties['prcsMetal'];
         $insert = $this->properties['insert'];
 
-        $clasps = config('data-seed.data_items.jw_clasps');
         $sizes = data_get(config('data-seed.data_items.necklace_sizes'), '*.value');
         $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), $sizes);
 
         return [
             'size_price_quantity' => $sizePrices,
-            'clasp' => $clasps[array_rand($clasps, 1)],
+            'clasp' => ClaspListEnum::cases()[array_rand(ClaspListEnum::cases())]->value,
             'necklace_sizes' => data_get($sizePrices, '*.size'),
             'quantity' => data_get($sizePrices, '*.quantity'),
             'price' => data_get($sizePrices, '*.price')

@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Http\Integrations\UVI\Jewelleries\Requests\GetAllJewelleries;
 use App\Http\Integrations\UVI\UVIConnector;
 use Domain\Inserts\GrownStones\Models\GrownStone;
+use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
 use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Domain\Users\Admins\Models\Admin;
 use Domain\Users\Genders\Models\Gender;
@@ -26,7 +27,10 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-//        dd(Jewellery::find(4)->bracelet->braceletSizes);
+        foreach (StoneGradeListEnum::cases() as $grade) {
+            dump($grade->description());
+        }
+        dd(StoneGradeListEnum::cases()[array_rand(StoneGradeListEnum::cases())]->value);
         $params = [
             'include' => ['jewelleryCategory','inserts'],
             'filter' => [

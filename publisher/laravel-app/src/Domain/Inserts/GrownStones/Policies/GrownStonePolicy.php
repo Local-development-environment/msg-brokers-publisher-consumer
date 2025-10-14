@@ -32,6 +32,9 @@ class GrownStonePolicy
      */
     public function create(Admin $admin): bool
     {
+        if ($admin->hasRole('admin')) {
+            return true;
+        }
         return false;
     }
 

@@ -6,6 +6,7 @@ namespace Domain\Jewelleries\JewelleryBuilder\CategoryProps;
 
 use Domain\Jewelleries\JewelleryBuilder\CategoryPropsBuilderInterface;
 use Domain\Jewelleries\JewelleryBuilder\SizePricePropsTrait;
+use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
 use Illuminate\Support\Facades\DB;
 
 final readonly class BeadProps implements CategoryPropsBuilderInterface
@@ -32,13 +33,12 @@ final readonly class BeadProps implements CategoryPropsBuilderInterface
             $price = round(rand(60000, 355000), -1);
         }
 
-        $clasps = config('data-seed.data_items.jw_clasps');
         $sizes = data_get(config('data-seed.data_items.bead_sizes'), '*.value');
         $sizePrices = $this->getSizePrice($price, $sizes);
 
         return [
             'size_price_quantity' => $sizePrices,
-            'clasp' => $clasps[array_rand($clasps, 1)],
+            'clasp' => ClaspListEnum::cases()[array_rand(ClaspListEnum::cases())]->value,
             'bead_sizes' => data_get($sizePrices, '*.size'),
             'bead_bases' => $this->getBeadBase(),
             'quantity' => data_get($sizePrices, '*.quantity'),

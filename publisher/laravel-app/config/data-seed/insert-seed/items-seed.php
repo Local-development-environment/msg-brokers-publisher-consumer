@@ -1,4 +1,7 @@
 <?php
+declare(strict_types=1);
+
+use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
 
 return [
     'origins' => [
@@ -16,12 +19,30 @@ return [
         ]
     ],
     'grades' => [
-        ['name' => 'ювелирный камень первого порядка', 'description' => 'Градация для группы "ювелирные камни"'],
-        ['name' => 'ювелирный камень второго порядка', 'description' => 'Градация для группы "ювелирные камни"'],
-        ['name' => 'ювелирный камень третьего порядка', 'description' => 'Градация для группы "ювелирные камни"'],
-        ['name' => 'ювелирный камень четвертого порядка', 'description' => 'Градация для группы "ювелирные камни"'],
-        ['name' => 'ювелирно-поделочный камень первого порядка', 'description' => 'Градация для группы "ювелирно-поделочные камни"'],
-        ['name' => 'ювелирно-поделочный камень второго порядка', 'description' => 'Градация для группы "ювелирно-поделочные камни"'],
+        [
+            'name' => StoneGradeListEnum::JEWELLERY_FIRST->value,
+            'description' => 'Градация для группы "ювелирные камни"'
+        ],
+        [
+            'name' => StoneGradeListEnum::JEWELLERY_SECOND->value,
+            'description' => 'Градация для группы "ювелирные камни"'
+        ],
+        [
+            'name' => StoneGradeListEnum::JEWELLERY_THIRD->value,
+            'description' => 'Градация для группы "ювелирные камни"'
+        ],
+        [
+            'name' => StoneGradeListEnum::JEWELLERY_FORTH->value,
+            'description' => 'Градация для группы "ювелирные камни"'
+        ],
+        [
+            'name' => StoneGradeListEnum::JEWELLERY_ORNAMENTAL_FIRST->value,
+            'description' => 'Градация для группы "ювелирно-поделочные камни"'
+        ],
+        [
+            'name' => StoneGradeListEnum::JEWELLERY_ORNAMENTAL_SECOND->value,
+            'description' => 'Градация для группы "ювелирно-поделочные камни"'
+        ],
     ],
     'groups' => [
         ['name' => 'драгоценные', 'description' => 'Драгоценными камнями в России официально являются алмазы, рубины, изумруды, сапфиры, александриты и природный жемчуг'],

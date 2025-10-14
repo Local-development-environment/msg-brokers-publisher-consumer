@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
+use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
+use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -91,11 +94,9 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_metals.jewellery_metal_detail')->truncate();
         Schema::enableForeignKeyConstraints();
 
-        $categories = config('data-seed.data_items.jw_categories');
         $weavings = config('data-seed.data_items.jw_weavings');
         $earring_clasps = config('data-seed.data_items.earring_clasps');
         $earring_types = config('data-seed.data_items.earring_types');
-        $jw_clasps = config('data-seed.data_items.jw_clasps');
         $ring_sizes = config('data-seed.data_items.ring_sizes');
         $chain_sizes = config('data-seed.data_items.chain_sizes');
         $bracelet_sizes = config('data-seed.data_items.bracelet_sizes');
@@ -124,10 +125,10 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach ($categories as $category) {
+        foreach (CategoryListEnum::cases() as $category) {
             DB::table('jewelleries.categories')->insert([
-                'name' => $category,
-                'slug' => Str::slug($category, '-'),
+                'name' => $category->value,
+                'slug' => Str::slug($category->value, '-'),
                 'created_at' => now(),
             ]);
         }
@@ -192,10 +193,11 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach ($jw_clasps as $clasp) {
+        foreach (ClaspListEnum::cases() as $clasp) {
             DB::table('jw_properties.clasps')->insert([
-                'name' => $clasp,
-                'slug' => Str::slug($clasp, '-'),
+                'name' => $clasp->value,
+                'slug' => Str::slug($clasp->value, '-'),
+                'description' => $clasp->description(),
                 'created_at' => now(),
             ]);
         }
@@ -293,7 +295,6 @@ final class InitDataSeeder extends Seeder
         $jwInsertsStoneFacets = config('data-seed.insert-seed.items-seed.stone_facets');
         $jwInsertsStoneFamilies = config('data-seed.insert-seed.items-seed.family');
         $jwInsertsStoneGroups = config('data-seed.insert-seed.items-seed.groups');
-        $jwInsertsStoneGrades = config('data-seed.insert-seed.items-seed.grades');
         $jwInsertsOpticalEffects = config('data-seed.insert-seed.items-seed.optical_effects');
         $jwInsertsNaturalStones = config('data-seed.insert-seed.nature-stones-seed.stones');
         $jwInsertsGrownStones = config('data-seed.insert-seed.grown-stones-seed.stones');
@@ -308,11 +309,21 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach ($jwInsertsStoneGrades as $grade) {
+//        foreach ($jwInsertsStoneGrades as $grade) {
+//            DB::table('jw_inserts.stone_grades')->insert([
+//                'name' => $grade['name'],
+//                'slug' => Str::slug($grade['name'], '-'),
+//                'description' => $grade['description'],
+//                'created_at' => now(),
+//            ]);
+//        }
+
+        foreach (StoneGradeListEnum::cases() as $grade) {
+//            dd($grade);
             DB::table('jw_inserts.stone_grades')->insert([
-                'name' => $grade['name'],
-                'slug' => Str::slug($grade['name'], '-'),
-                'description' => $grade['description'],
+                'name' => $grade->value,
+                'slug' => Str::slug($grade->value, '-'),
+                'description' => $grade->description(),
                 'created_at' => now(),
             ]);
         }

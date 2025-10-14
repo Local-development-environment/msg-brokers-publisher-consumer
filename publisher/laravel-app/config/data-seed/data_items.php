@@ -3,14 +3,9 @@ declare(strict_types=1);
 
 use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
+use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameListEnum;
 
 return [
-    'jw_categories' => [
-        CategoryListEnum::BEADS->value, CategoryListEnum::BRACELETS->value, CategoryListEnum::BROOCHES->value,
-        CategoryListEnum::CHAINS->value, CategoryListEnum::CHARM_PENDANTS->value, CategoryListEnum::CUFF_LINKS->value,
-        CategoryListEnum::EARRINGS->value, CategoryListEnum::NECKLACES->value, CategoryListEnum::PENDANTS->value,
-        CategoryListEnum::PIERCINGS->value, CategoryListEnum::RINGS->value, CategoryListEnum::TIE_CLIPS->value
-    ],
     'medias' => [
         'jw_video_types' => [
             [
@@ -151,35 +146,29 @@ return [
             'description' => 'Могут быть самых разнообразных форм и размеров: от классического одиночного маленького камня в круглой оправе или минималистичного металлического шарика до группы миксованных камней в единой композиции и орнаментальных рисунков, заключенных в разнообразные металлические формы.'
         ],
     ],
-    'jw_clasps' => [
-        ClaspListEnum::CARABINER->value, ClaspListEnum::SPRING->value, ClaspListEnum::BOX->value,
-        ClaspListEnum::THREADED->value, ClaspListEnum::MAGNETIC->value, ClaspListEnum::TOGGLE->value,
-        ClaspListEnum::FOLDOVER->value, ClaspListEnum::SLIDER->value, ClaspListEnum::NO_CLASP->value,
-        ClaspListEnum::BOLO->value, ClaspListEnum::HOOK->value
-    ],
     'length_names' => [
         [
-            'name'        => 'коллар',
+            'name'        => LengthNameListEnum::COLLAR->value,
             'description' => 'Это шейное украшение плотно надевается на шею и лучше всего носить с одеждой с открытым вырезом (например, с круглым вырезом, V-образным вырезом, с открытыми плечами и без бретелек).'
         ],
         [
-            'name'        => 'чокер',
+            'name'        => LengthNameListEnum::CHOKER->value,
             'description' => 'Чокеры располагаются у основания шеи на шейной кости. Их можно сочетать практически с любым модным стилем.'
         ],
         [
-            'name'        => 'принцесса',
+            'name'        => LengthNameListEnum::PRINCESS->value,
             'description' => 'Украшения длиной "Принцесса" один из самых популярных размеров, которое доходит чуть ниже ключиц; Лучше всего подходит для крепления кулона с бриллиантами или драгоценными камнями. Это шейное украшение универсально; Его можно носить с любым нарядом.'
         ],
         [
-            'name'        => 'матине',
+            'name'        => LengthNameListEnum::MATINEE->value,
             'description' => 'Длина украшения "Матине" является популярной длиной для многослойности, создается путем ношения от двух до четырех украшений одновременно для образа, привлекающего внимание. Утренние украшения опускаются ниже ключиц. Они отлично подходят для деловой и повседневной носки.'
         ],
         [
-            'name'        => 'опера',
+            'name'        => LengthNameListEnum::OPERA->value,
             'description' => 'Шейные украшения длиной длиной "Опера" висит ниже груди и достаточной длины, чтобы украшение можно было носить как одну нить, либо обернуть или завязать узлом для создания иллюзии двойной нити, также может использоваться для многослойности. Красиво подчеркнет деловой и вечерний наряд.'
         ],
         [
-            'name'        => 'роп',
+            'name'        => LengthNameListEnum::ROP->value,
             'description' => 'Шейные украшения длиной "Роп" можно носить несколькими способами (например, обернуть, наложить или завязать узлом) для создания изысканного, но элегантного образа. Прелесть украшения этой длины в том, что оно может плавно переходить из офиса в ресторан.'
         ],
     ],

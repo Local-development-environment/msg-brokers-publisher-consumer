@@ -7,6 +7,7 @@ namespace Domain\Jewelleries\JewelleryBuilder\CategoryProps;
 use Domain\Jewelleries\JewelleryBuilder\CategoryPropsBuilderInterface;
 use Domain\Jewelleries\JewelleryBuilder\MetalPriceDifferentiationTrait;
 use Domain\Jewelleries\JewelleryBuilder\SizePricePropsTrait;
+use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
 use Illuminate\Support\Arr;
 
 final readonly class ChainProps implements CategoryPropsBuilderInterface
@@ -22,13 +23,12 @@ final readonly class ChainProps implements CategoryPropsBuilderInterface
         $metal = $this->properties['prcsMetal'];
         $insert = $this->properties['insert'];
 
-        $clasps = config('data-seed.data_items.jw_clasps');
         $sizes = data_get(config('data-seed.data_items.chain_sizes'), '*.value');
         $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), $sizes);
 
         return [
             'size_price_quantity' => $sizePrices,
-            'clasp' => $clasps[array_rand($clasps, 1)],
+            'clasp' => ClaspListEnum::cases()[array_rand(ClaspListEnum::cases())]->value,
             'weaving' => $this->getWeaving(),
             'chain_sizes' => data_get($sizePrices, '*.size'),
             'quantity' => data_get($sizePrices, '*.quantity'),
