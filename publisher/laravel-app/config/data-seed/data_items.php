@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
+use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
 
 return [
     'jw_categories' => [
@@ -151,8 +152,10 @@ return [
         ],
     ],
     'jw_clasps' => [
-        'карабин', 'шпрингель', 'коробка','резьбовая','магнитная','тогл','крючок','складная','слайдер','шарнир',
-        'без замка'
+        ClaspListEnum::CARABINER->value, ClaspListEnum::SPRING->value, ClaspListEnum::BOX->value,
+        ClaspListEnum::THREADED->value, ClaspListEnum::MAGNETIC->value, ClaspListEnum::TOGGLE->value,
+        ClaspListEnum::FOLDOVER->value, ClaspListEnum::SLIDER->value, ClaspListEnum::NO_CLASP->value,
+        ClaspListEnum::BOLO->value, ClaspListEnum::HOOK->value
     ],
     'length_names' => [
         [

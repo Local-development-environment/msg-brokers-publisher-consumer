@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Beads\Beads\Repositories\Relationships;
 
+use Domain\JewelleryProperties\Beads\BeadMetrics\Models\BeadMetric;
 use Domain\JewelleryProperties\Beads\Beads\Models\Bead;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 final class BeadBeadMetricsRelationshipRepository
 {
@@ -14,8 +16,16 @@ final class BeadBeadMetricsRelationshipRepository
         return Bead::findOrFail($id)->beadMetrics;
     }
 
-    public function update(array $data, int $id): void
+    public function store(array $data): void
     {
-
+        foreach ($data as $item) {
+            BeadMetric::insert([
+                'bead_id' => $item['bead_id'],
+                'bead_size_id' => $item['bead_size_id'],
+                'quantity' => $item['quantity'],
+                'price' => $item['price'],
+                'created_at' => now(),
+            ]);
+        }
     }
 }

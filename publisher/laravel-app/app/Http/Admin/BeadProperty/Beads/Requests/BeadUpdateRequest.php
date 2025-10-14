@@ -26,12 +26,13 @@ final class BeadUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        $categoryId = DB::table('jewelleries.categories')->where('name',CategoryListEnum::BEADS->value)->value('id');
+
         return [
             'data'                  => ['required','array:type,id,attributes,relationships','min:3'],
             'data.id'               => [
                 'required','int', Rule::exists('pgsql_pub.jewelleries.jewelleries','id')
-                    ->where('category_id', DB::table('jewelleries.categories')
-                        ->where('name',CategoryListEnum::BEADS->value)->value('id'))
+                    ->where('category_id', $categoryId)
             ],
             'data.type'             => ['required','string','in:' . Bead::TYPE_RESOURCE],
             'data.attributes'       => ['required','array:bead_base_id,clasp_id','min:1'],

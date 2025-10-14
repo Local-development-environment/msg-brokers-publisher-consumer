@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Beads\Beads\Pipelines;
 
+use Domain\JewelleryProperties\Beads\Beads\Pipelines\Pipes\BeadBeadMetricsStoreRelationshipPipe;
 use Domain\JewelleryProperties\Beads\Beads\Pipelines\Pipes\BeadDestroyPipe;
 use Domain\JewelleryProperties\Beads\Beads\Pipelines\Pipes\BeadStorePipe;
 use Domain\JewelleryProperties\Beads\Beads\Pipelines\Pipes\BeadUpdatePipe;
@@ -28,7 +29,8 @@ final class BeadPipeline extends AbstractPipeline
             $data = $this->pipeline
                 ->send($data)
                 ->through([
-                    BeadStorePipe::class
+                    BeadStorePipe::class,
+                    BeadBeadMetricsStoreRelationshipPipe::class
                 ])
                 ->thenReturn();
 

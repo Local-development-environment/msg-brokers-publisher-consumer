@@ -45,7 +45,8 @@ final class BeadMetricStoreRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'data.attributes.bead_id.unique' => 'A composite key for the selected bead_size_id with the selected bead_id already exists.',
+            'data.attributes.bead_id.unique' =>
+                'A composite key for the selected bead_size_id with the selected bead_id already exists.',
         ];
     }
 }
