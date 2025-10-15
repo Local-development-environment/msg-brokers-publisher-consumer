@@ -6,16 +6,16 @@ namespace Domain\JewelleryProperties\Beads\BeadSizes\Enums;
 
 enum BeadSizeListEnum: int
 {
-    case S13  = 13;
-    case S14  = 14;
-    case S15  = 15;
-    case M16  = 16;
-    case M17  = 17;
-    case M18  = 18;
-    case L19  = 19;
-    case L20  = 20;
-    case L21  = 21;
-    case XL22 = 22;
-    case XL23 = 23;
-    case XL24 = 24;
+    case S13  = 35;
+    case S14  = 40;
+    case S15  = 45;
+    case M16  = 50;
+    case M17  = 55;
+    case M18  = 60;
+    case L19  = 65;
+    case L20  = 70;
+    case L21  = 75;
+    case XL22 = 80;
+    case XL23 = 85;
+    case XL24 = 90;
 }
