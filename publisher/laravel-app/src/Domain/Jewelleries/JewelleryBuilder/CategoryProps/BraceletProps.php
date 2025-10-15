@@ -7,6 +7,7 @@ namespace Domain\Jewelleries\JewelleryBuilder\CategoryProps;
 use Domain\Jewelleries\JewelleryBuilder\CategoryPropsBuilderInterface;
 use Domain\Jewelleries\JewelleryBuilder\MetalPriceDifferentiationTrait;
 use Domain\Jewelleries\JewelleryBuilder\SizePricePropsTrait;
+use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
 use Illuminate\Support\Arr;
 
@@ -23,8 +24,10 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
         $metal = $this->properties['prcsMetal'];
         $insert = $this->properties['insert'];
 
-        $sizes = data_get(config('data-seed.data_items.bracelet_sizes'), '*.value');
-        $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), $sizes);
+//        $sizes = data_get(config('data-seed.data_items.bracelet_sizes'), '*.value');
+        $sizes = BraceletSizeListEnum::cases();
+
+        $sizePrices = $this->getSizePriceEnum($this->getPriceDifferentiation($metal), $sizes);
 
         return [
             'size_price_quantity' => $sizePrices,

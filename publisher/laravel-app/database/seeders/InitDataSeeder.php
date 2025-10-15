@@ -5,7 +5,9 @@ namespace Database\Seeders;
 
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
+use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
+use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameListEnum;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -108,7 +110,6 @@ final class InitDataSeeder extends Seeder
         $jwCoverageTypes = config('data-seed.data_items.jw_coverage_types');
         $bracelet_bases = config('data-seed.data_items.bracelet_bases');
         $bead_bases = config('data-seed.data_items.bead_bases');
-        $length_names = config('data-seed.data_items.length_names');
         $promotions = config('data-seed.data_items.jw_promotions');
 
         $this->jwInsertsSeed();
@@ -227,11 +228,11 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach ($length_names as $length_name) {
+        foreach (LengthNameListEnum::cases() as $length_name) {
             DB::table('jw_properties.length_names')->insert([
-                'name' => $length_name['name'],
-                'slug' => Str::slug($length_name['name'], '-'),
-                'description' => $length_name['description']
+                'name' => $length_name->value,
+                'slug' => Str::slug($length_name->value, '-'),
+                'description' => $length_name->description()
             ]);
         }
 
@@ -243,9 +244,11 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach ($bracelet_sizes as $bracelet_size) {
+        foreach (BraceletSizeListEnum::cases() as $bracelet_size) {
             DB::table('jw_properties.bracelet_sizes')->insert([
-                'value' => $bracelet_size['value'],
+                'value'      => $bracelet_size->value,
+                'unit'       => $bracelet_size->unitMeasurement(),
+                'annotation' => $bracelet_size->wrist(),
                 'created_at' => now(),
             ]);
         }

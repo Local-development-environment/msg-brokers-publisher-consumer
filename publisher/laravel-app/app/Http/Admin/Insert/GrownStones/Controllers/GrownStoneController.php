@@ -3,6 +3,7 @@
 namespace App\Http\Admin\Insert\GrownStones\Controllers;
 
 use App\Http\Admin\Insert\GrownStones\Resources\GrownStoneCollection;
+use App\Http\Admin\Insert\GrownStones\Resources\GrownStoneResource;
 use App\Http\Controllers\Controller;
 use Domain\Inserts\GrownStones\Models\GrownStone;
 use Domain\Inserts\GrownStones\Services\GrownStoneService;
@@ -41,9 +42,14 @@ class GrownStoneController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request, int $id): JsonResponse
     {
-        //
+        $data = $request->all();
+
+        data_set($data, 'id', $id);
+        $model = $this->service->show($data, $id);
+
+        return (new GrownStoneResource($model))->response();
     }
 
     /**

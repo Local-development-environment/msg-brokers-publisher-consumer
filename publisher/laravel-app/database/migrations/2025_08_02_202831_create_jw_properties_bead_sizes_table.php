@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('length_name_id');
             $table->decimal('value', 4, 1)->unique();
-            $table->string('unit')->default('sm');
+            $table->string('unit')->default('см');
             $table->timestamps();
 
             $table->foreign('length_name_id')->references('id')->on('jw_properties.length_names')->cascadeOnDelete();

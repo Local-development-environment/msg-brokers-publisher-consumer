@@ -408,7 +408,7 @@ final class BuildJewellerySeeder extends Seeder
                 'created_at' => now()
             ]);
         }
-
+//        dd($jewelleryData['props']['parameters']['size_price_quantity']);
         foreach ($jewelleryData['props']['parameters']['size_price_quantity'] as $sizePriceQuantity) {
 //            dump($jewelleryData);
 

@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('jw_properties.bracelet_sizes', function (Blueprint $table) {
             $table->id();
             $table->decimal('value', 4, 1)->unique();
-            $table->string('unit')->default('sm');
+            $table->string('unit')->default('см');
+            $table->text('annotation');
             $table->timestamps();
         });
     }
