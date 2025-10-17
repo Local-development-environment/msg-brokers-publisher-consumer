@@ -29,7 +29,8 @@ final class BeadUpdateRequest extends FormRequest
     {
         $categoryId = DB::table('jewelleries.categories')->where('name',CategoryListEnum::BEADS->value)->value('id');
         $query = explode('/',$this->get('q'));
-        dd(end($query));
+        $dataId = end($query);
+//        dd(end($query));
 
         return [
             'data'                  => ['required','array:type,id,attributes,relationships','min:3'],
@@ -64,7 +65,7 @@ final class BeadUpdateRequest extends FormRequest
             ],
             'data.relationships.beadMetrics.data.*.bead_id'      => [
                 'required_with:data.relationships.beadMetrics',
-//                'same:data.id',
+                'same:' . $dataId,
                 'integer', 'unique:pgsql_pub.jw_properties.beads,id'
             ],
             'data.relationships.beadMetrics.data.*.bead_size_id' => [

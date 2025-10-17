@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Domain\JewelleryProperties\Beads\BeadSizes\Enums;
+namespace Domain\JewelleryProperties\Chains\ChainSizes\Enums;
 
-enum BeadSizeListEnum: int
+enum ChainSizeListEnum: int
 {
     case SIZE_35  = 35; // collar
     case SIZE_40  = 40; // choker

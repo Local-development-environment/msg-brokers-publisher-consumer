@@ -9,6 +9,7 @@ use Domain\Inserts\GrownStones\Models\GrownStone;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
 use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
+use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
 use Domain\Users\Admins\Models\Admin;
 use Domain\Users\Genders\Models\Gender;
 use Domain\Users\RegisterPhones\Models\RegisterPhone;
@@ -28,8 +29,8 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (BraceletSizeListEnum::cases() as $grade) {
-            dump($grade->unitMeasurement());
+        foreach (RingSizeListEnum::cases() as $grade) {
+            dump((float)$grade->value);
         }
         dd(StoneGradeListEnum::cases()[array_rand(StoneGradeListEnum::cases())]->value);
         $params = [

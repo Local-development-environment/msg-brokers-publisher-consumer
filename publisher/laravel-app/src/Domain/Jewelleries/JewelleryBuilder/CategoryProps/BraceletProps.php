@@ -27,7 +27,7 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
 //        $sizes = data_get(config('data-seed.data_items.bracelet_sizes'), '*.value');
         $sizes = BraceletSizeListEnum::cases();
 
-        $sizePrices = $this->getSizePriceEnum($this->getPriceDifferentiation($metal), $sizes);
+        $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), $sizes);
 
         return [
             'size_price_quantity' => $sizePrices,

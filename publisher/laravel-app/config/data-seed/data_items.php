@@ -1,10 +1,6 @@
 <?php
 declare(strict_types=1);
 
-use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
-use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
-use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameListEnum;
-
 return [
     'medias' => [
         'jw_video_types' => [
@@ -146,93 +142,7 @@ return [
             'description' => 'Могут быть самых разнообразных форм и размеров: от классического одиночного маленького камня в круглой оправе или минималистичного металлического шарика до группы миксованных камней в единой композиции и орнаментальных рисунков, заключенных в разнообразные металлические формы.'
         ],
     ],
-    'bracelet_sizes' => [
-        ['value' => 15, 'unit' => 'см'],
-        ['value' => 16, 'unit' => 'см'],
-        ['value' => 16.5, 'unit' => 'см'],
-        ['value' => 17, 'unit' => 'см'],
-        ['value' => 17.5, 'unit' => 'см'],
-        ['value' => 18, 'unit' => 'см'],
-        ['value' => 18.5, 'unit' => 'см'],
-        ['value' => 19, 'unit' => 'см'],
-        ['value' => 19.5, 'unit' => 'см'],
-        ['value' => 20, 'unit' => 'см'],
-        ['value' => 21, 'unit' => 'см'],
-        ['value' => 22, 'unit' => 'см'],
-        ['value' => 23, 'unit' => 'см'],
-        ['value' => 24, 'unit' => 'см'],
-        ['value' => 25, 'unit' => 'см'],
-    ],
-    'ring_sizes' => [
-        ['value' => 15, 'unit' => 'мм'],
-        ['value' => 15.5, 'unit' => 'мм'],
-        ['value' => 16, 'unit' => 'мм'],
-        ['value' => 16.5, 'unit' => 'мм'],
-        ['value' => 17, 'unit' => 'мм'],
-        ['value' => 17.5, 'unit' => 'мм'],
-        ['value' => 18, 'unit' => 'мм'],
-        ['value' => 18.5, 'unit' => 'мм'],
-        ['value' => 19, 'unit' => 'мм'],
-        ['value' => 19.5, 'unit' => 'мм'],
-        ['value' => 20, 'unit' => 'мм'],
-        ['value' => 20.5, 'unit' => 'мм'],
-        ['value' => 21, 'unit' => 'мм'],
-        ['value' => 21.5, 'unit' => 'мм'],
-        ['value' => 22, 'unit' => 'мм'],
-        ['value' => 22.5, 'unit' => 'мм'],
-    ],
-    'chain_sizes' => [
-        ['value' => 35, 'unit' => 'см'],
-        ['value' => 40, 'unit' => 'см'],
-        ['value' => 45, 'unit' => 'см'],
-        ['value' => 50, 'unit' => 'см'],
-        ['value' => 55, 'unit' => 'см'],
-        ['value' => 60, 'unit' => 'см'],
-        ['value' => 65, 'unit' => 'см'],
-        ['value' => 70, 'unit' => 'см'],
-        ['value' => 75, 'unit' => 'см'],
-        ['value' => 80, 'unit' => 'см'],
-        ['value' => 85, 'unit' => 'см'],
-        ['value' => 90, 'unit' => 'см'],
-        ['value' => 95, 'unit' => 'см'],
-        ['value' => 100, 'unit' => 'см'],
-        ['value' => 105, 'unit' => 'см'],
-        ['value' => 110, 'unit' => 'см'],
-    ],
-    'necklace_sizes' => [
-        ['value' => 35, 'unit' => 'см'],
-        ['value' => 40, 'unit' => 'см'],
-        ['value' => 45, 'unit' => 'см'],
-        ['value' => 50, 'unit' => 'см'],
-        ['value' => 60, 'unit' => 'см'],
-        ['value' => 70, 'unit' => 'см'],
-        ['value' => 75, 'unit' => 'см'],
-        ['value' => 80, 'unit' => 'см'],
-        ['value' => 85, 'unit' => 'см'],
-        ['value' => 90, 'unit' => 'см'],
-        ['value' => 95, 'unit' => 'см'],
-        ['value' => 100, 'unit' => 'см'],
-        ['value' => 105, 'unit' => 'см'],
-        ['value' => 110, 'unit' => 'см'],
-    ],
-    'bead_sizes' => [
-        ['value' => 35, 'unit' => 'см'],
-        ['value' => 40, 'unit' => 'см'],
-        ['value' => 45, 'unit' => 'см'],
-        ['value' => 50, 'unit' => 'см'],
-        ['value' => 55, 'unit' => 'см'],
-        ['value' => 60, 'unit' => 'см'],
-        ['value' => 65, 'unit' => 'см'],
-        ['value' => 70, 'unit' => 'см'],
-        ['value' => 75, 'unit' => 'см'],
-        ['value' => 80, 'unit' => 'см'],
-        ['value' => 85, 'unit' => 'см'],
-        ['value' => 90, 'unit' => 'см'],
-        ['value' => 95, 'unit' => 'см'],
-        ['value' => 100, 'unit' => 'см'],
-        ['value' => 105, 'unit' => 'см'],
-        ['value' => 110, 'unit' => 'см'],
-    ],
+
     'jw_promotions' => [
         [
             'name' => 'аутлет 70%',

@@ -5,7 +5,11 @@ namespace Database\Seeders;
 
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
+use Domain\JewelleryProperties\Beads\BeadSizes\Enums\BeadSizeListEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
+use Domain\JewelleryProperties\Chains\ChainSizes\Enums\ChainSizeListEnum;
+use Domain\JewelleryProperties\Necklaces\NecklaceSizes\Enums\NecklaceSizeListEnum;
+use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameListEnum;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -99,11 +103,6 @@ final class InitDataSeeder extends Seeder
         $weavings = config('data-seed.data_items.jw_weavings');
         $earring_clasps = config('data-seed.data_items.earring_clasps');
         $earring_types = config('data-seed.data_items.earring_types');
-        $ring_sizes = config('data-seed.data_items.ring_sizes');
-        $chain_sizes = config('data-seed.data_items.chain_sizes');
-        $bracelet_sizes = config('data-seed.data_items.bracelet_sizes');
-        $necklace_sizes = config('data-seed.data_items.necklace_sizes');
-        $bead_sizes = config('data-seed.data_items.bead_sizes');
         $body_parts = config('data-seed.data_items.body_parts');
         $ring_fingers = config('data-seed.data_items.ring_fingers');
         $jw_coverages = config('data-seed.data_items.jw_coverages');
@@ -221,9 +220,10 @@ final class InitDataSeeder extends Seeder
 
         $this->jwMetalsSeed();
 
-        foreach ($ring_sizes as $ring_size) {
+        foreach (RingSizeListEnum::cases() as $ringSize) {
             DB::table('jw_properties.ring_sizes')->insert([
-                'value' => $ring_size['value'],
+                'value' => $ringSize->value,
+                'unit' => $ringSize->unitMeasurement(),
                 'created_at' => now(),
             ]);
         }
@@ -236,10 +236,11 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach ($chain_sizes as $chain_size) {
+        foreach (ChainSizeListEnum::cases() as $chainSize) {
             DB::table('jw_properties.chain_sizes')->insert([
-                'length_name_id' => $this->lengthNameId($chain_size['value']),
-                'value' => $chain_size['value'],
+                'length_name_id' => DB::table('jw_properties.length_names')->where('name', $chainSize->lengthNames())->value('id'),
+                'value' => $chainSize->value,
+                'unit' => $chainSize->unitMeasurement(),
                 'created_at' => now(),
             ]);
         }
@@ -253,42 +254,23 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach ($necklace_sizes as $necklace_size) {
+        foreach (NecklaceSizeListEnum::cases() as $necklaceSize) {
             DB::table('jw_properties.necklace_sizes')->insert([
-                'length_name_id' => $this->lengthNameId($necklace_size['value']),
-                'value' => $necklace_size['value'],
+                'length_name_id' => DB::table('jw_properties.length_names')->where('name', $necklaceSize->lengthNames())->value('id'),
+                'value' => $necklaceSize->value,
+                'unit' => $necklaceSize->unitMeasurement(),
                 'created_at' => now(),
             ]);
         }
 
-        foreach ($bead_sizes as $size) {
+        foreach (BeadSizeListEnum::cases() as $size) {
             DB::table('jw_properties.bead_sizes')->insert([
-                'length_name_id' => $this->lengthNameId($size['value']),
-                'value' => $size['value'],
+                'length_name_id' => DB::table('jw_properties.length_names')->where('name', $size->lengthNames())->value('id'),
+                'value' => $size->value,
+                'unit' => $size->unitMeasurement(),
                 'created_at' => now(),
             ]);
         }
-    }
-
-    private function lengthNameId($size): int
-    {
-        if ($size <= 35) {
-            return DB::table('jw_properties.length_names')->where('name', 'коллар')->value('id');
-        }
-        if ($size <= 45) {
-            return DB::table('jw_properties.length_names')->where('name', 'чокер')->value('id');
-        }
-        if ($size <= 55) {
-            return DB::table('jw_properties.length_names')->where('name', 'принцесса')->value('id');
-        }
-        if ($size <= 65) {
-            return DB::table('jw_properties.length_names')->where('name', 'матине')->value('id');
-        }
-        if ($size <= 85) {
-            return DB::table('jw_properties.length_names')->where('name', 'опера')->value('id');
-        }
-
-        return DB::table('jw_properties.length_names')->where('name', 'роп')->value('id');
     }
 
     private function jwInsertsSeed(): void
