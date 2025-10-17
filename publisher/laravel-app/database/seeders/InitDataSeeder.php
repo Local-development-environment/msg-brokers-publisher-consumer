@@ -294,15 +294,6 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-//        foreach ($jwInsertsStoneGrades as $grade) {
-//            DB::table('jw_inserts.stone_grades')->insert([
-//                'name' => $grade['name'],
-//                'slug' => Str::slug($grade['name'], '-'),
-//                'description' => $grade['description'],
-//                'created_at' => now(),
-//            ]);
-//        }
-
         foreach (StoneGradeListEnum::cases() as $grade) {
 //            dd($grade);
             DB::table('jw_inserts.stone_grades')->insert([
