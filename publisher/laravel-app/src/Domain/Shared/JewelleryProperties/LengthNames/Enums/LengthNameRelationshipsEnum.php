@@ -6,5 +6,5 @@ namespace Domain\Shared\JewelleryProperties\LengthNames\Enums;
 
 enum LengthNameRelationshipsEnum: string
 {
-    case BEAD_SIZES = 'beadSizes';
+    case NECK_SIZES = 'neckSizes';
 }

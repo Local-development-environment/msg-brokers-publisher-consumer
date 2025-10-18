@@ -2,8 +2,7 @@
 
 namespace App\Http\Admin\SharedProperty\LengthNames\Resources;
 
-use App\Http\Admin\BeadProperty\Beads\Resources\BeadCollection;
-use App\Http\Admin\BeadProperty\BeadSizes\Resources\BeadSizeCollection;
+use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeCollection;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameNameRoutesEnum;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameRelationshipsEnum;
@@ -28,9 +27,9 @@ class LengthNameResource extends JsonResource
             'type' => LengthName::TYPE_RESOURCE,
             'attributes' => $this->attributeItems(),
             'relationships' => [
-                'beadSizes' => $this->sectionRelationships(
+                'neckSizes' => $this->sectionRelationships(
                     LengthNameNameRoutesEnum::RELATED_TO_BEAD_SIZES->value,
-                    BeadSizeCollection::class
+                    NeckSizeCollection::class
                 )
             ]
         ];
@@ -39,7 +38,7 @@ class LengthNameResource extends JsonResource
     protected function relations(): array
     {
         return [
-            BeadSizeCollection::class => $this->whenLoaded(LengthNameRelationshipsEnum::BEAD_SIZES->value),
+            NeckSizeCollection::class => $this->whenLoaded(LengthNameRelationshipsEnum::NECK_SIZES->value),
         ];
     }
 }

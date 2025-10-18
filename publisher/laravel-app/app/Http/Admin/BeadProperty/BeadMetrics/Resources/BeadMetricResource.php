@@ -3,7 +3,7 @@
 namespace App\Http\Admin\BeadProperty\BeadMetrics\Resources;
 
 use App\Http\Admin\BeadProperty\Beads\Resources\BeadResource;
-use App\Http\Admin\BeadProperty\BeadSizes\Resources\BeadSizeResource;
+use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeResource;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricRelationshipsEnum;
@@ -33,8 +33,8 @@ class BeadMetricResource extends JsonResource
                     BeadResource::class
                 ),
                 'beadSize' => $this->sectionRelationships(
-                    BeadMetricNameRoutesEnum::RELATED_TO_BEAD_SIZE->value,
-                    BeadSizeResource::class
+                    BeadMetricNameRoutesEnum::RELATED_TO_NECK_SIZE->value,
+                    NeckSizeResource::class
                 )
             ]
         ];
@@ -44,7 +44,7 @@ class BeadMetricResource extends JsonResource
     {
         return [
             BeadResource::class => $this->whenLoaded(BeadMetricRelationshipsEnum::BEAD->value),
-            BeadSizeResource::class => $this->whenLoaded(BeadMetricRelationshipsEnum::BEAD_SIZE->value),
+            NeckSizeResource::class => $this->whenLoaded(BeadMetricRelationshipsEnum::NECK_SIZE->value),
         ];
     }
 }

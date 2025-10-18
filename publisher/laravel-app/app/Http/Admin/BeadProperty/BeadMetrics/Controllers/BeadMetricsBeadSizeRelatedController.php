@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\BeadProperty\BeadMetrics\Controllers;
 
-use App\Http\Admin\BeadProperty\BeadSizes\Resources\BeadSizeResource;
+use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Beads\BeadMetrics\Services\Relationships\BeadMetricsBeadSizeRelationshipService;
+use Domain\JewelleryProperties\Beads\BeadMetrics\Services\Relationships\BeadMetricsNeckSizeRelationshipService;
 use Illuminate\Http\JsonResponse;
 
 final class BeadMetricsBeadSizeRelatedController extends Controller
 {
-    public function __construct(public BeadMetricsBeadSizeRelationshipService $service)
+    public function __construct(public BeadMetricsNeckSizeRelationshipService $service)
     {
     }
 
@@ -18,6 +18,6 @@ final class BeadMetricsBeadSizeRelatedController extends Controller
     {
         $model = $this->service->index($id);
 
-        return (new BeadSizeResource($model))->response();
+        return (new NeckSizeResource($model))->response();
     }
 }

@@ -12,6 +12,7 @@ use Domain\JewelleryProperties\Necklaces\NecklaceSizes\Enums\NecklaceSizeListEnu
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameListEnum;
+use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeListEnum;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -28,15 +29,13 @@ final class InitDataSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         DB::table('jw_properties.bead_metrics')->truncate();
         DB::table('jw_properties.beads')->truncate();
-        DB::table('jw_properties.bead_sizes')->truncate();
         DB::table('jw_properties.bead_bases')->truncate();
         DB::table('jw_properties.necklace_metrics')->truncate();
         DB::table('jw_properties.necklaces')->truncate();
-        DB::table('jw_properties.necklace_sizes')->truncate();
         DB::table('jw_properties.chain_weavings')->truncate();
         DB::table('jw_properties.chain_metrics')->truncate();
         DB::table('jw_properties.chains')->truncate();
-        DB::table('jw_properties.chain_sizes')->truncate();
+        DB::table('jw_properties.neck_sizes')->truncate();
         DB::table('jw_properties.length_names')->truncate();
         DB::table('jw_properties.bracelet_weavings')->truncate();
         DB::table('jw_properties.bracelet_metrics')->truncate();
@@ -236,11 +235,11 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach (ChainSizeListEnum::cases() as $chainSize) {
-            DB::table('jw_properties.chain_sizes')->insert([
-                'length_name_id' => DB::table('jw_properties.length_names')->where('name', $chainSize->lengthNames())->value('id'),
-                'value' => $chainSize->value,
-                'unit' => $chainSize->unitMeasurement(),
+        foreach (NeckSizeListEnum::cases() as $size) {
+            DB::table('jw_properties.neck_sizes')->insert([
+                'length_name_id' => DB::table('jw_properties.length_names')->where('name', $size->lengthNames())->value('id'),
+                'value' => $size->value,
+                'unit' => $size->unitMeasurement(),
                 'created_at' => now(),
             ]);
         }
@@ -250,24 +249,6 @@ final class InitDataSeeder extends Seeder
                 'value'      => $bracelet_size->value,
                 'unit'       => $bracelet_size->unitMeasurement(),
                 'annotation' => $bracelet_size->wrist(),
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach (NecklaceSizeListEnum::cases() as $necklaceSize) {
-            DB::table('jw_properties.necklace_sizes')->insert([
-                'length_name_id' => DB::table('jw_properties.length_names')->where('name', $necklaceSize->lengthNames())->value('id'),
-                'value' => $necklaceSize->value,
-                'unit' => $necklaceSize->unitMeasurement(),
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach (BeadSizeListEnum::cases() as $size) {
-            DB::table('jw_properties.bead_sizes')->insert([
-                'length_name_id' => DB::table('jw_properties.length_names')->where('name', $size->lengthNames())->value('id'),
-                'value' => $size->value,
-                'unit' => $size->unitMeasurement(),
                 'created_at' => now(),
             ]);
         }

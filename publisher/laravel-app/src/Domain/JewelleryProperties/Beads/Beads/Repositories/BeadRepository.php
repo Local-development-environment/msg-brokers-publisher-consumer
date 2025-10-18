@@ -17,7 +17,7 @@ final class BeadRepository
     {
         return QueryBuilder::for(Bead::class)
             ->allowedIncludes([
-                BeadRelationshipsEnum::BEAD_SIZES->value,
+                BeadRelationshipsEnum::NECK_SIZES->value,
                 BeadRelationshipsEnum::BEAD_METRICS->value,
                 BeadRelationshipsEnum::BEAD_BASE->value,
                 BeadRelationshipsEnum::JEWELLERY->value,
@@ -40,7 +40,7 @@ final class BeadRepository
         return QueryBuilder::for(Bead::class)
             ->where(BeadEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
-                BeadRelationshipsEnum::BEAD_SIZES->value,
+                BeadRelationshipsEnum::NECK_SIZES->value,
                 BeadRelationshipsEnum::BEAD_METRICS->value,
                 BeadRelationshipsEnum::BEAD_BASE->value,
                 BeadRelationshipsEnum::JEWELLERY->value,

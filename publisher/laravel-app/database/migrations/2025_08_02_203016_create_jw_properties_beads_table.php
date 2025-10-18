@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jw_properties.beads', function (Blueprint $table) {
-//            $table->id();
             $table->unsignedBigInteger('id')->primary();
             $table->unsignedBigInteger('clasp_id');
             $table->unsignedBigInteger('bead_base_id');

@@ -10,6 +10,7 @@ use Domain\JewelleryProperties\Beads\BeadMetrics\Models\BeadMetric;
 use Domain\JewelleryProperties\Beads\Beads\Enums\BeadEnum;
 use Domain\JewelleryProperties\Beads\BeadSizes\Models\BeadSize;
 use Domain\Shared\JewelleryProperties\Clasps\Models\Clasp;
+use Domain\Shared\JewelleryProperties\NeckSizes\Models\NeckSize;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -42,8 +43,8 @@ final class Bead extends Model
         return $this->belongsTo(BeadBase::class);
     }
 
-    public function beadSizes(): BelongsToMany
+    public function neckSizes(): BelongsToMany
     {
-        return $this->belongsToMany(BeadSize::class, BeadMetricEnum::TABLE_NAME->value);
+        return $this->belongsToMany(NeckSize::class, BeadMetricEnum::TABLE_NAME->value);
     }
 }

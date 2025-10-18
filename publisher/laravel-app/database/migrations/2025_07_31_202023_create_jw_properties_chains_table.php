@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jw_properties.chains', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('jewellery_id')->unique();
+            $table->unsignedBigInteger('id')->primary();
             $table->unsignedBigInteger('clasp_id');
             $table->timestamps();
 
-            $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries')->cascadeOnDelete();
+            $table->foreign('id')->references('id')->on('jewelleries.jewelleries')->cascadeOnDelete();
             $table->foreign('clasp_id')->references('id')->on('jw_properties.clasps')->cascadeOnDelete();
         });
     }
