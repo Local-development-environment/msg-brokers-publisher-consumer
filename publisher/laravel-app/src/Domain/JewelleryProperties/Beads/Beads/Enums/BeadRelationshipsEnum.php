@@ -6,7 +6,7 @@ namespace Domain\JewelleryProperties\Beads\Beads\Enums;
 
 enum BeadRelationshipsEnum: string
 {
-    case BEAD_SIZES = 'beadSizes';
+    case NECK_SIZES = 'neckSizes';
     case BEAD_METRICS = 'beadMetrics';
     case JEWELLERY = 'jewellery';
     case CLASP = 'clasp';

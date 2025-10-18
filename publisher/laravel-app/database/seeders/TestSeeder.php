@@ -29,6 +29,7 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
+
         foreach (RingSizeListEnum::cases() as $grade) {
             dump((float)$grade->value);
         }

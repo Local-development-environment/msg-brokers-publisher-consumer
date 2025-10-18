@@ -325,7 +325,7 @@ return new class extends Migration
                         union all
                         
                         select
-                            jj.id,jwch.jewellery_id as jewellery_id,
+                            jj.id,jwch.id as jewellery_id,
                             jsonb_build_object(
                                     'chain_id', jwch.id,
                                     'weaving_id', jww.id,
@@ -335,7 +335,7 @@ return new class extends Migration
                                     'size_price_quantity',
                                     jsonb_agg(
                                         jsonb_build_object(
-                                            'size', jwchs.value,
+                                            'size', jwns.value,
                                             'price', jwchm.price,
                                             'quantity', jwchm.quantity,
                                             'length_name_id', jwln.id,
@@ -349,20 +349,20 @@ return new class extends Migration
                             cast(min(jwchm.price) as decimal(10, 2)) as min_price
                         from
                             jw_properties.chains as jwch
-                        join jewelleries.jewelleries as jj on jwch.jewellery_id = jj.id
+                        join jewelleries.jewelleries as jj on jwch.id = jj.id
                         join jewelleries.categories as jc on jj.category_id = jc.id
                         join jw_properties.clasps as jwcls on jwch.clasp_id = jwcls.id
                         left join jw_properties.chain_metrics as jwchm on jwch.id = jwchm.chain_id
-                        left join jw_properties.chain_sizes as jwchs on jwchm.chain_size_id = jwchs.id
-                        join jw_properties.length_names as jwln on jwchs.length_name_id = jwln.id
+                        left join jw_properties.neck_sizes as jwns on jwchm.neck_size_id = jwns.id
+                        join jw_properties.length_names as jwln on jwns.length_name_id = jwln.id
                         left join jw_properties.chain_weavings as jwchw on jwch.id = jwchw.chain_id
                         left join jw_properties.weavings as jww on jwchw.weaving_id = jww.id
-                        group by jj.id,jwch.jewellery_id,jwch.id,jww.id,jwcls.id
+                        group by jj.id,jwch.id,jwch.id,jww.id,jwcls.id
                         
                         union all
 
                         select
-                            jj.id,jwnck.jewellery_id as jewellery_id,
+                            jj.id,jwnck.id as jewellery_id,
                             jsonb_build_object(
                                 'necklace_id', jwnck.id,
                                 'clasp_id', jwcls.id,
@@ -370,7 +370,7 @@ return new class extends Migration
                                 'size_price_quantity',
                                 jsonb_agg(
                                     jsonb_build_object(
-                                        'size', jwncks.value,
+                                        'size', jwns.value,
                                         'price', jwnckm.price,
                                         'quantity', jwnckm.quantity,
                                         'length_name_id', jwln.id,
@@ -384,13 +384,13 @@ return new class extends Migration
                             cast(min(jwnckm.price) as decimal(10, 2)) as min_price
                         from
                             jw_properties.necklaces as jwnck
-                        join jewelleries.jewelleries as jj on jwnck.jewellery_id = jj.id
+                        join jewelleries.jewelleries as jj on jwnck.id = jj.id
                         join jewelleries.categories as jc on jj.category_id = jc.id
                         join jw_properties.clasps as jwcls on jwnck.clasp_id = jwcls.id
                         left join jw_properties.necklace_metrics as jwnckm on jwnck.id = jwnckm.necklace_id
-                        left join jw_properties.necklace_sizes as jwncks on jwnckm.necklace_size_id = jwncks.id
-                        join jw_properties.length_names as jwln on jwncks.length_name_id = jwln.id
-                        group by jj.id,jwnck.jewellery_id,jwnck.id,jwcls.id
+                        left join jw_properties.neck_sizes as jwns on jwnckm.neck_size_id = jwns.id
+                        join jw_properties.length_names as jwln on jwns.length_name_id = jwln.id
+                        group by jj.id,jwnck.id,jwnck.id,jwcls.id
                     
                         union all
                     
@@ -405,7 +405,7 @@ return new class extends Migration
                                 'size_price_quantity',
                                 jsonb_agg(
                                     jsonb_build_object(
-                                        'size', jwbds.value,
+                                        'size', jwns.value,
                                         'price', jwbdm.price,
                                         'quantity', jwbdm.quantity,
                                         'length_name_id', jwln.id,
@@ -424,8 +424,8 @@ return new class extends Migration
                         join jw_properties.bead_bases as jwbb on jwbd.bead_base_id = jwbb.id
                         join jw_properties.clasps as jwcls on jwbd.clasp_id = jwcls.id
                         left join jw_properties.bead_metrics as jwbdm on jwbd.id = jwbdm.bead_id
-                        left join jw_properties.bead_sizes as jwbds on jwbdm.bead_size_id = jwbds.id
-                        join jw_properties.length_names as jwln on jwbds.length_name_id = jwln.id
+                        left join jw_properties.neck_sizes as jwns on jwbdm.neck_size_id = jwns.id
+                        join jw_properties.length_names as jwln on jwns.length_name_id = jwln.id
                         group by jj.id,jwbd.id,jwcls.id,jwbb.id
                     )
                 select

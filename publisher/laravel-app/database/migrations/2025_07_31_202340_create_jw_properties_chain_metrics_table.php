@@ -13,14 +13,16 @@ return new class extends Migration
     {
         Schema::create('jw_properties.chain_metrics', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('chain_size_id');
+            $table->unsignedBigInteger('neck_size_id');
             $table->unsignedBigInteger('chain_id');
             $table->integer('quantity');
             $table->decimal('price', 10, 2);
             $table->timestamps();
 
-            $table->foreign('chain_size_id')->references('id')->on('jw_properties.chain_sizes')->cascadeOnDelete();
+            $table->foreign('neck_size_id')->references('id')->on('jw_properties.neck_sizes')->cascadeOnDelete();
             $table->foreign('chain_id')->references('id')->on('jw_properties.chains')->cascadeOnDelete();
+
+            $table->unique(['neck_size_id', 'chain_id'],'unique_neck_size_chain');
         });
     }
 

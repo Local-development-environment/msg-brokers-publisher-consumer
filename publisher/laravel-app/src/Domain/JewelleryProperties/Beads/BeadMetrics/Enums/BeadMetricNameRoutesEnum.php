@@ -13,6 +13,6 @@ enum BeadMetricNameRoutesEnum: string
     case CRUD_DELETE             = 'bead-metrics.delete';
     case RELATED_TO_BEAD        = 'bead-metrics.bead';
     case RELATIONSHIP_TO_BEAD   = 'bead-metrics.relationships.bead';
-    case RELATED_TO_BEAD_SIZE        = 'bead-metrics.bead-size';
-    case RELATIONSHIP_TO_BEAD_SIZE   = 'bead-metrics.relationships.bead-size';
+    case RELATED_TO_NECK_SIZE        = 'bead-metrics.neck-size';
+    case RELATIONSHIP_TO_NECK_SIZE   = 'bead-metrics.relationships.neck-size';
 }

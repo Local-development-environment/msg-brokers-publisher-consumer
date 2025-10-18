@@ -7,7 +7,6 @@ namespace Domain\JewelleryProperties\Beads\Beads\Repositories\Relationships;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Models\BeadMetric;
 use Domain\JewelleryProperties\Beads\Beads\Models\Bead;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
 
 final class BeadBeadMetricsRelationshipRepository
 {

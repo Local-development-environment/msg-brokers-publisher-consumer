@@ -7,8 +7,8 @@ namespace Domain\Jewelleries\JewelleryBuilder\CategoryProps;
 use Domain\Jewelleries\JewelleryBuilder\CategoryPropsBuilderInterface;
 use Domain\Jewelleries\JewelleryBuilder\MetalPriceDifferentiationTrait;
 use Domain\Jewelleries\JewelleryBuilder\SizePricePropsTrait;
-use Domain\JewelleryProperties\Chains\ChainSizes\Enums\ChainSizeListEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
+use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeListEnum;
 use Illuminate\Support\Arr;
 
 final readonly class ChainProps implements CategoryPropsBuilderInterface
@@ -24,7 +24,7 @@ final readonly class ChainProps implements CategoryPropsBuilderInterface
         $metal = $this->properties['prcsMetal'];
         $insert = $this->properties['insert'];
 
-        $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), ChainSizeListEnum::cases());
+        $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), NeckSizeListEnum::cases());
 
         return [
             'size_price_quantity' => $sizePrices,

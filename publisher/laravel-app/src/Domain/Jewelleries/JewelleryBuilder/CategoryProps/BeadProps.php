@@ -6,8 +6,8 @@ namespace Domain\Jewelleries\JewelleryBuilder\CategoryProps;
 
 use Domain\Jewelleries\JewelleryBuilder\CategoryPropsBuilderInterface;
 use Domain\Jewelleries\JewelleryBuilder\SizePricePropsTrait;
-use Domain\JewelleryProperties\Beads\BeadSizes\Enums\BeadSizeListEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
+use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeListEnum;
 use Illuminate\Support\Facades\DB;
 
 final readonly class BeadProps implements CategoryPropsBuilderInterface
@@ -34,7 +34,7 @@ final readonly class BeadProps implements CategoryPropsBuilderInterface
             $price = round(rand(60000, 355000), -1);
         }
 
-        $sizePrices = $this->getSizePrice($price, BeadSizeListEnum::cases());
+        $sizePrices = $this->getSizePrice($price, NeckSizeListEnum::cases());
 
         return [
             'size_price_quantity' => $sizePrices,

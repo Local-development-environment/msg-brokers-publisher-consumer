@@ -7,5 +7,5 @@ namespace Domain\JewelleryProperties\Beads\BeadMetrics\Enums;
 enum BeadMetricRelationshipsEnum: string
 {
     case BEAD = 'bead';
-    case BEAD_SIZE = 'beadSize';
+    case NECK_SIZE = 'neckSize';
 }
