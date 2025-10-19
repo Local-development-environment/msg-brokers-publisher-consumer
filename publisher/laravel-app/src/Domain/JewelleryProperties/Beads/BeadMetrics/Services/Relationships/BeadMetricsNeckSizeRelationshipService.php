@@ -6,6 +6,7 @@ namespace Domain\JewelleryProperties\Beads\BeadMetrics\Services\Relationships;
 
 use Domain\JewelleryProperties\Beads\BeadMetrics\Repositories\Relationships\BeadMetricsNeckSizeRelationshipRepository;
 use Domain\JewelleryProperties\Beads\BeadSizes\Models\BeadSize;
+use Domain\Shared\JewelleryProperties\NeckSizes\Models\NeckSize;
 
 final class BeadMetricsNeckSizeRelationshipService
 {
@@ -13,7 +14,7 @@ final class BeadMetricsNeckSizeRelationshipService
     {
     }
 
-    public function index($id): BeadSize
+    public function index($id): NeckSize
     {
         return $this->repository->index($id);
     }
