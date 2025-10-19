@@ -20,6 +20,11 @@ use App\Http\Admin\BeadProperty\Beads\Controllers\BeadsNeckSizesRelatedControlle
 use App\Http\Admin\BeadProperty\Beads\Controllers\BeadsNeckSizesRelationshipController;
 use App\Http\Admin\BeadProperty\Beads\Controllers\BeadsClaspRelatedController;
 use App\Http\Admin\BeadProperty\Beads\Controllers\BeadsClaspRelationshipController;
+use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricController;
+use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricsNecklaceRelatedController;
+use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricsNecklaceRelationshipController;
+use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricsNeckSizeRelatedController;
+use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricsNeckSizeRelationshipController;
 use App\Http\Admin\NecklaceProperty\Necklaces\Controllers\NecklaceController;
 use App\Http\Admin\NecklaceProperty\Necklaces\Controllers\NecklaceJewelleryRelatedController;
 use App\Http\Admin\NecklaceProperty\Necklaces\Controllers\NecklaceJewelleryRelationshipController;
@@ -32,6 +37,7 @@ use App\Http\Admin\NecklaceProperty\Necklaces\Controllers\NecklacesNeckSizesRela
 use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\Beads\Enums\BeadNameRoutesEnum;
+use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Enums\NecklaceMetricNameRoutesEnum;
 use Domain\JewelleryProperties\Necklaces\Necklaces\Enums\NecklaceNameRoutesEnum;
 
 Route::group([
@@ -91,7 +97,7 @@ Route::group([
         ->name(BeadNameRoutesEnum::RELATIONSHIP_TO_NECK_SIZES->value);
     Route::get('beads/{id}/neck-sizes', [BeadsNeckSizesRelatedController::class, 'index'])
         ->name(BeadNameRoutesEnum::RELATED_TO_NECK_SIZES->value);
-    //  one-to-many Bead Sizes to Beads
+    //  one-to-many Bead Metrics to Beads
     Route::get('beads/{id}/relationships/bead-metrics', [BeadBeadMetricsRelationshipController::class, 'index'])
         ->name(BeadNameRoutesEnum::RELATIONSHIP_TO_BEAD_METRICS->value);
     Route::get('beads/{id}/bead-metrics', [BeadBeadMetricsRelatedController::class, 'index'])
@@ -136,4 +142,24 @@ Route::group([
         ->name(NecklaceNameRoutesEnum::RELATIONSHIP_TO_CLASP->value);
     Route::get('necklaces/{id}/clasp', [NecklacesClaspRelatedController::class, 'index'])
         ->name(NecklaceNameRoutesEnum::RELATED_TO_CLASP->value);
+
+    /*************************** NECKLACE METRICS *************************/
+    // CRUD
+    Route::get('necklace-metrics', [NecklaceMetricController::class, 'index'])->name(NecklaceMetricNameRoutesEnum::CRUD_INDEX->value);
+    Route::get('necklace-metrics/{id}', [NecklaceMetricController::class, 'show'])->name(NecklaceMetricNameRoutesEnum::CRUD_SHOW->value);
+    Route::post('necklace-metrics', [NecklaceMetricController::class, 'store'])->name(NecklaceMetricNameRoutesEnum::CRUD_POST->value);
+    Route::patch('necklace-metrics/{id}', [NecklaceMetricController::class, 'update'])->name(NecklaceMetricNameRoutesEnum::CRUD_PATCH->value);
+    Route::delete('necklace-metrics/{id}', [NecklaceMetricController::class, 'destroy'])->name(NecklaceMetricNameRoutesEnum::CRUD_DELETE->value);
+
+    // RELATIONSHIPS
+    //  many-to-one Necklace Metrics to Necklace
+    Route::get('necklace-metrics/{id}/relationships/necklace', [NecklaceMetricsNecklaceRelationshipController::class, 'index'])
+        ->name(NecklaceMetricNameRoutesEnum::RELATIONSHIP_TO_NECKLACE->value);
+    Route::get('necklace-metrics/{id}/necklace', [NecklaceMetricsNecklaceRelatedController::class, 'index'])
+        ->name(NecklaceMetricNameRoutesEnum::RELATED_TO_NECKLACE->value);
+    //  many-to-one Necklace Metrics to Neck Size
+    Route::get('necklace-metrics/{id}/relationships/neck-size', [NecklaceMetricsNeckSizeRelationshipController::class, 'index'])
+        ->name(NecklaceMetricNameRoutesEnum::RELATIONSHIP_TO_NECK_SIZE->value);
+    Route::get('necklace-metrics/{id}/neck-size', [NecklaceMetricsNeckSizeRelatedController::class, 'index'])
+        ->name(NecklaceMetricNameRoutesEnum::RELATED_TO_NECK_SIZE->value);
 });

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Models;
 
@@ -8,7 +9,7 @@ use Domain\Shared\JewelleryProperties\NeckSizes\Models\NeckSize;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class NecklaceMetric extends Model
+final class NecklaceMetric extends Model
 {
     protected $table = NecklaceMetricEnum::TABLE_NAME->value;
     protected $fillable = ['neck_size_id', 'necklace_id', 'quantity', 'price'];

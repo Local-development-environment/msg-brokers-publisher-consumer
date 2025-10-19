@@ -18,7 +18,7 @@ final class BeadMetricRepository
         return QueryBuilder::for(BeadMetric::class)
             ->allowedIncludes([
                 BeadMetricRelationshipsEnum::BEAD->value,
-                BeadMetricRelationshipsEnum::BEAD_SIZE->value,
+                BeadMetricRelationshipsEnum::NECK_SIZE->value,
             ])
             ->allowedFilters([
                 AllowedFilter::exact(BeadMetricEnum::PRIMARY_KEY->value)
@@ -38,7 +38,7 @@ final class BeadMetricRepository
             ->where(BeadMetricEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
                 BeadMetricRelationshipsEnum::BEAD->value,
-                BeadMetricRelationshipsEnum::BEAD_SIZE->value,
+                BeadMetricRelationshipsEnum::NECK_SIZE->value,
             ])
             ->firstOrFail();
     }
