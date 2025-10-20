@@ -800,7 +800,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"data\": {\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 7,\r\n                        \"bead_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 7,\r\n                        \"bead_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+													"raw": "{\r\n    \"data\": {\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -808,13 +808,13 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseURL}}/beads/19",
+													"raw": "{{baseURL}}/beads/1002",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
 														"beads",
-														"19"
+														"1002"
 													]
 												}
 											},
