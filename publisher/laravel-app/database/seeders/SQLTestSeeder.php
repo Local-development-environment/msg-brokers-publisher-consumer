@@ -16,6 +16,9 @@ final class SQLTestSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
+        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_jewelleries;');
+        dd('ok');
         dump(Factory::create()->e164PhoneNumber);
         preg_match_all('/\d+/', Factory::create()->e164PhoneNumber, $matches);
         dd(implode('',$matches[0]));

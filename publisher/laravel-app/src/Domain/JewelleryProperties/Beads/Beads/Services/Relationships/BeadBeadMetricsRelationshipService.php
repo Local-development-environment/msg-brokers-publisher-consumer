@@ -20,6 +20,6 @@ final class BeadBeadMetricsRelationshipService
 
     public function update($data, $id): void
     {
-        $this->repository->update($data, $id);
+        $this->repository->store($data, $id);
     }
 }

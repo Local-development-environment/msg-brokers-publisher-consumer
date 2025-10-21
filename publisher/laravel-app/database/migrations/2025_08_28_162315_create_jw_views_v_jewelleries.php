@@ -355,7 +355,7 @@ return new class extends Migration
                         left join jw_properties.chain_metrics as jwchm on jwch.id = jwchm.chain_id
                         left join jw_properties.neck_sizes as jwns on jwchm.neck_size_id = jwns.id
                         join jw_properties.length_names as jwln on jwns.length_name_id = jwln.id
-                        left join jw_properties.chain_weavings as jwchw on jwch.id = jwchw.chain_id
+                        left join jw_properties.chain_weavings as jwchw on jwch.id = jwchw.id
                         left join jw_properties.weavings as jww on jwchw.weaving_id = jww.id
                         group by jj.id,jwch.id,jwch.id,jww.id,jwcls.id
                         
