@@ -19,6 +19,8 @@ use Domain\Users\UserUserTypes\Models\UserUserType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Saloon\Exceptions\Request\FatalRequestException;
 use Saloon\Exceptions\Request\RequestException;
 
@@ -29,7 +31,24 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
+        $name = 'Колье золото проба 585  покрытие (эмаль) цвет красный со вставками (цаворит) артикул 42f70891a5c2c02684dl';
+        $jewelleryId = DB::table('jewelleries.jewelleries')->insertGetId([
+            'category_id' => 8,
+            'name' => $name,
+            'slug' => Str::slug($name, '-'),
+            'description' => 'description',
+            'part_number' => '42f70891a5c2c02684dl',
+            'approx_weight' => 5.5,
+            'is_active' => true,
+            'created_at' => now(),
+        ]);
 
+//        $necklaceId = DB::table('jw_properties.necklaces')->insertGetId([
+//            'id' => $jewelleryId,
+//            'clasp_id' => 4,
+//            'created_at' => now(),
+//        ]);
+        dd($jewelleryId);
         foreach (RingSizeListEnum::cases() as $grade) {
             dump((float)$grade->value);
         }

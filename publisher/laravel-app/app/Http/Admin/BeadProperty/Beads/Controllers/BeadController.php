@@ -12,6 +12,7 @@ use Domain\JewelleryProperties\Beads\Beads\Enums\BeadNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\Beads\Services\BeadService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Throwable;
 
 final class BeadController extends Controller
 {
@@ -32,7 +33,7 @@ final class BeadController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function store(BeadStoreRequest $request): JsonResponse
     {
@@ -61,7 +62,7 @@ final class BeadController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function update(BeadUpdateRequest $request, int $id): JsonResponse
     {
@@ -74,7 +75,7 @@ final class BeadController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function destroy(int $id): JsonResponse
     {

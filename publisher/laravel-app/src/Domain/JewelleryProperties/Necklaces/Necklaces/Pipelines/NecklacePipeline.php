@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domain\JewelleryProperties\Necklaces\Necklaces\Pipelines;
 
 use Domain\JewelleryProperties\Necklaces\Necklaces\Pipelines\Pipes\NecklaceDestroyPipe;
+use Domain\JewelleryProperties\Necklaces\Necklaces\Pipelines\Pipes\NecklaceNecklaceMetricsStoreRelationshipPipe;
 use Domain\JewelleryProperties\Necklaces\Necklaces\Pipelines\Pipes\NecklaceStorePipe;
 use Domain\JewelleryProperties\Necklaces\Necklaces\Pipelines\Pipes\NecklaceUpdatePipe;
 use Domain\Shared\AbstractPipeline;
@@ -28,7 +29,8 @@ final class NecklacePipeline extends AbstractPipeline
             $data = $this->pipeline
                 ->send($data)
                 ->through([
-                    NecklaceStorePipe::class
+                    NecklaceStorePipe::class,
+                    NecklaceNecklaceMetricsStoreRelationshipPipe::class,
                 ])
                 ->thenReturn();
 

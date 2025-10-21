@@ -17,4 +17,9 @@ final class NecklaceNecklaceMetricsRelationshipService
     {
         return $this->repository->index($id);
     }
+
+    public function update($data, $id): void
+    {
+        $this->repository->store($data, $id);
+    }
 }

@@ -1,10 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\NecklaceProperty\NecklaceMetrics\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NecklaceMetricUpdateRequest extends FormRequest
+final class NecklaceMetricUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

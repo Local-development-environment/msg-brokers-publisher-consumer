@@ -20,7 +20,7 @@ final class BeadBeadMetricsRelationshipRepository
         foreach ($data as $item) {
             BeadMetric::insert([
                 'bead_id' => $item['bead_id'],
-                'bead_size_id' => $item['bead_size_id'],
+                'neck_size_id' => $item['neck_size_id'],
                 'quantity' => $item['quantity'],
                 'price' => $item['price'],
                 'created_at' => now(),

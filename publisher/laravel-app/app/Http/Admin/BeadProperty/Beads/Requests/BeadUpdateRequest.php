@@ -54,7 +54,7 @@ final class BeadUpdateRequest extends FormRequest
                 'required_with:data.relationships.beadMetrics','array','min:1'
             ],
             'data.relationships.beadMetrics.data.*'      => [
-                'required_with:data.relationships.beadMetrics','array:bead_id,type,quantity,price,bead_size_id'
+                'required_with:data.relationships.beadMetrics','array:bead_id,type,quantity,price,neck_size_id'
             ],
             'data.relationships.beadMetrics.data.*.type' => [
                 'required_with:data.relationships.beadMetrics','string','in:' . BeadMetric::TYPE_RESOURCE
@@ -68,9 +68,9 @@ final class BeadUpdateRequest extends FormRequest
                 'same:' . $dataId,
                 'integer', 'unique:pgsql_pub.jw_properties.beads,id'
             ],
-            'data.relationships.beadMetrics.data.*.bead_size_id' => [
+            'data.relationships.beadMetrics.data.*.neck_size_id' => [
                 'required_with:data.relationships.beadMetrics',
-                'integer', 'distinct', 'exists:pgsql_pub.jw_properties.bead_sizes,id'
+                'integer', 'distinct', 'exists:pgsql_pub.jw_properties.neck_sizes,id'
             ]
         ];
     }
