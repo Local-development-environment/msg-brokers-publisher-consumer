@@ -7269,12 +7269,18 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-families",
+											"raw": "{{baseURL}}/stone-families?include=naturalStones,grownStones",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"stone-families"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "naturalStones,grownStones"
+												}
 											]
 										}
 									},
