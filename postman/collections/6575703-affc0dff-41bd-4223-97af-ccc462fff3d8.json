@@ -6445,7 +6445,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stones?include=typeOrigin,naturalStone,imitationStone,grownStone,facets,colours",
+											"raw": "{{baseURL}}/stones?include=typeOrigin,naturalStone,imitationStone,grownStone,stoneFacets,stoneColours",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -6455,7 +6455,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "typeOrigin,naturalStone,imitationStone,grownStone,facets,colours"
+													"value": "typeOrigin,naturalStone,imitationStone,grownStone,stoneFacets,stoneColours"
 												}
 											]
 										}
