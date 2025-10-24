@@ -10,4 +10,6 @@ enum StoneRelationshipsEnum: string
     case NATURAL_STONE = 'naturalStone';
     case INSERT_STONES = 'insertStones';
     case OPTICAL_EFFECT_STONE = 'opticalEffectStone';
+    case FACETS = 'stoneFacets';
+    case COLOURS = 'stoneColours';
 }

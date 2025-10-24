@@ -32,7 +32,7 @@ final class StoneMetricRepository
     public function show(array $data, int $id): StoneMetric
     {
         return QueryBuilder::for(StoneMetric::class)
-            ->where('id', $id)
+            ->where(StoneMetricEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([StoneMetricRelationshipsEnum::INSERT->value])
             ->firstOrFail();
     }

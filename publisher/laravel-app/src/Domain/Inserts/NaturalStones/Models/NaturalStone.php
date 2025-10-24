@@ -2,10 +2,12 @@
 
 namespace Domain\Inserts\NaturalStones\Models;
 
+use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeEnum;
 use Domain\Inserts\NaturalStoneGrades\Models\NaturalStoneGrade;
 use Domain\Inserts\NaturalStones\Enums\NaturalStoneEnum;
 use Domain\Inserts\StoneFamilies\Models\StoneFamily;
 use Domain\Inserts\StoneGroups\Models\StoneGroup;
+use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Inserts\Stones\Models\Stone;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -24,12 +26,12 @@ class NaturalStone extends Model
 
     public function stone(): BelongsTo
     {
-        return $this->belongsTo(Stone::class);
+        return $this->belongsTo(Stone::class, StoneEnum::PRIMARY_KEY->value);
     }
 
     public function naturalStoneGrade(): HasOne
     {
-        return $this->hasOne(NaturalStoneGrade::class);
+        return $this->hasOne(NaturalStoneGrade::class, NaturalStoneGradeEnum::PRIMARY_KEY->value);
     }
 
     public function stoneGroup(): BelongsTo

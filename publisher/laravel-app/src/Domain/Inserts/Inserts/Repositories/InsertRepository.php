@@ -37,7 +37,7 @@ final class InsertRepository
     public function show(array $data, int $id): Insert
     {
         return QueryBuilder::for(Insert::class)
-            ->where('id', $id)
+            ->where(InsertEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
                 InsertRelationshipsEnum::INSERT_STONE->value,
                 InsertRelationshipsEnum::JEWELLERY->value,

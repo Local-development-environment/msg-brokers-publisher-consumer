@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jw_inserts.optional_infos', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('insert_id')->unique();
+            $table->unsignedBigInteger('id')->primary();
             $table->jsonb('info');
             $table->timestamps();
 
-            $table->foreign('insert_id')->references('id')->on('jw_inserts.inserts');
+            $table->foreign('id')->references('id')->on('jw_inserts.inserts');
         });
     }
 

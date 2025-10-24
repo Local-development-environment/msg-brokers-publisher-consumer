@@ -32,7 +32,7 @@ final class OptionalInfoRepository
     public function show(array $data, int $id): OptionalInfo
     {
         return QueryBuilder::for(OptionalInfo::class)
-            ->where('id', $id)
+            ->where(OptionalInfoEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([OptionalInfoRelationshipsEnum::INSERT->value])
             ->firstOrFail();
     }

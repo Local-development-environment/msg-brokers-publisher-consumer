@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\StoneFamilies\Repositories;
 
+use Domain\Inserts\StoneFamilies\Enums\StoneFamilyEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyRelationshipsEnum;
 use Domain\Inserts\StoneFamilies\Models\StoneFamily;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -21,7 +22,7 @@ final class StoneFamilyRepository
                 StoneFamilyRelationshipsEnum::NATURAL_STONES->value,
             ])
             ->allowedFilters([
-                AllowedFilter::exact('id')
+                AllowedFilter::exact(StoneFamilyEnum::PRIMARY_KEY->value),
             ])
             ->paginate($data['per_page'] ?? null)
             ->appends($data);
@@ -35,7 +36,7 @@ final class StoneFamilyRepository
     public function show(array $data, int $id): StoneFamily
     {
         return QueryBuilder::for(StoneFamily::class)
-            ->where('id', $id)
+            ->where(StoneFamilyEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
                 StoneFamilyRelationshipsEnum::GROWN_STONES->value,
                 StoneFamilyRelationshipsEnum::NATURAL_STONES->value,

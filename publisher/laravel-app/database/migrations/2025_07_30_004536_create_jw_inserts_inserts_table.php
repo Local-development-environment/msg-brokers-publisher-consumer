@@ -15,14 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('jewellery_id');
             $table->unsignedBigInteger('insert_stone_id');
-            $table->unsignedBigInteger('metric_id');
             $table->timestamps();
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
             $table->foreign('insert_stone_id')->references('id')->on('jw_inserts.insert_stones');
-            $table->foreign('metric_id')->references('id')->on('jw_inserts.metrics');
-
-            $table->unique(['jewellery_id', 'insert_stone_id', 'metric_id'],'inserts_unique');
         });
     }
 

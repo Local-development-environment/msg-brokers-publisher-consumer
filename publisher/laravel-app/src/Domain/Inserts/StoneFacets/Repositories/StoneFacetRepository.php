@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\StoneFacets\Repositories;
 
+use Domain\Inserts\StoneFacets\Enums\StoneFacetEnum;
 use Domain\Inserts\StoneFacets\Enums\StoneFacetRelationshipsEnum;
 use Domain\Inserts\StoneFacets\Models\StoneFacet;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -19,7 +20,7 @@ final class StoneFacetRepository
                 StoneFacetRelationshipsEnum::INSERT_STONES->value
             ])
             ->allowedFilters([
-                AllowedFilter::exact('id')
+                AllowedFilter::exact(StoneFacetEnum::PRIMARY_KEY->value),
             ])
             ->paginate($data['per_page'] ?? null)
             ->appends($data);
@@ -33,7 +34,7 @@ final class StoneFacetRepository
     public function show(array $data, int $id): StoneFacet
     {
         return QueryBuilder::for(StoneFacet::class)
-            ->where('id', $id)
+            ->where(StoneFacetEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
                 StoneFacetRelationshipsEnum::INSERT_STONES->value
             ])

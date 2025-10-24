@@ -32,7 +32,7 @@ final class StoneGroupRepository
     public function show(array $data, int $id): StoneGroup
     {
         return QueryBuilder::for(StoneGroup::class)
-            ->where('id', $id)
+            ->where(StoneGroupEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([StoneGroupRelationshipsEnum::NATURAL_STONES->value])
             ->firstOrFail();
     }

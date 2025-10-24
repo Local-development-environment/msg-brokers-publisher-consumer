@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\Stones\Repositories;
 
+use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Inserts\Stones\Enums\StoneRelationshipsEnum;
 use Domain\Inserts\Stones\Models\Stone;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -19,10 +20,12 @@ final class StoneRepository
                 StoneRelationshipsEnum::TYPE_ORIGIN->value,
                 StoneRelationshipsEnum::IMITATION_STONE->value,
                 StoneRelationshipsEnum::GROWN_STONE->value,
-                StoneRelationshipsEnum::NATURAL_STONE->value
+                StoneRelationshipsEnum::NATURAL_STONE->value,
+                StoneRelationshipsEnum::FACETS->value,
+                StoneRelationshipsEnum::COLOURS->value,
             ])
             ->allowedFilters([
-                AllowedFilter::exact('id')
+                AllowedFilter::exact(StoneEnum::PRIMARY_KEY->value),
             ])
             ->paginate($data['per_page'] ?? null)
             ->appends($data);
@@ -36,12 +39,14 @@ final class StoneRepository
     public function show(array $data, int $id): Stone
     {
         return QueryBuilder::for(Stone::class)
-            ->where('id', $id)
+            ->where(StoneEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
                 StoneRelationshipsEnum::TYPE_ORIGIN->value,
                 StoneRelationshipsEnum::IMITATION_STONE->value,
                 StoneRelationshipsEnum::GROWN_STONE->value,
-                StoneRelationshipsEnum::NATURAL_STONE->value
+                StoneRelationshipsEnum::NATURAL_STONE->value,
+                StoneRelationshipsEnum::FACETS->value,
+                StoneRelationshipsEnum::COLOURS->value,
             ])
             ->firstOrFail();
     }

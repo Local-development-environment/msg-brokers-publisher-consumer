@@ -48,11 +48,11 @@ trait ProbabilityCoefficientsTrait
                 'sg.id as group_id',
                 'sg.name as group_name'
             )
-            ->leftJoin('jw_inserts.natural_stones AS ns', 'ns.stone_id', '=', 's.id')
+            ->leftJoin('jw_inserts.natural_stones AS ns', 'ns.id', '=', 's.id')
             ->leftJoin('jw_inserts.stone_groups AS sg', 'sg.id', '=', 'ns.stone_group_id')
-            ->leftJoin('jw_inserts.grown_stones AS gs', 'gs.stone_id', '=', 's.id')
+            ->leftJoin('jw_inserts.grown_stones AS gs', 'gs.id', '=', 's.id')
 //            ->leftJoin('jw_inserts.stone_families AS sf', 'sf.id', '=', 'gs.stone_id')
-            ->leftJoin('jw_inserts.imitation_stones AS is', 'is.stone_id', '=', 's.id')
+            ->leftJoin('jw_inserts.imitation_stones AS is', 'is.id', '=', 's.id')
             ->join('jw_inserts.type_origins AS t', 't.id', '=', 's.type_origin_id')
             ->orderBy('s.id')
 //            ->get()
@@ -67,11 +67,11 @@ trait ProbabilityCoefficientsTrait
                 'sg.id as group_id',
                 'sg.name as group_name'
             )
-            ->leftJoin('jw_inserts.natural_stones AS ns', 'ns.stone_id', '=', 's.id')
+            ->leftJoin('jw_inserts.natural_stones AS ns', 'ns.id', '=', 's.id')
             ->leftJoin('jw_inserts.stone_groups AS sg', 'sg.id', '=', 'ns.stone_group_id')
-            ->leftJoin('jw_inserts.grown_stones AS gs', 'gs.stone_id', '=', 's.id')
+            ->leftJoin('jw_inserts.grown_stones AS gs', 'gs.id', '=', 's.id')
 //            ->leftJoin('jw_inserts.stone_families AS sf', 'sf.id', '=', 'gs.stone_id')
-            ->leftJoin('jw_inserts.imitation_stones AS is', 'is.stone_id', '=', 's.id')
+            ->leftJoin('jw_inserts.imitation_stones AS is', 'is.id', '=', 's.id')
             ->join('jw_inserts.type_origins AS t', 't.id', '=', 's.type_origin_id')
             ->orderBy('s.id')
             ->get()

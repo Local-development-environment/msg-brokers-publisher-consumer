@@ -80,6 +80,10 @@ use App\Http\Admin\Insert\Stones\Controllers\StoneImitationStoneRelatedControlle
 use App\Http\Admin\Insert\Stones\Controllers\StoneImitationStoneRelationshipController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneNaturalStoneRelatedController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneNaturalStoneRelationshipController;
+use App\Http\Admin\Insert\Stones\Controllers\StonesColoursRelatedController;
+use App\Http\Admin\Insert\Stones\Controllers\StonesColoursRelationshipController;
+use App\Http\Admin\Insert\Stones\Controllers\StonesFacetsRelatedController;
+use App\Http\Admin\Insert\Stones\Controllers\StonesFacetsRelationshipController;
 use App\Http\Admin\Insert\Stones\Controllers\StonesTypeOriginStoneRelatedController;
 use App\Http\Admin\Insert\Stones\Controllers\StonesTypeOriginStoneRelationshipController;
 use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginController;
@@ -194,34 +198,38 @@ Route::group([
 //  many-to-one Stones to StoneTypeOrigin
     Route::get('stones/{id}/relationships/stone-type-origin', [StonesTypeOriginStoneRelationshipController::class, 'index'])
         ->name(StoneNameRoutesEnum::RELATIONSHIP_TO_STONE_TYPE_ORIGIN->value);
-//Route::patch('stones/{id}/relationships/stone-type-origin', [StonesTypeOriginStoneRelationshipController::class, 'update'])
-//    ->name('stones.relationships.stone-type-origin');
     Route::get('stones/{id}/stone-type-origin', [StonesTypeOriginStoneRelatedController::class, 'index'])
         ->name(StoneNameRoutesEnum::RELATED_TO_STONE_TYPE_ORIGIN->value);
 
 //  one-to-one Stone to ImitationStone
     Route::get('stones/{id}/relationships/imitation-stone', [StoneImitationStoneRelationshipController::class, 'index'])
         ->name(StoneNameRoutesEnum::RELATIONSHIP_TO_IMITATION_STONE->value);
-//Route::patch('stones/{id}/relationships/stone-type-origin', [StoneImitationStoneRelationshipController::class, 'update'])
-//    ->name('stone.relationships.imitation-stone');
     Route::get('stones/{id}/imitation-stone', [StoneImitationStoneRelatedController::class, 'index'])
         ->name(StoneNameRoutesEnum::RELATED_TO_IMITATION_STONE->value);
 
 //  one-to-one Stone to GrownStone
     Route::get('stones/{id}/relationships/grown-stone', [StoneGrownStoneRelationshipController::class, 'index'])
         ->name(StoneNameRoutesEnum::RELATIONSHIP_TO_GROWN_STONE->value);
-//Route::patch('stones/{id}/relationships/stone-type-origin', [StoneGrownStoneRelationshipController::class, 'update'])
-//    ->name('stone.relationships.grown-stone');
     Route::get('stones/{id}/grown-stone', [StoneGrownStoneRelatedController::class, 'index'])
         ->name(StoneNameRoutesEnum::RELATED_TO_GROWN_STONE->value);
 
 //  one-to-one Stone to NaturalStone
     Route::get('stones/{id}/relationships/natural-stone', [StoneNaturalStoneRelationshipController::class, 'index'])
         ->name(StoneNameRoutesEnum::RELATIONSHIP_TO_NATURAL_STONE->value);
-//Route::patch('stones/{id}/relationships/stone-type-origin', [StoneNaturalStoneRelationshipsController::class, 'update'])
-//    ->name('stone.relationships.natural-stone');
     Route::get('stones/{id}/natural-stone', [StoneNaturalStoneRelatedController::class, 'index'])
         ->name(StoneNameRoutesEnum::RELATED_TO_NATURAL_STONE->value);
+
+//  many-to-many Stones to Facets
+    Route::get('stones/{id}/relationships/stone-facets', [StonesFacetsRelationshipController::class, 'index'])
+        ->name(StoneNameRoutesEnum::RELATIONSHIP_TO_FACETS->value);
+    Route::get('stones/{id}/stone-facets', [StonesFacetsRelatedController::class, 'index'])
+        ->name(StoneNameRoutesEnum::RELATED_TO_FACETS->value);
+
+//  many-to-many Stones to Colours
+    Route::get('stones/{id}/relationships/stone-colours', [StonesColoursRelationshipController::class, 'index'])
+        ->name(StoneNameRoutesEnum::RELATIONSHIP_TO_COLOURS->value);
+    Route::get('stones/{id}/stone-colours', [StonesColoursRelatedController::class, 'index'])
+        ->name(StoneNameRoutesEnum::RELATED_TO_COLOURS->value);
 
     /*************************** STONE COLOURS *************************/
 // CRUD

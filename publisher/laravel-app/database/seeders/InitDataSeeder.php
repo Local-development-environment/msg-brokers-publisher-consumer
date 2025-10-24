@@ -13,6 +13,7 @@ use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameListEnum;
 use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeListEnum;
+use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -345,15 +346,17 @@ final class InitDataSeeder extends Seeder
             ]);
 
             if ($stone['optical_effect']) {
+                $opticalEffectId = DB::table('jw_inserts.optical_effects')
+                    ->where('name', $stone['optical_effect'])->value('id');
+
                 DB::table('jw_inserts.optical_effect_stone')->insert([
-                    'stone_id' => $stoneId,
-                    'optical_effect_id' => DB::table('jw_inserts.optical_effects')
-                        ->where('name', $stone['optical_effect'])->value('id'),
+                    'id' => $stoneId,
+                    'optical_effect_id' => $opticalEffectId,
                     'created_at' => now(),
                 ]);
             }
             $naturalStoneId = DB::table('jw_inserts.natural_stones')->insertGetId([
-                'stone_id' => $stoneId,
+                'id' => $stoneId,
                 'stone_group_id' => DB::table('jw_inserts.stone_groups')->where('name', $stone['group'])->value('id'),
                 'stone_family_id' => DB::table('jw_inserts.stone_families')->where('name', $stone['family'])->value('id'),
                 'created_at' => now(),
@@ -361,7 +364,7 @@ final class InitDataSeeder extends Seeder
 
             if ($stone['grade']) {
                 DB::table('jw_inserts.natural_stone_grade')->insert([
-                    'natural_stone_id' => $naturalStoneId,
+                    'id' => $naturalStoneId,
                     'stone_grade_id' => DB::table('jw_inserts.stone_grades')->where('name', $stone['grade'])->value('id'),
                     'created_at' => now(),
                 ]);
@@ -381,7 +384,7 @@ final class InitDataSeeder extends Seeder
 
             if ($stone['optical_effect']) {
                 DB::table('jw_inserts.optical_effect_stone')->insert([
-                    'stone_id' => $stoneId,
+                    'id' => $stoneId,
                     'optical_effect_id' => DB::table('jw_inserts.optical_effects')
                         ->where('name', $stone['optical_effect'])->value('id'),
                     'created_at' => now(),
@@ -389,7 +392,7 @@ final class InitDataSeeder extends Seeder
             }
 
             DB::table('jw_inserts.grown_stones')->insertGetId([
-                'stone_id' => $stoneId,
+                'id' => $stoneId,
                 'stone_family_id' => DB::table('jw_inserts.stone_families')->where('name', $stone['family'])->value('id'),
                 'created_at' => now(),
             ]);
@@ -416,7 +419,8 @@ final class InitDataSeeder extends Seeder
             }
 
             DB::table('jw_inserts.imitation_stones')->insertGetId([
-                'stone_id' => $stoneId,
+                'id' => $stoneId,
+                'description' => fake()->text(),
                 'created_at' => now(),
             ]);
         }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\InsertStones\Repositories;
 
+use Domain\Inserts\InsertStones\Enums\InsertStoneEnum;
 use Domain\Inserts\InsertStones\Enums\InsertStoneRelationshipsEnum;
 use Domain\Inserts\InsertStones\Models\InsertStone;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -22,7 +23,7 @@ final class InsertStoneRepository
                 InsertStoneRelationshipsEnum::STONE_FACET->value
             ])
             ->allowedFilters([
-                AllowedFilter::exact('id')
+                AllowedFilter::exact(InsertStoneEnum::PRIMARY_KEY->value)
             ])
             ->paginate($data['per_page'] ?? null)
             ->appends($data);
@@ -36,7 +37,7 @@ final class InsertStoneRepository
     public function show(array $data, int $id): InsertStone
     {
         return QueryBuilder::for(InsertStone::class)
-            ->where('id', $id)
+            ->where(InsertStoneEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
                 InsertStoneRelationshipsEnum::STONE->value,
                 InsertStoneRelationshipsEnum::INSERTS->value,

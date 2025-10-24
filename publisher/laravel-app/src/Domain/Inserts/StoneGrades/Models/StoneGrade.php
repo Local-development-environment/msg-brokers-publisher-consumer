@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Domain\Inserts\StoneGrades\Models;
 
@@ -8,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class StoneGrade extends Model
+final class StoneGrade extends Model
 {
     protected $table = StoneGradeEnum::TABLE_NAME->value;
 

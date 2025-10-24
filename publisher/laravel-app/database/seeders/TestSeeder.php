@@ -6,7 +6,10 @@ namespace Database\Seeders;
 use App\Http\Integrations\UVI\Jewelleries\Requests\GetAllJewelleries;
 use App\Http\Integrations\UVI\UVIConnector;
 use Domain\Inserts\GrownStones\Models\GrownStone;
+use Domain\Inserts\Inserts\Enums\InsertEnum;
+use Domain\Inserts\Inserts\Enums\InsertModelEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
+use Domain\Inserts\Stones\Models\Stone;
 use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
@@ -31,24 +34,8 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        $name = 'Колье золото проба 585  покрытие (эмаль) цвет красный со вставками (цаворит) артикул 42f70891a5c2c02684dl';
-        $jewelleryId = DB::table('jewelleries.jewelleries')->insertGetId([
-            'category_id' => 8,
-            'name' => $name,
-            'slug' => Str::slug($name, '-'),
-            'description' => 'description',
-            'part_number' => '42f70891a5c2c02684dl',
-            'approx_weight' => 5.5,
-            'is_active' => true,
-            'created_at' => now(),
-        ]);
+        dd(Stone::find(2)->facets);
 
-//        $necklaceId = DB::table('jw_properties.necklaces')->insertGetId([
-//            'id' => $jewelleryId,
-//            'clasp_id' => 4,
-//            'created_at' => now(),
-//        ]);
-        dd($jewelleryId);
         foreach (RingSizeListEnum::cases() as $grade) {
             dump((float)$grade->value);
         }

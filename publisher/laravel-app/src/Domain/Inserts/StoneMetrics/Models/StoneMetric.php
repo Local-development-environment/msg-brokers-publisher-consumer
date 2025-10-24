@@ -16,6 +16,6 @@ class StoneMetric extends Model
 
     public function insert(): HasOne
     {
-        return $this->hasOne(Insert::class, InsertEnum::FK_METRIC->value);
+        return $this->hasOne(Insert::class, InsertEnum::PRIMARY_KEY->value);
     }
 }

@@ -3,6 +3,7 @@
 namespace Domain\Inserts\ImitationStones\Models;
 
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
+use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Inserts\Stones\Models\Stone;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,6 +16,6 @@ class ImitationStone extends Model
 
     public function stone(): BelongsTo
     {
-        return $this->belongsTo(Stone::class);
+        return $this->belongsTo(Stone::class, StoneEnum::PRIMARY_KEY->value);
     }
 }

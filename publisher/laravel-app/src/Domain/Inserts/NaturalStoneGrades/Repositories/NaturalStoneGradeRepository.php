@@ -35,7 +35,7 @@ final class NaturalStoneGradeRepository
     public function show(array $data, int $id): NaturalStoneGrade
     {
         return QueryBuilder::for(NaturalStoneGrade::class)
-            ->where('id', $id)
+            ->where(NaturalStoneGradeEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
                 NaturalStoneGradeRelationshipsEnum::STONE_GRADE->value,
                 NaturalStoneGradeRelationshipsEnum::NATURAL_STONE->value,

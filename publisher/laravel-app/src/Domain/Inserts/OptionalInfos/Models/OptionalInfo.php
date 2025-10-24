@@ -2,6 +2,7 @@
 
 namespace Domain\Inserts\OptionalInfos\Models;
 
+use Domain\Inserts\Inserts\Enums\InsertEnum;
 use Domain\Inserts\Inserts\Models\Insert;
 use Domain\Inserts\OptionalInfos\Enums\OptionalInfoEnum;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,6 @@ class OptionalInfo extends Model
 
     public function insert(): BelongsTo
     {
-        return $this->belongsTo(Insert::class);
+        return $this->belongsTo(Insert::class, InsertEnum::PRIMARY_KEY->value);
     }
 }

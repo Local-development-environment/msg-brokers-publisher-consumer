@@ -18,6 +18,7 @@ final class BuildJewellerySeeder extends Seeder
     public function run(): void
     {
         $this->call(InitDataSeeder::class);
+        $this->call(InitUserSeeder::class);
 
         $jeweller = new Jeweller();
 //        $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
@@ -93,7 +94,14 @@ final class BuildJewellerySeeder extends Seeder
 //                        dump('********************************************' . $stoneId);
                 }
 
+                $insertId = DB::table('jw_inserts.inserts')->insertGetId([
+                    'insert_stone_id' => $stoneId,
+                    'jewellery_id' => $jewelleryId,
+                    'created_at' => now()
+                ]);
+
                 $metricId = DB::table('jw_inserts.metrics')->insertGetId([
+                    'id' => $insertId,
                     'quantity' => $jewelleryInsert['metrics']['quantity'],
                     'weight' => $jewelleryInsert['metrics']['weight'],
                     'unit' => $jewelleryInsert['metrics']['weight_unit'],
@@ -101,15 +109,8 @@ final class BuildJewellerySeeder extends Seeder
                     'created_at' => now()
                 ]);
 
-                $insertId = DB::table('jw_inserts.inserts')->insertGetId([
-                    'insert_stone_id' => $stoneId,
-                    'jewellery_id' => $jewelleryId,
-                    'metric_id' => $metricId,
-                    'created_at' => now()
-                ]);
-
                 DB::table('jw_inserts.optional_infos')->insertGetId([
-                    'insert_id' => $insertId,
+                    'id' => $insertId,
                     'info' => json_encode($jewelleryInsert['optional_info']),
                 ]);
             }
