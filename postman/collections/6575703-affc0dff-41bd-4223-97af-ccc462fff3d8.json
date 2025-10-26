@@ -4517,6 +4517,318 @@
 					"id": "6575703-59da4214-a3a0-4af7-866f-6ee87ea267e7"
 				},
 				{
+					"name": "INSERT METRICS",
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [
+								{
+									"name": "insert-metrics index",
+									"id": "6575703-e87bf4d0-85bf-4877-a9df-d878ffd99284",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-metrics?include=insert",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-metrics"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "insert"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "insert-metrics show",
+									"id": "6575703-ce864075-01f1-41d9-a2b2-ad1b1aae67a2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-metrics/5",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-metrics",
+												"5"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-3f45aaf9-a6c7-4b5e-85c1-73c19ce50ec0"
+						},
+						{
+							"name": "RELATED",
+							"item": [
+								{
+									"name": "insert-metrics insert index",
+									"id": "6575703-9739b838-ba30-40b0-b736-bebe361d8c0e",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-metrics/2/insert",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-metrics",
+												"2",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-4827cd7a-fa68-478b-9f17-c2a67b15f134"
+						},
+						{
+							"name": "RELATIONSHIPS",
+							"item": [
+								{
+									"name": "insert-metrics insert index",
+									"id": "6575703-c6e6a18a-a4d4-49cd-838d-8a85d87b3a90",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-metrics/2/relationships/insert",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-metrics",
+												"2",
+												"relationships",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-9a873ada-a2b8-4c00-9d43-605e88663584"
+						}
+					],
+					"id": "6575703-2ca586a5-73d5-48bc-a554-024e8a01a27c"
+				},
+				{
+					"name": "INSERT_OPTIONAL INFOS",
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [
+								{
+									"name": "insert-optional-infos index",
+									"id": "6575703-6e153d6d-1324-47ad-adb9-ce48e7b1b2f6",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-optional-infos?include=insert",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-optional-infos"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "insert"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "insert-optional-infos show",
+									"id": "6575703-ff5edc05-e6c2-4220-a6d2-e8c00777531f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-optional-infos/5",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-optional-infos",
+												"5"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-6bd07982-8036-4ddf-b44d-38dda430d4fb"
+						},
+						{
+							"name": "RELATED",
+							"item": [
+								{
+									"name": "optional-info insert index",
+									"id": "6575703-334fbf3a-d200-40d5-92e3-d4d861fa42db",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/optional-infos/3/insert",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"optional-infos",
+												"3",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-81dbcb2e-a716-4585-96a7-ad4e9e33614a"
+						},
+						{
+							"name": "RELATIONSHIPS",
+							"item": [
+								{
+									"name": "optional-info insert index",
+									"id": "6575703-e5f4a28e-3919-4638-b6d0-a1b2eef27abb",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/optional-infos/3/relationships/insert",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"optional-infos",
+												"3",
+												"relationships",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-5b6316d7-a232-4a75-9de5-b43cdd2d8b62"
+						}
+					],
+					"id": "6575703-4f4719c9-ee1e-409d-a37b-d97f5dcaba3a"
+				},
+				{
 					"name": "INSERTS",
 					"item": [
 						{
@@ -6260,162 +6572,6 @@
 					"id": "6575703-c97d1e8a-e21f-4ccd-933c-bbd8c204db4b"
 				},
 				{
-					"name": "INSERT_OPTIONAL INFOS",
-					"item": [
-						{
-							"name": "CRUD",
-							"item": [
-								{
-									"name": "insert-optional-infos index",
-									"id": "6575703-6e153d6d-1324-47ad-adb9-ce48e7b1b2f6",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/insert-optional-infos?include=insert",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"insert-optional-infos"
-											],
-											"query": [
-												{
-													"key": "include",
-													"value": "insert"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "insert-optional-infos show",
-									"id": "6575703-ff5edc05-e6c2-4220-a6d2-e8c00777531f",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/insert-optional-infos/5",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"insert-optional-infos",
-												"5"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-6bd07982-8036-4ddf-b44d-38dda430d4fb"
-						},
-						{
-							"name": "RELATED",
-							"item": [
-								{
-									"name": "optional-info insert index",
-									"id": "6575703-334fbf3a-d200-40d5-92e3-d4d861fa42db",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/optional-infos/3/insert",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"optional-infos",
-												"3",
-												"insert"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-81dbcb2e-a716-4585-96a7-ad4e9e33614a"
-						},
-						{
-							"name": "RELATIONSHIPS",
-							"item": [
-								{
-									"name": "optional-info insert index",
-									"id": "6575703-e5f4a28e-3919-4638-b6d0-a1b2eef27abb",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/optional-infos/3/relationships/insert",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"optional-infos",
-												"3",
-												"relationships",
-												"insert"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-5b6316d7-a232-4a75-9de5-b43cdd2d8b62"
-						}
-					],
-					"id": "6575703-4f4719c9-ee1e-409d-a37b-d97f5dcaba3a"
-				},
-				{
 					"name": "STONES",
 					"item": [
 						{
@@ -6926,162 +7082,6 @@
 						}
 					],
 					"id": "6575703-5ea9d4f5-5295-4053-9096-4cf558b7d5fb"
-				},
-				{
-					"name": "INSERT METRICS",
-					"item": [
-						{
-							"name": "CRUD",
-							"item": [
-								{
-									"name": "insert-metrics index",
-									"id": "6575703-e87bf4d0-85bf-4877-a9df-d878ffd99284",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/insert-metrics?include=insert",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"insert-metrics"
-											],
-											"query": [
-												{
-													"key": "include",
-													"value": "insert"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "insert-metrics show",
-									"id": "6575703-ce864075-01f1-41d9-a2b2-ad1b1aae67a2",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/insert-metrics/5",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"insert-metrics",
-												"5"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-3f45aaf9-a6c7-4b5e-85c1-73c19ce50ec0"
-						},
-						{
-							"name": "RELATED",
-							"item": [
-								{
-									"name": "insert-metrics insert index",
-									"id": "6575703-9739b838-ba30-40b0-b736-bebe361d8c0e",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/insert-metrics/2/insert",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"insert-metrics",
-												"2",
-												"insert"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-4827cd7a-fa68-478b-9f17-c2a67b15f134"
-						},
-						{
-							"name": "RELATIONSHIPS",
-							"item": [
-								{
-									"name": "insert-metrics insert index",
-									"id": "6575703-c6e6a18a-a4d4-49cd-838d-8a85d87b3a90",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/insert-metrics/2/relationships/insert",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"insert-metrics",
-												"2",
-												"relationships",
-												"insert"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-9a873ada-a2b8-4c00-9d43-605e88663584"
-						}
-					],
-					"id": "6575703-2ca586a5-73d5-48bc-a554-024e8a01a27c"
 				},
 				{
 					"name": "STONE FACETS",
