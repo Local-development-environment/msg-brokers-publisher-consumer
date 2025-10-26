@@ -4692,7 +4692,7 @@
 									"response": []
 								},
 								{
-									"name": "insert stone-metric index",
+									"name": "insert insert-metric index",
 									"id": "6575703-0738f5e0-0116-47fa-89c7-987d0a8a0538",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
