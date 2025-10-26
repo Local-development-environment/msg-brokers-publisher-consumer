@@ -6284,12 +6284,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/optional-infos?include=insert",
+											"raw": "{{baseURL}}/insert-optional-infos?include=insert",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"optional-infos"
+												"insert-optional-infos"
 											],
 											"query": [
 												{
