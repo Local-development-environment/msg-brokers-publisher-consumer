@@ -5608,7 +5608,7 @@
 									"response": []
 								},
 								{
-									"name": "insert-exteriorsstone-colour index",
+									"name": "insert-exteriors-colour index",
 									"id": "6575703-9d585d6a-cb50-4941-ba48-40e20cb3fac0",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
