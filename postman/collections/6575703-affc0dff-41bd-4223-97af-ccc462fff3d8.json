@@ -6651,7 +6651,7 @@
 							"name": "RELATED",
 							"item": [
 								{
-									"name": "insert-colours insert-stones index",
+									"name": "insert-colours insert-exteriors index",
 									"id": "6575703-45c940f0-3f32-4525-a7af-e6cfa70adaa1",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
