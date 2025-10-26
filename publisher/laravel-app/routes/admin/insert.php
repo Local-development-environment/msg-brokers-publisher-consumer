@@ -10,15 +10,21 @@ use App\Http\Admin\Insert\GrownStones\Controllers\GrownStoneStoneRelationshipCon
 use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneController;
 use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneStoneRelatedController;
 use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneStoneRelationshipController;
+use App\Http\Admin\Insert\InsertMetrics\Controllers\InsertMetricController;
+use App\Http\Admin\Insert\InsertMetrics\Controllers\InsertMetricInsertRelatedController;
+use App\Http\Admin\Insert\InsertMetrics\Controllers\InsertMetricInsertRelationshipController;
+use App\Http\Admin\Insert\InsertOptionalInfos\Controllers\InsertOptionalInfoController;
+use App\Http\Admin\Insert\InsertOptionalInfos\Controllers\InsertOptionalInfoInsertRelatedController;
+use App\Http\Admin\Insert\InsertOptionalInfos\Controllers\InsertOptionalInfoInsertRelationshipController;
 use App\Http\Admin\Insert\Inserts\Controllers\InsertController;
+use App\Http\Admin\Insert\Inserts\Controllers\InsertInsertMetricRelatedController;
+use App\Http\Admin\Insert\Inserts\Controllers\InsertInsertMetricRelationshipController;
 use App\Http\Admin\Insert\Inserts\Controllers\InsertInsertOptionalInfoRelatedController;
 use App\Http\Admin\Insert\Inserts\Controllers\InsertInsertOptionalInfoRelationshipController;
 use App\Http\Admin\Insert\Inserts\Controllers\InsertsInsertStoneRelatedController;
 use App\Http\Admin\Insert\Inserts\Controllers\InsertsInsertStoneRelationshipController;
 use App\Http\Admin\Insert\Inserts\Controllers\InsertsJewelleryRelatedController;
 use App\Http\Admin\Insert\Inserts\Controllers\InsertsJewelleryRelationshipController;
-use App\Http\Admin\Insert\Inserts\Controllers\InsertStoneMetricRelatedController;
-use App\Http\Admin\Insert\Inserts\Controllers\InsertStoneMetricRelationshipController;
 use App\Http\Admin\Insert\InsertStones\Controllers\InsertStoneController;
 use App\Http\Admin\Insert\InsertStones\Controllers\InsertStoneInsertsRelatedController;
 use App\Http\Admin\Insert\InsertStones\Controllers\InsertStoneInsertsRelationshipController;
@@ -50,9 +56,6 @@ use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStonesOpt
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStonesOpticalEffectRelationshipController;
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStoneStoneRelatedController;
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStoneStoneRelationshipController;
-use App\Http\Admin\Insert\InsertOptionalInfos\Controllers\InsertOptionalInfoController;
-use App\Http\Admin\Insert\InsertOptionalInfos\Controllers\InsertOptionalInfoInsertRelatedController;
-use App\Http\Admin\Insert\InsertOptionalInfos\Controllers\InsertOptionalInfoInsertRelationshipController;
 use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourController;
 use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourInsertStonesRelatedController;
 use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourInsertStonesRelationshipController;
@@ -70,9 +73,6 @@ use App\Http\Admin\Insert\StoneGrades\Controllers\StoneGradeNaturalStoneGradesRe
 use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupController;
 use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupNaturalStonesRelatedController;
 use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupNaturalStonesRelationshipController;
-use App\Http\Admin\Insert\StoneMetrics\Controllers\StoneMetricController;
-use App\Http\Admin\Insert\StoneMetrics\Controllers\StoneMetricInsertRelatedController;
-use App\Http\Admin\Insert\StoneMetrics\Controllers\StoneMetricInsertRelationshipController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneGrownStoneRelatedController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneGrownStoneRelationshipController;
@@ -91,19 +91,19 @@ use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRela
 use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRelationshipController;
 use Domain\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
+use Domain\Inserts\InsertMetrics\Enums\InsertMetricNameRoutesEnum;
+use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoNameRoutesEnum;
 use Domain\Inserts\Inserts\Enums\InsertNameRoutesEnum;
 use Domain\Inserts\InsertStones\Enums\InsertStoneNameRoutesEnum;
 use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeNameRoutsEnum;
 use Domain\Inserts\NaturalStones\Enums\NaturalStoneNameRoutesEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectNameRoutesEnum;
 use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneNameRoutesEnum;
-use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoNameRoutesEnum;
 use Domain\Inserts\StoneColours\Enums\StoneColourNameRoutesEnum;
 use Domain\Inserts\StoneFacets\Enums\StoneFacetNameRoutesEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeNameRoutesEnum;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupNameRoutesEnum;
-use Domain\Inserts\StoneMetrics\Enums\StoneMetricNameRoutesEnum;
 use Domain\Inserts\Stones\Enums\StoneNameRoutesEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginNameRoutesEnum;
 
@@ -125,11 +125,11 @@ Route::group([
     Route::get('inserts/{id}/insert-optional-info', [InsertInsertOptionalInfoRelatedController::class, 'index'])
         ->name(InsertNameRoutesEnum::RELATED_TO_INSERT_OPTIONAL_INFO->value);
 
-//  one-to-one Insert to StoneMetric
-    Route::get('inserts/{id}/relationships/stone-metric', [InsertStoneMetricRelationshipController::class, 'index'])
-        ->name(InsertNameRoutesEnum::RELATIONSHIP_TO_METRIC->value);
-    Route::get('inserts/{id}/stone-metric', [InsertStoneMetricRelatedController::class, 'index'])
-        ->name(InsertNameRoutesEnum::RELATED_TO_METRIC->value);
+//  one-to-one Insert to InsertMetric
+    Route::get('inserts/{id}/relationships/insert-metric', [InsertInsertMetricRelationshipController::class, 'index'])
+        ->name(InsertNameRoutesEnum::RELATIONSHIP_TO_INSERT_METRIC->value);
+    Route::get('inserts/{id}/insert-metric', [InsertInsertMetricRelatedController::class, 'index'])
+        ->name(InsertNameRoutesEnum::RELATED_TO_INSERT_METRIC->value);
 
 //  many-to-one Inserts to InsertStone
     Route::get('inserts/{id}/relationships/jewellery', [InsertsJewelleryRelationshipController::class, 'index'])
@@ -251,25 +251,25 @@ Route::group([
     Route::get('stone-colours/{id}/insert-stones', [StoneColourInsertStonesRelatedController::class, 'index'])
         ->name(StoneColourNameRoutesEnum::RELATED_TO_INSERT_STONES->value);
 
-    /*************************** STONE METRICS *************************/
+    /*************************** INSERT METRICS *************************/
 // CRUD
-    Route::get('stone-metrics', [StoneMetricController::class, 'index'])
-        ->name(StoneMetricNameRoutesEnum::CRUD_INDEX);
-    Route::get('stone-metrics/{id}', [StoneMetricController::class, 'show'])
-        ->name(StoneMetricNameRoutesEnum::CRUD_SHOW);
-    Route::post('stone-metrics', [StoneMetricController::class, 'store'])
-        ->name(StoneMetricNameRoutesEnum::CRUD_POST);
-    Route::patch('stone-metrics/{id}', [StoneMetricController::class, 'update'])
-        ->name(StoneMetricNameRoutesEnum::CRUD_PATCH);
-    Route::delete('stone-metrics/{id}', [StoneMetricController::class, 'destroy'])
-        ->name(StoneMetricNameRoutesEnum::CRUD_DELETE);
+    Route::get('insert-metrics', [InsertMetricController::class, 'index'])
+        ->name(InsertMetricNameRoutesEnum::CRUD_INDEX);
+    Route::get('insert-metrics/{id}', [InsertMetricController::class, 'show'])
+        ->name(InsertMetricNameRoutesEnum::CRUD_SHOW);
+    Route::post('insert-metrics', [InsertMetricController::class, 'store'])
+        ->name(InsertMetricNameRoutesEnum::CRUD_POST);
+    Route::patch('insert-metrics/{id}', [InsertMetricController::class, 'update'])
+        ->name(InsertMetricNameRoutesEnum::CRUD_PATCH);
+    Route::delete('insert-metrics/{id}', [InsertMetricController::class, 'destroy'])
+        ->name(InsertMetricNameRoutesEnum::CRUD_DELETE);
 
 // RELATIONSHIPS
-//  one-to-one StoneMetric to Insert
-    Route::get('stone-metrics/{id}/relationships/insert', [StoneMetricInsertRelationshipController::class, 'index'])
-        ->name(StoneMetricNameRoutesEnum::RELATIONSHIP_TO_INSERT->value);
-    Route::get('stone-metrics/{id}/insert', [StoneMetricInsertRelatedController::class, 'index'])
-        ->name(StoneMetricNameRoutesEnum::RELATED_TO_INSERT->value);
+//  one-to-one InsertMetric to Insert
+    Route::get('insert-metrics/{id}/relationships/insert', [InsertMetricInsertRelationshipController::class, 'index'])
+        ->name(InsertMetricNameRoutesEnum::RELATIONSHIP_TO_INSERT->value);
+    Route::get('insert-metrics/{id}/insert', [InsertMetricInsertRelatedController::class, 'index'])
+        ->name(InsertMetricNameRoutesEnum::RELATED_TO_INSERT->value);
 
     /*************************** STONE FACETS *************************/
 // CRUD
@@ -460,7 +460,7 @@ Route::group([
     Route::get('optical-effect-stones/{id}/stone', [OpticalEffectStoneStoneRelatedController::class, 'index'])
         ->name(OpticalEffectStoneNameRoutesEnum::RELATED_TO_STONE->value);
 
-    /*************************** OPTIONAL INFOS *************************/
+    /*************************** INSERT OPTIONAL INFOS *************************/
 // CRUD
     Route::get('insert-optional-infos', [InsertOptionalInfoController::class, 'index'])
         ->name(InsertOptionalInfoNameRoutesEnum::CRUD_INDEX->value);

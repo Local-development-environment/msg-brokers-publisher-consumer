@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Admin\Insert\StoneMetrics\Resources;
+namespace App\Http\Admin\Insert\InsertMetrics\Resources;
 
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesCollectionTrait;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class StoneMetricCollection extends ResourceCollection
+class InsertMetricCollection extends ResourceCollection
 {
     use IncludeRelatedEntitiesCollectionTrait;
 }

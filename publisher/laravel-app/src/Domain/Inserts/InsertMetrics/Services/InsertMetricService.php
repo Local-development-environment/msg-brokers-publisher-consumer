@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Domain\Inserts\StoneMetrics\Services;
+namespace Domain\Inserts\InsertMetrics\Services;
 
-use Domain\Inserts\StoneMetrics\Models\StoneMetric;
-use Domain\Inserts\StoneMetrics\Repositories\StoneMetricRepository;
+use Domain\Inserts\InsertMetrics\Models\InsertMetric;
+use Domain\Inserts\InsertMetrics\Repositories\InsertMetricRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Throwable;
 
-final class StoneMetricService
+final class InsertMetricService
 {
     public function __construct(
-        public StoneMetricRepository $repository,
+        public InsertMetricRepository $repository,
 //        public StoneTypeOriginPipeline $pipeline
     ) {}
 
@@ -24,12 +24,12 @@ final class StoneMetricService
     /**
      * @throws Throwable
      */
-    public function store(array $data): StoneMetric
+    public function store(array $data): InsertMetric
     {
 //        return $this->pipeline->store($data);
     }
 
-    public function show(array $data, int $id): StoneMetric
+    public function show(array $data, int $id): InsertMetric
     {
         return $this->repository->show($data, $id);
     }

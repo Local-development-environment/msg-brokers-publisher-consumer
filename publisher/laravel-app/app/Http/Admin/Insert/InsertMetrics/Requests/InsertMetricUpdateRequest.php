@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Admin\Insert\StoneMetrics\Requests;
+namespace App\Http\Admin\Insert\InsertMetrics\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoneMetricUpdateRequest extends FormRequest
+class InsertMetricUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

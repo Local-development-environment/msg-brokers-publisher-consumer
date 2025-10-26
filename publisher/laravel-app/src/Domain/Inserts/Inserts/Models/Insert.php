@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\Inserts\Models;
 
-use Domain\Inserts\Inserts\Enums\InsertEnum;
-use Domain\Inserts\InsertStones\Models\InsertStone;
+use Domain\Inserts\InsertMetrics\Enums\InsertMetricEnum;
+use Domain\Inserts\InsertMetrics\Models\InsertMetric;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Inserts\InsertOptionalInfos\Models\InsertOptionalInfo;
-use Domain\Inserts\StoneMetrics\Enums\StoneMetricEnum;
-use Domain\Inserts\StoneMetrics\Models\StoneMetric;
+use Domain\Inserts\Inserts\Enums\InsertEnum;
+use Domain\Inserts\InsertStones\Models\InsertStone;
 use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -25,9 +25,9 @@ final class Insert extends Model
         return $this->belongsTo(Jewellery::class);
     }
 
-    public function stoneMetric(): BelongsTo
+    public function insertMetric(): BelongsTo
     {
-        return $this->belongsTo(StoneMetric::class, StoneMetricEnum::PRIMARY_KEY->value);
+        return $this->belongsTo(InsertMetric::class, InsertMetricEnum::PRIMARY_KEY->value);
     }
 
     public function insertOptionalInfo(): HasOne

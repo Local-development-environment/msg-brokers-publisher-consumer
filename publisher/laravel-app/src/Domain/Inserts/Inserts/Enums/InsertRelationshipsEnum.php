@@ -7,6 +7,6 @@ enum InsertRelationshipsEnum: string
 {
     case INSERT_STONE         = 'insertStone';
     case INSERT_OPTIONAL_INFO = 'insertOptionalInfo';
-    case METRIC               = 'stoneMetric';
+    case INSERT_METRIC        = 'insertMetric';
     case JEWELLERY            = 'jewellery';
 }

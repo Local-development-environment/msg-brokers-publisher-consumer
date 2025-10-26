@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_inserts.metrics', function (Blueprint $table) {
+        Schema::create('jw_inserts.insert_metrics', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
             $table->integer('quantity');
             $table->decimal('weight', 8, 3);
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_inserts.metrics');
+        Schema::dropIfExists('jw_inserts.insert_metrics');
     }
 };

@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Inserts\Resources;
 
-use App\Http\Admin\Insert\InsertStones\Resources\InsertStoneResource;
+use App\Http\Admin\Insert\InsertMetrics\Resources\InsertMetricResource;
 use App\Http\Admin\Insert\InsertOptionalInfos\Resources\InsertOptionalInfoResource;
-use App\Http\Admin\Insert\StoneMetrics\Resources\StoneMetricResource;
+use App\Http\Admin\Insert\InsertStones\Resources\InsertStoneResource;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
 use Domain\Inserts\Inserts\Enums\InsertNameRoutesEnum;
@@ -36,9 +36,9 @@ final class InsertResource extends JsonResource
                     InsertNameRoutesEnum::RELATED_TO_INSERT_STONE->value,
                     InsertStoneResource::class
                 ),
-                InsertRelationshipsEnum::METRIC->value => $this->sectionRelationships(
-                    InsertNameRoutesEnum::RELATED_TO_METRIC->value,
-                    StoneMetricResource::class
+                InsertRelationshipsEnum::INSERT_METRIC->value => $this->sectionRelationships(
+                    InsertNameRoutesEnum::RELATED_TO_INSERT_METRIC->value,
+                    InsertMetricResource::class
                 ),
             ]
         ];
@@ -50,7 +50,7 @@ final class InsertResource extends JsonResource
 //            JewelleryResource::class => $this->whenLoaded(InsertRelationshipsEnum::JEWELLERY->value),
             InsertOptionalInfoResource::class => $this->whenLoaded(InsertRelationshipsEnum::INSERT_OPTIONAL_INFO->value),
             InsertStoneResource::class => $this->whenLoaded(InsertRelationshipsEnum::INSERT_STONE->value),
-            StoneMetricResource::class => $this->whenLoaded(InsertRelationshipsEnum::METRIC->value),
+            InsertMetricResource::class => $this->whenLoaded(InsertRelationshipsEnum::INSERT_METRIC->value),
         ];
     }
 }

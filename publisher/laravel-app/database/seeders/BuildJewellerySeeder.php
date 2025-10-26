@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use Domain\Inserts\InsertMetrics\Enums\InsertMetricEnum;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Jewelleries\JewelleryBuilder\BaseJewelleryBuilder;
 use Domain\Jewelleries\JewelleryBuilder\Jeweller;
@@ -102,7 +103,7 @@ final class BuildJewellerySeeder extends Seeder
                     'created_at' => now()
                 ]);
 
-                DB::table('jw_inserts.metrics')->insertGetId([
+                DB::table(InsertMetricEnum::TABLE_NAME->value)->insertGetId([
                     'id' => $insertId,
                     'quantity' => $jewelleryInsert['metrics']['quantity'],
                     'weight' => $jewelleryInsert['metrics']['weight'],

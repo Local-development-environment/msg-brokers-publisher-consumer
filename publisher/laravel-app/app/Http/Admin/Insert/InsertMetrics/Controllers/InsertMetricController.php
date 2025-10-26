@@ -1,16 +1,17 @@
 <?php
+declare(strict_types=1);
 
-namespace App\Http\Admin\Insert\StoneMetrics\Controllers;
+namespace App\Http\Admin\Insert\InsertMetrics\Controllers;
 
-use App\Http\Admin\Insert\StoneMetrics\Resources\StoneMetricCollection;
+use App\Http\Admin\Insert\InsertMetrics\Resources\InsertMetricCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\StoneMetrics\Services\StoneMetricService;
+use Domain\Inserts\InsertMetrics\Services\InsertMetricService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class StoneMetricController extends Controller
+final class InsertMetricController extends Controller
 {
-    public function __construct(public StoneMetricService $service)
+    public function __construct(public InsertMetricService $service)
     {
     }
 
@@ -22,7 +23,7 @@ class StoneMetricController extends Controller
         $data = $request->all();
         $items = $this->service->index($data);
 
-        return (new StoneMetricCollection($items))->response();
+        return (new InsertMetricCollection($items))->response();
     }
 
     /**

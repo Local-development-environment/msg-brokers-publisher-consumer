@@ -64,11 +64,11 @@ return new class extends Migration
                                             ),
                                             'inserts', jsonb_build_object(
                                                 'insert_id', jwvi.id,
-                                                'quantity', jwvi.stone_quantity,
-                                                'weight', jwvi.stone_weight,
-                                                'unit', jwvi.stone_unit,
-                                                'dimensions', jwvi.stone_dimensions,
-                                                'optional_info', jwvi.stone_optional_info
+                                                'quantity', jwvi.insert_metric_quantity,
+                                                'weight', jwvi.insert_metric_weight,
+                                                'unit', jwvi.insert_metric_unit,
+                                                'dimensions', jwvi.insert_metric_dimensions,
+                                                'optional_info', jwvi.insert_optional_info
                                             )
                                         )
                                     )

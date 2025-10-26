@@ -20,7 +20,7 @@ final class InsertRepository
                 InsertRelationshipsEnum::INSERT_STONE->value,
                 InsertRelationshipsEnum::JEWELLERY->value,
                 InsertRelationshipsEnum::INSERT_OPTIONAL_INFO->value,
-                InsertRelationshipsEnum::METRIC->value
+                InsertRelationshipsEnum::INSERT_METRIC->value
             ])
             ->allowedFilters([
                 AllowedFilter::exact(InsertEnum::PRIMARY_KEY->value),
@@ -42,7 +42,7 @@ final class InsertRepository
                 InsertRelationshipsEnum::INSERT_STONE->value,
                 InsertRelationshipsEnum::JEWELLERY->value,
                 InsertRelationshipsEnum::INSERT_OPTIONAL_INFO->value,
-                InsertRelationshipsEnum::METRIC->value
+                InsertRelationshipsEnum::INSERT_METRIC->value
             ])
             ->firstOrFail();
     }

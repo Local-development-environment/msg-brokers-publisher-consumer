@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use Domain\Inserts\InsertMetrics\Enums\InsertMetricEnum;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
@@ -77,7 +78,7 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_inserts.colours')->truncate();
         DB::table('jw_inserts.facets')->truncate();
         DB::table('jw_inserts.insert_stones')->truncate();
-        DB::table('jw_inserts.metrics')->truncate();
+        DB::table(InsertMetricEnum::TABLE_NAME->value)->truncate();
         DB::table(InsertOptionalInfoEnum::TABLE_NAME->value)->truncate();
         DB::table('jw_inserts.inserts')->truncate();
         DB::table('jw_inserts.stone_families')->truncate();
