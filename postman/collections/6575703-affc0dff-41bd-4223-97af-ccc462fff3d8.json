@@ -5743,7 +5743,7 @@
 									"response": []
 								},
 								{
-									"name": "insert-stones stone-colour index",
+									"name": "insert-exteriors colour index",
 									"id": "6575703-40e35014-1433-4dcf-ad2d-18761b459f31",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -5761,15 +5761,15 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2/relationships/stone-colour",
+											"raw": "{{baseURL}}/insert-exteriors/2/relationships/colour",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2",
 												"relationships",
-												"stone-colour"
+												"colour"
 											]
 										}
 									},
