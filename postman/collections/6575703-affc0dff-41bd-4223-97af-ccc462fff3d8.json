@@ -5626,14 +5626,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2/stone-colour",
+											"raw": "{{baseURL}}/insert-exteriors/2/colour",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2",
-												"stone-colour"
+												"colour"
 											]
 										}
 									},
