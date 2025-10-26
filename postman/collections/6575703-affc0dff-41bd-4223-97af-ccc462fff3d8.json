@@ -6850,7 +6850,7 @@
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
-									"name": "stone-facets insert-stones index",
+									"name": "facets insert-stones index",
 									"id": "6575703-f6942cc4-e3e2-4f0b-9e38-6f9df2e69f83",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
