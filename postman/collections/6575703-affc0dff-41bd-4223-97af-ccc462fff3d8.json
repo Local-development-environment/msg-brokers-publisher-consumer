@@ -7063,12 +7063,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-metrics/2/relationships/insert",
+											"raw": "{{baseURL}}/insert-metrics/2/relationships/insert",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-metrics",
+												"insert-metrics",
 												"2",
 												"relationships",
 												"insert"
