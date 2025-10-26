@@ -5576,7 +5576,7 @@
 							"name": "RELATED",
 							"item": [
 								{
-									"name": "insert-stones stone index",
+									"name": "insert-exteriors stone index",
 									"id": "6575703-c7a87189-c187-4bbd-82e3-ec2f8aeb035d",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -5594,12 +5594,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2/stone",
+											"raw": "{{baseURL}}/insert-exteriors/2/stone",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2",
 												"stone"
 											]
