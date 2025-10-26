@@ -7025,12 +7025,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-metrics/2/insert",
+											"raw": "{{baseURL}}/insert-metrics/2/insert",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-metrics",
+												"insert-metrics",
 												"2",
 												"insert"
 											]
