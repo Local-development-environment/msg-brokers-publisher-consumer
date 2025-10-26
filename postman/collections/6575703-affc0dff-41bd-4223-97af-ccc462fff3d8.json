@@ -4781,7 +4781,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/inserts/3/relationships/optional-info",
+											"raw": "{{baseURL}}/inserts/3/relationships/insert-optional-info",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -4789,7 +4789,7 @@
 												"inserts",
 												"3",
 												"relationships",
-												"optional-info"
+												"insert-optional-info"
 											]
 										}
 									},
