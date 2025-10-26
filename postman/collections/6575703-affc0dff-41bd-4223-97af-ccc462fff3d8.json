@@ -4628,7 +4628,7 @@
 									"response": []
 								},
 								{
-									"name": "insert optional-info index",
+									"name": "insert insert-optional-info index",
 									"id": "6575703-83482cc3-75a3-4ab8-a3d6-9da5daa634a8",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
