@@ -6266,7 +6266,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "optional-infos index",
+									"name": "insert-optional-infos index",
 									"id": "6575703-6e153d6d-1324-47ad-adb9-ce48e7b1b2f6",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
