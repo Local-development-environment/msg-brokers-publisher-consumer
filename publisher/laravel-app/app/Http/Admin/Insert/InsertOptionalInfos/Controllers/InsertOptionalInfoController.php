@@ -1,16 +1,17 @@
 <?php
+declare(strict_types=1);
 
-namespace App\Http\Admin\Insert\OptionalInfos\Controllers;
+namespace App\Http\Admin\Insert\InsertOptionalInfos\Controllers;
 
-use App\Http\Admin\Insert\OptionalInfos\Resources\OptionalInfoCollection;
+use App\Http\Admin\Insert\InsertOptionalInfos\Resources\InsertOptionalInfoCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\OptionalInfos\Services\OptionalInfoService;
+use Domain\Inserts\InsertOptionalInfos\Services\InsertOptionalInfoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class OptionalInfoController extends Controller
+final class InsertOptionalInfoController extends Controller
 {
-    public function __construct(public OptionalInfoService $service)
+    public function __construct(public InsertOptionalInfoService $service)
     {
     }
 
@@ -22,7 +23,7 @@ class OptionalInfoController extends Controller
         $data = $request->all();
         $items = $this->service->index($data);
 
-        return (new OptionalInfoCollection($items))->response();
+        return (new InsertOptionalInfoCollection($items))->response();
     }
 
     /**

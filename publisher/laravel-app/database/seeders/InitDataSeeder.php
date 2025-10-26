@@ -3,18 +3,14 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
-use Domain\JewelleryProperties\Beads\BeadSizes\Enums\BeadSizeListEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
-use Domain\JewelleryProperties\Chains\ChainSizes\Enums\ChainSizeListEnum;
-use Domain\JewelleryProperties\Necklaces\NecklaceSizes\Enums\NecklaceSizeListEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameListEnum;
 use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeListEnum;
-use Faker\Factory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -82,7 +78,7 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_inserts.facets')->truncate();
         DB::table('jw_inserts.insert_stones')->truncate();
         DB::table('jw_inserts.metrics')->truncate();
-        DB::table('jw_inserts.optional_infos')->truncate();
+        DB::table(InsertOptionalInfoEnum::TABLE_NAME->value)->truncate();
         DB::table('jw_inserts.inserts')->truncate();
         DB::table('jw_inserts.stone_families')->truncate();
         DB::table('jw_inserts.stone_groups')->truncate();
@@ -118,7 +114,7 @@ final class InitDataSeeder extends Seeder
             DB::table('jw_promotions.promotions')->insert([
                 'name' => $promotion['name'],
                 'description' => $promotion['description'],
-                'slug' => Str::slug($promotion['name'], '-'),
+                'slug' => Str::slug($promotion['name']),
                 'rate' => $promotion['rate'],
                 'is_active' => true,
                 'created_at' => now(),
@@ -128,7 +124,7 @@ final class InitDataSeeder extends Seeder
         foreach (CategoryListEnum::cases() as $category) {
             DB::table('jewelleries.categories')->insert([
                 'name' => $category->value,
-                'slug' => Str::slug($category->value, '-'),
+                'slug' => Str::slug($category->value),
                 'created_at' => now(),
             ]);
         }
@@ -136,7 +132,7 @@ final class InitDataSeeder extends Seeder
         foreach ($jwCoverageTypes as $type) {
             DB::table('jw_coverages.coverage_types')->insert([
                 'name' => $type,
-                'slug' => Str::slug($type, '-'),
+                'slug' => Str::slug($type),
                 'created_at' => now(),
             ]);
         }
@@ -145,7 +141,7 @@ final class InitDataSeeder extends Seeder
             DB::table('jw_coverages.coverages')->insert([
                 'coverage_type_id' => DB::table('jw_coverages.coverage_types')->where('name', $coverage['type'])->value('id'),
                 'name' => $coverage['coverage'],
-                'slug' => Str::slug($coverage['coverage'], '-'),
+                'slug' => Str::slug($coverage['coverage']),
                 'is_active' => 1,
                 'created_at' => now(),
             ]);
@@ -154,7 +150,7 @@ final class InitDataSeeder extends Seeder
         foreach ($weavings as $weave) {
             DB::table('jw_properties.weavings')->insert([
                 'name' => $weave,
-                'slug' => Str::slug($weave, '-'),
+                'slug' => Str::slug($weave),
                 'created_at' => now(),
             ]);
         }
@@ -162,7 +158,7 @@ final class InitDataSeeder extends Seeder
         foreach ($bracelet_bases as $base) {
             DB::table('jw_properties.bracelet_bases')->insert([
                 'name' => $base,
-                'slug' => Str::slug($base, '-'),
+                'slug' => Str::slug($base),
                 'created_at' => now(),
             ]);
         }
@@ -170,7 +166,7 @@ final class InitDataSeeder extends Seeder
         foreach ($bead_bases as $base) {
             DB::table('jw_properties.bead_bases')->insert([
                 'name' => $base,
-                'slug' => Str::slug($base, '-'),
+                'slug' => Str::slug($base),
                 'created_at' => now(),
             ]);
         }
@@ -178,7 +174,7 @@ final class InitDataSeeder extends Seeder
         foreach ($earring_clasps as $clasp) {
             DB::table('jw_properties.earring_clasps')->insert([
                 'name' => $clasp['name'],
-                'slug' => Str::slug($clasp['name'], '-'),
+                'slug' => Str::slug($clasp['name']),
                 'description' => $clasp['description'],
                 'created_at' => now(),
             ]);
@@ -187,7 +183,7 @@ final class InitDataSeeder extends Seeder
         foreach ($earring_types as $type) {
             DB::table('jw_properties.earring_types')->insert([
                 'name' => $type['name'],
-                'slug' => Str::slug($type['name'], '-'),
+                'slug' => Str::slug($type['name']),
                 'description' => $type['description'],
                 'created_at' => now(),
             ]);
@@ -196,7 +192,7 @@ final class InitDataSeeder extends Seeder
         foreach (ClaspListEnum::cases() as $clasp) {
             DB::table('jw_properties.clasps')->insert([
                 'name' => $clasp->value,
-                'slug' => Str::slug($clasp->value, '-'),
+                'slug' => Str::slug($clasp->value),
                 'description' => $clasp->description(),
                 'created_at' => now(),
             ]);
@@ -205,7 +201,7 @@ final class InitDataSeeder extends Seeder
         foreach ($body_parts as $body_part) {
             DB::table('jw_properties.body_parts')->insert([
                 'name' => $body_part,
-                'slug' => Str::slug($body_part, '-'),
+                'slug' => Str::slug($body_part),
                 'created_at' => now(),
             ]);
         }
@@ -213,7 +209,7 @@ final class InitDataSeeder extends Seeder
         foreach ($ring_fingers as $ring_finger) {
             DB::table('jw_properties.ring_fingers')->insert([
                 'name' => $ring_finger,
-                'slug' => Str::slug($ring_finger, '-'),
+                'slug' => Str::slug($ring_finger),
                 'created_at' => now(),
             ]);
         }
@@ -231,7 +227,7 @@ final class InitDataSeeder extends Seeder
         foreach (LengthNameListEnum::cases() as $length_name) {
             DB::table('jw_properties.length_names')->insert([
                 'name' => $length_name->value,
-                'slug' => Str::slug($length_name->value, '-'),
+                'slug' => Str::slug($length_name->value),
                 'description' => $length_name->description()
             ]);
         }
@@ -270,7 +266,7 @@ final class InitDataSeeder extends Seeder
         foreach ($jwInsertsOpticalEffects as $effect) {
             DB::table('jw_inserts.optical_effects')->insert([
                 'name' => $effect['name'],
-                'slug' => Str::slug($effect['name'], '-'),
+                'slug' => Str::slug($effect['name']),
                 'description' => $effect['description'],
                 'created_at' => now(),
             ]);
@@ -280,7 +276,7 @@ final class InitDataSeeder extends Seeder
 //            dd($grade);
             DB::table('jw_inserts.stone_grades')->insert([
                 'name' => $grade->value,
-                'slug' => Str::slug($grade->value, '-'),
+                'slug' => Str::slug($grade->value),
                 'description' => $grade->description(),
                 'created_at' => now(),
             ]);
@@ -289,7 +285,7 @@ final class InitDataSeeder extends Seeder
         foreach ($jwInsertsStoneGroups as $group) {
             DB::table('jw_inserts.stone_groups')->insert([
                 'name' => $group['name'],
-                'slug' => Str::slug($group['name'], '-'),
+                'slug' => Str::slug($group['name']),
                 'description' => $group['description'],
                 'created_at' => now(),
             ]);
@@ -298,7 +294,7 @@ final class InitDataSeeder extends Seeder
         foreach ($jwInsertsStoneFamilies as $family) {
             DB::table('jw_inserts.stone_families')->insert([
                 'name' => $family['name'],
-                'slug' => Str::slug($family['name'], '-'),
+                'slug' => Str::slug($family['name']),
                 'description' => $family['description'],
                 'created_at' => now(),
             ]);
@@ -307,7 +303,7 @@ final class InitDataSeeder extends Seeder
         foreach ($jwInsertsStoneFacets as $facet) {
             DB::table('jw_inserts.facets')->insert([
                 'name' => $facet['name'],
-                'slug' => Str::slug($facet['name'], '-'),
+                'slug' => Str::slug($facet['name']),
                 'description' => $facet['description'],
                 'is_active' => true,
                 'created_at' => now(),
@@ -317,7 +313,7 @@ final class InitDataSeeder extends Seeder
         foreach ($jwInsertsStoneColours as $colour) {
             DB::table('jw_inserts.colours')->insert([
                 'name' => $colour['name'],
-                'slug' => Str::slug($colour['name'], '-'),
+                'slug' => Str::slug($colour['name']),
                 'description' => $colour['description'],
                 'is_active' => true,
                 'created_at' => now(),
@@ -327,20 +323,20 @@ final class InitDataSeeder extends Seeder
         foreach ($jwInsertsTypeOrigins as $origin) {
             DB::table('jw_inserts.type_origins')->insert([
                 'name' => $origin['name'],
-                'slug' => Str::slug($origin['name'], '-'),
+                'slug' => Str::slug($origin['name']),
                 'description' => $origin['description'],
                 'is_active' => true,
                 'created_at' => now(),
             ]);
         }
 
-        $typeOriginId = DB::table('jw_inserts.type_origins')->where('name', '=', 'природные')->value('id');
+        $typeOriginId = DB::table('jw_inserts.type_origins')->where('name', '=', 'природный')->value('id');
         foreach ($jwInsertsNaturalStones as $stone) {
             $stoneId = DB::table('jw_inserts.stones')->insertGetId([
                 'type_origin_id' => $typeOriginId,
                 'name' => $stone['name'],
                 'alt_name' => $stone['alt_name'],
-                'slug' => Str::slug($stone['name'], '-'),
+                'slug' => Str::slug($stone['name']),
                 'description' => $stone['description'],
                 'created_at' => now(),
             ]);
@@ -371,13 +367,13 @@ final class InitDataSeeder extends Seeder
             }
         }
 
-        $typeGrownId = DB::table('jw_inserts.type_origins')->where('name', '=', 'выращенные')->value('id');
+        $typeGrownId = DB::table('jw_inserts.type_origins')->where('name', '=', 'выращенный')->value('id');
         foreach ($jwInsertsGrownStones as $stone) {
             $stoneId = DB::table('jw_inserts.stones')->insertGetId([
                 'type_origin_id' => $typeGrownId,
                 'name' => $stone['name'],
                 'alt_name' => $stone['alt_name'],
-                'slug' => Str::slug($stone['name'], '-'),
+                'slug' => Str::slug($stone['name']),
                 'description' => $stone['description'],
                 'created_at' => now(),
             ]);
@@ -404,7 +400,7 @@ final class InitDataSeeder extends Seeder
                 'type_origin_id' => $typeImitationId,
                 'name' => $stone['name'],
                 'alt_name' => $stone['alt_name'],
-                'slug' => Str::slug($stone['name'], '-'),
+                'slug' => Str::slug($stone['name']),
                 'description' => $stone['description'],
                 'created_at' => now(),
             ]);
@@ -435,7 +431,7 @@ final class InitDataSeeder extends Seeder
         foreach ($jw_metals as $metal) {
             DB::table('jw_metals.metals')->insert([
                 'name' => $metal,
-                'slug' => Str::slug($metal, '-'),
+                'slug' => Str::slug($metal),
                 'created_at' => now(),
             ]);
         }
@@ -450,7 +446,7 @@ final class InitDataSeeder extends Seeder
         foreach ($jw_metal_colours as $colour) {
             DB::table('jw_metals.colours')->insert([
                 'name' => $colour,
-                'slug' => Str::slug($colour, '-'),
+                'slug' => Str::slug($colour),
                 'created_at' => now(),
             ]);
         }
@@ -465,7 +461,7 @@ final class InitDataSeeder extends Seeder
         foreach ($jwMediaCategories as $category) {
             DB::table('jw_medias.categories')->insert([
                 'name' => $category,
-                'slug' => Str::slug($category, '-'),
+                'slug' => Str::slug($category),
                 'created_at' => now(),
             ]);
         }
@@ -473,7 +469,7 @@ final class InitDataSeeder extends Seeder
         foreach ($jwMediaProducers as $producer) {
             DB::table('jw_medias.producers')->insert([
                 'name' => $producer,
-                'slug' => Str::slug($producer, '-'),
+                'slug' => Str::slug($producer),
                 'created_at' => now(),
             ]);
         }

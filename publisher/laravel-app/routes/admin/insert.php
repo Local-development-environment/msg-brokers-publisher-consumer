@@ -11,8 +11,8 @@ use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneController;
 use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneStoneRelatedController;
 use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneStoneRelationshipController;
 use App\Http\Admin\Insert\Inserts\Controllers\InsertController;
-use App\Http\Admin\Insert\Inserts\Controllers\InsertOptionalInfoRelatedController;
-use App\Http\Admin\Insert\Inserts\Controllers\InsertOptionalInfoRelationshipController;
+use App\Http\Admin\Insert\Inserts\Controllers\InsertInsertOptionalInfoRelatedController;
+use App\Http\Admin\Insert\Inserts\Controllers\InsertInsertOptionalInfoRelationshipController;
 use App\Http\Admin\Insert\Inserts\Controllers\InsertsInsertStoneRelatedController;
 use App\Http\Admin\Insert\Inserts\Controllers\InsertsInsertStoneRelationshipController;
 use App\Http\Admin\Insert\Inserts\Controllers\InsertsJewelleryRelatedController;
@@ -50,9 +50,9 @@ use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStonesOpt
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStonesOpticalEffectRelationshipController;
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStoneStoneRelatedController;
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStoneStoneRelationshipController;
-use App\Http\Admin\Insert\OptionalInfos\Controllers\OptionalInfoController;
-use App\Http\Admin\Insert\OptionalInfos\Controllers\OptionalInfoInsertRelatedController;
-use App\Http\Admin\Insert\OptionalInfos\Controllers\OptionalInfoInsertRelationshipController;
+use App\Http\Admin\Insert\InsertOptionalInfos\Controllers\InsertOptionalInfoController;
+use App\Http\Admin\Insert\InsertOptionalInfos\Controllers\InsertOptionalInfoInsertRelatedController;
+use App\Http\Admin\Insert\InsertOptionalInfos\Controllers\InsertOptionalInfoInsertRelationshipController;
 use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourController;
 use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourInsertStonesRelatedController;
 use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourInsertStonesRelationshipController;
@@ -97,7 +97,7 @@ use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeNameRoutsEnum;
 use Domain\Inserts\NaturalStones\Enums\NaturalStoneNameRoutesEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectNameRoutesEnum;
 use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneNameRoutesEnum;
-use Domain\Inserts\OptionalInfos\Enums\OptionalInfoNameRoutesEnum;
+use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoNameRoutesEnum;
 use Domain\Inserts\StoneColours\Enums\StoneColourNameRoutesEnum;
 use Domain\Inserts\StoneFacets\Enums\StoneFacetNameRoutesEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
@@ -119,11 +119,11 @@ Route::group([
     Route::delete('inserts/{id}', [InsertController::class, 'destroy'])->name(InsertNameRoutesEnum::CRUD_DELETE->value);
 
 // RELATIONSHIPS
-//  one-to-one Insert to OptionalInfo
-    Route::get('inserts/{id}/relationships/optional-info', [InsertOptionalInfoRelationshipController::class, 'index'])
-        ->name(InsertNameRoutesEnum::RELATIONSHIP_TO_OPTIONAL_INFO->value);
-    Route::get('inserts/{id}/optional-info', [InsertOptionalInfoRelatedController::class, 'index'])
-        ->name(InsertNameRoutesEnum::RELATED_TO_OPTIONAL_INFO->value);
+//  one-to-one Insert to InsertOptionalInfo
+    Route::get('inserts/{id}/relationships/insert-optional-info', [InsertInsertOptionalInfoRelationshipController::class, 'index'])
+        ->name(InsertNameRoutesEnum::RELATIONSHIP_TO_INSERT_OPTIONAL_INFO->value);
+    Route::get('inserts/{id}/insert-optional-info', [InsertInsertOptionalInfoRelatedController::class, 'index'])
+        ->name(InsertNameRoutesEnum::RELATED_TO_INSERT_OPTIONAL_INFO->value);
 
 //  one-to-one Insert to StoneMetric
     Route::get('inserts/{id}/relationships/stone-metric', [InsertStoneMetricRelationshipController::class, 'index'])
@@ -462,23 +462,23 @@ Route::group([
 
     /*************************** OPTIONAL INFOS *************************/
 // CRUD
-    Route::get('optional-infos', [OptionalInfoController::class, 'index'])
-        ->name(OptionalInfoNameRoutesEnum::CRUD_INDEX->value);
-    Route::get('optional-infos/{id}', [OptionalInfoController::class, 'show'])
-        ->name(OptionalInfoNameRoutesEnum::CRUD_SHOW->value);
-    Route::post('optional-infos', [OptionalInfoController::class, 'store'])
-        ->name(OptionalInfoNameRoutesEnum::CRUD_POST->value);
-    Route::patch('optional-infos/{id}', [OptionalInfoController::class, 'update'])
-        ->name(OptionalInfoNameRoutesEnum::CRUD_PATCH->value);
-    Route::delete('optional-infos/{id}', [OptionalInfoController::class, 'destroy'])
-        ->name(OptionalInfoNameRoutesEnum::CRUD_DELETE->value);
+    Route::get('insert-optional-infos', [InsertOptionalInfoController::class, 'index'])
+        ->name(InsertOptionalInfoNameRoutesEnum::CRUD_INDEX->value);
+    Route::get('insert-optional-infos/{id}', [InsertOptionalInfoController::class, 'show'])
+        ->name(InsertOptionalInfoNameRoutesEnum::CRUD_SHOW->value);
+    Route::post('insert-optional-infos', [InsertOptionalInfoController::class, 'store'])
+        ->name(InsertOptionalInfoNameRoutesEnum::CRUD_POST->value);
+    Route::patch('insert-optional-infos/{id}', [InsertOptionalInfoController::class, 'update'])
+        ->name(InsertOptionalInfoNameRoutesEnum::CRUD_PATCH->value);
+    Route::delete('insert-optional-infos/{id}', [InsertOptionalInfoController::class, 'destroy'])
+        ->name(InsertOptionalInfoNameRoutesEnum::CRUD_DELETE->value);
 
 // RELATIONSHIPS
-//  one-to-one OptionalInfo to Insert
-    Route::get('optional-infos/{id}/relationships/insert', [OptionalInfoInsertRelationshipController::class, 'index'])
-        ->name(OptionalInfoNameRoutesEnum::RELATIONSHIP_TO_INSERT->value);
-    Route::get('optional-infos/{id}/insert', [OptionalInfoInsertRelatedController::class, 'index'])
-        ->name(OptionalInfoNameRoutesEnum::RELATED_TO_INSERT->value);
+//  one-to-one InsertOptionalInfo to Insert
+    Route::get('insert-optional-infos/{id}/relationships/insert', [InsertOptionalInfoInsertRelationshipController::class, 'index'])
+        ->name(InsertOptionalInfoNameRoutesEnum::RELATIONSHIP_TO_INSERT->value);
+    Route::get('insert-optional-infos/{id}/insert', [InsertOptionalInfoInsertRelatedController::class, 'index'])
+        ->name(InsertOptionalInfoNameRoutesEnum::RELATED_TO_INSERT->value);
 
     /*************************** STONE GRADES *************************/
 // CRUD

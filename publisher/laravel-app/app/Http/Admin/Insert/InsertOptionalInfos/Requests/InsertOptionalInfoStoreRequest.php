@@ -1,10 +1,11 @@
 <?php
+declare(strict_types=1);
 
-namespace App\Http\Admin\Insert\OptionalInfos\Requests;
+namespace App\Http\Admin\Insert\InsertOptionalInfos\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OptionalInfoStoreRequest extends FormRequest
+final class InsertOptionalInfoStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

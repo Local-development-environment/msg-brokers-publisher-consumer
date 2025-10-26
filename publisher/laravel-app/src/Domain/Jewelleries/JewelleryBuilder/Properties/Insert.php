@@ -7,7 +7,6 @@ namespace Domain\Jewelleries\JewelleryBuilder\Properties;
 use Domain\Jewelleries\JewelleryBuilder\ProbabilityCoefficientsTrait;
 use Illuminate\Support\Facades\DB;
 use Random\RandomException;
-use stdClass;
 
 final class Insert
 {
@@ -43,7 +42,7 @@ final class Insert
         return $inserts;
     }
 
-    private function getOptionalInfo(string $stone): array|stdClass|null
+    private function getOptionalInfo(string $stone): array|null
     {
         if ($stone === 'бриллиант') {
             return [
@@ -51,9 +50,10 @@ final class Insert
                 'purity' => '1',
                 'facet' => 'A'
             ];
-        } else {
-            return new stdClass;
-//            return null;
+        }
+        else {
+//            return new stdClass;
+            return null;
         }
     }
 

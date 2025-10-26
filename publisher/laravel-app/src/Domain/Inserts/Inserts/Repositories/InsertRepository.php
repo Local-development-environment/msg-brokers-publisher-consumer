@@ -19,7 +19,7 @@ final class InsertRepository
             ->allowedIncludes([
                 InsertRelationshipsEnum::INSERT_STONE->value,
                 InsertRelationshipsEnum::JEWELLERY->value,
-                InsertRelationshipsEnum::OPTIONAL_INFO->value,
+                InsertRelationshipsEnum::INSERT_OPTIONAL_INFO->value,
                 InsertRelationshipsEnum::METRIC->value
             ])
             ->allowedFilters([
@@ -41,7 +41,7 @@ final class InsertRepository
             ->allowedIncludes([
                 InsertRelationshipsEnum::INSERT_STONE->value,
                 InsertRelationshipsEnum::JEWELLERY->value,
-                InsertRelationshipsEnum::OPTIONAL_INFO->value,
+                InsertRelationshipsEnum::INSERT_OPTIONAL_INFO->value,
                 InsertRelationshipsEnum::METRIC->value
             ])
             ->firstOrFail();

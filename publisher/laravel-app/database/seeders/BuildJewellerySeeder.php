@@ -3,17 +3,19 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Jewelleries\JewelleryBuilder\BaseJewelleryBuilder;
 use Domain\Jewelleries\JewelleryBuilder\Jeweller;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use JsonException;
 
 final class BuildJewellerySeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     * @throws \JsonException
+     * @throws JsonException
      */
     public function run(): void
     {
@@ -37,7 +39,7 @@ final class BuildJewellerySeeder extends Seeder
     }
 
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     private function addJewellery(array $jewelleryData):void
     {
@@ -45,7 +47,7 @@ final class BuildJewellerySeeder extends Seeder
             'category_id' => DB::table('jewelleries.categories')->where('name',$jewelleryData['jw_category'])
                 ->value('id'),
             'name' => $jewelleryData['name'],
-            'slug' => Str::slug($jewelleryData['name'], '-'),
+            'slug' => Str::slug($jewelleryData['name']),
             'description' => $jewelleryData['description'],
             'part_number' => $jewelleryData['part_number'],
             'approx_weight' => $jewelleryData['approx_weight'],
@@ -61,7 +63,7 @@ final class BuildJewellerySeeder extends Seeder
     }
 
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     private function addInsert(array $jewelleryData, int $jewelleryId): void
     {
@@ -100,7 +102,7 @@ final class BuildJewellerySeeder extends Seeder
                     'created_at' => now()
                 ]);
 
-                $metricId = DB::table('jw_inserts.metrics')->insertGetId([
+                DB::table('jw_inserts.metrics')->insertGetId([
                     'id' => $insertId,
                     'quantity' => $jewelleryInsert['metrics']['quantity'],
                     'weight' => $jewelleryInsert['metrics']['weight'],
@@ -109,10 +111,12 @@ final class BuildJewellerySeeder extends Seeder
                     'created_at' => now()
                 ]);
 
-                DB::table('jw_inserts.optional_infos')->insertGetId([
-                    'id' => $insertId,
-                    'info' => json_encode($jewelleryInsert['optional_info']),
-                ]);
+                if ($jewelleryInsert['optional_info']) {
+                    DB::table(InsertOptionalInfoEnum::TABLE_NAME->value)->insertGetId([
+                        'id' => $insertId,
+                        'info' => json_encode($jewelleryInsert['optional_info']),
+                    ]);
+                }
             }
         }
     }
@@ -174,7 +178,7 @@ final class BuildJewellerySeeder extends Seeder
     }
 
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     private function addProperty(array $jewelleryData, int $jewelleryId): void
     {
@@ -252,7 +256,7 @@ final class BuildJewellerySeeder extends Seeder
     }
 
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     private function addBrooches(array $jewelleryData, int $jewelleryId): void
     {
@@ -266,7 +270,7 @@ final class BuildJewellerySeeder extends Seeder
     }
 
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     private function addCharmPendants(array $jewelleryData, int $jewelleryId): void
     {
@@ -280,7 +284,7 @@ final class BuildJewellerySeeder extends Seeder
     }
 
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     private function addPendants(array $jewelleryData, int $jewelleryId): void
     {
@@ -294,7 +298,7 @@ final class BuildJewellerySeeder extends Seeder
     }
 
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     private function addTieClips(array $jewelleryData, int $jewelleryId): void
     {
@@ -328,7 +332,7 @@ final class BuildJewellerySeeder extends Seeder
     }
 
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     private function addEarrings(array $jewelleryData, int $jewelleryId): void
     {
@@ -352,7 +356,7 @@ final class BuildJewellerySeeder extends Seeder
     }
 
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     private function addRings(array $jewelleryData, int $jewelleryId): void
     {
@@ -521,7 +525,7 @@ final class BuildJewellerySeeder extends Seeder
                         'media_id' => $mediaId,
                         'created_at' => now()
                     ]);
-                    foreach ($category as $keyI => $item) {
+                    foreach ($category as $item) {
                         DB::table('jw_medias.pictures')->insertGetId([
                             'picture_media_id' => $pictureMediaId,
                             'name' => $item,
@@ -537,7 +541,7 @@ final class BuildJewellerySeeder extends Seeder
                         'media_id' => $mediaId,
                         'created_at' => now()
                     ]);
-                    foreach ($category as $keyI => $item) {
+                    foreach ($category as $item) {
                         $videoId = DB::table('jw_medias.videos')->insertGetId([
                             'video_media_id' => $videoMediaId,
                             'name' => $item,

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_inserts.optional_infos', function (Blueprint $table) {
+        Schema::create('jw_inserts.insert_optional_infos', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
             $table->jsonb('info');
             $table->timestamps();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_inserts.optional_infos');
+        Schema::dropIfExists('jw_inserts.insert_optional_infos');
     }
 };

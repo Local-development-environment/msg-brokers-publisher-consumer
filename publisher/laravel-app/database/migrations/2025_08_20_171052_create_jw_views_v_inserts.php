@@ -55,7 +55,7 @@ return new class extends Migration
                         im.weight as stone_weight,
                         im.unit as stone_unit,
                         im.dimensions as stone_dimensions,
-                        oi.info as stone_optional_info
+                        oi.info as insert_optional_info
                     from
                         jw_inserts.stones as st
                     join jw_inserts.type_origins as jwto on st.type_origin_id = jwto.id
@@ -71,7 +71,7 @@ return new class extends Migration
                     join jw_inserts.facets as ifc on ist.facet_id = ifc.id
                     join jw_inserts.inserts as i on ist.id = i.insert_stone_id
                     join jw_inserts.metrics as im on i.id = im.id
-                    left join jw_inserts.optional_infos as oi on i.id = oi.id
+                    left join jw_inserts.insert_optional_infos as oi on i.id = oi.id
 
                     union all
 
@@ -113,7 +113,7 @@ return new class extends Migration
                         im.weight as stone_weight,
                         im.unit as stone_unit,
                         im.dimensions as stone_dimensions,
-                        oi.info as stone_optional_info
+                        oi.info as insert_optional_info
                     from
                         jw_inserts.stones as st
                     join jw_inserts.type_origins as jwto on st.type_origin_id = jwto.id
@@ -126,7 +126,7 @@ return new class extends Migration
                     join jw_inserts.facets as ifc on ist.facet_id = ifc.id
                     join jw_inserts.inserts as i on ist.id = i.insert_stone_id
                     join jw_inserts.metrics as im on i.id = im.id
-                    left join jw_inserts.optional_infos as oi on i.id = oi.id
+                    left join jw_inserts.insert_optional_infos as oi on i.id = oi.id
 
                     union all
 
@@ -168,7 +168,7 @@ return new class extends Migration
                         im.weight as stone_weight,
                         im.unit as stone_unit,
                         im.dimensions as stone_dimensions,
-                        oi.info as stone_optional_info
+                        oi.info as insert_optional_info
                     from
                         jw_inserts.stones as st
                     join jw_inserts.type_origins as jwto on st.type_origin_id = jwto.id
@@ -180,7 +180,7 @@ return new class extends Migration
                     join jw_inserts.facets as ifc on ist.facet_id = ifc.id
                     join jw_inserts.inserts as i on ist.id = i.insert_stone_id
                     join jw_inserts.metrics as im on i.id = im.id
-                    left join jw_inserts.optional_infos as oi on i.id = oi.id
+                    left join jw_inserts.insert_optional_infos as oi on i.id = oi.id
                 )
             select
                 ci.id,
@@ -216,7 +216,13 @@ return new class extends Migration
                 ci.stone_weight,
                 ci.stone_unit,
                 ci.stone_dimensions,
-                ci.stone_optional_info,
+                case
+                    when ci.insert_optional_info isnull then
+                        jsonb_build_object()
+                    else
+                        ci.insert_optional_info
+                    end
+                as stone_optional_info,
                 cast(weights.weight * ci.stone_quantity as decimal(8,3)) as max_weight
             from
                 cte_inserts as ci

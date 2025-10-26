@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Domain\Inserts\OptionalInfos\Services;
+namespace Domain\Inserts\InsertOptionalInfos\Services;
 
-use Domain\Inserts\OptionalInfos\Models\OptionalInfo;
-use Domain\Inserts\OptionalInfos\Repositories\OptionalInfoRepository;
+use Domain\Inserts\InsertOptionalInfos\Models\InsertOptionalInfo;
+use Domain\Inserts\InsertOptionalInfos\Repositories\InsertOptionalInfoRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Throwable;
 
-final class OptionalInfoService
+final class InsertOptionalInfoService
 {
     public function __construct(
-        public OptionalInfoRepository $repository,
+        public InsertOptionalInfoRepository $repository,
 //        public StoneTypeOriginPipeline $pipeline
     ) {}
 
@@ -24,12 +24,12 @@ final class OptionalInfoService
     /**
      * @throws Throwable
      */
-    public function store(array $data): OptionalInfo
+    public function store(array $data): InsertOptionalInfo
     {
 //        return $this->pipeline->store($data);
     }
 
-    public function show(array $data, int $id): OptionalInfo
+    public function show(array $data, int $id): InsertOptionalInfo
     {
         return $this->repository->show($data, $id);
     }

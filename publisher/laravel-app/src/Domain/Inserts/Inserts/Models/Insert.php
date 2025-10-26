@@ -4,10 +4,9 @@ declare(strict_types=1);
 namespace Domain\Inserts\Inserts\Models;
 
 use Domain\Inserts\Inserts\Enums\InsertEnum;
-use Domain\Inserts\Inserts\Enums\InsertRelationshipsEnum;
 use Domain\Inserts\InsertStones\Models\InsertStone;
-use Domain\Inserts\OptionalInfos\Enums\OptionalInfoEnum;
-use Domain\Inserts\OptionalInfos\Models\OptionalInfo;
+use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
+use Domain\Inserts\InsertOptionalInfos\Models\InsertOptionalInfo;
 use Domain\Inserts\StoneMetrics\Enums\StoneMetricEnum;
 use Domain\Inserts\StoneMetrics\Models\StoneMetric;
 use Domain\Jewelleries\Jewelleries\Models\Jewellery;
@@ -31,9 +30,9 @@ final class Insert extends Model
         return $this->belongsTo(StoneMetric::class, StoneMetricEnum::PRIMARY_KEY->value);
     }
 
-    public function optionalInfo(): HasOne
+    public function insertOptionalInfo(): HasOne
     {
-        return $this->hasOne(OptionalInfo::class, OptionalInfoEnum::PRIMARY_KEY->value);
+        return $this->hasOne(InsertOptionalInfo::class, InsertOptionalInfoEnum::PRIMARY_KEY->value);
     }
 
     public function insertStone(): BelongsTo
