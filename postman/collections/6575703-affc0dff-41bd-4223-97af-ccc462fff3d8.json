@@ -6793,12 +6793,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-facets/3",
+											"raw": "{{baseURL}}/facets/3",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-facets",
+												"facets",
 												"3"
 											]
 										}
