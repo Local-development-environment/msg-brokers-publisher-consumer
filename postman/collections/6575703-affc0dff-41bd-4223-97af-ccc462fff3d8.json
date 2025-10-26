@@ -6596,18 +6596,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-colours?include=insertStones",
+											"raw": "{{baseURL}}/insert-colours",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-colours"
-											],
-											"query": [
-												{
-													"key": "include",
-													"value": "insertStones"
-												}
+												"insert-colours"
 											]
 										}
 									},
