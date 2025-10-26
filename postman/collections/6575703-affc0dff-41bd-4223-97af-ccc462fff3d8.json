@@ -6596,12 +6596,18 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-colours",
+											"raw": "{{baseURL}}/insert-colours?include=insertExteriors",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"insert-colours"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "insertExteriors"
+												}
 											]
 										}
 									},
