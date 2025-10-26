@@ -6775,7 +6775,7 @@
 									"response": []
 								},
 								{
-									"name": "stone-facets show",
+									"name": "facets show",
 									"id": "6575703-304fdd68-3151-46da-8665-69f659a74606",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
