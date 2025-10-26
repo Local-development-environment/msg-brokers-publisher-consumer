@@ -5521,17 +5521,17 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones?include=stone,stoneColour,stoneFacet,inserts",
+											"raw": "{{baseURL}}/insert-exteriors?include=stone,insertColour,stoneFacet,inserts",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones"
+												"insert-exteriors"
 											],
 											"query": [
 												{
 													"key": "include",
-													"value": "stone,stoneColour,stoneFacet,inserts"
+													"value": "stone,insertColour,stoneFacet,inserts"
 												}
 											]
 										}
