@@ -6757,17 +6757,17 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-facets?include=insertStones",
+											"raw": "{{baseURL}}/facets?include=insertExteriors",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-facets"
+												"facets"
 											],
 											"query": [
 												{
 													"key": "include",
-													"value": "insertStones"
+													"value": "insertExteriors"
 												}
 											]
 										}
