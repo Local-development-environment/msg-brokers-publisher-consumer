@@ -5672,7 +5672,7 @@
 									"response": []
 								},
 								{
-									"name": "insert-stone inserts index",
+									"name": "insert-exteriors inserts index",
 									"id": "6575703-9d61e19b-6633-470b-9403-94c82c6314f5",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
