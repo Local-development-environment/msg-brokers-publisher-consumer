@@ -4095,6 +4095,162 @@
 			"name": "INSERTS DOMAIN",
 			"item": [
 				{
+					"name": "COLOURS",
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [
+								{
+									"name": "insert-colours index",
+									"id": "6575703-74343b92-72b7-41da-bfae-6d117b82f999",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-colours?include=insertExteriors",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-colours"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "insertExteriors"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "stone-colours show",
+									"id": "6575703-d5865507-3102-44de-9d8c-feb8cb85b608",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/stone-colours/5",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"stone-colours",
+												"5"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-1984da28-7e1e-46e4-aae3-236f9d05ae5e"
+						},
+						{
+							"name": "RELATED",
+							"item": [
+								{
+									"name": "insert-colours insert-exteriors index",
+									"id": "6575703-45c940f0-3f32-4525-a7af-e6cfa70adaa1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-colours/2/insert-exteriors",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-colours",
+												"2",
+												"insert-exteriors"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-a08aa557-203a-4a3f-88dc-2ce06e1e4d8b"
+						},
+						{
+							"name": "RELATIONSHIPS",
+							"item": [
+								{
+									"name": "insert-colours insert-exteriors index",
+									"id": "6575703-041f0ef0-7202-452e-8800-b3fbb4297276",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-colours/2/relationships/insert-exteriors",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-colours",
+												"2",
+												"relationships",
+												"insert-exteriors"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-ff338112-bc51-4468-ae2a-83d266094480"
+						}
+					],
+					"id": "6575703-5ea9d4f5-5295-4053-9096-4cf558b7d5fb"
+				},
+				{
 					"name": "GROWN STONES",
 					"item": [
 						{
@@ -6570,162 +6726,6 @@
 						}
 					],
 					"id": "6575703-c97d1e8a-e21f-4ccd-933c-bbd8c204db4b"
-				},
-				{
-					"name": "COLOURS",
-					"item": [
-						{
-							"name": "CRUD",
-							"item": [
-								{
-									"name": "insert-colours index",
-									"id": "6575703-74343b92-72b7-41da-bfae-6d117b82f999",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/insert-colours?include=insertExteriors",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"insert-colours"
-											],
-											"query": [
-												{
-													"key": "include",
-													"value": "insertExteriors"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stone-colours show",
-									"id": "6575703-d5865507-3102-44de-9d8c-feb8cb85b608",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stone-colours/5",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stone-colours",
-												"5"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-1984da28-7e1e-46e4-aae3-236f9d05ae5e"
-						},
-						{
-							"name": "RELATED",
-							"item": [
-								{
-									"name": "insert-colours insert-exteriors index",
-									"id": "6575703-45c940f0-3f32-4525-a7af-e6cfa70adaa1",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/insert-colours/2/insert-exteriors",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"insert-colours",
-												"2",
-												"insert-exteriors"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-a08aa557-203a-4a3f-88dc-2ce06e1e4d8b"
-						},
-						{
-							"name": "RELATIONSHIPS",
-							"item": [
-								{
-									"name": "insert-colours insert-exteriors index",
-									"id": "6575703-041f0ef0-7202-452e-8800-b3fbb4297276",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/insert-colours/2/relationships/insert-exteriors",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"insert-colours",
-												"2",
-												"relationships",
-												"insert-exteriors"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-ff338112-bc51-4468-ae2a-83d266094480"
-						}
-					],
-					"id": "6575703-5ea9d4f5-5295-4053-9096-4cf558b7d5fb"
 				},
 				{
 					"name": "FACETS",
