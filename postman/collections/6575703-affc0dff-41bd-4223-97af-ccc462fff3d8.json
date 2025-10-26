@@ -5539,7 +5539,7 @@
 									"response": []
 								},
 								{
-									"name": "insert-stones show",
+									"name": "insert-exteriors show",
 									"id": "6575703-e9c6b92c-e5bd-4072-a5dc-ff8d6e726539",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
