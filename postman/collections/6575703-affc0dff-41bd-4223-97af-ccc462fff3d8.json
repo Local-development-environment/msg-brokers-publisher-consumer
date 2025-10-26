@@ -6988,12 +6988,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-metrics/5",
+											"raw": "{{baseURL}}/insert-metrics/5",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-metrics",
+												"insert-metrics",
 												"5"
 											]
 										}
