@@ -6812,7 +6812,7 @@
 							"name": "RELATED",
 							"item": [
 								{
-									"name": "stone-facets insert-stones index",
+									"name": "facets insert-stones index",
 									"id": "6575703-f4cc357c-e496-4017-8f81-4f0f56c5ed3a",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
