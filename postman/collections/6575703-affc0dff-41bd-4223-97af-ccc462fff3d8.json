@@ -6934,7 +6934,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "stone-metrics index",
+									"name": "insert-metrics index",
 									"id": "6575703-e87bf4d0-85bf-4877-a9df-d878ffd99284",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -6970,7 +6970,7 @@
 									"response": []
 								},
 								{
-									"name": "stone-metrics show",
+									"name": "insert-metrics show",
 									"id": "6575703-ce864075-01f1-41d9-a2b2-ad1b1aae67a2",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
