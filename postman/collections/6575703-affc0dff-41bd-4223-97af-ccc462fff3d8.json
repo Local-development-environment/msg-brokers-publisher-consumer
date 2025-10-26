@@ -5776,7 +5776,7 @@
 									"response": []
 								},
 								{
-									"name": "insert-stones stone-facet index",
+									"name": "insert-exteriors facet index",
 									"id": "6575703-f360224d-f01f-4807-afa3-63d09253173e",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
