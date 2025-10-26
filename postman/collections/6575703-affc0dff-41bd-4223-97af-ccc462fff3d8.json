@@ -5658,14 +5658,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2/stone-facet",
+											"raw": "{{baseURL}}/insert-exteriors/2/facet",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2",
-												"stone-facet"
+												"facet"
 											]
 										}
 									},
