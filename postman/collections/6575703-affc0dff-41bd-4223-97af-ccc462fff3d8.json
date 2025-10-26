@@ -5690,12 +5690,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2/inserts",
+											"raw": "{{baseURL}}/insert-exteriors/2/inserts",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2",
 												"inserts"
 											]
