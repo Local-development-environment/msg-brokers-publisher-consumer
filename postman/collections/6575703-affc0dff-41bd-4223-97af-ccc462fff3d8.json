@@ -6707,15 +6707,15 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-colours/2/relationships/insert-stones",
+											"raw": "{{baseURL}}/insert-colours/2/relationships/insert-exteriors",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-colours",
+												"insert-colours",
 												"2",
 												"relationships",
-												"insert-stones"
+												"insert-exteriors"
 											]
 										}
 									},
