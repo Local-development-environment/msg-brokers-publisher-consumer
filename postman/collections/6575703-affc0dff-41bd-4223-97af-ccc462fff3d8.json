@@ -6689,7 +6689,7 @@
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
-									"name": "stone-colours insert-stones index",
+									"name": "insert-colours insert-stones index",
 									"id": "6575703-041f0ef0-7202-452e-8800-b3fbb4297276",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
