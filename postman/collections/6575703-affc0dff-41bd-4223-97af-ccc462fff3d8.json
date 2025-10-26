@@ -5710,7 +5710,7 @@
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
-									"name": "insert-stones stone index",
+									"name": "insert-exteriors stone index",
 									"id": "6575703-83acdca4-9029-494a-81ed-0aaa6ef1631e",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -5728,12 +5728,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2/relationships/stone",
+											"raw": "{{baseURL}}/insert-exteriors/2/relationships/stone",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2",
 												"relationships",
 												"stone"
