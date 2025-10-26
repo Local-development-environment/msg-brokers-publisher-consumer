@@ -6302,7 +6302,7 @@
 									"response": []
 								},
 								{
-									"name": "optional-infos show",
+									"name": "insert-optional-infos show",
 									"id": "6575703-ff5edc05-e6c2-4220-a6d2-e8c00777531f",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
