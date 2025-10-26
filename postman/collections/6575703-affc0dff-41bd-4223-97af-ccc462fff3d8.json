@@ -4710,14 +4710,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/inserts/3/stone-metric",
+											"raw": "{{baseURL}}/inserts/3/insert-metric",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"inserts",
 												"3",
-												"stone-metric"
+												"insert-metric"
 											]
 										}
 									},
