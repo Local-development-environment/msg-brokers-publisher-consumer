@@ -7007,7 +7007,7 @@
 							"name": "RELATED",
 							"item": [
 								{
-									"name": "stone-metrics insert index",
+									"name": "insert-metrics insert index",
 									"id": "6575703-9739b838-ba30-40b0-b736-bebe361d8c0e",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
