@@ -7045,7 +7045,7 @@
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
-									"name": "stone-metrics insert index",
+									"name": "insert-metrics insert index",
 									"id": "6575703-c6e6a18a-a4d4-49cd-838d-8a85d87b3a90",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
