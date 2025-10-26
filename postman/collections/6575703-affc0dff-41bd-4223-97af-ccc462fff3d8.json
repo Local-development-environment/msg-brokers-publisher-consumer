@@ -6868,15 +6868,15 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-facets/9/relationships/insert-stones",
+											"raw": "{{baseURL}}/facets/9/relationships/insert-exteriors",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-facets",
+												"facets",
 												"9",
 												"relationships",
-												"insert-stones"
+												"insert-exteriors"
 											]
 										}
 									},
