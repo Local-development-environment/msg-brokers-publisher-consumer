@@ -17,4 +17,8 @@ enum StoneNameRoutesEnum: string
     case RELATIONSHIP_TO_GROWN_STONE         = 'stone.relationships.grown-stone';
     case RELATED_TO_NATURAL_STONE            = 'stone.natural-stone';
     case RELATIONSHIP_TO_NATURAL_STONE       = 'stone.relationships.natural-stone';
+    case RELATED_TO_FACETS                   = 'stones.stone-facets';
+    case RELATIONSHIP_TO_FACETS              = 'stones.relationships.stone-facets';
+    case RELATED_TO_COLOURS                  = 'stones.stone-colours';
+    case RELATIONSHIP_TO_COLOURS             = 'stones.relationships.stone-colours';
 }

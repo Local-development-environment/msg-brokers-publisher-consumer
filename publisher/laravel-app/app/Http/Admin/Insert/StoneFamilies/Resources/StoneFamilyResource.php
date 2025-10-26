@@ -2,7 +2,9 @@
 
 namespace App\Http\Admin\Insert\StoneFamilies\Resources;
 
+use App\Http\Admin\Insert\GrownStones\Resources\GrownStoneCollection;
 use App\Http\Admin\Insert\GrownStones\Resources\GrownStoneResource;
+use App\Http\Admin\Insert\NaturalStones\Resources\NaturalStoneCollection;
 use App\Http\Admin\Insert\NaturalStones\Resources\NaturalStoneResource;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyEnum;
@@ -32,11 +34,11 @@ class StoneFamilyResource extends JsonResource
             'relationships' => [
                 StoneFamilyRelationshipsEnum::GROWN_STONES->value => $this->sectionRelationships(
                     StoneFamilyNameRoutesEnum::RELATED_TO_GROWN_STONES->value,
-                    GrownStoneResource::class
+                    GrownStoneCollection::class
                 ),
                 StoneFamilyRelationshipsEnum::NATURAL_STONES->value => $this->sectionRelationships(
                     StoneFamilyNameRoutesEnum::RELATED_TO_NATURAL_STONES->value,
-                    NaturalStoneResource::class
+                    NaturalStoneCollection::class
                 ),
             ]
         ];
@@ -45,8 +47,8 @@ class StoneFamilyResource extends JsonResource
     protected function relations(): array
     {
         return [
-            GrownStoneResource::class => $this->whenLoaded(StoneFamilyRelationshipsEnum::GROWN_STONES->value),
-            NaturalStoneResource::class => $this->whenLoaded(StoneFamilyRelationshipsEnum::NATURAL_STONES->value),
+            GrownStoneCollection::class => $this->whenLoaded(StoneFamilyRelationshipsEnum::GROWN_STONES->value),
+            NaturalStoneCollection::class => $this->whenLoaded(StoneFamilyRelationshipsEnum::NATURAL_STONES->value),
         ];
     }
 }

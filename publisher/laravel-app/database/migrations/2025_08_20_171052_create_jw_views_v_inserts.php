@@ -50,28 +50,28 @@ return new class extends Migration
                         ifc.id as stone_facet_id,
                         ifc.name as stone_facet_name,
                         ifc.description as stone_facet_description,
-                        im.id as stone_metric_id,
-                        im.quantity as stone_quantity,
-                        im.weight as stone_weight,
-                        im.unit as stone_unit,
-                        im.dimensions as stone_dimensions,
-                        oi.info as stone_optional_info
+                        im.id as insert_metric_id,
+                        im.quantity as insert_metric_quantity,
+                        im.weight as insert_metric_weight,
+                        im.unit as insert_metric_unit,
+                        im.dimensions as insert_metric_dimensions,
+                        oi.info as insert_optional_info
                     from
                         jw_inserts.stones as st
                     join jw_inserts.type_origins as jwto on st.type_origin_id = jwto.id
-                    left join jw_inserts.optical_effect_stone as oes on st.id = oes.stone_id
+                    left join jw_inserts.optical_effect_stone as oes on st.id = oes.id
                     left join jw_inserts.optical_effects as oe on oes.optical_effect_id = oe.id
-                    join jw_inserts.natural_stones as ns on st.id = ns.stone_id
+                    join jw_inserts.natural_stones as ns on st.id = ns.id
                     join jw_inserts.stone_groups as sgr on ns.stone_group_id = sgr.id
                     join jw_inserts.stone_families as sf on ns.stone_family_id = sf.id
-                    left join jw_inserts.natural_stone_grade as nsg on ns.id = nsg.natural_stone_id
+                    left join jw_inserts.natural_stone_grade as nsg on ns.id = nsg.id
                     left join jw_inserts.stone_grades as sg on nsg.stone_grade_id = sg.id
                     join jw_inserts.insert_stones as ist on st.id = ist.stone_id
                     join jw_inserts.colours as ic on ist.colour_id = ic.id
                     join jw_inserts.facets as ifc on ist.facet_id = ifc.id
                     join jw_inserts.inserts as i on ist.id = i.insert_stone_id
-                    join jw_inserts.metrics as im on i.metric_id = im.id
-                    left join jw_inserts.optional_infos as oi on i.id = oi.insert_id
+                    join jw_inserts.insert_metrics as im on i.id = im.id
+                    left join jw_inserts.insert_optional_infos as oi on i.id = oi.id
 
                     union all
 
@@ -108,25 +108,25 @@ return new class extends Migration
                         ifc.id as stone_facet_id,
                         ifc.name as stone_facet_name,
                         ifc.description as stone_facet_description,
-                        im.id as stone_metric_id,
-                        im.quantity as stone_quantity,
-                        im.weight as stone_weight,
-                        im.unit as stone_unit,
-                        im.dimensions as stone_dimensions,
-                        oi.info as stone_optional_info
+                        im.id as insert_metric_id,
+                        im.quantity as insert_metric_quantity,
+                        im.weight as insert_metric_weight,
+                        im.unit as insert_metric_unit,
+                        im.dimensions as insert_metric_dimensions,
+                        oi.info as insert_optional_info
                     from
                         jw_inserts.stones as st
                     join jw_inserts.type_origins as jwto on st.type_origin_id = jwto.id
-                    left join jw_inserts.optical_effect_stone as oes on st.id = oes.stone_id
+                    left join jw_inserts.optical_effect_stone as oes on st.id = oes.id
                     left join jw_inserts.optical_effects as oe on oes.optical_effect_id = oe.id
-                    join jw_inserts.grown_stones as grs on st.id = grs.stone_id
+                    join jw_inserts.grown_stones as grs on st.id = grs.id
                     join jw_inserts.stone_families as sf on grs.stone_family_id = sf.id
                     join jw_inserts.insert_stones as ist on st.id = ist.stone_id
                     join jw_inserts.colours as ic on ist.colour_id = ic.id
                     join jw_inserts.facets as ifc on ist.facet_id = ifc.id
                     join jw_inserts.inserts as i on ist.id = i.insert_stone_id
-                    join jw_inserts.metrics as im on i.metric_id = im.id
-                    left join jw_inserts.optional_infos as oi on i.id = oi.insert_id
+                    join jw_inserts.insert_metrics as im on i.id = im.id
+                    left join jw_inserts.insert_optional_infos as oi on i.id = oi.id
 
                     union all
 
@@ -163,24 +163,24 @@ return new class extends Migration
                         ifc.id as stone_facet_id,
                         ifc.name as stone_facet_name,
                         ifc.description as stone_facet_description,
-                        im.id as stone_metric_id,
-                        im.quantity as stone_quantity,
-                        im.weight as stone_weight,
-                        im.unit as stone_unit,
-                        im.dimensions as stone_dimensions,
-                        oi.info as stone_optional_info
+                        im.id as insert_metric_id,
+                        im.quantity as insert_metric_quantity,
+                        im.weight as insert_metric_weight,
+                        im.unit as insert_metric_unit,
+                        im.dimensions as insert_metric_dimensions,
+                        oi.info as insert_optional_info
                     from
                         jw_inserts.stones as st
                     join jw_inserts.type_origins as jwto on st.type_origin_id = jwto.id
-                    left join jw_inserts.optical_effect_stone as oes on st.id = oes.stone_id
+                    left join jw_inserts.optical_effect_stone as oes on st.id = oes.id
                     left join jw_inserts.optical_effects as oe on oes.optical_effect_id = oe.id
-                    join jw_inserts.imitation_stones as ims on st.id = ims.stone_id
+                    join jw_inserts.imitation_stones as ims on st.id = ims.id
                     join jw_inserts.insert_stones as ist on st.id = ist.stone_id
                     join jw_inserts.colours as ic on ist.colour_id = ic.id
                     join jw_inserts.facets as ifc on ist.facet_id = ifc.id
                     join jw_inserts.inserts as i on ist.id = i.insert_stone_id
-                    join jw_inserts.metrics as im on i.metric_id = im.id
-                    left join jw_inserts.optional_infos as oi on i.id = oi.insert_id
+                    join jw_inserts.insert_metrics as im on i.id = im.id
+                    left join jw_inserts.insert_optional_infos as oi on i.id = oi.id
                 )
             select
                 ci.id,
@@ -211,25 +211,31 @@ return new class extends Migration
                 ci.stone_facet_id,
                 ci.stone_facet_name,
                 ci.stone_facet_description,
-                ci.stone_metric_id,
-                ci.stone_quantity,
-                ci.stone_weight,
-                ci.stone_unit,
-                ci.stone_dimensions,
-                ci.stone_optional_info,
-                cast(weights.weight * ci.stone_quantity as decimal(8,3)) as max_weight
+                ci.insert_metric_id,
+                ci.insert_metric_quantity,
+                ci.insert_metric_weight,
+                ci.insert_metric_unit,
+                ci.insert_metric_dimensions,
+                case
+                    when ci.insert_optional_info isnull then
+                        jsonb_build_object()
+                    else
+                        ci.insert_optional_info
+                    end
+                as insert_optional_info,
+                cast(weights.weight * ci.insert_metric_quantity as decimal(8,3)) as max_weight
             from
                 cte_inserts as ci
             left join
                 (
                     select
                         jewellery_id,
-                        max(stone_weight/stone_quantity) as weight
+                        max(insert_metric_weight/insert_metric_quantity) as weight
                     from cte_inserts
                     group by jewellery_id
                 ) as weights
                     on ci.jewellery_id = weights.jewellery_id
-                    and ci.stone_weight/ci.stone_quantity = weights.weight
+                    and ci.insert_metric_weight/ci.insert_metric_quantity = weights.weight
             with data
             
             SQL

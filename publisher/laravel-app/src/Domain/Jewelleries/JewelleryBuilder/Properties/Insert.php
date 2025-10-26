@@ -42,7 +42,7 @@ final class Insert
         return $inserts;
     }
 
-    private function getOptionalInfo(string $stone): array
+    private function getOptionalInfo(string $stone): array|null
     {
         if ($stone === 'бриллиант') {
             return [
@@ -50,13 +50,10 @@ final class Insert
                 'purity' => '1',
                 'facet' => 'A'
             ];
-        } else {
-            return [
-                'info' => [
-                    'name' => fake()->name,
-                    'description' => fake()->realText(100,1)
-                ],
-            ];
+        }
+        else {
+//            return new stdClass;
+            return null;
         }
     }
 

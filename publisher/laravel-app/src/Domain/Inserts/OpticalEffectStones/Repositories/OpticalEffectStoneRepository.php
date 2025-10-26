@@ -35,7 +35,7 @@ final class OpticalEffectStoneRepository
     public function show(array $data, int $id): OpticalEffectStone
     {
         return QueryBuilder::for(OpticalEffectStone::class)
-            ->where('id', $id)
+            ->where(OpticalEffectStoneEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
                 OpticalEffectStoneRelationshipsEnum::OPTICAL_EFFECT->value,
                 OpticalEffectStoneRelationshipsEnum::STONE->value

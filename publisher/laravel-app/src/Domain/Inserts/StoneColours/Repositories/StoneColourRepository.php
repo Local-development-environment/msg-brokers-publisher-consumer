@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\StoneColours\Repositories;
 
+use Domain\Inserts\StoneColours\Enums\StoneColourEnum;
 use Domain\Inserts\StoneColours\Enums\StoneColourRelationshipsEnum;
 use Domain\Inserts\StoneColours\Models\StoneColour;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -19,7 +20,7 @@ final class StoneColourRepository
                 StoneColourRelationshipsEnum::INSERT_STONES->value
             ])
             ->allowedFilters([
-                AllowedFilter::exact('id')
+                AllowedFilter::exact(StoneColourEnum::PRIMARY_KEY->value),
             ])
             ->paginate($data['per_page'] ?? null)
             ->appends($data);
@@ -33,7 +34,7 @@ final class StoneColourRepository
     public function show(array $data, int $id): StoneColour
     {
         return QueryBuilder::for(StoneColour::class)
-            ->where('id', $id)
+            ->where(StoneColourEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
                 StoneColourRelationshipsEnum::INSERT_STONES->value
             ])

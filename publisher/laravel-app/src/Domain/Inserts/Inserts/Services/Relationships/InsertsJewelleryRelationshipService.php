@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domain\Inserts\Inserts\Services\Relationships;
 
 use Domain\Inserts\Inserts\Repositories\Relationships\InsertsJewelleryRelationshipRepository;
+use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 
 final class InsertsJewelleryRelationshipService
 {

@@ -5,6 +5,7 @@ namespace Domain\Inserts\GrownStones\Models;
 use Domain\Inserts\GrownStones\Enums\GrownStoneEnum;
 //use Domain\Inserts\GrownStones\Policies\GrownStonePolicy;
 use Domain\Inserts\StoneFamilies\Models\StoneFamily;
+use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Inserts\Stones\Models\Stone;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,6 +23,6 @@ class GrownStone extends Model
 
     public function stone(): BelongsTo
     {
-        return $this->belongsTo(Stone::class);
+        return $this->belongsTo(Stone::class, StoneEnum::PRIMARY_KEY->value);
     }
 }

@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jw_inserts.natural_stone_grade', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('natural_stone_id')->unique();
+            $table->unsignedBigInteger('id')->primary();
             $table->unsignedBigInteger('stone_grade_id');
             $table->timestamps();
 
-            $table->foreign('natural_stone_id')->references('id')->on('jw_inserts.natural_stones');
+            $table->foreign('id')->references('id')->on('jw_inserts.natural_stones');
             $table->foreign('stone_grade_id')->references('id')->on('jw_inserts.stone_grades');
         });
     }

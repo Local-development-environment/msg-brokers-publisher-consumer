@@ -16,7 +16,9 @@ final class OpticalEffectRepository
     public function index(array $data): Paginator
     {
         return QueryBuilder::for(OpticalEffect::class)
-            ->allowedIncludes([OpticalEffectRelationshipsEnum::OPTICAL_EFFECT_STONES->value])
+            ->allowedIncludes([
+                OpticalEffectRelationshipsEnum::OPTICAL_EFFECT_STONES->value
+            ])
             ->allowedFilters([
                 AllowedFilter::exact(OpticalEffectEnum::PRIMARY_KEY->value),
             ])
@@ -32,8 +34,10 @@ final class OpticalEffectRepository
     public function show(array $data, int $id): OpticalEffect
     {
         return QueryBuilder::for(OpticalEffect::class)
-            ->where('id', $id)
-            ->allowedIncludes([OpticalEffectRelationshipsEnum::OPTICAL_EFFECT_STONES->value])
+            ->where(OpticalEffectEnum::PRIMARY_KEY->value, $id)
+            ->allowedIncludes([
+                OpticalEffectRelationshipsEnum::OPTICAL_EFFECT_STONES->value
+            ])
             ->firstOrFail();
     }
 

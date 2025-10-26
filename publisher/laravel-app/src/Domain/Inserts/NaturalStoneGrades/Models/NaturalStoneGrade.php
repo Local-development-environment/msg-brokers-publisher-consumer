@@ -3,6 +3,7 @@
 namespace Domain\Inserts\NaturalStoneGrades\Models;
 
 use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeEnum;
+use Domain\Inserts\NaturalStones\Enums\NaturalStoneEnum;
 use Domain\Inserts\NaturalStones\Models\NaturalStone;
 use Domain\Inserts\StoneGrades\Models\StoneGrade;
 use Illuminate\Database\Eloquent\Model;
@@ -21,6 +22,6 @@ class NaturalStoneGrade extends Model
 
     public function naturalStone(): BelongsTo
     {
-        return $this->belongsTo(NaturalStone::class);
+        return $this->belongsTo(NaturalStone::class, NaturalStoneEnum::PRIMARY_KEY->value);
     }
 }

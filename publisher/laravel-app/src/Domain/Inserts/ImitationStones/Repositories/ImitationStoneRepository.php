@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\ImitationStones\Repositories;
 
+use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
+use Domain\Inserts\ImitationStones\Enums\ImitationStoneRelationshipsEnum;
 use Domain\Inserts\ImitationStones\Models\ImitationStone;
 use Illuminate\Contracts\Pagination\Paginator;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -14,9 +16,11 @@ final class ImitationStoneRepository
     public function index(array $data): Paginator
     {
         return QueryBuilder::for(ImitationStone::class)
-            ->allowedIncludes(['stone'])
+            ->allowedIncludes([
+                ImitationStoneRelationshipsEnum::STONE->value
+            ])
             ->allowedFilters([
-                AllowedFilter::exact('id')
+                AllowedFilter::exact(ImitationStoneEnum::PRIMARY_KEY->value)
             ])
             ->paginate($data['per_page'] ?? null)
             ->appends($data);
@@ -30,8 +34,10 @@ final class ImitationStoneRepository
     public function show(array $data, int $id): ImitationStone
     {
         return QueryBuilder::for(ImitationStone::class)
-            ->where('id', $id)
-            ->allowedIncludes(['stone'])
+            ->where(ImitationStoneEnum::PRIMARY_KEY->value, $id)
+            ->allowedIncludes([
+                ImitationStoneRelationshipsEnum::STONE->value
+            ])
             ->firstOrFail();
     }
 

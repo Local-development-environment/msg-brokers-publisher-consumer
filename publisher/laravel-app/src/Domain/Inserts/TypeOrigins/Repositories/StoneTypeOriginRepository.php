@@ -32,7 +32,7 @@ final class StoneTypeOriginRepository
     public function show(array $data, int $id): TypeOrigin
     {
         return QueryBuilder::for(TypeOrigin::class)
-            ->where('id', $id)
+            ->where(TypeOriginEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([TypeOriginRelationshipsEnum::STONES->value])
             ->firstOrFail();
     }

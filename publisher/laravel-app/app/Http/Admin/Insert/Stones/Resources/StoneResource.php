@@ -5,6 +5,8 @@ namespace App\Http\Admin\Insert\Stones\Resources;
 use App\Http\Admin\Insert\GrownStones\Resources\GrownStoneResource;
 use App\Http\Admin\Insert\ImitationStones\Resources\ImitationStoneResource;
 use App\Http\Admin\Insert\NaturalStones\Resources\NaturalStoneResource;
+use App\Http\Admin\Insert\StoneColours\Resources\StoneColourCollection;
+use App\Http\Admin\Insert\StoneFacets\Resources\StoneFacetCollection;
 use App\Http\Admin\Insert\StoneTypeOrigins\Resources\StoneTypeOriginResource;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\Inserts\Stones\Enums\StoneEnum;
@@ -47,6 +49,14 @@ class StoneResource extends JsonResource
                     StoneNameRoutesEnum::RELATED_TO_NATURAL_STONE->value,
                     NaturalStoneResource::class
                 ),
+                StoneRelationshipsEnum::FACETS->value => $this->sectionRelationships(
+                    StoneNameRoutesEnum::RELATED_TO_FACETS->value,
+                    StoneFacetCollection::class
+                ),
+                StoneRelationshipsEnum::COLOURS->value => $this->sectionRelationships(
+                    StoneNameRoutesEnum::RELATED_TO_COLOURS->value,
+                    StoneColourCollection::class
+                ),
             ]
         ];
     }
@@ -58,6 +68,8 @@ class StoneResource extends JsonResource
             ImitationStoneResource::class => $this->whenLoaded(StoneRelationshipsEnum::IMITATION_STONE->value),
             GrownStoneResource::class => $this->whenLoaded(StoneRelationshipsEnum::GROWN_STONE->value),
             NaturalStoneResource::class => $this->whenLoaded(StoneRelationshipsEnum::NATURAL_STONE->value),
+            StoneFacetCollection::class => $this->whenLoaded(StoneRelationshipsEnum::FACETS->value),
+            StoneColourCollection::class => $this->whenLoaded(StoneRelationshipsEnum::COLOURS->value),
         ];
     }
 }
