@@ -4646,14 +4646,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/inserts/3/optional-info",
+											"raw": "{{baseURL}}/inserts/3/insert-optional-info",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"inserts",
 												"3",
-												"optional-info"
+												"insert-optional-info"
 											]
 										}
 									},
