@@ -6578,7 +6578,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "stone-colours index",
+									"name": "colours index",
 									"id": "6575703-74343b92-72b7-41da-bfae-6d117b82f999",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
