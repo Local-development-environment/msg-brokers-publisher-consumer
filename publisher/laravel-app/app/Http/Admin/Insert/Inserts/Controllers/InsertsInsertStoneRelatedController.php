@@ -2,7 +2,7 @@
 
 namespace App\Http\Admin\Insert\Inserts\Controllers;
 
-use App\Http\Admin\Insert\InsertStones\Resources\InsertStoneResource;
+use App\Http\Admin\Insert\InsertExteriors\Resources\InsertExteriorResource;
 use App\Http\Controllers\Controller;
 use Domain\Inserts\Inserts\Services\Relationships\InsertsInsertStoneRelationshipService;
 use Illuminate\Http\JsonResponse;
@@ -17,6 +17,6 @@ class InsertsInsertStoneRelatedController extends Controller
     {
         $model = $this->service->index($id);
 
-        return (new InsertStoneResource($model))->response();
+        return (new InsertExteriorResource($model))->response();
     }
 }

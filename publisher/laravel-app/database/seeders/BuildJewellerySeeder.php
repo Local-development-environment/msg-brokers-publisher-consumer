@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use Domain\Inserts\InsertExteriors\Enums\InsertExteriorEnum;
 use Domain\Inserts\InsertMetrics\Enums\InsertMetricEnum;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Jewelleries\JewelleryBuilder\BaseJewelleryBuilder;
@@ -73,8 +74,8 @@ final class BuildJewellerySeeder extends Seeder
                 $stone_id = DB::table('jw_inserts.stones')->where('name',$jewelleryInsert['stone'])->value('id');
                 $colour_id = DB::table('jw_inserts.colours')->where('name',$jewelleryInsert['colour'])->value('id');
                 $facet_id = DB::table('jw_inserts.facets')->where('name',$jewelleryInsert['facet'])->value('id');
-                if (DB::table('jw_inserts.insert_stones')->count() !== 0) {
-                    $checkUnique = DB::table('jw_inserts.insert_stones')
+                if (DB::table(InsertExteriorEnum::TABLE_NAME->value)->count() !== 0) {
+                    $checkUnique = DB::table(InsertExteriorEnum::TABLE_NAME->value)
                         ->where('stone_id', $stone_id)
                         ->where('colour_id', $colour_id)
                         ->where('facet_id', $facet_id)
@@ -84,21 +85,21 @@ final class BuildJewellerySeeder extends Seeder
                     $checkUnique = 0;
                 }
                 if ($checkUnique === 0) {
-                    $stoneId = DB::table('jw_inserts.insert_stones')->insertGetId([
+                    $stoneId = DB::table(InsertExteriorEnum::TABLE_NAME->value)->insertGetId([
                         'stone_id' => DB::table('jw_inserts.stones')->where('name',$jewelleryInsert['stone'])->value('id'),
                         'colour_id' => DB::table('jw_inserts.colours')->where('name',$jewelleryInsert['colour'])->value('id'),
                         'facet_id' => DB::table('jw_inserts.facets')->where('name',$jewelleryInsert['facet'])->value('id'),
                         'created_at' => now(),
                     ]);
                 } else {
-                    $stoneId = DB::table('jw_inserts.insert_stones')->where('stone_id', $stone_id)
+                    $stoneId = DB::table(InsertExteriorEnum::TABLE_NAME->value)->where('stone_id', $stone_id)
                         ->where('colour_id', $colour_id)
                         ->where('facet_id', $facet_id)->value('id');
 //                        dump('********************************************' . $stoneId);
                 }
 
                 $insertId = DB::table('jw_inserts.inserts')->insertGetId([
-                    'insert_stone_id' => $stoneId,
+                    'insert_exterior_id' => $stoneId,
                     'jewellery_id' => $jewelleryId,
                     'created_at' => now()
                 ]);
@@ -145,7 +146,7 @@ final class BuildJewellerySeeder extends Seeder
             $metal_id = DB::table('jw_metals.metals')->where('name',$metal)->value('id');
             $colour_id = DB::table('jw_metals.colours')->where('name',$colour)->value('id');
             $hallmark_id = DB::table('jw_metals.hallmarks')->where('value',$hallmark)->value('id');
-            if (DB::table('jw_inserts.insert_stones')->count() !== 0) {
+            if (DB::table(InsertExteriorEnum::TABLE_NAME->value)->count() !== 0) {
                 $checkUnique = DB::table('jw_metals.metal_details')
                     ->where('metal_id', $metal_id)
                     ->where('colour_id', $colour_id)

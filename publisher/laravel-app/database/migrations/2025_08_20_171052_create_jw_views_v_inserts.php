@@ -66,10 +66,10 @@ return new class extends Migration
                     join jw_inserts.stone_families as sf on ns.stone_family_id = sf.id
                     left join jw_inserts.natural_stone_grade as nsg on ns.id = nsg.id
                     left join jw_inserts.stone_grades as sg on nsg.stone_grade_id = sg.id
-                    join jw_inserts.insert_stones as ist on st.id = ist.stone_id
+                    join jw_inserts.insert_exteriors as ist on st.id = ist.stone_id
                     join jw_inserts.colours as ic on ist.colour_id = ic.id
                     join jw_inserts.facets as ifc on ist.facet_id = ifc.id
-                    join jw_inserts.inserts as i on ist.id = i.insert_stone_id
+                    join jw_inserts.inserts as i on ist.id = i.insert_exterior_id
                     join jw_inserts.insert_metrics as im on i.id = im.id
                     left join jw_inserts.insert_optional_infos as oi on i.id = oi.id
 
@@ -121,10 +121,10 @@ return new class extends Migration
                     left join jw_inserts.optical_effects as oe on oes.optical_effect_id = oe.id
                     join jw_inserts.grown_stones as grs on st.id = grs.id
                     join jw_inserts.stone_families as sf on grs.stone_family_id = sf.id
-                    join jw_inserts.insert_stones as ist on st.id = ist.stone_id
+                    join jw_inserts.insert_exteriors as ist on st.id = ist.stone_id
                     join jw_inserts.colours as ic on ist.colour_id = ic.id
                     join jw_inserts.facets as ifc on ist.facet_id = ifc.id
-                    join jw_inserts.inserts as i on ist.id = i.insert_stone_id
+                    join jw_inserts.inserts as i on ist.id = i.insert_exterior_id
                     join jw_inserts.insert_metrics as im on i.id = im.id
                     left join jw_inserts.insert_optional_infos as oi on i.id = oi.id
 
@@ -175,10 +175,10 @@ return new class extends Migration
                     left join jw_inserts.optical_effect_stone as oes on st.id = oes.id
                     left join jw_inserts.optical_effects as oe on oes.optical_effect_id = oe.id
                     join jw_inserts.imitation_stones as ims on st.id = ims.id
-                    join jw_inserts.insert_stones as ist on st.id = ist.stone_id
+                    join jw_inserts.insert_exteriors as ist on st.id = ist.stone_id
                     join jw_inserts.colours as ic on ist.colour_id = ic.id
                     join jw_inserts.facets as ifc on ist.facet_id = ifc.id
-                    join jw_inserts.inserts as i on ist.id = i.insert_stone_id
+                    join jw_inserts.inserts as i on ist.id = i.insert_exterior_id
                     join jw_inserts.insert_metrics as im on i.id = im.id
                     left join jw_inserts.insert_optional_infos as oi on i.id = oi.id
                 )

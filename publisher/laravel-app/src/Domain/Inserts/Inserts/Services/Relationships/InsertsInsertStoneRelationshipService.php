@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\Inserts\Services\Relationships;
 
+use Domain\Inserts\InsertExteriors\Models\InsertExterior;
 use Domain\Inserts\Inserts\Repositories\Relationships\InsertsInsertStoneRelationshipRepository;
-use Domain\Inserts\InsertStones\Models\InsertStone;
 
 final class InsertsInsertStoneRelationshipService
 {
@@ -13,7 +13,7 @@ final class InsertsInsertStoneRelationshipService
     {
     }
 
-    public function index($id): InsertStone
+    public function index($id): InsertExterior
     {
         return $this->repository->index($id);
     }

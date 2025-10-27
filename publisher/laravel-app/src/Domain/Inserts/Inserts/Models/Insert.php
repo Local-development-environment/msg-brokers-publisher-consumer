@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\Inserts\Models;
 
+use Domain\Inserts\InsertExteriors\Models\InsertExterior;
 use Domain\Inserts\InsertMetrics\Enums\InsertMetricEnum;
 use Domain\Inserts\InsertMetrics\Models\InsertMetric;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Inserts\InsertOptionalInfos\Models\InsertOptionalInfo;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
-use Domain\Inserts\InsertStones\Models\InsertStone;
 use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -37,6 +37,6 @@ final class Insert extends Model
 
     public function insertStone(): BelongsTo
     {
-        return $this->belongsTo(InsertStone::class);
+        return $this->belongsTo(InsertExterior::class);
     }
 }
