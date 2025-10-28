@@ -18,7 +18,7 @@ return new class extends Migration
                         select
                             case
                                 when vi.jewellery_id isnull then
-                                    null
+                                    jsonb_build_array()
                                 else
                                     jsonb_agg(
                                         jsonb_build_object(
@@ -62,7 +62,14 @@ return new class extends Migration
                                             'stone_group_description', vi.stone_group_description,
                                             'stone_family_id', vi.stone_family_id,
                                             'stone_family_name', vi.stone_family_name,
-                                            'stone_family_description', vi.stone_family_description
+                                            'stone_family_description', vi.stone_family_description,
+                                            'dominant_stone', jsonb_build_object(
+                                                'weight', vi.dominant_weight,
+                                                'stone_id', vi.stone_id,
+                                                'stone_name', vi.stone_name,
+                                                'colour_id', vi.colour_id,
+                                                'colour_name', vi.colour_name
+                                            )
                                         )
                                     )
                                 end
@@ -74,19 +81,14 @@ return new class extends Migration
                     ),
                     cte_jw_coverages as (
                         select
-                            case
-                                when jwcj.jewellery_id isnull then
-                                    null
-                                else
-                                    jsonb_agg(
-                                        jsonb_build_object(
-                                            'coverage_id', jwcj.coverage_id,
-                                            'coverage', jwc.name,
-                                            'coverage_type', ct.name,
-                                            'coverage_type_id', ct.id
-                                        )
-                                    )
-                                end
+                            jsonb_agg(
+                                jsonb_build_object(
+                                    'coverage_id', jwcj.coverage_id,
+                                    'coverage', jwc.name,
+                                    'coverage_type', ct.name,
+                                    'coverage_type_id', ct.id
+                                )
+                            )
                             as coverages,
                             jj.id as jewellery_id
                         from
@@ -437,11 +439,23 @@ return new class extends Migration
                     cjp.avg_price,
                     cjp.max_price,
                     cjp.min_price,
-                    cjp.spec_props,
+                    case
+                        when cjp.spec_props isnull then
+                            jsonb_build_object()
+                        else
+                            cjp.spec_props
+                        end
+                    as spec_props,
+                    case 
+                        when cjwc.coverages isnull 
+                            then jsonb_build_array()
+                        else
+                            cjwc.coverages
+                        end
+                    as coverages,
                     cjwi.inserts,
-                    cjwc.coverages,
-                    cast(stone_max_weight_id as integer) as stone_max_weight_id,
-                    cast(stone_max_colour_id as integer) as stone_max_colour_id,
+                    cast(dominant_stone_id as integer) as dominant_stone_id,
+                    cast(dominant_colour_id as integer) as dominant_colour_id,
                     cjm.metals
                 from jewelleries.jewelleries as jj
                 join jewelleries.categories as jc on jj.category_id = jc.id
@@ -449,8 +463,8 @@ return new class extends Migration
                 left join cte_jw_coverages as cjwc on jj.id = cjwc.jewellery_id
                 left join cte_jw_metals as cjm on jj.id = cjm.jewellery_id
                 left join cte_jw_props as cjp on  jj.id = cjp.jewellery_id
-                left join jsonb_path_query(cjwi.inserts, '$[*].stone ? (@.max_weight != null) .id') as stone_max_weight_id on jj.id = cjwi.jewellery_id
-                left join jsonb_path_query(cjwi.inserts, '$[*].stone ? (@.max_weight != null) .colour_id') as stone_max_colour_id on jj.id = cjwi.jewellery_id
+                left join jsonb_path_query(cjwi.inserts, '$[*].dominant_stone ? (@.weight != null) .stone_id') as dominant_stone_id on jj.id = cjwi.jewellery_id
+                left join jsonb_path_query(cjwi.inserts, '$[*].dominant_stone ? (@.weight != null) .colour_id') as dominant_colour_id on jj.id = cjwi.jewellery_id
                 order by jj.id
                 
                 with data;
