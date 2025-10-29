@@ -12,7 +12,7 @@ final class Media
     {
 //        $medias = [];
 
-        $medias = [
+        return [
             'manager' => [
                 'image' => $this->getItems(4, 'image', 'manager'),
                 'video' => $this->getItems(1, 'video', 'manager'),
@@ -22,8 +22,6 @@ final class Media
                 'video' => $this->getItems(rand(0,2), 'video', 'customer'),
             ],
         ];
-
-        return $medias;
     }
 
     private function getItems(int $num, string $category, string $producer): array

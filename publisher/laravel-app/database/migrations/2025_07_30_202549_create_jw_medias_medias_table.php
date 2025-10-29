@@ -16,13 +16,13 @@ return new class extends Migration
             $table->unsignedBigInteger('jewellery_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('producer_id');
+            $table->string('name');
+            $table->boolean('is_active');
             $table->timestamps();
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
             $table->foreign('category_id')->references('id')->on('jw_medias.categories');
             $table->foreign('producer_id')->references('id')->on('jw_medias.producers');
-
-            $table->unique(['jewellery_id', 'category_id', 'producer_id'], 'unique_jw_medias_medias');
         });
     }
 

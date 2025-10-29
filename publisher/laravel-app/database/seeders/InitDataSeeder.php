@@ -64,10 +64,8 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_coverages.coverages')->truncate();
         DB::table('jw_coverages.coverage_types')->truncate();
         DB::table('jw_medias.pictures')->truncate();
-        DB::table('jw_medias.picture_medias')->truncate();
         DB::table('jw_medias.video_details')->truncate();
         DB::table('jw_medias.videos')->truncate();
-        DB::table('jw_medias.video_medias')->truncate();
         DB::table('jw_medias.video_types')->truncate();
         DB::table('jw_medias.medias')->truncate();
         DB::table('jw_medias.producers')->truncate();

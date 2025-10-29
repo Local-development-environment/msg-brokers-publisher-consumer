@@ -12,16 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jw_medias.pictures', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('picture_media_id');
-            $table->string('name');
+            $table->unsignedInteger('id')->primary();
             $table->string('extension');
             $table->string('src');
-            $table->string('alt')->nullable();
-            $table->boolean('is_active')->default(false);
+            $table->string('alt');
             $table->timestamps();
 
-            $table->foreign('picture_media_id')->references('id')->on('jw_medias.picture_medias');
+            $table->foreign('id')->references('id')->on('jw_medias.medias');
         });
     }
 
