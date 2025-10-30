@@ -13,13 +13,13 @@ final class Media
 //        $medias = [];
 
         return [
-            'manager' => [
-                'image' => $this->getItems(4, 'image', 'manager'),
-                'video' => $this->getItems(1, 'video', 'manager'),
+            'менеджер' => [
+                'фото' => $this->getItems(4, 'image', 'manager'),
+                'видео' => $this->getItems(1, 'video', 'manager'),
             ],
-            'customer' => [
-                'image' => $this->getItems(rand(0,4), 'image', 'customer'),
-                'video' => $this->getItems(rand(0,2), 'video', 'customer'),
+            'клиент' => [
+                'фото' => $this->getItems(rand(0,4), 'image', 'customer'),
+                'видео' => $this->getItems(rand(0,2), 'video', 'customer'),
             ],
         ];
     }

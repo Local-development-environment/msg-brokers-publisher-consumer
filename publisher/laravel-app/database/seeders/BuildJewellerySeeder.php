@@ -507,51 +507,36 @@ final class BuildJewellerySeeder extends Seeder
 
     private function addMedia(array $jewelleryData, int $jewelleryId): void
     {
-        dump($jewelleryData['jw_media']);
+//        dump($jewelleryData['jw_media']);
         $types = DB::table('jw_medias.video_types')->get();
 
         foreach ($jewelleryData['jw_media'] as $keyP => $producer) {
-//            dd($keyP);
-//            dd($jewelleryData['jw_media']['customer']['image']);
+
             $producerId = DB::table('jw_medias.producers')->where('name',$keyP)->value('id');
 
             foreach ($producer as $keyC => $category) {
-//                dd($keyC);
-                $categoryId = DB::table('jw_medias.categories')->where('name',$keyC)->value('id');
-
-                if ($keyC === 'image') {
+                if ($keyC === 'фото') {
                     foreach ($category as $item) {
-                        $imageId = DB::table('jw_medias.medias')->insertGetId([
+                        DB::table('jw_medias.pictures')->insertGetId([
                             'jewellery_id' => $jewelleryId,
-                            'category_id' => $categoryId,
                             'producer_id' => $producerId,
                             'name' => $item,
-                            'is_active' => true,
-                            'created_at' => now()
-                        ]);
-
-                        DB::table('jw_medias.pictures')->insertGetId([
-                            'id' => $imageId,
+                            'alt_name' => $jewelleryData['name'],
                             'extension' => 'jpg',
+                            'type' => 'image/jpeg',
                             'src' => 'https://server/' . $item . '.jpg',
-                            'alt' => $jewelleryData['name'],
+                            'is_active' => true,
                             'created_at' => now()
                         ]);
                     }
                 } else {
-
                     foreach ($category as $item) {
-                        $videoId = DB::table('jw_medias.medias')->insertGetId([
+                        $videoId = DB::table('jw_medias.videos')->insertGetId([
                             'jewellery_id' => $jewelleryId,
-                            'category_id' => $categoryId,
                             'producer_id' => $producerId,
                             'name' => $item,
+                            'alt_name' => $jewelleryData['name'],
                             'is_active' => true,
-                            'created_at' => now()
-                        ]);
-
-                        $videoId = DB::table('jw_medias.videos')->insertGetId([
-                            'id' => $videoId,
                             'created_at' => now()
                         ]);
                         foreach ($types as $type) {
@@ -564,7 +549,6 @@ final class BuildJewellerySeeder extends Seeder
                         }
                     }
                 }
-
             }
         }
     }

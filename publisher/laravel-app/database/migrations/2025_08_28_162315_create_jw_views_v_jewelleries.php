@@ -128,6 +128,56 @@ return new class extends Migration
                         join jw_metals.hallmarks jwh on jwmd.hallmark_id = jwh.id
                         group by jj.id,jwjmd.jewellery_id
                     ),
+                    cte_videos_group as (
+                        select
+                            jj.id as jewellery_id,
+                            v.id as video_id,
+                            v.name as name,
+                            v.alt_name as alt_name,
+                            v.producer_id as producer_id,
+                            p.name as producer_name,
+                            p.slug as producer_slug,
+                            v.is_active as video_active,
+                            jsonb_agg(
+                                jsonb_build_object(
+                                    'type', vt.type,
+                                    'extension', vt.extension,
+                                    'src', vd.src
+                                )
+                            ) as types
+                        from
+                            jewelleries.jewelleries as jj
+                        join jw_medias.videos v on jj.id = v.jewellery_id
+                        join jw_medias.producers as p on p.id = v.producer_id
+                        join jw_medias.video_details vd on v.id = vd.video_id
+                        join jw_medias.video_types vt on vd.video_type_id = vt.id
+                        group by jj.id, v.name, v.id, p.name, p.slug
+                    ),
+                    cte_jw_videos as (
+                        select
+                            case
+                                when cvg.jewellery_id isnull then
+                                    jsonb_build_array()
+                                else
+                                    jsonb_agg(
+                                        jsonb_build_object(
+                                            'video_id', cvg.video_id,
+                                            'name', cvg.name,
+                                            'alt_name', cvg.alt_name,
+                                            'video_type', cvg.types,
+                                            'producer_id', cvg.producer_id,
+                                            'producer_name', cvg.producer_name,
+                                            'producer_slug', cvg.producer_slug,
+                                            'video_type', cvg.types
+                                        )
+                                    )
+                                end
+                            as video_medias,
+                            cvg.jewellery_id
+                        from
+                            cte_videos_group as cvg
+                        group by cvg.jewellery_id
+                    ),
                     cte_jw_props as (
                         select
                             jj.id,jwb.jewellery_id as jewellery_id,
@@ -454,8 +504,12 @@ return new class extends Migration
                         end
                     as coverages,
                     cjwi.inserts,
-                    cast(dominant_stone_id as integer) as dominant_stone_id,
-                    cast(dominant_colour_id as integer) as dominant_colour_id,
+                    cgv.video_medias,
+                    dominant_data->'weight' as dominant_weight,
+                    dominant_data->'stone_id' as dominant_stone_id,
+                    dominant_data->'stone_name' as dominant_stone_name,
+                    dominant_data->'colour_id' as dominant_colour_id,
+                    dominant_data->'colour_name' as dominant_colour_name,
                     cjm.metals
                 from jewelleries.jewelleries as jj
                 join jewelleries.categories as jc on jj.category_id = jc.id
@@ -463,8 +517,8 @@ return new class extends Migration
                 left join cte_jw_coverages as cjwc on jj.id = cjwc.jewellery_id
                 left join cte_jw_metals as cjm on jj.id = cjm.jewellery_id
                 left join cte_jw_props as cjp on  jj.id = cjp.jewellery_id
-                left join jsonb_path_query(cjwi.inserts, '$[*].dominant_stone ? (@.weight != null) .stone_id') as dominant_stone_id on jj.id = cjwi.jewellery_id
-                left join jsonb_path_query(cjwi.inserts, '$[*].dominant_stone ? (@.weight != null) .colour_id') as dominant_colour_id on jj.id = cjwi.jewellery_id
+                left join cte_jw_videos as cgv on jj.id = cgv.jewellery_id
+                left join jsonb_path_query(cjwi.inserts, '$[*].dominant_stone ? (@.weight != null)') as dominant_data on jj.id = cjwi.jewellery_id
                 order by jj.id
                 
                 with data;

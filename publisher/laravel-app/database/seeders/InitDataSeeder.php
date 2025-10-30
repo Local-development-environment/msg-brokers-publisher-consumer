@@ -67,9 +67,7 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_medias.video_details')->truncate();
         DB::table('jw_medias.videos')->truncate();
         DB::table('jw_medias.video_types')->truncate();
-        DB::table('jw_medias.medias')->truncate();
         DB::table('jw_medias.producers')->truncate();
-        DB::table('jw_medias.categories')->truncate();
         DB::table('jw_inserts.type_origins')->truncate();
         DB::table('jw_inserts.stones')->truncate();
         DB::table('jw_inserts.optical_effects')->truncate();
@@ -454,17 +452,8 @@ final class InitDataSeeder extends Seeder
 
     private function jwMediasSeed(): void
     {
-        $jwMediaCategories = config('data-seed.data_items.medias.jw_media_categories');
         $jwMediaProducers = config('data-seed.data_items.medias.jw_media_producers');
         $jwMediaVideoTypes = config('data-seed.data_items.medias.jw_video_types');
-
-        foreach ($jwMediaCategories as $category) {
-            DB::table('jw_medias.categories')->insert([
-                'name' => $category,
-                'slug' => Str::slug($category),
-                'created_at' => now(),
-            ]);
-        }
 
         foreach ($jwMediaProducers as $producer) {
             DB::table('jw_medias.producers')->insert([
@@ -476,7 +465,7 @@ final class InitDataSeeder extends Seeder
 
         foreach ($jwMediaVideoTypes as $videoType) {
             DB::table('jw_medias.video_types')->insert([
-                'name' => $videoType['name'],
+                'type' => $videoType['name'],
                 'extension' => $videoType['extension'],
                 'created_at' => now(),
             ]);

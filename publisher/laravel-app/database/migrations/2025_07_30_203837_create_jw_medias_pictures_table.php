@@ -12,13 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jw_medias.pictures', function (Blueprint $table) {
-            $table->unsignedInteger('id')->primary();
+            $table->id();
+            $table->unsignedBigInteger('jewellery_id');
+            $table->unsignedBigInteger('producer_id');
+            $table->string('name');
+            $table->string('alt_name');
             $table->string('extension');
             $table->string('src');
-            $table->string('alt');
+            $table->string('type');
+            $table->boolean('is_active');
             $table->timestamps();
 
-            $table->foreign('id')->references('id')->on('jw_medias.medias');
+            $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
+            $table->foreign('producer_id')->references('id')->on('jw_medias.producers');
         });
     }
 
