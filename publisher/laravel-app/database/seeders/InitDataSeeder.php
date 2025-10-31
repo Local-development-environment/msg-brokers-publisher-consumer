@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use Domain\Inserts\InsertExteriors\Enums\InsertExteriorEnum;
 use Domain\Inserts\InsertMetrics\Enums\InsertMetricEnum;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
@@ -63,21 +64,17 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_coverages.coverages')->truncate();
         DB::table('jw_coverages.coverage_types')->truncate();
         DB::table('jw_medias.pictures')->truncate();
-        DB::table('jw_medias.picture_medias')->truncate();
         DB::table('jw_medias.video_details')->truncate();
         DB::table('jw_medias.videos')->truncate();
-        DB::table('jw_medias.video_medias')->truncate();
         DB::table('jw_medias.video_types')->truncate();
-        DB::table('jw_medias.medias')->truncate();
         DB::table('jw_medias.producers')->truncate();
-        DB::table('jw_medias.categories')->truncate();
         DB::table('jw_inserts.type_origins')->truncate();
         DB::table('jw_inserts.stones')->truncate();
         DB::table('jw_inserts.optical_effects')->truncate();
         DB::table('jw_inserts.optical_effect_stone')->truncate();
         DB::table('jw_inserts.colours')->truncate();
         DB::table('jw_inserts.facets')->truncate();
-        DB::table('jw_inserts.insert_stones')->truncate();
+        DB::table(InsertExteriorEnum::TABLE_NAME->value)->truncate();
         DB::table(InsertMetricEnum::TABLE_NAME->value)->truncate();
         DB::table(InsertOptionalInfoEnum::TABLE_NAME->value)->truncate();
         DB::table('jw_inserts.inserts')->truncate();
@@ -455,17 +452,8 @@ final class InitDataSeeder extends Seeder
 
     private function jwMediasSeed(): void
     {
-        $jwMediaCategories = config('data-seed.data_items.medias.jw_media_categories');
         $jwMediaProducers = config('data-seed.data_items.medias.jw_media_producers');
         $jwMediaVideoTypes = config('data-seed.data_items.medias.jw_video_types');
-
-        foreach ($jwMediaCategories as $category) {
-            DB::table('jw_medias.categories')->insert([
-                'name' => $category,
-                'slug' => Str::slug($category),
-                'created_at' => now(),
-            ]);
-        }
 
         foreach ($jwMediaProducers as $producer) {
             DB::table('jw_medias.producers')->insert([
@@ -477,7 +465,7 @@ final class InitDataSeeder extends Seeder
 
         foreach ($jwMediaVideoTypes as $videoType) {
             DB::table('jw_medias.video_types')->insert([
-                'name' => $videoType['name'],
+                'type' => $videoType['name'],
                 'extension' => $videoType['extension'],
                 'created_at' => now(),
             ]);

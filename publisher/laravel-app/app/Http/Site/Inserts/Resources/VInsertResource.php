@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Site\Inserts\Resources;
 
@@ -9,9 +10,9 @@ use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 
 /**
  * @mixin VInsert
- * @property mixed $id
+ * @property mixed $insert_id
  */
-class VInsertResource extends JsonResource
+final class VInsertResource extends JsonResource
 {
     use IncludeRelatedEntitiesResourceTrait;
 
@@ -23,7 +24,7 @@ class VInsertResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
+            'id' => $this->insert_id,
             'type' => VInsert::TYPE_RESOURCE,
             'attributes' => $this->attributeItems(),
         ];

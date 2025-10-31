@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use Domain\Inserts\InsertExteriors\Enums\InsertExteriorEnum;
 use Domain\Inserts\InsertMetrics\Enums\InsertMetricEnum;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Jewelleries\JewelleryBuilder\BaseJewelleryBuilder;
@@ -26,7 +27,7 @@ final class BuildJewellerySeeder extends Seeder
         $jeweller = new Jeweller();
 //        $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
 //        dump([$builder]);
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             dump($i);
             $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
 
@@ -73,8 +74,8 @@ final class BuildJewellerySeeder extends Seeder
                 $stone_id = DB::table('jw_inserts.stones')->where('name',$jewelleryInsert['stone'])->value('id');
                 $colour_id = DB::table('jw_inserts.colours')->where('name',$jewelleryInsert['colour'])->value('id');
                 $facet_id = DB::table('jw_inserts.facets')->where('name',$jewelleryInsert['facet'])->value('id');
-                if (DB::table('jw_inserts.insert_stones')->count() !== 0) {
-                    $checkUnique = DB::table('jw_inserts.insert_stones')
+                if (DB::table(InsertExteriorEnum::TABLE_NAME->value)->count() !== 0) {
+                    $checkUnique = DB::table(InsertExteriorEnum::TABLE_NAME->value)
                         ->where('stone_id', $stone_id)
                         ->where('colour_id', $colour_id)
                         ->where('facet_id', $facet_id)
@@ -84,21 +85,21 @@ final class BuildJewellerySeeder extends Seeder
                     $checkUnique = 0;
                 }
                 if ($checkUnique === 0) {
-                    $stoneId = DB::table('jw_inserts.insert_stones')->insertGetId([
+                    $stoneId = DB::table(InsertExteriorEnum::TABLE_NAME->value)->insertGetId([
                         'stone_id' => DB::table('jw_inserts.stones')->where('name',$jewelleryInsert['stone'])->value('id'),
                         'colour_id' => DB::table('jw_inserts.colours')->where('name',$jewelleryInsert['colour'])->value('id'),
                         'facet_id' => DB::table('jw_inserts.facets')->where('name',$jewelleryInsert['facet'])->value('id'),
                         'created_at' => now(),
                     ]);
                 } else {
-                    $stoneId = DB::table('jw_inserts.insert_stones')->where('stone_id', $stone_id)
+                    $stoneId = DB::table(InsertExteriorEnum::TABLE_NAME->value)->where('stone_id', $stone_id)
                         ->where('colour_id', $colour_id)
                         ->where('facet_id', $facet_id)->value('id');
 //                        dump('********************************************' . $stoneId);
                 }
 
                 $insertId = DB::table('jw_inserts.inserts')->insertGetId([
-                    'insert_stone_id' => $stoneId,
+                    'insert_exterior_id' => $stoneId,
                     'jewellery_id' => $jewelleryId,
                     'created_at' => now()
                 ]);
@@ -145,7 +146,7 @@ final class BuildJewellerySeeder extends Seeder
             $metal_id = DB::table('jw_metals.metals')->where('name',$metal)->value('id');
             $colour_id = DB::table('jw_metals.colours')->where('name',$colour)->value('id');
             $hallmark_id = DB::table('jw_metals.hallmarks')->where('value',$hallmark)->value('id');
-            if (DB::table('jw_inserts.insert_stones')->count() !== 0) {
+            if (DB::table(InsertExteriorEnum::TABLE_NAME->value)->count() !== 0) {
                 $checkUnique = DB::table('jw_metals.metal_details')
                     ->where('metal_id', $metal_id)
                     ->where('colour_id', $colour_id)
@@ -506,46 +507,35 @@ final class BuildJewellerySeeder extends Seeder
 
     private function addMedia(array $jewelleryData, int $jewelleryId): void
     {
+//        dump($jewelleryData['jw_media']);
         $types = DB::table('jw_medias.video_types')->get();
 
         foreach ($jewelleryData['jw_media'] as $keyP => $producer) {
-//            dd($keyP);
-//            dd($jewelleryData['jw_media']['customer']['image']);
+
             $producerId = DB::table('jw_medias.producers')->where('name',$keyP)->value('id');
+
             foreach ($producer as $keyC => $category) {
-//                dd($keyC);
-                $categoryId = DB::table('jw_medias.categories')->where('name',$keyC)->value('id');
-                $mediaId = DB::table('jw_medias.medias')->insertGetId([
-                    'jewellery_id' => $jewelleryId,
-                    'category_id' => $categoryId,
-                    'producer_id' => $producerId,
-                    'created_at' => now()
-                ]);
-                if ($keyC === 'image') {
-                    $pictureMediaId = DB::table('jw_medias.picture_medias')->insertGetId([
-                        'media_id' => $mediaId,
-                        'created_at' => now()
-                    ]);
+                if ($keyC === 'фото') {
                     foreach ($category as $item) {
                         DB::table('jw_medias.pictures')->insertGetId([
-                            'picture_media_id' => $pictureMediaId,
+                            'jewellery_id' => $jewelleryId,
+                            'producer_id' => $producerId,
                             'name' => $item,
+                            'alt_name' => $jewelleryData['name'],
                             'extension' => 'jpg',
+                            'type' => 'image/jpeg',
                             'src' => 'https://server/' . $item . '.jpg',
-                            'alt' => $jewelleryData['name'],
                             'is_active' => true,
                             'created_at' => now()
                         ]);
                     }
                 } else {
-                    $videoMediaId = DB::table('jw_medias.video_medias')->insertGetId([
-                        'media_id' => $mediaId,
-                        'created_at' => now()
-                    ]);
                     foreach ($category as $item) {
                         $videoId = DB::table('jw_medias.videos')->insertGetId([
-                            'video_media_id' => $videoMediaId,
+                            'jewellery_id' => $jewelleryId,
+                            'producer_id' => $producerId,
                             'name' => $item,
+                            'alt_name' => $jewelleryData['name'],
                             'is_active' => true,
                             'created_at' => now()
                         ]);
@@ -559,7 +549,6 @@ final class BuildJewellerySeeder extends Seeder
                         }
                     }
                 }
-
             }
         }
     }

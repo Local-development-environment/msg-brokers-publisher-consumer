@@ -2,17 +2,17 @@
 
 namespace Domain\Inserts\Stones\Models;
 
+use Domain\Inserts\Colours\Models\Colour;
+use Domain\Inserts\Facets\Models\Facet;
 use Domain\Inserts\GrownStones\Enums\GrownStoneEnum;
 use Domain\Inserts\GrownStones\Models\GrownStone;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
 use Domain\Inserts\ImitationStones\Models\ImitationStone;
-use Domain\Inserts\InsertStones\Enums\InsertStoneEnum;
+use Domain\Inserts\InsertExteriors\Enums\InsertExteriorEnum;
 use Domain\Inserts\NaturalStones\Enums\NaturalStoneEnum;
 use Domain\Inserts\NaturalStones\Models\NaturalStone;
 use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneEnum;
 use Domain\Inserts\OpticalEffectStones\Models\OpticalEffectStone;
-use Domain\Inserts\StoneColours\Models\StoneColour;
-use Domain\Inserts\StoneFacets\Models\StoneFacet;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Inserts\TypeOrigins\Models\TypeOrigin;
 use Illuminate\Database\Eloquent\Model;
@@ -60,20 +60,20 @@ class Stone extends Model
     public function stoneFacets(): BelongsToMany
     {
         return $this->belongsToMany(
-            StoneFacet::class,
-            InsertStoneEnum::TABLE_NAME->value,
-            InsertStoneEnum::FK_STONE->value,
-            InsertStoneEnum::FK_STONE_FACET->value
+            Facet::class,
+            InsertExteriorEnum::TABLE_NAME->value,
+            InsertExteriorEnum::FK_STONE->value,
+            InsertExteriorEnum::FK_STONE_FACET->value
         );
     }
 
     public function stoneColours(): BelongsToMany
     {
         return $this->belongsToMany(
-            StoneColour::class,
-            InsertStoneEnum::TABLE_NAME->value,
-            InsertStoneEnum::FK_STONE->value,
-            InsertStoneEnum::FK_STONE_COLOUR->value
+            Colour::class,
+            InsertExteriorEnum::TABLE_NAME->value,
+            InsertExteriorEnum::FK_STONE->value,
+            InsertExteriorEnum::FK_STONE_COLOUR->value
         );
     }
 }

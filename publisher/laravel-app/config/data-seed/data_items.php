@@ -15,10 +15,7 @@ return [
             ]
         ],
         'jw_media_producers' => [
-            'manager', 'customer'
-        ],
-        'jw_media_categories' => [
-            'video', 'image'
+            'менеджер', 'клиент'
         ]
     ],
     'jw_weavings' => [

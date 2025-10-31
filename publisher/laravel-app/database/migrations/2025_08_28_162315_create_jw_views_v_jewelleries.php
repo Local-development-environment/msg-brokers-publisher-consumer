@@ -17,83 +17,78 @@ return new class extends Migration
                     cte_jw_inserts as (
                         select
                             case
-                                when jwvi.jewellery_id isnull then
-                                    null
+                                when vi.jewellery_id isnull then
+                                    jsonb_build_array()
                                 else
                                     jsonb_agg(
                                         jsonb_build_object(
-                                            'stone', jsonb_build_object(
-                                                'id', jwvi.stone_id,
-                                                'name', jwvi.stone_name,
-                                                'alt_name', jwvi.stone_alt_name,
-                                                'description', jwvi.stone_description,
-                                                'colour_id', jwvi.stone_colour_id,
-                                                'max_weight', jwvi.max_weight
-                                            ),
-                                            'origin', jsonb_build_object(
-                                                'id', jwvi.origin_id,
-                                                'name', jwvi.origin_name,
-                                                'description', jwvi.origin_description
-                                            ),
-                                            'opt_effect', jsonb_build_object(
-                                                'name', jwvi.optical_effect_name,
-                                                'description', jwvi.optical_effect_description,
-                                                'id', jwvi.optical_effect_id
-                                            ),
-                                            'classification', jsonb_build_object(
-                                                'grade_name', jwvi.stone_grade_name,
-                                                'grade_description', jwvi.stone_grade_description,
-                                                'grade_id', jwvi.stone_grade_id,
-                                                'group_name', jwvi.stone_group_name,
-                                                'group_description', jwvi.stone_group_description,
-                                                'group_id', jwvi.stone_group_id
-                                            ),
-                                            'family', jsonb_build_object(
-                                                'name', jwvi.stone_family_name,
-                                                'description', jwvi.stone_family_description,
-                                                'id', jwvi.stone_family_id
-                                            ),
-                                            'exterior', jsonb_build_object(
-                                                'id', jwvi.stone_colour_id,
-                                                'colour', jwvi.stone_colour_name,
-                                                'colour_id', jwvi.stone_colour_id,
-                                                'colour_description', jwvi.stone_colour_description,
-                                                'id', stone_facet_id,
-                                                'facet', jwvi.stone_facet_name,
-                                                'facet_description', jwvi.stone_facet_description
-                                            ),
-                                            'inserts', jsonb_build_object(
-                                                'insert_id', jwvi.id,
-                                                'quantity', jwvi.insert_metric_quantity,
-                                                'weight', jwvi.insert_metric_weight,
-                                                'unit', jwvi.insert_metric_unit,
-                                                'dimensions', jwvi.insert_metric_dimensions,
-                                                'optional_info', jwvi.insert_optional_info
+                                            'insert_id', vi.insert_id,
+                                            'insert', vi.insert,
+                                            'jewellery_id', vi.jewellery_id,
+                                            'insert_exterior_id', vi.insert_exterior_id,
+                                            'insert_optional_info_id', vi.insert_optional_info_id,
+                                            'insert_optional_info', vi.insert_optional_info,
+                                            'insert_metric_id', vi.insert_metric_id,
+                                            'quantity_stones', vi.quantity_stones,
+                                            'stone_dimension', vi.stone_dimension,
+                                            'insert_total_stone_weight', vi.insert_total_stone_weight,
+                                            'dominant_weight', vi.dominant_weight,
+                                            'unit_stone_weight', vi.unit_stone_weight,
+                                            'colour_id', vi.colour_id,
+                                            'colour_name', vi.colour_name,
+                                            'colour_slug', vi.colour_slug,
+                                            'colour_description', vi.colour_description,
+                                            'stone_id', vi.stone_id,
+                                            'stone_name', vi.stone_name,
+                                            'stone_alt_name', vi.stone_alt_name,
+                                            'stone_description', vi.stone_description,
+                                            'stone_slug', vi.stone_slug,
+                                            'facet_id', vi.facet_id,
+                                            'facet_name', vi.facet_name,
+                                            'facet_slug', vi.facet_slug,
+                                            'facet_description', vi.facet_description,
+                                            'origin_id', vi.origin_id,
+                                            'origin_name', vi.origin_name,
+                                            'origin_slug', vi.origin_slug,
+                                            'origin_description', vi.origin_description,
+                                            'optical_effect_id', vi.optical_effect_id,
+                                            'optical_effect_name', vi.optical_effect_name,
+                                            'expr_optical_effect', vi.expr_optical_effect,
+                                            'stone_grade_id', vi.stone_grade_id,
+                                            'stone_grade_name', vi.stone_grade_name,
+                                            'stone_grade_description', vi.stone_grade_description,
+                                            'stone_group_id', vi.stone_group_id,
+                                            'stone_group_name', vi.stone_group_name,
+                                            'stone_group_description', vi.stone_group_description,
+                                            'stone_family_id', vi.stone_family_id,
+                                            'stone_family_name', vi.stone_family_name,
+                                            'stone_family_description', vi.stone_family_description,
+                                            'dominant_stone', jsonb_build_object(
+                                                'weight', vi.dominant_weight,
+                                                'stone_id', vi.stone_id,
+                                                'stone_name', vi.stone_name,
+                                                'colour_id', vi.colour_id,
+                                                'colour_name', vi.colour_name
                                             )
                                         )
                                     )
                                 end
                             as inserts,
-                            jj.id as jewellery_id
-                        from jewelleries.jewelleries as jj
-                        left join jw_views.v_inserts as jwvi on jj.id = jwvi.jewellery_id
-                        group by jj.id,jwvi.jewellery_id
+                            j.id as jewellery_id
+                        from jewelleries.jewelleries as j
+                        left join jw_views.v_inserts as vi on j.id = vi.jewellery_id
+                        group by j.id, vi.jewellery_id
                     ),
                     cte_jw_coverages as (
                         select
-                            case
-                                when jwcj.jewellery_id isnull then
-                                    null
-                                else
-                                    jsonb_agg(
-                                        jsonb_build_object(
-                                            'coverage_id', jwcj.coverage_id,
-                                            'coverage', jwc.name,
-                                            'coverage_type', ct.name,
-                                            'coverage_type_id', ct.id
-                                        )
-                                    )
-                                end
+                            jsonb_agg(
+                                jsonb_build_object(
+                                    'coverage_id', jwcj.coverage_id,
+                                    'coverage', jwc.name,
+                                    'coverage_type', ct.name,
+                                    'coverage_type_id', ct.id
+                                )
+                            )
                             as coverages,
                             jj.id as jewellery_id
                         from
@@ -132,6 +127,85 @@ return new class extends Migration
                         join jw_metals.colours jwc on jwmd.colour_id = jwc.id
                         join jw_metals.hallmarks jwh on jwmd.hallmark_id = jwh.id
                         group by jj.id,jwjmd.jewellery_id
+                    ),
+                    cte_videos_group as (
+                        select
+                            jj.id as jewellery_id,
+                            v.id as video_id,
+                            v.name as name,
+                            v.alt_name as alt_name,
+                            v.producer_id as producer_id,
+                            p.name as producer_name,
+                            p.slug as producer_slug,
+                            v.is_active as video_active,
+                            jsonb_agg(
+                                jsonb_build_object(
+                                    'type', vt.type,
+                                    'extension', vt.extension,
+                                    'src', vd.src
+                                )
+                            ) as types
+                        from
+                            jewelleries.jewelleries as jj
+                        join jw_medias.videos v on jj.id = v.jewellery_id
+                        join jw_medias.producers as p on p.id = v.producer_id
+                        join jw_medias.video_details vd on v.id = vd.video_id
+                        join jw_medias.video_types vt on vd.video_type_id = vt.id
+                        group by jj.id, v.name, v.id, p.name, p.slug
+                    ),
+                    cte_jw_videos as (
+                        select
+                            case
+                                when cvg.jewellery_id isnull then
+                                    jsonb_build_array()
+                                else
+                                    jsonb_agg(
+                                        jsonb_build_object(
+                                            'video_id', cvg.video_id,
+                                            'name', cvg.name,
+                                            'alt_name', cvg.alt_name,
+                                            'video_type', cvg.types,
+                                            'producer_id', cvg.producer_id,
+                                            'producer_name', cvg.producer_name,
+                                            'producer_slug', cvg.producer_slug,
+                                            'video_type', cvg.types
+                                        )
+                                    )
+                                end
+                            as video_medias,
+                            cvg.jewellery_id
+                        from
+                            cte_videos_group as cvg
+                        group by cvg.jewellery_id
+                    ),
+                    cte_jw_pictures as (
+                        select
+                            case
+                                when p.jewellery_id isnull then
+                                    jsonb_build_array()
+                                else
+                                    jsonb_agg(
+                                        jsonb_build_object(
+                                            'picture_id', p.id,
+                                            'name', p.name,
+                                            'alt_name', p.alt_name,
+                                            'extension', p.extension,
+                                            'type', p.type,
+                                            'src', p.src,
+                                            'producer_id', p.producer_id,
+                                            'picture_active', p.is_active,
+                                            'producer_name', pr.name,
+                                            'producer_slug', pr.slug
+                                        )
+                                    )
+                                end
+                            as picture_medias,
+                            p.jewellery_id
+                        from
+                            jewelleries.jewelleries as jj
+                        join jw_medias.pictures p on jj.id = p.jewellery_id
+                        join jw_medias.producers pr on p.producer_id = pr.id
+                        group by p.jewellery_id
                     ),
                     cte_jw_props as (
                         select
@@ -444,11 +518,28 @@ return new class extends Migration
                     cjp.avg_price,
                     cjp.max_price,
                     cjp.min_price,
-                    cjp.spec_props,
+                    case
+                        when cjp.spec_props isnull then
+                            jsonb_build_object()
+                        else
+                            cjp.spec_props
+                        end
+                    as spec_props,
+                    case 
+                        when cjwc.coverages isnull 
+                            then jsonb_build_array()
+                        else
+                            cjwc.coverages
+                        end
+                    as coverages,
                     cjwi.inserts,
-                    cjwc.coverages,
-                    cast(stone_max_weight_id as integer) as stone_max_weight_id,
-                    cast(stone_max_colour_id as integer) as stone_max_colour_id,
+                    cgv.video_medias,
+                    cp.picture_medias,
+                    dominant_data->'weight' as dominant_weight,
+                    dominant_data->'stone_id' as dominant_stone_id,
+                    dominant_data->'stone_name' as dominant_stone_name,
+                    dominant_data->'colour_id' as dominant_colour_id,
+                    dominant_data->'colour_name' as dominant_colour_name,
                     cjm.metals
                 from jewelleries.jewelleries as jj
                 join jewelleries.categories as jc on jj.category_id = jc.id
@@ -456,8 +547,9 @@ return new class extends Migration
                 left join cte_jw_coverages as cjwc on jj.id = cjwc.jewellery_id
                 left join cte_jw_metals as cjm on jj.id = cjm.jewellery_id
                 left join cte_jw_props as cjp on  jj.id = cjp.jewellery_id
-                left join jsonb_path_query(cjwi.inserts, '$[*].stone ? (@.max_weight != null) .id') as stone_max_weight_id on jj.id = cjwi.jewellery_id
-                left join jsonb_path_query(cjwi.inserts, '$[*].stone ? (@.max_weight != null) .colour_id') as stone_max_colour_id on jj.id = cjwi.jewellery_id
+                left join cte_jw_videos as cgv on jj.id = cgv.jewellery_id
+                left join cte_jw_pictures as cp on jj.id = cp.jewellery_id
+                left join jsonb_path_query(cjwi.inserts, '$[*].dominant_stone ? (@.weight != null)') as dominant_data on jj.id = cjwi.jewellery_id
                 order by jj.id
                 
                 with data;

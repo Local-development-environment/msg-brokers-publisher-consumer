@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Jewelleries\JewelleryViews\MenuFilters;
 
-use Domain\Inserts\StoneColours\Enums\StoneColourEnum;
+use Domain\Inserts\Colours\Enums\ColourEnum;
 use Domain\Jewelleries\JewelleryViews\Enums\VJewelleryEnum;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -14,7 +14,7 @@ final class InsertStoneColourMenuFilter
     {
         return $queryBuilder
 //            ->whereNotNull(VJewelleryEnum::FK_STONE_COLOUR->value)
-            ->join(StoneColourEnum::TABLE_NAME->value . ' as jil', VJewelleryEnum::FK_STONE_COLOUR->value, '=', 'jil.id')
+            ->join(ColourEnum::TABLE_NAME->value . ' as jil', VJewelleryEnum::FK_STONE_COLOUR->value, '=', 'jil.id')
             ->select('jil.id', 'jil.name')
             ->groupBy('jil.id')
             ->orderBy('jil.id')

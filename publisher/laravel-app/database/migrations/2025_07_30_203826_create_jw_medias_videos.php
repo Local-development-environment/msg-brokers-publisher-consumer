@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('jw_medias.videos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('video_media_id');
+            $table->unsignedBigInteger('jewellery_id');
+            $table->unsignedBigInteger('producer_id');
             $table->string('name');
+            $table->string('alt_name');
             $table->boolean('is_active');
             $table->timestamps();
 
-            $table->foreign('video_media_id')->references('id')->on('jw_medias.video_medias');
+            $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
+            $table->foreign('producer_id')->references('id')->on('jw_medias.producers');
         });
     }
 
