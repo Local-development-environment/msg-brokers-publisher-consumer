@@ -326,7 +326,7 @@ final class BuildJewellerySeeder extends Seeder
     private function addPiercings(array $jewelleryData, int $jewelleryId): void
     {
         DB::table('jw_properties.piercings')->insertGetId([
-            'jewellery_id' => $jewelleryId,
+            'id' => $jewelleryId,
             'quantity' => $jewelleryData['props']['parameters']['quantity'],
             'price' => $jewelleryData['props']['parameters']['price'],
             'created_at' => now()

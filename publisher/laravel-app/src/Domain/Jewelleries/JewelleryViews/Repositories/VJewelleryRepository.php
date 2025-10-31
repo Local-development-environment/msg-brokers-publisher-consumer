@@ -13,7 +13,7 @@ use Domain\Jewelleries\JewelleryViews\MenuFilters\InsertStoneColourMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\InsertStoneGroupMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\InsertStoneMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\MetalMenuFilter;
-use Domain\Jewelleries\JewelleryViews\MenuFilters\NoInsertMenuFilter;
+use Domain\Jewelleries\JewelleryViews\MenuFilters\IsInsertMenuFilter;
 use Domain\Jewelleries\JewelleryViews\MenuFilters\PriceRangeMenuFilter;
 use Domain\Jewelleries\JewelleryViews\Models\VJewellery;
 use Domain\Shared\CustomFilters\ApproxWeightFilter;
@@ -115,8 +115,8 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
                 'colours' => $this->getMenuItems(
                     InsertStoneColourMenuFilter::class, $params, VJewelleryFilterParamNameEnum::DOMINANT_COLOUR_ID->value
                 ),
-                'no_inserts' => $this->getMenuItems(
-                    NoInsertMenuFilter::class, $params, VJewelleryFilterParamNameEnum::IS_INSERTS->value
+                'is_inserts' => $this->getMenuItems(
+                    IsInsertMenuFilter::class, $params, VJewelleryFilterParamNameEnum::IS_INSERTS->value
                 ),
             ]
         ];

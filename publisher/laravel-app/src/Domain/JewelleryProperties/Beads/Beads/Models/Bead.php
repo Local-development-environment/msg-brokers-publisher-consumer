@@ -8,7 +8,6 @@ use Domain\JewelleryProperties\Beads\BeadBases\Models\BeadBase;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricEnum;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Models\BeadMetric;
 use Domain\JewelleryProperties\Beads\Beads\Enums\BeadEnum;
-use Domain\JewelleryProperties\Beads\BeadSizes\Models\BeadSize;
 use Domain\Shared\JewelleryProperties\Clasps\Models\Clasp;
 use Domain\Shared\JewelleryProperties\NeckSizes\Models\NeckSize;
 use Illuminate\Database\Eloquent\Model;
