@@ -800,7 +800,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\r\n    \"data\": {\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 7,\r\n                        \"bead_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 7,\r\n                        \"bead_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+													"raw": "{\r\n    \"data\": {\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -808,13 +808,13 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseURL}}/beads/19",
+													"raw": "{{baseURL}}/beads/1002",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
 														"beads",
-														"19"
+														"1002"
 													]
 												}
 											},
@@ -4095,6 +4095,323 @@
 			"name": "INSERTS DOMAIN",
 			"item": [
 				{
+					"name": "COLOURS",
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [
+								{
+									"name": "insert-colours index",
+									"id": "6575703-74343b92-72b7-41da-bfae-6d117b82f999",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-colours?include=insertExteriors",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-colours"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "insertExteriors"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "stone-colours show",
+									"id": "6575703-d5865507-3102-44de-9d8c-feb8cb85b608",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/stone-colours/5",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"stone-colours",
+												"5"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-1984da28-7e1e-46e4-aae3-236f9d05ae5e"
+						},
+						{
+							"name": "RELATED",
+							"item": [
+								{
+									"name": "insert-colours insert-exteriors index",
+									"id": "6575703-45c940f0-3f32-4525-a7af-e6cfa70adaa1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-colours/2/insert-exteriors",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-colours",
+												"2",
+												"insert-exteriors"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-a08aa557-203a-4a3f-88dc-2ce06e1e4d8b"
+						},
+						{
+							"name": "RELATIONSHIPS",
+							"item": [
+								{
+									"name": "insert-colours insert-exteriors index",
+									"id": "6575703-041f0ef0-7202-452e-8800-b3fbb4297276",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-colours/2/relationships/insert-exteriors",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-colours",
+												"2",
+												"relationships",
+												"insert-exteriors"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-ff338112-bc51-4468-ae2a-83d266094480"
+						}
+					],
+					"id": "6575703-5ea9d4f5-5295-4053-9096-4cf558b7d5fb"
+				},
+				{
+					"name": "FACETS",
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [
+								{
+									"name": "facets index",
+									"id": "6575703-4df2194d-3e39-43b9-8a7e-ae416fdd2537",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{authAdminToken}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/facets?include=insertExteriors",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"facets"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "insertExteriors"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "facets show",
+									"id": "6575703-304fdd68-3151-46da-8665-69f659a74606",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/facets/3",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"facets",
+												"3"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-247a5092-5c10-4aac-b8a5-1ae6d39c3243"
+						},
+						{
+							"name": "RELATED",
+							"item": [
+								{
+									"name": "facets insert-stones index",
+									"id": "6575703-f4cc357c-e496-4017-8f81-4f0f56c5ed3a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/facets/9/insert-exteriors",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"facets",
+												"9",
+												"insert-exteriors"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-cab624f2-050c-4c60-9c60-8c271e6043a9"
+						},
+						{
+							"name": "RELATIONSHIPS",
+							"item": [
+								{
+									"name": "facets insert-stones index",
+									"id": "6575703-f6942cc4-e3e2-4f0b-9e38-6f9df2e69f83",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/facets/9/relationships/insert-exteriors",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"facets",
+												"9",
+												"relationships",
+												"insert-exteriors"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-65c6ed12-3e83-4b2a-a4da-3aebf4837ee5"
+						}
+					],
+					"id": "6575703-eac3e897-d9d6-4e75-ac12-0fc31fd5da7c"
+				},
+				{
 					"name": "GROWN STONES",
 					"item": [
 						{
@@ -4517,6 +4834,318 @@
 					"id": "6575703-59da4214-a3a0-4af7-866f-6ee87ea267e7"
 				},
 				{
+					"name": "INSERT METRICS",
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [
+								{
+									"name": "insert-metrics index",
+									"id": "6575703-e87bf4d0-85bf-4877-a9df-d878ffd99284",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-metrics?include=insert",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-metrics"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "insert"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "insert-metrics show",
+									"id": "6575703-ce864075-01f1-41d9-a2b2-ad1b1aae67a2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-metrics/5",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-metrics",
+												"5"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-3f45aaf9-a6c7-4b5e-85c1-73c19ce50ec0"
+						},
+						{
+							"name": "RELATED",
+							"item": [
+								{
+									"name": "insert-metrics insert index",
+									"id": "6575703-9739b838-ba30-40b0-b736-bebe361d8c0e",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-metrics/2/insert",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-metrics",
+												"2",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-4827cd7a-fa68-478b-9f17-c2a67b15f134"
+						},
+						{
+							"name": "RELATIONSHIPS",
+							"item": [
+								{
+									"name": "insert-metrics insert index",
+									"id": "6575703-c6e6a18a-a4d4-49cd-838d-8a85d87b3a90",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-metrics/2/relationships/insert",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-metrics",
+												"2",
+												"relationships",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-9a873ada-a2b8-4c00-9d43-605e88663584"
+						}
+					],
+					"id": "6575703-2ca586a5-73d5-48bc-a554-024e8a01a27c"
+				},
+				{
+					"name": "INSERT_OPTIONAL INFOS",
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [
+								{
+									"name": "insert-optional-infos index",
+									"id": "6575703-6e153d6d-1324-47ad-adb9-ce48e7b1b2f6",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-optional-infos?include=insert",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-optional-infos"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "insert"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "insert-optional-infos show",
+									"id": "6575703-ff5edc05-e6c2-4220-a6d2-e8c00777531f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/insert-optional-infos/5",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"insert-optional-infos",
+												"5"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-6bd07982-8036-4ddf-b44d-38dda430d4fb"
+						},
+						{
+							"name": "RELATED",
+							"item": [
+								{
+									"name": "optional-info insert index",
+									"id": "6575703-334fbf3a-d200-40d5-92e3-d4d861fa42db",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/optional-infos/3/insert",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"optional-infos",
+												"3",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-81dbcb2e-a716-4585-96a7-ad4e9e33614a"
+						},
+						{
+							"name": "RELATIONSHIPS",
+							"item": [
+								{
+									"name": "optional-info insert index",
+									"id": "6575703-e5f4a28e-3919-4638-b6d0-a1b2eef27abb",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/optional-infos/3/relationships/insert",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"optional-infos",
+												"3",
+												"relationships",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-5b6316d7-a232-4a75-9de5-b43cdd2d8b62"
+						}
+					],
+					"id": "6575703-4f4719c9-ee1e-409d-a37b-d97f5dcaba3a"
+				},
+				{
 					"name": "INSERTS",
 					"item": [
 						{
@@ -4541,7 +5170,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/inserts?include=optionalInfo,stoneMetric,insertStone",
+											"raw": "{{baseURL}}/inserts?include=insertOptionalInfo,insertMetric,insertStone",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -4551,7 +5180,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "optionalInfo,stoneMetric,insertStone"
+													"value": "insertOptionalInfo,insertMetric,insertStone"
 												}
 											]
 										}
@@ -4628,7 +5257,7 @@
 									"response": []
 								},
 								{
-									"name": "insert optional-info index",
+									"name": "insert insert-optional-info index",
 									"id": "6575703-83482cc3-75a3-4ab8-a3d6-9da5daa634a8",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -4646,14 +5275,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/inserts/3/optional-info",
+											"raw": "{{baseURL}}/inserts/3/insert-optional-info",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"inserts",
 												"3",
-												"optional-info"
+												"insert-optional-info"
 											]
 										}
 									},
@@ -4692,7 +5321,7 @@
 									"response": []
 								},
 								{
-									"name": "insert stone-metric index",
+									"name": "insert insert-metric index",
 									"id": "6575703-0738f5e0-0116-47fa-89c7-987d0a8a0538",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -4710,14 +5339,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/inserts/3/stone-metric",
+											"raw": "{{baseURL}}/inserts/3/insert-metric",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"inserts",
 												"3",
-												"stone-metric"
+												"insert-metric"
 											]
 										}
 									},
@@ -4763,7 +5392,7 @@
 									"response": []
 								},
 								{
-									"name": "insert optional-info index",
+									"name": "insert insert-optional-info index",
 									"id": "6575703-5e201ec2-eee1-4cab-9433-ab56b6f08de9",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -4781,7 +5410,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/inserts/3/relationships/optional-info",
+											"raw": "{{baseURL}}/inserts/3/relationships/insert-optional-info",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -4789,7 +5418,7 @@
 												"inserts",
 												"3",
 												"relationships",
-												"optional-info"
+												"insert-optional-info"
 											]
 										}
 									},
@@ -4829,7 +5458,7 @@
 									"response": []
 								},
 								{
-									"name": "insert stone-metric index",
+									"name": "insert insert-metric index",
 									"id": "6575703-8f2d5f24-a8e2-4153-8ce2-d45917328353",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -4847,7 +5476,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/inserts/3/relationships/stone-metric",
+											"raw": "{{baseURL}}/inserts/3/relationships/insert-metric",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -4855,7 +5484,7 @@
 												"inserts",
 												"3",
 												"relationships",
-												"stone-metric"
+												"insert-metric"
 											]
 										}
 									},
@@ -4868,13 +5497,13 @@
 					"id": "6575703-e735f45d-f137-4c02-9e15-8f80724e60a4"
 				},
 				{
-					"name": "INSERT STONES",
+					"name": "INSERT EXTERIORS",
 					"item": [
 						{
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "insert-stones index",
+									"name": "insert-exteriors index",
 									"id": "6575703-cb85a34c-559f-4339-8250-074db818dcce",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -4892,17 +5521,17 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones?include=stone,stoneColour,stoneFacet,inserts",
+											"raw": "{{baseURL}}/insert-exteriors?include=stone,insertColour,facet,inserts",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones"
+												"insert-exteriors"
 											],
 											"query": [
 												{
 													"key": "include",
-													"value": "stone,stoneColour,stoneFacet,inserts"
+													"value": "stone,insertColour,facet,inserts"
 												}
 											]
 										}
@@ -4910,7 +5539,7 @@
 									"response": []
 								},
 								{
-									"name": "insert-stones show",
+									"name": "insert-exteriors show",
 									"id": "6575703-e9c6b92c-e5bd-4072-a5dc-ff8d6e726539",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -4928,12 +5557,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2",
+											"raw": "{{baseURL}}/insert-exteriors/2",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2"
 											]
 										}
@@ -4947,7 +5576,7 @@
 							"name": "RELATED",
 							"item": [
 								{
-									"name": "insert-stones stone index",
+									"name": "insert-exteriors stone index",
 									"id": "6575703-c7a87189-c187-4bbd-82e3-ec2f8aeb035d",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -4965,12 +5594,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2/stone",
+											"raw": "{{baseURL}}/insert-exteriors/2/stone",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2",
 												"stone"
 											]
@@ -4979,7 +5608,7 @@
 									"response": []
 								},
 								{
-									"name": "insert-stones stone-colour index",
+									"name": "insert-exteriors-colour index",
 									"id": "6575703-9d585d6a-cb50-4941-ba48-40e20cb3fac0",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -4997,21 +5626,21 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2/stone-colour",
+											"raw": "{{baseURL}}/insert-exteriors/2/colour",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2",
-												"stone-colour"
+												"colour"
 											]
 										}
 									},
 									"response": []
 								},
 								{
-									"name": "insert-stones stone-facet index",
+									"name": "insert-exteriors facet index",
 									"id": "6575703-137a1f1c-faf7-44e1-87a4-30e60eba8d9c",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -5029,21 +5658,21 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2/stone-facet",
+											"raw": "{{baseURL}}/insert-exteriors/2/facet",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2",
-												"stone-facet"
+												"facet"
 											]
 										}
 									},
 									"response": []
 								},
 								{
-									"name": "insert-stone inserts index",
+									"name": "insert-exteriors inserts index",
 									"id": "6575703-9d61e19b-6633-470b-9403-94c82c6314f5",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -5061,12 +5690,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2/inserts",
+											"raw": "{{baseURL}}/insert-exteriors/2/inserts",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2",
 												"inserts"
 											]
@@ -5081,7 +5710,7 @@
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
-									"name": "insert-stones stone index",
+									"name": "insert-exteriors stone index",
 									"id": "6575703-83acdca4-9029-494a-81ed-0aaa6ef1631e",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -5099,12 +5728,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2/relationships/stone",
+											"raw": "{{baseURL}}/insert-exteriors/2/relationships/stone",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2",
 												"relationships",
 												"stone"
@@ -5114,7 +5743,7 @@
 									"response": []
 								},
 								{
-									"name": "insert-stones stone-colour index",
+									"name": "insert-exteriors colour index",
 									"id": "6575703-40e35014-1433-4dcf-ad2d-18761b459f31",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -5132,22 +5761,22 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2/relationships/stone-colour",
+											"raw": "{{baseURL}}/insert-exteriors/2/relationships/colour",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2",
 												"relationships",
-												"stone-colour"
+												"colour"
 											]
 										}
 									},
 									"response": []
 								},
 								{
-									"name": "insert-stones stone-facet index",
+									"name": "insert-exteriors facet index",
 									"id": "6575703-f360224d-f01f-4807-afa3-63d09253173e",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -5165,22 +5794,22 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2/relationships/stone-facet",
+											"raw": "{{baseURL}}/insert-exteriors/2/relationships/facet",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2",
 												"relationships",
-												"stone-facet"
+												"facet"
 											]
 										}
 									},
 									"response": []
 								},
 								{
-									"name": "insert-stone inserts index",
+									"name": "insert-exteriors inserts index",
 									"id": "6575703-255adfd6-27b1-4d70-8da2-fc27eea7aa20",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -5198,12 +5827,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-stones/2/relationships/inserts",
+											"raw": "{{baseURL}}/insert-exteriors/2/relationships/inserts",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-stones",
+												"insert-exteriors",
 												"2",
 												"relationships",
 												"inserts"
@@ -5217,6 +5846,319 @@
 						}
 					],
 					"id": "6575703-63f7d597-1a95-4405-8406-b592ddb2de93"
+				},
+				{
+					"name": "NATURAL STONE GRADES",
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [
+								{
+									"name": "natural-stone-grades index",
+									"id": "6575703-0f04f106-691c-4bd2-bb93-a704001d5381",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/natural-stone-grades?include=stoneGrade,naturalStone",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"natural-stone-grades"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "stoneGrade,naturalStone"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "natural-stone-grades show",
+									"id": "6575703-637790fe-d424-4eb3-be55-ad1ccf89e191",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/natural-stone-grades/3",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"natural-stone-grades",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "natural-stone-grades store",
+									"id": "6575703-c643a750-35e2-4980-be12-5cd5c31b63e3",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/natural-stone-grades",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"natural-stone-grades"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "natural-stone-grades update",
+									"id": "6575703-14b14d33-772d-44b7-971f-2b34219613c9",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/natural-stone-grades/3",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"natural-stone-grades",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "natural-stone-grades  destroy",
+									"id": "6575703-5961d2bb-d706-4a18-9baa-e3a93c60112c",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/natural-stone-grades/3",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"natural-stone-grades",
+												"3"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-dce48266-677d-459a-9629-6dc86d71f62f"
+						},
+						{
+							"name": "RELATED",
+							"item": [
+								{
+									"name": "natural-stone-grade natural-stone index",
+									"id": "6575703-61bb961c-1a96-4e08-afb6-45a6da64b08a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/natural-stone-grades/3/natural-stone",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"natural-stone-grades",
+												"3",
+												"natural-stone"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "natural-stone-grades stone-grade index",
+									"id": "6575703-d1f73867-3efd-4bd1-9cfa-f8bdfc6dbc26",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/natural-stone-grades/3/stone-grade",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"natural-stone-grades",
+												"3",
+												"stone-grade"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-4ed619ae-e21c-4bb9-80ed-aaeb57f89384"
+						},
+						{
+							"name": "RELATIONSHIPS",
+							"item": [
+								{
+									"name": "natural-stone-grade natural-stone index",
+									"id": "6575703-a69ee3dc-9dde-42c1-81ee-32d0501646cf",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/natural-stone-grades/3/relationships/natural-stone",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"natural-stone-grades",
+												"3",
+												"relationships",
+												"natural-stone"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "natural-stone-grades stone-grade index",
+									"id": "6575703-bc18ce83-306f-4b14-a758-911b987e983d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/natural-stone-grades/3/relationships/stone-grade",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"natural-stone-grades",
+												"3",
+												"relationships",
+												"stone-grade"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-e0e30ae4-d693-4bbf-96d8-67602ba28e7c"
+						}
+					],
+					"id": "6575703-be1b44a1-e1e0-46ce-843c-2995aadfb4e2"
 				},
 				{
 					"name": "NATURAL STONES",
@@ -5568,319 +6510,6 @@
 						}
 					],
 					"id": "6575703-c1cb9dd4-c3e1-4397-bf9d-1fb4b7aa4365"
-				},
-				{
-					"name": "NATURAL STONE GRADES",
-					"item": [
-						{
-							"name": "CRUD",
-							"item": [
-								{
-									"name": "natural-stone-grades index",
-									"id": "6575703-0f04f106-691c-4bd2-bb93-a704001d5381",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades?include=stoneGrade,naturalStone",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"natural-stone-grades"
-											],
-											"query": [
-												{
-													"key": "include",
-													"value": "stoneGrade,naturalStone"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "natural-stone-grades show",
-									"id": "6575703-637790fe-d424-4eb3-be55-ad1ccf89e191",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"natural-stone-grades",
-												"3"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "natural-stone-grades store",
-									"id": "6575703-c643a750-35e2-4980-be12-5cd5c31b63e3",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"natural-stone-grades"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "natural-stone-grades update",
-									"id": "6575703-14b14d33-772d-44b7-971f-2b34219613c9",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "PATCH",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"natural-stone-grades",
-												"3"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "natural-stone-grades  destroy",
-									"id": "6575703-5961d2bb-d706-4a18-9baa-e3a93c60112c",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "DELETE",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"natural-stone-grades",
-												"3"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-dce48266-677d-459a-9629-6dc86d71f62f"
-						},
-						{
-							"name": "RELATED",
-							"item": [
-								{
-									"name": "natural-stone-grade natural-stone index",
-									"id": "6575703-61bb961c-1a96-4e08-afb6-45a6da64b08a",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3/natural-stone",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"natural-stone-grades",
-												"3",
-												"natural-stone"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "natural-stone-grades stone-grade index",
-									"id": "6575703-d1f73867-3efd-4bd1-9cfa-f8bdfc6dbc26",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3/stone-grade",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"natural-stone-grades",
-												"3",
-												"stone-grade"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-4ed619ae-e21c-4bb9-80ed-aaeb57f89384"
-						},
-						{
-							"name": "RELATIONSHIPS",
-							"item": [
-								{
-									"name": "natural-stone-grade natural-stone index",
-									"id": "6575703-a69ee3dc-9dde-42c1-81ee-32d0501646cf",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3/relationships/natural-stone",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"natural-stone-grades",
-												"3",
-												"relationships",
-												"natural-stone"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "natural-stone-grades stone-grade index",
-									"id": "6575703-bc18ce83-306f-4b14-a758-911b987e983d",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3/relationships/stone-grade",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"natural-stone-grades",
-												"3",
-												"relationships",
-												"stone-grade"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-e0e30ae4-d693-4bbf-96d8-67602ba28e7c"
-						}
-					],
-					"id": "6575703-be1b44a1-e1e0-46ce-843c-2995aadfb4e2"
 				},
 				{
 					"name": "OPTICAL EFFECTS",
@@ -6260,985 +6889,6 @@
 					"id": "6575703-c97d1e8a-e21f-4ccd-933c-bbd8c204db4b"
 				},
 				{
-					"name": "OPTIONAL INFOS",
-					"item": [
-						{
-							"name": "CRUD",
-							"item": [
-								{
-									"name": "optional-infos index",
-									"id": "6575703-6e153d6d-1324-47ad-adb9-ce48e7b1b2f6",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/optional-infos",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"optional-infos"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "optional-infos show",
-									"id": "6575703-ff5edc05-e6c2-4220-a6d2-e8c00777531f",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/optional-infos/5",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"optional-infos",
-												"5"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-6bd07982-8036-4ddf-b44d-38dda430d4fb"
-						},
-						{
-							"name": "RELATED",
-							"item": [
-								{
-									"name": "optional-info insert index",
-									"id": "6575703-334fbf3a-d200-40d5-92e3-d4d861fa42db",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/optional-infos/3/insert",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"optional-infos",
-												"3",
-												"insert"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-81dbcb2e-a716-4585-96a7-ad4e9e33614a"
-						},
-						{
-							"name": "RELATIONSHIPS",
-							"item": [
-								{
-									"name": "optional-info insert index",
-									"id": "6575703-e5f4a28e-3919-4638-b6d0-a1b2eef27abb",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/optional-infos/3/relationships/insert",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"optional-infos",
-												"3",
-												"relationships",
-												"insert"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-5b6316d7-a232-4a75-9de5-b43cdd2d8b62"
-						}
-					],
-					"id": "6575703-4f4719c9-ee1e-409d-a37b-d97f5dcaba3a"
-				},
-				{
-					"name": "STONES",
-					"item": [
-						{
-							"name": "CRUD",
-							"item": [
-								{
-									"name": "stones index",
-									"id": "6575703-ec8e35ba-c0de-4451-99b7-9b8eacbfa282",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											},
-											{
-												"key": "Authorization",
-												"value": "Bearer {{authAdminToken}}",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stones?include=typeOrigin,naturalStone,imitationStone,grownStone",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stones"
-											],
-											"query": [
-												{
-													"key": "include",
-													"value": "typeOrigin,naturalStone,imitationStone,grownStone"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stones show",
-									"id": "6575703-a5566996-893d-4cae-bc10-8e8051fadc35",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stones/2",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stones",
-												"2"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-e5bc6425-03fd-4b55-86c6-51846244af68"
-						},
-						{
-							"name": "RELATIONSHIPS",
-							"item": [
-								{
-									"name": "stones stones-type-origin index",
-									"id": "6575703-0fb90d1b-215a-4068-949d-464fa283f097",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stones/2/relationships/stone-type-origin",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stones",
-												"2",
-												"relationships",
-												"stone-type-origin"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stone natural-stone index",
-									"id": "6575703-0264cce5-4c94-4502-ae5d-41b66cbd5088",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stones/2/relationships/natural-stone",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stones",
-												"2",
-												"relationships",
-												"natural-stone"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stone imitation-stone index",
-									"id": "6575703-a89f70a3-4db3-4d7a-972e-450a8f4ecf18",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stones/2/relationships/imitation-stone",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stones",
-												"2",
-												"relationships",
-												"imitation-stone"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stone grown-stone index",
-									"id": "6575703-255028b6-914c-4cbe-ad24-bf102f5a9fe8",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stones/75/relationships/grown-stone",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stones",
-												"75",
-												"relationships",
-												"grown-stone"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-6d97a4f5-a313-49b6-88ae-225cc44adbb8"
-						},
-						{
-							"name": "RELATED",
-							"item": [
-								{
-									"name": "stones stones-type-origin index",
-									"id": "6575703-a467221c-20b7-4f61-8b61-d6e1d88a8e2e",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stones/2/stone-type-origin",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stones",
-												"2",
-												"stone-type-origin"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stone imitation-stone index",
-									"id": "6575703-2de20fff-106b-41ca-bf4f-ca9fa3e96de1",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stones/2/imitation-stone",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stones",
-												"2",
-												"imitation-stone"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stone natural-stone index",
-									"id": "6575703-b9d8cbce-1ced-471d-a815-48fb02618da5",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stones/2/natural-stone",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stones",
-												"2",
-												"natural-stone"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stone grown-stone index",
-									"id": "6575703-db70f90d-3500-4cd1-9230-5cfa1e5287ff",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stones/76/grown-stone",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stones",
-												"76",
-												"grown-stone"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-04726816-2cc6-4380-a7eb-22eb6b5cedbc"
-						}
-					],
-					"id": "6575703-07971991-a384-46c8-b8eb-a30431a67b54"
-				},
-				{
-					"name": "STONE COLOURS",
-					"item": [
-						{
-							"name": "CRUD",
-							"item": [
-								{
-									"name": "stone-colours index",
-									"id": "6575703-74343b92-72b7-41da-bfae-6d117b82f999",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stone-colours?include=insertStones",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stone-colours"
-											],
-											"query": [
-												{
-													"key": "include",
-													"value": "insertStones"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stone-colours show",
-									"id": "6575703-d5865507-3102-44de-9d8c-feb8cb85b608",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stone-colours/5",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stone-colours",
-												"5"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-1984da28-7e1e-46e4-aae3-236f9d05ae5e"
-						},
-						{
-							"name": "RELATED",
-							"item": [
-								{
-									"name": "stone-colours insert-stones index",
-									"id": "6575703-45c940f0-3f32-4525-a7af-e6cfa70adaa1",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stone-colours/2/insert-stones",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stone-colours",
-												"2",
-												"insert-stones"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-a08aa557-203a-4a3f-88dc-2ce06e1e4d8b"
-						},
-						{
-							"name": "RELATIONSHIPS",
-							"item": [
-								{
-									"name": "stone-colours insert-stones index",
-									"id": "6575703-041f0ef0-7202-452e-8800-b3fbb4297276",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stone-colours/2/relationships/insert-stones",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stone-colours",
-												"2",
-												"relationships",
-												"insert-stones"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-ff338112-bc51-4468-ae2a-83d266094480"
-						}
-					],
-					"id": "6575703-5ea9d4f5-5295-4053-9096-4cf558b7d5fb"
-				},
-				{
-					"name": "STONE METRICS",
-					"item": [
-						{
-							"name": "CRUD",
-							"item": [
-								{
-									"name": "stone-metrics index",
-									"id": "6575703-e87bf4d0-85bf-4877-a9df-d878ffd99284",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stone-metrics?include=insert",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stone-metrics"
-											],
-											"query": [
-												{
-													"key": "include",
-													"value": "insert"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stone-metrics show",
-									"id": "6575703-ce864075-01f1-41d9-a2b2-ad1b1aae67a2",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stone-metrics/5",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stone-metrics",
-												"5"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-3f45aaf9-a6c7-4b5e-85c1-73c19ce50ec0"
-						},
-						{
-							"name": "RELATED",
-							"item": [
-								{
-									"name": "stone-metrics insert index",
-									"id": "6575703-9739b838-ba30-40b0-b736-bebe361d8c0e",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stone-metrics/2/insert",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stone-metrics",
-												"2",
-												"insert"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-4827cd7a-fa68-478b-9f17-c2a67b15f134"
-						},
-						{
-							"name": "RELATIONSHIPS",
-							"item": [
-								{
-									"name": "stone-metrics insert index",
-									"id": "6575703-c6e6a18a-a4d4-49cd-838d-8a85d87b3a90",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stone-metrics/2/relationships/insert",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stone-metrics",
-												"2",
-												"relationships",
-												"insert"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-9a873ada-a2b8-4c00-9d43-605e88663584"
-						}
-					],
-					"id": "6575703-2ca586a5-73d5-48bc-a554-024e8a01a27c"
-				},
-				{
-					"name": "STONE FACETS",
-					"item": [
-						{
-							"name": "CRUD",
-							"item": [
-								{
-									"name": "stone-facets index",
-									"id": "6575703-4df2194d-3e39-43b9-8a7e-ae416fdd2537",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											},
-											{
-												"key": "Authorization",
-												"value": "Bearer {{authAdminToken}}",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stone-facets?include=insertStones",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stone-facets"
-											],
-											"query": [
-												{
-													"key": "include",
-													"value": "insertStones"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "stone-facets show",
-									"id": "6575703-304fdd68-3151-46da-8665-69f659a74606",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stone-facets/3",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stone-facets",
-												"3"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-247a5092-5c10-4aac-b8a5-1ae6d39c3243"
-						},
-						{
-							"name": "RELATED",
-							"item": [
-								{
-									"name": "stone-facets insert-stones index",
-									"id": "6575703-f4cc357c-e496-4017-8f81-4f0f56c5ed3a",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stone-facets/9/insert-stones",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stone-facets",
-												"9",
-												"insert-stones"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-cab624f2-050c-4c60-9c60-8c271e6043a9"
-						},
-						{
-							"name": "RELATIONSHIPS",
-							"item": [
-								{
-									"name": "stone-facets insert-stones index",
-									"id": "6575703-f6942cc4-e3e2-4f0b-9e38-6f9df2e69f83",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stone-facets/9/relationships/insert-stones",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stone-facets",
-												"9",
-												"relationships",
-												"insert-stones"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-65c6ed12-3e83-4b2a-a4da-3aebf4837ee5"
-						}
-					],
-					"id": "6575703-eac3e897-d9d6-4e75-ac12-0fc31fd5da7c"
-				},
-				{
 					"name": "STONE FAMILIES",
 					"item": [
 						{
@@ -7263,12 +6913,18 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-families",
+											"raw": "{{baseURL}}/stone-families?include=naturalStones,grownStones",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"stone-families"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "naturalStones,grownStones"
+												}
 											]
 										}
 									},
@@ -7948,6 +7604,362 @@
 						}
 					],
 					"id": "6575703-a27a51c1-8dc7-41bf-bda0-a9ccfbf96682"
+				},
+				{
+					"name": "STONES",
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [
+								{
+									"name": "stones index",
+									"id": "6575703-ec8e35ba-c0de-4451-99b7-9b8eacbfa282",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{authAdminToken}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/stones?include=typeOrigin,naturalStone,imitationStone,grownStone,stoneColours,stoneFacets",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"stones"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "typeOrigin,naturalStone,imitationStone,grownStone,stoneColours,stoneFacets"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "stones show",
+									"id": "6575703-a5566996-893d-4cae-bc10-8e8051fadc35",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/stones/2",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"stones",
+												"2"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-e5bc6425-03fd-4b55-86c6-51846244af68"
+						},
+						{
+							"name": "RELATIONSHIPS",
+							"item": [
+								{
+									"name": "stones stones-type-origin index",
+									"id": "6575703-0fb90d1b-215a-4068-949d-464fa283f097",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/stones/2/relationships/stone-type-origin",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"stones",
+												"2",
+												"relationships",
+												"stone-type-origin"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "stone natural-stone index",
+									"id": "6575703-0264cce5-4c94-4502-ae5d-41b66cbd5088",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/stones/2/relationships/natural-stone",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"stones",
+												"2",
+												"relationships",
+												"natural-stone"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "stone imitation-stone index",
+									"id": "6575703-a89f70a3-4db3-4d7a-972e-450a8f4ecf18",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/stones/2/relationships/imitation-stone",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"stones",
+												"2",
+												"relationships",
+												"imitation-stone"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "stone grown-stone index",
+									"id": "6575703-255028b6-914c-4cbe-ad24-bf102f5a9fe8",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/stones/75/relationships/grown-stone",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"stones",
+												"75",
+												"relationships",
+												"grown-stone"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-6d97a4f5-a313-49b6-88ae-225cc44adbb8"
+						},
+						{
+							"name": "RELATED",
+							"item": [
+								{
+									"name": "stones stones-type-origin index",
+									"id": "6575703-a467221c-20b7-4f61-8b61-d6e1d88a8e2e",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/stones/2/stone-type-origin",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"stones",
+												"2",
+												"stone-type-origin"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "stone imitation-stone index",
+									"id": "6575703-2de20fff-106b-41ca-bf4f-ca9fa3e96de1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/stones/2/imitation-stone",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"stones",
+												"2",
+												"imitation-stone"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "stone natural-stone index",
+									"id": "6575703-b9d8cbce-1ced-471d-a815-48fb02618da5",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/stones/2/natural-stone",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"stones",
+												"2",
+												"natural-stone"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "stone grown-stone index",
+									"id": "6575703-db70f90d-3500-4cd1-9230-5cfa1e5287ff",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/stones/76/grown-stone",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"stones",
+												"76",
+												"grown-stone"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-04726816-2cc6-4380-a7eb-22eb6b5cedbc"
+						}
+					],
+					"id": "6575703-07971991-a384-46c8-b8eb-a30431a67b54"
 				},
 				{
 					"name": "STONE TYPE ORIGINS",
