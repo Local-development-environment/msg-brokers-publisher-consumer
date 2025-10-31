@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Domain\Jewelleries\JewelleryViews\Enums;
 
@@ -6,7 +7,6 @@ enum VJewelleryEnum: string
 {
     case TYPE_RESOURCE = 'vJewelleries';
     case TABLE_NAME    = 'jw_views.v_jewelleries';
-    case FK_CATEGORY   = 'jw_views.v_jewelleries.category_id';
-    case FK_STONE_COLOUR   = 'jw_views.v_jewelleries.stone_max_colour_id';
-    case PRIMARY_KEY   = 'jw_views.v_jewelleries.id';
+    case FK_CATEGORY   = 'category_id';
+    case PRIMARY_KEY   = 'id';
 }

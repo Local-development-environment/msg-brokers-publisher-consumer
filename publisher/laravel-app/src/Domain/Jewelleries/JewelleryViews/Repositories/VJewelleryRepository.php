@@ -20,6 +20,7 @@ use Domain\Shared\CustomFilters\ApproxWeightFilter;
 use Domain\Shared\CustomFilters\ClassifierGroupFilter;
 use Domain\Shared\CustomFilters\CoverageFilter;
 use Domain\Shared\CustomFilters\FamilyFilter;
+use Domain\Shared\CustomFilters\IsInsertFilter;
 use Domain\Shared\CustomFilters\MetalColourFilter;
 use Domain\Shared\CustomFilters\MetalFilter;
 use Domain\Shared\CustomFilters\PriceFilter;
@@ -58,19 +59,19 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
     {
         return QueryBuilder::for(VJewellery::query(), $request)
             ->allowedFilters([
-                AllowedFilter::exact(VJewelleryFilterParamNameEnum::PK_ITSELF->value),
+                AllowedFilter::exact(VJewelleryFilterParamNameEnum::OWN_ID->value),
                 AllowedFilter::exact(VJewelleryFilterParamNameEnum::PART_NUMBER->value),
-                AllowedFilter::exact(VJewelleryFilterParamNameEnum::FK_CATEGORY->value),
-                AllowedFilter::exact(VJewelleryFilterParamNameEnum::JSON_INSERT_COLOUR->value),
-                AllowedFilter::exact(VJewelleryFilterParamNameEnum::JSON_INSERT_IS->value)->nullable(),
-                AllowedFilter::custom(VJewelleryFilterParamNameEnum::APPROX_WEIGHT->value, new ApproxWeightFilter()),
+                AllowedFilter::exact(VJewelleryFilterParamNameEnum::CATEGORY_ID->value),
+                AllowedFilter::exact(VJewelleryFilterParamNameEnum::DOMINANT_COLOUR_ID->value),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::IS_INSERTS->value, new IsInsertFilter)->nullable(),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::APPROX_WEIGHT->value, new ApproxWeightFilter),
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::PRICE_RANGE->value, new PriceFilter),
-                AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_METAL->value, new MetalFilter),
-                AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_COVERAGE->value, new CoverageFilter),
-                AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_STONE->value, new StoneFilter),
-                AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_STONE_FAMILY->value, new FamilyFilter),
-                AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_STONE_GROUP->value, new ClassifierGroupFilter),
-                AllowedFilter::custom(VJewelleryFilterParamNameEnum::JSON_METAL_COLOUR->value, new MetalColourFilter),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::METAL_ID->value, new MetalFilter),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::COVERAGE_ID->value, new CoverageFilter),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::STONE_ID->value, new StoneFilter),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::STONE_FAMILY_ID->value, new FamilyFilter),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::STONE_GROUP_ID->value, new ClassifierGroupFilter),
+                AllowedFilter::custom(VJewelleryFilterParamNameEnum::METAL_COLOUR_ID->value, new MetalColourFilter),
                 'is_active', 'jewellery'
             ]);
     }
@@ -87,7 +88,7 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
 //        dd($params['filter'][VJewelleryFilterParamNameEnum::FK_CATEGORY->value]);
         return [
             'categories' => $this->getMenuItems(
-                CategoryMenuFilter::class, $params, VJewelleryFilterParamNameEnum::FK_CATEGORY->value
+                CategoryMenuFilter::class, $params, VJewelleryFilterParamNameEnum::CATEGORY_ID->value
             ),
             'price_range' => $this->getMenuItems(
                 PriceRangeMenuFilter::class, $params, VJewelleryFilterParamNameEnum::PRICE_RANGE->value
@@ -96,26 +97,26 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
                 ApproxWeightRangeMenuFilter::class, $params, VJewelleryFilterParamNameEnum::APPROX_WEIGHT->value
             ),
             'metals' => $this->getMenuItems(
-                MetalMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_METAL->value
+                MetalMenuFilter::class, $params, VJewelleryFilterParamNameEnum::METAL_ID->value
             ),
             'coverages' => $this->getMenuItems(
-                CoverageMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_COVERAGE->value
+                CoverageMenuFilter::class, $params, VJewelleryFilterParamNameEnum::COVERAGE_ID->value
             ),
             'inserts' => [
                 'stones' => $this->getMenuItems(
-                    InsertStoneMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_STONE->value
+                    InsertStoneMenuFilter::class, $params, VJewelleryFilterParamNameEnum::STONE_ID->value
                 ),
                 'families' => $this->getMenuItems(
-                    InsertFamilyMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_STONE_FAMILY->value
+                    InsertFamilyMenuFilter::class, $params, VJewelleryFilterParamNameEnum::STONE_FAMILY_ID->value
                 ),
                 'groups' => $this->getMenuItems(
-                    InsertStoneGroupMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_STONE_GROUP->value
+                    InsertStoneGroupMenuFilter::class, $params, VJewelleryFilterParamNameEnum::STONE_GROUP_ID->value
                 ),
                 'colours' => $this->getMenuItems(
-                    InsertStoneColourMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_INSERT_COLOUR->value
+                    InsertStoneColourMenuFilter::class, $params, VJewelleryFilterParamNameEnum::DOMINANT_COLOUR_ID->value
                 ),
                 'no_inserts' => $this->getMenuItems(
-                    NoInsertMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JSON_INSERT_IS->value
+                    NoInsertMenuFilter::class, $params, VJewelleryFilterParamNameEnum::IS_INSERTS->value
                 ),
             ]
         ];

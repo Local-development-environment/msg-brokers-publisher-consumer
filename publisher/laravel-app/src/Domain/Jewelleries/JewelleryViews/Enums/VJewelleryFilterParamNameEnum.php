@@ -4,17 +4,17 @@ namespace Domain\Jewelleries\JewelleryViews\Enums;
 
 enum VJewelleryFilterParamNameEnum: string
 {
-    case PK_ITSELF         = 'id';
-    case FK_CATEGORY       = 'category_id';
-    case JSON_METAL        = 'metal_id';
-    case JSON_STONE_FAMILY = 'family_id';
-    case JSON_COVERAGE     = 'coverage_id';
-    case JSON_STONE        = 'stone_id';
-    case PART_NUMBER       = 'part_number';
-    case APPROX_WEIGHT     = 'approx_weight';
-    case PRICE_RANGE       = 'price_range';
-    case JSON_STONE_GROUP  = 'group_id';
-    case JSON_METAL_COLOUR  = 'metal_colour_id';
-    case JSON_INSERT_COLOUR  = 'stone_max_colour_id';
-    case JSON_INSERT_IS  = 'inserts';
+    case OWN_ID             = 'id';
+    case CATEGORY_ID        = 'category_id';
+    case METAL_ID           = 'metal_id';
+    case STONE_FAMILY_ID    = 'family_id';
+    case COVERAGE_ID        = 'coverage_id';
+    case STONE_ID           = 'stone_id';
+    case PART_NUMBER        = 'part_number';
+    case APPROX_WEIGHT      = 'approx_weight';
+    case PRICE_RANGE        = 'price_range';
+    case STONE_GROUP_ID     = 'group_id';
+    case METAL_COLOUR_ID    = 'metal_colour_id';
+    case DOMINANT_COLOUR_ID = 'dominant_colour_id';
+    case IS_INSERTS         = 'is_inserts';
 }

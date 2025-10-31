@@ -10,4 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 final class VJewellery extends Model
 {
     protected $table = VJewelleryEnum::TABLE_NAME->value;
+
+    public const string TYPE_RESOURCE = VJewelleryEnum::TYPE_RESOURCE->value;
 }

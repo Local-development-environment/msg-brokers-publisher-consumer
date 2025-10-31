@@ -14,7 +14,7 @@ final class InsertStoneColourMenuFilter
     {
         return $queryBuilder
 //            ->whereNotNull(VJewelleryEnum::FK_STONE_COLOUR->value)
-            ->join(ColourEnum::TABLE_NAME->value . ' as jil', VJewelleryEnum::FK_STONE_COLOUR->value, '=', 'jil.id')
+            ->join(ColourEnum::TABLE_NAME->value . ' as jil', 'dominant_colour_id', '=', 'jil.id')
             ->select('jil.id', 'jil.name')
             ->groupBy('jil.id')
             ->orderBy('jil.id')
