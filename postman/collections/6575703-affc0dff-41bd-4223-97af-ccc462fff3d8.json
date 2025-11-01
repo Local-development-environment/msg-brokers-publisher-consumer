@@ -8572,17 +8572,17 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/pictures?include=jewellery,producer",
+											"raw": "{{baseURL}}/producers?include=pictures",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"pictures"
+												"producers"
 											],
 											"query": [
 												{
 													"key": "include",
-													"value": "jewellery,producer"
+													"value": "pictures"
 												}
 											]
 										}
