@@ -8608,18 +8608,18 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/pictures/1?include=jewellery,producer",
+											"raw": "{{baseURL}}/producers/1?include=pictures",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"pictures",
+												"producers",
 												"1"
 											],
 											"query": [
 												{
 													"key": "include",
-													"value": "jewellery,producer"
+													"value": "pictures"
 												}
 											]
 										}
