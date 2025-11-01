@@ -8402,11 +8402,6 @@
 			"name": "VUSERS",
 			"item": [
 				{
-					"name": "VIDEOS",
-					"item": [],
-					"id": "6575703-3ae0fa13-f7ad-4f67-9b38-f21121ac7689"
-				},
-				{
 					"name": "v-users index",
 					"id": "6575703-8194a4f9-ecbe-4df2-aaef-290d33443a8d",
 					"protocolProfileBehavior": {
@@ -8561,6 +8556,11 @@
 					"name": "PICTURES",
 					"item": [],
 					"id": "6575703-982d58e6-3442-4dc1-9580-d5b4aaedbaad"
+				},
+				{
+					"name": "VIDEOS",
+					"item": [],
+					"id": "6575703-3ae0fa13-f7ad-4f67-9b38-f21121ac7689"
 				}
 			],
 			"id": "6575703-f9e921f2-19f3-4fc5-ac51-a2116d1bd095"
