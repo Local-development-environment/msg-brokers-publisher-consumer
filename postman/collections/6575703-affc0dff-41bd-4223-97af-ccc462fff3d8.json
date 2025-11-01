@@ -10123,7 +10123,7 @@
 									"response": []
 								},
 								{
-									"name": "videos producer index",
+									"name": "video-details video index",
 									"id": "6575703-fc9f1aa3-ca42-41a6-9c24-8f46dd5eb45b",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -10149,38 +10149,6 @@
 												"videos",
 												"21",
 												"producer"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "video videos-details index",
-									"id": "6575703-67711084-b2de-46ae-9f45-d53a57f7b47b",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/videos/21/video-details",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"videos",
-												"21",
-												"video-details"
 											]
 										}
 									},
