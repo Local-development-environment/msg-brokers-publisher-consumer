@@ -9380,7 +9380,7 @@
 									"response": []
 								},
 								{
-									"name": "pictures destroy",
+									"name": "videos destroy",
 									"id": "6575703-c510e466-109c-49aa-af4b-a71067712a07",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
