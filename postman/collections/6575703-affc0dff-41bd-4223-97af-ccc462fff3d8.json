@@ -9837,14 +9837,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/videos/21/jewellery",
+											"raw": "{{baseURL}}/video-types/1/video-details",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"videos",
-												"21",
-												"jewellery"
+												"video-types",
+												"1",
+												"video-details"
 											]
 										}
 									},
