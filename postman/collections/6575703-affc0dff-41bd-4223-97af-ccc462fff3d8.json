@@ -8706,7 +8706,7 @@
 									"response": []
 								},
 								{
-									"name": "pictures destroy",
+									"name": "producers destroy",
 									"id": "6575703-0c928447-b5c9-4bd2-a6a7-101e437ce291",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
