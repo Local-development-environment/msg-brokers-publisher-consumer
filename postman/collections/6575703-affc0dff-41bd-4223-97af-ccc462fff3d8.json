@@ -8402,6 +8402,11 @@
 			"name": "VUSERS",
 			"item": [
 				{
+					"name": "VIDEOS",
+					"item": [],
+					"id": "6575703-3ae0fa13-f7ad-4f67-9b38-f21121ac7689"
+				},
+				{
 					"name": "v-users index",
 					"id": "6575703-8194a4f9-ecbe-4df2-aaef-290d33443a8d",
 					"protocolProfileBehavior": {
