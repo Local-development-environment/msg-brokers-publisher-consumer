@@ -8836,13 +8836,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/pictures/21/jewellery",
+											"raw": "{{baseURL}}/pictures/21/relationships/jewellery",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"pictures",
 												"21",
+												"relationships",
 												"jewellery"
 											]
 										}
