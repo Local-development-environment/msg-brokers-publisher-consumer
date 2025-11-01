@@ -9340,7 +9340,7 @@
 									"response": []
 								},
 								{
-									"name": "pictures update",
+									"name": "videos update",
 									"id": "6575703-3fb311d0-f860-4856-9b7b-62ac4e1a7d94",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
