@@ -9902,7 +9902,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "video-types index",
+									"name": "video-details index",
 									"id": "6575703-9d107795-3cf4-4513-b21b-75ffddae6dfe",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
