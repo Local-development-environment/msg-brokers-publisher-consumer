@@ -8595,7 +8595,7 @@
 									"response": []
 								},
 								{
-									"name": "beads show",
+									"name": "pictures show",
 									"id": "6575703-bbce62f8-116b-4446-a02d-24d64715c803",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -8632,7 +8632,7 @@
 									"response": []
 								},
 								{
-									"name": "beads store",
+									"name": "pictures store",
 									"id": "6575703-faaddb65-81f3-4298-aa56-a0fd80feaa3c",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
