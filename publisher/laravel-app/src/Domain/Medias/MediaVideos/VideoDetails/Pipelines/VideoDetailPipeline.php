@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Domain\Medias\MediaPictures\Pictures\Pipelines;
+namespace Domain\Medias\MediaVideos\VideoDetails\Pipelines;
 
-use Domain\Medias\MediaPictures\Pictures\Pipelines\Pipes\PictureDestroyPipe;
-use Domain\Medias\MediaPictures\Pictures\Pipelines\Pipes\PictureStorePipe;
-use Domain\Medias\MediaPictures\Pictures\Pipelines\Pipes\PictureUpdatePipe;
+use Domain\Medias\MediaVideos\VideoDetails\Pipelines\Pipes\VideoDetailDestroyPipe;
+use Domain\Medias\MediaVideos\VideoDetails\Pipelines\Pipes\VideoDetailStorePipe;
+use Domain\Medias\MediaVideos\VideoDetails\Pipelines\Pipes\VideoDetailUpdatePipe;
 use Domain\Shared\AbstractPipeline;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
-final class PicturePipeline extends AbstractPipeline
+final class VideoDetailPipeline extends AbstractPipeline
 {
     /**
      * @inheritDoc
@@ -28,7 +28,7 @@ final class PicturePipeline extends AbstractPipeline
             $data = $this->pipeline
                 ->send($data)
                 ->through([
-                    PictureStorePipe::class,
+                    VideoDetailStorePipe::class,
                 ])
                 ->thenReturn();
 
@@ -55,7 +55,7 @@ final class PicturePipeline extends AbstractPipeline
             $this->pipeline
                 ->send(data_set($data, 'id', $id))
                 ->through([
-                    PictureUpdatePipe::class
+                    VideoDetailUpdatePipe::class
                 ])
                 ->thenReturn();
 
@@ -80,7 +80,7 @@ final class PicturePipeline extends AbstractPipeline
             $this->pipeline
                 ->send($id)
                 ->through([
-                    PictureDestroyPipe::class
+                    VideoDetailDestroyPipe::class
                 ])
                 ->thenReturn();
 

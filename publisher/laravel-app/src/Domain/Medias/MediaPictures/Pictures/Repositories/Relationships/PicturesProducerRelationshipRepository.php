@@ -11,7 +11,7 @@ final class PicturesProducerRelationshipRepository
 {
     public function index(int $id): Producer
     {
-        return Picture::findOrFail($id)->jewellery;
+        return Picture::findOrFail($id)->producer;
     }
 
     public function update(array $data, int $id): void
