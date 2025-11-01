@@ -9223,7 +9223,197 @@
 				},
 				{
 					"name": "VIDEOS",
-					"item": [],
+					"item": [
+						{
+							"name": "CRUD Copy",
+							"item": [
+								{
+									"name": "pictures index",
+									"id": "6575703-762f9054-3fff-470a-843f-462c937dc7d8",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/pictures?include=jewellery,producer",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"pictures"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "jewellery,producer"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "pictures show",
+									"id": "6575703-67157b28-7410-4c0a-aa0c-35dae9188600",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/pictures/1?include=jewellery,producer",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"pictures",
+												"1"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "jewellery,producer"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "pictures store",
+									"id": "6575703-345e686a-23a3-4bbb-ba35-94274f9363a2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"data\": {\r\n        \"id\": 1005,\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/pictures",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"pictures"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "pictures update",
+									"id": "6575703-3fb311d0-f860-4856-9b7b-62ac4e1a7d94",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"data\": {\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/pictures/1002",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"pictures",
+												"1002"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "pictures destroy",
+									"id": "6575703-c510e466-109c-49aa-af4b-a71067712a07",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/pictures/17",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"pictures",
+												"17"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-b42d0ae3-7e74-49c5-9e79-07e19fbeef5b"
+						}
+					],
 					"id": "6575703-3ae0fa13-f7ad-4f67-9b38-f21121ac7689"
 				},
 				{
