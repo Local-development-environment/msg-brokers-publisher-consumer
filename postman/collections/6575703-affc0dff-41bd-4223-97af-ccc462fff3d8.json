@@ -9816,7 +9816,90 @@
 							"id": "6575703-6c3e0be0-9f33-46fc-8d88-8742b40773bd"
 						},
 						{
-							"name": "CRUD Copy",
+							"name": "RELATED",
+							"item": [
+								{
+									"name": "video-type video-details index",
+									"id": "6575703-22056a7e-6bc4-44c5-b119-c827de689d21",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/video-types/1/video-details",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"video-types",
+												"1",
+												"video-details"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-29c19e11-fafd-4f34-8bf8-d3181451b600"
+						},
+						{
+							"name": "RELATIONSHIPS",
+							"item": [
+								{
+									"name": "video-type video-details index",
+									"id": "6575703-b9ea0e7d-4443-495e-9445-f9c6ea90e662",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/video-types/1/relationships/video-details",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"video-types",
+												"1",
+												"relationships",
+												"video-details"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-47715230-a28f-4166-9081-6d6db149378a"
+						}
+					],
+					"id": "6575703-cd4fae39-545e-40db-a1f4-30bb972529e8"
+				},
+				{
+					"name": "VIDEO_DETAILS",
+					"item": [
+						{
+							"name": "CRUD b",
 							"item": [
 								{
 									"name": "video-types index",
@@ -10003,90 +10086,8 @@
 								}
 							],
 							"id": "6575703-56b54304-73fe-4c19-8e28-45200fdbc1c5"
-						},
-						{
-							"name": "RELATED",
-							"item": [
-								{
-									"name": "video-type video-details index",
-									"id": "6575703-22056a7e-6bc4-44c5-b119-c827de689d21",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/video-types/1/video-details",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"video-types",
-												"1",
-												"video-details"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-29c19e11-fafd-4f34-8bf8-d3181451b600"
-						},
-						{
-							"name": "RELATIONSHIPS",
-							"item": [
-								{
-									"name": "video-type video-details index",
-									"id": "6575703-b9ea0e7d-4443-495e-9445-f9c6ea90e662",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/video-types/1/relationships/video-details",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"video-types",
-												"1",
-												"relationships",
-												"video-details"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-47715230-a28f-4166-9081-6d6db149378a"
 						}
 					],
-					"id": "6575703-cd4fae39-545e-40db-a1f4-30bb972529e8"
-				},
-				{
-					"name": "VIDEO_DETAILS",
-					"item": [],
 					"id": "6575703-4376683c-8900-42d5-9148-2779077cfcf6"
 				}
 			],
