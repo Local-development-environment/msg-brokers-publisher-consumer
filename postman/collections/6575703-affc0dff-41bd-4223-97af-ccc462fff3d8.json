@@ -8711,7 +8711,7 @@
 									"response": []
 								},
 								{
-									"name": "beads destroy",
+									"name": "pictures destroy",
 									"id": "6575703-f684c1c1-4e1b-43bc-b9ef-be755771979a",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
