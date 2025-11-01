@@ -9537,13 +9537,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/videos/21/jewellery",
+											"raw": "{{baseURL}}/videos/21/relationships/jewellery",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"videos",
 												"21",
+												"relationships",
 												"jewellery"
 											]
 										}
