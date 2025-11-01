@@ -8775,6 +8775,38 @@
 									"response": []
 								},
 								{
+									"name": "producer videos index Copy",
+									"id": "6575703-45115b6d-7b5f-4de2-92d3-3e8175635a82",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/producers/21/videos",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"producers",
+												"21",
+												"videos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "producer pictures index",
 									"id": "6575703-0d0ecccc-d6dd-4cfd-9f6f-f8adc2109a12",
 									"protocolProfileBehavior": {
