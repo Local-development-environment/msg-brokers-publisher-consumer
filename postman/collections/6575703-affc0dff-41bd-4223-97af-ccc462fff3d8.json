@@ -8813,7 +8813,7 @@
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
-									"name": "producer videos index Copy",
+									"name": "producer videos index",
 									"id": "6575703-45115b6d-7b5f-4de2-92d3-3e8175635a82",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -8831,13 +8831,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/producers/21/videos",
+											"raw": "{{baseURL}}/producers/21/relationship/videos",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"producers",
 												"21",
+												"relationship",
 												"videos"
 											]
 										}
