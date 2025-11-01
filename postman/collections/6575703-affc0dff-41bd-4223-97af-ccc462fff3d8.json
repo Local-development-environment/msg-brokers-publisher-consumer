@@ -8698,12 +8698,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseURL}}/beads/1002",
+											"raw": "{{baseURL}}/pictures/1002",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"beads",
+												"pictures",
 												"1002"
 											]
 										}
