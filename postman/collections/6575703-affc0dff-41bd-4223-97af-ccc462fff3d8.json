@@ -9920,17 +9920,17 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/video-types?include=videoDetails",
+											"raw": "{{baseURL}}/video-details?include=videoType",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"video-types"
+												"video-details"
 											],
 											"query": [
 												{
 													"key": "include",
-													"value": "videoDetails"
+													"value": "videoType"
 												}
 											]
 										}
