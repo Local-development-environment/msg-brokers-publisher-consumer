@@ -8844,6 +8844,39 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "producer videos index Copy",
+									"id": "6575703-4ebdf96b-f634-4b4f-9a21-77166b3c04db",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/producers/21/relationship/videos",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"producers",
+												"21",
+												"relationship",
+												"videos"
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"id": "6575703-42d132e9-2a7b-4a43-96ca-471d4aa81c7b"
