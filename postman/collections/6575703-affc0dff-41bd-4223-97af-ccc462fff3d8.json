@@ -9228,7 +9228,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "pictures index",
+									"name": "videos index",
 									"id": "6575703-762f9054-3fff-470a-843f-462c937dc7d8",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
