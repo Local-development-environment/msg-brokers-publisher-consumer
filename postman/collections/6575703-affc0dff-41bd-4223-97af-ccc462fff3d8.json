@@ -9782,7 +9782,7 @@
 									"response": []
 								},
 								{
-									"name": "videos destroy",
+									"name": "video-types destroy",
 									"id": "6575703-198ddf74-3ee7-4e08-ac14-8f4005703bf2",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
