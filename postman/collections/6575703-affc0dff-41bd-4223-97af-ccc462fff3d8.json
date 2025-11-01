@@ -8831,14 +8831,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/producers/21/relationship/videos",
+											"raw": "{{baseURL}}/producers/1/relationships/videos",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"producers",
-												"21",
-												"relationship",
+												"1",
+												"relationships",
 												"videos"
 											]
 										}
