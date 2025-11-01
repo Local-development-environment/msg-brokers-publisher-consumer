@@ -9147,6 +9147,76 @@
 							"id": "6575703-96691dfa-be6b-4cbf-b84d-0e65c9b4feb6"
 						},
 						{
+							"name": "RELATED Copy",
+							"item": [
+								{
+									"name": "pictures jewellery index",
+									"id": "6575703-a02d2182-3195-4beb-b102-176de29b0ff1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/pictures/21/jewellery",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"pictures",
+												"21",
+												"jewellery"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "pictures producer index",
+									"id": "6575703-62e830d1-a21a-4baa-81dd-4fd2b2a8746f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/pictures/21/producer",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"pictures",
+												"21",
+												"producer"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-f81404d5-64ee-4c7a-9b28-1326c745d324"
+						},
+						{
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
