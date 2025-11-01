@@ -8613,18 +8613,18 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/beads/1?include=jewellery,beadSizes,beadMetrics,clasp,beadBase",
+											"raw": "{{baseURL}}/pictures/1?include=jewellery,producer",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"beads",
+												"pictures",
 												"1"
 											],
 											"query": [
 												{
 													"key": "include",
-													"value": "jewellery,beadSizes,beadMetrics,clasp,beadBase"
+													"value": "jewellery,producer"
 												}
 											]
 										}
