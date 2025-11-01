@@ -8729,12 +8729,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/beads/17",
+											"raw": "{{baseURL}}/pictures/17",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"beads",
+												"pictures",
 												"17"
 											]
 										}
