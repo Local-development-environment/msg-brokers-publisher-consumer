@@ -8816,7 +8816,40 @@
 						},
 						{
 							"name": "RELATIONSHIPS",
-							"item": [],
+							"item": [
+								{
+									"name": "pictures jewellery index Copy",
+									"id": "6575703-fb25b9bd-aa21-444f-bc3a-13e1ef6a40d8",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/pictures/21/jewellery",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"pictures",
+												"21",
+												"jewellery"
+											]
+										}
+									},
+									"response": []
+								}
+							],
 							"id": "6575703-fba681e0-42a2-4786-961b-602a2eab5549"
 						}
 					],
