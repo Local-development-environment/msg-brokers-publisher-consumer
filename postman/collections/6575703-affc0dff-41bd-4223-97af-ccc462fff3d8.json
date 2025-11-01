@@ -10212,13 +10212,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/video-details/21/video",
+											"raw": "{{baseURL}}/video-details/21/relationships/video",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"video-details",
 												"21",
+												"relationships",
 												"video"
 											]
 										}
