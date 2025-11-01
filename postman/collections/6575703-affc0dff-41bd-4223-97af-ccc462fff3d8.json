@@ -8798,14 +8798,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/beads/21/clasp",
+											"raw": "{{baseURL}}/pictures/21/producer",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"beads",
+												"pictures",
 												"21",
-												"clasp"
+												"producer"
 											]
 										}
 									},
@@ -8813,6 +8813,11 @@
 								}
 							],
 							"id": "6575703-96691dfa-be6b-4cbf-b84d-0e65c9b4feb6"
+						},
+						{
+							"name": "RELATIONSHIPS",
+							"item": [],
+							"id": "6575703-fba681e0-42a2-4786-961b-602a2eab5549"
 						}
 					],
 					"id": "6575703-982d58e6-3442-4dc1-9580-d5b4aaedbaad"
