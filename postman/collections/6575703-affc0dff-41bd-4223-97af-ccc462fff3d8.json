@@ -9570,13 +9570,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/videos/21/producer",
+											"raw": "{{baseURL}}/videos/21/relationships/producer",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"videos",
 												"21",
+												"relationships",
 												"producer"
 											]
 										}
