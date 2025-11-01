@@ -9449,8 +9449,40 @@
 									"response": []
 								},
 								{
-									"name": "pictures producer index",
+									"name": "videoss producer index",
 									"id": "6575703-62e830d1-a21a-4baa-81dd-4fd2b2a8746f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/pictures/21/producer",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"pictures",
+												"21",
+												"producer"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "videoss producer index Copy",
+									"id": "6575703-865dd3f9-7269-4040-a009-caea4cb71d36",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
 										"disabledSystemHeaders": {
