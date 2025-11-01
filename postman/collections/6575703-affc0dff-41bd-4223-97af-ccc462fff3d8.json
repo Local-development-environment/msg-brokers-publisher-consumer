@@ -9301,7 +9301,7 @@
 									"response": []
 								},
 								{
-									"name": "pictures store",
+									"name": "videos store",
 									"id": "6575703-345e686a-23a3-4bbb-ba35-94274f9363a2",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
