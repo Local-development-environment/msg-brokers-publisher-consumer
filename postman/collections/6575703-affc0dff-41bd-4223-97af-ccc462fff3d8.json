@@ -9467,12 +9467,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/pictures/21/producer",
+											"raw": "{{baseURL}}/videos/21/producer",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"pictures",
+												"videos",
 												"21",
 												"producer"
 											]
