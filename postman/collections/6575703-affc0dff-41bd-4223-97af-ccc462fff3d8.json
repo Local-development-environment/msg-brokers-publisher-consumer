@@ -8869,7 +8869,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/pictures/21/relationships/jewellery",
+											"raw": "{{baseURL}}/pictures/21/relationships/producer",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -8877,7 +8877,7 @@
 												"pictures",
 												"21",
 												"relationships",
-												"jewellery"
+												"producer"
 											]
 										}
 									},
