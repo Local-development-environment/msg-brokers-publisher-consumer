@@ -8559,7 +8559,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "beads index",
+									"name": "pictures index",
 									"id": "6575703-cee85a54-3518-430f-9445-7dbdb13ee329",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
