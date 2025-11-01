@@ -10002,12 +10002,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseURL}}/video-types",
+											"raw": "{{baseURL}}/video-details",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"video-types"
+												"video-details"
 											]
 										}
 									},
@@ -10041,12 +10041,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseURL}}/video-types/1002",
+											"raw": "{{baseURL}}/video-details/1002",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"video-types",
+												"video-details",
 												"1002"
 											]
 										}
