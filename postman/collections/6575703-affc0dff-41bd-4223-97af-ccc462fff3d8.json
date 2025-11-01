@@ -10054,7 +10054,7 @@
 									"response": []
 								},
 								{
-									"name": "video-types destroy",
+									"name": "video-details destroy",
 									"id": "6575703-602dbe95-de2a-4607-bdef-b75f7445e3d2",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
