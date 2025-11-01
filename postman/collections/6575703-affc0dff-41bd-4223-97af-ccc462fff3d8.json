@@ -8627,7 +8627,7 @@
 									"response": []
 								},
 								{
-									"name": "pictures store",
+									"name": "producers store",
 									"id": "6575703-d83cfd77-4d71-4807-93e9-2a738dce0693",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -8666,7 +8666,7 @@
 									"response": []
 								},
 								{
-									"name": "pictures update",
+									"name": "producers update",
 									"id": "6575703-f579993a-0b9d-43d3-8896-3774fea9bbcb",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
