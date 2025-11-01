@@ -8724,12 +8724,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/pictures/17",
+											"raw": "{{baseURL}}/producers/17",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"pictures",
+												"producers",
 												"17"
 											]
 										}
