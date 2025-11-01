@@ -8864,13 +8864,13 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/producers/21/relationships/pictures",
+											"raw": "{{baseURL}}/producers/2/relationships/pictures",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"producers",
-												"21",
+												"2",
 												"relationships",
 												"pictures"
 											]
