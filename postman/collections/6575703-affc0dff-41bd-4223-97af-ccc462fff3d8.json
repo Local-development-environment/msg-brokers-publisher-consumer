@@ -8654,12 +8654,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseURL}}/pictures",
+											"raw": "{{baseURL}}/producers",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"pictures"
+												"producers"
 											]
 										}
 									},
