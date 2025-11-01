@@ -8671,7 +8671,7 @@
 									"response": []
 								},
 								{
-									"name": "picturesupdate",
+									"name": "pictures update",
 									"id": "6575703-eca2dfc7-f6d7-4509-9576-fac2ac901097",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
