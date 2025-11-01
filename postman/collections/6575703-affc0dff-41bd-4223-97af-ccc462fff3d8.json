@@ -8659,12 +8659,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseURL}}/beads",
+											"raw": "{{baseURL}}/pictures",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"beads"
+												"pictures"
 											]
 										}
 									},
