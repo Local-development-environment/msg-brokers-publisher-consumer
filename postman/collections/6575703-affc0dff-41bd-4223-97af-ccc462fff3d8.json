@@ -10179,13 +10179,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/video-details/21/video-type",
+											"raw": "{{baseURL}}/video-details/21/relationships/video-type",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"video-details",
 												"21",
+												"relationships",
 												"video-type"
 											]
 										}
