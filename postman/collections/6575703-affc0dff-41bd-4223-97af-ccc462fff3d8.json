@@ -9246,12 +9246,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/pictures?include=jewellery,producer",
+											"raw": "{{baseURL}}/videos?include=jewellery,producer",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"pictures"
+												"videos"
 											],
 											"query": [
 												{
