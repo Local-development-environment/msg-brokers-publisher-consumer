@@ -9367,12 +9367,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseURL}}/pictures/1002",
+											"raw": "{{baseURL}}/videos/1002",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"pictures",
+												"videos",
 												"1002"
 											]
 										}
