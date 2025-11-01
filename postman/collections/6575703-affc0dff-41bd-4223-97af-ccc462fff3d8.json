@@ -8761,14 +8761,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/pictures/21/jewellery",
+											"raw": "{{baseURL}}/producers/21/videos",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"pictures",
+												"producers",
 												"21",
-												"jewellery"
+												"videos"
 											]
 										}
 									},
