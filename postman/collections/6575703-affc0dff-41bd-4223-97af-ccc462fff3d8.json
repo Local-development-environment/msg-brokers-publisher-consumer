@@ -8775,7 +8775,7 @@
 									"response": []
 								},
 								{
-									"name": "pictures producer index",
+									"name": "producer pictures index",
 									"id": "6575703-0d0ecccc-d6dd-4cfd-9f6f-f8adc2109a12",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
