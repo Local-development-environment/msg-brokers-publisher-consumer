@@ -10072,12 +10072,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/video-types/17",
+											"raw": "{{baseURL}}/video-details/17",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"video-types",
+												"video-details",
 												"17"
 											]
 										}
