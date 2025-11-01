@@ -9603,13 +9603,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/videos/21/video-details",
+											"raw": "{{baseURL}}/videos/21/relationships/video-details",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"videos",
 												"21",
+												"relationships",
 												"video-details"
 											]
 										}
