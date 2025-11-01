@@ -855,195 +855,6 @@
 									"id": "6575703-6ccded34-d819-42e6-951f-4104de88e467"
 								},
 								{
-									"name": "CRUD Copy",
-									"item": [
-										{
-											"name": "beads index",
-											"id": "6575703-c0c98f9f-3837-4810-a2b3-307dcdacfc66",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true,
-												"disabledSystemHeaders": {
-													"accept": true
-												}
-											},
-											"request": {
-												"method": "GET",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/vnd.api+json",
-														"type": "text"
-													}
-												],
-												"url": {
-													"raw": "{{baseURL}}/beads?include=jewellery,neckSizes,beadMetrics,clasp,beadBase",
-													"host": [
-														"{{baseURL}}"
-													],
-													"path": [
-														"beads"
-													],
-													"query": [
-														{
-															"key": "include",
-															"value": "jewellery,neckSizes,beadMetrics,clasp,beadBase"
-														}
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "beads show",
-											"id": "6575703-c5ea28a7-2188-44c8-8e05-2a10acce3728",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true,
-												"disabledSystemHeaders": {
-													"accept": true
-												}
-											},
-											"request": {
-												"method": "GET",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/vnd.api+json",
-														"type": "text"
-													}
-												],
-												"url": {
-													"raw": "{{baseURL}}/beads/1?include=jewellery,beadSizes,beadMetrics,clasp,beadBase",
-													"host": [
-														"{{baseURL}}"
-													],
-													"path": [
-														"beads",
-														"1"
-													],
-													"query": [
-														{
-															"key": "include",
-															"value": "jewellery,beadSizes,beadMetrics,clasp,beadBase"
-														}
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "beads store",
-											"id": "6575703-140fe90f-ebd9-4b89-9712-f17b7f1a345d",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true,
-												"disabledSystemHeaders": {
-													"accept": true
-												}
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/vnd.api+json",
-														"type": "text"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"data\": {\r\n        \"id\": 1005,\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseURL}}/beads",
-													"host": [
-														"{{baseURL}}"
-													],
-													"path": [
-														"beads"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "beads update",
-											"id": "6575703-125e12f4-4a1a-4ab0-8a7a-230bdb54bb3f",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true,
-												"disabledSystemHeaders": {
-													"accept": true
-												}
-											},
-											"request": {
-												"method": "PATCH",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/vnd.api+json",
-														"type": "text"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"data\": {\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseURL}}/beads/1002",
-													"host": [
-														"{{baseURL}}"
-													],
-													"path": [
-														"beads",
-														"1002"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "beads destroy",
-											"id": "6575703-43535cae-78d6-4a56-b9a0-9210ce89af86",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true,
-												"disabledSystemHeaders": {
-													"accept": true
-												}
-											},
-											"request": {
-												"method": "DELETE",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/vnd.api+json",
-														"type": "text"
-													}
-												],
-												"url": {
-													"raw": "{{baseURL}}/beads/17",
-													"host": [
-														"{{baseURL}}"
-													],
-													"path": [
-														"beads",
-														"17"
-													]
-												}
-											},
-											"response": []
-										}
-									],
-									"id": "6575703-30be58c0-7ef2-46d0-948a-417c2cbb3ba0"
-								},
-								{
 									"name": "RELATED",
 									"item": [
 										{
@@ -4278,8 +4089,281 @@
 					"id": "6575703-1b62000f-949a-4200-987b-50fbb7a05f2d"
 				},
 				{
-					"name": "PIERCINGS",
-					"item": [],
+					"name": "PIERCINGS PROPERTIES",
+					"item": [
+						{
+							"name": "PIERCINGS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "piercings index",
+											"id": "6575703-c0c98f9f-3837-4810-a2b3-307dcdacfc66",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/piercings?include=jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"piercings"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "jewellery"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "piercings show",
+											"id": "6575703-c5ea28a7-2188-44c8-8e05-2a10acce3728",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/piercings/2?include=jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"piercings",
+														"2"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "jewellery"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "piercings store",
+											"id": "6575703-140fe90f-ebd9-4b89-9712-f17b7f1a345d",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"data\": {\r\n        \"id\": 1005,\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseURL}}/piercings",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"piercings"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "piercings update",
+											"id": "6575703-125e12f4-4a1a-4ab0-8a7a-230bdb54bb3f",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"data\": {\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseURL}}/piercings/1002",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"piercings",
+														"1002"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "piercings destroy",
+											"id": "6575703-43535cae-78d6-4a56-b9a0-9210ce89af86",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/piercings/17",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"piercings",
+														"17"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-30be58c0-7ef2-46d0-948a-417c2cbb3ba0"
+								},
+								{
+									"name": "RELATED",
+									"item": [
+										{
+											"name": "piercing jewellery index",
+											"id": "6575703-1fc30317-b13a-4ded-9aba-2f6c8b9698a3",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/piercings/2/jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"piercings",
+														"2",
+														"jewellery"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-b29c6f7f-e825-4014-b975-0c9e419041ce"
+								},
+								{
+									"name": "RELATIONSHIPS",
+									"item": [
+										{
+											"name": "piercing jewellery index",
+											"id": "6575703-7dde0d7b-7c87-4e37-b1e6-aeaea85f3518",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/piercings/22/relationships/jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"piercings",
+														"22",
+														"relationships",
+														"jewellery"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-edb5a7ec-5c81-4364-ab03-0e861cbe9c3b"
+								}
+							],
+							"id": "6575703-f9ef2df9-6a1a-44b8-b809-dcb6d7b83891"
+						}
+					],
 					"id": "6575703-208e1798-e510-49b1-b994-e7dc9219f884"
 				}
 			],
