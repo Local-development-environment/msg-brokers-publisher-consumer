@@ -9684,18 +9684,18 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/videos/1?include=jewellery,producer",
+											"raw": "{{baseURL}}/video-types/1?include=videoDetails",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"videos",
+												"video-types",
 												"1"
 											],
 											"query": [
 												{
 													"key": "include",
-													"value": "jewellery,producer"
+													"value": "videoDetails"
 												}
 											]
 										}
