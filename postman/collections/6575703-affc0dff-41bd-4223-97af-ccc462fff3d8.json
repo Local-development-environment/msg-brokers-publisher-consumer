@@ -9514,6 +9514,108 @@
 								}
 							],
 							"id": "6575703-f81404d5-64ee-4c7a-9b28-1326c745d324"
+						},
+						{
+							"name": "RELATED Copy",
+							"item": [
+								{
+									"name": "videos jewellery index",
+									"id": "6575703-610067c7-8dda-4b26-88ae-106d61373bed",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/videos/21/jewellery",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"videos",
+												"21",
+												"jewellery"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "videos producer index",
+									"id": "6575703-f2cf67a3-84b5-472a-9b19-c1a1fe6cc8a2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/videos/21/producer",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"videos",
+												"21",
+												"producer"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "video videos-details index",
+									"id": "6575703-2ccad62f-5312-4772-8161-db70eaea17a8",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/videos/21/video-details",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"videos",
+												"21",
+												"video-details"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-63fed3a1-4eff-48ab-a647-9a56dcdb682f"
 						}
 					],
 					"id": "6575703-3ae0fa13-f7ad-4f67-9b38-f21121ac7689"
