@@ -9769,12 +9769,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseURL}}/videos/1002",
+											"raw": "{{baseURL}}/video-types/1002",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"videos",
+												"video-types",
 												"1002"
 											]
 										}
