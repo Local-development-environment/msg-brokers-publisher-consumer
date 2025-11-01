@@ -8766,12 +8766,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/beads/21/jewellery",
+											"raw": "{{baseURL}}/pictures/21/jewellery",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"beads",
+												"pictures",
 												"21",
 												"jewellery"
 											]
