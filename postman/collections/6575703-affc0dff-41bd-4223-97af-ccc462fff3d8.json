@@ -9742,7 +9742,7 @@
 									"response": []
 								},
 								{
-									"name": "videos update",
+									"name": "video-types update",
 									"id": "6575703-b5cc2f06-57ce-481a-bc40-b7edffcfb889",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
