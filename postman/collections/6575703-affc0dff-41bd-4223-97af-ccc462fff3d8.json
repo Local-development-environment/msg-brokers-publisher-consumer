@@ -10141,14 +10141,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/videos/21/producer",
+											"raw": "{{baseURL}}/video-details/21/video",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"videos",
+												"video-details",
 												"21",
-												"producer"
+												"video"
 											]
 										}
 									},
