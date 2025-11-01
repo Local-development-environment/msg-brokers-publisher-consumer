@@ -8554,7 +8554,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "pictures index",
+									"name": "producers index",
 									"id": "6575703-d76f05df-f3a3-4efd-9c53-7b2b3a265c81",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -8590,7 +8590,7 @@
 									"response": []
 								},
 								{
-									"name": "pictures show",
+									"name": "producers show",
 									"id": "6575703-1a419961-16a6-459f-b557-1654c902a428",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
