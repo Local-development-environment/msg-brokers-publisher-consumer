@@ -9516,108 +9516,6 @@
 							"id": "6575703-f81404d5-64ee-4c7a-9b28-1326c745d324"
 						},
 						{
-							"name": "RELATED Copy",
-							"item": [
-								{
-									"name": "videos jewellery index",
-									"id": "6575703-0a80e5f7-e988-4e72-8cde-d4dfd2ea7724",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/videos/21/jewellery",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"videos",
-												"21",
-												"jewellery"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "videos producer index",
-									"id": "6575703-fc9f1aa3-ca42-41a6-9c24-8f46dd5eb45b",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/videos/21/producer",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"videos",
-												"21",
-												"producer"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "video videos-details index",
-									"id": "6575703-67711084-b2de-46ae-9f45-d53a57f7b47b",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/videos/21/video-details",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"videos",
-												"21",
-												"video-details"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-33d1a251-d550-4654-995a-9089cc5d7a27"
-						},
-						{
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
@@ -10188,6 +10086,108 @@
 								}
 							],
 							"id": "6575703-56b54304-73fe-4c19-8e28-45200fdbc1c5"
+						},
+						{
+							"name": "RELATED Copy",
+							"item": [
+								{
+									"name": "videos jewellery index",
+									"id": "6575703-0a80e5f7-e988-4e72-8cde-d4dfd2ea7724",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/videos/21/jewellery",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"videos",
+												"21",
+												"jewellery"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "videos producer index",
+									"id": "6575703-fc9f1aa3-ca42-41a6-9c24-8f46dd5eb45b",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/videos/21/producer",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"videos",
+												"21",
+												"producer"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "video videos-details index",
+									"id": "6575703-67711084-b2de-46ae-9f45-d53a57f7b47b",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/videos/21/video-details",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"videos",
+												"21",
+												"video-details"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-33d1a251-d550-4654-995a-9089cc5d7a27"
 						}
 					],
 					"id": "6575703-4376683c-8900-42d5-9148-2779077cfcf6"
