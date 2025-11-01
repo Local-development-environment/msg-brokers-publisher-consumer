@@ -29,6 +29,7 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::middleware('api')->prefix('api/admin')->group(base_path('routes/admin/bracelet_props.php'));
             Route::middleware('api')->prefix('api/admin')->group(base_path('routes/admin/neck_props.php'));
             Route::middleware('api')->prefix('api/admin')->group(base_path('routes/admin/shared_props.php'));
+            Route::middleware('api')->prefix('api/admin')->group(base_path('routes/admin/media.php'));
         }
     )
     ->withMiddleware(function (Middleware $middleware) {

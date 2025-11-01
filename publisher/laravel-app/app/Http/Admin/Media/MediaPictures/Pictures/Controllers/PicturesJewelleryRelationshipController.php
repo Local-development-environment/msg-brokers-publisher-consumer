@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\Insert\Stones\Controllers;
+namespace App\Http\Admin\Media\MediaPictures\Pictures\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
-use Domain\Inserts\Stones\Services\Relationships\StonesTypeOriginStoneRelationshipService;
+use Domain\Medias\MediaPictures\Pictures\Services\Relationships\PicturesJewelleryRelationshipService;
 use Illuminate\Http\JsonResponse;
 
-final class StonesTypeOriginStoneRelationshipController extends Controller
+final class PicturesJewelleryRelationshipController extends Controller
 {
-    public function __construct(public StonesTypeOriginStoneRelationshipService $service)
+    public function __construct(public PicturesJewelleryRelationshipService $service)
     {
     }
 

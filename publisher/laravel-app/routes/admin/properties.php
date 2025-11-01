@@ -9,7 +9,7 @@ use Domain\JewelleryProperties\Piercings\Piercings\Enums\PiercingNameRoutesEnum;
 Route::group([
     'middleware' => 'auth:admin'
 ], function () {
-    /*************************** BEAD BASES *************************/
+    /*************************** PIERCINGS *************************/
     // CRUD
     Route::get('piercings', [PiercingController::class, 'index'])->name(PiercingNameRoutesEnum::CRUD_INDEX->value);
     Route::get('piercings/{id}', [PiercingController::class, 'show'])->name(PiercingNameRoutesEnum::CRUD_SHOW->value);
@@ -18,7 +18,7 @@ Route::group([
     Route::delete('piercings/{id}', [PiercingController::class, 'destroy'])->name(PiercingNameRoutesEnum::CRUD_DELETE->value);
 
     // RELATIONSHIPS
-    //  one-to-one Bead to Jewellery
+    //  one-to-one Piercing to Jewellery
     Route::get('piercings/{id}/relationships/jewellery', [PiercingJewelleryRelationshipController::class, 'index'])
         ->name(PiercingNameRoutesEnum::RELATIONSHIP_TO_JEWELLERY->value);
     Route::get('piercings/{id}/jewellery', [PiercingJewelleryRelatedController::class, 'index'])
