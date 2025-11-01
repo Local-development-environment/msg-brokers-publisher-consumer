@@ -9627,7 +9627,7 @@
 					"name": "VIDEO TYPES",
 					"item": [
 						{
-							"name": "CRUD Copy",
+							"name": "CRUD",
 							"item": [
 								{
 									"name": "videos index",
