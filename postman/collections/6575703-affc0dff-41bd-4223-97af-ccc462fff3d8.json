@@ -9975,7 +9975,7 @@
 									"response": []
 								},
 								{
-									"name": "video-types store",
+									"name": "video-details store",
 									"id": "6575703-5c26b53d-c720-4f39-8ffd-19df683a078a",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -10014,7 +10014,7 @@
 									"response": []
 								},
 								{
-									"name": "video-types update",
+									"name": "video-details update",
 									"id": "6575703-737c95f5-4d0a-4aaf-9657-2f80754e713d",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
