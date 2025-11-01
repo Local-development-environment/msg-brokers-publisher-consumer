@@ -1021,6 +1021,172 @@
 									"id": "6575703-8f3968ca-1f43-40fc-936e-a25961cbb9a9"
 								},
 								{
+									"name": "RELATED Copy",
+									"item": [
+										{
+											"name": "bead jewellery index",
+											"id": "6575703-69ff9afb-8616-4545-8e25-fd72a1db5074",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/beads/21/jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"beads",
+														"21",
+														"jewellery"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "beads clasp index",
+											"id": "6575703-536ad0be-7757-4a4b-908b-972e8b013a1c",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/beads/21/clasp",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"beads",
+														"21",
+														"clasp"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "beads bead-base index",
+											"id": "6575703-bf4c865d-9e99-43eb-8fc5-c8f2e7e1816f",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/beads/21/bead-base",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"beads",
+														"21",
+														"bead-base"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "beads bead-sizes index",
+											"id": "6575703-91d96742-aba2-4e22-98fd-5eeca4513dd0",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/beads/21/bead-sizes",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"beads",
+														"21",
+														"bead-sizes"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "bead bead-metrics index",
+											"id": "6575703-8ebf690a-ca06-4888-a586-91354df6e5b2",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/beads/21/bead-metrics",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"beads",
+														"21",
+														"bead-metrics"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-96691dfa-be6b-4cbf-b84d-0e65c9b4feb6"
+								},
+								{
 									"name": "RELATIONSHIPS",
 									"item": [
 										{
