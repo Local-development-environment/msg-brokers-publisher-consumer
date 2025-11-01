@@ -9625,7 +9625,197 @@
 				},
 				{
 					"name": "VIDEO TYPES",
-					"item": [],
+					"item": [
+						{
+							"name": "CRUD Copy",
+							"item": [
+								{
+									"name": "videos index",
+									"id": "6575703-1d079a2e-021a-4825-b261-8591d50db492",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/videos?include=jewellery,producer",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"videos"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "jewellery,producer"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "videos show",
+									"id": "6575703-6c373c7e-d3ff-423d-91d3-feef91d9e9f4",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/videos/1?include=jewellery,producer",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"videos",
+												"1"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "jewellery,producer"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "videos store",
+									"id": "6575703-4f8cf3a0-f97a-4ff1-85e1-d493deac3f2b",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"data\": {\r\n        \"id\": 1005,\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/videos",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"videos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "videos update",
+									"id": "6575703-b5cc2f06-57ce-481a-bc40-b7edffcfb889",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"data\": {\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/videos/1002",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"videos",
+												"1002"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "videos destroy",
+									"id": "6575703-198ddf74-3ee7-4e08-ac14-8f4005703bf2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/videos/17",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"videos",
+												"17"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-6c3e0be0-9f33-46fc-8d88-8742b40773bd"
+						}
+					],
 					"id": "6575703-cd4fae39-545e-40db-a1f4-30bb972529e8"
 				},
 				{
