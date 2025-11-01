@@ -9800,12 +9800,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/videos/17",
+											"raw": "{{baseURL}}/video-types/17",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"videos",
+												"video-types",
 												"17"
 											]
 										}
