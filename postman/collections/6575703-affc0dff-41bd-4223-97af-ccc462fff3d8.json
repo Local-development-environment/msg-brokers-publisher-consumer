@@ -10091,7 +10091,7 @@
 							"name": "RELATED",
 							"item": [
 								{
-									"name": "videos jewellery index",
+									"name": "video-details video-type index",
 									"id": "6575703-0a80e5f7-e988-4e72-8cde-d4dfd2ea7724",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
