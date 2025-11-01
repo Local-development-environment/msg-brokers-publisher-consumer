@@ -9328,12 +9328,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseURL}}/pictures",
+											"raw": "{{baseURL}}/videos",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"pictures"
+												"videos"
 											]
 										}
 									},
