@@ -1,10 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Piercing\Piercings\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PiercingStoreRequest extends FormRequest
+final class PiercingStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

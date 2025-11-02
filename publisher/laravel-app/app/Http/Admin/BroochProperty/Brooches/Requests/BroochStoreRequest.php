@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\Piercing\Piercings\Requests;
+namespace App\Http\Admin\BroochProperty\Brooches\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-final class PiercingUpdateRequest extends FormRequest
+final class BroochStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
