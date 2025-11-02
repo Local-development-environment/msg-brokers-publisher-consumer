@@ -2372,12 +2372,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/beads?include=jewellery,neckSizes,beadMetrics,clasp,beadBase",
+													"raw": "{{baseURL}}/chains?include=jewellery,neckSizes,beadMetrics,clasp,beadBase",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"beads"
+														"chains"
 													],
 													"query": [
 														{
@@ -2390,7 +2390,7 @@
 											"response": []
 										},
 										{
-											"name": "beads show",
+											"name": "chains show",
 											"id": "6575703-f0273fe3-aa98-4e8c-bf01-5def8c31bd9a",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -2427,7 +2427,7 @@
 											"response": []
 										},
 										{
-											"name": "beads store",
+											"name": "chains store",
 											"id": "6575703-228b76da-80a7-4429-b128-0a449d506be2",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -2466,7 +2466,7 @@
 											"response": []
 										},
 										{
-											"name": "beads update",
+											"name": "chains update",
 											"id": "6575703-142f7617-f22c-484b-b5e0-3cdef9219c90",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -2506,7 +2506,7 @@
 											"response": []
 										},
 										{
-											"name": "beads destroy",
+											"name": "chains destroy",
 											"id": "6575703-66ae0f9e-c047-4c9a-8889-d820ea9aed7e",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
