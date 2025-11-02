@@ -4515,12 +4515,12 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseURL}}/piercings/1002",
+													"raw": "{{baseURL}}/brooches/1002",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"piercings",
+														"brooches",
 														"1002"
 													]
 												}
