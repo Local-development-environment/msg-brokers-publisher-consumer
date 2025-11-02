@@ -4394,12 +4394,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/piercings?include=jewellery",
+													"raw": "{{baseURL}}/brooches?include=jewellery",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"piercings"
+														"brooches"
 													],
 													"query": [
 														{
