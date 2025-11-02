@@ -4412,7 +4412,7 @@
 											"response": []
 										},
 										{
-											"name": "piercings show",
+											"name": "brooches show",
 											"id": "6575703-88999489-41cb-48a5-a729-8545a243eea4",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -4449,7 +4449,7 @@
 											"response": []
 										},
 										{
-											"name": "piercings store",
+											"name": "brooches store",
 											"id": "6575703-ad23df3b-9b7a-44f2-8207-28a0ed0992b9",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
