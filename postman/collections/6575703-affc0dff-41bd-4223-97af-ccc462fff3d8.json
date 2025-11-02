@@ -723,12 +723,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/beads/1?include=jewellery,beadSizes,beadMetrics,clasp,beadBase",
+													"raw": "{{baseURL}}/chains/1?include=jewellery,beadSizes,beadMetrics,clasp,beadBase",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"beads",
+														"chains",
 														"1"
 													],
 													"query": [
