@@ -4365,6 +4365,284 @@
 						}
 					],
 					"id": "6575703-208e1798-e510-49b1-b994-e7dc9219f884"
+				},
+				{
+					"name": "PIERCINGS PROPERTIES Copy",
+					"item": [
+						{
+							"name": "PIERCINGS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "piercings index",
+											"id": "6575703-c7cbde7b-8015-4294-aa5a-91977ccc044e",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/piercings?include=jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"piercings"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "jewellery"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "piercings show",
+											"id": "6575703-88999489-41cb-48a5-a729-8545a243eea4",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/piercings/2?include=jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"piercings",
+														"2"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "jewellery"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "piercings store",
+											"id": "6575703-ad23df3b-9b7a-44f2-8207-28a0ed0992b9",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"data\": {\r\n        \"id\": 1005,\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseURL}}/piercings",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"piercings"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "piercings update",
+											"id": "6575703-9a52d220-4518-4bfd-909d-9b2e2a61b316",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"data\": {\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseURL}}/piercings/1002",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"piercings",
+														"1002"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "piercings destroy",
+											"id": "6575703-c6d8c20d-5534-4d6a-a86d-6288a9d2ff6f",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/piercings/17",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"piercings",
+														"17"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-2fd59047-6f38-484c-8d01-d125a1f433f3"
+								},
+								{
+									"name": "RELATED",
+									"item": [
+										{
+											"name": "piercing jewellery index",
+											"id": "6575703-08bf05f5-769f-43e5-ae23-1e84e664f835",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/piercings/2/jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"piercings",
+														"2",
+														"jewellery"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-27b2b2e2-a518-4a3b-b080-85f654c50ac0"
+								},
+								{
+									"name": "RELATIONSHIPS",
+									"item": [
+										{
+											"name": "piercing jewellery index",
+											"id": "6575703-52c41c7c-5122-4cd7-9a9d-198a4bb932d6",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/piercings/22/relationships/jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"piercings",
+														"22",
+														"relationships",
+														"jewellery"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-1a9cf190-522e-42e3-a767-ec761c05049b"
+								}
+							],
+							"id": "6575703-74bef236-65f7-492e-8c6c-599aa5b7f2fb"
+						}
+					],
+					"id": "6575703-1810f675-5faf-4510-8667-ef09271ba413"
 				}
 			],
 			"id": "6575703-2aa7e837-6ac9-42f1-bb01-098ed7f9ff14"
