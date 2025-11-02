@@ -4621,13 +4621,13 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/piercings/22/relationships/jewellery",
+													"raw": "{{baseURL}}/brooches/2/relationships/jewellery",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"piercings",
-														"22",
+														"brooches",
+														"2",
 														"relationships",
 														"jewellery"
 													]
