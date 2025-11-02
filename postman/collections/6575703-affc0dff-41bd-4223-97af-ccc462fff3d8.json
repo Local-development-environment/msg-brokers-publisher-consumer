@@ -2493,12 +2493,12 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseURL}}/beads/19",
+													"raw": "{{baseURL}}/chains/19",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"beads",
+														"chains",
 														"19"
 													]
 												}
@@ -2524,12 +2524,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/beads/17",
+													"raw": "{{baseURL}}/chains/17",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"beads",
+														"chains",
 														"17"
 													]
 												}
