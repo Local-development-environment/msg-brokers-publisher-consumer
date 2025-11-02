@@ -4583,12 +4583,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/piercings/2/jewellery",
+													"raw": "{{baseURL}}/brooches/2/jewellery",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"piercings",
+														"brooches",
 														"2",
 														"jewellery"
 													]
