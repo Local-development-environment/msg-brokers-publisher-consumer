@@ -4476,12 +4476,12 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseURL}}/piercings",
+													"raw": "{{baseURL}}/brooches",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"piercings"
+														"brooches"
 													]
 												}
 											},
