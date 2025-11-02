@@ -4430,12 +4430,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/piercings/2?include=jewellery",
+													"raw": "{{baseURL}}/brooches/2?include=jewellery",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"piercings",
+														"brooches",
 														"2"
 													],
 													"query": [
