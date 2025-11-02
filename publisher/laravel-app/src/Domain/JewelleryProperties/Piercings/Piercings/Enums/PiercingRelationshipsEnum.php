@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Piercings\Piercings\Enums;
 
-enum PiercingRelationshipsEnum
+enum PiercingRelationshipsEnum: string
 {
-
+    case JEWELLERY    = 'jewellery';
 }

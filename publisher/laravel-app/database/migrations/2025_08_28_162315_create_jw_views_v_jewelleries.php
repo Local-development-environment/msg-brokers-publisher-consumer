@@ -289,7 +289,7 @@ return new class extends Migration
                         union all 
                         
                         select
-                            jj.id,jwprc.jewellery_id as jewellery_id,
+                            jj.id,jwprc.id as jewellery_id,
                             jsonb_build_object(
                                 'piercing_id', jwprc.id
                             ) as spec_props,
@@ -299,7 +299,7 @@ return new class extends Migration
                             cast(jwprc.price as decimal(10, 2)) as min_price
                         from
                             jw_properties.piercings as jwprc
-                        join jewelleries.jewelleries as jj on jwprc.jewellery_id = jj.id
+                        join jewelleries.jewelleries as jj on jwprc.id = jj.id
                         join jewelleries.categories as jc on jj.category_id = jc.id
                         
                         union all 
@@ -535,11 +535,11 @@ return new class extends Migration
                     cjwi.inserts,
                     cgv.video_medias,
                     cp.picture_medias,
-                    dominant_data->'weight' as dominant_weight,
-                    dominant_data->'stone_id' as dominant_stone_id,
-                    dominant_data->'stone_name' as dominant_stone_name,
-                    dominant_data->'colour_id' as dominant_colour_id,
-                    dominant_data->'colour_name' as dominant_colour_name,
+                    cast(dominant_data->>'weight' as decimal(10, 2)) as dominant_weight,
+                    cast(dominant_data->>'stone_id' as integer) as dominant_stone_id,
+                    cast(dominant_data->>'stone_name' as varchar(256)) as dominant_stone_name,
+                    cast(dominant_data->>'colour_id' as integer) as dominant_colour_id,
+                    cast(dominant_data->>'colour_name' as varchar(256)) as dominant_colour_name,
                     cjm.metals
                 from jewelleries.jewelleries as jj
                 join jewelleries.categories as jc on jj.category_id = jc.id
