@@ -2354,7 +2354,7 @@
 									"name": "CRUD",
 									"item": [
 										{
-											"name": "beads index",
+											"name": "chains index",
 											"id": "6575703-55fb03eb-b973-4a20-92b5-979b0e235838",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
