@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Http\Admin\BeadProperty\BeadBases\Resources;
 
 use App\Http\Admin\BeadProperty\Beads\Resources\BeadCollection;
-use App\Http\Admin\SharedProperty\Clasps\Resources\ClaspCollection;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseRelationshipsEnum;

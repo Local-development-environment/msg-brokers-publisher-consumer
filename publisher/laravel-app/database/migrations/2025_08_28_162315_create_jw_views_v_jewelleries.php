@@ -209,7 +209,7 @@ return new class extends Migration
                     ),
                     cte_jw_props as (
                         select
-                            jj.id,jwb.jewellery_id as jewellery_id,
+                            jj.id,jwb.id as jewellery_id,
                             jsonb_build_object(
                                 'brooch_id', jwb.id
                             ) as spec_props,
@@ -219,7 +219,7 @@ return new class extends Migration
                             cast(jwb.price as decimal(10, 2)) as min_price
                         from
                             jw_properties.brooches as jwb
-                        join jewelleries.jewelleries as jj on jwb.jewellery_id = jj.id
+                        join jewelleries.jewelleries as jj on jwb.id = jj.id
                         join jewelleries.categories as jc on jj.category_id = jc.id
                         
                         union all
@@ -401,21 +401,21 @@ return new class extends Migration
                         select
                             jj.id,jwch.id as jewellery_id,
                             jsonb_build_object(
-                                    'chain_id', jwch.id,
-                                    'weaving_id', jww.id,
-                                    'weaving', jww.name,
-                                    'clasp_id', jwcls.id,
-                                    'clasp', jwcls.name,
-                                    'size_price_quantity',
-                                    jsonb_agg(
-                                        jsonb_build_object(
-                                            'size', jwns.value,
-                                            'price', jwchm.price,
-                                            'quantity', jwchm.quantity,
-                                            'length_name_id', jwln.id,
-                                            'length_name', jwln.name
-                                        )
+                                'chain_id', jwch.id,
+                                'weaving_id', jww.id,
+                                'weaving', jww.name,
+                                'clasp_id', jwcls.id,
+                                'clasp', jwcls.name,
+                                'size_price_quantity',
+                                jsonb_agg(
+                                    jsonb_build_object(
+                                        'size', jwns.value,
+                                        'price', jwchm.price,
+                                        'quantity', jwchm.quantity,
+                                        'length_name_id', jwln.id,
+                                        'length_name', jwln.name
                                     )
+                                )
                             ) as spec_props,
                             sum(jwchm.quantity) as quantity,
                             cast(avg(jwchm.price) as decimal(10, 2)) as avg_price,
