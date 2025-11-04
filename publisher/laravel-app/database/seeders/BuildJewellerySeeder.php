@@ -19,7 +19,7 @@ final class BuildJewellerySeeder extends Seeder
      * Run the database seeds.
      * @throws JsonException
      */
-    public function run(): void
+    public function run($items): void
     {
         $this->call(InitDataSeeder::class);
         $this->call(InitUserSeeder::class);
@@ -27,7 +27,7 @@ final class BuildJewellerySeeder extends Seeder
         $jeweller = new Jeweller();
 //        $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
 //        dump([$builder]);
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < $items; $i++) {
             dump($i);
             $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
 
@@ -197,7 +197,7 @@ final class BuildJewellerySeeder extends Seeder
         }
 
         if ($jewelleryData['props']) {
-            if ($jewelleryData['jw_category'] === 'зажим для галстука') {
+            if ($jewelleryData['jw_category'] === 'зажимы для галстука') {
                 $this->addTieClips($jewelleryData, $jewelleryId);
             }
         }
@@ -263,7 +263,7 @@ final class BuildJewellerySeeder extends Seeder
     private function addBrooches(array $jewelleryData, int $jewelleryId): void
     {
         DB::table('jw_properties.brooches')->insertGetId([
-            'jewellery_id' => $jewelleryId,
+            'id' => $jewelleryId,
             'quantity' => $jewelleryData['props']['parameters']['quantity'],
             'price' => $jewelleryData['props']['parameters']['price'],
             'dimensions' => json_encode($jewelleryData['props']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
@@ -304,6 +304,7 @@ final class BuildJewellerySeeder extends Seeder
      */
     private function addTieClips(array $jewelleryData, int $jewelleryId): void
     {
+//        dd($jewelleryData);
         DB::table('jw_properties.tie_clips')->insertGetId([
             'jewellery_id' => $jewelleryId,
             'quantity' => $jewelleryData['props']['parameters']['quantity'],

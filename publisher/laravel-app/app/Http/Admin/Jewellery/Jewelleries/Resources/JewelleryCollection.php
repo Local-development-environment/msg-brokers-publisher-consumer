@@ -2,18 +2,10 @@
 
 namespace App\Http\Admin\Jewellery\Jewelleries\Resources;
 
-use Illuminate\Http\Request;
+use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesCollectionTrait;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class JewelleryCollection extends ResourceCollection
 {
-    /**
-     * Transform the resource collection into an array.
-     *
-     * @return array<int|string, mixed>
-     */
-    public function toArray(Request $request): array
-    {
-        return parent::toArray($request);
-    }
+    use IncludeRelatedEntitiesCollectionTrait;
 }

@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+use App\Http\Admin\Users\Admins\Controllers\VAdminController;
+use App\Http\Admin\Users\Customers\Controllers\VCustomerController;
+use App\Http\Admin\Users\Employees\Controllers\VEmployeeController;
+use App\Http\Admin\Users\Users\Controllers\VUserController;
 use App\Http\Auth\Admins\Controllers\AdminLoginController;
 use App\Http\Auth\Admins\Controllers\AdminLogoutController;
 use App\Http\Auth\Admins\Controllers\AdminProfileController;
@@ -82,3 +86,9 @@ Route::group([
 //    Route::view('/password/email', 'auth.reset_password')->name('password.reset');
 //    Route::post('/password-reset', [EmployeeForgotPasswordController::class, 'reset']);
 });
+
+/*************************** USERS *************************/
+Route::get('v-users', [VUserController::class, 'index'])->middleware('auth:admin');
+Route::get('v-customers', [VCustomerController::class, 'index'])->middleware('auth:admin');
+Route::get('v-admins', [VAdminController::class, 'index'])->middleware('auth:admin');
+Route::get('v-employees', [VEmployeeController::class, 'index'])->middleware('auth:admin');

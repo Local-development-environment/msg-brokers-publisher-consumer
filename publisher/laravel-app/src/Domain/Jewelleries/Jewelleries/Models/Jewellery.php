@@ -37,6 +37,6 @@ final class Jewellery extends Model
 
     public function bead(): HasOne
     {
-        return $this->hasOne(Bead::class);
+        return $this->hasOne(Bead::class, 'id');
     }
 }
