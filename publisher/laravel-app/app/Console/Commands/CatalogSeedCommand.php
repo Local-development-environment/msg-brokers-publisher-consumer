@@ -25,7 +25,7 @@ final class CatalogSeedCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         (new BuildJewellerySeeder())->callWith(BuildJewellerySeeder::class, ['items' => $this->option('items')]);
     }

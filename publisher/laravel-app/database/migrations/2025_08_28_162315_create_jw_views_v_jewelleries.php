@@ -399,39 +399,61 @@ return new class extends Migration
                         union all
                         
                         select
-                            jj.id,jwch.id as jewellery_id,
+                            jj.id,ch.id as jewellery_id,
                             jsonb_build_object(
-                                'chain_id', jwch.id,
-                                'weaving_id', jww.id,
-                                'weaving', jww.name,
-                                'clasp_id', jwcls.id,
-                                'clasp', jwcls.name,
-                                'size_price_quantity',
-                                jsonb_agg(
-                                    jsonb_build_object(
-                                        'size', jwns.value,
-                                        'price', jwchm.price,
-                                        'quantity', jwchm.quantity,
-                                        'length_name_id', jwln.id,
-                                        'length_name', jwln.name
-                                    )
-                                )
-                            ) as spec_props,
-                            sum(jwchm.quantity) as quantity,
-                            cast(avg(jwchm.price) as decimal(10, 2)) as avg_price,
-                            cast(max(jwchm.price) as decimal(10, 2)) as max_price,
-                            cast(min(jwchm.price) as decimal(10, 2)) as min_price
+                                'metrics', metrics.metrics,
+                                'weaving', weaving.weaving
+                            ) as details,
+                            sum(chm.quantity) as quantity,
+                            cast(avg(chm.price) as decimal(10, 2)) as avg_price,
+                            cast(max(chm.price) as decimal(10, 2)) as max_price,
+                            cast(min(chm.price) as decimal(10, 2)) as min_price
                         from
-                            jw_properties.chains as jwch
-                        join jewelleries.jewelleries as jj on jwch.id = jj.id
-                        join jewelleries.categories as jc on jj.category_id = jc.id
-                        join jw_properties.clasps as jwcls on jwch.clasp_id = jwcls.id
-                        left join jw_properties.chain_metrics as jwchm on jwch.id = jwchm.chain_id
-                        left join jw_properties.neck_sizes as jwns on jwchm.neck_size_id = jwns.id
-                        join jw_properties.length_names as jwln on jwns.length_name_id = jwln.id
-                        left join jw_properties.chain_weavings as jwchw on jwch.id = jwchw.id
-                        left join jw_properties.weavings as jww on jwchw.weaving_id = jww.id
-                        group by jj.id,jwch.id,jwch.id,jww.id,jwcls.id
+                            jw_properties.chains as ch
+                                join (
+                                select
+                                    ch.id as chain_id,
+                                    case
+                                        when chw.weaving_id isnull then
+                                            jsonb_build_object()
+                                        else
+                                            jsonb_agg(
+                                                jsonb_build_object(
+                                                    'weaving_id', w.id,
+                                                    'weaving', w.name,
+                                                    'fullness', chw.fullness,
+                                                    'wire_diameter', chw.diameter
+                                                )
+                                            )
+                                        end as weaving
+                                from
+                                    jw_properties.chains as ch
+                                        left join jw_properties.chain_weavings as chw on ch.id = chw.id
+                                        left join jw_properties.weavings as w on chw.weaving_id = w.id
+                                group by ch.id, chw.weaving_id
+                            ) as weaving on weaving.chain_id = ch.id
+                                join (
+                                select
+                                    ch.id as chain_id,
+                                    jsonb_agg(
+                                        jsonb_build_object(
+                                            'size', ns.value,
+                                            'price', chm.price,
+                                            'quantity', chm.quantity,
+                                            'length_name_id', lnm.id,
+                                            'length_name', lnm.name
+                                        )
+                                    ) as metrics
+                                from
+                                    jw_properties.chains as ch
+                                        left join jw_properties.chain_metrics as chm on ch.id = chm.chain_id
+                                        left join jw_properties.neck_sizes as ns on chm.neck_size_id = ns.id
+                                        join jw_properties.length_names as lnm on ns.length_name_id = lnm.id
+                                group by ch.id
+                            ) as metrics on metrics.chain_id = ch.id
+                                left join jewelleries.jewelleries as jj on ch.id = jj.id
+                                left join jw_properties.chain_metrics as chm on ch.id = chm.chain_id
+                        group by ch.id, metrics.metrics, weaving.weaving, jj.id
                         
                         union all
 
