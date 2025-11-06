@@ -9,6 +9,7 @@ use Domain\Jewelleries\JewelleryBuilder\MetalPriceDifferentiationTrait;
 use Domain\Jewelleries\JewelleryBuilder\SizePricePropsTrait;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
 use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeListEnum;
+use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingListEnum;
 use Illuminate\Support\Arr;
 
 final readonly class ChainProps implements CategoryPropsBuilderInterface
@@ -45,7 +46,7 @@ final readonly class ChainProps implements CategoryPropsBuilderInterface
             $is_weaving = Arr::random([0, 1, 1]);
         }
 
-        $weavings = config('data-seed.data_items.jw_weavings');
+        $weavings = WeavingListEnum::cases();
         if ($is_weaving === 1) {
             return [
                 'weaving' => Arr::random($weavings),

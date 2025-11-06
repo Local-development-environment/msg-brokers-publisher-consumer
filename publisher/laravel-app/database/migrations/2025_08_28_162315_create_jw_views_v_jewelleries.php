@@ -421,6 +421,8 @@ return new class extends Migration
                                         else
                                             jsonb_agg(
                                                 jsonb_build_object(
+                                                    'base_weaving_id', w.base_weaving_id,
+                                                    'base_weaving_name', bw.name,
                                                     'weaving_id', w.id,
                                                     'weaving', w.name,
                                                     'fullness', chw.fullness,
@@ -432,6 +434,7 @@ return new class extends Migration
                                     jw_properties.chains as ch
                                         left join jw_properties.chain_weavings as chw on ch.id = chw.chain_id
                                         left join jw_properties.weavings as w on chw.weaving_id = w.id
+                                        left join jw_properties.base_weavings as bw on w.base_weaving_id = bw.id
                                 group by ch.id, chw.chain_id
                             ) as weaving on weaving.chain_id = ch.id
                                 join (

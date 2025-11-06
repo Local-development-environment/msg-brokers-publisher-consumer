@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Domain\Shared\JewelleryProperties\Weavings\Enums;
+namespace Domain\Shared\JewelleryProperties\BaseWeavings\Enums;
 
 enum BaseWeavingListEnum: string
 {
