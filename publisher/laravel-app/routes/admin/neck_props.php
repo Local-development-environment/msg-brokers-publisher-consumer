@@ -20,6 +20,7 @@ use App\Http\Admin\BeadProperty\Beads\Controllers\BeadsNeckSizesRelatedControlle
 use App\Http\Admin\BeadProperty\Beads\Controllers\BeadsNeckSizesRelationshipController;
 use App\Http\Admin\BeadProperty\Beads\Controllers\BeadsClaspRelatedController;
 use App\Http\Admin\BeadProperty\Beads\Controllers\BeadsClaspRelationshipController;
+use App\Http\Admin\ChainProperty\Chains\Controllers\ChainController;
 use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricController;
 use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricsNecklaceRelatedController;
 use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricsNecklaceRelationshipController;
@@ -37,6 +38,7 @@ use App\Http\Admin\NecklaceProperty\Necklaces\Controllers\NecklacesNeckSizesRela
 use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\Beads\Enums\BeadNameRoutesEnum;
+use Domain\JewelleryProperties\Chains\Chains\Enums\ChainNameRoutesEnum;
 use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Enums\NecklaceMetricNameRoutesEnum;
 use Domain\JewelleryProperties\Necklaces\Necklaces\Enums\NecklaceNameRoutesEnum;
 
@@ -162,4 +164,12 @@ Route::group([
         ->name(NecklaceMetricNameRoutesEnum::RELATIONSHIP_TO_NECK_SIZE->value);
     Route::get('necklace-metrics/{id}/neck-size', [NecklaceMetricsNeckSizeRelatedController::class, 'index'])
         ->name(NecklaceMetricNameRoutesEnum::RELATED_TO_NECK_SIZE->value);
+
+    /*************************** CHAINS *************************/
+    // CRUD
+    Route::get('chains', [ChainController::class, 'index'])->name(ChainNameRoutesEnum::CRUD_INDEX->value);
+    Route::get('chains/{id}', [ChainController::class, 'show'])->name(ChainNameRoutesEnum::CRUD_SHOW->value);
+    Route::post('chains', [ChainController::class, 'store'])->name(ChainNameRoutesEnum::CRUD_POST->value);
+    Route::patch('chains/{id}', [ChainController::class, 'update'])->name(ChainNameRoutesEnum::CRUD_PATCH->value);
+    Route::delete('chains/{id}', [ChainController::class, 'destroy'])->name(ChainNameRoutesEnum::CRUD_DELETE->value);
 });

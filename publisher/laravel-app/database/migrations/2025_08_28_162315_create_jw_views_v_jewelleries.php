@@ -404,7 +404,8 @@ return new class extends Migration
                                 'metrics', metrics.metrics,
                                 'weaving', weaving.weaving,
                                 'clasp_id', ch.clasp_id,
-                                'clasp_name', c.name
+                                'clasp_name', c.name,
+                                'clasp_description', c.description
                             ) as details,
                             sum(chm.quantity) as quantity,
                             cast(avg(chm.price) as decimal(10, 2)) as avg_price,
@@ -445,8 +446,10 @@ return new class extends Migration
                                             'size', ns.value,
                                             'price', chm.price,
                                             'quantity', chm.quantity,
+                                            'unit', ns.unit,
                                             'length_name_id', lnm.id,
-                                            'length_name', lnm.name
+                                            'length_name', lnm.name,
+                                            'length_description', lnm.description
                                         )
                                     ) as metrics
                                 from
@@ -459,7 +462,7 @@ return new class extends Migration
                                 join jw_properties.clasps as c on c.id = ch.clasp_id
                                 left join jewelleries.jewelleries as jj on ch.id = jj.id
                                 left join jw_properties.chain_metrics as chm on ch.id = chm.chain_id
-                        group by ch.id, metrics.metrics, weaving.weaving, jj.id, c.name
+                        group by ch.id, metrics.metrics, weaving.weaving, jj.id, c.name, c.description
                         
                         union all
 

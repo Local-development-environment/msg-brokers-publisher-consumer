@@ -34,7 +34,7 @@ final class Chain extends Model
         return $this->hasMany(ChainMetric::class);
     }
 
-    public function chainWeaving(): HasOne
+    public function chainWeavings(): HasMany
     {
         return $this->hasMany(ChainWeaving::class);
     }
