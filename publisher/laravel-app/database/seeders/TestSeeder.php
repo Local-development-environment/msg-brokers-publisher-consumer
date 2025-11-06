@@ -13,6 +13,7 @@ use Domain\Inserts\Stones\Models\Stone;
 use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
+use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingListEnum;
 use Domain\Users\Admins\Models\Admin;
 use Domain\Users\Genders\Models\Gender;
 use Domain\Users\RegisterPhones\Models\RegisterPhone;
@@ -34,7 +35,7 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        dd(Stone::find(2)->facets);
+        dd(WeavingListEnum::WHEAT->baseWeaving());
 
         foreach (RingSizeListEnum::cases() as $grade) {
             dump((float)$grade->value);

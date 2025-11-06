@@ -22,23 +22,28 @@ final readonly class ChainProps implements CategoryPropsBuilderInterface
     public function getProps(): array
     {
         $metal = $this->properties['prcsMetal'];
-        $insert = $this->properties['insert'];
+        $category = $this->properties['category'];
+        dump($category);
 
         $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), NeckSizeListEnum::cases());
 
         return [
             'size_price_quantity' => $sizePrices,
             'clasp' => ClaspListEnum::cases()[array_rand(ClaspListEnum::cases())]->value,
-            'weaving' => $this->getWeaving(),
+            'weaving' => $this->getWeaving($category),
             'chain_sizes' => data_get($sizePrices, '*.size'),
             'quantity' => data_get($sizePrices, '*.quantity'),
             'price' => data_get($sizePrices, '*.price')
         ];
     }
 
-    private function getWeaving(): array
+    private function getWeaving($category): array
     {
-        $is_weaving = Arr::random([0, 1, 1]);
+        if ($category === 'цепи') {
+            $is_weaving = 1;
+        } else {
+            $is_weaving = Arr::random([0, 1, 1]);
+        }
 
         $weavings = config('data-seed.data_items.jw_weavings');
         if ($is_weaving === 1) {

@@ -437,10 +437,11 @@ final class BuildJewellerySeeder extends Seeder
             'clasp_id' => DB::table('jw_properties.clasps')->where('name',$jewelleryData['props']['parameters']['clasp'])->value('id'),
             'created_at' => now()
         ]);
-
+//        dump($jewelleryData['props']['parameters']['weaving']);
+//        dump($jewelleryData);
         if ($jewelleryData['props']['parameters']['weaving']) {
             DB::table('jw_properties.chain_weavings')->insertGetId([
-                'id' => $chainId,
+                'chain_id' => $chainId,
                 'weaving_id' => DB::table('jw_properties.weavings')
                     ->where('name',$jewelleryData['props']['parameters']['weaving']['weaving'])
                     ->value('id'),
