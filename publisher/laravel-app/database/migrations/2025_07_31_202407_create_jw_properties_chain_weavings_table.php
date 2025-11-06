@@ -12,14 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jw_properties.chain_weavings', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary();
+            $table->id();
+            $table->unsignedBigInteger('chain_id');
             $table->unsignedBigInteger('weaving_id');
             $table->string('fullness');
             $table->float('diameter', 3, 2);
             $table->timestamps();
 
             $table->foreign('weaving_id')->references('id')->on('jw_properties.weavings')->cascadeOnDelete();
-            $table->foreign('id')->references('id')->on('jw_properties.chains')->cascadeOnDelete();
+            $table->foreign('chain_id')->references('id')->on('jw_properties.chains')->cascadeOnDelete();
         });
     }
 

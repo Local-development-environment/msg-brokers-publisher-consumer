@@ -402,7 +402,9 @@ return new class extends Migration
                             jj.id,ch.id as jewellery_id,
                             jsonb_build_object(
                                 'metrics', metrics.metrics,
-                                'weaving', weaving.weaving
+                                'weaving', weaving.weaving,
+                                'clasp_id', ch.clasp_id,
+                                'clasp_name', c.name
                             ) as details,
                             sum(chm.quantity) as quantity,
                             cast(avg(chm.price) as decimal(10, 2)) as avg_price,
@@ -414,7 +416,7 @@ return new class extends Migration
                                 select
                                     ch.id as chain_id,
                                     case
-                                        when chw.weaving_id isnull then
+                                        when chw.chain_id isnull then
                                             jsonb_build_object()
                                         else
                                             jsonb_agg(
@@ -428,9 +430,9 @@ return new class extends Migration
                                         end as weaving
                                 from
                                     jw_properties.chains as ch
-                                        left join jw_properties.chain_weavings as chw on ch.id = chw.id
+                                        left join jw_properties.chain_weavings as chw on ch.id = chw.chain_id
                                         left join jw_properties.weavings as w on chw.weaving_id = w.id
-                                group by ch.id, chw.weaving_id
+                                group by ch.id, chw.chain_id
                             ) as weaving on weaving.chain_id = ch.id
                                 join (
                                 select
@@ -451,9 +453,10 @@ return new class extends Migration
                                         join jw_properties.length_names as lnm on ns.length_name_id = lnm.id
                                 group by ch.id
                             ) as metrics on metrics.chain_id = ch.id
+                                join jw_properties.clasps as c on c.id = ch.clasp_id
                                 left join jewelleries.jewelleries as jj on ch.id = jj.id
                                 left join jw_properties.chain_metrics as chm on ch.id = chm.chain_id
-                        group by ch.id, metrics.metrics, weaving.weaving, jj.id
+                        group by ch.id, metrics.metrics, weaving.weaving, jj.id, c.name
                         
                         union all
 
