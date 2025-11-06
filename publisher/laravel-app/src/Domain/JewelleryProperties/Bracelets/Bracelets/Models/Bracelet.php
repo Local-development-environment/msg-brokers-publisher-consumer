@@ -54,8 +54,8 @@ final class Bracelet extends Model
         return $this->belongsToMany(BraceletSize::class, BraceletMetricEnum::TABLE_NAME->value);
     }
 
-    public function braceletWeaving(): HasOne
+    public function braceletWeavings(): HasMany
     {
-        return $this->hasOne(BraceletWeaving::class);
+        return $this->hasMany(BraceletWeaving::class);
     }
 }
