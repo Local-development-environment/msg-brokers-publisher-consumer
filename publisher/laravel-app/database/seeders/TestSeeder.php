@@ -35,7 +35,7 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        dd(WeavingListEnum::WHEAT->baseWeaving());
+        dd(WeavingListEnum::BYZANTINE->altNames());
 
         foreach (RingSizeListEnum::cases() as $grade) {
             dump((float)$grade->value);

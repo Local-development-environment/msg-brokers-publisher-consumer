@@ -12,14 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_properties.weavings', function (Blueprint $table) {
+        Schema::create('jw_properties.base_weavings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('base_weaving_id');
             $table->string('name')->unique();
             $table->string('slug')->unique();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
-
-            $table->foreign('base_weaving_id')->references('id')->on('jw_properties.base_weavings');
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_properties.weavings');
+        Schema::dropIfExists('jw_properties.base_weavings');
     }
 };

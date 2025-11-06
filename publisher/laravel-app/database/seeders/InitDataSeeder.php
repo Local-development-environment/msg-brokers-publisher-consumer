@@ -6,13 +6,18 @@ namespace Database\Seeders;
 use Domain\Inserts\InsertExteriors\Enums\InsertExteriorEnum;
 use Domain\Inserts\InsertMetrics\Enums\InsertMetricEnum;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
+use Domain\Inserts\Inserts\Enums\InsertEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
+use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingEnum;
+use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingListEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameListEnum;
 use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeListEnum;
+use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingEnum;
+use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingListEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -39,7 +44,9 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_properties.bracelet_weavings')->truncate();
         DB::table('jw_properties.bracelet_metrics')->truncate();
         DB::table('jw_properties.bracelet_sizes')->truncate();
-        DB::table('jw_properties.weavings')->truncate();
+//        DB::table('jw_properties.weavings')->truncate();
+        DB::table(WeavingEnum::TABLE_NAME->value)->truncate();
+        DB::table(BaseWeavingEnum::TABLE_NAME->value)->truncate();
         DB::table('jw_properties.bracelets')->truncate();
         DB::table('jw_properties.body_parts')->truncate();
         DB::table('jw_properties.bracelet_bases')->truncate();
@@ -77,7 +84,8 @@ final class InitDataSeeder extends Seeder
         DB::table(InsertExteriorEnum::TABLE_NAME->value)->truncate();
         DB::table(InsertMetricEnum::TABLE_NAME->value)->truncate();
         DB::table(InsertOptionalInfoEnum::TABLE_NAME->value)->truncate();
-        DB::table('jw_inserts.inserts')->truncate();
+        DB::table(InsertEnum::TABLE_NAME->value)->truncate();
+//        DB::table('jw_inserts.inserts')->truncate();
         DB::table('jw_inserts.stone_families')->truncate();
         DB::table('jw_inserts.stone_groups')->truncate();
         DB::table('jw_inserts.stone_grades')->truncate();
@@ -94,7 +102,7 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_metals.jewellery_metal_detail')->truncate();
         Schema::enableForeignKeyConstraints();
 
-        $weavings = config('data-seed.data_items.jw_weavings');
+//        $weavings = config('data-seed.data_items.jw_weavings');
         $earring_clasps = config('data-seed.data_items.earring_clasps');
         $earring_types = config('data-seed.data_items.earring_types');
         $body_parts = config('data-seed.data_items.body_parts');
@@ -145,10 +153,20 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach ($weavings as $weave) {
-            DB::table('jw_properties.weavings')->insert([
-                'name' => $weave,
-                'slug' => Str::slug($weave),
+        foreach (BaseWeavingListEnum::cases() as $baseWeave) {
+            DB::table(BaseWeavingEnum::TABLE_NAME->value)->insert([
+                'name' => $baseWeave->value,
+                'slug' => Str::slug($baseWeave->value),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach (WeavingListEnum::cases() as $weave) {
+            DB::table(WeavingEnum::TABLE_NAME->value)->insert([
+                'base_weaving_id' => DB::table(BaseWeavingEnum::TABLE_NAME->value)->where('name', $weave->baseWeaving())
+                    ->value('id'),
+                'name' => $weave->value,
+                'slug' => Str::slug($weave->value),
                 'created_at' => now(),
             ]);
         }
