@@ -398,7 +398,7 @@ final class BuildJewellerySeeder extends Seeder
 
 
         $braceletId = DB::table('jw_properties.bracelets')->insertGetId([
-            'jewellery_id' => $jewelleryId,
+            'id' => $jewelleryId,
             'body_part_id' => $bodyPartId,
             'clasp_id' => DB::table('jw_properties.clasps')->where('name',$jewelleryData['props']['parameters']['clasp'])->value('id'),
             'bracelet_base_id' => DB::table('jw_properties.bracelet_bases')->where('name',$jewelleryData['props']['parameters']['bracelet_bases'])->value('id'),
