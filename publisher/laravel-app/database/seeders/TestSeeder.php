@@ -10,9 +10,11 @@ use Domain\Inserts\Inserts\Enums\InsertEnum;
 use Domain\Inserts\Inserts\Enums\InsertModelEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
 use Domain\Inserts\Stones\Models\Stone;
+use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
 use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Models\Bracelet;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
+use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
 use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingListEnum;
 use Domain\Users\Admins\Models\Admin;
@@ -36,7 +38,17 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        dd(Bracelet::first()->jewellery);
+//        dump(100/count(CategoryListEnum::cases()));
+//        $arr = range(0, 100);
+//        foreach (array_rand($arr, 5) as $index) {
+//            dump($index);
+//        }
+        foreach (Chain::first()->weavings as $size) {
+            dump($size->name);
+        }
+        dd('ok');
+        dd(Chain::first()->neckSizes);
+        dd(array_rand($arr, 5));
         dd(WeavingListEnum::BYZANTINE->altNames());
 
         foreach (RingSizeListEnum::cases() as $grade) {

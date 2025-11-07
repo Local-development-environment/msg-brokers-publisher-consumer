@@ -18,8 +18,10 @@ final class BeadBeadMetricsRelationshipService
         return $this->repository->index($id);
     }
 
-    public function update($data, $id): void
+    public function store($data): void
     {
-        $this->repository->store($data, $id);
+        $items = data_get($data, 'data.relationships.beadMetrics.data');
+
+        $this->repository->store(data_forget($items, '*.type'));
     }
 }
