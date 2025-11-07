@@ -2372,7 +2372,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/chains?include=jewellery,neckSizes,beadMetrics,clasp,beadBase",
+													"raw": "{{baseURL}}/chains?include=jewellery,neckSizes,chainMetrics,clasp",
 													"host": [
 														"{{baseURL}}"
 													],
@@ -2382,7 +2382,7 @@
 													"query": [
 														{
 															"key": "include",
-															"value": "jewellery,neckSizes,beadMetrics,clasp,beadBase"
+															"value": "jewellery,neckSizes,chainMetrics,clasp"
 														}
 													]
 												}
