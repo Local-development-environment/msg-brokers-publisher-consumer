@@ -8,9 +8,11 @@ use Domain\JewelleryProperties\Beads\BeadMetrics\Models\BeadMetric;
 use Domain\JewelleryProperties\Chains\ChainMetrics\Enums\ChainMetricEnum;
 use Domain\JewelleryProperties\Chains\ChainMetrics\Models\ChainMetric;
 use Domain\JewelleryProperties\Chains\Chains\Enums\ChainEnum;
+use Domain\JewelleryProperties\Chains\ChainWeavings\Enums\ChainWeavingEnum;
 use Domain\JewelleryProperties\Chains\ChainWeavings\Models\ChainWeaving;
 use Domain\Shared\JewelleryProperties\Clasps\Models\Clasp;
 use Domain\Shared\JewelleryProperties\NeckSizes\Models\NeckSize;
+use Domain\Shared\JewelleryProperties\Weavings\Models\Weaving;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -47,5 +49,10 @@ final class Chain extends Model
     public function neckSizes(): BelongsToMany
     {
         return $this->belongsToMany(NeckSize::class, ChainMetricEnum::TABLE_NAME->value);
+    }
+
+    public function weavings(): BelongsToMany
+    {
+        return $this->belongsToMany(Weaving::class, ChainWeavingEnum::TABLE_NAME->value);
     }
 }

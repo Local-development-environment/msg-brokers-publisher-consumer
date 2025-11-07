@@ -17,6 +17,8 @@ enum ChainNameRoutesEnum: string
     case RELATIONSHIP_TO_CHAIN_WEAVINGS = 'chain.relationships.chain-weavings';
     case RELATED_TO_NECK_SIZES         = 'chains.neck-sizes';
     case RELATIONSHIP_TO_NECK_SIZES    = 'chains.relationships.neck-sizes';
+    case RELATIONSHIP_TO_WEAVINGS    = 'chains.relationships.weavings';
+    case RELATED_TO_WEAVINGS         = 'chains.weavings';
     case RELATED_TO_JEWELLERY          = 'chain.jewellery';
     case RELATIONSHIP_TO_JEWELLERY     = 'chain.relationships.jewellery';
     case RELATED_TO_CLASP              = 'chains.clasp';

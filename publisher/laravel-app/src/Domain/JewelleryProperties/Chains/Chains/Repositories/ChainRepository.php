@@ -19,7 +19,8 @@ final class ChainRepository
             ->allowedIncludes([
                 ChainRelationshipsEnum::NECK_SIZES->value,
                 ChainRelationshipsEnum::CHAIN_METRICS->value,
-                ChainRelationshipsEnum::CHAIN_WEAVING->value,
+                ChainRelationshipsEnum::CHAIN_WEAVINGS->value,
+                ChainRelationshipsEnum::WEAVINGS->value,
                 ChainRelationshipsEnum::JEWELLERY->value,
                 ChainRelationshipsEnum::CLASP->value,
             ])
@@ -42,7 +43,8 @@ final class ChainRepository
             ->allowedIncludes([
                 ChainRelationshipsEnum::NECK_SIZES->value,
                 ChainRelationshipsEnum::CHAIN_METRICS->value,
-                ChainRelationshipsEnum::CHAIN_WEAVING->value,
+                ChainRelationshipsEnum::CHAIN_WEAVINGS->value,
+                ChainRelationshipsEnum::WEAVINGS->value,
                 ChainRelationshipsEnum::JEWELLERY->value,
                 ChainRelationshipsEnum::CLASP->value,
             ])
