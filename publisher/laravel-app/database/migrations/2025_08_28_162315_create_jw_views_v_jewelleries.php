@@ -359,42 +359,73 @@ return new class extends Migration
                         union all
 
                         select
-                            jj.id,jwbrc.jewellery_id as jewellery_id,
+                            jj.id,b.id as jewellery_id,
                             jsonb_build_object(
-                                'bracelet_id', jwbrc.id,
-                                'body_part_id', jwbp.id,
-                                'body_part', jwbp.name,
-                                'weaving_id', jww.id,
-                                'weaving', jww.name,
-                                'clasp_id', jwcls.id,
-                                'clasp', jwcls.name,
-                                'base_id', jwbb.id,
-                                'base', jwbb.name,
-                                'size_price_quantity',
-                                jsonb_agg(
-                                    jsonb_build_object(
-                                        'size', jwbs.value,
-                                        'price', jwbm.price,
-                                        'quantity', jwbm.quantity
-                                    )
-                                )
-                            ) as spec_props,
-                            sum(jwbm.quantity) as quantity,
-                            cast(avg(jwbm.price) as decimal(10, 2)) as avg_price,
-                            cast(max(jwbm.price) as decimal(10, 2)) as max_price,
-                            cast(min(jwbm.price) as decimal(10, 2)) as min_price
+                                'metrics', metrics.metrics,
+                                'weaving', weaving.weaving,
+                                'clasp_id', b.clasp_id,
+                                'clasp_name', c.name,
+                                'clasp_description', c.description,
+                                'base_id', b.bracelet_base_id,
+                                'base_name', bb.name,
+                                'body_part_id', b.body_part_id,
+                                'body_part_name', bp.name
+                            ) as details,
+                            sum(brm.quantity) as quantity,
+                            cast(avg(brm.price) as decimal(10, 2)) as avg_price,
+                            cast(max(brm.price) as decimal(10, 2)) as max_price,
+                            cast(min(brm.price) as decimal(10, 2)) as min_price
                         from
-                            jw_properties.bracelets as jwbrc
-                        join jewelleries.jewelleries as jj on jwbrc.jewellery_id = jj.id
-                        join jewelleries.categories as jc on jj.category_id = jc.id
-                        join jw_properties.body_parts as jwbp on jwbrc.body_part_id = jwbp.id
-                        join jw_properties.bracelet_bases as jwbb on jwbrc.bracelet_base_id = jwbb.id
-                        join jw_properties.clasps as jwcls on jwbrc.clasp_id = jwcls.id
-                        left join jw_properties.bracelet_metrics as jwbm on jwbrc.id = jwbm.bracelet_id
-                        left join jw_properties.bracelet_sizes as jwbs on jwbm.bracelet_size_id = jwbs.id
-                        left join jw_properties.bracelet_weavings as jwbw on jwbrc.id = jwbw.bracelet_id
-                        left join jw_properties.weavings as jww on jwbw.weaving_id = jww.id
-                        group by jj.id,jwbrc.jewellery_id,jwbrc.id,jwbp.id,jww.id,jwcls.id,jwbb.id
+                            jw_properties.bracelets as b
+                                join (
+                                select
+                                    b.id as bracelet_id,
+                                    case
+                                        when brw.bracelet_id isnull then
+                                            jsonb_build_object()
+                                        else
+                                            jsonb_agg(
+                                                jsonb_build_object(
+                                                    'base_weaving_id', w.base_weaving_id,
+                                                    'base_weaving_name', bw.name,
+                                                    'weaving_id', w.id,
+                                                    'weaving', w.name,
+                                                    'fullness', brw.fullness,
+                                                    'wire_diameter', brw.diameter
+                                                )
+                                            )
+                                        end as weaving
+                                from
+                                    jw_properties.bracelets as b
+                                        left join jw_properties.bracelet_weavings as brw on b.id = brw.bracelet_id
+                                        left join jw_properties.weavings as w on brw.weaving_id = w.id
+                                        left join jw_properties.base_weavings as bw on w.base_weaving_id = bw.id
+                                group by b.id, brw.bracelet_id
+                            ) as weaving on weaving.bracelet_id = b.id
+                                join (
+                                select
+                                    b.id as bracelet_id,
+                                    jsonb_agg(
+                                        jsonb_build_object(
+                                            'size', bs.value,
+                                            'price', brm.price,
+                                            'quantity', brm.quantity,
+                                            'unit', bs.unit
+                                        )
+                                    ) as metrics
+                                from
+                                    jw_properties.bracelets as b
+                                        left join jw_properties.bracelet_metrics as brm on b.id = brm.bracelet_id
+                                        left join jw_properties.bracelet_sizes as bs on brm.bracelet_size_id = bs.id
+                        
+                                group by b.id
+                            ) as metrics on metrics.bracelet_id = b.id
+                                left join jw_properties.clasps as c on c.id = b.clasp_id
+                                left join jw_properties.bracelet_bases as bb on bb.id = b.bracelet_base_id
+                                left join jw_properties.body_parts as bp on bp.id = b.body_part_id
+                                left join jewelleries.jewelleries as jj on b.id = jj.id
+                                left join jw_properties.bracelet_metrics as brm on b.id = brm.bracelet_id
+                        group by b.id, metrics.metrics, weaving.weaving, jj.id, c. name, bb.name, bp.name, c.description
                         
                         union all
                         
@@ -581,6 +612,7 @@ return new class extends Migration
                 left join cte_jw_videos as cgv on jj.id = cgv.jewellery_id
                 left join cte_jw_pictures as cp on jj.id = cp.jewellery_id
                 left join jsonb_path_query(cjwi.inserts, '$[*].dominant_stone ? (@.weight != null)') as dominant_data on jj.id = cjwi.jewellery_id
+                
                 order by jj.id
                 
                 with data;
