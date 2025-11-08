@@ -8,6 +8,8 @@ use Domain\Inserts\InsertMetrics\Enums\InsertMetricEnum;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Jewelleries\JewelleryBuilder\BaseJewelleryBuilder;
 use Domain\Jewelleries\JewelleryBuilder\Jeweller;
+use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
+use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -364,13 +366,13 @@ final class BuildJewellerySeeder extends Seeder
     private function addRings(array $jewelleryData, int $jewelleryId): void
     {
 //        dd($jewelleryData['props']['parameters']['ring_finger']);
-        $ringFingerId = DB::table('jw_properties.ring_fingers')
+        $ringFingerId = DB::table(RingFingerEnum::TABLE_NAME->value)
             ->where('name',$jewelleryData['props']['parameters']['ring_finger'])
             ->value('id');
 
 
         $ringId = DB::table('jw_properties.rings')->insertGetId([
-            'jewellery_id' => $jewelleryId,
+            'id' => $jewelleryId,
             'ring_finger_id' => $ringFingerId,
             'dimensions' => json_encode($jewelleryData['props']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
             'created_at' => now()
