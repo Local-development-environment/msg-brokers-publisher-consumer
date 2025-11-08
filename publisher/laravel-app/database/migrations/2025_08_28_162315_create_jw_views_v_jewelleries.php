@@ -328,7 +328,7 @@ return new class extends Migration
                         union all
                         
                         select
-                            jj.id,jwrng.jewellery_id as jewellery_id,
+                            jj.id,jwrng.id as jewellery_id,
                             jsonb_build_object(
                                 'ring_id', jwrng.id,
                                 'ring_finger_id', jwrf.id,
@@ -349,12 +349,12 @@ return new class extends Migration
                             cast(min(jwrm.price) as decimal(10, 2)) as min_price
                         from
                             jw_properties.rings as jwrng
-                        join jewelleries.jewelleries as jj on jwrng.jewellery_id = jj.id
+                        join jewelleries.jewelleries as jj on jwrng.id = jj.id
                         join jewelleries.categories as jc on jj.category_id = jc.id
                         join jw_properties.ring_fingers as jwrf on jwrng.ring_finger_id = jwrf.id
                         left join jw_properties.ring_metrics as jwrm on jwrng.id = jwrm.ring_id
                         left join jw_properties.ring_sizes as jwrs on jwrm.ring_size_id = jwrs.id
-                        group by jj.id,jwrng.jewellery_id,jwrng.id,jwrf.id
+                        group by jj.id,jwrng.id,jwrf.id
                         
                         union all
 

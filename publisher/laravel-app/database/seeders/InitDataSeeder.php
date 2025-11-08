@@ -10,7 +10,12 @@ use Domain\Inserts\Inserts\Enums\InsertEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
+use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailEnum;
+use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
+use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerListEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
+use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeEnum;
+use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeListEnum;
 use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingEnum;
 use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingListEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
@@ -44,17 +49,18 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_properties.bracelet_weavings')->truncate();
         DB::table('jw_properties.bracelet_metrics')->truncate();
         DB::table('jw_properties.bracelet_sizes')->truncate();
-//        DB::table('jw_properties.weavings')->truncate();
         DB::table(WeavingEnum::TABLE_NAME->value)->truncate();
         DB::table(BaseWeavingEnum::TABLE_NAME->value)->truncate();
         DB::table('jw_properties.bracelets')->truncate();
         DB::table('jw_properties.body_parts')->truncate();
         DB::table('jw_properties.bracelet_bases')->truncate();
         DB::table('jw_properties.clasps')->truncate();
-        DB::table('jw_properties.ring_fingers')->truncate();
         DB::table('jw_properties.ring_metrics')->truncate();
         DB::table('jw_properties.rings')->truncate();
         DB::table('jw_properties.ring_sizes')->truncate();
+        DB::table(RingTypeEnum::TABLE_NAME->value)->truncate();
+        DB::table(RingDetailEnum::TABLE_NAME->value)->truncate();
+        DB::table(RingFingerEnum::TABLE_NAME->value)->truncate();
         DB::table('jw_properties.earrings')->truncate();
         DB::table('jw_properties.earring_types')->truncate();
         DB::table('jw_properties.earrings')->truncate();
@@ -85,7 +91,6 @@ final class InitDataSeeder extends Seeder
         DB::table(InsertMetricEnum::TABLE_NAME->value)->truncate();
         DB::table(InsertOptionalInfoEnum::TABLE_NAME->value)->truncate();
         DB::table(InsertEnum::TABLE_NAME->value)->truncate();
-//        DB::table('jw_inserts.inserts')->truncate();
         DB::table('jw_inserts.stone_families')->truncate();
         DB::table('jw_inserts.stone_groups')->truncate();
         DB::table('jw_inserts.stone_grades')->truncate();
@@ -102,11 +107,9 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_metals.jewellery_metal_detail')->truncate();
         Schema::enableForeignKeyConstraints();
 
-//        $weavings = config('data-seed.data_items.jw_weavings');
         $earring_clasps = config('data-seed.data_items.earring_clasps');
         $earring_types = config('data-seed.data_items.earring_types');
         $body_parts = config('data-seed.data_items.body_parts');
-        $ring_fingers = config('data-seed.data_items.ring_fingers');
         $jw_coverages = config('data-seed.data_items.jw_coverages');
         $jwCoverageTypes = config('data-seed.data_items.jw_coverage_types');
         $bracelet_bases = config('data-seed.data_items.bracelet_bases');
@@ -222,10 +225,19 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach ($ring_fingers as $ring_finger) {
-            DB::table('jw_properties.ring_fingers')->insert([
-                'name' => $ring_finger,
-                'slug' => Str::slug($ring_finger),
+        foreach (RingTypeListEnum::cases() as $type) {
+            DB::table(RingTypeEnum::TABLE_NAME->value)->insert([
+                'name' => $type->value,
+                'slug' => Str::slug($type->value),
+                'description' => $type->description(),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach (RingFingerListEnum::cases() as $type) {
+            DB::table(RingFingerEnum::TABLE_NAME->value)->insert([
+                'name' => $type->value,
+                'slug' => Str::slug($type->value),
                 'created_at' => now(),
             ]);
         }
