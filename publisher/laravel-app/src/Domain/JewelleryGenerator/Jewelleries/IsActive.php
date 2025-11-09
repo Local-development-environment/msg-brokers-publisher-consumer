@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Domain\Jewelleries\JewelleryBuilder\Properties;
+namespace Domain\JewelleryGenerator\Jewelleries;
 
 final class IsActive
 {

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Jewelleries\JewelleryBuilder;
 
+use Domain\JewelleryGenerator\JewelleryBuilderInterface;
+
 final class Jeweller
 {
     public function buildJewellery(JewelleryBuilderInterface $builder): array

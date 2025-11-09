@@ -173,7 +173,7 @@ final class BuildJewellerySeeder extends Seeder
 //                        dump('********************************************' . $stoneId);
             }
 
-            DB::table('jw_metals.jewellery_metal_detail')->insert([
+            DB::table('jw_metals.jewellery_metals')->insert([
                 'metal_detail_id' => $metalDetailId,
                 'jewellery_id' => $jewelleryId,
                 'created_at' => now()

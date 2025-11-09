@@ -16,6 +16,7 @@ use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerListEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeListEnum;
+use Domain\PreciousMetals\Metals\Enums\MetalEnum;
 use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingEnum;
 use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingListEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
@@ -103,8 +104,8 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_metals.metal_details')->truncate();
         DB::table('jw_metals.colours')->truncate();
         DB::table('jw_metals.hallmarks')->truncate();
-        DB::table('jw_metals.metals')->truncate();
-        DB::table('jw_metals.jewellery_metal_detail')->truncate();
+        DB::table(MetalEnum::TABLE_NAME->value)->truncate();
+        DB::table('jw_metals.jewellery_metals')->truncate();
         Schema::enableForeignKeyConstraints();
 
         $earring_clasps = config('data-seed.data_items.earring_clasps');

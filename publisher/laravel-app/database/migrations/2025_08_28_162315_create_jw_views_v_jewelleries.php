@@ -101,12 +101,12 @@ return new class extends Migration
                     cte_jw_metals as (
                         select
                             case
-                                when jwjmd.jewellery_id isnull then
+                                when jwjm.jewellery_id isnull then
                                     null
                                 else
                                     jsonb_agg(
                                         jsonb_build_object(
-                                            'metal_details_id', jwjmd.metal_detail_id,
+                                            'metal_details_id', jwjm.metal_detail_id,
                                             'metal_details', concat_ws(' ',jwm.name,'цвет',jwc.name,'проба',jwh.value),
                                             'metal_id', jwm.id,
                                             'metal', jwm.name,
@@ -121,12 +121,12 @@ return new class extends Migration
                             jj.id as jewellery_id
                         from
                             jewelleries.jewelleries as jj
-                        left join jw_metals.jewellery_metal_detail as jwjmd on jj.id = jwjmd.jewellery_id
-                        left join jw_metals.metal_details as jwmd on jwjmd.metal_detail_id = jwmd.id
+                        left join jw_metals.jewellery_metals as jwjm on jj.id = jwjm.jewellery_id
+                        left join jw_metals.metal_details as jwmd on jwjm.metal_detail_id = jwmd.id
                         join jw_metals.metals jwm on jwmd.metal_id = jwm.id
                         join jw_metals.colours jwc on jwmd.colour_id = jwc.id
                         join jw_metals.hallmarks jwh on jwmd.hallmark_id = jwh.id
-                        group by jj.id,jwjmd.jewellery_id
+                        group by jj.id,jwjm.jewellery_id
                     ),
                     cte_videos_group as (
                         select

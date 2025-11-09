@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_metals.jewellery_metal_detail', function (Blueprint $table) {
+        Schema::create('jw_metals.jewellery_metals', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('metal_detail_id');
             $table->unsignedBigInteger('jewellery_id');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_metals.jewellery_metal_detail');
+        Schema::dropIfExists('jw_metals.jewellery_metals');
     }
 };

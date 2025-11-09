@@ -4,19 +4,20 @@ declare(strict_types=1);
 
 namespace Domain\Jewelleries\JewelleryBuilder;
 
-use Domain\Jewelleries\JewelleryBuilder\Properties\Category;
 use Domain\Jewelleries\JewelleryBuilder\Properties\Colour;
 use Domain\Jewelleries\JewelleryBuilder\Properties\Coverage;
-use Domain\Jewelleries\JewelleryBuilder\Properties\Description;
 use Domain\Jewelleries\JewelleryBuilder\Properties\Hallmark;
 use Domain\Jewelleries\JewelleryBuilder\Properties\Insert;
-use Domain\Jewelleries\JewelleryBuilder\Properties\IsActive;
-use Domain\Jewelleries\JewelleryBuilder\Properties\JewelleryName;
 use Domain\Jewelleries\JewelleryBuilder\Properties\Media;
-use Domain\Jewelleries\JewelleryBuilder\Properties\PartNumber;
-use Domain\Jewelleries\JewelleryBuilder\Properties\PrcsMetal;
 use Domain\Jewelleries\JewelleryBuilder\Properties\Property;
-use Domain\Jewelleries\JewelleryBuilder\Properties\Weight;
+use Domain\JewelleryGenerator\Jewelleries\Category;
+use Domain\JewelleryGenerator\Jewelleries\Description;
+use Domain\JewelleryGenerator\Jewelleries\IsActive;
+use Domain\JewelleryGenerator\Jewelleries\JewelleryName;
+use Domain\JewelleryGenerator\Jewelleries\PartNumber;
+use Domain\JewelleryGenerator\Jewelleries\PreciousMetals\PrcsMetal;
+use Domain\JewelleryGenerator\Jewelleries\Weight;
+use Domain\JewelleryGenerator\JewelleryBuilderInterface;
 use Random\RandomException;
 
 final class BaseJewelleryBuilder implements JewelleryBuilderInterface

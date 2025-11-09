@@ -7,14 +7,15 @@ use App\Http\Integrations\UVI\Jewelleries\Requests\GetAllJewelleries;
 use App\Http\Integrations\UVI\UVIConnector;
 use Domain\Inserts\GrownStones\Models\GrownStone;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
-use Domain\Inserts\Inserts\Enums\InsertModelEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
 use Domain\Inserts\Stones\Models\Stone;
 use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
 use Domain\Jewelleries\Jewelleries\Models\Jewellery;
+use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Models\Bracelet;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
 use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
+use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerListEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
 use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingListEnum;
 use Domain\Users\Admins\Models\Admin;
@@ -23,8 +24,10 @@ use Domain\Users\RegisterPhones\Models\RegisterPhone;
 use Domain\Users\Users\Models\User;
 use Domain\Users\UserTypes\Models\UserType;
 use Domain\Users\UserUserTypes\Models\UserUserType;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -33,16 +36,28 @@ use Saloon\Exceptions\Request\RequestException;
 
 final class TestSeeder extends Seeder
 {
+    use ProbabilityArrayElementTrait;
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-//        dump(100/count(CategoryListEnum::cases()));
-//        $arr = range(0, 100);
-//        foreach (array_rand($arr, 5) as $index) {
-//            dump($index);
-//        }
+        $enumClass = get_class(CategoryListEnum::BEADS);
+        $enumCases = CategoryListEnum::cases();
+
+        dd($this->getArrElement($enumClass, $enumCases));
+
+        $categories = CategoryListEnum::cases();
+        $i = 0;
+        for ($x = 1; $x <= 200; $x++) {
+            $key = $this->rand_with_entries($enumClass, $enumCases);
+            if ($key === 'броши') {
+                dump($key . '  ' . $i++);
+            }
+//            dump($this->rand_with_entries($categories));
+        }
+//        $this->rand_with_entries($categories);
+        dd('ok');
         foreach (Chain::first()->weavings as $size) {
             dump($size->name);
         }
@@ -111,5 +126,44 @@ final class TestSeeder extends Seeder
         $response = $connector->send(new GetAllJewelleries($strParams));
 
         dd($response->json());
+    }
+
+    /**
+     * @throws BindingResolutionException
+     */
+    private function rand_with_entries(string $enumClass, array $enumCases)
+    {
+        //create a temporary array
+        $tmp = [];
+
+        //loop through all names
+        foreach($this->getArrItems($enumClass, $enumCases) as $name => $count) {
+            //for each entry for a specific name, add name to `$tmp` array
+            for ($x = 1; $x <= $count * 100; $x++) {
+                $tmp[] = $name;
+            }
+        }
+        //return random name from `$tmp` array
+        return $tmp[array_rand($tmp)];
+    }
+
+    protected function getTotalItems(string $data): float
+    {
+        $num = 0;
+        foreach ($data as $item) {
+            $num += CategoryListEnum::{$item->name}->probability();
+        }
+
+        return 100/$num;
+    }
+
+    protected function getArrItems(string $enumClass, array $enumCases): array
+    {
+        $arrItems = [];
+        foreach ($enumCases as $item) {
+            $arrItems[$enumClass::{$item->name}->value] = $enumClass::{$item->name}->probability();
+        }
+
+        return $arrItems;
     }
 }
