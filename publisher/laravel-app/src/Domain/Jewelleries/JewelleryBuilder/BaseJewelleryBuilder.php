@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Jewelleries\JewelleryBuilder;
 
-use Domain\Jewelleries\JewelleryBuilder\Properties\Colour;
-use Domain\Jewelleries\JewelleryBuilder\Properties\Coverage;
-use Domain\Jewelleries\JewelleryBuilder\Properties\Hallmark;
+use Domain\Jewelleries\JewelleryBuilder\Properties\CoveringType;
 use Domain\Jewelleries\JewelleryBuilder\Properties\Insert;
 use Domain\Jewelleries\JewelleryBuilder\Properties\Media;
 use Domain\Jewelleries\JewelleryBuilder\Properties\Property;
@@ -15,8 +13,10 @@ use Domain\JewelleryGenerator\Jewelleries\Description;
 use Domain\JewelleryGenerator\Jewelleries\IsActive;
 use Domain\JewelleryGenerator\Jewelleries\JewelleryName;
 use Domain\JewelleryGenerator\Jewelleries\PartNumber;
-use Domain\JewelleryGenerator\Jewelleries\PreciousMetals\PrcsMetal;
-use Domain\JewelleryGenerator\Jewelleries\Weight;
+use Domain\JewelleryGenerator\Jewelleries\PreciousMetals\Hallmark;
+use Domain\JewelleryGenerator\Jewelleries\PreciousMetals\GoldenColour;
+use Domain\JewelleryGenerator\Jewelleries\PreciousMetals\MetalType;
+use Domain\JewelleryGenerator\Jewelleries\ApproxWeight;
 use Domain\JewelleryGenerator\JewelleryBuilderInterface;
 use Random\RandomException;
 
@@ -31,32 +31,6 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         return $this;
     }
 
-    public function addPrcsMetal(): jewelleryBuilderInterface
-    {
-        $metal = new PrcsMetal();
-        $this->baseJewellery->prcsMetal = $metal->getMetal();
-
-        return $this;
-    }
-
-    public function addPrcsMetalHallmark(): jewelleryBuilderInterface
-    {
-        $hallmark = new Hallmark();
-        $this->baseJewellery->prcsMetalHallmark = $hallmark->getHallmark($this->baseJewellery->prcsMetal);
-
-        return $this;
-    }
-
-    public function addPrcsMetalColour(): jewelleryBuilderInterface
-    {
-        $properties = get_object_vars($this->baseJewellery);
-        $colour = new Colour();
-        $this->baseJewellery->prcsMetalColour = $colour
-            ->getColour($properties);
-
-        return $this;
-    }
-
     public function addCategory(): jewelleryBuilderInterface
     {
         $category = new Category();
@@ -65,29 +39,39 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         return $this;
     }
 
-    public function addPrcsMetalCoverage(): jewelleryBuilderInterface
+    public function addMetalType(): jewelleryBuilderInterface
     {
-        $properties = get_object_vars($this->baseJewellery);
-        $coverage = new Coverage();
-        $this->baseJewellery->prcsMetalCoverage = $coverage->getCoverages($properties);
+        $metal = new MetalType();
+        $this->baseJewellery->metalType = $metal->getMetalType();
 
         return $this;
     }
 
-    public function addWeight(): jewelleryBuilderInterface
+    public function addHallmark(): jewelleryBuilderInterface
     {
-        $weight = new Weight();
-        $this->baseJewellery->weight = $weight->getWeight();
+        $hallmark = new Hallmark();
+        $this->baseJewellery->hallmark = $hallmark->getHallmark($this->baseJewellery->metalType);
 
         return $this;
     }
 
-    public function addJewelleryName(): jewelleryBuilderInterface
+    /**
+     * @throws RandomException
+     */
+    public function addGoldenColour(): jewelleryBuilderInterface
+    {
+        $colour = new GoldenColour();
+        $this->baseJewellery->goldenColour = $colour
+            ->getGoldenColour($this->baseJewellery->hallmark, $this->baseJewellery->metalType);
+
+        return $this;
+    }
+
+    public function addCoveringType(): jewelleryBuilderInterface
     {
         $properties = get_object_vars($this->baseJewellery);
-        $jewelleryName = new JewelleryName();
-
-        $this->baseJewellery->jewelleryName = $jewelleryName->getJewelleryName($properties);
+        $covering = new CoveringType();
+        $this->baseJewellery->coveringType = $covering->getCoveringType($properties);
 
         return $this;
     }
@@ -111,21 +95,19 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         return $this;
     }
 
-    public function addIsActive(): jewelleryBuilderInterface
+    public function addApproxWeight(): jewelleryBuilderInterface
     {
-        $isActive = new IsActive();
-        $this->baseJewellery->isActive = $isActive->getIsActive();
+        $weight = new ApproxWeight();
+        $this->baseJewellery->approxWeight = $weight->getApproxWeight();
 
         return $this;
     }
 
-    public function addProperty(): jewelleryBuilderInterface
+    public function addIsActive(): jewelleryBuilderInterface
     {
-        $property = new Property();
-
-        $properties = get_object_vars($this->baseJewellery);
-        $this->baseJewellery->property = $property->getProperties($properties);
-
+        $isActive = new IsActive();
+        $this->baseJewellery->isActive = $isActive->getIsActive();
+        dd($this->baseJewellery);
         return $this;
     }
 
@@ -140,6 +122,26 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         return $this;
     }
 
+    public function addProperty(): jewelleryBuilderInterface
+    {
+        $property = new Property();
+
+        $properties = get_object_vars($this->baseJewellery);
+        $this->baseJewellery->property = $property->getProperties($properties);
+
+        return $this;
+    }
+
+    public function addJewelleryName(): jewelleryBuilderInterface
+    {
+        $properties = get_object_vars($this->baseJewellery);
+        $jewelleryName = new JewelleryName();
+
+        $this->baseJewellery->jewelleryName = $jewelleryName->getJewelleryName($properties);
+
+        return $this;
+    }
+
     public function addMedia(): jewelleryBuilderInterface
     {
         $media = new Media();
@@ -150,18 +152,18 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
 
     public function getJewellery(): array
     {
-        $jewellery['prcs_metal_prop']['prcs_metal'] = $this->baseJewellery->prcsMetal;
-        $jewellery['prcs_metal_prop']['prcs_metal_hallmark'] = $this->baseJewellery->prcsMetalHallmark;
-        $jewellery['prcs_metal_prop']['prcs_metal_colour'] = $this->baseJewellery->prcsMetalColour;
-        $jewellery['jw_category'] = $this->baseJewellery->category;
-        $jewellery['jw_coverage'] = $this->baseJewellery->prcsMetalCoverage;
+        $jewellery['metal_props']['metal_type'] = $this->baseJewellery->metalType;
+        $jewellery['metal_props']['hallmark'] = $this->baseJewellery->hallmark;
+        $jewellery['metal_props']['golden_colour'] = $this->baseJewellery->goldenColour;
+        $jewellery['category'] = $this->baseJewellery->category;
+        $jewellery['covering_type'] = $this->baseJewellery->coveringType;
         $jewellery['name'] = $this->baseJewellery->jewelleryName;
         $jewellery['description'] = $this->baseJewellery->description;
         $jewellery['part_number'] = $this->baseJewellery->partNumber;
-        $jewellery['approx_weight'] = $this->baseJewellery->weight;
+        $jewellery['approx_weight'] = $this->baseJewellery->approxWeight;
         $jewellery['is_active'] = $this->baseJewellery->isActive;
+        $jewellery['inserts'] = $this->baseJewellery->insert;
         $jewellery['props'] = $this->baseJewellery->property;
-        $jewellery['jw_insert'] = $this->baseJewellery->insert;
         $jewellery['jw_media'] = $this->baseJewellery->media;
 
         return $jewellery;

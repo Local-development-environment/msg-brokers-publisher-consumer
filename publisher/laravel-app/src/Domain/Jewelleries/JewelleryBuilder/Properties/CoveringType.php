@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Domain\Jewelleries\JewelleryBuilder\Properties;
 
-final class Coverage
+final class CoveringType
 {
-    public function getCoverages($properties): array
+    public function getCoveringType($properties): array
     {
 //        dd($properties);
-        $metal = $properties['prcsMetal'];
+        $metal = $properties['metalType'];
         $category = $properties['category'];
 
         $goldenCoverage = [[], ['родирование']];

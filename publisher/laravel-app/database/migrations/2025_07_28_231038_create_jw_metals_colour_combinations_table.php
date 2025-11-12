@@ -11,18 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_metals.metal_details', function (Blueprint $table) {
+        Schema::create('jw_metals.colour_combinations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('golden_colour_id');
             $table->unsignedBigInteger('metal_id');
-            $table->unsignedBigInteger('hallmark_id');
-            $table->unsignedBigInteger('colour_id');
             $table->timestamps();
 
+            $table->foreign('golden_colour_id')->references('id')->on('jw_metals.golden_colours');
             $table->foreign('metal_id')->references('id')->on('jw_metals.metals');
-            $table->foreign('hallmark_id')->references('id')->on('jw_metals.hallmarks');
-            $table->foreign('colour_id')->references('id')->on('jw_metals.colours');
-
-            $table->unique(['metal_id', 'hallmark_id', 'colour_id'], 'unique_jw_metals_metal_details');
         });
     }
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_metals.metal_details');
+        Schema::dropIfExists('jw_metals.colour_combinations');
     }
 };

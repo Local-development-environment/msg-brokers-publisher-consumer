@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Traits;
 
-use Domain\JewelleryGenerator\JewelleryBuilderInterface;
-
 trait ProbabilityArrayElementTrait
 {
-    public function getArrElement(string $enumClass, array $enumCases): string
+    public function getArrElement(string $enumClass, array $enumCases): string|int|null
     {
         return $this->randWithEntries($enumClass, $enumCases);
     }
@@ -20,12 +18,12 @@ trait ProbabilityArrayElementTrait
         //loop through all names
         foreach($this->getArrItems($enumClass, $enumCases) as $name => $count) {
             //for each entry for a specific name, add name to `$tmp` array
-            for ($x = 1; $x <= $count * 100; $x++) {
+            for ($x = 1; $x <= $count; $x++) {
                 $tmp[] = $name;
             }
         }
 
-        return $tmp[array_rand($tmp)];
+        return count($tmp) ? $tmp[array_rand($tmp)] : null;
     }
 
     protected function getArrItems(string $enumClass, array $enumCases): array

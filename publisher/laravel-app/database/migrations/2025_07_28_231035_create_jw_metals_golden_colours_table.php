@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_metals.colours', function (Blueprint $table) {
+        Schema::create('jw_metals.golden_colours', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->boolean('is_active')->default(true);
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_metals.colours');
+        Schema::dropIfExists('jw_metals.golden_colours');
     }
 };

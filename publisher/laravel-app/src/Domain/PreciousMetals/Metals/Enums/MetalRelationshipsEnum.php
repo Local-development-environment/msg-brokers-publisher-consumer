@@ -6,7 +6,7 @@ namespace Domain\PreciousMetals\Metals\Enums;
 
 enum MetalRelationshipsEnum: string
 {
-    case METAL_DETAILS = 'metalDetails';
-    case COLOURS       = 'colours';
-    case HALLMARKS     = 'hallmarks';
+    case METAL_HALLMARK = 'metalHallmark';
+    case METAL_COLOUR   = 'metalColour';
+    case JEWELLERY      = 'jewellery';
 }

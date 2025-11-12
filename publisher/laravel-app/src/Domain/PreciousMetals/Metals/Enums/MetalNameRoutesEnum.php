@@ -11,10 +11,10 @@ enum MetalNameRoutesEnum: string
     case CRUD_POST               = 'metals.post';
     case CRUD_PATCH              = 'metals.patch';
     case CRUD_DELETE             = 'metals.delete';
-    case RELATED_TO_METAL_DETAILS         = 'metal.metal-details';
-    case RELATIONSHIP_TO_INSERT_EXTERIORS = 'metal.relationships.metal-details';
-    case RELATED_TO_HALLMARKS             = 'metals.hallmarks';
-    case RELATIONSHIP_TO_HALLMARKS        = 'metals.relationships.hallmarks';
-    case RELATED_TO_COLOURS               = 'metals.colours';
-    case RELATIONSHIP_TO_COLOURS          = 'metals.relationships.colours';
+    case RELATED_TO_METAL_HALLMARK      = 'metals.metal-hallmark';
+    case RELATIONSHIP_TO_METAL_HALLMARK = 'metals.relationships.metal-hallmark';
+    case RELATED_TO_METAL_COLOUR        = 'metals.metal-color';
+    case RELATIONSHIP_TO_COLOUR         = 'metals.relationships.colour';
+    case RELATED_TO_JEWELLERY           = 'metals.jewellery';
+    case RELATIONSHIP_TO_JEWELLERY      = 'metals.relationships.jewellery';
 }

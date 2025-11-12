@@ -17,6 +17,8 @@ use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnu
 use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerListEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
+use Domain\PreciousMetals\Hallmarks\Enums\HallmarkListEnum;
+use Domain\PreciousMetals\MetalColours\Enums\GoldenColourListEnum;
 use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingListEnum;
 use Domain\Users\Admins\Models\Admin;
 use Domain\Users\Genders\Models\Gender;
@@ -37,25 +39,64 @@ use Saloon\Exceptions\Request\RequestException;
 final class TestSeeder extends Seeder
 {
     use ProbabilityArrayElementTrait;
+
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $enumClass = get_class(CategoryListEnum::BEADS);
-        $enumCases = CategoryListEnum::cases();
+        $arrColours = GoldenColourListEnum::cases();
+        $combProbability = random_int(1, 100);
+        dump($combProbability);
 
-        dd($this->getArrElement($enumClass, $enumCases));
+        foreach ($arrColours as $key => $case) {
+
+            if (str_contains($case->value, 'розовый')) {
+                Arr::forget($arrColours, $key);
+            }
+//            dump($arrColours);
+//            $count = count(explode(",", $hallmark->metals()));
+//            list($one, $two, $three) = explode(",", $hallmark->metals(), $number);
+//            dd($one, $two);
+
+//            list($one, $two, $three) = explode("-", "44-xkIolspO", 2);
+//            if (count(explode(",", $hallmark->metals())) > 1) {
+//                list($one, $two) = explode(",", $hallmark->metals(), $count);
+//                dump(count(explode(",", $hallmark->metals(), 2)));
+//            }
+//            dump($hallmark->metals());
+        }
+
+        if ($combProbability < 90) {
+            dump(['red']);
+        } elseif ($combProbability < 95) {
+            dump(['red', 'white']);
+        } else {
+            dump(['red', 'white','yellow']);
+        }
+//        dump($arrColours);
+        dd('ok');
+//        $enumClass = get_class(HallmarkListEnum::H_375);
+//        $enumCases = HallmarkListEnum::cases();
+//
+//        foreach ($enumCases as $key => $case) {
+//            if (! str_contains($case::{$case->name}->metals(), 'серебро')) {
+//                Arr::forget($enumCases, $key);
+//            }
+//            dump($case::{$case->name}->metals());
+//        }
+//        dd($enumCases);
+//        dd($this->getArrElement($enumClass, $enumCases));
 
         $categories = CategoryListEnum::cases();
         $i = 0;
-        for ($x = 1; $x <= 200; $x++) {
-            $key = $this->rand_with_entries($enumClass, $enumCases);
-            if ($key === 'броши') {
-                dump($key . '  ' . $i++);
-            }
-//            dump($this->rand_with_entries($categories));
-        }
+//        for ($x = 1; $x <= 200; $x++) {
+//            $key = $this->rand_with_entries($enumClass, $enumCases);
+//            if ($key === 'броши') {
+//                dump($key . '  ' . $i++);
+//            }
+////            dump($this->rand_with_entries($categories));
+//        }
 //        $this->rand_with_entries($categories);
         dd('ok');
         foreach (Chain::first()->weavings as $size) {
@@ -71,7 +112,7 @@ final class TestSeeder extends Seeder
         }
         dd(StoneGradeListEnum::cases()[array_rand(StoneGradeListEnum::cases())]->value);
         $params = [
-            'include' => ['jewelleryCategory','inserts'],
+            'include' => ['jewelleryCategory', 'inserts'],
             'filter' => [
                 'part_number' => '1050166-3',
                 'id' => 1
@@ -86,7 +127,7 @@ final class TestSeeder extends Seeder
         $strParams = '?';
         foreach ($params as $keyP => $param) {
             if ($keyP === 'include') {
-                $include = $keyP . '=' . implode(',',$param);
+                $include = $keyP . '=' . implode(',', $param);
                 if (!empty($param)) {
                     $strParams .= $include . '&';
                 }
@@ -100,7 +141,7 @@ final class TestSeeder extends Seeder
                 }
 
             } elseif ($keyP === 'sort') {
-                $sort = $keyP . '=' . implode(',',$param);
+                $sort = $keyP . '=' . implode(',', $param);
                 if (!empty($param)) {
                     $strParams .= $sort . '&';
                 }
@@ -137,7 +178,7 @@ final class TestSeeder extends Seeder
         $tmp = [];
 
         //loop through all names
-        foreach($this->getArrItems($enumClass, $enumCases) as $name => $count) {
+        foreach ($this->getArrItems($enumClass, $enumCases) as $name => $count) {
             //for each entry for a specific name, add name to `$tmp` array
             for ($x = 1; $x <= $count * 100; $x++) {
                 $tmp[] = $name;
@@ -154,7 +195,7 @@ final class TestSeeder extends Seeder
             $num += CategoryListEnum::{$item->name}->probability();
         }
 
-        return 100/$num;
+        return 100 / $num;
     }
 
     protected function getArrItems(string $enumClass, array $enumCases): array

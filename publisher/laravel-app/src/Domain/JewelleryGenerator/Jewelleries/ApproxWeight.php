@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries;
 
-final class Weight
+final class ApproxWeight
 {
-    public function getWeight(): float
+    public function getApproxWeight(): float
     {
         return fake()->randomFloat(2, 0, 10);
     }

@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jw_metals.metals', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->unique();
-            $table->string('slug')->unique();
-            $table->boolean('is_active')->default(true);
+            $table->unsignedBigInteger('id')->primary();
+            $table->unsignedBigInteger('metal_hallmark_id');
             $table->timestamps();
+
+            $table->foreign('metal_hallmark_id')->references('id')->on('jw_metals.metal_hallmarks');
+            $table->foreign('id')->references('id')->on('jewelleries.jewelleries');
         });
     }
 

@@ -10,6 +10,9 @@ use Domain\Jewelleries\JewelleryBuilder\BaseJewelleryBuilder;
 use Domain\Jewelleries\JewelleryBuilder\Jeweller;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeEnum;
+use Domain\PreciousMetals\MetalColours\Enums\GoldenColourEnum;
+use Domain\PreciousMetals\MetalHallmarks\Enums\MetalHallmarkEnum;
+use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -23,8 +26,8 @@ final class BuildJewellerySeeder extends Seeder
      */
     public function run($items): void
     {
-        $this->call(InitDataSeeder::class);
-        $this->call(InitUserSeeder::class);
+//        $this->call(InitDataSeeder::class);
+//        $this->call(InitUserSeeder::class);
 
         $jeweller = new Jeweller();
 //        $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
@@ -143,15 +146,14 @@ final class BuildJewellerySeeder extends Seeder
         $metal = $jewelleryData['prcs_metal_prop']['prcs_metal'];
         $colour = $jewelleryData['prcs_metal_prop']['prcs_metal_colour'];
         $hallmark = $jewelleryData['prcs_metal_prop']['prcs_metal_hallmark'];
-
+//        dd($jewelleryData['prcs_metal_prop']);
         if ($jewelleryData['prcs_metal_prop']) {
-            $metal_id = DB::table('jw_metals.metals')->where('name',$metal)->value('id');
-            $colour_id = DB::table('jw_metals.colours')->where('name',$colour)->value('id');
+            $metal_id = DB::table(MetalTypeEnum::TABLE_NAME->value)->where('name',$metal)->value('id');
+            $colour_id = DB::table(GoldenColourEnum::TABLE_NAME->value)->where('name',$colour)->value('id');
             $hallmark_id = DB::table('jw_metals.hallmarks')->where('value',$hallmark)->value('id');
             if (DB::table(InsertExteriorEnum::TABLE_NAME->value)->count() !== 0) {
-                $checkUnique = DB::table('jw_metals.metal_details')
-                    ->where('metal_id', $metal_id)
-                    ->where('colour_id', $colour_id)
+                $checkUnique = DB::table(MetalHallmarkEnum::TABLE_NAME->value)
+                    ->where('metal_type_id', $metal_id)
                     ->where('hallmark_id', $hallmark_id)
                     ->count();
 //                        dd($checkUnique);
@@ -161,13 +163,13 @@ final class BuildJewellerySeeder extends Seeder
 
             if ($checkUnique === 0) {
                 $metalDetailId = DB::table('jw_metals.metal_details')->insertGetId([
-                    'metal_id' => DB::table('jw_metals.metals')->where('name',$metal)->value('id'),
+                    'metal_id' => DB::table(MetalTypeEnum::TABLE_NAME->value)->where('name',$metal)->value('id'),
                     'colour_id' => DB::table('jw_metals.colours')->where('name',$colour)->value('id'),
                     'hallmark_id' => DB::table('jw_metals.hallmarks')->where('value',$hallmark)->value('id'),
                     'created_at' => now(),
                 ]);
             } else {
-                $metalDetailId = DB::table('jw_metals.metal_details')->where('metal_id', $metal_id)
+                $metalDetailId = DB::table(MetalHallmarkEnum::TABLE_NAME->value)->where('metal_type_id', $metal_id)
                     ->where('colour_id', $colour_id)
                     ->where('hallmark_id', $hallmark_id)->value('id');
 //                        dump('********************************************' . $stoneId);

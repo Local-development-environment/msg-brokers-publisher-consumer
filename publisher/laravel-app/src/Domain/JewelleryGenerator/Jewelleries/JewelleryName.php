@@ -8,10 +8,10 @@ final class JewelleryName
 {
     public function getJewelleryName(array $properties): string
     {
-        if (empty($properties['prcsMetalCoverage'])) {
+        if (empty($properties['covering_type'])) {
             $coverage = 'без покрытия';
         } else {
-            $stringCoverage = implode(' ', $properties['prcsMetalCoverage']);
+            $stringCoverage = implode(' ', $properties['covering_type']);
             $coverage = "покрытие ($stringCoverage)";
         }
 
