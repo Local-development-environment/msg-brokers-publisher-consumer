@@ -163,7 +163,7 @@ Route::group([
     Route::get('insert-exteriors/{id}/stone', [InsertExteriorsStoneRelatedController::class, 'index'])
         ->name(InsertExteriorNameRoutesEnum::RELATED_TO_STONE->value);
 
-//  many-to-one InsertStones to Colour
+//  many-to-one InsertStones to GoldenColour
     Route::get('insert-exteriors/{id}/relationships/colour', [InsertExteriorsStoneColourRelationshipController::class, 'index'])
         ->name(InsertExteriorNameRoutesEnum::RELATIONSHIP_TO_STONE_COLOUR->value);
     Route::get('insert-exteriors/{id}/colour', [InsertExteriorsStoneColourRelatedController::class, 'index'])
@@ -225,7 +225,7 @@ Route::group([
     Route::get('stones/{id}/stone-facets', [StonesFacetsRelatedController::class, 'index'])
         ->name(StoneNameRoutesEnum::RELATED_TO_FACETS->value);
 
-//  many-to-many Stones to Colours
+//  many-to-many Stones to Shades
     Route::get('stones/{id}/relationships/colours', [StonesColoursRelationshipController::class, 'index'])
         ->name(StoneNameRoutesEnum::RELATIONSHIP_TO_COLOURS->value);
     Route::get('stones/{id}/colours', [StonesColoursRelatedController::class, 'index'])
@@ -245,7 +245,7 @@ Route::group([
         ->name(ColourNameRoutesEnum::CRUD_DELETE->value);
 
 // RELATIONSHIPS
-//  one-to-many Colour InsertStones
+//  one-to-many GoldenColour InsertStones
     Route::get('insert-colours/{id}/relationships/insert-exteriors', [ColourInsertStonesRelationshipController::class, 'index'])
         ->name(ColourNameRoutesEnum::RELATIONSHIP_TO_INSERT_EXTERIORS->value);
     Route::get('insert-colours/{id}/insert-exteriors', [ColourInsertStonesRelatedController::class, 'index'])

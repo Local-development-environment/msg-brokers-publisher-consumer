@@ -36,4 +36,15 @@ enum CategoryListEnum: string
             self::TIE_CLIPS => 'описание зажим для галстука'
         };
     }
+
+    public function probability(): int
+    {
+        return match ($this) {
+            self::BEADS => 3,
+            self::BRACELETS, self::CHAINS, self::RINGS => 5,
+            self::BROOCHES, self::CHARM_PENDANTS, self::CUFF_LINKS, self::PENDANTS, self::PIERCINGS, self::TIE_CLIPS => 1,
+            self::EARRINGS => 4,
+            self::NECKLACES => 2
+        };
+    }
 }

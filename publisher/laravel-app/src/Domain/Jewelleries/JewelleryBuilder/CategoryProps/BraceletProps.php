@@ -22,7 +22,7 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
 
     public function getProps(): array
     {
-        $metal = $this->properties['prcsMetal'];
+        $metal = $this->properties['metalType'];
         $insert = $this->properties['insert'];
 
 //        $sizes = data_get(config('data-seed.data_items.bracelet_sizes'), '*.value');

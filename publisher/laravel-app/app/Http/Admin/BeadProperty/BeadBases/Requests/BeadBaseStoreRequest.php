@@ -32,7 +32,7 @@ final class BeadBaseStoreRequest extends FormRequest
             // relationships
             'data.relationships'    => ['missing'],
 //            'data.relationships'    => ['sometimes','required','array:beads'],
-            // one to many Insert Colour to Inserts
+            // one to many Insert GoldenColour to Inserts
 //            'data.relationships.beads'             => ['required_with:data.relationships','array:data','distinct'],
 //            'data.relationships.beads.data'        => ['required_with:data.relationships.beads','array','min:1'],
 //            'data.relationships.beads.data.*'      => ['required_with:data.relationships.beads','array:id,type'],

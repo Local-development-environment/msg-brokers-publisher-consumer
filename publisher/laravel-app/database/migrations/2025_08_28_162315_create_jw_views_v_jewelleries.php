@@ -79,41 +79,44 @@ return new class extends Migration
                         left join jw_views.v_inserts as vi on j.id = vi.jewellery_id
                         group by j.id, vi.jewellery_id
                     ),
-                    cte_jw_coverages as (
+                    cte_jw_coverings as (
                         select
                             jsonb_agg(
                                 jsonb_build_object(
-                                    'coverage_id', jwcj.coverage_id,
-                                    'coverage', jwc.name,
-                                    'coverage_type', ct.name,
-                                    'coverage_type_id', ct.id
+                                    'covering_id', cc.covering_type_id,
+                                    'covering', ct.name,
+                                    'covering_description', ct.description,
+                                    'covering_function', cf.name,
+                                    'covering_function_id', cf.id,
+                                    'covering_exterior', ce.name
                                 )
                             )
-                            as coverages,
+                            as coverings,
                             jj.id as jewellery_id
                         from
                             jewelleries.jewelleries as jj
-                        left join jw_coverages.coverage_jewellery jwcj on jj.id = jwcj.jewellery_id
-                        join jw_coverages.coverages as jwc on jwcj.coverage_id = jwc.id
-                        join jw_coverages.coverage_types ct on jwc.coverage_type_id = ct.id
-                        group by jj.id,jwcj.jewellery_id
+                        left join jw_coverings.coverings cc on jj.id = cc.jewellery_id
+                        join jw_coverings.covering_types as ct on cc.covering_type_id = ct.id
+                        join jw_coverings.covering_functions cf on ct.covering_function_id = cf.id
+                        left join jw_coverings.covering_exteriors ce on ct.id = ce.covering_type_id
+                        group by jj.id,cc.jewellery_id
                     ),
                     cte_jw_metals as (
                         select
                             case
-                                when jwjmd.jewellery_id isnull then
+                                when mm.id isnull then
                                     null
                                 else
                                     jsonb_agg(
                                         jsonb_build_object(
-                                            'metal_details_id', jwjmd.metal_detail_id,
-                                            'metal_details', concat_ws(' ',jwm.name,'цвет',jwc.name,'проба',jwh.value),
-                                            'metal_id', jwm.id,
-                                            'metal', jwm.name,
-                                            'colour_id', jwc.id,
-                                            'colour', jwc.name,
-                                            'hallmark_id', jwh.id,
-                                            'hallmark', jwh.value
+                                            'metal_details_id', mm.metal_hallmark_id,
+                                            'metal_hallmarks', concat_ws(' ',mt.name,'оттенок',gc.name,'проба',h.value),
+                                            'metal_type_id', mt.id,
+                                            'metal_type', mt.name,
+                                            'metal_colour_id', gc.id,
+                                            'metal_colour', gc.name,
+                                            'hallmark_id', h.id,
+                                            'hallmark', h.value
                                         )
                                     )
                                 end
@@ -121,12 +124,13 @@ return new class extends Migration
                             jj.id as jewellery_id
                         from
                             jewelleries.jewelleries as jj
-                        left join jw_metals.jewellery_metal_detail as jwjmd on jj.id = jwjmd.jewellery_id
-                        left join jw_metals.metal_details as jwmd on jwjmd.metal_detail_id = jwmd.id
-                        join jw_metals.metals jwm on jwmd.metal_id = jwm.id
-                        join jw_metals.colours jwc on jwmd.colour_id = jwc.id
-                        join jw_metals.hallmarks jwh on jwmd.hallmark_id = jwh.id
-                        group by jj.id,jwjmd.jewellery_id
+                        left join jw_metals.metals as mm on jj.id = mm.id
+                        left join jw_metals.metal_hallmarks as mh on mm.metal_hallmark_id = mh.id
+                        left join jw_metals.colour_combinations as cc on mm.id = cc.metal_id
+                        left join jw_metals.golden_colours gc on cc.golden_colour_id = gc.id
+                        join jw_metals.metal_types mt on mh.metal_type_id = mt.id
+                        join jw_metals.hallmarks h on mh.hallmark_id = h.id
+                        group by jj.id,mm.id
                     ),
                     cte_videos_group as (
                         select
@@ -588,12 +592,12 @@ return new class extends Migration
                         end
                     as spec_props,
                     case 
-                        when cjwc.coverages isnull 
+                        when cjwc.coverings isnull 
                             then jsonb_build_array()
                         else
-                            cjwc.coverages
+                            cjwc.coverings
                         end
-                    as coverages,
+                    as coverings,
                     cjwi.inserts,
                     cgv.video_medias,
                     cp.picture_medias,
@@ -606,7 +610,7 @@ return new class extends Migration
                 from jewelleries.jewelleries as jj
                 join jewelleries.categories as jc on jj.category_id = jc.id
                 left join cte_jw_inserts as cjwi on jj.id = cjwi.jewellery_id
-                left join cte_jw_coverages as cjwc on jj.id = cjwc.jewellery_id
+                left join cte_jw_coverings as cjwc on jj.id = cjwc.jewellery_id
                 left join cte_jw_metals as cjm on jj.id = cjm.jewellery_id
                 left join cte_jw_props as cjp on  jj.id = cjp.jewellery_id
                 left join cte_jw_videos as cgv on jj.id = cgv.jewellery_id

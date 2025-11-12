@@ -4,22 +4,23 @@ declare(strict_types=1);
 
 namespace Domain\Jewelleries\JewelleryBuilder;
 
+use Domain\JewelleryGenerator\JewelleryBuilderInterface;
+
 final class Jeweller
 {
     public function buildJewellery(JewelleryBuilderInterface $builder): array
     {
         return $builder
             ->reset()
-            ->addPrcsMetal()
-            ->addPrcsMetalHallmark()
             ->addCategory()
-            ->addPrcsMetalCoverage()
-            ->addPrcsMetalColour()
+            ->addMetalType()
+            ->addHallmark()
+            ->addGoldenColour()
+            ->addCoveringType()
             ->addDescription()
             ->addPartNumber()
-            ->addWeight()
+            ->addApproxWeight()
             ->addIsActive()
-//            ->addCategory()
             ->addInsert()
             ->addProperty()
             ->addJewelleryName()

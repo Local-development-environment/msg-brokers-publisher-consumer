@@ -22,7 +22,7 @@ final readonly class ChainProps implements CategoryPropsBuilderInterface
 
     public function getProps(): array
     {
-        $metal = $this->properties['prcsMetal'];
+        $metal = $this->properties['metalType'];
         $category = $this->properties['category'];
         dump($category);
 

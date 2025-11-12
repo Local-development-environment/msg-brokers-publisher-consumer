@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_coverages.coverage_types', function (Blueprint $table) {
+        Schema::create('jw_coverings.covering_types', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('covering_function_id');
             $table->string('name');
+            $table->text('description');
             $table->string('slug');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
+
+            $table->foreign('covering_function_id')->references('id')->on('jw_coverings.covering_functions');
         });
     }
 
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_coverages.coverage_types');
+        Schema::dropIfExists('jw_coverings.covering_types');
     }
 };

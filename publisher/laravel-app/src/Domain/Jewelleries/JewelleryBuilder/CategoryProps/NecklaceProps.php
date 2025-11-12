@@ -20,7 +20,7 @@ final readonly class NecklaceProps implements CategoryPropsBuilderInterface
 
     public function getProps(): array
     {
-        $metal = $this->properties['prcsMetal'];
+        $metal = $this->properties['metalType'];
         $insert = $this->properties['insert'];
 
         $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), NeckSizeListEnum::cases());

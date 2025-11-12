@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_coverages.coverage_jewellery', function (Blueprint $table) {
+        Schema::create('jw_coverings.coverings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('jewellery_id');
-            $table->unsignedBigInteger('coverage_id');
+            $table->unsignedBigInteger('covering_type_id');
             $table->timestamps();
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
-            $table->foreign('coverage_id')->references('id')->on('jw_coverages.coverages');
+            $table->foreign('covering_type_id')->references('id')->on('jw_coverings.covering_types');
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_coverages.coverage_jewellery');
+        Schema::dropIfExists('jw_coverings.coverings');
     }
 };

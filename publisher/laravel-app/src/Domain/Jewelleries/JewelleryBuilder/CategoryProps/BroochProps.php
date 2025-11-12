@@ -22,7 +22,7 @@ final readonly class BroochProps implements CategoryPropsBuilderInterface
 
         return [
             'quantity' => $this->getQuantity(),
-            'price' => $this->getPriceDifferentiation($properties['prcsMetal']),
+            'price' => $this->getPriceDifferentiation($properties['metalType']),
             'dimensions' => [
                 'высота' => fake()->randomFloat(1, 3, 6) . ' см',
                 'ширина' => fake()->randomFloat(1, 2, 4) . ' см',
