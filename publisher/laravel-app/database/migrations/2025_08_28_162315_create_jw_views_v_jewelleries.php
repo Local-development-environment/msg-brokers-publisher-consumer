@@ -85,19 +85,20 @@ return new class extends Migration
                                 jsonb_build_object(
                                     'covering_id', cc.covering_type_id,
                                     'covering', ct.name,
-                                    'coverage_function', cf.name,
-                                    'coverage_function_id', cf.id,
-                                    'coverage_exterior', ce.name
+                                    'covering_description', ct.description,
+                                    'covering_function', cf.name,
+                                    'covering_function_id', cf.id,
+                                    'covering_exterior', ce.name
                                 )
                             )
-                            as coverages,
+                            as coverings,
                             jj.id as jewellery_id
                         from
                             jewelleries.jewelleries as jj
                         left join jw_coverings.coverings cc on jj.id = cc.jewellery_id
                         join jw_coverings.covering_types as ct on cc.covering_type_id = ct.id
                         join jw_coverings.covering_functions cf on ct.covering_function_id = cf.id
-                        join jw_coverings.covering_exteriors ce on ct.id = ce.covering_type_id
+                        left join jw_coverings.covering_exteriors ce on ct.id = ce.covering_type_id
                         group by jj.id,cc.jewellery_id
                     ),
                     cte_jw_metals as (
@@ -591,12 +592,12 @@ return new class extends Migration
                         end
                     as spec_props,
                     case 
-                        when cjwc.coverages isnull 
+                        when cjwc.coverings isnull 
                             then jsonb_build_array()
                         else
-                            cjwc.coverages
+                            cjwc.coverings
                         end
-                    as coverages,
+                    as coverings,
                     cjwi.inserts,
                     cgv.video_medias,
                     cp.picture_medias,

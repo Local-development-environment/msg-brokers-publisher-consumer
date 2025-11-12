@@ -5,36 +5,16 @@ namespace Database\Seeders;
 
 use App\Http\Integrations\UVI\Jewelleries\Requests\GetAllJewelleries;
 use App\Http\Integrations\UVI\UVIConnector;
-use Domain\Inserts\GrownStones\Models\GrownStone;
-use Domain\Inserts\Inserts\Enums\InsertEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
-use Domain\Inserts\Stones\Models\Stone;
 use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
-use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
-use Domain\JewelleryProperties\Bracelets\Bracelets\Models\Bracelet;
-use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
 use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
-use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerListEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
-use Domain\PreciousMetals\Hallmarks\Enums\HallmarkListEnum;
-use Domain\PreciousMetals\MetalColours\Enums\GoldenColourListEnum;
+use Domain\PreciousMetals\GoldenColours\Enums\GoldenColourListEnum;
 use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingListEnum;
-use Domain\Users\Admins\Models\Admin;
-use Domain\Users\Genders\Models\Gender;
-use Domain\Users\RegisterPhones\Models\RegisterPhone;
-use Domain\Users\Users\Models\User;
-use Domain\Users\UserTypes\Models\UserType;
-use Domain\Users\UserUserTypes\Models\UserUserType;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-use Saloon\Exceptions\Request\FatalRequestException;
-use Saloon\Exceptions\Request\RequestException;
 
 final class TestSeeder extends Seeder
 {

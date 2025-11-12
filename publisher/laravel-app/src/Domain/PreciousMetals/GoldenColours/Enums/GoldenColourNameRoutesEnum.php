@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Domain\PreciousMetals\MetalColours\Enums;
+namespace Domain\PreciousMetals\GoldenColours\Enums;
 
 enum GoldenColourNameRoutesEnum: string
 {

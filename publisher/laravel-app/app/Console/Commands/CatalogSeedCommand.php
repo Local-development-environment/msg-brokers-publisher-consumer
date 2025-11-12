@@ -13,7 +13,7 @@ final class CatalogSeedCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'catalog:seed {--items=}';
+    protected $signature = 'catalog:seed {--items=} {--all=}';
 
     /**
      * The console command description.
@@ -27,6 +27,8 @@ final class CatalogSeedCommand extends Command
      */
     public function handle(): void
     {
-        (new BuildJewellerySeeder())->callWith(BuildJewellerySeeder::class, ['items' => $this->option('items')]);
+        (new BuildJewellerySeeder())->callWith(BuildJewellerySeeder::class, [
+            'items' => $this->option('items'), 'all' => $this->option('all')
+        ]);
     }
 }

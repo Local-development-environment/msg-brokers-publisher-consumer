@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Domain\JewelleryGenerator\Jewelleries\PreciousMetals;
 
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
-use Domain\PreciousMetals\MetalColours\Enums\GoldenColourListEnum;
+use Domain\PreciousMetals\GoldenColours\Enums\GoldenColourListEnum;
 use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeListEnum;
 use Illuminate\Support\Arr;
 use Random\RandomException;
@@ -65,10 +65,10 @@ final class GoldenColour
     private function randCombinedColours(): int
     {
         $randNumberColours = random_int(1, 100);
-        dump($randNumberColours);
-        if ($randNumberColours < 20) {
+
+        if ($randNumberColours < 85) {
             return 1;
-        } elseif ($randNumberColours < 70) {
+        } elseif ($randNumberColours < 95) {
             return 2;
         } else {
             return 3;

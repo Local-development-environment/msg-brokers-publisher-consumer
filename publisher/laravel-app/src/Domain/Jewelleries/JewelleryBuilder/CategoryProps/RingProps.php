@@ -20,7 +20,7 @@ final readonly class RingProps implements CategoryPropsBuilderInterface
 
     public function getProps(): array
     {
-        $metal = $this->properties['prcsMetal'];
+        $metal = $this->properties['metalType'];
         $insert = $this->properties['insert'];
 
         $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), RingSizeListEnum::cases());

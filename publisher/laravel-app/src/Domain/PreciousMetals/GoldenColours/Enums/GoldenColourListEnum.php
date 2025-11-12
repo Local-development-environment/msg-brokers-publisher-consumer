@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Domain\PreciousMetals\MetalColours\Enums;
+namespace Domain\PreciousMetals\GoldenColours\Enums;
 
 use Domain\PreciousMetals\Hallmarks\Enums\HallmarkListEnum;
 

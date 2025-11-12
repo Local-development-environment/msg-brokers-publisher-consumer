@@ -107,7 +107,7 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
     {
         $isActive = new IsActive();
         $this->baseJewellery->isActive = $isActive->getIsActive();
-        dd($this->baseJewellery);
+
         return $this;
     }
 
@@ -156,7 +156,8 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         $jewellery['metal_props']['hallmark'] = $this->baseJewellery->hallmark;
         $jewellery['metal_props']['golden_colour'] = $this->baseJewellery->goldenColour;
         $jewellery['category'] = $this->baseJewellery->category;
-        $jewellery['covering_type'] = $this->baseJewellery->coveringType;
+        $jewellery['covering']['covering_type'] = $this->baseJewellery->coveringType;
+//        $jewellery['covering']['golden_colour'] = $this->baseJewellery->goldenColour;
         $jewellery['name'] = $this->baseJewellery->jewelleryName;
         $jewellery['description'] = $this->baseJewellery->description;
         $jewellery['part_number'] = $this->baseJewellery->partNumber;

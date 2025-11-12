@@ -3,15 +3,24 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use Domain\Coverings\Coverings\Enums\CoveringEnum;
+use Domain\Coverings\CoveringTypes\Enums\CoveringTypeEnum;
+use Domain\Inserts\Colours\Enums\ColourEnum;
+use Domain\Inserts\Facets\Enums\FacetEnum;
 use Domain\Inserts\InsertExteriors\Enums\InsertExteriorEnum;
 use Domain\Inserts\InsertMetrics\Enums\InsertMetricEnum;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
+use Domain\Inserts\Stones\Enums\StoneEnum;
+use Domain\Jewelleries\Categories\Enums\CategoryEnum;
+use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
 use Domain\Jewelleries\JewelleryBuilder\BaseJewelleryBuilder;
 use Domain\Jewelleries\JewelleryBuilder\Jeweller;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
-use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeEnum;
-use Domain\PreciousMetals\MetalColours\Enums\GoldenColourEnum;
+use Domain\PreciousMetals\ColourCombinations\Enums\ColourCombinationEnum;
+use Domain\PreciousMetals\GoldenColours\Enums\GoldenColourEnum;
+use Domain\PreciousMetals\Hallmarks\Enums\HallmarkEnum;
 use Domain\PreciousMetals\MetalHallmarks\Enums\MetalHallmarkEnum;
+use Domain\PreciousMetals\Metals\Enums\MetalEnum;
 use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -24,20 +33,20 @@ final class BuildJewellerySeeder extends Seeder
      * Run the database seeds.
      * @throws JsonException
      */
-    public function run($items): void
+    public function run(int $items, bool $all = true): void
     {
-//        $this->call(InitDataSeeder::class);
-//        $this->call(InitUserSeeder::class);
+        if ($all) {
+            $this->call(InitDataSeeder::class);
+            $this->call(InitUserSeeder::class);
+        }
 
         $jeweller = new Jeweller();
-//        $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
-//        dump([$builder]);
+
         for ($i = 0; $i < $items; $i++) {
             dump($i);
             $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
 
             $this->addJewellery($builder);
-//            dd($builder);
         }
 
         DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
@@ -50,8 +59,9 @@ final class BuildJewellerySeeder extends Seeder
      */
     private function addJewellery(array $jewelleryData):void
     {
-        $jewelleryId = DB::table('jewelleries.jewelleries')->insertGetId([
-            'category_id' => DB::table('jewelleries.categories')->where('name',$jewelleryData['jw_category'])
+        dump($jewelleryData['metal_props']);
+        $jewelleryId = DB::table(JewelleryEnum::TABLE_NAME->value)->insertGetId([
+            'category_id' => DB::table(CategoryEnum::TABLE_NAME->value)->where('name',$jewelleryData['category'])
                 ->value('id'),
             'name' => $jewelleryData['name'],
             'slug' => Str::slug($jewelleryData['name']),
@@ -74,11 +84,11 @@ final class BuildJewellerySeeder extends Seeder
      */
     private function addInsert(array $jewelleryData, int $jewelleryId): void
     {
-        if ($jewelleryData['jw_insert']) {
-            foreach ($jewelleryData['jw_insert'] as $jewelleryInsert) {
-                $stone_id = DB::table('jw_inserts.stones')->where('name',$jewelleryInsert['stone'])->value('id');
-                $colour_id = DB::table('jw_inserts.colours')->where('name',$jewelleryInsert['colour'])->value('id');
-                $facet_id = DB::table('jw_inserts.facets')->where('name',$jewelleryInsert['facet'])->value('id');
+        if ($jewelleryData['inserts']) {
+            foreach ($jewelleryData['inserts'] as $jewelleryInsert) {
+                $stone_id = DB::table(StoneEnum::TABLE_NAME->value)->where('name',$jewelleryInsert['stone'])->value('id');
+                $colour_id = DB::table(ColourEnum::TABLE_NAME->value)->where('name',$jewelleryInsert['colour'])->value('id');
+                $facet_id = DB::table(FacetEnum::TABLE_NAME->value)->where('name',$jewelleryInsert['facet'])->value('id');
                 if (DB::table(InsertExteriorEnum::TABLE_NAME->value)->count() !== 0) {
                     $checkUnique = DB::table(InsertExteriorEnum::TABLE_NAME->value)
                         ->where('stone_id', $stone_id)
@@ -130,12 +140,12 @@ final class BuildJewellerySeeder extends Seeder
 
     private function addCoverage(array $jewelleryData, int $jewelleryId): void
     {
-        if ($jewelleryData['jw_coverage']) {
-            foreach ($jewelleryData['jw_coverage'] as $coverage) {
-                $coverageId = DB::table('jw_coverages.coverages')->where('name',$coverage)->value('id');
-                DB::table('jw_coverages.coverage_jewellery')->insertGetId([
+        if ($jewelleryData['covering']['covering_type']) {
+            foreach ($jewelleryData['covering']['covering_type'] as $covering) {
+                $coveringTypeId = DB::table(CoveringTypeEnum::TABLE_NAME->value)->where('name',$covering)->value('id');
+                DB::table(CoveringEnum::TABLE_NAME->value)->insertGetId([
                     'jewellery_id' => $jewelleryId,
-                    'coverage_id' => $coverageId,
+                    'covering_type_id' => $coveringTypeId,
                 ]);
             }
         }
@@ -143,43 +153,27 @@ final class BuildJewellerySeeder extends Seeder
 
     private function addMetal(array $jewelleryData, int $jewelleryId): void
     {
-        $metal = $jewelleryData['prcs_metal_prop']['prcs_metal'];
-        $colour = $jewelleryData['prcs_metal_prop']['prcs_metal_colour'];
-        $hallmark = $jewelleryData['prcs_metal_prop']['prcs_metal_hallmark'];
-//        dd($jewelleryData['prcs_metal_prop']);
-        if ($jewelleryData['prcs_metal_prop']) {
-            $metal_id = DB::table(MetalTypeEnum::TABLE_NAME->value)->where('name',$metal)->value('id');
-            $colour_id = DB::table(GoldenColourEnum::TABLE_NAME->value)->where('name',$colour)->value('id');
-            $hallmark_id = DB::table('jw_metals.hallmarks')->where('value',$hallmark)->value('id');
-            if (DB::table(InsertExteriorEnum::TABLE_NAME->value)->count() !== 0) {
-                $checkUnique = DB::table(MetalHallmarkEnum::TABLE_NAME->value)
-                    ->where('metal_type_id', $metal_id)
-                    ->where('hallmark_id', $hallmark_id)
-                    ->count();
-//                        dd($checkUnique);
-            } else {
-                $checkUnique = 0;
-            }
+        $metalTypeId = DB::table(MetalTypeEnum::TABLE_NAME->value)
+            ->where('name',$jewelleryData['metal_props']['metal_type'])->value('id');
+        $hallmarkId = DB::table(HallmarkEnum::TABLE_NAME->value)
+            ->where('value',$jewelleryData['metal_props']['hallmark'])->value('id');
+        $metalHallmarkId = DB::table(MetalHallmarkEnum::TABLE_NAME->value)
+            ->where('metal_type_id', $metalTypeId)->where('hallmark_id', $hallmarkId)->value('id');
+//        dd($metalHallmarkId);
+        $metalId = DB::table(MetalEnum::TABLE_NAME->value)->insertGetId([
+            'id' => $jewelleryId,
+            'metal_hallmark_id' => $metalHallmarkId,
+            'created_at' => now()
+        ]);
 
-            if ($checkUnique === 0) {
-                $metalDetailId = DB::table('jw_metals.metal_details')->insertGetId([
-                    'metal_id' => DB::table(MetalTypeEnum::TABLE_NAME->value)->where('name',$metal)->value('id'),
-                    'colour_id' => DB::table('jw_metals.colours')->where('name',$colour)->value('id'),
-                    'hallmark_id' => DB::table('jw_metals.hallmarks')->where('value',$hallmark)->value('id'),
-                    'created_at' => now(),
+        if ($jewelleryData['metal_props']['golden_colour']) {
+            foreach ($jewelleryData['metal_props']['golden_colour'] as $goldenColour) {
+                $goldenColourId = DB::table(GoldenColourEnum::TABLE_NAME->value)->where('name',$goldenColour)->value('id');
+                DB::table(ColourCombinationEnum::TABLE_NAME->value)->insertGetId([
+                    'metal_id' => $metalId,
+                    'golden_colour_id' => $goldenColourId,
                 ]);
-            } else {
-                $metalDetailId = DB::table(MetalHallmarkEnum::TABLE_NAME->value)->where('metal_type_id', $metal_id)
-                    ->where('colour_id', $colour_id)
-                    ->where('hallmark_id', $hallmark_id)->value('id');
-//                        dump('********************************************' . $stoneId);
             }
-
-            DB::table('jw_metals.jewellery_metals')->insert([
-                'metal_detail_id' => $metalDetailId,
-                'jewellery_id' => $jewelleryId,
-                'created_at' => now()
-            ]);
         }
     }
 
@@ -189,73 +183,73 @@ final class BuildJewellerySeeder extends Seeder
     private function addProperty(array $jewelleryData, int $jewelleryId): void
     {
         if ($jewelleryData['props']) {
-            if ($jewelleryData['jw_category'] === 'броши') {
+            if ($jewelleryData['category'] === 'броши') {
                 $this->addBrooches($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['props']) {
-            if ($jewelleryData['jw_category'] === 'подвески-шарм') {
+            if ($jewelleryData['category'] === 'подвески-шарм') {
                 $this->addCharmPendants($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['props']) {
-            if ($jewelleryData['jw_category'] === 'зажимы для галстука') {
+            if ($jewelleryData['category'] === 'зажимы для галстука') {
                 $this->addTieClips($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['props']) {
-            if ($jewelleryData['jw_category'] === 'подвески') {
+            if ($jewelleryData['category'] === 'подвески') {
                 $this->addPendants($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['props']) {
-            if ($jewelleryData['jw_category'] === 'запонки') {
+            if ($jewelleryData['category'] === 'запонки') {
                 $this->addCuffLinks($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['props']) {
-            if ($jewelleryData['jw_category'] === 'пирсинг') {
+            if ($jewelleryData['category'] === 'пирсинг') {
                 $this->addPiercings($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['props']) {
-            if ($jewelleryData['jw_category'] === 'серьги') {
+            if ($jewelleryData['category'] === 'серьги') {
                 $this->addEarrings($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['props']) {
-            if ($jewelleryData['jw_category'] === 'кольца') {
+            if ($jewelleryData['category'] === 'кольца') {
                 $this->addRings($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['props']) {
-            if ($jewelleryData['jw_category'] === 'браслеты') {
+            if ($jewelleryData['category'] === 'браслеты') {
                 $this->addBracelets($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['props']) {
-            if ($jewelleryData['jw_category'] === 'цепи') {
+            if ($jewelleryData['category'] === 'цепи') {
                 $this->addChains($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['props']) {
-            if ($jewelleryData['jw_category'] === 'колье') {
+            if ($jewelleryData['category'] === 'колье') {
                 $this->addNecklaces($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['props']) {
-            if ($jewelleryData['jw_category'] === 'бусы') {
+            if ($jewelleryData['category'] === 'бусы') {
                 $this->addBeads($jewelleryData, $jewelleryId);
             }
         }
@@ -441,8 +435,7 @@ final class BuildJewellerySeeder extends Seeder
             'clasp_id' => DB::table('jw_properties.clasps')->where('name',$jewelleryData['props']['parameters']['clasp'])->value('id'),
             'created_at' => now()
         ]);
-//        dump($jewelleryData['props']['parameters']['weaving']);
-//        dump($jewelleryData);
+
         if ($jewelleryData['props']['parameters']['weaving']) {
             DB::table('jw_properties.chain_weavings')->insertGetId([
                 'chain_id' => $chainId,
@@ -456,7 +449,6 @@ final class BuildJewellerySeeder extends Seeder
         }
 
         foreach ($jewelleryData['props']['parameters']['size_price_quantity'] as $sizePriceQuantity) {
-//            dump($jewelleryData);
 
             DB::table('jw_properties.chain_metrics')->insertGetId([
                 'chain_id' => $chainId,

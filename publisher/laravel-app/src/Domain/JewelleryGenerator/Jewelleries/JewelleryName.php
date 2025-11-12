@@ -27,8 +27,19 @@ final class JewelleryName
             $inserts = "со вставками ($stringInserts)";
         }
 
-        return mb_ucfirst($properties['category']) . ' ' . $properties['prcsMetal'] .
-            ' проба ' . $properties['prcsMetalHallmark'] . ' ' . ' ' . $coverage . ' цвет ' .
-            $properties['prcsMetalColour'] . ' ' . $inserts . ' артикул ' . $properties['partNumber'] ;
+        return mb_ucfirst($properties['category']) . ' ' . $properties['metalType'] .
+            ' проба ' . $properties['hallmark'] . ' ' . ' ' . $coverage . ' цвет ' .
+            $this->getGoldenColour($properties) . ' ' . $inserts . ' артикул ' . $properties['partNumber'] ;
+    }
+
+    private function getGoldenColour(array $properties): string
+    {
+        if (count($properties['goldenColour']) > 1) {
+            return 'комбинированный';
+        } elseif (count($properties['goldenColour']) === 1) {
+            return $properties['goldenColour'][0];
+        } else {
+            return '';
+        }
     }
 }

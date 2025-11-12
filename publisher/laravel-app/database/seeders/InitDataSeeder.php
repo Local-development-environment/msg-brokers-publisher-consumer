@@ -22,10 +22,10 @@ use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerListEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeListEnum;
+use Domain\PreciousMetals\GoldenColours\Enums\GoldenColourEnum;
+use Domain\PreciousMetals\GoldenColours\Enums\GoldenColourListEnum;
 use Domain\PreciousMetals\Hallmarks\Enums\HallmarkEnum;
 use Domain\PreciousMetals\Hallmarks\Enums\HallmarkListEnum;
-use Domain\PreciousMetals\MetalColours\Enums\GoldenColourEnum;
-use Domain\PreciousMetals\MetalColours\Enums\GoldenColourListEnum;
 use Domain\PreciousMetals\MetalHallmarks\Enums\MetalHallmarkEnum;
 use Domain\PreciousMetals\Metals\Enums\MetalEnum;
 use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeEnum;
@@ -165,6 +165,7 @@ final class InitDataSeeder extends Seeder
                 'covering_function_id' => DB::table(CoveringFunctionEnum::TABLE_NAME->value)
                     ->where('name', $coverage->functions())->value('id'),
                 'name' => $coverage->value,
+                'description' => $coverage->description(),
                 'slug' => Str::slug($coverage->value),
                 'is_active' => 1,
                 'created_at' => now(),

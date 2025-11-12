@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('covering_function_id');
             $table->string('name');
+            $table->text('description');
             $table->string('slug');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
