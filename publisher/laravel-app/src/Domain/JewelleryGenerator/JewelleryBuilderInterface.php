@@ -18,6 +18,8 @@ interface JewelleryBuilderInterface
 
     public function addCoveringType(): jewelleryBuilderInterface;
 
+    public function addCoveringShade(): jewelleryBuilderInterface;
+
     public function addDescription(): jewelleryBuilderInterface;
 
     public function addPartNumber(): jewelleryBuilderInterface;

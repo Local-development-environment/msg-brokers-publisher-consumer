@@ -3,10 +3,11 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use Domain\Coverings\CoveringExteriors\Enums\CoveringExteriorEnum;
 use Domain\Coverings\CoveringFunctions\Enums\CoveringFunctionEnum;
 use Domain\Coverings\CoveringFunctions\Enums\CoveringFunctionListEnum;
 use Domain\Coverings\Coverings\Enums\CoveringEnum;
+use Domain\Coverings\CoveringShades\Enums\CoveringShadeEnum;
+use Domain\Coverings\CoveringShades\Enums\CoveringShadeListEnum;
 use Domain\Coverings\CoveringTypes\Enums\CoveringTypeEnum;
 use Domain\Coverings\CoveringTypes\Enums\CoveringTypeListEnum;
 use Domain\Inserts\InsertExteriors\Enums\InsertExteriorEnum;
@@ -89,7 +90,7 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_promotions.promotions')->truncate();
         DB::table(CoveringEnum::TABLE_NAME->value)->truncate();
         DB::table(CoveringTypeEnum::TABLE_NAME->value)->truncate();
-        DB::table(CoveringExteriorEnum::TABLE_NAME->value)->truncate();
+        DB::table(CoveringShadeEnum::TABLE_NAME->value)->truncate();
         DB::table(CoveringFunctionEnum::TABLE_NAME->value)->truncate();
         DB::table('jw_medias.pictures')->truncate();
         DB::table('jw_medias.video_details')->truncate();
@@ -156,6 +157,17 @@ final class InitDataSeeder extends Seeder
             DB::table(CoveringFunctionEnum::TABLE_NAME->value)->insert([
                 'name' => $type->value,
                 'slug' => Str::slug($type->value),
+                'is_active' => true,
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach (CoveringShadeListEnum::cases() as $shade) {
+            DB::table(CoveringShadeEnum::TABLE_NAME->value)->insert([
+                'name' => $shade->value,
+                'slug' => Str::slug($shade->value),
+                'description' => $shade->description(),
+                'is_active' => true,
                 'created_at' => now(),
             ]);
         }

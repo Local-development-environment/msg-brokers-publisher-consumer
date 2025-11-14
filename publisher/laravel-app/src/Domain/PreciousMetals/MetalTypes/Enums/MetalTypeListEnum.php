@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\PreciousMetals\MetalTypes\Enums;
 
+use Domain\Coverings\CoveringTypes\Enums\CoveringTypeListEnum;
+
 enum MetalTypeListEnum: string
 {
     case GOLDEN    = 'золото';
@@ -28,6 +30,20 @@ enum MetalTypeListEnum: string
             self::SILVER => 35,
             self::PLATINUM => 3,
             self::PALLADIUM => 1,
+        };
+    }
+
+    public function coverings(): string
+    {
+        return match ($this) {
+            self::GOLDEN => CoveringTypeListEnum::DIAMOND_CUT->value . ',' . CoveringTypeListEnum::ENAMEL->value . ',' .
+                CoveringTypeListEnum::PARTLY_RHODIUM_PLATING->value . ',' . CoveringTypeListEnum::RHODIUM_PLATING->value,
+            self::SILVER => CoveringTypeListEnum::DIAMOND_CUT->value . ',' . CoveringTypeListEnum::ENAMEL->value . ',' .
+                CoveringTypeListEnum::PARTLY_RHODIUM_PLATING->value . ',' . CoveringTypeListEnum::GOLDING->value . ',' .
+                CoveringTypeListEnum::PARTLY_GOLDING->value . ',' . CoveringTypeListEnum::RHODIUM_PLATING->value . ',' .
+                CoveringTypeListEnum::OXIDATION->value,
+            self::PLATINUM, self::PALLADIUM => CoveringTypeListEnum::DIAMOND_CUT->value . ',' .
+                CoveringTypeListEnum::ENAMEL->value,
         };
     }
 }

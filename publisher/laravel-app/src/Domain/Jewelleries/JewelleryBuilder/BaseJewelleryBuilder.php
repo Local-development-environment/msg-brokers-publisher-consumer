@@ -4,19 +4,20 @@ declare(strict_types=1);
 
 namespace Domain\Jewelleries\JewelleryBuilder;
 
-use Domain\Jewelleries\JewelleryBuilder\Properties\CoveringType;
 use Domain\Jewelleries\JewelleryBuilder\Properties\Insert;
 use Domain\Jewelleries\JewelleryBuilder\Properties\Media;
 use Domain\Jewelleries\JewelleryBuilder\Properties\Property;
+use Domain\JewelleryGenerator\Jewelleries\ApproxWeight;
 use Domain\JewelleryGenerator\Jewelleries\Category;
+use Domain\JewelleryGenerator\Jewelleries\Coverings\CoveringShade;
+use Domain\JewelleryGenerator\Jewelleries\Coverings\CoveringType;
 use Domain\JewelleryGenerator\Jewelleries\Description;
 use Domain\JewelleryGenerator\Jewelleries\IsActive;
 use Domain\JewelleryGenerator\Jewelleries\JewelleryName;
 use Domain\JewelleryGenerator\Jewelleries\PartNumber;
-use Domain\JewelleryGenerator\Jewelleries\PreciousMetals\Hallmark;
 use Domain\JewelleryGenerator\Jewelleries\PreciousMetals\GoldenColour;
+use Domain\JewelleryGenerator\Jewelleries\PreciousMetals\Hallmark;
 use Domain\JewelleryGenerator\Jewelleries\PreciousMetals\MetalType;
-use Domain\JewelleryGenerator\Jewelleries\ApproxWeight;
 use Domain\JewelleryGenerator\JewelleryBuilderInterface;
 use Random\RandomException;
 
@@ -72,6 +73,15 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         $properties = get_object_vars($this->baseJewellery);
         $covering = new CoveringType();
         $this->baseJewellery->coveringType = $covering->getCoveringType($properties);
+
+        return $this;
+    }
+
+    public function addCoveringShade(): jewelleryBuilderInterface
+    {
+        $properties = get_object_vars($this->baseJewellery);
+        $covering = new CoveringShade();
+        $this->baseJewellery->coveringShade = $covering->getCoveringShade($properties);
 
         return $this;
     }
@@ -157,7 +167,7 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         $jewellery['metal_props']['golden_colour'] = $this->baseJewellery->goldenColour;
         $jewellery['category'] = $this->baseJewellery->category;
         $jewellery['covering']['covering_type'] = $this->baseJewellery->coveringType;
-//        $jewellery['covering']['golden_colour'] = $this->baseJewellery->goldenColour;
+        $jewellery['covering']['covering_shade'] = $this->baseJewellery->coveringShade;
         $jewellery['name'] = $this->baseJewellery->jewelleryName;
         $jewellery['description'] = $this->baseJewellery->description;
         $jewellery['part_number'] = $this->baseJewellery->partNumber;
