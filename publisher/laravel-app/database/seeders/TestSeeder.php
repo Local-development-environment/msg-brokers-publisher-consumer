@@ -5,12 +5,15 @@ namespace Database\Seeders;
 
 use App\Http\Integrations\UVI\Jewelleries\Requests\GetAllJewelleries;
 use App\Http\Integrations\UVI\UVIConnector;
+use Domain\Coverings\CoveringFunctions\Enums\CoveringFunctionListEnum;
+use Domain\Coverings\CoveringTypes\Enums\CoveringTypeListEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
 use Domain\PreciousMetals\GoldenColours\Enums\GoldenColourListEnum;
+use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeListEnum;
 use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingListEnum;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Seeder;
@@ -25,11 +28,27 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        $arrColours = GoldenColourListEnum::cases();
-        $combProbability = random_int(1, 100);
-        dump($combProbability);
+        dd(explode(',',MetalTypeListEnum::GOLDEN->coverings()));
+        for ($i = 0; $i < 30; ++$i) {
+            $keyFunction = array_rand(CoveringTypeListEnum::cases());
+            dump(CoveringTypeListEnum::cases()[$keyFunction]->value);
+        }
+        dd('ok');
+        $keyFunction = array_rand(CoveringFunctionListEnum::cases());
+        $function = CoveringFunctionListEnum::cases()[$keyFunction];
+//        $combProbability = random_int(1, 100);
+        $arrCoverings = explode(',', $function->coverings());
 
-        foreach ($arrColours as $key => $case) {
+        $keyCovering = array_rand($arrCoverings);
+        dd($arrCoverings[$keyCovering]);
+
+        $enumClass = get_class(CoveringFunctionListEnum::PROTECTIVE);
+        $enumCases = CoveringFunctionListEnum::cases();
+
+        $function = $this->getArrElement($enumClass, $enumCases);
+        dd($this->getArrElement($enumClass, $enumCases));
+
+        foreach ($arrFunctions as $key => $case) {
 
             if (str_contains($case->value, 'розовый')) {
                 Arr::forget($arrColours, $key);
@@ -47,13 +66,13 @@ final class TestSeeder extends Seeder
 //            dump($hallmark->metals());
         }
 
-        if ($combProbability < 90) {
-            dump(['red']);
-        } elseif ($combProbability < 95) {
-            dump(['red', 'white']);
-        } else {
-            dump(['red', 'white','yellow']);
-        }
+//        if ($combProbability < 90) {
+//            dump(['red']);
+//        } elseif ($combProbability < 95) {
+//            dump(['red', 'white']);
+//        } else {
+//            dump(['red', 'white','yellow']);
+//        }
 //        dump($arrColours);
         dd('ok');
 //        $enumClass = get_class(HallmarkListEnum::H_375);

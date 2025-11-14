@@ -9,4 +9,5 @@ enum CoveringTypeEnum: string
     case TYPE_RESOURCE = 'coveringTypes';
     case TABLE_NAME    = 'jw_coverings.covering_types';
     case PRIMARY_KEY   = 'id';
+    case FK_COVERING_FUNCTION   = 'covering_function_id';
 }

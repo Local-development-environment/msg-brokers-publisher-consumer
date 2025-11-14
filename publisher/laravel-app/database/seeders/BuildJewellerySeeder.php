@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use Domain\Coverings\Coverings\Enums\CoveringEnum;
+use Domain\Coverings\CoveringShades\Enums\CoveringShadeEnum;
 use Domain\Coverings\CoveringTypes\Enums\CoveringTypeEnum;
 use Domain\Inserts\Colours\Enums\ColourEnum;
 use Domain\Inserts\Facets\Enums\FacetEnum;
@@ -59,7 +60,7 @@ final class BuildJewellerySeeder extends Seeder
      */
     private function addJewellery(array $jewelleryData):void
     {
-        dump($jewelleryData['metal_props']);
+//        dump($jewelleryData['metal_props']);
         $jewelleryId = DB::table(JewelleryEnum::TABLE_NAME->value)->insertGetId([
             'category_id' => DB::table(CategoryEnum::TABLE_NAME->value)->where('name',$jewelleryData['category'])
                 ->value('id'),
@@ -74,7 +75,7 @@ final class BuildJewellerySeeder extends Seeder
 
         $this->addInsert($jewelleryData, $jewelleryId);
         $this->addMetal($jewelleryData, $jewelleryId);
-        $this->addCoverage($jewelleryData, $jewelleryId);
+        $this->addCovering($jewelleryData, $jewelleryId);
         $this->addProperty($jewelleryData, $jewelleryId);
         $this->addMedia($jewelleryData, $jewelleryId);
     }
@@ -138,14 +139,18 @@ final class BuildJewellerySeeder extends Seeder
         }
     }
 
-    private function addCoverage(array $jewelleryData, int $jewelleryId): void
+    private function addCovering(array $jewelleryData, int $jewelleryId): void
     {
+//        dump($jewelleryData['covering']);
         if ($jewelleryData['covering']['covering_type']) {
+            $coveringShadeId = DB::table(CoveringShadeEnum::TABLE_NAME->value)->where('name',$jewelleryData['covering']['covering_shade'])->value('id');
             foreach ($jewelleryData['covering']['covering_type'] as $covering) {
                 $coveringTypeId = DB::table(CoveringTypeEnum::TABLE_NAME->value)->where('name',$covering)->value('id');
+//                dd($coveringShadeId);
                 DB::table(CoveringEnum::TABLE_NAME->value)->insertGetId([
                     'jewellery_id' => $jewelleryId,
                     'covering_type_id' => $coveringTypeId,
+                    'covering_shade_id' => $coveringShadeId,
                 ]);
             }
         }

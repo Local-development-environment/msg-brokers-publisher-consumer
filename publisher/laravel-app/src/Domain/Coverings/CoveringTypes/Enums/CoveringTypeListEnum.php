@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domain\Coverings\CoveringTypes\Enums;
 
 use Domain\Coverings\CoveringFunctions\Enums\CoveringFunctionListEnum;
+use Domain\Coverings\CoveringShades\Enums\CoveringShadeListEnum;
 use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeListEnum;
 
 enum CoveringTypeListEnum: string
@@ -21,7 +22,7 @@ enum CoveringTypeListEnum: string
     public function description(): string
     {
         return match ($this) {
-            self::PLATINIZING => 'Гальванический метод покрытия изделий из серебра слоем платины, который обладает высокой прочностью к истиранию и окислению. Платина имеет эффектный глянцевый блеск, а цвет - более светлый и яркий.',
+            self::PLATINIZING => 'Покрытие изделий из серебра слоем платины, который обладает высокой прочностью к истиранию и окислению. Платина имеет эффектный глянцевый блеск, а цвет - более светлый и яркий.',
             self::GOLDING => 'Покрытие серебра слоем из молекул золота препятствует окислению и потемнению. Визуальное благородство – позволяет доступным украшениям из серебра выглядеть стильно и дорого.',
             self::RHODIUM_PLATING => 'Покрытие обладает высокой прочностью износостойкостью и устойчивостью к воздействию внешней среды. С помощью этого покрытия ювелиры добиваются эффекта благородного “белого золота”.',
             self::PARTLY_RHODIUM_PLATING => 'Такое покрытие используют в основном для изделий из золота или позолоченных. Его цель – создать контрастные элементы.',
@@ -36,8 +37,21 @@ enum CoveringTypeListEnum: string
     {
         return match ($this) {
             self::PLATINIZING, self::GOLDING, self::RHODIUM_PLATING,
-            self::OXIDATION => CoveringFunctionListEnum::PROTECTIVE->value, self::DIAMOND_CUT, self::ENAMEL,
-            self::PARTLY_GOLDING, self::PARTLY_RHODIUM_PLATING => CoveringFunctionListEnum::DECORATIVE->value,
+            self::OXIDATION,self::PARTLY_GOLDING, self::PARTLY_RHODIUM_PLATING => CoveringFunctionListEnum::PROTECTIVE->value,
+            self::DIAMOND_CUT, self::ENAMEL => CoveringFunctionListEnum::DECORATIVE->value,
+        };
+    }
+
+    public function shades(): string
+    {
+        return match ($this) {
+            self::PLATINIZING => CoveringShadeListEnum::PLATINUM_WHITE->value,
+            self::GOLDING, self::PARTLY_GOLDING => CoveringShadeListEnum::GOLDEN_RED->value . ',' .
+                CoveringShadeListEnum::GOLDEN_YELLOW->value . ',' . CoveringShadeListEnum::GOLDEN_PINK->value,
+            self::RHODIUM_PLATING, self::PARTLY_RHODIUM_PLATING => CoveringShadeListEnum::RHODIUM_LIGHT_GRAY->value,
+            self::OXIDATION => CoveringShadeListEnum::BLACKENING->value,
+            self::DIAMOND_CUT => CoveringShadeListEnum::NO_SHADE->value,
+            self::ENAMEL      => CoveringShadeListEnum::ENAMEL_COLOUR->value
         };
     }
 }

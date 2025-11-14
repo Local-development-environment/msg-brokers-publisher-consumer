@@ -17,6 +17,7 @@ final class Jeweller
             ->addHallmark()
             ->addGoldenColour()
             ->addCoveringType()
+            ->addCoveringShade()
             ->addDescription()
             ->addPartNumber()
             ->addApproxWeight()

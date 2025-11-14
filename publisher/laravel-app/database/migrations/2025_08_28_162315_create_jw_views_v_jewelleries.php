@@ -88,7 +88,7 @@ return new class extends Migration
                                     'covering_description', ct.description,
                                     'covering_function', cf.name,
                                     'covering_function_id', cf.id,
-                                    'covering_exterior', ce.name
+                                    'covering_shade', cs.name
                                 )
                             )
                             as coverings,
@@ -98,7 +98,7 @@ return new class extends Migration
                         left join jw_coverings.coverings cc on jj.id = cc.jewellery_id
                         join jw_coverings.covering_types as ct on cc.covering_type_id = ct.id
                         join jw_coverings.covering_functions cf on ct.covering_function_id = cf.id
-                        left join jw_coverings.covering_exteriors ce on ct.id = ce.covering_type_id
+                        left join jw_coverings.covering_shades cs on cc.covering_shade_id = cs.id
                         group by jj.id,cc.jewellery_id
                     ),
                     cte_jw_metals as (

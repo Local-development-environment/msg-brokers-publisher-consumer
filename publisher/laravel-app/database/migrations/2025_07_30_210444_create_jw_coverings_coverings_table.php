@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('jewellery_id');
             $table->unsignedBigInteger('covering_type_id');
+            $table->unsignedBigInteger('covering_shade_id');
             $table->timestamps();
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
             $table->foreign('covering_type_id')->references('id')->on('jw_coverings.covering_types');
+            $table->foreign('covering_shade_id')->references('id')->on('jw_coverings.covering_shades');
         });
     }
 
