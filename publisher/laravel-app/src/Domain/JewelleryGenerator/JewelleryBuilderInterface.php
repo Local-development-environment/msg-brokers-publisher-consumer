@@ -4,35 +4,25 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator;
 
+use Domain\Jewelleries\Jewelleries\Models\Jewellery;
+
 interface JewelleryBuilderInterface
 {
     public function reset(): jewelleryBuilderInterface;
 
-    public function addCategory(): jewelleryBuilderInterface;
+    public function buildCategory(): jewelleryBuilderInterface;
 
-    public function addMetalType(): jewelleryBuilderInterface;
+    public function buildJewellery(): jewelleryBuilderInterface;
 
-    public function addHallmark(): jewelleryBuilderInterface;
+    public function buildMetal(): jewelleryBuilderInterface;
 
-    public function addGoldenColour(): jewelleryBuilderInterface;
-
-    public function addCoveringType(): jewelleryBuilderInterface;
-
-    public function addCoveringShade(): jewelleryBuilderInterface;
-
-    public function addDescription(): jewelleryBuilderInterface;
-
-    public function addPartNumber(): jewelleryBuilderInterface;
-
-    public function addApproxWeight(): jewelleryBuilderInterface;
-
-    public function addIsActive(): jewelleryBuilderInterface;
+    public function buildCovering(): jewelleryBuilderInterface;
 
     public function addInsert(): jewelleryBuilderInterface;
 
     public function addProperty(): jewelleryBuilderInterface;
 
-    public function addJewelleryName(): jewelleryBuilderInterface;
+//    public function addJewelleryName(): jewelleryBuilderInterface;
 
     public function addMedia(): jewelleryBuilderInterface;
 

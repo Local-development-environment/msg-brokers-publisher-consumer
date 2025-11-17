@@ -1,0 +1,28 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Domain\JewelleryGenerator;
+
+final class Jeweller
+{
+    public function buildJewellery(JewelleryBuilderInterface $builder): array
+    {
+        return $builder
+            ->reset()
+            ->buildCategory()
+            ->buildJewellery()
+            ->buildMetal()
+            ->buildCovering()
+//            ->addDescription()
+//            ->addPartNumber()
+//            ->addApproxWeight()
+//            ->addIsActive()
+//            ->addInsert()
+//            ->addProperty()
+//            ->addJewelleryName()
+//            ->addMedia()
+            ->getJewellery()
+            ;
+    }
+}

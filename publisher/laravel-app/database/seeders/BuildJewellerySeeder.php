@@ -14,8 +14,9 @@ use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryEnum;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
-use Domain\Jewelleries\JewelleryBuilder\BaseJewelleryBuilder;
-use Domain\Jewelleries\JewelleryBuilder\Jeweller;
+use Domain\JewelleryGenerator\BaseJewelleryBuilder;
+use Domain\JewelleryGenerator\InitProperties;
+use Domain\JewelleryGenerator\Jeweller;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
 use Domain\PreciousMetals\ColourCombinations\Enums\ColourCombinationEnum;
 use Domain\PreciousMetals\GoldenColours\Enums\GoldenColourEnum;
@@ -30,10 +31,6 @@ use JsonException;
 
 final class BuildJewellerySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     * @throws JsonException
-     */
     public function run(int $items, bool $all = true): void
     {
         if ($all) {
@@ -43,11 +40,17 @@ final class BuildJewellerySeeder extends Seeder
 
         $jeweller = new Jeweller();
 
+        $initProperties = new initProperties();
+        $initProperties->initMetalProperties();
+        $initProperties->initCategoryProperties();
+        $initProperties->initCoveringProperties();
+
+//        dd('ok');
         for ($i = 0; $i < $items; $i++) {
             dump($i);
             $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
-
-            $this->addJewellery($builder);
+            dump($builder);
+//            $this->addJewellery($builder);
         }
 
         DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
@@ -60,7 +63,7 @@ final class BuildJewellerySeeder extends Seeder
      */
     private function addJewellery(array $jewelleryData):void
     {
-//        dump($jewelleryData['metal_props']);
+//        dump($jewelleryData);
         $jewelleryId = DB::table(JewelleryEnum::TABLE_NAME->value)->insertGetId([
             'category_id' => DB::table(CategoryEnum::TABLE_NAME->value)->where('name',$jewelleryData['category'])
                 ->value('id'),

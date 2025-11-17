@@ -18,6 +18,7 @@ trait ProbabilityArrayElementTrait
         //loop through all names
         foreach($this->getArrItems($enumClass, $enumCases) as $name => $count) {
             //for each entry for a specific name, add name to `$tmp` array
+
             for ($x = 1; $x <= $count; $x++) {
                 $tmp[] = $name;
             }
