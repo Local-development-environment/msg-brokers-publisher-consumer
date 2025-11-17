@@ -5,15 +5,14 @@ namespace Database\Seeders;
 
 use App\Http\Integrations\UVI\Jewelleries\Requests\GetAllJewelleries;
 use App\Http\Integrations\UVI\UVIConnector;
-use Domain\Coverings\CoveringFunctions\Enums\CoveringFunctionListEnum;
-use Domain\Coverings\CoveringTypes\Enums\CoveringTypeListEnum;
+use Domain\Coverings\CoveringFunctions\Enums\CoveringFunctionBuilderEnum;
+use Domain\Coverings\CoveringTypes\Enums\CoveringTypeBuilderEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
-use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
+use Domain\Jewelleries\Categories\Enums\CategoryBuildEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
-use Domain\PreciousMetals\GoldenColours\Enums\GoldenColourListEnum;
-use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeListEnum;
+use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeBuilderEnum;
 use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingListEnum;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Seeder;
@@ -28,22 +27,22 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        dd(explode(',',MetalTypeListEnum::GOLDEN->coverings()));
+        dd(explode(',',MetalTypeBuilderEnum::GOLDEN->coverings()));
         for ($i = 0; $i < 30; ++$i) {
-            $keyFunction = array_rand(CoveringTypeListEnum::cases());
-            dump(CoveringTypeListEnum::cases()[$keyFunction]->value);
+            $keyFunction = array_rand(CoveringTypeBuilderEnum::cases());
+            dump(CoveringTypeBuilderEnum::cases()[$keyFunction]->value);
         }
         dd('ok');
-        $keyFunction = array_rand(CoveringFunctionListEnum::cases());
-        $function = CoveringFunctionListEnum::cases()[$keyFunction];
+        $keyFunction = array_rand(CoveringFunctionBuilderEnum::cases());
+        $function = CoveringFunctionBuilderEnum::cases()[$keyFunction];
 //        $combProbability = random_int(1, 100);
         $arrCoverings = explode(',', $function->coverings());
 
         $keyCovering = array_rand($arrCoverings);
         dd($arrCoverings[$keyCovering]);
 
-        $enumClass = get_class(CoveringFunctionListEnum::PROTECTIVE);
-        $enumCases = CoveringFunctionListEnum::cases();
+        $enumClass = get_class(CoveringFunctionBuilderEnum::PROTECTIVE);
+        $enumCases = CoveringFunctionBuilderEnum::cases();
 
         $function = $this->getArrElement($enumClass, $enumCases);
         dd($this->getArrElement($enumClass, $enumCases));
@@ -75,8 +74,8 @@ final class TestSeeder extends Seeder
 //        }
 //        dump($arrColours);
         dd('ok');
-//        $enumClass = get_class(HallmarkListEnum::H_375);
-//        $enumCases = HallmarkListEnum::cases();
+//        $enumClass = get_class(HallmarkBuilderEnum::H_375);
+//        $enumCases = HallmarkBuilderEnum::cases();
 //
 //        foreach ($enumCases as $key => $case) {
 //            if (! str_contains($case::{$case->name}->metals(), 'серебро')) {
@@ -87,7 +86,7 @@ final class TestSeeder extends Seeder
 //        dd($enumCases);
 //        dd($this->getArrElement($enumClass, $enumCases));
 
-        $categories = CategoryListEnum::cases();
+        $categories = CategoryBuildEnum::cases();
         $i = 0;
 //        for ($x = 1; $x <= 200; $x++) {
 //            $key = $this->rand_with_entries($enumClass, $enumCases);
@@ -191,7 +190,7 @@ final class TestSeeder extends Seeder
     {
         $num = 0;
         foreach ($data as $item) {
-            $num += CategoryListEnum::{$item->name}->probability();
+            $num += CategoryBuildEnum::{$item->name}->probability();
         }
 
         return 100 / $num;

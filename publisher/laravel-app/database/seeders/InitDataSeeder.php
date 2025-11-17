@@ -3,19 +3,35 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use Domain\Coverings\CoveringFunctions\Enums\CoveringFunctionBuilderEnum;
 use Domain\Coverings\CoveringFunctions\Enums\CoveringFunctionEnum;
-use Domain\Coverings\CoveringFunctions\Enums\CoveringFunctionListEnum;
 use Domain\Coverings\Coverings\Enums\CoveringEnum;
+use Domain\Coverings\CoveringShades\Enums\CoveringShadeBuilderEnum;
 use Domain\Coverings\CoveringShades\Enums\CoveringShadeEnum;
-use Domain\Coverings\CoveringShades\Enums\CoveringShadeListEnum;
+use Domain\Coverings\CoveringTypes\Enums\CoveringTypeBuilderEnum;
 use Domain\Coverings\CoveringTypes\Enums\CoveringTypeEnum;
-use Domain\Coverings\CoveringTypes\Enums\CoveringTypeListEnum;
+use Domain\Inserts\Colours\Enums\ColourBuilderEnum;
+use Domain\Inserts\Colours\Enums\ColourEnum;
+use Domain\Inserts\Facets\Enums\FacetEnum;
+use Domain\Inserts\GrownStones\Enums\GrownStoneEnum;
+use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
 use Domain\Inserts\InsertExteriors\Enums\InsertExteriorEnum;
 use Domain\Inserts\InsertMetrics\Enums\InsertMetricEnum;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
+use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeEnum;
+use Domain\Inserts\NaturalStones\Enums\NaturalStoneEnum;
+use Domain\Inserts\OpticalEffects\Enums\OpticalEffectEnum;
+use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneEnum;
+use Domain\Inserts\StoneFamilies\Enums\StoneFamilyEnum;
+use Domain\Inserts\StoneGrades\Enums\StoneGradeEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
-use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
+use Domain\Inserts\StoneGroups\Enums\StoneGroupEnum;
+use Domain\Inserts\Stones\Enums\StoneEnum;
+use Domain\Inserts\TypeOrigins\Enums\TypeOriginEnum;
+use Domain\Jewelleries\Categories\Enums\CategoryEnum;
+use Domain\Jewelleries\Categories\Enums\CategoryBuildEnum;
+use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
 use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailEnum;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
@@ -23,14 +39,14 @@ use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerListEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeListEnum;
+use Domain\PreciousMetals\GoldenColours\Enums\GoldenColourBuilderEnum;
 use Domain\PreciousMetals\GoldenColours\Enums\GoldenColourEnum;
-use Domain\PreciousMetals\GoldenColours\Enums\GoldenColourListEnum;
+use Domain\PreciousMetals\Hallmarks\Enums\HallmarkBuilderEnum;
 use Domain\PreciousMetals\Hallmarks\Enums\HallmarkEnum;
-use Domain\PreciousMetals\Hallmarks\Enums\HallmarkListEnum;
 use Domain\PreciousMetals\MetalHallmarks\Enums\MetalHallmarkEnum;
 use Domain\PreciousMetals\Metals\Enums\MetalEnum;
+use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeBuilderEnum;
 use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeEnum;
-use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeListEnum;
 use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingEnum;
 use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingListEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
@@ -97,25 +113,25 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_medias.videos')->truncate();
         DB::table('jw_medias.video_types')->truncate();
         DB::table('jw_medias.producers')->truncate();
-        DB::table('jw_inserts.type_origins')->truncate();
-        DB::table('jw_inserts.stones')->truncate();
-        DB::table('jw_inserts.optical_effects')->truncate();
-        DB::table('jw_inserts.optical_effect_stone')->truncate();
-        DB::table('jw_inserts.colours')->truncate();
-        DB::table('jw_inserts.facets')->truncate();
+        DB::table(TypeOriginEnum::TABLE_NAME->value)->truncate();
+        DB::table(StoneEnum::TABLE_NAME->value)->truncate();
+        DB::table(OpticalEffectEnum::TABLE_NAME->value)->truncate();
+        DB::table(OpticalEffectStoneEnum::TABLE_NAME->value)->truncate();
+        DB::table(ColourEnum::TABLE_NAME->value)->truncate();
+        DB::table(FacetEnum::TABLE_NAME->value)->truncate();
         DB::table(InsertExteriorEnum::TABLE_NAME->value)->truncate();
         DB::table(InsertMetricEnum::TABLE_NAME->value)->truncate();
         DB::table(InsertOptionalInfoEnum::TABLE_NAME->value)->truncate();
         DB::table(InsertEnum::TABLE_NAME->value)->truncate();
-        DB::table('jw_inserts.stone_families')->truncate();
-        DB::table('jw_inserts.stone_groups')->truncate();
-        DB::table('jw_inserts.stone_grades')->truncate();
-        DB::table('jw_inserts.natural_stones')->truncate();
-        DB::table('jw_inserts.natural_stone_grade')->truncate();
-        DB::table('jw_inserts.grown_stones')->truncate();
-        DB::table('jw_inserts.imitation_stones')->truncate();
-        DB::table('jewelleries.jewelleries')->truncate();
-        DB::table('jewelleries.categories')->truncate();
+        DB::table(StoneFamilyEnum::TABLE_NAME->value)->truncate();
+        DB::table(StoneGroupEnum::TABLE_NAME->value)->truncate();
+        DB::table(StoneGradeEnum::TABLE_NAME->value)->truncate();
+        DB::table(NaturalStoneEnum::TABLE_NAME->value)->truncate();
+        DB::table(NaturalStoneGradeEnum::TABLE_NAME->value)->truncate();
+        DB::table(GrownStoneEnum::TABLE_NAME->value)->truncate();
+        DB::table(ImitationStoneEnum::TABLE_NAME->value)->truncate();
+        DB::table(JewelleryEnum::TABLE_NAME->value)->truncate();
+        DB::table(CategoryEnum::TABLE_NAME->value)->truncate();
         DB::table(MetalHallmarkEnum::TABLE_NAME->value)->truncate();
         DB::table(GoldenColourEnum::TABLE_NAME->value)->truncate();
         DB::table(MetalHallmarkEnum::TABLE_NAME->value)->truncate();
@@ -145,15 +161,15 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach (CategoryListEnum::cases() as $category) {
-            DB::table('jewelleries.categories')->insert([
-                'name' => $category->value,
-                'slug' => Str::slug($category->value),
-                'created_at' => now(),
-            ]);
-        }
+//        foreach (CategoryBuildEnum::cases() as $category) {
+//            DB::table(CategoryEnum::TABLE_NAME->value)->insert([
+//                'name' => $category->value,
+//                'slug' => Str::slug($category->value),
+//                'created_at' => now(),
+//            ]);
+//        }
 
-        foreach (CoveringFunctionListEnum::cases() as $type) {
+        foreach (CoveringFunctionBuilderEnum::cases() as $type) {
             DB::table(CoveringFunctionEnum::TABLE_NAME->value)->insert([
                 'name' => $type->value,
                 'slug' => Str::slug($type->value),
@@ -162,7 +178,7 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach (CoveringShadeListEnum::cases() as $shade) {
+        foreach (CoveringShadeBuilderEnum::cases() as $shade) {
             DB::table(CoveringShadeEnum::TABLE_NAME->value)->insert([
                 'name' => $shade->value,
                 'slug' => Str::slug($shade->value),
@@ -172,7 +188,7 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach (CoveringTypeListEnum::cases() as $coverage) {
+        foreach (CoveringTypeBuilderEnum::cases() as $coverage) {
             DB::table(CoveringTypeEnum::TABLE_NAME->value)->insert([
                 'covering_function_id' => DB::table(CoveringFunctionEnum::TABLE_NAME->value)
                     ->where('name', $coverage->functions())->value('id'),
@@ -310,7 +326,6 @@ final class InitDataSeeder extends Seeder
     private function jwInsertsSeed(): void
     {
         $jwInsertsTypeOrigins = config('data-seed.insert-seed.items-seed.origins');
-        $jwInsertsStoneColours = config('data-seed.insert-seed.items-seed.stone_colours');
         $jwInsertsStoneFacets = config('data-seed.insert-seed.items-seed.stone_facets');
         $jwInsertsStoneFamilies = config('data-seed.insert-seed.items-seed.family');
         $jwInsertsStoneGroups = config('data-seed.insert-seed.items-seed.groups');
@@ -366,11 +381,11 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach ($jwInsertsStoneColours as $colour) {
-            DB::table('jw_inserts.colours')->insert([
-                'name' => $colour['name'],
-                'slug' => Str::slug($colour['name']),
-                'description' => $colour['description'],
+        foreach (ColourBuilderEnum::cases() as $colour) {
+            DB::table(ColourEnum::TABLE_NAME->value)->insert([
+                'name' => $colour->value,
+                'slug' => Str::slug($colour->value),
+                'description' => $colour->description(),
                 'is_active' => true,
                 'created_at' => now(),
             ]);
@@ -480,50 +495,50 @@ final class InitDataSeeder extends Seeder
 
     private function jwMetalsSeed(): void
     {
-        foreach (MetalTypeListEnum::cases() as $metal) {
-            $metalTypeId = DB::table(MetalTypeEnum::TABLE_NAME->value)->insertGetId([
-                'name' => $metal->value,
-                'slug' => Str::slug($metal->value),
-                'description' => $metal->description(),
-                'created_at' => now(),
-            ]);
-        }
+//        foreach (MetalTypeBuilderEnum::cases() as $metal) {
+//            $metalTypeId = DB::table(MetalTypeEnum::TABLE_NAME->value)->insertGetId([
+//                'name' => $metal->value,
+//                'slug' => Str::slug($metal->value),
+//                'description' => $metal->description(),
+//                'created_at' => now(),
+//            ]);
+//        }
 
-        foreach (HallmarkListEnum::cases() as $hallmark) {
-            DB::table(HallmarkEnum::TABLE_NAME->value)->insert([
-                'value' => $hallmark->value,
-                'description' => $hallmark->descriptions(),
-                'created_at' => now(),
-            ]);
-        }
+//        foreach (HallmarkBuilderEnum::cases() as $hallmark) {
+//            DB::table(HallmarkEnum::TABLE_NAME->value)->insert([
+//                'value' => $hallmark->value,
+//                'description' => $hallmark->descriptions(),
+//                'created_at' => now(),
+//            ]);
+//        }
 
-        foreach (GoldenColourListEnum::cases() as $colour) {
-            DB::table(GoldenColourEnum::TABLE_NAME->value)->insert([
-                'name' => $colour->value,
-                'slug' => Str::slug($colour->value),
-                'description' => $colour->descriptions(),
-                'created_at' => now(),
-            ]);
-        }
+//        foreach (GoldenColourBuilderEnum::cases() as $colour) {
+//            DB::table(GoldenColourEnum::TABLE_NAME->value)->insert([
+//                'name' => $colour->value,
+//                'slug' => Str::slug($colour->value),
+//                'description' => $colour->descriptions(),
+//                'created_at' => now(),
+//            ]);
+//        }
 
-        foreach (HallmarkListEnum::cases() as $hallmark) {
-            $count = count(explode(",", $hallmark->metals()));
-            if  ($count > 1) {
-                foreach (explode(",", $hallmark->metals()) as $metal) {
-                    DB::table(MetalHallmarkEnum::TABLE_NAME->value)->insert([
-                        'metal_type_id' => DB::table(MetalTypeEnum::TABLE_NAME->value)->where('name', $metal)->value('id'),
-                        'hallmark_id' => DB::table(HallmarkEnum::TABLE_NAME->value)->where('value', $hallmark->value)->value('id'),
-                        'created_at' => now(),
-                    ]);
-                }
-            } else {
-                DB::table(MetalHallmarkEnum::TABLE_NAME->value)->insert([
-                    'metal_type_id' => DB::table(MetalTypeEnum::TABLE_NAME->value)->where('name', $hallmark->metals())->value('id'),
-                    'hallmark_id' => DB::table(HallmarkEnum::TABLE_NAME->value)->where('value', $hallmark->value)->value('id'),
-                    'created_at' => now(),
-                ]);
-            }
-        }
+//        foreach (HallmarkBuilderEnum::cases() as $hallmark) {
+//            $count = count(explode(",", $hallmark->metals()));
+//            if  ($count > 1) {
+//                foreach (explode(",", $hallmark->metals()) as $metal) {
+//                    DB::table(MetalHallmarkEnum::TABLE_NAME->value)->insert([
+//                        'metal_type_id' => DB::table(MetalTypeEnum::TABLE_NAME->value)->where('name', $metal)->value('id'),
+//                        'hallmark_id' => DB::table(HallmarkEnum::TABLE_NAME->value)->where('value', $hallmark->value)->value('id'),
+//                        'created_at' => now(),
+//                    ]);
+//                }
+//            } else {
+//                DB::table(MetalHallmarkEnum::TABLE_NAME->value)->insert([
+//                    'metal_type_id' => DB::table(MetalTypeEnum::TABLE_NAME->value)->where('name', $hallmark->metals())->value('id'),
+//                    'hallmark_id' => DB::table(HallmarkEnum::TABLE_NAME->value)->where('value', $hallmark->value)->value('id'),
+//                    'created_at' => now(),
+//                ]);
+//            }
+//        }
     }
 
     private function jwMediasSeed(): void

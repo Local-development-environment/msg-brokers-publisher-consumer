@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\BeadProperty\Beads\Requests;
 
-use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
+use Domain\Jewelleries\Categories\Enums\CategoryBuildEnum;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Models\BeadMetric;
 use Domain\JewelleryProperties\Beads\Beads\Models\Bead;
 use Illuminate\Foundation\Http\FormRequest;
@@ -27,7 +27,7 @@ final class BeadUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        $categoryId = DB::table('jewelleries.categories')->where('name',CategoryListEnum::BEADS->value)->value('id');
+        $categoryId = DB::table('jewelleries.categories')->where('name',CategoryBuildEnum::BEADS->value)->value('id');
         $query = explode('/',$this->get('q'));
         $dataId = end($query);
 //        dd(end($query));

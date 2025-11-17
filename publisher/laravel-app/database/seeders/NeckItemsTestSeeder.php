@@ -3,10 +3,9 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use Domain\Jewelleries\Categories\Enums\CategoryListEnum;
-use Domain\Jewelleries\JewelleryBuilder\BaseJewelleryBuilder;
-use Domain\Jewelleries\JewelleryBuilder\Jeweller;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Domain\Jewelleries\Categories\Enums\CategoryBuildEnum;
+use Domain\JewelleryGenerator\BaseJewelleryBuilder;
+use Domain\JewelleryGenerator\Jeweller;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -44,21 +43,21 @@ final class NeckItemsTestSeeder extends Seeder
     {
 //        dump($jewelleryData);
         $categories = [
-            CategoryListEnum::BEADS->value => 1,
-            CategoryListEnum::CHAINS->value => 4,
-            CategoryListEnum::NECKLACES->value => 8,
+            CategoryBuildEnum::BEADS->value => 1,
+            CategoryBuildEnum::CHAINS->value => 4,
+            CategoryBuildEnum::NECKLACES->value => 8,
         ];
 
-        if ($jewelleryData['jw_category'] === CategoryListEnum::BEADS->value) {
-            $this->addNeckItem($jewelleryData, $categories[CategoryListEnum::BEADS->value]);
+        if ($jewelleryData['jw_category'] === CategoryBuildEnum::BEADS->value) {
+            $this->addNeckItem($jewelleryData, $categories[CategoryBuildEnum::BEADS->value]);
         }
 
-        if ($jewelleryData['jw_category'] === CategoryListEnum::CHAINS->value) {
-            $this->addNeckItem($jewelleryData, $categories[CategoryListEnum::CHAINS->value]);
+        if ($jewelleryData['jw_category'] === CategoryBuildEnum::CHAINS->value) {
+            $this->addNeckItem($jewelleryData, $categories[CategoryBuildEnum::CHAINS->value]);
         }
 
-        if ($jewelleryData['jw_category'] === CategoryListEnum::NECKLACES->value) {
-            $this->addNeckItem($jewelleryData, $categories[CategoryListEnum::NECKLACES->value]);
+        if ($jewelleryData['jw_category'] === CategoryBuildEnum::NECKLACES->value) {
+            $this->addNeckItem($jewelleryData, $categories[CategoryBuildEnum::NECKLACES->value]);
         }
 
 
