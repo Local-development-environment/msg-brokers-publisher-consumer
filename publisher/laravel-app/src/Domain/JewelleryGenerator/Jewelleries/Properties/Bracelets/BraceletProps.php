@@ -8,8 +8,8 @@ use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
-use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
-use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingListEnum;
+use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspBuilderEnum;
+use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingBuilderEnum;
 use Illuminate\Support\Arr;
 
 final readonly class BraceletProps implements CategoryPropsBuilderInterface
@@ -32,7 +32,7 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
 
         return [
             'size_price_quantity' => $sizePrices,
-            'clasp' => ClaspListEnum::cases()[array_rand(ClaspListEnum::cases())]->value,
+            'clasp' => ClaspBuilderEnum::cases()[array_rand(ClaspBuilderEnum::cases())]->value,
             'weaving' => $this->getWeaving(),
             'body_part' => $this->getBodyPart(),
             'bracelet_sizes' => data_get($sizePrices, '*.size'),
@@ -46,7 +46,7 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
     {
         $is_weaving = Arr::random([0, 1, 1]);
 
-        $weavings = WeavingListEnum::cases();
+        $weavings = WeavingBuilderEnum::cases();
         if ($is_weaving === 1) {
             return [
                 'weaving' => Arr::random($weavings),

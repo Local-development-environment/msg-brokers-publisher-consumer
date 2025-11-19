@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('base_weaving_id');
             $table->string('name')->unique();
+            $table->text('description');
             $table->string('slug')->unique();
             $table->timestamps();
 

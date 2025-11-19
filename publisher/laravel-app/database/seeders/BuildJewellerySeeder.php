@@ -44,6 +44,10 @@ final class BuildJewellerySeeder extends Seeder
         $initProperties->initMetalProperties();
         $initProperties->initCategoryProperties();
         $initProperties->initCoveringProperties();
+        $initProperties->initBeadProperties();
+        $initProperties->initBraceletProperties();
+        $initProperties->initShareProperties();
+        $initProperties->initEarringProperties();
 
 //        dd('ok');
         for ($i = 0; $i < $items; $i++) {

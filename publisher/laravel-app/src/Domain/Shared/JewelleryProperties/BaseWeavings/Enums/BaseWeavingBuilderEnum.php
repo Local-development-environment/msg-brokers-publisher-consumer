@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Shared\JewelleryProperties\BaseWeavings\Enums;
 
-enum BaseWeavingListEnum: string
+enum BaseWeavingBuilderEnum: string
 {
     case ANCHOR = 'якорное';
     case BISMARCK = 'бисмарк';

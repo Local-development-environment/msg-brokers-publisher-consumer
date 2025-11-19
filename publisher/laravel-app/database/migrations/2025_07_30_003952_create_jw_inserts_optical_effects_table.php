@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jw_inserts.optical_effects', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedInteger('id')->primary();
             $table->string('name');
             $table->string('slug');
             $table->text('description');
             $table->timestamps();
+
+            $table->foreign('id')->references('id')->on('jw_inserts.stones');
         });
     }
 
