@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Shared\JewelleryProperties\LengthNames\Enums;
 
-enum LengthNameListEnum: string
+enum LengthNameBuilderEnum: string
 {
     case COLLAR = 'коллар';
     case CHOKER = 'чокер';

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\Shared\JewelleryProperties\NeckSizes\Enums;
 
-use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameListEnum;
+use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameBuilderEnum;
 
-enum NeckSizeListEnum: int
+enum NeckSizeBuilderEnum: int
 {
     case SIZE_35  = 35; // collar
     case SIZE_40  = 40; // choker
@@ -37,13 +37,13 @@ enum NeckSizeListEnum: int
     public function lengthNames(): string
     {
         return match ($this) {
-            self::SIZE_35 => LengthNameListEnum::COLLAR->value,
-            self::SIZE_40 => LengthNameListEnum::CHOKER->value,
-            self::SIZE_45 => LengthNameListEnum::PRINCESS->value,
-            self::SIZE_50, self::SIZE_55, self::SIZE_60, self::SIZE_65 => LengthNameListEnum::MATINEE->value,
-            self::SIZE_70, self::SIZE_85, self::SIZE_80, self::SIZE_75 => LengthNameListEnum::OPERA->value,
+            self::SIZE_35 => LengthNameBuilderEnum::COLLAR->value,
+            self::SIZE_40 => LengthNameBuilderEnum::CHOKER->value,
+            self::SIZE_45 => LengthNameBuilderEnum::PRINCESS->value,
+            self::SIZE_50, self::SIZE_55, self::SIZE_60, self::SIZE_65 => LengthNameBuilderEnum::MATINEE->value,
+            self::SIZE_70, self::SIZE_85, self::SIZE_80, self::SIZE_75 => LengthNameBuilderEnum::OPERA->value,
             self::SIZE_90, self::SIZE_95, self::SIZE_100, self::SIZE_105, self::SIZE_110, self::SIZE_115,
-            self::SIZE_120 => LengthNameListEnum::ROP->value
+            self::SIZE_120 => LengthNameBuilderEnum::ROP->value
         };
     }
 }

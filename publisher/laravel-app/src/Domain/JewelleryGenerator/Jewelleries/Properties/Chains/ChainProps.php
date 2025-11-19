@@ -7,9 +7,9 @@ namespace Domain\JewelleryGenerator\Jewelleries\Properties\Chains;
 use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
-use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspListEnum;
-use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeListEnum;
-use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingListEnum;
+use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspBuilderEnum;
+use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeBuilderEnum;
+use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingBuilderEnum;
 use Illuminate\Support\Arr;
 
 final readonly class ChainProps implements CategoryPropsBuilderInterface
@@ -25,11 +25,11 @@ final readonly class ChainProps implements CategoryPropsBuilderInterface
         $metal = $this->properties['metalType'];
         $category = $this->properties['category'];
 
-        $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), NeckSizeListEnum::cases());
+        $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), NeckSizeBuilderEnum::cases());
 
         return [
             'size_price_quantity' => $sizePrices,
-            'clasp' => ClaspListEnum::cases()[array_rand(ClaspListEnum::cases())]->value,
+            'clasp' => ClaspBuilderEnum::cases()[array_rand(ClaspBuilderEnum::cases())]->value,
             'weaving' => $this->getWeaving($category),
             'chain_sizes' => data_get($sizePrices, '*.size'),
             'quantity' => data_get($sizePrices, '*.quantity'),
@@ -45,7 +45,7 @@ final readonly class ChainProps implements CategoryPropsBuilderInterface
             $is_weaving = Arr::random([0, 1, 1]);
         }
 
-        $weavings = WeavingListEnum::cases();
+        $weavings = WeavingBuilderEnum::cases();
         if ($is_weaving === 1) {
             return [
                 'weaving' => Arr::random($weavings),

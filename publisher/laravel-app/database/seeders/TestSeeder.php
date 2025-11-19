@@ -13,7 +13,7 @@ use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
 use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeBuilderEnum;
-use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingListEnum;
+use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingBuilderEnum;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
@@ -103,7 +103,7 @@ final class TestSeeder extends Seeder
         dd('ok');
         dd(Chain::first()->neckSizes);
         dd(array_rand($arr, 5));
-        dd(WeavingListEnum::BYZANTINE->altNames());
+        dd(WeavingBuilderEnum::BYZANTINE->altNames());
 
         foreach (RingSizeListEnum::cases() as $grade) {
             dump((float)$grade->value);

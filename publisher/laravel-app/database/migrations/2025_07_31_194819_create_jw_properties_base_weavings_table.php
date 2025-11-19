@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('jw_properties.base_weavings', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->text('description');
             $table->string('slug')->unique();
             $table->boolean('is_active')->default(true);
             $table->timestamps();

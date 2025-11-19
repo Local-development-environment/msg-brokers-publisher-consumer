@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_inserts.insert_exteriors', function (Blueprint $table) {
+        Schema::create('jw_inserts.stone_exteriors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('stone_id');
             $table->unsignedBigInteger('colour_id');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign('colour_id')->references('id')->on('jw_inserts.colours');
             $table->foreign('facet_id')->references('id')->on('jw_inserts.facets');
 
-            $table->unique(['stone_id', 'colour_id', 'facet_id'], 'insert_exteriors_unique');
+            $table->unique(['stone_id', 'colour_id', 'facet_id'], 'stone_exteriors_unique');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_inserts.insert_exteriors');
+        Schema::dropIfExists('jw_inserts.stone_exteriors');
     }
 };

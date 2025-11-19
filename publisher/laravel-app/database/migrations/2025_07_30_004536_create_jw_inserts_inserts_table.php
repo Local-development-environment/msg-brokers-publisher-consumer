@@ -14,11 +14,15 @@ return new class extends Migration
         Schema::create('jw_inserts.inserts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('jewellery_id');
-            $table->unsignedBigInteger('insert_exterior_id');
+            $table->unsignedBigInteger('stone_exterior_id');
+            $table->integer('quantity');
+            $table->decimal('weight', 8, 3);
+            $table->string('unit')->default('карат');
+            $table->jsonb('dimensions');
             $table->timestamps();
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
-            $table->foreign('insert_exterior_id')->references('id')->on('jw_inserts.insert_exteriors');
+            $table->foreign('stone_exterior_id')->references('id')->on('jw_inserts.stone_exteriors');
         });
     }
 

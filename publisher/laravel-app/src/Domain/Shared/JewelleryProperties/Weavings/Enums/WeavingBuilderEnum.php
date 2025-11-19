@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\Shared\JewelleryProperties\Weavings\Enums;
 
-use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingListEnum;
+use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingBuilderEnum;
 
-enum WeavingListEnum: string
+enum WeavingBuilderEnum: string
 {
     /** Bismarck */
     case BYZANTINE = 'византийское';
@@ -75,13 +75,29 @@ enum WeavingListEnum: string
     public function baseWeaving(): string
     {
         return match ($this) {
-            self::BYZANTINE, self::CLASSIC_BISMARCK, self::BISMARCK_DOUBLE, self::BISMARCK_TRIPLE, self::PYTHON,
-             => BaseWeavingListEnum::BISMARCK->value,
-            self::PANTHER_DOUBLE, self::PANTHER_CLASSIC, self::NONNA, self::GOURMETTE, self::LOVE, self::SINGAPORE,
-            self::PAPERCLIP, self::FIGARO, self::WHEAT, self::SNAKE, self::TRIPLE_ROMBO,
-            self::DOUBLE_ROMBO => BaseWeavingListEnum::PANTHER->value,
-            self::ROMBO, self::ANCHOR, self::ROLLO, self::CHOPARD, self::CORDA,
-            self::DOUBLE_ANCHOR => BaseWeavingListEnum::ANCHOR->value,
+            self::BYZANTINE,
+            self::CLASSIC_BISMARCK,
+            self::BISMARCK_DOUBLE,
+            self::BISMARCK_TRIPLE,
+            self::PYTHON => BaseWeavingBuilderEnum::BISMARCK->value,
+            self::PANTHER_DOUBLE,
+            self::PANTHER_CLASSIC,
+            self::NONNA,
+            self::GOURMETTE,
+            self::LOVE,
+            self::SINGAPORE,
+            self::PAPERCLIP,
+            self::FIGARO,
+            self::WHEAT,
+            self::SNAKE,
+            self::ROMBO,
+            self::TRIPLE_ROMBO,
+            self::DOUBLE_ROMBO => BaseWeavingBuilderEnum::PANTHER->value,
+            self::ANCHOR,
+            self::ROLLO,
+            self::CHOPARD,
+            self::CORDA,
+            self::DOUBLE_ANCHOR => BaseWeavingBuilderEnum::ANCHOR->value,
 
         };
     }
