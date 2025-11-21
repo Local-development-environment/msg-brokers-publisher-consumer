@@ -8,11 +8,11 @@ use Domain\Inserts\GrownStones\Enums\GrownStoneEnum;
 use Domain\Inserts\GrownStones\Models\GrownStone;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
 use Domain\Inserts\ImitationStones\Models\ImitationStone;
-use Domain\Inserts\InsertExteriors\Enums\InsertExteriorEnum;
 use Domain\Inserts\NaturalStones\Enums\NaturalStoneEnum;
 use Domain\Inserts\NaturalStones\Models\NaturalStone;
 use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneEnum;
 use Domain\Inserts\OpticalEffectStones\Models\OpticalEffectStone;
+use Domain\Inserts\StoneExteriours\Enums\StoneExteriorEnum;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Inserts\TypeOrigins\Models\TypeOrigin;
 use Illuminate\Database\Eloquent\Model;
@@ -61,9 +61,9 @@ class Stone extends Model
     {
         return $this->belongsToMany(
             Facet::class,
-            InsertExteriorEnum::TABLE_NAME->value,
-            InsertExteriorEnum::FK_STONE->value,
-            InsertExteriorEnum::FK_STONE_FACET->value
+            StoneExteriorEnum::TABLE_NAME->value,
+            StoneExteriorEnum::FK_STONE->value,
+            StoneExteriorEnum::FK_STONE_FACET->value
         );
     }
 
@@ -71,9 +71,9 @@ class Stone extends Model
     {
         return $this->belongsToMany(
             Colour::class,
-            InsertExteriorEnum::TABLE_NAME->value,
-            InsertExteriorEnum::FK_STONE->value,
-            InsertExteriorEnum::FK_STONE_COLOUR->value
+            StoneExteriorEnum::TABLE_NAME->value,
+            StoneExteriorEnum::FK_STONE->value,
+            StoneExteriorEnum::FK_STONE_COLOUR->value
         );
     }
 }

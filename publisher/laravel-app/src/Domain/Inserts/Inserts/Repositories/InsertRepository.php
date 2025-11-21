@@ -17,10 +17,9 @@ final class InsertRepository
     {
         return QueryBuilder::for(Insert::class)
             ->allowedIncludes([
-                InsertRelationshipsEnum::INSERT_STONE->value,
+                InsertRelationshipsEnum::STONE_EXTERIOR->value,
                 InsertRelationshipsEnum::JEWELLERY->value,
                 InsertRelationshipsEnum::INSERT_OPTIONAL_INFO->value,
-                InsertRelationshipsEnum::INSERT_METRIC->value
             ])
             ->allowedFilters([
                 AllowedFilter::exact(InsertEnum::PRIMARY_KEY->value),
@@ -39,10 +38,9 @@ final class InsertRepository
         return QueryBuilder::for(Insert::class)
             ->where(InsertEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
-                InsertRelationshipsEnum::INSERT_STONE->value,
+                InsertRelationshipsEnum::STONE_EXTERIOR->value,
                 InsertRelationshipsEnum::JEWELLERY->value,
                 InsertRelationshipsEnum::INSERT_OPTIONAL_INFO->value,
-                InsertRelationshipsEnum::INSERT_METRIC->value
             ])
             ->firstOrFail();
     }

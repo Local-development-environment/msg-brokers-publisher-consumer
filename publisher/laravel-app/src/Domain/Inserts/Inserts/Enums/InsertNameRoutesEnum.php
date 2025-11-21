@@ -14,9 +14,7 @@ enum InsertNameRoutesEnum: string
     case RELATIONSHIP_TO_JEWELLERY            = 'inserts.relationships.jewellery';
     case RELATED_TO_INSERT_OPTIONAL_INFO      = 'insert.insert-optional-info';
     case RELATIONSHIP_TO_INSERT_OPTIONAL_INFO = 'insert.relationships.insert-optional-info';
-    case RELATED_TO_INSERT_METRIC             = 'insert.insert-metric';
-    case RELATIONSHIP_TO_INSERT_METRIC        = 'insert.relationships.insert-metric';
-    case RELATED_TO_INSERT_STONE              = 'inserts.insert-stone';
-    case RELATIONSHIP_TO_INSERT_STONE         = 'inserts.relationships.insert-stone';
+    case RELATED_TO_INSERT_STONE              = 'inserts.stone-exterior';
+    case RELATIONSHIP_TO_INSERT_STONE         = 'inserts.relationships.stone-exterior';
 
 }

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('jw_metals.hallmarks', function (Blueprint $table) {
             $table->id();
             $table->integer('value')->unique();
-            $table->text('description');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

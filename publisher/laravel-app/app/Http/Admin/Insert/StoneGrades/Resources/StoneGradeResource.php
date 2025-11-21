@@ -29,7 +29,7 @@ class StoneGradeResource extends JsonResource
             'attributes' => $this->attributeItems(),
             'relationships' => [
                 StoneGradeRelationshipsEnum::NATURAL_STONE_GRADES->value => $this->sectionRelationships(
-                    StoneGradeNameRoutesEnum::RELATED_TO_NATURAL_STONE_GRADES->value,
+                    StoneGradeNameRoutesEnum::RELATED_TO_GROUP_GRADES->value,
                     NaturalStoneGradeCollection::class
                 )
             ]

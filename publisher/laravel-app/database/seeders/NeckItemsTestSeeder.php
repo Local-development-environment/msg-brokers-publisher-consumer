@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use Domain\Jewelleries\Categories\Enums\CategoryBuildEnum;
+use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
 use Domain\JewelleryGenerator\BaseJewelleryBuilder;
 use Domain\JewelleryGenerator\Jeweller;
 use Illuminate\Database\Seeder;
@@ -43,21 +43,21 @@ final class NeckItemsTestSeeder extends Seeder
     {
 //        dump($jewelleryData);
         $categories = [
-            CategoryBuildEnum::BEADS->value => 1,
-            CategoryBuildEnum::CHAINS->value => 4,
-            CategoryBuildEnum::NECKLACES->value => 8,
+            CategoryBuilderEnum::BEADS->value => 1,
+            CategoryBuilderEnum::CHAINS->value => 4,
+            CategoryBuilderEnum::NECKLACES->value => 8,
         ];
 
-        if ($jewelleryData['jw_category'] === CategoryBuildEnum::BEADS->value) {
-            $this->addNeckItem($jewelleryData, $categories[CategoryBuildEnum::BEADS->value]);
+        if ($jewelleryData['jw_category'] === CategoryBuilderEnum::BEADS->value) {
+            $this->addNeckItem($jewelleryData, $categories[CategoryBuilderEnum::BEADS->value]);
         }
 
-        if ($jewelleryData['jw_category'] === CategoryBuildEnum::CHAINS->value) {
-            $this->addNeckItem($jewelleryData, $categories[CategoryBuildEnum::CHAINS->value]);
+        if ($jewelleryData['jw_category'] === CategoryBuilderEnum::CHAINS->value) {
+            $this->addNeckItem($jewelleryData, $categories[CategoryBuilderEnum::CHAINS->value]);
         }
 
-        if ($jewelleryData['jw_category'] === CategoryBuildEnum::NECKLACES->value) {
-            $this->addNeckItem($jewelleryData, $categories[CategoryBuildEnum::NECKLACES->value]);
+        if ($jewelleryData['jw_category'] === CategoryBuilderEnum::NECKLACES->value) {
+            $this->addNeckItem($jewelleryData, $categories[CategoryBuilderEnum::NECKLACES->value]);
         }
 
 

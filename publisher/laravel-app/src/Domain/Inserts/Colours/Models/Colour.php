@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Domain\Inserts\Colours\Models;
 
 use Domain\Inserts\Colours\Enums\ColourEnum;
-use Domain\Inserts\InsertExteriors\Enums\InsertExteriorEnum;
-use Domain\Inserts\InsertExteriors\Models\InsertExterior;
+use Domain\Inserts\StoneExteriours\Enums\StoneExteriorEnum;
+use Domain\Inserts\StoneExteriours\Models\StoneExterior;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -17,6 +17,6 @@ final class Colour extends Model
 
     public function insertExteriors(): HasMany
     {
-        return $this->hasMany(InsertExterior::class, InsertExteriorEnum::FK_COLOUR->value);
+        return $this->hasMany(StoneExterior::class, StoneExteriorEnum::FK_COLOUR->value);
     }
 }

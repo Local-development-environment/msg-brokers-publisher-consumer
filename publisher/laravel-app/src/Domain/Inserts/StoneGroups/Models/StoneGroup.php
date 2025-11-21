@@ -2,7 +2,7 @@
 
 namespace Domain\Inserts\StoneGroups\Models;
 
-use Domain\Inserts\NaturalStones\Models\NaturalStone;
+use Domain\Inserts\GroupGrades\Models\GroupGrade;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,8 +13,8 @@ class StoneGroup extends Model
 
     public const string TYPE_RESOURCE = StoneGroupEnum::TYPE_RESOURCE->value;
 
-    public function naturalStones(): HasMany
+    public function groupGrades(): HasMany
     {
-        return $this->hasMany(NaturalStone::class);
+        return $this->hasMany(GroupGrade::class);
     }
 }

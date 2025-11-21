@@ -5,8 +5,7 @@ namespace Domain\Inserts\Inserts\Enums;
 
 enum InsertRelationshipsEnum: string
 {
-    case INSERT_STONE         = 'insertStone';
+    case STONE_EXTERIOR         = 'stoneExterior';
     case INSERT_OPTIONAL_INFO = 'insertOptionalInfo';
-    case INSERT_METRIC        = 'insertMetric';
     case JEWELLERY            = 'jewellery';
 }

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Facets\Controllers;
 
-use App\Http\Admin\Insert\InsertExteriors\Resources\InsertExteriorCollection;
+use App\Http\Admin\Insert\StoneExteriours\Resources\StoneExteriorCollection;
 use App\Http\Controllers\Controller;
 use Domain\Inserts\Facets\Services\Relationships\FacetInsertStonesRelationshipService;
 use Illuminate\Http\JsonResponse;
@@ -18,6 +18,6 @@ final class FacetInsertStonesRelatedController extends Controller
     {
         $collection = $this->service->index($id);
 
-        return (new InsertExteriorCollection($collection))->response();
+        return (new StoneExteriorCollection($collection))->response();
     }
 }

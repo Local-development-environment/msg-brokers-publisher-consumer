@@ -18,7 +18,6 @@ return new class extends Migration
         DB::statement('CREATE SCHEMA jw_metals');
         DB::statement('CREATE SCHEMA jw_medias');
         DB::statement('CREATE SCHEMA jw_properties');
-        DB::statement('CREATE SCHEMA jw_coverings');
         DB::statement('CREATE SCHEMA jw_promotions');
         DB::statement('CREATE SCHEMA jw_views');
         DB::statement('CREATE SCHEMA jw_users');
@@ -35,7 +34,6 @@ return new class extends Migration
         DB::statement('DROP SCHEMA IF EXISTS jw_metals CASCADE');
         DB::statement('DROP SCHEMA IF EXISTS jw_medias CASCADE');
         DB::statement('DROP SCHEMA IF EXISTS jw_properties CASCADE');
-        DB::statement('DROP SCHEMA IF EXISTS jw_coverings CASCADE');
         DB::statement('DROP SCHEMA IF EXISTS jw_promotions CASCADE');
         DB::statement('DROP SCHEMA IF EXISTS jw_views CASCADE');
         DB::statement('DROP SCHEMA IF EXISTS jw_users CASCADE');
