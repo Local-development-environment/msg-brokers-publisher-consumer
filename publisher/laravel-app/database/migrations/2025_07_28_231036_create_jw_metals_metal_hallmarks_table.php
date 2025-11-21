@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreign('metal_type_id')->references('id')->on('jw_metals.metal_types');
             $table->foreign('hallmark_id')->references('id')->on('jw_metals.hallmarks');
 
-            $table->unique(['metal_type_id', 'hallmark_id'], 'unique_jw_metals_metal_details');
+            $table->unique(['metal_type_id', 'hallmark_id'], 'unique_metal_hallmarks');
         });
     }
 

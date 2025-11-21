@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\Coverings;
 
-use Domain\Coverings\CoveringShades\Enums\CoveringShadeBuilderEnum;
-use Domain\Coverings\CoveringTypes\Enums\CoveringTypeBuilderEnum;
-
 final class CoveringShade
 {
     /**
@@ -16,42 +13,42 @@ final class CoveringShade
     {
         dump($properties);
 //        if (count($properties['coveringType']) === 2) {
-//            if (in_array(CoveringTypeBuilderEnum::OXIDATION->value, $properties['coveringType'])) {
+//            if (in_array(CoverageBuilderEnum::OXIDATION->value, $properties['coveringType'])) {
 //                return CoveringShadeBuilderEnum::BLACKENING->value;
 //            }
 //
 //            return CoveringShadeBuilderEnum::RHODIUM_LIGHT_GRAY->value;
 //        } elseif (count($properties['coveringType']) === 1) {
-//            if ($properties['coveringType'][0] === CoveringTypeBuilderEnum::PARTLY_RHODIUM_PLATING->value) {
-//                $arr = explode(',', CoveringTypeBuilderEnum::PARTLY_RHODIUM_PLATING->shades());
+//            if ($properties['coveringType'][0] === CoverageBuilderEnum::PARTLY_RHODIUM_PLATING->value) {
+//                $arr = explode(',', CoverageBuilderEnum::PARTLY_RHODIUM_PLATING->shades());
 //                $key = array_rand($arr);
 //                return $arr[$key];
-//            } elseif ($properties['coveringType'][0] === CoveringTypeBuilderEnum::PLATINIZING->value) {
-//                $arr = explode(',', CoveringTypeBuilderEnum::PLATINIZING->shades());
+//            } elseif ($properties['coveringType'][0] === CoverageBuilderEnum::PLATINIZING->value) {
+//                $arr = explode(',', CoverageBuilderEnum::PLATINIZING->shades());
 //                $key = array_rand($arr);
 //                return $arr[$key];
-//            } elseif ($properties['coveringType'][0] === CoveringTypeBuilderEnum::RHODIUM_PLATING->value) {
-//                $arr = explode(',', CoveringTypeBuilderEnum::RHODIUM_PLATING->shades());
+//            } elseif ($properties['coveringType'][0] === CoverageBuilderEnum::RHODIUM_PLATING->value) {
+//                $arr = explode(',', CoverageBuilderEnum::RHODIUM_PLATING->shades());
 //                $key = array_rand($arr);
 //                return $arr[$key];
-//            } elseif ($properties['coveringType'][0] === CoveringTypeBuilderEnum::OXIDATION->value) {
-//                $arr = explode(',', CoveringTypeBuilderEnum::OXIDATION->shades());
+//            } elseif ($properties['coveringType'][0] === CoverageBuilderEnum::OXIDATION->value) {
+//                $arr = explode(',', CoverageBuilderEnum::OXIDATION->shades());
 //                $key = array_rand($arr);
 //                return $arr[$key];
-//            } elseif ($properties['coveringType'][0] === CoveringTypeBuilderEnum::GOLDING->value) {
-//                $arr = explode(',', CoveringTypeBuilderEnum::GOLDING->shades());
+//            } elseif ($properties['coveringType'][0] === CoverageBuilderEnum::GOLDING->value) {
+//                $arr = explode(',', CoverageBuilderEnum::GOLDING->shades());
 //                $key = array_rand($arr);
 //                return $arr[$key];
-//            } elseif ($properties['coveringType'][0] === CoveringTypeBuilderEnum::PARTLY_GOLDING->value) {
-//                $arr = explode(',', CoveringTypeBuilderEnum::PARTLY_GOLDING->shades());
+//            } elseif ($properties['coveringType'][0] === CoverageBuilderEnum::PARTLY_GOLDING->value) {
+//                $arr = explode(',', CoverageBuilderEnum::PARTLY_GOLDING->shades());
 //                $key = array_rand($arr);
 //                return $arr[$key];
-//            } elseif ($properties['coveringType'][0] === CoveringTypeBuilderEnum::DIAMOND_CUT->value) {
-//                $arr = explode(',', CoveringTypeBuilderEnum::DIAMOND_CUT->shades());
+//            } elseif ($properties['coveringType'][0] === CoverageBuilderEnum::DIAMOND_CUT->value) {
+//                $arr = explode(',', CoverageBuilderEnum::DIAMOND_CUT->shades());
 //                $key = array_rand($arr);
 //                return $arr[$key];
-//            } elseif ($properties['coveringType'][0] === CoveringTypeBuilderEnum::ENAMEL->value) {
-//                $arr = explode(',', CoveringTypeBuilderEnum::ENAMEL->shades());
+//            } elseif ($properties['coveringType'][0] === CoverageBuilderEnum::ENAMEL->value) {
+//                $arr = explode(',', CoverageBuilderEnum::ENAMEL->shades());
 //                $key = array_rand($arr);
 //                return $arr[$key];
 //            }

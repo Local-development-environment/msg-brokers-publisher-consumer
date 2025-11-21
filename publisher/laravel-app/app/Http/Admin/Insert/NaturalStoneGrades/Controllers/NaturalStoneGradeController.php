@@ -4,14 +4,14 @@ namespace App\Http\Admin\Insert\NaturalStoneGrades\Controllers;
 
 use App\Http\Admin\Insert\NaturalStoneGrades\Resources\NaturalStoneGradeCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\NaturalStoneGrades\Models\NaturalStoneGrade;
-use Domain\Inserts\NaturalStoneGrades\Services\NaturalStoneGradeService;
+use Domain\Inserts\GroupGrades\Models\GroupGrade;
+use Domain\Inserts\GroupGrades\Services\GroupGradeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class NaturalStoneGradeController extends Controller
 {
-    public function __construct(public NaturalStoneGradeService $service, public NaturalStoneGrade $naturalStoneGrade)
+    public function __construct(public GroupGradeService $service, public GroupGrade $naturalStoneGrade)
     {
     }
 

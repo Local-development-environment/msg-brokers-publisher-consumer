@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\Coverings;
 
-use Domain\Coverings\CoveringTypes\Enums\CoveringTypeBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
+use Domain\PreciousMetals\Coverages\Enums\CoverageBuilderEnum;
 use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeBuilderEnum;
 use Illuminate\Support\Arr;
 
@@ -40,7 +40,7 @@ final class CoveringType
         $anyCovering = $this->getAnySilverCovering();
         $coverings[] = $anyCovering;
 
-        if ($anyCovering === CoveringTypeBuilderEnum::DIAMOND_CUT->value) {
+        if ($anyCovering === CoverageBuilderEnum::DIAMOND_CUT->value) {
             $coverings[] = $this->getAddedCoveringToDiamondCut();
         }
 
@@ -84,14 +84,14 @@ final class CoveringType
         $randNum = rand(1, 100);
 
         if ($randNum < 5) {
-            return [CoveringTypeBuilderEnum::ENAMEL->value];
+            return [CoverageBuilderEnum::ENAMEL->value];
         } elseif ($randNum < 40) {
             return [
-                CoveringTypeBuilderEnum::DIAMOND_CUT->value,
-                CoveringTypeBuilderEnum::RHODIUM_PLATING->value
+                CoverageBuilderEnum::DIAMOND_CUT->value,
+                CoverageBuilderEnum::RHODIUM_PLATING->value
             ];
         } else {
-            return [CoveringTypeBuilderEnum::RHODIUM_PLATING->value];
+            return [CoverageBuilderEnum::RHODIUM_PLATING->value];
         }
     }
 
@@ -100,11 +100,11 @@ final class CoveringType
         $randNum = rand(1, 100);
 
         if ($randNum < 30) {
-            return CoveringTypeBuilderEnum::RHODIUM_PLATING->value;
+            return CoverageBuilderEnum::RHODIUM_PLATING->value;
         } elseif ($randNum < 80) {
-            return CoveringTypeBuilderEnum::OXIDATION->value;
+            return CoverageBuilderEnum::OXIDATION->value;
         } else {
-            return CoveringTypeBuilderEnum::GOLDING->value;
+            return CoverageBuilderEnum::GOLDING->value;
         }
     }
 }

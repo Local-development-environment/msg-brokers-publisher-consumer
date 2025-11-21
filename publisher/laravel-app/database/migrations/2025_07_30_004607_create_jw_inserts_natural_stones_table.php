@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('jw_inserts.natural_stones', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
-            $table->unsignedBigInteger('stone_group_id');
             $table->unsignedBigInteger('stone_family_id');
             $table->timestamps();
 
             $table->foreign('id')->references('id')->on('jw_inserts.stones');
-            $table->foreign('stone_group_id')->references('id')->on('jw_inserts.stone_groups');
             $table->foreign('stone_family_id')->references('id')->on('jw_inserts.stone_families');
         });
     }

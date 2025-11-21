@@ -2,8 +2,8 @@
 
 namespace Domain\Inserts\NaturalStones\Models;
 
-use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeEnum;
-use Domain\Inserts\NaturalStoneGrades\Models\NaturalStoneGrade;
+use Domain\Inserts\GroupGrades\Enums\GroupGradeEnum;
+use Domain\Inserts\GroupGrades\Models\GroupGrade;
 use Domain\Inserts\NaturalStones\Enums\NaturalStoneEnum;
 use Domain\Inserts\StoneFamilies\Models\StoneFamily;
 use Domain\Inserts\StoneGroups\Models\StoneGroup;
@@ -31,7 +31,7 @@ class NaturalStone extends Model
 
     public function naturalStoneGrade(): HasOne
     {
-        return $this->hasOne(NaturalStoneGrade::class, NaturalStoneGradeEnum::PRIMARY_KEY->value);
+        return $this->hasOne(GroupGrade::class, GroupGradeEnum::PRIMARY_KEY->value);
     }
 
     public function stoneGroup(): BelongsTo

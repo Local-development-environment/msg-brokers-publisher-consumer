@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Colours\Resources;
 
-use App\Http\Admin\Insert\InsertExteriors\Resources\InsertExteriorCollection;
+use App\Http\Admin\Insert\StoneExteriours\Resources\StoneExteriorCollection;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\Inserts\Colours\Enums\ColourEnum;
 use Domain\Inserts\Colours\Enums\ColourNameRoutesEnum;
@@ -26,7 +26,7 @@ final class ColourResource extends JsonResource
             'relationships' => [
                 ColourRelationshipsEnum::INSERT_EXTERIORS->value => $this->sectionRelationships(
                     ColourNameRoutesEnum::RELATED_TO_INSERT_EXTERIORS->value,
-                    InsertExteriorCollection::class
+                    StoneExteriorCollection::class
                 )
             ]
         ];
@@ -35,7 +35,7 @@ final class ColourResource extends JsonResource
     protected function relations(): array
     {
         return [
-            InsertExteriorCollection::class => $this->whenLoaded(ColourRelationshipsEnum::INSERT_EXTERIORS->value),
+            StoneExteriorCollection::class => $this->whenLoaded(ColourRelationshipsEnum::INSERT_EXTERIORS->value),
         ];
     }
 }

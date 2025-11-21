@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\NaturalStones\Services\Relationships;
 
-use Domain\Inserts\NaturalStoneGrades\Models\NaturalStoneGrade;
+use Domain\Inserts\GroupGrades\Models\GroupGrade;
 use Domain\Inserts\NaturalStones\Repositories\Relationships\NaturalStoneNaturalStoneGradeRelationshipRepository;
 
 final class NaturalStoneNaturalStoneGradeRelationshipService
@@ -13,7 +13,7 @@ final class NaturalStoneNaturalStoneGradeRelationshipService
     {
     }
 
-    public function index($id): NaturalStoneGrade|null
+    public function index($id): GroupGrade|null
     {
         return $this->repository->index($id);
     }

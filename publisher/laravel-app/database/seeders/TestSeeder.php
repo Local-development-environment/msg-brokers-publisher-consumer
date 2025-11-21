@@ -6,12 +6,12 @@ namespace Database\Seeders;
 use App\Http\Integrations\UVI\Jewelleries\Requests\GetAllJewelleries;
 use App\Http\Integrations\UVI\UVIConnector;
 use Domain\Coverings\CoveringFunctions\Enums\CoveringFunctionBuilderEnum;
-use Domain\Coverings\CoveringTypes\Enums\CoveringTypeBuilderEnum;
-use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
-use Domain\Jewelleries\Categories\Enums\CategoryBuildEnum;
+use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
+use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
+use Domain\PreciousMetals\Coverages\Enums\CoverageBuilderEnum;
 use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeBuilderEnum;
 use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingBuilderEnum;
 use Illuminate\Contracts\Container\BindingResolutionException;
@@ -29,8 +29,8 @@ final class TestSeeder extends Seeder
     {
         dd(explode(',',MetalTypeBuilderEnum::GOLDEN->coverings()));
         for ($i = 0; $i < 30; ++$i) {
-            $keyFunction = array_rand(CoveringTypeBuilderEnum::cases());
-            dump(CoveringTypeBuilderEnum::cases()[$keyFunction]->value);
+            $keyFunction = array_rand(CoverageBuilderEnum::cases());
+            dump(CoverageBuilderEnum::cases()[$keyFunction]->value);
         }
         dd('ok');
         $keyFunction = array_rand(CoveringFunctionBuilderEnum::cases());
@@ -86,7 +86,7 @@ final class TestSeeder extends Seeder
 //        dd($enumCases);
 //        dd($this->getArrElement($enumClass, $enumCases));
 
-        $categories = CategoryBuildEnum::cases();
+        $categories = CategoryBuilderEnum::cases();
         $i = 0;
 //        for ($x = 1; $x <= 200; $x++) {
 //            $key = $this->rand_with_entries($enumClass, $enumCases);
@@ -108,7 +108,7 @@ final class TestSeeder extends Seeder
         foreach (RingSizeListEnum::cases() as $grade) {
             dump((float)$grade->value);
         }
-        dd(StoneGradeListEnum::cases()[array_rand(StoneGradeListEnum::cases())]->value);
+        dd(StoneGradeBuilderEnum::cases()[array_rand(StoneGradeBuilderEnum::cases())]->value);
         $params = [
             'include' => ['jewelleryCategory', 'inserts'],
             'filter' => [
@@ -190,7 +190,7 @@ final class TestSeeder extends Seeder
     {
         $num = 0;
         foreach ($data as $item) {
-            $num += CategoryBuildEnum::{$item->name}->probability();
+            $num += CategoryBuilderEnum::{$item->name}->probability();
         }
 
         return 100 / $num;

@@ -26,33 +26,57 @@ enum HallmarkBuilderEnum: int
     case H_960 = 960;
     case H_999 = 999;
 
-    public function metals(): string
+    public function metals(): array
     {
         return match ($this) {
             self::H_333,
-            self::H_375,
-            self::H_583,
-            self::H_750,
-            self::H_916,
-            self::H_958 => MetalTypeBuilderEnum::GOLDEN->value,
-            self::H_500 => MetalTypeBuilderEnum::GOLDEN->value . ',' .
-                           MetalTypeBuilderEnum::PALLADIUM->value,
-            self::H_585 => MetalTypeBuilderEnum::GOLDEN->value . ',' .
-                           MetalTypeBuilderEnum::PLATINUM->value,
+            self::H_583 => [
+                MetalTypeBuilderEnum::GOLDEN_YELLOW->value,
+                MetalTypeBuilderEnum::GOLDEN_RED->value
+            ],
+            self::H_375 => [
+                MetalTypeBuilderEnum::GOLDEN_RED->value,
+            ],
+            self::H_750 => [
+                MetalTypeBuilderEnum::GOLDEN_YELLOW->value,
+                MetalTypeBuilderEnum::GOLDEN_WHITE->value
+            ],
+            self::H_916, self::H_958 => [
+                MetalTypeBuilderEnum::GOLDEN_YELLOW->value,
+            ],
+            self::H_500 => [
+                MetalTypeBuilderEnum::GOLDEN_RED->value,
+                MetalTypeBuilderEnum::PALLADIUM->value
+            ],
+            self::H_585 => [
+                MetalTypeBuilderEnum::GOLDEN_RED->value,
+                MetalTypeBuilderEnum::GOLDEN_YELLOW->value,
+                MetalTypeBuilderEnum::GOLDEN_WHITE->value,
+                MetalTypeBuilderEnum::PLATINUM->value
+            ],
             self::H_800,
             self::H_830,
             self::H_925,
-            self::H_960 => MetalTypeBuilderEnum::SILVER->value,
-            self::H_850 => MetalTypeBuilderEnum::PLATINUM->value . ',' .
-                           MetalTypeBuilderEnum::PALLADIUM->value,
-            self::H_875 => MetalTypeBuilderEnum::GOLDEN->value . ',' .
-                           MetalTypeBuilderEnum::SILVER->value,
-            self::H_999 => MetalTypeBuilderEnum::SILVER->value . ',' .
-                           MetalTypeBuilderEnum::GOLDEN->value . ',' .
-                           MetalTypeBuilderEnum::PLATINUM->value . ',' .
-                           MetalTypeBuilderEnum::PALLADIUM->value,
+            self::H_960 => [
+                MetalTypeBuilderEnum::SILVER->value
+            ],
+            self::H_850 => [
+                MetalTypeBuilderEnum::PLATINUM->value,
+                MetalTypeBuilderEnum::PALLADIUM->value
+            ],
+            self::H_875 => [
+                MetalTypeBuilderEnum::GOLDEN_YELLOW->value,
+                MetalTypeBuilderEnum::GOLDEN_WHITE->value,
+                MetalTypeBuilderEnum::SILVER->value],
+            self::H_999 => [
+                MetalTypeBuilderEnum::SILVER->value,
+                MetalTypeBuilderEnum::GOLDEN_YELLOW->value,
+                MetalTypeBuilderEnum::PLATINUM->value,
+                MetalTypeBuilderEnum::PALLADIUM->value],
             self::H_900,
-            self::H_950 => MetalTypeBuilderEnum::PLATINUM->value,
+            self::H_950 => [
+                MetalTypeBuilderEnum::PLATINUM->value
+            ],
         };
     }
 

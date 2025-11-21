@@ -2,7 +2,7 @@
 
 namespace App\Http\Admin\NecklaceProperty\Necklaces\Requests;
 
-use Domain\Jewelleries\Categories\Enums\CategoryBuildEnum;
+use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
 use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Models\NecklaceMetric;
 use Domain\JewelleryProperties\Necklaces\Necklaces\Models\Necklace;
 use Illuminate\Foundation\Http\FormRequest;
@@ -26,7 +26,7 @@ class NecklaceStoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        $categoryId = DB::table('jewelleries.categories')->where('name',CategoryBuildEnum::NECKLACES->value)->value('id');
+        $categoryId = DB::table('jewelleries.categories')->where('name',CategoryBuilderEnum::NECKLACES->value)->value('id');
 
         return [
             'data'                  => ['required','array:type,attributes,relationships,id','min:3'],

@@ -3,10 +3,9 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\StoneGrades\Models;
 
-use Domain\Inserts\NaturalStoneGrades\Models\NaturalStoneGrade;
+use Domain\Inserts\GroupGrades\Models\GroupGrade;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeEnum;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 final class StoneGrade extends Model
@@ -15,8 +14,8 @@ final class StoneGrade extends Model
 
     public const string TYPE_RESOURCE = StoneGradeEnum::TYPE_RESOURCE->value;
 
-    public function naturalStoneGrades(): HasMany
+    public function groupGrade(): HasOne
     {
-        return $this->hasMany(NaturalStoneGrade::class);
+        return $this->hasOne(GroupGrade::class);
     }
 }

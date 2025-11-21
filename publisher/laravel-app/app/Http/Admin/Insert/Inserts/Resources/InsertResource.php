@@ -3,9 +3,8 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Inserts\Resources;
 
-use App\Http\Admin\Insert\InsertExteriors\Resources\InsertExteriorResource;
-use App\Http\Admin\Insert\InsertMetrics\Resources\InsertMetricResource;
 use App\Http\Admin\Insert\InsertOptionalInfos\Resources\InsertOptionalInfoResource;
+use App\Http\Admin\Insert\StoneExteriours\Resources\StoneExteriorResource;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
 use Domain\Inserts\Inserts\Enums\InsertNameRoutesEnum;
@@ -32,14 +31,10 @@ final class InsertResource extends JsonResource
                     InsertNameRoutesEnum::RELATED_TO_INSERT_OPTIONAL_INFO->value,
                     InsertOptionalInfoResource::class
                 ),
-                InsertRelationshipsEnum::INSERT_STONE->value => $this->sectionRelationships(
+                InsertRelationshipsEnum::STONE_EXTERIOR->value => $this->sectionRelationships(
                     InsertNameRoutesEnum::RELATED_TO_INSERT_STONE->value,
-                    InsertExteriorResource::class
-                ),
-                InsertRelationshipsEnum::INSERT_METRIC->value => $this->sectionRelationships(
-                    InsertNameRoutesEnum::RELATED_TO_INSERT_METRIC->value,
-                    InsertMetricResource::class
-                ),
+                    StoneExteriorResource::class
+                )
             ]
         ];
     }
@@ -49,8 +44,7 @@ final class InsertResource extends JsonResource
         return [
 //            JewelleryResource::class => $this->whenLoaded(InsertRelationshipsEnum::JEWELLERY->value),
             InsertOptionalInfoResource::class => $this->whenLoaded(InsertRelationshipsEnum::INSERT_OPTIONAL_INFO->value),
-            InsertExteriorResource::class => $this->whenLoaded(InsertRelationshipsEnum::INSERT_STONE->value),
-            InsertMetricResource::class => $this->whenLoaded(InsertRelationshipsEnum::INSERT_METRIC->value),
+            StoneExteriorResource::class => $this->whenLoaded(InsertRelationshipsEnum::STONE_EXTERIOR->value),
         ];
     }
 }

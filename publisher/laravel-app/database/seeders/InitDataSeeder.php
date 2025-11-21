@@ -3,34 +3,22 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use Domain\Coverings\CoveringFunctions\Enums\CoveringFunctionBuilderEnum;
-use Domain\Coverings\CoveringFunctions\Enums\CoveringFunctionEnum;
-use Domain\Coverings\Coverings\Enums\CoveringEnum;
-use Domain\Coverings\CoveringShades\Enums\CoveringShadeBuilderEnum;
-use Domain\Coverings\CoveringShades\Enums\CoveringShadeEnum;
-use Domain\Coverings\CoveringTypes\Enums\CoveringTypeBuilderEnum;
-use Domain\Coverings\CoveringTypes\Enums\CoveringTypeEnum;
-use Domain\Inserts\Colours\Enums\ColourBuilderEnum;
 use Domain\Inserts\Colours\Enums\ColourEnum;
 use Domain\Inserts\Facets\Enums\FacetEnum;
+use Domain\Inserts\GroupGrades\Enums\GroupGradeEnum;
 use Domain\Inserts\GrownStones\Enums\GrownStoneEnum;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
-use Domain\Inserts\InsertExteriors\Enums\InsertExteriorEnum;
-use Domain\Inserts\InsertMetrics\Enums\InsertMetricEnum;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
-use Domain\Inserts\NaturalStoneGrades\Enums\NaturalStoneGradeEnum;
 use Domain\Inserts\NaturalStones\Enums\NaturalStoneEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectEnum;
 use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneEnum;
+use Domain\Inserts\StoneExteriours\Enums\StoneExteriorEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeEnum;
-use Domain\Inserts\StoneGrades\Enums\StoneGradeListEnum;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupEnum;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginEnum;
-use Domain\Jewelleries\Categories\Enums\CategoryEnum;
-use Domain\Jewelleries\Categories\Enums\CategoryBuildEnum;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
 use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailEnum;
@@ -39,21 +27,10 @@ use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerListEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeListEnum;
-use Domain\PreciousMetals\GoldenColours\Enums\GoldenColourBuilderEnum;
-use Domain\PreciousMetals\GoldenColours\Enums\GoldenColourEnum;
-use Domain\PreciousMetals\Hallmarks\Enums\HallmarkBuilderEnum;
-use Domain\PreciousMetals\Hallmarks\Enums\HallmarkEnum;
-use Domain\PreciousMetals\MetalHallmarks\Enums\MetalHallmarkEnum;
-use Domain\PreciousMetals\Metals\Enums\MetalEnum;
-use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeBuilderEnum;
-use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeEnum;
 use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingEnum;
-use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingBuilderEnum;
-use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspBuilderEnum;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameBuilderEnum;
 use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeBuilderEnum;
 use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingEnum;
-use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingBuilderEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -115,15 +92,14 @@ final class InitDataSeeder extends Seeder
         DB::table(OpticalEffectStoneEnum::TABLE_NAME->value)->truncate();
         DB::table(ColourEnum::TABLE_NAME->value)->truncate();
         DB::table(FacetEnum::TABLE_NAME->value)->truncate();
-        DB::table(InsertExteriorEnum::TABLE_NAME->value)->truncate();
-        DB::table(InsertMetricEnum::TABLE_NAME->value)->truncate();
+        DB::table(StoneExteriorEnum::TABLE_NAME->value)->truncate();
         DB::table(InsertOptionalInfoEnum::TABLE_NAME->value)->truncate();
         DB::table(InsertEnum::TABLE_NAME->value)->truncate();
         DB::table(StoneFamilyEnum::TABLE_NAME->value)->truncate();
         DB::table(StoneGroupEnum::TABLE_NAME->value)->truncate();
         DB::table(StoneGradeEnum::TABLE_NAME->value)->truncate();
         DB::table(NaturalStoneEnum::TABLE_NAME->value)->truncate();
-        DB::table(NaturalStoneGradeEnum::TABLE_NAME->value)->truncate();
+        DB::table(GroupGradeEnum::TABLE_NAME->value)->truncate();
         DB::table(GrownStoneEnum::TABLE_NAME->value)->truncate();
         DB::table(ImitationStoneEnum::TABLE_NAME->value)->truncate();
         DB::table(JewelleryEnum::TABLE_NAME->value)->truncate();
@@ -209,10 +185,7 @@ final class InitDataSeeder extends Seeder
 
     private function jwInsertsSeed(): void
     {
-        $jwInsertsTypeOrigins = config('data-seed.insert-seed.items-seed.origins');
-        $jwInsertsStoneFacets = config('data-seed.insert-seed.items-seed.stone_facets');
         $jwInsertsStoneFamilies = config('data-seed.insert-seed.items-seed.family');
-        $jwInsertsStoneGroups = config('data-seed.insert-seed.items-seed.groups');
         $jwInsertsOpticalEffects = config('data-seed.insert-seed.items-seed.optical_effects');
         $jwInsertsNaturalStones = config('data-seed.insert-seed.nature-stones-seed.stones');
         $jwInsertsGrownStones = config('data-seed.insert-seed.grown-stones-seed.stones');
@@ -227,59 +200,11 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach (StoneGradeListEnum::cases() as $grade) {
-            DB::table('jw_inserts.stone_grades')->insert([
-                'name' => $grade->value,
-                'slug' => Str::slug($grade->value),
-                'description' => $grade->description(),
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($jwInsertsStoneGroups as $group) {
-            DB::table('jw_inserts.stone_groups')->insert([
-                'name' => $group['name'],
-                'slug' => Str::slug($group['name']),
-                'description' => $group['description'],
-                'created_at' => now(),
-            ]);
-        }
-
         foreach ($jwInsertsStoneFamilies as $family) {
             DB::table('jw_inserts.stone_families')->insert([
                 'name' => $family['name'],
                 'slug' => Str::slug($family['name']),
                 'description' => $family['description'],
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($jwInsertsStoneFacets as $facet) {
-            DB::table('jw_inserts.facets')->insert([
-                'name' => $facet['name'],
-                'slug' => Str::slug($facet['name']),
-                'description' => $facet['description'],
-                'is_active' => true,
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach (ColourBuilderEnum::cases() as $colour) {
-            DB::table(ColourEnum::TABLE_NAME->value)->insert([
-                'name' => $colour->value,
-                'slug' => Str::slug($colour->value),
-                'description' => $colour->description(),
-                'is_active' => true,
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach ($jwInsertsTypeOrigins as $origin) {
-            DB::table('jw_inserts.type_origins')->insert([
-                'name' => $origin['name'],
-                'slug' => Str::slug($origin['name']),
-                'description' => $origin['description'],
-                'is_active' => true,
                 'created_at' => now(),
             ]);
         }
@@ -311,14 +236,6 @@ final class InitDataSeeder extends Seeder
                 'stone_family_id' => DB::table('jw_inserts.stone_families')->where('name', $stone['family'])->value('id'),
                 'created_at' => now(),
             ]);
-
-            if ($stone['grade']) {
-                DB::table('jw_inserts.natural_stone_grade')->insert([
-                    'id' => $naturalStoneId,
-                    'stone_grade_id' => DB::table('jw_inserts.stone_grades')->where('name', $stone['grade'])->value('id'),
-                    'created_at' => now(),
-                ]);
-            }
         }
 
         $typeGrownId = DB::table('jw_inserts.type_origins')->where('name', '=', 'выращенный')->value('id');

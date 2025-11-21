@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Facets\Resources;
 
-use App\Http\Admin\Insert\InsertExteriors\Resources\InsertExteriorCollection;
+use App\Http\Admin\Insert\StoneExteriours\Resources\StoneExteriorCollection;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\Inserts\Facets\Enums\FacetEnum;
 use Domain\Inserts\Facets\Enums\FacetNameRoutesEnum;
@@ -26,7 +26,7 @@ final class StoneFacetResource extends JsonResource
             'relationships' => [
                 FacetRelationshipsEnum::INSERT_EXTERIORS->value => $this->sectionRelationships(
                     FacetNameRoutesEnum::RELATED_TO_INSERT_EXTERIORS->value,
-                    InsertExteriorCollection::class
+                    StoneExteriorCollection::class
                 )
             ]
         ];
@@ -35,7 +35,7 @@ final class StoneFacetResource extends JsonResource
     protected function relations(): array
     {
         return [
-            InsertExteriorCollection::class => $this->whenLoaded(FacetRelationshipsEnum::INSERT_EXTERIORS->value),
+            StoneExteriorCollection::class => $this->whenLoaded(FacetRelationshipsEnum::INSERT_EXTERIORS->value),
         ];
     }
 }

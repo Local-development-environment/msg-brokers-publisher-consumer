@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\Facets\Enums;
 
-use Domain\Jewelleries\Categories\Enums\CategoryBuildEnum;
+use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
 
 enum FacetBuilderEnum: string
 {
@@ -17,7 +17,8 @@ enum FacetBuilderEnum: string
     case EMERALD_CUT   = 'изумрудная';
     case PRINCESS_CUT  = 'принцесса';
     case ASSCHER_CUT   = 'ашер';
-    case CABOCHON      = 'кабошон';
+    case CABOCHON_OVAL = 'кабошон-овал';
+    case CABOCHON_ROUND = 'кабошон-круг';
     case HEART_CUT     = 'сердце';
     case TRILLION_CUT  = 'триллион';
     case BRIOLETTE_CUT = 'бриолет';
@@ -37,7 +38,8 @@ enum FacetBuilderEnum: string
             self::ASSCHER_CUT  => 'Ашер еще называется квадратом из-за того, что это попросту квадратная версия изумруда. С небольшим отличием – несколько больше ярусов и граней.',
             self::HEART_CUT    => 'По технике обработки камня этот способ близок грушевидной огранке. Ради соблюдения баланса красоты линий и прочности соотношение длины и ширины камня после огранки должно составлять 1 : 1.',
             self::TRILLION_CUT => 'Равносторонний треугольник с острыми или закругленными краями. Это сравнительно молодой способ огранки, который был придуман в 80-х годах.',
-            self::CABOCHON     => 'Полированный камень с куполообразным верхом и плоским дном. Как правило, круглой или овальной формы.',
+            self::CABOCHON_OVAL => 'Полированный камень с куполообразным верхом и плоским дном овальной формы.',
+            self::CABOCHON_ROUND => 'Полированный камень с куполообразным верхом и плоским дном круглой формы.',
             self::BRIOLETTE_CUT => 'Название огранки переводится с французского как «сушеная слива». Бриолет представляет собой разновидность огранки «роза». Эффектно смотрится в подвесках, но также использовался в диадемах, колье и серьгах.',
             self::ROSE_CUT     => 'Огранки Роза известна еще с 1500-х годов и была популярна до начала 1900-х годов. Форма камня напоминает лепестки бутона розы - отсюда ее название.'
         };
@@ -47,65 +49,66 @@ enum FacetBuilderEnum: string
     {
         return match ($this) {
             self::ROUND_CUT => [
-                CategoryBuildEnum::NECKLACES->value,
-                CategoryBuildEnum::EARRINGS->value,
-                CategoryBuildEnum::CHARM_PENDANTS->value,
-                CategoryBuildEnum::PENDANTS->value,
-                CategoryBuildEnum::RINGS->value,
-                CategoryBuildEnum::BROOCHES->value,
-                CategoryBuildEnum::CUFF_LINKS->value,
-                CategoryBuildEnum::TIE_CLIPS->value,
+                CategoryBuilderEnum::NECKLACES->value,
+                CategoryBuilderEnum::EARRINGS->value,
+                CategoryBuilderEnum::CHARM_PENDANTS->value,
+                CategoryBuilderEnum::PENDANTS->value,
+                CategoryBuilderEnum::RINGS->value,
+                CategoryBuilderEnum::BROOCHES->value,
+                CategoryBuilderEnum::CUFF_LINKS->value,
+                CategoryBuilderEnum::TIE_CLIPS->value,
             ],
             self::CUSHION_CUT,
             self::PEAR_CUT,
             self::BRIOLETTE_CUT => [
-                CategoryBuildEnum::NECKLACES->value,
-                CategoryBuildEnum::EARRINGS->value,
-                CategoryBuildEnum::PENDANTS->value,
+                CategoryBuilderEnum::NECKLACES->value,
+                CategoryBuilderEnum::EARRINGS->value,
+                CategoryBuilderEnum::PENDANTS->value,
             ],
             self::MARQUISE_CUT,
             self::RADIANT_CUT,
             self::PRINCESS_CUT => [
-                CategoryBuildEnum::RINGS->value,
-                CategoryBuildEnum::EARRINGS->value,
-                CategoryBuildEnum::PENDANTS->value,
+                CategoryBuilderEnum::RINGS->value,
+                CategoryBuilderEnum::EARRINGS->value,
+                CategoryBuilderEnum::PENDANTS->value,
             ],
             self::OVAL_CUT,
             self::EMERALD_CUT => [
-                CategoryBuildEnum::RINGS->value,
-                CategoryBuildEnum::PENDANTS->value,
-                CategoryBuildEnum::EARRINGS->value,
-                CategoryBuildEnum::BRACELETS->value,
-                CategoryBuildEnum::BROOCHES->value,
-                CategoryBuildEnum::NECKLACES->value,
+                CategoryBuilderEnum::RINGS->value,
+                CategoryBuilderEnum::PENDANTS->value,
+                CategoryBuilderEnum::EARRINGS->value,
+                CategoryBuilderEnum::BRACELETS->value,
+                CategoryBuilderEnum::BROOCHES->value,
+                CategoryBuilderEnum::NECKLACES->value,
             ],
             self::ASSCHER_CUT => [
-                CategoryBuildEnum::RINGS->value,
-                CategoryBuildEnum::EARRINGS->value,
-                CategoryBuildEnum::BRACELETS->value,
-                CategoryBuildEnum::NECKLACES->value,
+                CategoryBuilderEnum::RINGS->value,
+                CategoryBuilderEnum::EARRINGS->value,
+                CategoryBuilderEnum::BRACELETS->value,
+                CategoryBuilderEnum::NECKLACES->value,
             ],
-            self::CABOCHON => [
-                CategoryBuildEnum::RINGS->value,
-                CategoryBuildEnum::EARRINGS->value,
-                CategoryBuildEnum::BRACELETS->value,
-                CategoryBuildEnum::BROOCHES->value,
-                CategoryBuildEnum::PENDANTS->value,
+            self::CABOCHON_ROUND,
+            self::CABOCHON_OVAL => [
+                CategoryBuilderEnum::RINGS->value,
+                CategoryBuilderEnum::EARRINGS->value,
+                CategoryBuilderEnum::BRACELETS->value,
+                CategoryBuilderEnum::BROOCHES->value,
+                CategoryBuilderEnum::PENDANTS->value,
             ],
             self::HEART_CUT => [
-                CategoryBuildEnum::RINGS->value,
-                CategoryBuildEnum::PENDANTS->value,
+                CategoryBuilderEnum::RINGS->value,
+                CategoryBuilderEnum::PENDANTS->value,
             ],
             self::TRILLION_CUT => [
-                CategoryBuildEnum::RINGS->value,
-                CategoryBuildEnum::EARRINGS->value,
-                CategoryBuildEnum::BROOCHES->value,
+                CategoryBuilderEnum::RINGS->value,
+                CategoryBuilderEnum::EARRINGS->value,
+                CategoryBuilderEnum::BROOCHES->value,
             ],
             self::ROSE_CUT => [
-                CategoryBuildEnum::RINGS->value,
-                CategoryBuildEnum::EARRINGS->value,
-                CategoryBuildEnum::BROOCHES->value,
-                CategoryBuildEnum::PENDANTS->value,
+                CategoryBuilderEnum::RINGS->value,
+                CategoryBuilderEnum::EARRINGS->value,
+                CategoryBuilderEnum::BROOCHES->value,
+                CategoryBuilderEnum::PENDANTS->value,
             ],
         };
     }

@@ -3,27 +3,14 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use Domain\Coverings\Coverings\Enums\CoveringEnum;
-use Domain\Coverings\CoveringShades\Enums\CoveringShadeEnum;
-use Domain\Coverings\CoveringTypes\Enums\CoveringTypeEnum;
-use Domain\Inserts\Colours\Enums\ColourEnum;
-use Domain\Inserts\Facets\Enums\FacetEnum;
-use Domain\Inserts\InsertExteriors\Enums\InsertExteriorEnum;
-use Domain\Inserts\InsertMetrics\Enums\InsertMetricEnum;
-use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
-use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryEnum;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
 use Domain\JewelleryGenerator\BaseJewelleryBuilder;
 use Domain\JewelleryGenerator\InitProperties;
 use Domain\JewelleryGenerator\Jeweller;
+use Domain\JewelleryGenerator\Jewelleries\Inserts\InitInsertData;
+use Domain\JewelleryGenerator\Jewelleries\Metals\InitMetalData;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
-use Domain\PreciousMetals\ColourCombinations\Enums\ColourCombinationEnum;
-use Domain\PreciousMetals\GoldenColours\Enums\GoldenColourEnum;
-use Domain\PreciousMetals\Hallmarks\Enums\HallmarkEnum;
-use Domain\PreciousMetals\MetalHallmarks\Enums\MetalHallmarkEnum;
-use Domain\PreciousMetals\Metals\Enums\MetalEnum;
-use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -40,10 +27,15 @@ final class BuildJewellerySeeder extends Seeder
 
         $jeweller = new Jeweller();
 
+        $insert = new InitInsertData;
+        $insert();
+
+        $metal  = new InitMetalData;
+        $metal();
+
+        dd('stop');
         $initProperties = new initProperties();
-        $initProperties->initMetalProperties();
         $initProperties->initCategoryProperties();
-        $initProperties->initCoveringProperties();
         $initProperties->initBeadProperties();
         $initProperties->initBraceletProperties();
         $initProperties->initShareProperties();
@@ -80,113 +72,8 @@ final class BuildJewellerySeeder extends Seeder
             'created_at' => now(),
         ]);
 
-        $this->addInsert($jewelleryData, $jewelleryId);
-        $this->addMetal($jewelleryData, $jewelleryId);
-        $this->addCovering($jewelleryData, $jewelleryId);
         $this->addProperty($jewelleryData, $jewelleryId);
         $this->addMedia($jewelleryData, $jewelleryId);
-    }
-
-    /**
-     * @throws JsonException
-     */
-    private function addInsert(array $jewelleryData, int $jewelleryId): void
-    {
-        if ($jewelleryData['inserts']) {
-            foreach ($jewelleryData['inserts'] as $jewelleryInsert) {
-                $stone_id = DB::table(StoneEnum::TABLE_NAME->value)->where('name',$jewelleryInsert['stone'])->value('id');
-                $colour_id = DB::table(ColourEnum::TABLE_NAME->value)->where('name',$jewelleryInsert['colour'])->value('id');
-                $facet_id = DB::table(FacetEnum::TABLE_NAME->value)->where('name',$jewelleryInsert['facet'])->value('id');
-                if (DB::table(InsertExteriorEnum::TABLE_NAME->value)->count() !== 0) {
-                    $checkUnique = DB::table(InsertExteriorEnum::TABLE_NAME->value)
-                        ->where('stone_id', $stone_id)
-                        ->where('colour_id', $colour_id)
-                        ->where('facet_id', $facet_id)
-                        ->count();
-//                        dd($checkUnique);
-                } else {
-                    $checkUnique = 0;
-                }
-                if ($checkUnique === 0) {
-                    $stoneId = DB::table(InsertExteriorEnum::TABLE_NAME->value)->insertGetId([
-                        'stone_id' => DB::table('jw_inserts.stones')->where('name',$jewelleryInsert['stone'])->value('id'),
-                        'colour_id' => DB::table('jw_inserts.colours')->where('name',$jewelleryInsert['colour'])->value('id'),
-                        'facet_id' => DB::table('jw_inserts.facets')->where('name',$jewelleryInsert['facet'])->value('id'),
-                        'created_at' => now(),
-                    ]);
-                } else {
-                    $stoneId = DB::table(InsertExteriorEnum::TABLE_NAME->value)->where('stone_id', $stone_id)
-                        ->where('colour_id', $colour_id)
-                        ->where('facet_id', $facet_id)->value('id');
-//                        dump('********************************************' . $stoneId);
-                }
-
-                $insertId = DB::table('jw_inserts.inserts')->insertGetId([
-                    'insert_exterior_id' => $stoneId,
-                    'jewellery_id' => $jewelleryId,
-                    'created_at' => now()
-                ]);
-
-                DB::table(InsertMetricEnum::TABLE_NAME->value)->insertGetId([
-                    'id' => $insertId,
-                    'quantity' => $jewelleryInsert['metrics']['quantity'],
-                    'weight' => $jewelleryInsert['metrics']['weight'],
-                    'unit' => $jewelleryInsert['metrics']['weight_unit'],
-                    'dimensions' => json_encode($jewelleryInsert['metrics']['dimensions'], JSON_THROW_ON_ERROR),
-                    'created_at' => now()
-                ]);
-
-                if ($jewelleryInsert['optional_info']) {
-                    DB::table(InsertOptionalInfoEnum::TABLE_NAME->value)->insertGetId([
-                        'id' => $insertId,
-                        'info' => json_encode($jewelleryInsert['optional_info']),
-                    ]);
-                }
-            }
-        }
-    }
-
-    private function addCovering(array $jewelleryData, int $jewelleryId): void
-    {
-//        dump($jewelleryData['covering']);
-        if ($jewelleryData['covering']['covering_type']) {
-            $coveringShadeId = DB::table(CoveringShadeEnum::TABLE_NAME->value)->where('name',$jewelleryData['covering']['covering_shade'])->value('id');
-            foreach ($jewelleryData['covering']['covering_type'] as $covering) {
-                $coveringTypeId = DB::table(CoveringTypeEnum::TABLE_NAME->value)->where('name',$covering)->value('id');
-//                dd($coveringShadeId);
-                DB::table(CoveringEnum::TABLE_NAME->value)->insertGetId([
-                    'jewellery_id' => $jewelleryId,
-                    'covering_type_id' => $coveringTypeId,
-                    'covering_shade_id' => $coveringShadeId,
-                ]);
-            }
-        }
-    }
-
-    private function addMetal(array $jewelleryData, int $jewelleryId): void
-    {
-        $metalTypeId = DB::table(MetalTypeEnum::TABLE_NAME->value)
-            ->where('name',$jewelleryData['metal_props']['metal_type'])->value('id');
-        $hallmarkId = DB::table(HallmarkEnum::TABLE_NAME->value)
-            ->where('value',$jewelleryData['metal_props']['hallmark'])->value('id');
-        $metalHallmarkId = DB::table(MetalHallmarkEnum::TABLE_NAME->value)
-            ->where('metal_type_id', $metalTypeId)->where('hallmark_id', $hallmarkId)->value('id');
-//        dd($metalHallmarkId);
-        $metalId = DB::table(MetalEnum::TABLE_NAME->value)->insertGetId([
-            'id' => $jewelleryId,
-            'metal_hallmark_id' => $metalHallmarkId,
-            'created_at' => now()
-        ]);
-
-        if ($jewelleryData['metal_props']['golden_colour']) {
-            foreach ($jewelleryData['metal_props']['golden_colour'] as $goldenColour) {
-                $goldenColourId = DB::table(GoldenColourEnum::TABLE_NAME->value)->where('name',$goldenColour)->value('id');
-                DB::table(ColourCombinationEnum::TABLE_NAME->value)->insertGetId([
-                    'metal_id' => $metalId,
-                    'golden_colour_id' => $goldenColourId,
-                ]);
-            }
-        }
     }
 
     /**
