@@ -6,7 +6,7 @@ namespace Domain\Jewelleries\Jewelleries\Models;
 
 use Domain\Inserts\Inserts\Models\Insert;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
-use Domain\JewelleryGenerator\Jewelleries\Category;
+use Domain\JewelleryGenerator\Jewelleries\Categories\Category;
 use Domain\JewelleryProperties\Beads\Beads\Models\Bead;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Models\Bracelet;
 use Illuminate\Database\Eloquent\Model;

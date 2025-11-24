@@ -29,7 +29,7 @@ enum CategoryBuilderEnum: string
             self::CHARM_PENDANTS => 'Подвеска-шарм это небольшая декоративная подвеска, которую можно носить на браслете, цепочке или серьгах.',
             self::CUFF_LINKS     => 'Запонка это декоративная застёжка для мужской рубашки, которая используется для скрепления манжет вместо пуговиц',
             self::EARRINGS       => 'Серьга это украшение, которое носят на мочке уха',
-            self::NECKLACES      => 'Колье это шейное украшение, которое отличается выделенной центральной частью, привлекающей основное внимание, в отличие от более простых ожерелий или цепочек.',
+            self::NECKLACES      => 'Цельное украшение для шеи, которое часто имеет более короткую длину и плотно облегает шею, подчеркивая зону декольте. Украшение с центральным элементом, где сама цепочка является продолжением дизайна, а не просто основой',
             self::PENDANTS       => 'Куло́н ювелирное украшение, надеваемое на шею. Разновидность подвески.',
             self::PIERCINGS      => 'Пирсинг это украшение, которое носят в проколе тела.',
             self::RINGS          => 'Кольцо это украшение в виде ободка или круга из металла или другого материала, которое надевают на палец',
@@ -37,14 +37,21 @@ enum CategoryBuilderEnum: string
         };
     }
 
-    public function probability(): int
+    public function jwProbability(): int
     {
         return match ($this) {
-            self::BEADS => 3,
-            self::BRACELETS, self::CHAINS, self::RINGS => 5,
-            self::BROOCHES, self::CHARM_PENDANTS, self::CUFF_LINKS, self::PENDANTS, self::PIERCINGS, self::TIE_CLIPS => 1,
-            self::EARRINGS => 4,
-            self::NECKLACES => 2
+            self::BEADS,
+            self::NECKLACES,
+            self::BROOCHES,
+            self::CHARM_PENDANTS,
+            self::CUFF_LINKS,
+            self::PENDANTS,
+            self::PIERCINGS,
+            self::TIE_CLIPS => 5,
+            self::BRACELETS,
+            self::CHAINS,
+            self::RINGS,
+            self::EARRINGS => 15
         };
     }
 }

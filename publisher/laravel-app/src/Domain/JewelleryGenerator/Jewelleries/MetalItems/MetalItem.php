@@ -1,0 +1,138 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Domain\JewelleryGenerator\Jewelleries\MetalItems;
+
+use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
+use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
+use Domain\PreciousMetals\Coverages\Enums\CoverageBuilderEnum;
+use Domain\PreciousMetals\Hallmarks\Enums\HallmarkBuilderEnum;
+use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeBuilderEnum;
+use Illuminate\Support\Arr;
+
+final class MetalItem
+{
+    use ProbabilityArrayElementTrait;
+
+    public function metalItem(string $category): array
+    {
+        $metalType = $this->getMetalType();
+        $hallmark = $this->getHallmark($metalType);
+        $coverages = $this->getCoverage($metalType, $category);
+
+        return [
+            'hallmark' => $hallmark,
+            'metalType' => $metalType,
+            'coverages' => $coverages,
+        ];
+    }
+
+    private function getMetalType(): string
+    {
+        $enumClass = get_class(MetalTypeBuilderEnum::GOLDEN_RED);
+        $enumCases = MetalTypeBuilderEnum::cases();
+
+        return $this->getArrElement($enumClass, $enumCases);
+    }
+
+    private function getHallmark(string $metalType): int
+    {
+        $enumClass = get_class(HallmarkBuilderEnum::H_375);
+        $enumCases = HallmarkBuilderEnum::cases();
+
+        foreach ($enumCases as $key => $case) {
+
+            if (! in_array($metalType, $case::{$case->name}->metals()) ||
+                $case::{$case->name}->value === HallmarkBuilderEnum::H_999->value) {
+                Arr::forget($enumCases, $key);
+            }
+
+            if ($metalType === MetalTypeBuilderEnum::GOLDEN_RED->value &&
+                $case::{$case->name}->value === HallmarkBuilderEnum::H_500->value) {
+                Arr::forget($enumCases, $key);
+            }
+
+            if ($metalType === MetalTypeBuilderEnum::PLATINUM->value &&
+                $case::{$case->name}->value === HallmarkBuilderEnum::H_585->value) {
+                Arr::forget($enumCases, $key);
+            }
+
+            if ($metalType === MetalTypeBuilderEnum::PLATINUM->value &&
+                $case::{$case->name}->value === HallmarkBuilderEnum::H_850->value) {
+                Arr::forget($enumCases, $key);
+            }
+        }
+
+        return $this->getArrElement($enumClass, $enumCases);
+    }
+
+    private function getCoverage(string $metalType, string $category): array
+    {
+        if ($category === CategoryBuilderEnum::BEADS->value) {
+            return [CoverageBuilderEnum::RHODIUM_PLATING->value];
+        }
+
+        if ($metalType === MetalTypeBuilderEnum::PLATINUM->value || $metalType === MetalTypeBuilderEnum::PALLADIUM->value) {
+            return rand(0,1) ? [] : [CoverageBuilderEnum::DIAMOND_CUT->value];
+        } elseif ($metalType === MetalTypeBuilderEnum::SILVER->value) {
+            return $this->getSilverCovering(MetalTypeBuilderEnum::SILVER->coverages());
+        }  else if($metalType === MetalTypeBuilderEnum::GOLDEN_YELLOW->value || $metalType === MetalTypeBuilderEnum::GOLDEN_RED->value || $metalType === MetalTypeBuilderEnum::GOLDEN_WHITE->value) {
+            return $this->getGoldCovering(MetalTypeBuilderEnum::GOLDEN_RED->coverages());
+        }
+
+        return [];
+    }
+
+    private function getSilverCovering(array $coverages): array
+    {
+        $randNum = rand(0,4);
+        $items = [];
+
+        $preparedCoverages = $this->prepareCoverages($coverages);
+
+        if ($randNum === 0) {
+            $items[] = CoverageBuilderEnum::DIAMOND_CUT->value;
+            $items[] = rand(0,1) ? CoverageBuilderEnum::OXIDATION->value : CoverageBuilderEnum::RHODIUM_PLATING->value;
+
+            return $items;
+        } else {
+            return [$preparedCoverages[array_rand($preparedCoverages)]];
+        }
+    }
+
+    private function getGoldCovering(array $coverages): array
+    {
+        $randNum = rand(0,4);
+        $items = [];
+
+        $preparedCoverages = $this->prepareCoverages($coverages);
+        if ($randNum === 0) {
+            $items[] = CoverageBuilderEnum::DIAMOND_CUT->value;
+            $items[] = CoverageBuilderEnum::RHODIUM_PLATING->value;
+
+            return $items;
+        } elseif($randNum === 1) {
+            $items[] = CoverageBuilderEnum::ENAMEL->value;
+            $items[] = CoverageBuilderEnum::RHODIUM_PLATING->value;
+            return $items;
+        } else {
+            return [$preparedCoverages[array_rand($preparedCoverages)]];
+        }
+    }
+
+    private function prepareCoverages(array $coverages): array
+    {
+        foreach ($coverages as $key => $coverage) {
+            if ($coverage === CoverageBuilderEnum::DIAMOND_CUT->value) {
+                unset($coverages[$key]);
+            }
+
+            if ($coverage === CoverageBuilderEnum::ENAMEL->value) {
+                unset($coverages[$key]);
+            }
+        }
+
+        return $coverages;
+    }
+}

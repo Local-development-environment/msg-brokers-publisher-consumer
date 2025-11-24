@@ -16,9 +16,7 @@ interface JewelleryBuilderInterface
 
     public function buildMetal(): jewelleryBuilderInterface;
 
-    public function buildCovering(): jewelleryBuilderInterface;
-
-    public function addInsert(): jewelleryBuilderInterface;
+    public function buildInsert(): jewelleryBuilderInterface;
 
     public function addProperty(): jewelleryBuilderInterface;
 
