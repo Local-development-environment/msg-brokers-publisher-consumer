@@ -104,26 +104,26 @@ enum HallmarkBuilderEnum: int
         };
     }
 
-    public function probability(): int
+    public function jwProbability(): int
     {
         return match ($this) {
-            self::H_375 => 10,
-            self::H_500 => 5,
-            self::H_585 => 50,
-            self::H_750 => 20,
-            self::H_800 => 2,
+            self::H_375 => 30,
+            self::H_500 => 25,
+            self::H_585 => 60,
+            self::H_750 => 30,
+            self::H_800 => 0,
             self::H_830 => 0,
-            self::H_850 => 10,
-            self::H_875 => 10,
-            self::H_900 => 10,
-            self::H_916 => 5,
-            self::H_925 => 50,
-            self::H_950 => 10,
+            self::H_850 => 75,
+            self::H_875 => 0,
+            self::H_900 => 25,
+            self::H_916 => 0,
+            self::H_925 => 75,
+            self::H_950 => 75,
             self::H_958 => 0,
-            self::H_960 => 20,
-            self::H_999 => 10,
-            self::H_333 => 1,
-            self::H_583 => 1,
+            self::H_960 => 25,
+            self::H_999 => 0,
+            self::H_333 => 0,
+            self::H_583 => 0,
         };
     }
 }

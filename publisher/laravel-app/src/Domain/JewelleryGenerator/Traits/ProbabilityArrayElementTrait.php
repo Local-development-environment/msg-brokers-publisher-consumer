@@ -31,7 +31,7 @@ trait ProbabilityArrayElementTrait
     {
         $arrItems = [];
         foreach ($enumCases as $item) {
-            $arrItems[$enumClass::{$item->name}->value] = $enumClass::{$item->name}->probability();
+            $arrItems[$enumClass::{$item->name}->value] = $enumClass::{$item->name}->jwProbability();
         }
 
         return $arrItems;

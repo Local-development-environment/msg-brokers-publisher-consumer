@@ -8,8 +8,8 @@ use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
 use Domain\JewelleryGenerator\BaseJewelleryBuilder;
 use Domain\JewelleryGenerator\InitProperties;
 use Domain\JewelleryGenerator\Jeweller;
-use Domain\JewelleryGenerator\Jewelleries\Inserts\InitInsertData;
-use Domain\JewelleryGenerator\Jewelleries\Metals\InitMetalData;
+use Domain\JewelleryGenerator\Jewelleries\InsertItems\InitInsertData;
+use Domain\JewelleryGenerator\Jewelleries\MetalItems\InitMetalData;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -33,7 +33,7 @@ final class BuildJewellerySeeder extends Seeder
         $metal  = new InitMetalData;
         $metal();
 
-        dd('stop');
+//        dd('stop');
         $initProperties = new initProperties();
         $initProperties->initCategoryProperties();
         $initProperties->initBeadProperties();
@@ -48,7 +48,7 @@ final class BuildJewellerySeeder extends Seeder
             dump($builder);
 //            $this->addJewellery($builder);
         }
-
+        dd('ok');
         DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
         DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_jewelleries;');
 

@@ -28,15 +28,15 @@ enum MetalTypeBuilderEnum: string
         };
     }
 
-    public function probability(): int
+    public function jwProbability(): int
     {
         return match ($this) {
             self::GOLDEN_RED,
             self::GOLDEN_YELLOW,
             self::GOLDEN_WHITE => 20,
-            self::SILVER        => 35,
-            self::PLATINUM      => 4,
-            self::PALLADIUM     => 1,
+            self::SILVER       => 35,
+            self::PLATINUM     => 4,
+            self::PALLADIUM    => 1,
         };
     }
 

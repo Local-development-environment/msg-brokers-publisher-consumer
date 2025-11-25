@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Domain\JewelleryGenerator\Jewelleries\Metals;
+namespace Domain\JewelleryGenerator\Jewelleries\MetalItems;
 
 use Domain\PreciousMetals\Coverages\Enums\CoverageBuilderEnum;
 use Domain\PreciousMetals\Coverages\Enums\CoverageEnum;
@@ -59,16 +59,25 @@ final class InitMetalData
         }
 
         foreach (HallmarkBuilderEnum::cases() as $case) {
-            $hallmarkId = DB::table(HallmarkEnum::TABLE_NAME->value)->where('value', $case->value)->value('id');
-            $metals = $case->metals();
-            foreach ($metals as $metal) {
-                $metalTypeId = DB::table(MetalTypeEnum::TABLE_NAME->value)->where('name', $metal)->value('id');
 
-                DB::table(MetalHallmarkEnum::TABLE_NAME->value)->insert([
-                    'metal_type_id' => $metalTypeId,
-                    'hallmark_id' => $hallmarkId,
-                    'created_at' => now(),
-                ]);
+            $hallmarkId = DB::table(HallmarkEnum::TABLE_NAME->value)
+                ->where('value', $case->value)
+                ->value('id');
+
+            $metals = $case->metals();
+
+            foreach ($metals as $metal) {
+
+                $metalTypeId = DB::table(MetalTypeEnum::TABLE_NAME->value)
+                    ->where('name', $metal)
+                    ->value('id');
+
+                DB::table(MetalHallmarkEnum::TABLE_NAME->value)
+                    ->insert([
+                        'metal_type_id' => $metalTypeId,
+                        'hallmark_id' => $hallmarkId,
+                        'created_at' => now(),
+                    ]);
             }
         }
     }

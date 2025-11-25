@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Domain\JewelleryGenerator\Jewelleries\Inserts;
+namespace Domain\JewelleryGenerator\Jewelleries\InsertItems;
 
 use Domain\Inserts\Colours\Enums\ColourBuilderEnum;
 use Domain\Inserts\Colours\Enums\ColourEnum;
@@ -46,7 +46,12 @@ final class InitInsertData
         DB::table(StoneItemGradeEnum::TABLE_NAME->value)->truncate();
         Schema::enableForeignKeyConstraints();
 
-        $naturalStone = config('data-seed.insert-seed.melnikov_classification');
+        $jewellery = config('data-seed.insert-seed.stones.jewellery-stones');
+        $precious = config('data-seed.insert-seed.stones.precious-stones');
+        $jewelleryOrnamental = config('data-seed.insert-seed.stones.jewellery-ornamental-stones');
+        $ornamental = config('data-seed.insert-seed.stones.ornamental-stones');
+
+        $naturalStone = array_merge_recursive($jewellery, $precious, $jewelleryOrnamental, $ornamental);
 
         foreach (ColourBuilderEnum::cases() as $case) {
             DB::table(ColourEnum::TABLE_NAME->value)->insert([
@@ -94,83 +99,111 @@ final class InitInsertData
         }
 
         foreach (OpticalEffectBuilderEnum::cases() as $case) {
-            DB::table(OpticalEffectEnum::TABLE_NAME->value)->insert([
-                'name' => $case->value,
-                'slug' => Str::slug($case->value),
-                'description' => $case->description(),
-                'created_at' => now(),
-            ]);
+            DB::table(OpticalEffectEnum::TABLE_NAME->value)
+                ->insert([
+                    'name'        => $case->value,
+                    'slug'        => Str::slug($case->value),
+                    'description' => $case->description(),
+                    'created_at'  => now(),
+                ]);
         }
 
         foreach (StoneFamilyBuilderEnum::cases() as $case) {
-            DB::table(StoneFamilyEnum::TABLE_NAME->value)->insert([
-                'name' => $case->value,
-                'slug' => Str::slug($case->value),
-                'description' => $case->description(),
-                'created_at' => now(),
-            ]);
+            DB::table(StoneFamilyEnum::TABLE_NAME->value)
+                ->insert([
+                    'name'        => $case->value,
+                    'slug'        => Str::slug($case->value),
+                    'description' => $case->description(),
+                    'created_at'  => now(),
+                ]);
         }
 
         foreach ($naturalStone as $stone) {
+
             $typeOriginId = DB::table(TypeOriginEnum::TABLE_NAME->value)
-                ->where('name', TypeOriginBuilderEnum::ORIGIN->value)->value('id');
+                ->where('name', TypeOriginBuilderEnum::ORIGIN->value)
+                ->value('id');
+
             $stoneFamilyId = DB::table(StoneFamilyEnum::TABLE_NAME->value)
-                ->where('name', $stone['stoneFamily'])->value('id');
+                ->where('name', $stone['stoneFamily'])
+                ->value('id');
+
             $stoneGroupId = DB::table(StoneGroupEnum::TABLE_NAME->value)
-                ->where('name', $stone['stoneGroup'])->value('id');
+                ->where('name', $stone['stoneGroup'])
+                ->value('id');
 
-            $stoneId = DB::table(StoneEnum::TABLE_NAME->value)->insertGetId([
-                'type_origin_id' => $typeOriginId,
-                'name' => $stone['stoneName'],
-                'slug' => Str::slug($stone['stoneName']),
-                'description' => $stone['stoneDescription'],
-                'alt_name' => $stone['altStoneName'],
-                'is_active' => true,
-                'created_at' => now(),
-            ]);
+            $stoneId = DB::table(StoneEnum::TABLE_NAME->value)
+                ->insertGetId([
+                    'type_origin_id' => $typeOriginId,
+                    'name'           => $stone['stoneName'],
+                    'slug'           => Str::slug($stone['stoneName']),
+                    'description'    => $stone['stoneDescription'],
+                    'alt_name'       => $stone['altStoneName'],
+                    'is_active'      => true,
+                    'created_at'     => now(),
+                ]);
 
-            if ($stone['opticalEffect'] !== null) {
+            if ($stone['opticalEffect'] !== '') {
+
                 $opticalEffectId = DB::table(OpticalEffectEnum::TABLE_NAME->value)
-                    ->where('name', $stone['opticalEffect'])->value('id');
-                DB::table(StoneOpticalEffectEnum::TABLE_NAME->value)->insert([
-                    'id' => $stoneId,
-                    'optical_effect_id' => $opticalEffectId,
-                    'created_at' => now(),
+                    ->where('name', $stone['opticalEffect'])
+                    ->value('id');
+
+                DB::table(StoneOpticalEffectEnum::TABLE_NAME->value)
+                    ->insert([
+                        'id'                => $stoneId,
+                        'optical_effect_id' => $opticalEffectId,
+                        'created_at'        => now(),
                 ]);
             }
 
-            DB::table(NaturalStoneEnum::TABLE_NAME->value)->insert([
-                'id' => $stoneId,
-                'stone_family_id' => $stoneFamilyId,
-                'created_at' => now(),
+            DB::table(NaturalStoneEnum::TABLE_NAME->value)
+                ->insert([
+                    'id'              => $stoneId,
+                    'stone_family_id' => $stoneFamilyId,
+                    'created_at'      => now(),
             ]);
 
-            DB::table(GroupGradeEnum::TABLE_NAME->value)->insert([
-                'id' => $stoneId,
-                'stone_group_id' => $stoneGroupId,
-                'created_at' => now(),
+            DB::table(GroupGradeEnum::TABLE_NAME->value)
+                ->insert([
+                    'id'             => $stoneId,
+                    'stone_group_id' => $stoneGroupId,
+                    'created_at'     => now(),
             ]);
 
-            if ($stone['stoneGrade'] !== null) {
+            if ($stone['stoneGrade'] !== '') {
+
                 $stoneGradeId = DB::table(StoneGradeEnum::TABLE_NAME->value)
-                    ->where('name', $stone['stoneGrade'])->value('id');
-                DB::table(StoneItemGradeEnum::TABLE_NAME->value)->insert([
-                    'id' => $stoneId,
-                    'stone_grade_id' => $stoneGradeId,
-                    'created_at' => now(),
+                    ->where('name', $stone['stoneGrade'])
+                    ->value('id');
+
+                DB::table(StoneItemGradeEnum::TABLE_NAME->value)
+                    ->insert([
+                        'id'             => $stoneId,
+                        'stone_grade_id' => $stoneGradeId,
+                        'created_at'     => now(),
                 ]);
             }
 
             foreach ($stone['colours'] as $colour) {
-                $colourId = DB::table(ColourEnum::TABLE_NAME->value)->where('name', $colour)->value('id');
+
+                $colourId = DB::table(ColourEnum::TABLE_NAME->value)
+                    ->where('name', $colour)
+                    ->value('id');
+
                 foreach ($stone['facets'] as $facet) {
-                    $facetId = DB::table(FacetEnum::TABLE_NAME->value)->where('name', $facet[0])->value('id');
-                    DB::table(StoneExteriorEnum::TABLE_NAME->value)->insert([
-                        'colour_id' => $colourId,
-                        'facet_id' => $facetId,
-                        'stone_id' => $stoneId,
-                        'created_at' => now(),
-                    ]);
+
+                    $facetId = DB::table(FacetEnum::TABLE_NAME->value)
+                        ->where('name', $facet[0])
+                        ->value('id');
+
+                    DB::table(StoneExteriorEnum::TABLE_NAME->value)
+                        ->insert([
+                            'colour_id'  => $colourId,
+                            'facet_id'   => $facetId,
+                            'stone_id'   => $stoneId,
+                            'created_at' => now(),
+                        ]);
                 }
             }
         }

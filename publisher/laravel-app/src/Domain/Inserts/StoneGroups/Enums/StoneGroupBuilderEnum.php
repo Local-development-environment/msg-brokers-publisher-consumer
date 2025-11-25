@@ -9,8 +9,8 @@ use Domain\Inserts\StoneGrades\Enums\StoneGradeEnum;
 
 enum StoneGroupBuilderEnum: string
 {
-    case PRECIOUS             = 'природный';
-    case JEWELLERIES          = 'имитация';
+    case PRECIOUS             = 'драгоценные';
+    case JEWELLERIES          = 'ювелирные';
     case JEWELLERY_ORNAMENTAL = 'ювелирно-поделочные';
     case ORNAMENTAL           = 'поделочные';
 
