@@ -46,8 +46,12 @@ final class InitInsertData
         DB::table(StoneItemGradeEnum::TABLE_NAME->value)->truncate();
         Schema::enableForeignKeyConstraints();
 
-        $naturalStone = config('data-seed.insert-seed.melnikov_classification');
-//        dd($naturalStone);
+        $jewellery = config('data-seed.insert-seed.stones.jewellery-stones');
+        $precious = config('data-seed.insert-seed.stones.precious-stones');
+        $jewelleryOrnamental = config('data-seed.insert-seed.stones.jewellery-ornamental-stones');
+        $ornamental = config('data-seed.insert-seed.stones.ornamental-stones');
+
+        $naturalStone = array_merge_recursive($jewellery, $precious, $jewelleryOrnamental, $ornamental);
 
         foreach (ColourBuilderEnum::cases() as $case) {
             DB::table(ColourEnum::TABLE_NAME->value)->insert([

@@ -34,7 +34,7 @@ return [
             [FacetBuilderEnum::PRINCESS_CUT->value, 10],
             [FacetBuilderEnum::MARQUISE_CUT->value, 10],
             [FacetBuilderEnum::TRILLION_CUT->value, 10],
-            [FacetBuilderEnum::HEART_CUT, 10],
+            [FacetBuilderEnum::HEART_CUT->value, 10],
         ]
     ],
     [

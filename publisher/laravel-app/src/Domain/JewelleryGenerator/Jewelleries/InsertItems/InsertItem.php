@@ -4,78 +4,161 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems;
 
+use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 final class InsertItem
 {
     public function insertItem(string $category): array
     {
-        $randNum = rand(1, 5);
+        $randNum = rand(1, 100);
 
-        if ($category === CategoryBuilderEnum::CHAINS->value || $randNum === 1) {
+        if ($category === CategoryBuilderEnum::CHAINS->value || $randNum < 10) {
             return [];
-        } elseif ($randNum === 2) {
-            return ['first insert', 'second insert'];
-        } elseif ($randNum === 3) {
-            return ['first insert', 'second insert', 'third insert'];
+        } elseif ($randNum < 55) {
+            $firstStone = $this->getOneInsert();
+            return [
+                [
+                    'stoneName' => $firstStone['stoneName'],
+                    'facets' => $firstStone['facets'],
+                ]
+            ];
+        } elseif ($randNum < 85) {
+            $firstStone = $this->getManyInsert();
+            $secondStone = $this->getManyInsert();
+            return [
+                [
+                    'stoneName' => $firstStone['stoneName'],
+                    'facets' => $firstStone['facets'],
+                ],
+                [
+                    'stoneName' => $secondStone['stoneName'],
+                    'facets' => $secondStone['facets'],
+                ],
+            ];
+        } elseif ($randNum < 95) {
+            $firstStone = $this->getManyInsert();
+            $secondStone = $this->getManyInsert();
+            $thirdStone = $this->getManyInsert();
+            return [
+                [
+                    'stoneName' => $firstStone['stoneName'],
+                    'facets' => $firstStone['facets'],
+                ],
+                [
+                    'stoneName' => $secondStone['stoneName'],
+                    'facets' => $secondStone['facets'],
+                ],
+                [
+                    'stoneName' => $thirdStone['stoneName'],
+                    'facets' => $thirdStone['facets'],
+                ],
+            ];
         } else {
-            $insert = $this->oneInsert();
-            return [[
-                'stone_id' => $insert->id,
-                'stone'    => $insert->stone,
-                'group'    => $insert->group,
-                'origin'   => $insert->origin,
-                'quantity' => $insert->quantity,
-            ]];
+            $firstStone = $this->getManyInsert();
+            $secondStone = $this->getManyInsert();
+            $thirdStone = $this->getManyInsert();
+            $forthStone = $this->getManyInsert();
+            return [
+                [
+                    'stoneName' => $firstStone['stoneName'],
+                    'facets' => $firstStone['facets'],
+                ],
+                [
+                    'stoneName' => $secondStone['stoneName'],
+                    'facets' => $secondStone['facets'],
+                ],
+                [
+                    'stoneName' => $thirdStone['stoneName'],
+                    'facets' => $thirdStone['facets'],
+                ],
+                [
+                    'stoneName' => $forthStone['stoneName'],
+                    'facets' => $forthStone['facets'],
+                ]
+            ];
         }
     }
 
-    private function oneInsert(): null|object
+    private function getOneInsert(): array
     {
-        $randGroup = rand(1, 10);
+        $randStone = rand(1, 100);
 
-        if ($randGroup >= 1 && $randGroup <= 4) {
-            return $this->sqlInsertItem(1);
-        } elseif ($randGroup >= 4 && $randGroup <= 8) {
-            return $this->sqlInsertItem(2);
-        } elseif ($randGroup >= 8 && $randGroup <= 9) {
-            return $this->sqlInsertItem(3);
+        if ($randStone < 45) {
+
+            $stones = config('data-seed.insert-seed.stones.precious-stones');
+
+        } elseif ($randStone < 55) {
+
+            $stones = config('data-seed.insert-seed.stones.jewellery-stones');
+
+        } elseif ($randStone < 85) {
+
+            $stones = config('data-seed.insert-seed.stones.jewellery-ornamental-stones');
+
         } else {
-            return $this->sqlInsertItem(4);
+
+            $stones = config('data-seed.insert-seed.stones.ornamental-stones');
+
         }
+
+        $key = array_rand($stones);
+        return [
+            'stoneName' => $stones[$key]['stoneName'],
+            'stoneFamily' => $stones[$key]['stoneFamily'],
+            'stoneGroup' => $stones[$key]['stoneGroup'],
+            'stoneGrade' => $stones[$key]['stoneGrade'],
+            'facets'     => Arr::random($stones[$key]['facets']),
+        ];
     }
 
-    private function twoInsert(): null|object
+    private function getManyInsert(): array
     {
-        $randGroup = rand(1, 10);
+        $randStone = rand(1, 100);
 
-//        if ($randGroup >= 1 && $randGroup <= 4) {
-//            return $this->sqlInsertItem(1);
-//        } elseif ($randGroup >= 4 && $randGroup <= 8) {
-//            return $this->sqlInsertItem(2);
-//        } elseif ($randGroup >= 8 && $randGroup <= 9) {
-//            return $this->sqlInsertItem(3);
-//        } else {
-//            return $this->sqlInsertItem(4);
-//        }
+        if ($randStone < 50) {
+
+            $stones = config('data-seed.insert-seed.stones.precious-stones');
+
+        } else {
+
+            $stones = config('data-seed.insert-seed.stones.jewellery-stones');
+
+        }
+
+        $key = array_rand($stones);
+        return [
+            'stoneName' => $stones[$key]['stoneName'],
+            'stoneFamily' => $stones[$key]['stoneFamily'],
+            'stoneGroup' => $stones[$key]['stoneGroup'],
+            'stoneGrade' => $stones[$key]['stoneGrade'],
+            'facets'     => Arr::random($stones[$key]['facets']),
+        ];
+    }
+
+    private function getQuantity(string $numberInserts, string $group): int{
+
     }
 
     private function sqlInsertItem(int $group_id): null|object
     {
-        return DB::table(StoneEnum::TABLE_NAME->value)
-            ->join('jw_inserts.type_origins', 'jw_inserts.stones.type_origin_id', '=', 'jw_inserts.type_origins.id')
-            ->join('jw_inserts.natural_stones','jw_inserts.stones.id', '=', 'jw_inserts.natural_stones.id')
-            ->join('jw_inserts.group_grades','jw_inserts.natural_stones.id', '=', 'jw_inserts.group_grades.id')
-            ->join('jw_inserts.stone_groups','jw_inserts.group_grades.stone_group_id', '=', 'jw_inserts.stone_groups.id')
+        return DB::table(StoneEnum::TABLE_NAME->value . ' as s')
+            ->join('jw_inserts.type_origins as to', 's.type_origin_id', '=', 'to.id')
+            ->join('jw_inserts.natural_stones as ns','s.id', '=', 'ns.id')
+            ->join('jw_inserts.group_grades as gg', 'ns.id', '=', 'gg.id')
+            ->join('jw_inserts.stone_groups as sg', 'gg.stone_group_id', '=', 'sg.id')
             ->select(
-                'jw_inserts.stones.id',
-                'jw_inserts.stones.name as stone',
-                'jw_inserts.stone_groups.name as group',
-                'jw_inserts.type_origins.name as origin',
+                's.id',
+                's.name as stone',
+                'sg.id as stone_group_id',
+                'sg.name as group',
+                'to.id as origin_id',
+                'to.name as origin',
             )
-            ->where('jw_inserts.stone_groups.id', '=', $group_id)
+            ->where('sg.id', '=', $group_id)
             ->inRandomOrder()->first();
     }
 }

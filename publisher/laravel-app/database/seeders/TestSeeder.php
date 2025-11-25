@@ -28,9 +28,16 @@ final class TestSeeder extends Seeder
     public function run(): void
     {
         $test = [];
-        $test[] = config('data-seed.insert-seed.stones.jewellery_stones');
-        $test[] = config('data-seed.insert-seed.stones.precious_stones');
+
+        $jewellery = config('data-seed.insert-seed.stones.jewellery-stones');
+        $precious = config('data-seed.insert-seed.stones.precious-stones');
+        $jewelleryOrnamental = config('data-seed.insert-seed.stones.jewellery-ornamental-stones');
+        $ornamental = config('data-seed.insert-seed.stones.ornamental-stones');
+        dd(data_get($precious, '*.stoneName'));
+//        $test = array_merge_recursive($jewellery, $precious, $jewelleryOrnamental, $ornamental);
+//        $test[] = data_set($test, 't', $precious);
         dd($test);
+        dd(data_get($jewellery, '*'));
         for ($i = 0; $i < 30; ++$i) {
             $keyFunction = array_rand(CoverageBuilderEnum::cases());
             dump(CoverageBuilderEnum::cases()[$keyFunction]->value);

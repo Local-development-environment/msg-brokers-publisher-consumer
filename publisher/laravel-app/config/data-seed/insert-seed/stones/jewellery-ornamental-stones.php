@@ -1,0 +1,143 @@
+<?php
+declare(strict_types=1);
+
+use Domain\Inserts\Colours\Enums\ColourBuilderEnum;
+use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
+use Domain\Inserts\OpticalEffects\Enums\OpticalEffectBuilderEnum;
+use Domain\Inserts\StoneFamilies\Enums\StoneFamilyBuilderEnum;
+use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
+use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
+
+return [
+    [
+        'stoneName' => 'авантюрин',
+        'stoneDescription' => 'Авантюрин – одна из разновидностей кварца. Его название происходит от итальянского avventura и переводится как «случайность» или «приключение».',
+        'altStoneName' => 'Зеленый авантюрин называют Индийским Жадом или Императорским камнем',
+        'usingJewellery' => 1,
+        'stoneFamily' => StoneFamilyBuilderEnum::QUARTZ->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
+        'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect' => '',
+        'colours' => [
+            ColourBuilderEnum::GREEN->value,
+            ColourBuilderEnum::BROWN->value,
+            ColourBuilderEnum::YELLOW->value,
+            ColourBuilderEnum::BLACK->value,
+            ColourBuilderEnum::WHITE->value,
+            ColourBuilderEnum::BLUE->value,
+            ColourBuilderEnum::PINK->value
+        ],
+        'facets' => [
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 50],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 50]
+        ]
+    ],
+    [
+        'stoneName' => 'агат',
+        'stoneDescription' => 'Агат известен благодаря своему разнообразию цветов и рисунков, которые формируются в результате слоев, и ценится как в ювелирном деле, так и в декоративных целях. ',
+        'altStoneName' => 'Много названий в зависимости от цвета',
+        'usingJewellery' => 1,
+        'stoneFamily' => StoneFamilyBuilderEnum::QUARTZ->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
+        'stoneGrade' => StoneGradeBuilderEnum::FIRST_GRADE->value,
+        'opticalEffect' => '',
+        'colours' => [
+            ColourBuilderEnum::GREEN->value,
+            ColourBuilderEnum::BROWN->value,
+            ColourBuilderEnum::YELLOW->value,
+            ColourBuilderEnum::MULTI_COLOUR->value,
+            ColourBuilderEnum::GRAY->value,
+            ColourBuilderEnum::BLUE->value,
+            ColourBuilderEnum::PURPLE->value,
+            ColourBuilderEnum::RED->value,
+            ColourBuilderEnum::BLACK->value,
+            ColourBuilderEnum::WHITE->value
+        ],
+        'facets' => [
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 50],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 50]
+        ]
+    ],
+    [
+        'stoneName' => 'лунный камень',
+        'stoneDescription' => 'Это минерал из группы калиевых полевых шпатов, обладает характерным голубовато-серебристым мерцанием (иризацией), которое возникает из-за преломления света в слоистой структуре. ',
+        'altStoneName' => 'Адуляр',
+        'usingJewellery' => 1,
+        'stoneFamily' => StoneFamilyBuilderEnum::FELDSPAR->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
+        'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect' => OpticalEffectBuilderEnum::ADULARESCENCE,
+        'colours' => [
+            ColourBuilderEnum::MULTI_COLOUR->value,
+            ColourBuilderEnum::GRAY->value,
+            ColourBuilderEnum::BROWN->value,
+            ColourBuilderEnum::GREEN->value,
+            ColourBuilderEnum::ORANGE->value,
+            ColourBuilderEnum::BLACK->value,
+            ColourBuilderEnum::WHITE->value
+        ],
+        'facets' => [
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 30],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 30],
+            [FacetBuilderEnum::PEAR_CUT->value, 10],
+            [FacetBuilderEnum::OVAL_CUT->value, 15],
+            [FacetBuilderEnum::ROUND_CUT->value, 15]
+        ]
+    ],
+    [
+        'stoneName' => 'азурит',
+        'stoneDescription' => 'Обладает довольно редким и особым синим цветом, камень был прозван по-персидски - «синева». Идеально подходит форма кабошона, из-за мягкости огранка не применяется',
+        'altStoneName' => 'медная лазурь, шессилит',
+        'usingJewellery' => 1,
+        'stoneFamily' => StoneFamilyBuilderEnum::CARBONATE->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
+        'stoneGrade' => StoneGradeBuilderEnum::FIRST_GRADE->value,
+        'opticalEffect' => '',
+        'colours' => [
+            ColourBuilderEnum::LIGHT_BLUE->value,
+            ColourBuilderEnum::BLUE->value,
+        ],
+        'facets' => [
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 45],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 45],
+        ]
+    ],
+    [
+        'stoneName' => 'актинолит',
+        'stoneDescription' => 'Ювелирные разновидности богатого хромом актинолита в огранке смотрятся почти как изумруд высоких цветов',
+        'altStoneName' => 'лучистый камень',
+        'usingJewellery' => 1,
+        'stoneFamily' => StoneFamilyBuilderEnum::SILICATE->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
+        'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect' => OpticalEffectBuilderEnum::CATS_YEY->value,
+        'colours' => [
+            ColourBuilderEnum::BLACK->value,
+            ColourBuilderEnum::WHITE->value,
+            ColourBuilderEnum::GRAY->value,
+            ColourBuilderEnum::BROWN->value,
+            ColourBuilderEnum::GREEN->value,
+            ColourBuilderEnum::YELLOW->value
+        ],
+        'facets' => [
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 45],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 45],
+        ]
+    ],
+    [
+        'stoneName' => 'амазонит',
+        'stoneDescription' => 'Камень амазонит имеет приятный сине-зеленый светлый оттенок. Окрас равномерный, однородный. Он является разновидностью микролина, обладает стеклянным блеском.',
+        'altStoneName' => 'амазонский камень, амазонский жад',
+        'stoneFamily' => StoneFamilyBuilderEnum::FELDSPAR->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
+        'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect' => '',
+        'colours' => [
+            ColourBuilderEnum::GREEN->value
+        ],
+        'facets' => [
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 50],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 50]
+        ]
+    ],
+];
