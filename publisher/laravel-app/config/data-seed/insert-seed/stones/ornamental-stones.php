@@ -16,13 +16,13 @@ return [
         'stoneGrade' => '',
         'opticalEffect' => '',
         'colours' => [
-            ColourBuilderEnum::GRAY->value,
-            ColourBuilderEnum::RED->value,
-            ColourBuilderEnum::PINK->value,
-            ColourBuilderEnum::GREEN->value,
-            ColourBuilderEnum::YELLOW->value,
-            ColourBuilderEnum::LILAC->value,
-            ColourBuilderEnum::WHITE->value
+            [ColourBuilderEnum::GRAY->value, 10],
+            [ColourBuilderEnum::RED->value, 15],
+            [ColourBuilderEnum::PINK->value, 15],
+            [ColourBuilderEnum::GREEN->value, 15],
+            [ColourBuilderEnum::YELLOW->value, 15],
+            [ColourBuilderEnum::LILAC->value, 15],
+            [ColourBuilderEnum::WHITE->value, 15]
         ],
         'facets' => [
             [FacetBuilderEnum::CABOCHON_ROUND->value, 50],
@@ -38,7 +38,7 @@ return [
         'stoneGrade' => '',
         'opticalEffect' => '',
         'colours' => [
-            ColourBuilderEnum::BLACK->value
+            [ColourBuilderEnum::BLACK->value, 100]
         ],
         'facets' => [
             [FacetBuilderEnum::CABOCHON_ROUND->value, 50],

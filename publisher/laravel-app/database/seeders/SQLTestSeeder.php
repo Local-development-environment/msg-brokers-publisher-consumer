@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use Domain\Inserts\Stones\Enums\StoneEnum;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
@@ -16,6 +17,25 @@ final class SQLTestSeeder extends Seeder
      */
     public function run(): void
     {
+        $group_id = 2;
+
+        $group_id = DB::table(StoneEnum::TABLE_NAME->value . ' as s')
+            ->join('jw_inserts.type_origins as to', 's.type_origin_id', '=', 'to.id')
+            ->join('jw_inserts.natural_stones as ns','s.id', '=', 'ns.id')
+            ->join('jw_inserts.group_grades as gg', 'ns.id', '=', 'gg.id')
+            ->join('jw_inserts.stone_groups as sg', 'gg.stone_group_id', '=', 'sg.id')
+            ->select(
+                's.id',
+                's.name as stone',
+                'sg.id as stone_group_id',
+                'sg.name as group',
+                'to.id as origin_id',
+                'to.name as origin',
+            )
+            ->where('sg.id', '=', $group_id)
+            ->inRandomOrder()->first();
+
+        dd($group_id);
         DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
         DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_jewelleries;');
         dd('ok');

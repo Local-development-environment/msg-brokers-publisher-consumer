@@ -18,8 +18,8 @@ return [
         'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
         'opticalEffect' => OpticalEffectBuilderEnum::PLEOCHROISM->value,
         'colours' => [
-            ColourBuilderEnum::LIGHT_BLUE->value,
-            ColourBuilderEnum::BLUE->value,
+            [ColourBuilderEnum::LIGHT_BLUE->value, 50],
+            [ColourBuilderEnum::BLUE->value, 50],
         ],
         'facets' => [
             [FacetBuilderEnum::EMERALD_CUT->value, 20],
@@ -38,8 +38,8 @@ return [
         'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
         'opticalEffect' => OpticalEffectBuilderEnum::CATS_YEY->value,
         'colours' => [
-            ColourBuilderEnum::LIGHT_BLUE->value,
-            ColourBuilderEnum::BLUE->value,
+            [ColourBuilderEnum::LIGHT_BLUE->value, 50],
+            [ColourBuilderEnum::BLUE->value, 50],
         ],
         'facets' => [
             [FacetBuilderEnum::CABOCHON_ROUND->value, 30],
@@ -55,10 +55,10 @@ return [
         'stoneGrade' => StoneGradeBuilderEnum::FORTH_GRADE->value,
         'opticalEffect' => OpticalEffectBuilderEnum::PLEOCHROISM->value,
         'colours' => [
-            ColourBuilderEnum::BROWN->value,
-            ColourBuilderEnum::BLUE->value,
-            ColourBuilderEnum::YELLOW->value,
-            ColourBuilderEnum::PURPLE->value
+            [ColourBuilderEnum::BROWN->value, 25],
+            [ColourBuilderEnum::BLUE->value, 25],
+            [ColourBuilderEnum::YELLOW->value, 25],
+            [ColourBuilderEnum::PURPLE->value, 25]
         ],
         'facets' => [
             [FacetBuilderEnum::CABOCHON_ROUND->value, 30],
@@ -76,7 +76,7 @@ return [
         'stoneGrade' => StoneGradeBuilderEnum::THIRD_GRADE->value,
         'opticalEffect' => '',
         'colours' => [
-            ColourBuilderEnum::RED->value
+            [ColourBuilderEnum::RED->value, 100]
         ],
         'facets' => [
             [FacetBuilderEnum::ROUND_CUT->value, 35],
@@ -95,8 +95,8 @@ return [
         'stoneGrade' => StoneGradeBuilderEnum::THIRD_GRADE->value,
         'opticalEffect' => '',
         'colours' => [
-            ColourBuilderEnum::PURPLE->value,
-            ColourBuilderEnum::LILAC->value
+            [ColourBuilderEnum::PURPLE->value, 50],
+            [ColourBuilderEnum::LILAC->value, 50]
         ],
         'facets' => [
             [FacetBuilderEnum::CABOCHON_ROUND->value, 20],
@@ -105,6 +105,54 @@ return [
             [FacetBuilderEnum::OVAL_CUT->value, 20],
             [FacetBuilderEnum::TRILLION_CUT->value, 10],
             [FacetBuilderEnum::PEAR_CUT->value, 10],
+        ]
+    ],
+    [
+        'stoneName' => 'аметрин',
+        'stoneDescription' => 'Аметрин (боливианит, аметист-цитрин, двухцветный аметист) — одна из разновидностей кварца, выделяемых по цвету. Редкой красивой окраски, которая распределяется в кристалле неравномерно или зонально, с чередующимися участками аметистового и цитринового цвета.',
+        'altStoneName' => 'боливианит, аметист-цитрин, двухцветный аметист',
+        'stoneFamily' => StoneFamilyBuilderEnum::QUARTZ->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade' => StoneGradeBuilderEnum::THIRD_GRADE->value,
+        'opticalEffect' => OpticalEffectBuilderEnum::TWO_COLOURED->value,
+        'colours' => [
+            [ColourBuilderEnum::YELLOW->value, 40],
+            [ColourBuilderEnum::PURPLE->value, 30],
+            [ColourBuilderEnum::LILAC->value, 30]
+        ],
+        'facets' => [
+            [FacetBuilderEnum::OVAL_CUT->value, 20],
+            [FacetBuilderEnum::ROUND_CUT->value, 15],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 15],
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 15],
+            [FacetBuilderEnum::EMERALD_CUT->value, 15],
+            [FacetBuilderEnum::RADIANT_CUT->value, 10],
+            [FacetBuilderEnum::BAGUETTE_CUT->value, 10],
+        ]
+    ],
+    [
+        'stoneName' => 'андалузит',
+        'stoneDescription' => 'Для андалузита характерен плеохроизм, который придает ему особую красоту. Иногда его называют «александритом для бедных» за эту особенность.',
+        'altStoneName' => 'хауденит, кузеранит, апир',
+        'stoneFamily' => StoneFamilyBuilderEnum::SILICATE->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade' => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect' => OpticalEffectBuilderEnum::PLEOCHROISM->value,
+        'colours' => [
+            [ColourBuilderEnum::GREEN->value, 20],
+            [ColourBuilderEnum::BROWN->value, 20],
+            [ColourBuilderEnum::YELLOW->value, 15],
+            [ColourBuilderEnum::PINK->value, 15],
+            [ColourBuilderEnum::RED->value, 15],
+            [ColourBuilderEnum::GRAY->value, 15],
+        ],
+        'facets' => [
+            [FacetBuilderEnum::OVAL_CUT->value, 25],
+            [FacetBuilderEnum::ROUND_CUT->value, 20],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 15],
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 15],
+            [FacetBuilderEnum::EMERALD_CUT->value, 15],
+            [FacetBuilderEnum::RADIANT_CUT->value, 10],
         ]
     ],
 ];
