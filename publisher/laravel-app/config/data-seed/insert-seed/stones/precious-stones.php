@@ -17,7 +17,7 @@ return [
         'stoneGrade' => '',
         'opticalEffect' => OpticalEffectBuilderEnum::PLEOCHROISM->value,
         'colours' => [
-            ColourBuilderEnum::GREEN->value
+            [ColourBuilderEnum::GREEN->value, 100]
         ],
         'facets' => [
             [FacetBuilderEnum::RADIANT_CUT->value, 10],
@@ -41,15 +41,15 @@ return [
         'stoneGrade' => '',
         'opticalEffect' => '',
         'colours' => [
-//            ColourBuilderEnum::GREEN->value,
-            ColourBuilderEnum::BROWN->value,
-//            ColourBuilderEnum::YELLOW->value,
-            ColourBuilderEnum::COLOURLESS->value,
-            ColourBuilderEnum::LIGHT_BLUE->value,
-            ColourBuilderEnum::BLUE->value,
-            ColourBuilderEnum::PINK->value,
-//            ColourBuilderEnum::RED->value,
-            ColourBuilderEnum::BLACK->value
+            [ColourBuilderEnum::GREEN->value, 1],
+            [ColourBuilderEnum::BROWN->value, 3],
+            [ColourBuilderEnum::YELLOW->value, 1],
+            [ColourBuilderEnum::COLOURLESS->value, 60],
+            [ColourBuilderEnum::LIGHT_BLUE->value, 30],
+            [ColourBuilderEnum::BLUE->value, 1],
+            [ColourBuilderEnum::PINK->value, 1],
+            [ColourBuilderEnum::RED->value, 1],
+            [ColourBuilderEnum::BLACK->value, 2]
         ],
         'facets' => [
             [FacetBuilderEnum::RADIANT_CUT->value, 3],
@@ -72,12 +72,12 @@ return [
         'stoneGrade' => '',
         'opticalEffect' => '',
         'colours' => [
-            ColourBuilderEnum::GREEN->value,
-            ColourBuilderEnum::LIGHT_BLUE->value,
-            ColourBuilderEnum::WHITE->value,
-            ColourBuilderEnum::GRAY->value,
-            ColourBuilderEnum::PURPLE->value,
-            ColourBuilderEnum::BLACK->value,
+            [ColourBuilderEnum::GREEN->value, 2],
+            [ColourBuilderEnum::LIGHT_BLUE->value, 30],
+            [ColourBuilderEnum::WHITE->value, 60],
+            [ColourBuilderEnum::GRAY->value, 3],
+            [ColourBuilderEnum::PURPLE->value, 2],
+            [ColourBuilderEnum::BLACK->value, 3],
         ],
         'facets' => [
             [FacetBuilderEnum::CABOCHON_ROUND->value, 100],
@@ -85,14 +85,14 @@ return [
     ],
     [
         'stoneName' => 'изумруд',
-        'stoneDescription' => '',
+        'stoneDescription' => 'Изумруд — это прозрачный драгоценный камень зеленого цвета, разновидность минерала берилла. Свой насыщенный цвет он получает благодаря примесям хрома и ванадия. Изумруд ценится очень высоко, входя в одну группу с алмазом, рубином и сапфиром',
         'altStoneName' => 'смарагд',
         'stoneFamily' => StoneFamilyBuilderEnum::BERYL->value,
         'stoneGroup' => StoneGroupBuilderEnum::PRECIOUS->value,
         'stoneGrade' => '',
         'opticalEffect' => OpticalEffectBuilderEnum::PLEOCHROISM->value,
         'colours' => [
-            ColourBuilderEnum::GREEN->value
+            [ColourBuilderEnum::GREEN->value, 100]
         ],
         'facets' => [
             [FacetBuilderEnum::EMERALD_CUT->value, 30],
@@ -113,8 +113,8 @@ return [
         'stoneGrade' => '',
         'opticalEffect' => '',
         'colours' => [
-            ColourBuilderEnum::RED->value,
-            ColourBuilderEnum::PURPLE->value,
+            [ColourBuilderEnum::RED->value, 80],
+            [ColourBuilderEnum::PURPLE->value, 20],
         ],
         'facets' => [
             [FacetBuilderEnum::EMERALD_CUT->value, 30],
@@ -135,7 +135,7 @@ return [
         'stoneGrade' => '',
         'opticalEffect' => OpticalEffectBuilderEnum::PLEOCHROISM->value,
         'colours' => [
-            ColourBuilderEnum::BLUE->value
+            [ColourBuilderEnum::BLUE->value, 100]
         ],
         'facets' => [
             [FacetBuilderEnum::EMERALD_CUT->value, 30],

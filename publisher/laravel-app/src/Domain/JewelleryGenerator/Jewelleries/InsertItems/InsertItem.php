@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems;
 
-use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
-use Domain\Inserts\Stones\Enums\StoneEnum;
+use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
 
 final class InsertItem
 {
@@ -20,64 +18,101 @@ final class InsertItem
             return [];
         } elseif ($randNum < 55) {
             $firstStone = $this->getOneInsert();
+
             return [
                 [
                     'stoneName' => $firstStone['stoneName'],
-                    'facets' => $firstStone['facets'],
+                    'facets'    => $firstStone['facets'],
+                    'colours'   => $firstStone['colours'],
+                    'quantity'  => $firstStone['quantity'],
+                    'weight'    => $firstStone['weight'],
                 ]
             ];
         } elseif ($randNum < 85) {
-            $firstStone = $this->getManyInsert();
+
+            $firstStone = $this->getOneInsert();
             $secondStone = $this->getManyInsert();
+
             return [
                 [
                     'stoneName' => $firstStone['stoneName'],
-                    'facets' => $firstStone['facets'],
+                    'facets'    => $firstStone['facets'],
+                    'colours'   => $firstStone['colours'],
+                    'quantity'  => $firstStone['quantity'],
+                    'weight'    => $firstStone['weight'],
                 ],
                 [
                     'stoneName' => $secondStone['stoneName'],
-                    'facets' => $secondStone['facets'],
+                    'facets'    => $secondStone['facets'],
+                    'colours'   => $secondStone['colours'],
+                    'quantity'  => $secondStone['quantity'],
+                    'weight'    => $secondStone['weight'],
                 ],
             ];
         } elseif ($randNum < 95) {
-            $firstStone = $this->getManyInsert();
+
+            $firstStone = $this->getOneInsert();
             $secondStone = $this->getManyInsert();
             $thirdStone = $this->getManyInsert();
+
             return [
                 [
                     'stoneName' => $firstStone['stoneName'],
                     'facets' => $firstStone['facets'],
+                    'colours' => $firstStone['colours'],
+                    'quantity' => $firstStone['quantity'],
+                    'weight'    => $firstStone['weight'],
                 ],
                 [
                     'stoneName' => $secondStone['stoneName'],
                     'facets' => $secondStone['facets'],
+                    'colours' => $secondStone['colours'],
+                    'quantity' => $secondStone['quantity'],
+                    'weight'    => $secondStone['weight'],
                 ],
                 [
                     'stoneName' => $thirdStone['stoneName'],
                     'facets' => $thirdStone['facets'],
+                    'colours' => $thirdStone['colours'],
+                    'quantity' => $thirdStone['quantity'],
+                    'weight'    => $thirdStone['weight'],
                 ],
             ];
         } else {
-            $firstStone = $this->getManyInsert();
+
+            $firstStone = $this->getOneInsert();
             $secondStone = $this->getManyInsert();
             $thirdStone = $this->getManyInsert();
             $forthStone = $this->getManyInsert();
+
             return [
                 [
                     'stoneName' => $firstStone['stoneName'],
                     'facets' => $firstStone['facets'],
+                    'colours' => $firstStone['colours'],
+                    'quantity' => $firstStone['quantity'],
+                    'weight'    => $firstStone['weight'],
                 ],
                 [
                     'stoneName' => $secondStone['stoneName'],
                     'facets' => $secondStone['facets'],
+                    'colours' => $secondStone['colours'],
+                    'quantity' => $secondStone['quantity'],
+                    'weight'    => $secondStone['weight'],
                 ],
                 [
                     'stoneName' => $thirdStone['stoneName'],
                     'facets' => $thirdStone['facets'],
+                    'colours' => $thirdStone['colours'],
+                    'quantity' => $thirdStone['quantity'],
+                    'weight'    => $thirdStone['weight'],
                 ],
                 [
                     'stoneName' => $forthStone['stoneName'],
                     'facets' => $forthStone['facets'],
+                    'colours' => $forthStone['colours'],
+                    'quantity' => $forthStone['quantity'],
+                    'weight'    => $forthStone['weight'],
                 ]
             ];
         }
@@ -106,12 +141,16 @@ final class InsertItem
         }
 
         $key = array_rand($stones);
+
         return [
             'stoneName' => $stones[$key]['stoneName'],
             'stoneFamily' => $stones[$key]['stoneFamily'],
             'stoneGroup' => $stones[$key]['stoneGroup'],
             'stoneGrade' => $stones[$key]['stoneGrade'],
-            'facets'     => Arr::random($stones[$key]['facets']),
+            'facets'     => $this->getFacet($stones[$key]['facets']),
+            'colours'    => $this->getColour($stones[$key]['colours']),
+            'quantity'   => $this->getQuantity(1),
+            'weight'     => $this->getWeight(1),
         ];
     }
 
@@ -130,35 +169,137 @@ final class InsertItem
         }
 
         $key = array_rand($stones);
+
+        $smallFacets = [
+            [
+                FacetBuilderEnum::CABOCHON_ROUND->value,
+                20
+            ],
+            [
+                FacetBuilderEnum::ROUND_CUT->value,
+                40
+            ],
+            [
+                FacetBuilderEnum::BAGUETTE_CUT->value,
+                40
+            ]
+        ];
         return [
-            'stoneName' => $stones[$key]['stoneName'],
+            'stoneName'   => $stones[$key]['stoneName'],
             'stoneFamily' => $stones[$key]['stoneFamily'],
-            'stoneGroup' => $stones[$key]['stoneGroup'],
-            'stoneGrade' => $stones[$key]['stoneGrade'],
-            'facets'     => Arr::random($stones[$key]['facets']),
+            'stoneGroup'  => $stones[$key]['stoneGroup'],
+            'stoneGrade'  => $stones[$key]['stoneGrade'],
+            'facets'      => $this->getFacet($smallFacets),
+            'colours'     => $this->getColour($stones[$key]['colours']),
+            'quantity'    => $this->getQuantity(2),
+            'weight'      => $this->getWeight(2),
         ];
     }
 
-    private function getQuantity(string $numberInserts, string $group): int{
+    private function getWeight(int $orderNumber): int
+    {
+        $randNum = rand(1, 100);
 
+        if ($orderNumber === 1) {
+            if ($randNum < 80) {
+                return 1;
+            } elseif ($randNum < 85) {
+                return 2;
+            } elseif ($randNum < 90) {
+                return 3;
+            } elseif ($randNum < 95) {
+                return 4;
+            } else {
+                return 5;
+            }
+        } else {
+            if ($randNum < 20) {
+                return rand(10, 15);
+            } elseif ($randNum < 40) {
+                return rand(15, 20);
+            } elseif ($randNum < 60) {
+                return rand(20, 30);
+            } elseif ($randNum < 80) {
+                return rand(30, 40);
+            } else {
+                return rand(40, 50);
+            }
+        }
     }
 
-    private function sqlInsertItem(int $group_id): null|object
+    private function getQuantity(int $orderNumber): int
     {
-        return DB::table(StoneEnum::TABLE_NAME->value . ' as s')
-            ->join('jw_inserts.type_origins as to', 's.type_origin_id', '=', 'to.id')
-            ->join('jw_inserts.natural_stones as ns','s.id', '=', 'ns.id')
-            ->join('jw_inserts.group_grades as gg', 'ns.id', '=', 'gg.id')
-            ->join('jw_inserts.stone_groups as sg', 'gg.stone_group_id', '=', 'sg.id')
-            ->select(
-                's.id',
-                's.name as stone',
-                'sg.id as stone_group_id',
-                'sg.name as group',
-                'to.id as origin_id',
-                'to.name as origin',
-            )
-            ->where('sg.id', '=', $group_id)
-            ->inRandomOrder()->first();
+        $randNum = rand(1, 100);
+
+        if ($orderNumber === 1) {
+            if ($randNum < 80) {
+                return 1;
+            } elseif ($randNum < 85) {
+                return 2;
+            } elseif ($randNum < 90) {
+                return 3;
+            } elseif ($randNum < 95) {
+                return 4;
+            } else {
+                return 5;
+            }
+        } else {
+            if ($randNum < 20) {
+                return rand(10, 15);
+            } elseif ($randNum < 40) {
+                return rand(15, 20);
+            } elseif ($randNum < 60) {
+                return rand(20, 30);
+            } elseif ($randNum < 80) {
+                return rand(30, 40);
+            } else {
+                return rand(40, 50);
+            }
+        }
+    }
+
+    private function getColour(array $colours): string
+    {
+        $tmp = [];
+
+        //loop through all names
+        foreach($this->getArrItems($colours) as $name => $count) {
+            //for each entry for a specific name, add name to `$tmp` array
+
+            for ($x = 1; $x <= $count; $x++) {
+                $tmp[] = $name;
+            }
+        }
+
+//        dd(Arr::random($tmp));
+        return Arr::random($tmp);
+    }
+
+    private function getFacet(array $facets): string
+    {
+        $tmp = [];
+
+        //loop through all names
+        foreach($this->getArrItems($facets) as $name => $count) {
+            //for each entry for a specific name, add name to `$tmp` array
+
+            for ($x = 1; $x <= $count; $x++) {
+                $tmp[] = $name;
+            }
+        }
+
+//        dd(Arr::random($tmp));
+        return Arr::random($tmp);
+    }
+
+    protected function getArrItems(array $arrayItems): array
+    {
+        $arrItems = [];
+        foreach ($arrayItems as $item) {
+//            dd($item);
+            $arrItems[$item[0]] = $item[1];
+        }
+//        dd($arrItems);
+        return $arrItems;
     }
 }

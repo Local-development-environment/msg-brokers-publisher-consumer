@@ -21,7 +21,7 @@ enum FacetBuilderEnum: string
     case CABOCHON_ROUND = 'кабошон-круг';
     case HEART_CUT     = 'сердце';
     case TRILLION_CUT  = 'триллион';
-    case BRIOLETTE_CUT = 'бриолет';
+    case BAGUETTE_CUT = 'багет';
     case ROSE_CUT      = 'роза';
 
     public function description(): string
@@ -40,7 +40,7 @@ enum FacetBuilderEnum: string
             self::TRILLION_CUT => 'Равносторонний треугольник с острыми или закругленными краями. Это сравнительно молодой способ огранки, который был придуман в 80-х годах.',
             self::CABOCHON_OVAL => 'Полированный камень с куполообразным верхом и плоским дном овальной формы.',
             self::CABOCHON_ROUND => 'Полированный камень с куполообразным верхом и плоским дном круглой формы.',
-            self::BRIOLETTE_CUT => 'Название огранки переводится с французского как «сушеная слива». Бриолет представляет собой разновидность огранки «роза». Эффектно смотрится в подвесках, но также использовался в диадемах, колье и серьгах.',
+            self::BAGUETTE_CUT => 'Огранка "багет" — это ступенчатая форма огранки, которая придает камню прямоугольную, квадратную или трапециевидную форму с параллельными гранями.',
             self::ROSE_CUT     => 'Огранки Роза известна еще с 1500-х годов и была популярна до начала 1900-х годов. Форма камня напоминает лепестки бутона розы - отсюда ее название.'
         };
     }
@@ -60,7 +60,7 @@ enum FacetBuilderEnum: string
             ],
             self::CUSHION_CUT,
             self::PEAR_CUT,
-            self::BRIOLETTE_CUT => [
+            self::BAGUETTE_CUT => [
                 CategoryBuilderEnum::NECKLACES->value,
                 CategoryBuilderEnum::EARRINGS->value,
                 CategoryBuilderEnum::PENDANTS->value,

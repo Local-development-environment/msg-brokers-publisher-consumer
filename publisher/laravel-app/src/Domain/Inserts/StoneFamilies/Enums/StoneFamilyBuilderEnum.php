@@ -13,7 +13,7 @@ enum StoneFamilyBuilderEnum: string
     case FELDSPAR    = 'полевой шпат';
     case QUARTZ      = 'кварц';
     case CARBONATE   = 'карбонат';
-    case ORGANOGENIC = 'органогенный';
+    case ORGANOGENIC = 'органоген';
     case CORUNDUM    = 'корунд';
     case COAL        = 'каменный уголь';
 
