@@ -16,6 +16,6 @@ final class Category
         $enumClass = get_class(CategoryBuilderEnum::BEADS);
         $enumCases = CategoryBuilderEnum::cases();
 
-        return $this->getArrElement($enumClass, $enumCases);
+        return $this->getArrElement($enumCases, $enumClass);
     }
 }

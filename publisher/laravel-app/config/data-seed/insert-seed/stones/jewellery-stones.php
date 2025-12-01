@@ -71,7 +71,7 @@ return [
         'stoneName' => 'гранат альмандин',
         'stoneDescription' => 'Альмандин — это разновидность граната, силикат железа и алюминия, известный своей высокой твердостью и широким спектром красных, красно-фиолетовых и красно-бурых оттенков. Один из самых распространенных видов граната, используемый в ювелирном деле для изготовления украшений',
         'altStoneName' => 'карбункул, алабандская венисса',
-        'stoneFamily' => StoneFamilyBuilderEnum::SILICATE->value,
+        'stoneFamily' => StoneFamilyBuilderEnum::POMEGRANATE->value,
         'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
         'stoneGrade' => StoneGradeBuilderEnum::THIRD_GRADE->value,
         'opticalEffect' => '',
@@ -153,6 +153,172 @@ return [
             [FacetBuilderEnum::CABOCHON_ROUND->value, 15],
             [FacetBuilderEnum::EMERALD_CUT->value, 15],
             [FacetBuilderEnum::RADIANT_CUT->value, 10],
+        ]
+    ],
+    [
+        'stoneName' => 'гранат андрадит',
+        'stoneDescription' => 'Андрадит – это минерал из группы гранатов, силикат кальция и железа, названный в честь бразильского минералога Жозе Бонифасио де Андрада е Силва. Он имеет разнообразные окраски, включая зеленый, желтый, коричневый, красный и черный, и может быть как прозрачным, так и полупрозрачным',
+        'altStoneName' => 'демантоид, топазолит, мелонит',
+        'stoneFamily' => StoneFamilyBuilderEnum::POMEGRANATE->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade' => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect' => '',
+        'colours' => [
+            [ColourBuilderEnum::GREEN->value, 20],
+            [ColourBuilderEnum::YELLOW->value, 20],
+            [ColourBuilderEnum::BROWN->value, 20],
+            [ColourBuilderEnum::RED->value, 20],
+            [ColourBuilderEnum::BLACK->value, 20],
+        ],
+        'facets' => [
+            [FacetBuilderEnum::OVAL_CUT->value, 25],
+            [FacetBuilderEnum::ROUND_CUT->value, 20],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 15],
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 15],
+            [FacetBuilderEnum::PEAR_CUT->value, 15],
+            [FacetBuilderEnum::CUSHION_CUT->value, 10],
+        ]
+    ],
+    [
+        'stoneName' => 'ахроит',
+        'stoneDescription' => 'Ахроит — это название бесцветной разновидности камня группы турмалинов.',
+        'altStoneName' => 'бесцветный турмалин',
+        'stoneFamily' => StoneFamilyBuilderEnum::TOURMALINE->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade' => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect' => '',
+        'colours' => [
+            [ColourBuilderEnum::COLOURLESS->value, 100]
+        ],
+        'facets' => [
+            [FacetBuilderEnum::OVAL_CUT->value, 25],
+            [FacetBuilderEnum::ROUND_CUT->value, 20],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 15],
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 15],
+            [FacetBuilderEnum::EMERALD_CUT->value, 15],
+            [FacetBuilderEnum::RADIANT_CUT->value, 10],
+        ]
+    ],
+    [
+        'stoneName' => 'биксбит',
+        'stoneDescription' => 'Биксбит – чрезвычайно редкая разновидность берилла красного цвета, которая считается одним из самых редких драгоценных камней на Земле.',
+        'altStoneName' => 'красный берилл',
+        'stoneFamily' => StoneFamilyBuilderEnum::BERYL->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect' => '',
+        'colours' => [
+            [ColourBuilderEnum::RED->value, 100]
+        ],
+        'facets' => [
+            [FacetBuilderEnum::OVAL_CUT->value, 25],
+            [FacetBuilderEnum::ROUND_CUT->value, 20],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 15],
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 15],
+            [FacetBuilderEnum::EMERALD_CUT->value, 15],
+            [FacetBuilderEnum::CUSHION_CUT->value, 10],
+        ]
+    ],
+    [
+        'stoneName' => 'бразилианит',
+        'stoneDescription' => 'Бразилианит и апатит — единственные фосфаты, которые серьезно используются в ювелирной промышленности. Эти камни по цвету напоминают ярко-желтый хризоберилл или желтый топаз-империал (но несолько зеленее). Бразилианит относительно недавно появился на ювелирном рынке и еще не успел получить широкого признания.',
+        'altStoneName' => 'бразилианит',
+        'stoneFamily' => StoneFamilyBuilderEnum::BERYL->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade' => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect' => '',
+        'colours' => [
+            [ColourBuilderEnum::YELLOW->value, 50],
+            [ColourBuilderEnum::GREEN->value, 50],
+        ],
+        'facets' => [
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 50],
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 50],
+        ]
+    ],
+    [
+        'stoneName' => 'везувиан',
+        'stoneDescription' => 'Везувиан прозрачный или полупрозрачный, имеет различные оттенки зелёного, бурого, жёлтого, а его цвет зависит от примесей',
+        'altStoneName' => 'калифорнит, идокраз',
+        'stoneFamily' => StoneFamilyBuilderEnum::SILICATE->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade' => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect' => '',
+        'colours' => [
+            [ColourBuilderEnum::YELLOW->value, 20],
+            [ColourBuilderEnum::GREEN->value, 20],
+            [ColourBuilderEnum::RED->value, 20],
+            [ColourBuilderEnum::BLUE->value, 20],
+            [ColourBuilderEnum::PURPLE->value, 20],
+        ],
+        'facets' => [
+            [FacetBuilderEnum::OVAL_CUT->value, 25],
+            [FacetBuilderEnum::ROUND_CUT->value, 20],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 15],
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 15],
+            [FacetBuilderEnum::EMERALD_CUT->value, 15],
+            [FacetBuilderEnum::CUSHION_CUT->value, 10],
+        ]
+    ],
+    [
+        'stoneName' => 'верделит',
+        'stoneDescription' => 'Верделит – это зеленая разновидность турмалина. Является наиболее распространенным из благородных турмалинов и ценится за различные оттенки зеленого: от светло-травянистого до насыщенно-изумрудного и темно-зеленого.',
+        'altStoneName' => 'бразильский изумруд',
+        'stoneFamily' => StoneFamilyBuilderEnum::TOURMALINE->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade' => StoneGradeBuilderEnum::THIRD_GRADE->value,
+        'opticalEffect' => '',
+        'colours' => [
+            [ColourBuilderEnum::GREEN->value, 100],
+        ],
+        'facets' => [
+            [FacetBuilderEnum::OVAL_CUT->value, 20],
+            [FacetBuilderEnum::ROUND_CUT->value, 20],
+            [FacetBuilderEnum::EMERALD_CUT->value, 20],
+            [FacetBuilderEnum::CUSHION_CUT->value, 20],
+            [FacetBuilderEnum::ASSCHER_CUT->value, 20],
+        ]
+    ],
+    [
+        'stoneName' => 'воробьевит',
+        'stoneDescription' => 'Этот камень ценится в ювелирном деле за красивый цвет от бледно-розового до насыщенного персикового, прозрачность и возможность обработки. ',
+        'altStoneName' => 'морганит',
+        'stoneFamily' => StoneFamilyBuilderEnum::BERYL->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect' => '',
+        'colours' => [
+            [ColourBuilderEnum::PINK->value, 100]
+        ],
+        'facets' => [
+            [FacetBuilderEnum::OVAL_CUT->value, 20],
+            [FacetBuilderEnum::ROUND_CUT->value, 20],
+            [FacetBuilderEnum::EMERALD_CUT->value, 20],
+            [FacetBuilderEnum::CUSHION_CUT->value, 10],
+            [FacetBuilderEnum::ASSCHER_CUT->value, 10],
+            [FacetBuilderEnum::HEART_CUT->value, 10],
+            [FacetBuilderEnum::PEAR_CUT->value, 10],
+        ]
+    ],
+    [
+        'stoneName' => 'гелиодор',
+        'stoneDescription' => 'Гелиодор - это жёлтая и золотистая разновидность минерала берилла. Благодаря своему привлекательному внешнему виду и превосходным физическим характеристикам гелиодор пользуется высоким спросом на ювелирном рынке.',
+        'altStoneName' => 'золотой берилл',
+        'stoneFamily' => StoneFamilyBuilderEnum::BERYL->value,
+        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade' => StoneGradeBuilderEnum::THIRD_GRADE->value,
+        'opticalEffect' => '',
+        'colours' => [
+            [ColourBuilderEnum::YELLOW->value, 100]
+        ],
+        'facets' => [
+            [FacetBuilderEnum::OVAL_CUT->value, 20],
+            [FacetBuilderEnum::ROUND_CUT->value, 20],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 20],
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 10],
+            [FacetBuilderEnum::ASSCHER_CUT->value, 10],
+            [FacetBuilderEnum::HEART_CUT->value, 10],
+            [FacetBuilderEnum::PEAR_CUT->value, 10],
         ]
     ],
 ];
