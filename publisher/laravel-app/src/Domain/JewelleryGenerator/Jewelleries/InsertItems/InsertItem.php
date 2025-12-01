@@ -12,12 +12,14 @@ final class InsertItem
 {
     public function insertItem(string $category): array
     {
+        $stoneExterior = (new StoneExteriorGenerator())->generateStoneName();
+        dd($stoneExterior);
         $randNum = rand(1, 100);
 
         if ($category === CategoryBuilderEnum::CHAINS->value || $randNum < 10) {
             return [];
         } elseif ($randNum < 55) {
-            $firstStone = $this->getOneInsert();
+            $firstStone = $stoneExterior;
 
             return [
                 [
@@ -142,6 +144,8 @@ final class InsertItem
 
         $key = array_rand($stones);
 
+        $quantity = $this->getQuantity(1);
+
         return [
             'stoneName' => $stones[$key]['stoneName'],
             'stoneFamily' => $stones[$key]['stoneFamily'],
@@ -149,8 +153,8 @@ final class InsertItem
             'stoneGrade' => $stones[$key]['stoneGrade'],
             'facets'     => $this->getFacet($stones[$key]['facets']),
             'colours'    => $this->getColour($stones[$key]['colours']),
-            'quantity'   => $this->getQuantity(1),
-            'weight'     => $this->getWeight(1),
+            'quantity'   => $quantity,
+            'weight'     => $this->getWeight(1, $quantity),
         ];
     }
 
@@ -184,6 +188,9 @@ final class InsertItem
                 40
             ]
         ];
+
+        $quantity = $this->getQuantity(2);
+
         return [
             'stoneName'   => $stones[$key]['stoneName'],
             'stoneFamily' => $stones[$key]['stoneFamily'],
@@ -191,39 +198,21 @@ final class InsertItem
             'stoneGrade'  => $stones[$key]['stoneGrade'],
             'facets'      => $this->getFacet($smallFacets),
             'colours'     => $this->getColour($stones[$key]['colours']),
-            'quantity'    => $this->getQuantity(2),
-            'weight'      => $this->getWeight(2),
+            'quantity'    => $quantity,
+            'weight'      => $this->getWeight(2, $quantity),
         ];
     }
 
-    private function getWeight(int $orderNumber): int
+    private function getWeight(int $orderNumber, $quantity): float
     {
         $randNum = rand(1, 100);
 
         if ($orderNumber === 1) {
-            if ($randNum < 80) {
-                return 1;
-            } elseif ($randNum < 85) {
-                return 2;
-            } elseif ($randNum < 90) {
-                return 3;
-            } elseif ($randNum < 95) {
-                return 4;
-            } else {
-                return 5;
-            }
-        } else {
-            if ($randNum < 20) {
-                return rand(10, 15);
-            } elseif ($randNum < 40) {
-                return rand(15, 20);
-            } elseif ($randNum < 60) {
-                return rand(20, 30);
-            } elseif ($randNum < 80) {
-                return rand(30, 40);
-            } else {
-                return rand(40, 50);
-            }
+            $largeCarats = config('data-seed.insert-seed.stones.carat.large');
+            return $largeCarats[array_rand($largeCarats)]['carat'];
+        } elseif ($orderNumber === 2) {
+            $middleCarats = config('data-seed.insert-seed.stones.carat.middle');
+            return $middleCarats[array_rand($middleCarats)]['carat'];
         }
     }
 

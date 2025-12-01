@@ -6,17 +6,20 @@ namespace Domain\JewelleryGenerator\Traits;
 
 trait ProbabilityArrayElementTrait
 {
-    public function getArrElement(string $enumClass, array $enumCases): string|int|null
+    public function getArrElement(array $enumCases, string $enumClass = ''): string|int|null
     {
-        return $this->randWithEntries($enumClass, $enumCases);
+        return $this->randWithEntries($enumCases, $enumClass);
     }
 
-    private function randWithEntries(string $enumClass, array $enumCases)
+    private function randWithEntries(array $enumCases, string $enumClass = ''): int|string|null
     {
         $tmp = [];
-
+//        if ($enumClass) {
+//            $arrItems = $this->getArrItems($enumCases, $enumClass);
+//        }
+        $arrItems = $this->getArrItems($enumCases, $enumClass);
         //loop through all names
-        foreach($this->getArrItems($enumClass, $enumCases) as $name => $count) {
+        foreach($arrItems as $name => $count) {
             //for each entry for a specific name, add name to `$tmp` array
 
             for ($x = 1; $x <= $count; $x++) {
@@ -27,11 +30,18 @@ trait ProbabilityArrayElementTrait
         return count($tmp) ? $tmp[array_rand($tmp)] : null;
     }
 
-    protected function getArrItems(string $enumClass, array $enumCases): array
+    protected function getArrItems(array $enumCases, string $enumClass = ''): array
     {
         $arrItems = [];
-        foreach ($enumCases as $item) {
-            $arrItems[$enumClass::{$item->name}->value] = $enumClass::{$item->name}->jwProbability();
+        if ($enumClass) {
+            foreach ($enumCases as $item) {
+                $arrItems[$enumClass::{$item->name}->value] = $enumClass::{$item->name}->jwProbability();
+            }
+        } else {
+            foreach ($enumCases as $case) {
+                $arrItems[$case[0]] = $case[1];
+//                dump($stone);
+            }
         }
 
         return $arrItems;

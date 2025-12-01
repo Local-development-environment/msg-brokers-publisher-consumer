@@ -33,7 +33,7 @@ final class MetalItem
         $enumClass = get_class(MetalTypeBuilderEnum::GOLDEN_RED);
         $enumCases = MetalTypeBuilderEnum::cases();
 
-        return $this->getArrElement($enumClass, $enumCases);
+        return $this->getArrElement($enumCases, $enumClass);
     }
 
     private function getHallmark(string $metalType): int
@@ -64,7 +64,7 @@ final class MetalItem
             }
         }
 
-        return $this->getArrElement($enumClass, $enumCases);
+        return $this->getArrElement($enumCases, $enumClass);
     }
 
     private function getCoverage(string $metalType, string $category): array
