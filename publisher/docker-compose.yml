@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
     environment:
       - "ENV_SUBSTITUTION_ENABLE=true"
-      - "PHP_MEMORY_LIMIT=512M"
+      - "PHP_MEMORY_LIMIT=1024M"
       - "PHP_FPM_LISTEN=9001"
       - "PHP_SESSION_GC_MAXLIFETIME=7200"
       - "PHP_DISABLE_EXTENSIONS=psr"

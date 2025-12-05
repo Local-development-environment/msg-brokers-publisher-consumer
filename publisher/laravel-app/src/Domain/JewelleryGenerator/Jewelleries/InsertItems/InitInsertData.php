@@ -121,7 +121,7 @@ final class InitInsertData
         foreach ($naturalStone as $stone) {
 
             $typeOriginId = DB::table(TypeOriginEnum::TABLE_NAME->value)
-                ->where('name', TypeOriginBuilderEnum::ORIGIN->value)
+                ->where('name', TypeOriginBuilderEnum::NATURE->value)
                 ->value('id');
 
             $stoneFamilyId = DB::table(StoneFamilyEnum::TABLE_NAME->value)
