@@ -14,14 +14,12 @@ trait ProbabilityArrayElementTrait
     private function randWithEntries(array $enumCases, string $enumClass = ''): int|string|null
     {
         $tmp = [];
-//        if ($enumClass) {
-//            $arrItems = $this->getArrItems($enumCases, $enumClass);
-//        }
+
         $arrItems = $this->getArrItems($enumCases, $enumClass);
+//        dump($arrItems);
         //loop through all names
         foreach($arrItems as $name => $count) {
             //for each entry for a specific name, add name to `$tmp` array
-
             for ($x = 1; $x <= $count; $x++) {
                 $tmp[] = $name;
             }
@@ -40,7 +38,6 @@ trait ProbabilityArrayElementTrait
         } else {
             foreach ($enumCases as $case) {
                 $arrItems[$case[0]] = $case[1];
-//                dump($stone);
             }
         }
 

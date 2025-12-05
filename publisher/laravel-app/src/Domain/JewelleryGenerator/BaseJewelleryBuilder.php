@@ -6,6 +6,7 @@ namespace Domain\JewelleryGenerator;
 
 use Domain\JewelleryGenerator\Jewelleries\Categories\Category;
 use Domain\JewelleryGenerator\Jewelleries\InsertItems\InsertItem;
+use Domain\JewelleryGenerator\Jewelleries\InsertItems\InsertItemOld;
 use Domain\JewelleryGenerator\Jewelleries\JewelleryItems\JewelleryItem;
 use Domain\JewelleryGenerator\Jewelleries\JewelleryName;
 use Domain\JewelleryGenerator\Jewelleries\Medias\Media;
@@ -57,7 +58,7 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
     public function buildInsert(): jewelleryBuilderInterface
     {
         $insert = new InsertItem();
-        $this->baseJewellery->insertItem = $insert->insertItem($this->baseJewellery->category);
+        $this->baseJewellery->insertItem = $insert->getInsert($this->baseJewellery->category);
 
         return $this;
     }

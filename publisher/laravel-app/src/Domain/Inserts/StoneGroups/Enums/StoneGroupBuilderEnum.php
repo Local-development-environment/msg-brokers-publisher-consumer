@@ -6,6 +6,7 @@ namespace Domain\Inserts\StoneGroups\Enums;
 
 use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeEnum;
+use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 
 enum StoneGroupBuilderEnum: string
 {
@@ -39,6 +40,23 @@ enum StoneGroupBuilderEnum: string
                 StoneGradeBuilderEnum::FIRST_GRADE->value,
                 StoneGradeBuilderEnum::SECOND_GRADE->value,
             ],
+        };
+    }
+
+    public function stones(): array
+    {
+        return match ($this) {
+            self::PRECIOUS => [
+                [StoneBuilderEnum::DIAMOND->value, 25],
+                [StoneBuilderEnum::ALEXANDRITE->value, 15],
+                [StoneBuilderEnum::RUBY->value, 15],
+                [StoneBuilderEnum::EMERALD->value, 15],
+                [StoneBuilderEnum::SAPPHIRE->value, 15],
+                [StoneBuilderEnum::SEE_PEARL_NATURE->value, 15],
+            ],
+            self::ORNAMENTAL => [],
+            self::JEWELLERIES => [],
+            self::JEWELLERY_ORNAMENTAL => [],
         };
     }
 }

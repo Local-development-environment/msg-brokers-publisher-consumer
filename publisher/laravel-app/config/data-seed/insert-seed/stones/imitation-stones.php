@@ -4,10 +4,11 @@ declare(strict_types=1);
 use Domain\Inserts\Colours\Enums\ColourBuilderEnum;
 use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectBuilderEnum;
+use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 
 return [
     [
-        'stoneName' => 'фианит',
+        'stoneName' => StoneBuilderEnum::CUBIC_ZIRCONIA->value,
         'stoneDescription' => 'Фианит - это искусственно выращенный кристалл, диоксид циркония, который часто используется в ювелирном деле для имитации бриллиантов.',
         'altStoneName' => 'бриллиант имитация',
         'stoneFamily' => '',
@@ -38,7 +39,7 @@ return [
         ]
     ],
     [
-        'stoneName' => 'муассанит',
+        'stoneName' => StoneBuilderEnum::MOISSANITE->value,
         'stoneDescription' => 'Синтетический муассанит (карборунд) — имитация алмаза. Помимо высокой твердости, сопоставимой с аналогичным показателем алмаза, сильного блеска и игры, он обладает высокой теплопроводностью.',
         'altStoneName' => 'бриллиант имитация',
         'stoneFamily' => '',
@@ -69,7 +70,7 @@ return [
         ]
     ],
     [
-        'stoneName' => 'опал имитация',
+        'stoneName' => StoneBuilderEnum::OPAL_IMITATION->value,
         'stoneDescription' => 'Имитация опала — это искусственно созданный материал, который внешне похож на натуральный опал, но не обладает его уникальной структурой и свойствами. Это может быть опалит (специальное стекло), синтетический камень или другой материал, изготовленный для имитации игры цветов и внешнего вида природного камня.',
         'altStoneName' => 'опалит',
         'stoneFamily' => '',
@@ -88,7 +89,7 @@ return [
         ]
     ],
     [
-        'stoneName' => 'алпанит',
+        'stoneName' => StoneBuilderEnum::ALPANITE->value,
         'stoneDescription' => 'алпанит, или альпинит, — это не камень, а полученный в лабораторных условиях кристалл, сродни фианиту.',
         'altStoneName' => 'альпинит, swarovski',
         'stoneFamily' => '',
@@ -116,7 +117,7 @@ return [
         ]
     ],
     [
-        'stoneName' => 'изумруд наноситал',
+        'stoneName' => StoneBuilderEnum::EMERALD_NANOSITAL->value,
         'stoneDescription' => 'Абсолютный аналог природного изумруда. Выращенные в лаборатории изумруды по качеству даже превосходят натуральные: в первых практически отсутствуют дефекты, а спектр возможных оттенков шире.',
         'altStoneName' => 'изумруд гидротермальный',
         'stoneFamily' => 'Наноситал — имитация изумруда. Это новый материал, отдельная категория синтетических камней. Ситал получают путем кристаллизации стекла.',

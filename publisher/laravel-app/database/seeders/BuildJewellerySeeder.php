@@ -48,9 +48,9 @@ final class BuildJewellerySeeder extends Seeder
             dump($builder);
 //            $this->addJewellery($builder);
         }
-        dd('ok');
-        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
-        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_jewelleries;');
+//        dd('ok');
+//        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
+//        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_jewelleries;');
 
     }
 

@@ -5,7 +5,9 @@ namespace Database\Seeders;
 
 use App\Http\Integrations\UVI\Jewelleries\Requests\GetAllJewelleries;
 use App\Http\Integrations\UVI\UVIConnector;
+use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
+use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
@@ -29,20 +31,13 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-//        dd(data_get(config('data-seed.insert-seed.stones.precious-stones'), '*.*'));
-        $stones = data_get(config('data-seed.insert-seed.stones.precious-stones'), '0.facets');
-//        dd($stones);
-        $temp = [];
-        foreach ($stones as $stone) {
-            $temp[$stone[0]] = $stone[1];
-            dump($stone);
-        }
-//        dd($temp);
-        dd($this->getArrElement($stones));
+        $preciousStones = config('data-seed.insert-seed.stones.precious-stones');
+        $jewelleryStones = config('data-seed.insert-seed.stones.jewellery-stones');
 
-
-
-
+        $preciousStone = Arr::where($jewelleryStones, function (array $value, int $key) {
+            return $value['stoneGrade'] === StoneGradeBuilderEnum::FIRST_GRADE->value;
+        });
+        dd($preciousStone);
 
 
 

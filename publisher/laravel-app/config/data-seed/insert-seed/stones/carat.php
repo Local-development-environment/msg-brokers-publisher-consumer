@@ -2,18 +2,22 @@
 declare(strict_types=1);
 
 return [
-    'diamondFragments' => [
+    'diamond-fragments' => [
         [
-            'carat' => 0.005,
+            'carat' => 0.0045,
             'diameter' => 1
         ],
         [
-            'carat' => 0.006,
+            'carat' => 0.005,
             'diameter' => 1.05
         ],
         [
-            'carat' => 0.007,
+            'carat' => 0.006,
             'diameter' => 1.1
+        ],
+        [
+            'carat' => 0.007,
+            'diameter' => 1.15
         ],
         [
             'carat' => 0.008,
@@ -24,7 +28,7 @@ return [
             'diameter' => 1.25
         ],
     ],
-    'small' => [
+    'extra-small' => [
         [
             'carat' => 0.01,
             'diameter' => 1.3
@@ -47,11 +51,19 @@ return [
         ],
         [
             'carat' => 0.05,
+            'diameter' => 2.3
+        ],
+        [
+            'carat' => 0.055,
             'diameter' => 2.4
         ],
         [
             'carat' => 0.06,
             'diameter' => 2.5
+        ],
+        [
+            'carat' => 0.065,
+            'diameter' => 2.6
         ],
         [
             'carat' => 0.07,
@@ -62,12 +74,30 @@ return [
             'diameter' => 2.8
         ],
         [
+            'carat' => 0.09,
+            'diameter' => 2.9
+        ],
+    ],
+    'small' => [
+        [
             'carat' => 0.1,
             'diameter' => 3
         ],
         [
+            'carat' => 0.11,
+            'diameter' => 3.1
+        ],
+        [
             'carat' => 0.12,
             'diameter' => 3.2
+        ],
+        [
+            'carat' => 0.13,
+            'diameter' => 3.3
+        ],
+        [
+            'carat' => 0.14,
+            'diameter' => 3.35
         ],
         [
             'carat' => 0.15,
@@ -78,12 +108,24 @@ return [
             'diameter' => 3.5
         ],
         [
+            'carat' => 0.17,
+            'diameter' => 3.55
+        ],
+        [
             'carat' => 0.18,
             'diameter' => 3.6
         ],
         [
+            'carat' => 0.19,
+            'diameter' => 3.7
+        ],
+        [
             'carat' => 0.20,
             'diameter' => 3.75
+        ],
+        [
+            'carat' => 0.21,
+            'diameter' => 3.8
         ],
         [
             'carat' => 0.22,
@@ -150,11 +192,27 @@ return [
             'diameter' => 6.4
         ],
         [
+            'carat' => 1.05,
+            'diameter' => 6.5
+        ],
+        [
+            'carat' => 1.1,
+            'diameter' => 6.6
+        ],
+        [
+            'carat' => 1.15,
+            'diameter' => 6.7
+        ],
+        [
+            'carat' => 1.2,
+            'diameter' => 6.8
+        ],
+        [
             'carat' => 1.25,
             'diameter' => 6.9
         ],
         [
-            'carat' => 15,
+            'carat' => 1.5,
             'diameter' => 7.3
         ],
         [
