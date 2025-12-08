@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Domain\JewelleryGenerator\Jewelleries\InsertItems\GrownStones;
+namespace Domain\JewelleryGenerator\Jewelleries\InsertItems\NaturalStones;
 
-final class ThirdGrownStoneGeneration
+final class ThirdNatureStoneGeneration
 {
     public function getStone(array $stones): array
     {

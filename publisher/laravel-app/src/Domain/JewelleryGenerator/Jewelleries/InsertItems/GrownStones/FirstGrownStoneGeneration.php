@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems\GrownStones;
 
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
-use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 
 final class FirstGrownStoneGeneration
 {
