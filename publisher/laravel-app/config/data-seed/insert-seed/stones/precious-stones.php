@@ -110,7 +110,7 @@ return [
         'stoneDescription' => 'Рубин ценится за свою красоту и используется в украшении царских регалий. Широко используется в ювелирных изделиях, особенно в кольцах и серьгах.',
         'altStoneName' => 'лал, красный яхонт и сардис',
         'stoneFamily' => StoneFamilyBuilderEnum::CORUNDUM->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGroup' => StoneGroupBuilderEnum::PRECIOUS->value,
         'stoneGrade' => '',
         'opticalEffect' => '',
         'colours' => [
