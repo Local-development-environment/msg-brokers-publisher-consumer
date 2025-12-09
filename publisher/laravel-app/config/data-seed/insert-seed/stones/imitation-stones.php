@@ -5,12 +5,14 @@ use Domain\Inserts\Colours\Enums\ColourBuilderEnum;
 use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectBuilderEnum;
 use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
+use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
 
 return [
     [
         'stoneName' => StoneBuilderEnum::CUBIC_ZIRCONIA->value,
         'stoneDescription' => 'Фианит - это искусственно выращенный кристалл, диоксид циркония, который часто используется в ювелирном деле для имитации бриллиантов.',
         'altStoneName' => 'бриллиант имитация',
+        'typeOrigin' => TypeOriginBuilderEnum::IMITATION->value,
         'stoneFamily' => '',
         'stoneGroup' => '',
         'stoneGrade' => '',
@@ -42,6 +44,7 @@ return [
         'stoneName' => StoneBuilderEnum::MOISSANITE->value,
         'stoneDescription' => 'Синтетический муассанит (карборунд) — имитация алмаза. Помимо высокой твердости, сопоставимой с аналогичным показателем алмаза, сильного блеска и игры, он обладает высокой теплопроводностью.',
         'altStoneName' => 'бриллиант имитация',
+        'typeOrigin' => TypeOriginBuilderEnum::IMITATION->value,
         'stoneFamily' => '',
         'stoneGroup' => '',
         'stoneGrade' => '',
@@ -73,6 +76,7 @@ return [
         'stoneName' => StoneBuilderEnum::OPAL_IMITATION->value,
         'stoneDescription' => 'Имитация опала — это искусственно созданный материал, который внешне похож на натуральный опал, но не обладает его уникальной структурой и свойствами. Это может быть опалит (специальное стекло), синтетический камень или другой материал, изготовленный для имитации игры цветов и внешнего вида природного камня.',
         'altStoneName' => 'опалит',
+        'typeOrigin' => TypeOriginBuilderEnum::IMITATION->value,
         'stoneFamily' => '',
         'stoneGroup' => '',
         'stoneGrade' => '',
@@ -92,6 +96,7 @@ return [
         'stoneName' => StoneBuilderEnum::ALPANITE->value,
         'stoneDescription' => 'алпанит, или альпинит, — это не камень, а полученный в лабораторных условиях кристалл, сродни фианиту.',
         'altStoneName' => 'альпинит, swarovski',
+        'typeOrigin' => TypeOriginBuilderEnum::IMITATION->value,
         'stoneFamily' => '',
         'stoneGroup' => '',
         'stoneGrade' => '',

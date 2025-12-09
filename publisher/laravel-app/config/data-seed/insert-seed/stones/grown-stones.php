@@ -6,13 +6,15 @@ use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectBuilderEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyBuilderEnum;
 use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
+use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
 
 return [
     [
         'stoneName' => StoneBuilderEnum::NANO_SPINEL->value,
         'stoneDescription' => 'Наношпинель выращенная в лаборатории шпинель, обладающая высокой прочностью. Именно эти качества позволяют использовать кристалл для создания самых разнообразных ювелирных украшений.',
         'altStoneName' => 'шпинель синтетическая',
-        'stoneFamily' => 'шпинель',
+        'typeOrigin' => TypeOriginBuilderEnum::GROWN->value,
+        'stoneFamily' => StoneFamilyBuilderEnum::SPINEL->value,
         'stoneGroup' => '',
         'stoneGrade' => '',
         'opticalEffect' => '',
@@ -38,7 +40,8 @@ return [
         'stoneName' => StoneBuilderEnum::SAPPHIRE_GROWN->value,
         'stoneDescription' => 'Современные методы синтеза позволяют выращивать кристаллы со свойствами, идентичными природным. Отличить их от обычных сапфиров под силу только специалисту.',
         'altStoneName' => 'Сапфир гидротермальный',
-        'stoneFamily' => '',
+        'typeOrigin' => TypeOriginBuilderEnum::GROWN->value,
+        'stoneFamily' => StoneFamilyBuilderEnum::CORUNDUM->value,
         'stoneGroup' => '',
         'stoneGrade' => '',
         'opticalEffect' => '',
@@ -64,6 +67,7 @@ return [
         'stoneName' => StoneBuilderEnum::SAPPHIRE_CHAMELEON_GROWN->value,
         'stoneDescription' => 'это лабораторно выращенный камень, который демонстрирует эффект изменения цвета при разном освещении, например, от синего при дневном свете до пурпурного при искусственном освещении',
         'altStoneName' => 'Сапфир хамелеон гидротермальный',
+        'typeOrigin' => TypeOriginBuilderEnum::GROWN->value,
         'stoneFamily' => StoneFamilyBuilderEnum::CORUNDUM->value,
         'stoneGroup' => '',
         'stoneGrade' => '',
@@ -85,6 +89,7 @@ return [
         'stoneName' => StoneBuilderEnum::DIAMOND_GROWN->value,
         'stoneDescription' => 'это настоящий алмаз, созданный в лабораторных условиях, а не добытый из земли. Он имеет те же химические, физические и оптические свойства, что и природный камень, включая высокую твердость, поскольку состоит из чистого углерода с такой же кристаллической решеткой.',
         'altStoneName' => 'алмаз выращенный',
+        'typeOrigin' => TypeOriginBuilderEnum::GROWN->value,
         'stoneFamily' => StoneFamilyBuilderEnum::DIAMOND->value,
         'stoneGroup' => '',
         'stoneGrade' => '',
@@ -116,6 +121,7 @@ return [
         'stoneName' => StoneBuilderEnum::EMERALD_GROWN->value,
         'stoneDescription' => 'Абсолютный аналог природного изумруда. Выращенные в лаборатории изумруды по качеству даже превосходят натуральные: в первых практически отсутствуют дефекты, а спектр возможных оттенков шире.',
         'altStoneName' => 'изумруд гидротермальный',
+        'typeOrigin' => TypeOriginBuilderEnum::GROWN->value,
         'stoneFamily' => StoneFamilyBuilderEnum::BERYL->value,
         'stoneGroup' => '',
         'stoneGrade' => '',

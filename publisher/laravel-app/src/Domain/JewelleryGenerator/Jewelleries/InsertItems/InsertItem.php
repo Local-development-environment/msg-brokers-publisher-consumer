@@ -33,7 +33,7 @@ final class InsertItem
             $inserts = [];
 
             $stones = (new DoubleInsertGeneration())->getInsert();
-
+//            dump($stones);
             foreach ($stones as $key => $stone) {
 
                 $inserts[$key] = [
@@ -67,16 +67,23 @@ final class InsertItem
 
             return $inserts;
         } else {
-            $stone = (new QuadrupleInsertGeneration())->getInsert();
-            return [
-                [
+            $inserts = [];
+
+            $stones = (new QuadrupleInsertGeneration())->getInsert();
+
+            foreach ($stones as $key => $stone) {
+
+                $inserts[$key] = [
                     'stoneName' => $stone['stoneName'],
-                    'facets'    => $this->getArrElement($stone['facets']),
+                    'facets'    => $stone['quantity'] < 10 ?
+                        $this->getArrElement($stone['facets']) : FacetBuilderEnum::ROUND_CUT->value,
                     'colours'   => $this->getArrElement($stone['colours']),
                     'quantity'  => $stone['quantity'],
                     'weight'    => $stone['weight'],
-                ]
-            ];
+                ];
+            }
+
+            return $inserts;
         }
     }
 }

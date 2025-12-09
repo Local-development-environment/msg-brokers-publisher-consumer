@@ -12,7 +12,6 @@ final class ThirdImitationStoneGeneration
 {
     public function getStone(array $stones): array
     {
-        dump($stones['typeOrigin']);
         $randStone = rand(1, 100);
         $grownStones = config('data-seed.insert-seed.stones.grown-stones');
         $imitationStones = config('data-seed.insert-seed.stones.imitation-stones');
@@ -43,7 +42,7 @@ final class ThirdImitationStoneGeneration
         }
         $stone['quantity'] = $quantity;
         $stone['weight'] = $weight;
-        
+
         return $stone;
     }
 }

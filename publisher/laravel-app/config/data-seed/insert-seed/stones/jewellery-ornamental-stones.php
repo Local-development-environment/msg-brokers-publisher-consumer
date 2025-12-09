@@ -8,13 +8,14 @@ use Domain\Inserts\StoneFamilies\Enums\StoneFamilyBuilderEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
 use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
+use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
 
 return [
     [
         'stoneName' => StoneBuilderEnum::AVENTURINE->value,
         'stoneDescription' => 'Авантюрин – одна из разновидностей кварца. Его название происходит от итальянского avventura и переводится как «случайность» или «приключение».',
         'altStoneName' => 'Зеленый авантюрин называют Индийским Жадом или Императорским камнем',
-        'usingJewellery' => 1,
+        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
         'stoneFamily' => StoneFamilyBuilderEnum::QUARTZ->value,
         'stoneGroup' => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
         'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
@@ -37,7 +38,7 @@ return [
         'stoneName' => StoneBuilderEnum::AGATE->value,
         'stoneDescription' => 'Агат известен благодаря своему разнообразию цветов и рисунков, которые формируются в результате слоев, и ценится как в ювелирном деле, так и в декоративных целях. ',
         'altStoneName' => 'Много названий в зависимости от цвета',
-        'usingJewellery' => 1,
+        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
         'stoneFamily' => StoneFamilyBuilderEnum::QUARTZ->value,
         'stoneGroup' => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
         'stoneGrade' => StoneGradeBuilderEnum::FIRST_GRADE->value,
@@ -63,7 +64,7 @@ return [
         'stoneName' => StoneBuilderEnum::MOONSTONE->value,
         'stoneDescription' => 'Это минерал из группы калиевых полевых шпатов, обладает характерным голубовато-серебристым мерцанием (иризацией), которое возникает из-за преломления света в слоистой структуре. ',
         'altStoneName' => 'Адуляр',
-        'usingJewellery' => 1,
+        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
         'stoneFamily' => StoneFamilyBuilderEnum::FELDSPAR->value,
         'stoneGroup' => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
         'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
@@ -89,7 +90,7 @@ return [
         'stoneName' => StoneBuilderEnum::AZURITE->value,
         'stoneDescription' => 'Обладает довольно редким и особым синим цветом, камень был прозван по-персидски - «синева». Идеально подходит форма кабошона, из-за мягкости огранка не применяется',
         'altStoneName' => 'медная лазурь, шессилит',
-        'usingJewellery' => 1,
+        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
         'stoneFamily' => StoneFamilyBuilderEnum::CARBONATE->value,
         'stoneGroup' => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
         'stoneGrade' => StoneGradeBuilderEnum::FIRST_GRADE->value,
@@ -107,7 +108,7 @@ return [
         'stoneName' => StoneBuilderEnum::ACTINOLITE->value,
         'stoneDescription' => 'Ювелирные разновидности богатого хромом актинолита в огранке смотрятся почти как изумруд высоких цветов',
         'altStoneName' => 'лучистый камень',
-        'usingJewellery' => 1,
+        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
         'stoneFamily' => StoneFamilyBuilderEnum::SILICATE->value,
         'stoneGroup' => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
         'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
@@ -129,6 +130,7 @@ return [
         'stoneName' => StoneBuilderEnum::AMAZONITE->value,
         'stoneDescription' => 'Камень амазонит имеет приятный сине-зеленый светлый оттенок. Окрас равномерный, однородный. Он является разновидностью микролина, обладает стеклянным блеском.',
         'altStoneName' => 'амазонский камень, амазонский жад',
+        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
         'stoneFamily' => StoneFamilyBuilderEnum::FELDSPAR->value,
         'stoneGroup' => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
         'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
