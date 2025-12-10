@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Rings\RingTypes\Enums;
 
-enum RingTypeListEnum: string
+enum RingTypeBuilderEnum: string
 {
     case ENGAGEMENT   = 'помолвочное';
     case WEDDING      = 'обручальное';

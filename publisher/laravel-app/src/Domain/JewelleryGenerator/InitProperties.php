@@ -10,21 +10,28 @@ use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseBuildEnum;
 use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseEnum;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricEnum;
 use Domain\JewelleryProperties\Beads\Beads\Enums\BeadEnum;
+use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartBuilderEnum;
+use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuildEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Enums\BraceletMetricEnum;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletEnum;
+use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeBuilderEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletWeavings\Enums\BraceletWeavingEnum;
 use Domain\JewelleryProperties\Earrings\EarringClasps\Enums\EarringClaspBuilderEnum;
 use Domain\JewelleryProperties\Earrings\EarringClasps\Enums\EarringClaspEnum;
 use Domain\JewelleryProperties\Earrings\EarringTypes\Enums\EarringTypeBuilderEnum;
 use Domain\JewelleryProperties\Earrings\EarringTypes\Enums\EarringTypeEnum;
-use Domain\PreciousMetals\Hallmarks\Enums\HallmarkBuilderEnum;
-use Domain\PreciousMetals\Hallmarks\Enums\HallmarkEnum;
-use Domain\PreciousMetals\MetalHallmarks\Enums\MetalHallmarkEnum;
-use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeBuilderEnum;
-use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeEnum;
+use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailEnum;
+use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerBuilderEnum;
+use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
+use Domain\JewelleryProperties\Rings\RingMetrics\Enums\RingMetricEnum;
+use Domain\JewelleryProperties\Rings\Rings\Enums\RingEnum;
+use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeBuilderEnum;
+use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeEnum;
+use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeBuilderEnum;
+use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeEnum;
 use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingBuilderEnum;
 use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspBuilderEnum;
@@ -39,45 +46,6 @@ use Illuminate\Support\Str;
 
 final class InitProperties
 {
-    public function initMetalProperties(): void
-    {
-        Schema::disableForeignKeyConstraints();
-
-        DB::table(HallmarkEnum::TABLE_NAME->value)->truncate();
-        DB::table(MetalTypeEnum::TABLE_NAME->value)->truncate();
-        DB::table(MetalHallmarkEnum::TABLE_NAME->value)->truncate();
-
-        Schema::enableForeignKeyConstraints();
-
-        foreach (MetalTypeBuilderEnum::cases() as $case) {
-            DB::table(MetalTypeEnum::TABLE_NAME->value)->insertGetId([
-                'name' => $case->value,
-                'slug' => Str::slug($case->value),
-                'description' => $case->description(),
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach (HallmarkBuilderEnum::cases() as $case) {
-            DB::table(HallmarkEnum::TABLE_NAME->value)->insert([
-                'value' => $case->value,
-                'description' => $case->descriptions(),
-                'created_at' => now(),
-            ]);
-        }
-
-        foreach (MetalTypeBuilderEnum::cases() as $case) {
-            $arrHallmarks = $case::{$case->name}->hallmarks();
-            foreach ($arrHallmarks as $hallmark) {
-                DB::table(MetalHallmarkEnum::TABLE_NAME->value)->insert([
-                    'metal_type_id' => DB::table(MetalTypeEnum::TABLE_NAME->value)->where('name', $case->value)->value('id'),
-                    'hallmark_id' => DB::table(HallmarkEnum::TABLE_NAME->value)->where('value', $hallmark)->value('id'),
-                    'created_at' => now(),
-                ]);
-            }
-        }
-    }
-
     public function initCategoryProperties(): void
     {
         Schema::disableForeignKeyConstraints();
@@ -115,11 +83,14 @@ final class InitProperties
     public function initBraceletProperties(): void
     {
         Schema::disableForeignKeyConstraints();
+
         DB::table(BraceletEnum::TABLE_NAME->value)->truncate();
+        DB::table(BodyPartEnum::TABLE_NAME->value)->truncate();
         DB::table(BraceletSizeEnum::TABLE_NAME->value)->truncate();
         DB::table(BraceletMetricEnum::TABLE_NAME->value)->truncate();
         DB::table(BraceletWeavingEnum::TABLE_NAME->value)->truncate();
         DB::table(BraceletBaseEnum::TABLE_NAME->value)->truncate();
+
         Schema::enableForeignKeyConstraints();
 
         foreach (BraceletBaseBuildEnum::cases() as $braceletBase) {
@@ -130,16 +101,35 @@ final class InitProperties
                 'created_at' => now(),
             ]);
         }
+
+        foreach (BraceletSizeBuilderEnum::cases() as $braceletSize) {
+            DB::table(BraceletSizeEnum::TABLE_NAME->value)->insert([
+                'value' => $braceletSize->value,
+                'unit' => $braceletSize->unitMeasurement(),
+                'annotation' => $braceletSize->wrist(),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach (BodyPartBuilderEnum::cases() as $bodyPart) {
+            DB::table(BodyPartEnum::TABLE_NAME->value)->insert([
+                'name' => $bodyPart->value,
+                'slug' => Str::slug($bodyPart->value),
+                'created_at' => now(),
+            ]);
+        }
     }
 
     public function initShareProperties(): void
     {
         Schema::disableForeignKeyConstraints();
+
         DB::table(ClaspEnum::TABLE_NAME->value)->truncate();
         DB::table(BaseWeavingEnum::TABLE_NAME->value)->truncate();
         DB::table(LengthNameEnum::TABLE_NAME->value)->truncate();
         DB::table(NeckSizeEnum::TABLE_NAME->value)->truncate();
         DB::table(WeavingEnum::TABLE_NAME->value)->truncate();
+
         Schema::enableForeignKeyConstraints();
 
         foreach (ClaspBuilderEnum::cases() as $braceletBase) {
@@ -193,6 +183,45 @@ final class InitProperties
                 'name' => $case->value,
                 'slug' => Str::slug($case->value),
                 'description' => $case->description(),
+                'created_at' => now(),
+            ]);
+        }
+    }
+
+    public function initRingProperties(): void
+    {
+        Schema::disableForeignKeyConstraints();
+
+        DB::table(RingEnum::TABLE_NAME->value)->truncate();
+        DB::table(RingFingerEnum::TABLE_NAME->value)->truncate();
+        DB::table(RingMetricEnum::TABLE_NAME->value)->truncate();
+        DB::table(RingDetailEnum::TABLE_NAME->value)->truncate();
+        DB::table(RingSizeEnum::TABLE_NAME->value)->truncate();
+        DB::table(RingTypeEnum::TABLE_NAME->value)->truncate();
+
+        Schema::enableForeignKeyConstraints();
+
+        foreach (RingFingerBuilderEnum::cases() as $case) {
+            DB::table(RingFingerEnum::TABLE_NAME->value)->insert([
+                'name' => $case->value,
+                'slug' => Str::slug($case->value),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach (RingTypeBuilderEnum::cases() as $case) {
+            DB::table(RingTypeEnum::TABLE_NAME->value)->insert([
+                'name' => $case->value,
+                'slug' => Str::slug($case->value),
+                'description' => $case->description(),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach (RingSizeBuilderEnum::cases() as $case) {
+            DB::table(RingSizeEnum::TABLE_NAME->value)->insert([
+                'value' => $case->value,
+                'unit' => $case->unitMeasurement(),
                 'created_at' => now(),
             ]);
         }

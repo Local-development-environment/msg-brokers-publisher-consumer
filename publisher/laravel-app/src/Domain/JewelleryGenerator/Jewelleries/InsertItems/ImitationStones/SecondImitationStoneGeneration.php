@@ -21,13 +21,11 @@ final class SecondImitationStoneGeneration
 
         if ($randStone < 50) {
             $stone = $grownStones[array_rand($grownStones)];
-            $stone['typeOrigin'] = TypeOriginBuilderEnum::GROWN->value;
         } elseif ($randStone < 80) {
             $stone = Arr::where($imitationStones, function (array $value, int $key) {
                 return $value['stoneName'] === StoneBuilderEnum::CUBIC_ZIRCONIA->value;
             });
             $stone = $stone[array_rand($stone)];
-            $stone['typeOrigin'] = TypeOriginBuilderEnum::IMITATION->value;
         } else {
             $stone = $imitationStones[array_rand($imitationStones)];
             $stone['typeOrigin'] = TypeOriginBuilderEnum::IMITATION->value;

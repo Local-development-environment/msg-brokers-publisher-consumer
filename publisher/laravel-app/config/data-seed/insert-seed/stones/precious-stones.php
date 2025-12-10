@@ -7,12 +7,14 @@ use Domain\Inserts\OpticalEffects\Enums\OpticalEffectBuilderEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyBuilderEnum;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
 use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
+use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
 
 return [
     [
         'stoneName' => StoneBuilderEnum::ALEXANDRITE->value,
         'stoneDescription' => 'Александрит — это редкий минерал, разновидность хризоберилла, известный своей способностью менять цвет в зависимости от освещения. При дневном свете он выглядит зелёным, а при искусственном — приобретает красноватый или фиолетовый оттенок.',
         'altStoneName' => 'хризоберилл, вдовий камень',
+        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
         'stoneFamily' => StoneFamilyBuilderEnum::CHRYSOBERYL->value,
         'stoneGroup' => StoneGroupBuilderEnum::PRECIOUS->value,
         'stoneGrade' => '',
@@ -37,6 +39,7 @@ return [
         'stoneName' => StoneBuilderEnum::DIAMOND->value,
         'stoneDescription' => 'Бриллиант — это ограненный алмаз, который благодаря специальной огранке максимально проявляет свой блеск. Само название происходит от французского слова «brillant» и означает «сверкающий, блестящий».',
         'altStoneName' => 'диамант, адамант',
+        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
         'stoneFamily' => StoneFamilyBuilderEnum::DIAMOND->value,
         'stoneGroup' => StoneGroupBuilderEnum::PRECIOUS->value,
         'stoneGrade' => '',
@@ -68,6 +71,7 @@ return [
         'stoneName' => StoneBuilderEnum::SEE_PEARL_NATURE->value,
         'stoneDescription' => 'Жемчуг - натуральный биогенный материал, округлой или неправильной формы, который растёт в раковинах двустворчатых моллюсков, используется в ювелирном деле, близок к сферической форме, округлый или каплевидный.',
         'altStoneName' => 'маргарит, акойя',
+        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
         'stoneFamily' => StoneFamilyBuilderEnum::ORGANOGENIC->value,
         'stoneGroup' => StoneGroupBuilderEnum::PRECIOUS->value,
         'stoneGrade' => '',
@@ -88,6 +92,7 @@ return [
         'stoneName' => StoneBuilderEnum::EMERALD->value,
         'stoneDescription' => 'Изумруд — это прозрачный драгоценный камень зеленого цвета, разновидность минерала берилла. Свой насыщенный цвет он получает благодаря примесям хрома и ванадия. Изумруд ценится очень высоко, входя в одну группу с алмазом, рубином и сапфиром',
         'altStoneName' => 'смарагд',
+        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
         'stoneFamily' => StoneFamilyBuilderEnum::BERYL->value,
         'stoneGroup' => StoneGroupBuilderEnum::PRECIOUS->value,
         'stoneGrade' => '',
@@ -109,6 +114,7 @@ return [
         'stoneName' => StoneBuilderEnum::RUBY->value,
         'stoneDescription' => 'Рубин ценится за свою красоту и используется в украшении царских регалий. Широко используется в ювелирных изделиях, особенно в кольцах и серьгах.',
         'altStoneName' => 'лал, красный яхонт и сардис',
+        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
         'stoneFamily' => StoneFamilyBuilderEnum::CORUNDUM->value,
         'stoneGroup' => StoneGroupBuilderEnum::PRECIOUS->value,
         'stoneGrade' => '',
@@ -131,6 +137,7 @@ return [
         'stoneName' => StoneBuilderEnum::SAPPHIRE->value,
         'stoneDescription' => 'драгоценный камень, относящийся к семейству корундов, который ценится за свою красоту, твердость (уступающую только алмазу) и богатую цветовую гамму',
         'altStoneName' => 'яхонт, цианус',
+        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
         'stoneFamily' => StoneFamilyBuilderEnum::CORUNDUM->value,
         'stoneGroup' => StoneGroupBuilderEnum::PRECIOUS->value,
         'stoneGrade' => '',

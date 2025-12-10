@@ -10,6 +10,7 @@ final class Property
 {
     public function getProperties(array $properties): array
     {
+//        dd($properties);
         $className = $this->getClassName($properties['category']);
         $categoryProps = new $className($properties);
 

@@ -11,7 +11,9 @@ use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
-use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
+use Domain\JewelleryProperties\Earrings\EarringClasps\Enums\EarringClaspBuilderEnum;
+use Domain\JewelleryProperties\Earrings\EarringTypes\Enums\EarringTypeBuilderEnum;
+use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeBuilderEnum;
 use Domain\PreciousMetals\Coverages\Enums\CoverageBuilderEnum;
 use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeBuilderEnum;
 use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingBuilderEnum;
@@ -31,13 +33,9 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        $preciousStones = config('data-seed.insert-seed.stones.precious-stones');
-        $jewelleryStones = config('data-seed.insert-seed.stones.jewellery-stones');
-
-        $preciousStone = Arr::where($jewelleryStones, function (array $value, int $key) {
-            return $value['stoneGrade'] === StoneGradeBuilderEnum::FIRST_GRADE->value;
-        });
-        dd($preciousStone);
+        $clasps = WeavingBuilderEnum::cases();
+        $test = $clasps[array_rand($clasps)];
+        dd($test->value);
 
 
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums;
 
-enum BraceletSizeListEnum: int
+enum BraceletSizeBuilderEnum: int
 {
     case BRACELET_13  = 13;
     case BRACELET_14  = 14;
@@ -39,8 +39,6 @@ enum BraceletSizeListEnum: int
 
     public function unitMeasurement(): string
     {
-        return match ($this) {
-            default => 'см',
-        };
+        return 'см';
     }
 }

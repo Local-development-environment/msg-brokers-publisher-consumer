@@ -18,7 +18,7 @@ interface JewelleryBuilderInterface
 
     public function buildInsert(): jewelleryBuilderInterface;
 
-    public function addProperty(): jewelleryBuilderInterface;
+    public function buildProperty(): jewelleryBuilderInterface;
 
 //    public function addJewelleryName(): jewelleryBuilderInterface;
 

@@ -6,15 +6,17 @@ namespace Domain\JewelleryGenerator\Jewelleries\Properties\Bracelets;
 
 use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
+use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
-use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
+use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartBuilderEnum;
+use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeBuilderEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspBuilderEnum;
 use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingBuilderEnum;
 use Illuminate\Support\Arr;
 
 final readonly class BraceletProps implements CategoryPropsBuilderInterface
 {
-    use SizePricePropsTrait, MetalPriceDifferentiationTrait;
+    use SizePricePropsTrait, MetalPriceDifferentiationTrait, ProbabilityArrayElementTrait;
 
     public function __construct(private array $properties)
     {
@@ -22,11 +24,10 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
 
     public function getProps(): array
     {
-        $metal = $this->properties['metalType'];
-        $insert = $this->properties['insert'];
+        $metal = $this->properties['metalItem']['metalType'];
+        $insert = $this->properties['insertItem'];
 
-//        $sizes = data_get(config('data-seed.data_items.bracelet_sizes'), '*.value');
-        $sizes = BraceletSizeListEnum::cases();
+        $sizes = BraceletSizeBuilderEnum::cases();
 
         $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), $sizes);
 
@@ -49,7 +50,7 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
         $weavings = WeavingBuilderEnum::cases();
         if ($is_weaving === 1) {
             return [
-                'weaving' => Arr::random($weavings),
+                'weaving' => $weavings[array_rand($weavings)]->value,
                 'fullness' => Arr::random(['полнотелая', 'полнотелая', 'полнотелая', 'пустотелая']),
                 'wire_diameter' => fake()->randomFloat(1, 0.5, 1.5)
             ];
@@ -60,19 +61,17 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
 
     private function getBodyPart(): string
     {
-        $bodyParts = config('data-seed.data_items.body_parts');
-        $prepBodyParts = array_fill(0, 20, $bodyParts[0]);
-        $prepBodyParts[] = $bodyParts[1];
+        $enumClass = get_class(BodyPartBuilderEnum::WRIST);
+        $enumCases = BodyPartBuilderEnum::cases();
 
-        return Arr::random($prepBodyParts);
-
+        return $this->getArrElement($enumCases, $enumClass);
     }
 
     private function getBraceletBase(array $insert): string
     {
         if ($insert) {
             if (count($insert) === 1) {
-                if ($insert[0]['stone'] === 'жемчуг') {
+                if ($insert[0]['stoneName'] === 'жемчуг') {
                     $braceletBases = array_diff(config('data-seed.data_items.bracelet_bases'), ['металлическая', 'шнурок']);
 
                     return Arr::random($braceletBases);

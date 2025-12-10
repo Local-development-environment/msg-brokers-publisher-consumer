@@ -20,13 +20,13 @@ use Domain\Inserts\StoneGroups\Enums\StoneGroupEnum;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginEnum;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeListEnum;
+use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeBuilderEnum;
 use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailEnum;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
-use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerListEnum;
-use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeListEnum;
+use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerBuilderEnum;
+use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeBuilderEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeEnum;
-use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeListEnum;
+use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeBuilderEnum;
 use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingEnum;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameBuilderEnum;
 use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeBuilderEnum;
@@ -131,7 +131,7 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach (RingTypeListEnum::cases() as $type) {
+        foreach (RingTypeBuilderEnum::cases() as $type) {
             DB::table(RingTypeEnum::TABLE_NAME->value)->insert([
                 'name' => $type->value,
                 'slug' => Str::slug($type->value),
@@ -140,7 +140,7 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach (RingFingerListEnum::cases() as $type) {
+        foreach (RingFingerBuilderEnum::cases() as $type) {
             DB::table(RingFingerEnum::TABLE_NAME->value)->insert([
                 'name' => $type->value,
                 'slug' => Str::slug($type->value),
@@ -148,7 +148,7 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach (RingSizeListEnum::cases() as $ringSize) {
+        foreach (RingSizeBuilderEnum::cases() as $ringSize) {
             DB::table('jw_properties.ring_sizes')->insert([
                 'value' => $ringSize->value,
                 'unit' => $ringSize->unitMeasurement(),
@@ -173,7 +173,7 @@ final class InitDataSeeder extends Seeder
             ]);
         }
 
-        foreach (BraceletSizeListEnum::cases() as $bracelet_size) {
+        foreach (BraceletSizeBuilderEnum::cases() as $bracelet_size) {
             DB::table('jw_properties.bracelet_sizes')->insert([
                 'value'      => $bracelet_size->value,
                 'unit'       => $bracelet_size->unitMeasurement(),

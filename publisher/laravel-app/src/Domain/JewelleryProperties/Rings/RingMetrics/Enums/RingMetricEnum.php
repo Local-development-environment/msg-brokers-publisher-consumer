@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Rings\RingMetrics\Enums;
 
-enum RingMetricEnum
+enum RingMetricEnum: string
 {
-
+    case TYPE_RESOURCE = 'ringMetrics';
+    case TABLE_NAME    = 'jw_properties.ring_metrics';
+    case PRIMARY_KEY   = 'id';
 }
