@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Rings\RingSizes\Enums;
 
-enum RingSizeListEnum: string
+enum RingSizeBuilderEnum: string
 {
     case RING_15  = '15';
     case RING_15_5  = '15.5';
@@ -24,8 +24,6 @@ enum RingSizeListEnum: string
 
     public function unitMeasurement(): string
     {
-        return match ($this) {
-            default => 'мм',
-        };
+        return 'мм';
     }
 }

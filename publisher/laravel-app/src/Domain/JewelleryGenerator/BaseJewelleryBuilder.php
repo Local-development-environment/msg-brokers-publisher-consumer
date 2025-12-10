@@ -6,9 +6,7 @@ namespace Domain\JewelleryGenerator;
 
 use Domain\JewelleryGenerator\Jewelleries\Categories\Category;
 use Domain\JewelleryGenerator\Jewelleries\InsertItems\InsertItem;
-use Domain\JewelleryGenerator\Jewelleries\InsertItems\InsertItemOld;
 use Domain\JewelleryGenerator\Jewelleries\JewelleryItems\JewelleryItem;
-use Domain\JewelleryGenerator\Jewelleries\JewelleryName;
 use Domain\JewelleryGenerator\Jewelleries\Medias\Media;
 use Domain\JewelleryGenerator\Jewelleries\MetalItems\MetalItem;
 use Domain\JewelleryGenerator\Jewelleries\Properties\Property;
@@ -63,7 +61,7 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         return $this;
     }
 
-    public function addProperty(): jewelleryBuilderInterface
+    public function buildProperty(): jewelleryBuilderInterface
     {
         $property = new Property();
 
@@ -100,6 +98,8 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         $jewellery['metalItem']     = $this->baseJewellery->metalItem;
 
         $jewellery['insertItem']    = $this->baseJewellery->insertItem;
+
+        $jewellery['property']      = $this->baseJewellery->property;
 
         return $jewellery;
     }

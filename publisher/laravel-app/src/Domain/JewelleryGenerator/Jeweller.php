@@ -14,7 +14,7 @@ final class Jeweller
             ->buildJewellery()
             ->buildMetal()
             ->buildInsert()
-//            ->addProperty()
+            ->buildProperty()
 //            ->addJewelleryName()
 //            ->addMedia()
             ->getJewellery()

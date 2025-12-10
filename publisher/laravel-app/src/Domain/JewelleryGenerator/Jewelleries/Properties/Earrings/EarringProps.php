@@ -7,6 +7,8 @@ namespace Domain\JewelleryGenerator\Jewelleries\Properties\Earrings;
 use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
+use Domain\JewelleryProperties\Earrings\EarringClasps\Enums\EarringClaspBuilderEnum;
+use Domain\JewelleryProperties\Earrings\EarringTypes\Enums\EarringTypeBuilderEnum;
 
 final readonly class EarringProps implements CategoryPropsBuilderInterface
 {
@@ -19,18 +21,19 @@ final readonly class EarringProps implements CategoryPropsBuilderInterface
     public function getProps(): array
     {
         $properties = $this->properties;
-        $clasps = config('data-seed.data_items.earring_clasps');
-        $types = config('data-seed.data_items.earring_types');
+
+        $clasps = EarringClaspBuilderEnum::cases();
+        $types = EarringTypeBuilderEnum::cases();
 
         return [
             'quantity' => $this->getQuantity(),
-            'price' => $this->getPriceDifferentiation($properties['metalType']),
+            'price' => $this->getPriceDifferentiation($properties['metalItem']['metalType']),
             'dimensions' => [
                 'высота' => fake()->randomFloat(1, 3, 6) . ' см',
                 'ширина' => fake()->randomFloat(1, 2, 4) . ' см',
             ],
-            'clasp' => $clasps[array_rand($clasps, 1)],
-            'earring_type' => $types[array_rand($types, 1)],
+            'clasp' => $clasps[array_rand($clasps)]->value,
+            'earring_type' => $types[array_rand($types)]->value,
         ];
     }
 }

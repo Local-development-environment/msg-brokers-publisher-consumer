@@ -20,7 +20,7 @@ final readonly class BeadProps implements CategoryPropsBuilderInterface
 
     public function getProps(): array
     {
-        $metal = $this->properties['metalType'];
+        $metal = $this->properties['metalItem']['metalType'];
 //        $insert = $this->properties['insert'];
 
 
