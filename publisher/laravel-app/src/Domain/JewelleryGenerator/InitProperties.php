@@ -12,7 +12,7 @@ use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricEnum;
 use Domain\JewelleryProperties\Beads\Beads\Enums\BeadEnum;
 use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartBuilderEnum;
 use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuildEnum;
+use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Enums\BraceletMetricEnum;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletEnum;
@@ -36,7 +36,9 @@ use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingBuilderEnum;
 use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspBuilderEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspEnum;
+use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameBuilderEnum;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameEnum;
+use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeBuilderEnum;
 use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeEnum;
 use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingBuilderEnum;
 use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingEnum;
@@ -44,6 +46,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
+/**
+ *
+ */
 final class InitProperties
 {
     public function initCategoryProperties(): void
@@ -65,9 +70,11 @@ final class InitProperties
     public function initBeadProperties(): void
     {
         Schema::disableForeignKeyConstraints();
+
         DB::table(BeadEnum::TABLE_NAME->value)->truncate();
         DB::table(BeadBaseEnum::TABLE_NAME->value)->truncate();
         DB::table(BeadMetricEnum::TABLE_NAME->value)->truncate();
+
         Schema::enableForeignKeyConstraints();
 
         foreach (BeadBaseBuildEnum::cases() as $beadBase) {
@@ -93,7 +100,7 @@ final class InitProperties
 
         Schema::enableForeignKeyConstraints();
 
-        foreach (BraceletBaseBuildEnum::cases() as $braceletBase) {
+        foreach (BraceletBaseBuilderEnum::cases() as $braceletBase) {
             DB::table(BraceletBaseEnum::TABLE_NAME->value)->insert([
                 'name' => $braceletBase->value,
                 'slug' => Str::slug($braceletBase->value),
@@ -157,6 +164,25 @@ final class InitProperties
                 'name' => $case->value,
                 'slug' => Str::slug($case->value),
                 'description' => $case->description(),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach (LengthNameBuilderEnum::cases() as $case) {
+            DB::table(LengthNameEnum::TABLE_NAME->value)->insert([
+                'name' => $case->value,
+                'slug' => Str::slug($case->value),
+                'description' => $case->description(),
+                'created_at' => now(),
+            ]);
+        }
+
+        foreach (NeckSizeBuilderEnum::cases() as $case) {
+            $lengthName = $case::{$case->name}->lengthNames();
+            DB::table(NeckSizeEnum::TABLE_NAME->value)->insert([
+                'length_name_id' => DB::table(LengthNameEnum::TABLE_NAME->value)->where('name', $lengthName)->value('id'),
+                'value' => $case->value,
+                'unit' => $case->unitMeasurement(),
                 'created_at' => now(),
             ]);
         }
@@ -226,4 +252,6 @@ final class InitProperties
             ]);
         }
     }
+
+
 }

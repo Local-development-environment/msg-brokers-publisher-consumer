@@ -10,6 +10,7 @@ use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
+use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
 use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
 use Domain\JewelleryProperties\Earrings\EarringClasps\Enums\EarringClaspBuilderEnum;
 use Domain\JewelleryProperties\Earrings\EarringTypes\Enums\EarringTypeBuilderEnum;
@@ -33,8 +34,18 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        $clasps = WeavingBuilderEnum::cases();
-        $test = $clasps[array_rand($clasps)];
+        $bases = BraceletBaseBuilderEnum::cases();
+        foreach ($bases as $key => $base) {
+            if ($base->value === BraceletBaseBuilderEnum::METAL_CHAIN->value ||
+                $base->value === BraceletBaseBuilderEnum::METAL_MONOLITH->value ||
+                $base->value === BraceletBaseBuilderEnum::SEGMENTAL_ITEMS->value ||
+                $base->value === BraceletBaseBuilderEnum::LEATHER->value) {
+                Arr::forget($bases, $key);
+            }
+            dump($base->value);
+        }
+        $test = $bases[array_rand($bases)];
+        dd($bases);
         dd($test->value);
 
 

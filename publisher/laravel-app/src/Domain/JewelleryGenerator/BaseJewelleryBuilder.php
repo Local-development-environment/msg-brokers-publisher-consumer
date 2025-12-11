@@ -32,18 +32,6 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         return $this;
     }
 
-    /**
-     * @throws RandomException
-     */
-    public function buildJewellery(): jewelleryBuilderInterface
-    {
-        $jewelleryItem = new JewelleryItem();
-
-        $this->baseJewellery->jewelleryItem = $jewelleryItem->jewelleryItem($this->baseJewellery->category);
-
-        return $this;
-    }
-
     public function buildMetal(): jewelleryBuilderInterface
     {
         $metalItem = new MetalItem();
@@ -71,17 +59,20 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         return $this;
     }
 
-    public function addJewelleryName(): jewelleryBuilderInterface
+    /**
+     * @throws RandomException
+     */
+    public function buildJewellery(): jewelleryBuilderInterface
     {
         $properties = get_object_vars($this->baseJewellery);
-        $jewelleryName = new JewelleryName();
+        $jewelleryItem = new JewelleryItem();
 
-        $this->baseJewellery->jewelleryName = $jewelleryName->getJewelleryName($properties);
+        $this->baseJewellery->jewelleryItem = $jewelleryItem->jewelleryItem($properties);
 
         return $this;
     }
 
-    public function addMedia(): jewelleryBuilderInterface
+    public function buildMedia(): jewelleryBuilderInterface
     {
         $media = new Media();
         $this->baseJewellery->media = $media->getMedia();
@@ -100,6 +91,8 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         $jewellery['insertItem']    = $this->baseJewellery->insertItem;
 
         $jewellery['property']      = $this->baseJewellery->property;
+
+        $jewellery['media']         = $this->baseJewellery->media;
 
         return $jewellery;
     }

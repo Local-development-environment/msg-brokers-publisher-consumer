@@ -12,16 +12,20 @@ final class JewelleryItem
 {
     use ProbabilityArrayElementTrait;
 
+    private string $partNumber;
+
     /**
      * @throws RandomException
      */
-    public function jewelleryItem(string $category): array
+    public function jewelleryItem(array $properties): array
     {
+        $this->partNumber = $this->getPartNumber();
+
         return [
-            'name'         => $this->getName($category),
+            'name'         => $this->getName($properties),
             'description'  => $this->getDescription(),
             'approxWeight' => $this->getApproxWeight(),
-            'partNumber'   => $this->getPartNumber(),
+            'partNumber'   => $this->partNumber,
             'isActive'     => $this->getIsActive(),
         ];
     }
@@ -41,9 +45,30 @@ final class JewelleryItem
         return true;
     }
 
-    private function getName(string $category): string
+    private function getName(array $properties): string
     {
-        return $category;
+        if (empty($properties['metalItem']['coverages'])) {
+            $coverage = 'без покрытия';
+        } else {
+            $stringCoverage = implode(' ', $properties['metalItem']['coverages']);
+            $coverage = "покрытие ($stringCoverage)";
+        }
+
+        if (empty($properties['insertItem'])) {
+            $inserts = 'без вставок';
+        } else {
+            $stones = [];
+            foreach ($properties['insertItem'] as $insert) {
+                $stones[] = $insert['stoneName'];
+            }
+
+            $stringInserts = implode(' ', array_unique($stones));
+            $inserts = "со вставками ($stringInserts)";
+        }
+
+        return mb_ucfirst($properties['category']) . ' ' . $properties['metalItem']['metalType'] .
+            ' проба ' . $properties['metalItem']['hallmark'] . ' ' . ' ' . $coverage .
+             ' ' . $inserts . ' артикул ' . $this->partNumber ;
     }
 
     /**

@@ -20,9 +20,7 @@ interface JewelleryBuilderInterface
 
     public function buildProperty(): jewelleryBuilderInterface;
 
-//    public function addJewelleryName(): jewelleryBuilderInterface;
-
-    public function addMedia(): jewelleryBuilderInterface;
+    public function buildMedia(): jewelleryBuilderInterface;
 
     public function getJewellery(): array;
 }

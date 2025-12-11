@@ -2214,7 +2214,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="FwX3n6Q6_rUBaZdYOfL--1" value="jewelleries" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;rounded=1;swimlaneFillColor=none;fillColor=#bac8d3;strokeColor=#23445d;columnLines=1;arcSize=10;" parent="1" vertex="1">
-          <mxGeometry x="230" y="241.5" width="180" height="250" as="geometry" />
+          <mxGeometry x="230" y="201" width="180" height="250" as="geometry" />
         </mxCell>
         <mxCell id="FwX3n6Q6_rUBaZdYOfL--2" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;rounded=1;" parent="FwX3n6Q6_rUBaZdYOfL--1" vertex="1">
           <mxGeometry y="30" width="180" height="22" as="geometry" />
@@ -2347,7 +2347,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="1Sz_alPKHGxzdb-B_lpZ-8" value="metal_types" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;rounded=1;swimlaneFillColor=none;fillColor=#bac8d3;strokeColor=#23445d;columnLines=1;arcSize=10;" parent="1" vertex="1">
-          <mxGeometry x="950" y="381.5" width="180" height="140" as="geometry" />
+          <mxGeometry x="470" y="351.5" width="180" height="140" as="geometry" />
         </mxCell>
         <mxCell id="1Sz_alPKHGxzdb-B_lpZ-9" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;rounded=1;" parent="1Sz_alPKHGxzdb-B_lpZ-8" vertex="1">
           <mxGeometry y="30" width="180" height="22" as="geometry" />
@@ -2457,7 +2457,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="1Sz_alPKHGxzdb-B_lpZ-34" value="metal_hallmarks" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;rounded=1;swimlaneFillColor=none;fillColor=#bac8d3;strokeColor=#23445d;columnLines=1;arcSize=10;" parent="1" vertex="1">
-          <mxGeometry x="710" y="351.5" width="180" height="96" as="geometry" />
+          <mxGeometry x="710" y="340" width="180" height="96" as="geometry" />
         </mxCell>
         <mxCell id="1Sz_alPKHGxzdb-B_lpZ-35" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;rounded=1;" parent="1Sz_alPKHGxzdb-B_lpZ-34" vertex="1">
           <mxGeometry y="30" width="180" height="22" as="geometry" />
@@ -2504,7 +2504,7 @@
             <mxPoint x="710" y="52.5" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="1Sz_alPKHGxzdb-B_lpZ-45" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERoneToMany;rounded=1;curved=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startFill=0;" parent="1" source="1Sz_alPKHGxzdb-B_lpZ-41" target="1Sz_alPKHGxzdb-B_lpZ-9" edge="1">
+        <mxCell id="1Sz_alPKHGxzdb-B_lpZ-45" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERoneToMany;rounded=1;curved=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startFill=0;" parent="1" source="1Sz_alPKHGxzdb-B_lpZ-41" target="1Sz_alPKHGxzdb-B_lpZ-9" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="860" y="295.5" as="sourcePoint" />
             <mxPoint x="980" y="153.5" as="targetPoint" />
@@ -2652,7 +2652,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="BGpGFCkfB_kPq9HLAWCe-1" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;font style=&quot;color: rgb(91, 151, 141);&quot;&gt;COVERING &amp;amp; METAL PROPERTIES&lt;/font&gt;&lt;/h1&gt;&lt;p style=&quot;margin-top: 12px; margin-bottom: 12px; margin-left: 0px;&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;font style=&quot;color: rgb(153, 0, 0);&quot;&gt;Precious metals. Protective and decorative covering&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;noLabel=0;labelPadding=0;spacingTop=10;spacingBottom=10;arcSize=4;" parent="1" vertex="1">
-          <mxGeometry x="230" y="60" width="320" height="140" as="geometry" />
+          <mxGeometry x="230" y="40" width="320" height="140" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -2,26 +2,6 @@
 declare(strict_types=1);
 
 return [
-    'medias' => [
-        'jw_video_types' => [
-            [
-                'name' => 'video/ogv', 'extension' => 'ogv'
-            ],
-            [
-                'name' => 'video/webm', 'extension' => 'webm'
-            ],
-            [
-                'name' => 'video/mp4', 'extension' => 'mp4'
-            ]
-        ],
-        'jw_media_producers' => [
-            'менеджер', 'клиент'
-        ]
-    ],
-    'ring_fingers' => [
-        'палец руки', 'палец ноги'
-    ],
-
     'jw_promotions' => [
         [
             'name' => 'аутлет 70%',

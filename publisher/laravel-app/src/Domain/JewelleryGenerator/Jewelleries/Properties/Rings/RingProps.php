@@ -6,13 +6,15 @@ namespace Domain\JewelleryGenerator\Jewelleries\Properties\Rings;
 
 use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
+use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
+use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerBuilderEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeBuilderEnum;
 use Illuminate\Support\Arr;
 
 final readonly class RingProps implements CategoryPropsBuilderInterface
 {
-    use SizePricePropsTrait, MetalPriceDifferentiationTrait;
+    use SizePricePropsTrait, MetalPriceDifferentiationTrait, ProbabilityArrayElementTrait;
 
     public function __construct(private array $properties)
     {
@@ -39,11 +41,9 @@ final readonly class RingProps implements CategoryPropsBuilderInterface
 
     private function getRingFinger(): string
     {
-        $ringFingers = config('data-seed.data_items.ring_fingers');
-        $prepRingFingers = array_fill(0, 20, $ringFingers[0]);
-        $prepRingFingers[] = $ringFingers[1];
+        $enumClass = get_class(RingFingerBuilderEnum::FINGER);
+        $enumCases = RingFingerBuilderEnum::cases();
 
-        return Arr::random($prepRingFingers);
-
+        return $this->getArrElement($enumCases, $enumClass);
     }
 }

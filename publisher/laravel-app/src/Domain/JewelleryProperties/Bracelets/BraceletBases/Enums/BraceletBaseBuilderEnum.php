@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Bracelets\BraceletBases\Enums;
 
-enum BraceletBaseBuildEnum: string
+enum BraceletBaseBuilderEnum: string
 {
     case METAL_CHAIN       = 'цепная основа';
     case METAL_MONOLITH    = 'цельный металл';
@@ -30,6 +30,23 @@ enum BraceletBaseBuildEnum: string
             self::SEGMENTAL_ITEMS   => 'Сегментная основа собранная из соединительных элементов, пинов и колечек',
             self::ELASTIC_THREAD    => 'Эластичная основа, удобная для сборки браслетов, которые не имеют застежки.',
             self::LEATHER           => 'Кожаный браслет, с плетением или без',
+
+        };
+    }
+
+    public function jwProbability(): int
+    {
+        return match ($this) {
+            self::METAL_CHAIN => 75,
+            self::METAL_MONOLITH => 9,
+            self::MONO_THREAD,
+            self::MEMORY_WIRE,
+            self::WAXED_CORD,
+            self::JEWELLERY_CABLE,
+            self::ELASTIC_THREAD,
+            self::METAL_WIRE => 1,
+            self::SEGMENTAL_ITEMS,
+            self::LEATHER => 5,
 
         };
     }
