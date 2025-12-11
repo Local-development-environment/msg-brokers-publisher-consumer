@@ -11,12 +11,11 @@ final class Jeweller
         return $builder
             ->reset()
             ->buildCategory()
-            ->buildJewellery()
             ->buildMetal()
             ->buildInsert()
             ->buildProperty()
-//            ->addJewelleryName()
-//            ->addMedia()
+            ->buildJewellery()
+            ->buildMedia()
             ->getJewellery()
             ;
     }

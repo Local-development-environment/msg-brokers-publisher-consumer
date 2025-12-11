@@ -33,6 +33,7 @@ final class InitInsertData
     public function __invoke(): void
     {
         Schema::disableForeignKeyConstraints();
+
         DB::table(FacetEnum::TABLE_NAME->value)->truncate();
         DB::table(ColourEnum::TABLE_NAME->value)->truncate();
         DB::table(TypeOriginEnum::TABLE_NAME->value)->truncate();
@@ -44,6 +45,7 @@ final class InitInsertData
         DB::table(StoneEnum::TABLE_NAME->value)->truncate();
         DB::table(StoneFamilyEnum::TABLE_NAME->value)->truncate();
         DB::table(StoneItemGradeEnum::TABLE_NAME->value)->truncate();
+
         Schema::enableForeignKeyConstraints();
 
         $jewellery = config('data-seed.insert-seed.stones.jewellery-stones');

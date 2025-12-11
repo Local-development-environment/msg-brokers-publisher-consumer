@@ -46,9 +46,10 @@ final readonly class ChainProps implements CategoryPropsBuilderInterface
         }
 
         $weavings = WeavingBuilderEnum::cases();
+
         if ($is_weaving === 1) {
             return [
-                'weaving' => Arr::random($weavings),
+                'weaving' => Arr::random($weavings)->value,
                 'fullness' => Arr::random(['полнотелая', 'полнотелая', 'полнотелая', 'пустотелая']),
                 'wire_diameter' => fake()->randomFloat(1, 0.5, 1.5)
             ];

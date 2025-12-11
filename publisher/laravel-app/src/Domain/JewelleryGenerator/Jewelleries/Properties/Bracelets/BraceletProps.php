@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\Properties\Bracelets;
 
+use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
 use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartBuilderEnum;
+use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeBuilderEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspBuilderEnum;
 use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingBuilderEnum;
@@ -70,16 +72,12 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
     private function getBraceletBase(array $insert): string
     {
         if ($insert) {
-            if (count($insert) === 1) {
-                if ($insert[0]['stoneName'] === 'жемчуг') {
-                    $braceletBases = array_diff(config('data-seed.data_items.bracelet_bases'), ['металлическая', 'шнурок']);
+            $enumClass = get_class(BraceletBaseBuilderEnum::METAL_CHAIN);
+            $enumCases = BraceletBaseBuilderEnum::cases();
 
-                    return Arr::random($braceletBases);
-                }
-            }
+            return $this->getArrElement($enumCases, $enumClass);
+        } else {
+            return BraceletBaseBuilderEnum::METAL_CHAIN->value;
         }
-
-        return 'металлическая';
-
     }
 }
