@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Domain\Inserts\GroupGrades\Models;
 
 use Domain\Inserts\GroupGrades\Enums\GroupGradeEnum;
-use Domain\Inserts\NaturalStones\Enums\NaturalStoneEnum;
+use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
 use Domain\Inserts\NaturalStones\Models\NaturalStone;
 use Domain\Inserts\StoneGrades\Models\StoneGrade;
 use Illuminate\Database\Eloquent\Model;
@@ -28,6 +28,6 @@ final class GroupGrade extends Model
 
     public function naturalStone(): BelongsTo
     {
-        return $this->belongsTo(NaturalStone::class, NaturalStoneEnum::PRIMARY_KEY->value);
+        return $this->belongsTo(NaturalStone::class, NatureStoneEnum::PRIMARY_KEY->value);
     }
 }

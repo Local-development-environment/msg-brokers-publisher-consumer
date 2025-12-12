@@ -2,7 +2,7 @@
 
 namespace Domain\Inserts\NaturalStones\Enums;
 
-enum NaturalStoneEnum: string
+enum NatureStoneEnum: string
 {
     case TYPE_RESOURCE   = 'naturalStones';
     case TABLE_NAME      = 'jw_inserts.natural_stones';

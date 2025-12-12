@@ -10,5 +10,5 @@ enum InsertEnum: string
     case PRIMARY_KEY   = 'id';
     case FK_STONE_EXTERIOR = 'stone_exterior_id';
     case FK_JEWELLERY = 'jewellery_id';
-    case FK_INSERT_OPTION_INFO = InsertEnum::PRIMARY_KEY->value;
+//    case FK_INSERT_OPTION_INFO = InsertEnum::PRIMARY_KEY->value;
 }

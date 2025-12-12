@@ -68,7 +68,7 @@ return new class extends Migration
                     join jw_inserts.type_origins as tor on s.type_origin_id = tor.id
                     left join jw_inserts.optical_effects as oe on s.id = oe.id
                     join jw_inserts.natural_stones as ns on s.id = ns.id
-                    join jw_inserts.stone_groups as sgr on ns.stone_group_id = sgr.id
+                    join jw_inserts.stone_groups as sgr on ns.id = sgr.id
                     join jw_inserts.stone_families as sf on ns.stone_family_id = sf.id
                     left join jw_inserts.natural_stone_grade as nsg on ns.id = nsg.id
                     left join jw_inserts.stone_grades as sg on nsg.stone_grade_id = sg.id
