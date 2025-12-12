@@ -8,7 +8,7 @@ use Domain\Inserts\GrownStones\Enums\GrownStoneEnum;
 use Domain\Inserts\GrownStones\Models\GrownStone;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
 use Domain\Inserts\ImitationStones\Models\ImitationStone;
-use Domain\Inserts\NaturalStones\Enums\NaturalStoneEnum;
+use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
 use Domain\Inserts\NaturalStones\Models\NaturalStone;
 use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneEnum;
 use Domain\Inserts\OpticalEffectStones\Models\OpticalEffectStone;
@@ -39,7 +39,7 @@ class Stone extends Model
 
     public function naturalStone(): HasOne
     {
-        return $this->hasOne(NaturalStone::class, NaturalStoneEnum::PRIMARY_KEY->value);
+        return $this->hasOne(NaturalStone::class, NatureStoneEnum::PRIMARY_KEY->value);
     }
 
     public function grownStone(): HasOne

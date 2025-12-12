@@ -2,7 +2,7 @@
 
 namespace Domain\Inserts\NaturalStones\Enums;
 
-enum NaturalStoneRelationshipsEnum: string
+enum NatureStoneRelationshipsEnum: string
 {
     case STONE               = 'stone';
     case STONE_GROUP         = 'stoneGroup';

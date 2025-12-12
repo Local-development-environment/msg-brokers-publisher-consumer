@@ -2,7 +2,7 @@
 
 namespace Domain\Inserts\NaturalStones\Enums;
 
-enum NaturalStoneNameRoutesEnum: string
+enum NatureStoneNameRoutesEnum: string
 {
     case CRUD_INDEX                          = 'natural-stones.index';
     case CRUD_SHOW                           = 'natural-stones.show';

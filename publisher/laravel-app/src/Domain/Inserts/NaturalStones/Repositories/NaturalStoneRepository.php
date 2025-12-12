@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\NaturalStones\Repositories;
 
-use Domain\Inserts\NaturalStones\Enums\NaturalStoneEnum;
-use Domain\Inserts\NaturalStones\Enums\NaturalStoneRelationshipsEnum;
+use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
+use Domain\Inserts\NaturalStones\Enums\NatureStoneRelationshipsEnum;
 use Domain\Inserts\NaturalStones\Models\NaturalStone;
 use Illuminate\Contracts\Pagination\Paginator;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -17,13 +17,13 @@ final class NaturalStoneRepository
     {
         return QueryBuilder::for(NaturalStone::class)
             ->allowedIncludes([
-                NaturalStoneRelationshipsEnum::STONE->value,
-                NaturalStoneRelationshipsEnum::STONE_FAMILY->value,
-                NaturalStoneRelationshipsEnum::STONE_GROUP->value,
-                NaturalStoneRelationshipsEnum::NATURAL_STONE_GRADE->value
+                NatureStoneRelationshipsEnum::STONE->value,
+                NatureStoneRelationshipsEnum::STONE_FAMILY->value,
+                NatureStoneRelationshipsEnum::STONE_GROUP->value,
+                NatureStoneRelationshipsEnum::NATURAL_STONE_GRADE->value
             ])
             ->allowedFilters([
-                AllowedFilter::exact(NaturalStoneEnum::PRIMARY_KEY->value)
+                AllowedFilter::exact(NatureStoneEnum::PRIMARY_KEY->value)
             ])
             ->paginate($data['per_page'] ?? null)
             ->appends($data);
@@ -37,12 +37,12 @@ final class NaturalStoneRepository
     public function show(array $data, int $id): NaturalStone
     {
         return QueryBuilder::for(NaturalStone::class)
-            ->where(NaturalStoneEnum::PRIMARY_KEY->value, $id)
+            ->where(NatureStoneEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
-                NaturalStoneRelationshipsEnum::STONE->value,
-                NaturalStoneRelationshipsEnum::STONE_FAMILY->value,
-                NaturalStoneRelationshipsEnum::STONE_GROUP->value,
-                NaturalStoneRelationshipsEnum::NATURAL_STONE_GRADE->value
+                NatureStoneRelationshipsEnum::STONE->value,
+                NatureStoneRelationshipsEnum::STONE_FAMILY->value,
+                NatureStoneRelationshipsEnum::STONE_GROUP->value,
+                NatureStoneRelationshipsEnum::NATURAL_STONE_GRADE->value
             ])
             ->firstOrFail();
     }

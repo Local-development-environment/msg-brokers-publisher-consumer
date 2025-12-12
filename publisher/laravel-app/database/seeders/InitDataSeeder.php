@@ -10,7 +10,7 @@ use Domain\Inserts\GrownStones\Enums\GrownStoneEnum;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
-use Domain\Inserts\NaturalStones\Enums\NaturalStoneEnum;
+use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectEnum;
 use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneEnum;
 use Domain\Inserts\StoneExteriours\Enums\StoneExteriorEnum;
@@ -98,7 +98,7 @@ final class InitDataSeeder extends Seeder
         DB::table(StoneFamilyEnum::TABLE_NAME->value)->truncate();
         DB::table(StoneGroupEnum::TABLE_NAME->value)->truncate();
         DB::table(StoneGradeEnum::TABLE_NAME->value)->truncate();
-        DB::table(NaturalStoneEnum::TABLE_NAME->value)->truncate();
+        DB::table(NatureStoneEnum::TABLE_NAME->value)->truncate();
         DB::table(GroupGradeEnum::TABLE_NAME->value)->truncate();
         DB::table(GrownStoneEnum::TABLE_NAME->value)->truncate();
         DB::table(ImitationStoneEnum::TABLE_NAME->value)->truncate();

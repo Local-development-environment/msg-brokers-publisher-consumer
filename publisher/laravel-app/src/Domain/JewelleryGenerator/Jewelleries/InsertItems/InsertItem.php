@@ -18,7 +18,7 @@ final class InsertItem
 
         if ($category === CategoryBuilderEnum::CHAINS->value || $randNum < 10) {
             return [];
-        } elseif ($randNum < 55) {
+        } elseif ($randNum < 65) {
             $stone = (new SingleInsertGeneration())->getInsert();
             return [
                 [

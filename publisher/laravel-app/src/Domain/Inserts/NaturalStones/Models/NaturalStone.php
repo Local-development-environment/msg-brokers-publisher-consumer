@@ -4,7 +4,7 @@ namespace Domain\Inserts\NaturalStones\Models;
 
 use Domain\Inserts\GroupGrades\Enums\GroupGradeEnum;
 use Domain\Inserts\GroupGrades\Models\GroupGrade;
-use Domain\Inserts\NaturalStones\Enums\NaturalStoneEnum;
+use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
 use Domain\Inserts\StoneFamilies\Models\StoneFamily;
 use Domain\Inserts\StoneGroups\Models\StoneGroup;
 use Domain\Inserts\Stones\Enums\StoneEnum;
@@ -15,9 +15,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class NaturalStone extends Model
 {
-    protected $table = NaturalStoneEnum::TABLE_NAME->value;
+    protected $table = NatureStoneEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = NaturalStoneEnum::TYPE_RESOURCE->value;
+    public const string TYPE_RESOURCE = NatureStoneEnum::TYPE_RESOURCE->value;
 
     public function stoneFamily(): BelongsTo
     {
