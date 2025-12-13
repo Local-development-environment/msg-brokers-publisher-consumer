@@ -52,7 +52,7 @@ enum StoneGroupBuilderEnum: string
                 [StoneBuilderEnum::RUBY->value, 15],
                 [StoneBuilderEnum::EMERALD->value, 15],
                 [StoneBuilderEnum::SAPPHIRE->value, 15],
-                [StoneBuilderEnum::SEE_PEARL_NATURE->value, 15],
+                [StoneBuilderEnum::SEA_PEARL_NATURE->value, 15],
             ],
             self::ORNAMENTAL => [],
             self::JEWELLERIES => [],

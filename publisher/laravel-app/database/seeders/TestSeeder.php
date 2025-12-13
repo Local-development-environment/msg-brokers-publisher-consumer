@@ -8,6 +8,8 @@ use App\Http\Integrations\UVI\UVIConnector;
 use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
+use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
+use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
@@ -34,6 +36,15 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
+//        dd(file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/exterior.sql')));
+//        $file = file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/exterior.sql'))
+//            . 'where c.name = \'черный\' and s.name = \'муассанит\'';
+        $natureType = TypeOriginBuilderEnum::NATURE->value;
+        $file = file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/exterior.sql'))
+            . "where t.name = '{$natureType}'";
+//        dd($file);
+        $test = DB::select($file);
+        dd(collect($test)->random());
         $bases = BraceletBaseBuilderEnum::cases();
         foreach ($bases as $key => $base) {
             if ($base->value === BraceletBaseBuilderEnum::METAL_CHAIN->value ||

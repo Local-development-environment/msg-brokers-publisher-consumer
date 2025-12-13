@@ -4,12 +4,18 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems\NaturalStones;
 
+use Domain\Inserts\Colours\Enums\ColourBuilderEnum;
+use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
 use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
+use Domain\JewelleryGenerator\Traits\StoneExteriorSQL;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 
 final class FirstNatureStoneGeneration
 {
+    use StoneExteriorSQL;
+
     public function getStone(): array
     {
         $randGroup = rand(0, 100);
@@ -30,41 +36,64 @@ final class FirstNatureStoneGeneration
     {
         $randStone  = rand(0, 100);
 
-        $preciousStones = config('data-seed.insert-seed.stones.precious-stones');
         $smallCarat = config('data-seed.insert-seed.stones.carat.small');
         $middleCarat = config('data-seed.insert-seed.stones.carat.middle');
 
         if ($randStone < 30) {
-            $preciousStone = Arr::where($preciousStones, function (array $value, int $key) {
-                return $value['stoneName'] === StoneBuilderEnum::DIAMOND->value;
-            });
+            $randDiamond = rand(0, 100);
 
-            $preciousStone = $preciousStone[array_rand($preciousStone)];
-
-        } elseif ($randStone < 45) {
-            $preciousStone = Arr::where($preciousStones, function (array $value, int $key) {
-                return $value['stoneName'] === StoneBuilderEnum::SEE_PEARL_NATURE->value;
-            });
-
-            $preciousStone = $preciousStone[array_rand($preciousStone)];
-
-        } else {
-            foreach ($preciousStones as $key => $stone) {
-                if ($stone['stoneName'] === StoneBuilderEnum::SEE_PEARL_NATURE->value ||
-                    $stone['stoneName'] === StoneBuilderEnum::DIAMOND->value) {
-                    Arr::forget($preciousStones, $key);
-                }
+            if ($randDiamond < 70) {
+                $preciousStone = DB::select($this->stoneFilterByExteriorSQL(
+                    [
+                        'stone' => StoneBuilderEnum::DIAMOND->value,
+                        'colour' => ColourBuilderEnum::COLOURLESS->value,
+                        'facet' => FacetBuilderEnum::ROUND_CUT->value,
+                    ]
+                ));
+            } else {
+                $preciousStone = DB::select($this->stoneFilterByExteriorSQL(
+                    [
+                        'stone' => StoneBuilderEnum::DIAMOND->value,
+                        'colour' => null,
+                        'facet' => null,
+                    ]
+                ));
             }
+        } elseif ($randStone < 45) {
+            $randSeaPearl = rand(0, 100);
 
-            $preciousStone = $preciousStones[array_rand($preciousStones)];
+            if ($randSeaPearl < 80) {
+                $preciousStone = DB::select($this->stoneFilterByExteriorSQL(
+                    [
+                        'stone' => StoneBuilderEnum::SEA_PEARL_NATURE->value,
+                        'colour' => ColourBuilderEnum::WHITE->value,
+                        'facet' => FacetBuilderEnum::CABOCHON_ROUND->value,
+                    ]
+                ));
+            } else {
+                $preciousStone = DB::select($this->stoneFilterByExteriorSQL(
+                    [
+                        'stone' => StoneBuilderEnum::SEA_PEARL_NATURE->value,
+                        'colour' => null,
+                        'facet' => null,
+                    ]
+                ));
+            }
+        } else {
+            $preciousStone = DB::select($this->stoneFilterByNameSQL([
+                StoneBuilderEnum::DIAMOND->value,
+                StoneBuilderEnum::SEA_PEARL_NATURE->value,
+            ]));
         }
+
+        $preciousStone = $preciousStone[array_rand($preciousStone)];
 
         $weight = rand(0, 1) ? $smallCarat[array_rand($smallCarat)] : $middleCarat[array_rand($middleCarat)];
         $quantity = rand(1, 5) < 4 ? 1 : rand(2, 5);
-        $preciousStone['quantity'] = $quantity;
-        $preciousStone['weight'] = $weight;
-        $preciousStone['typeOrigin'] = TypeOriginBuilderEnum::NATURE->value;
-
+        $preciousStone->quantity = $quantity;
+        $preciousStone->weight = $weight;
+//        $preciousStone[0]->typeOrigin = TypeOriginBuilderEnum::NATURE->value;
+        dd(json_decode(json_encode($preciousStone), true));
         return $preciousStone;
     }
 
