@@ -54,6 +54,10 @@ trait StoneExteriorSQL
 
     }
 
+    /**
+     * @param array{string} $stones
+     * @return string
+     */
     protected function stoneFilterByNameSQL(array $stones): string
     {
         $num = count($stones);
@@ -69,6 +73,14 @@ trait StoneExteriorSQL
         }
 
         return $names . ");";
+    }
+
+    protected function natureJewelleryExteriorSQL(): string
+    {
+        $natureType = TypeOriginBuilderEnum::NATURE->value;
+        $jewelleryGroup = StoneGroupBuilderEnum::JEWELLERIES->value;
+
+        return $this->allExteriorSQL() . " where t.name = '{$natureType}' and group_name = '{$jewelleryGroup}'";
     }
 
     private function allExteriorSQL(): false|string

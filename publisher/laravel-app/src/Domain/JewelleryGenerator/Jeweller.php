@@ -12,10 +12,10 @@ final class Jeweller
             ->reset()
             ->buildCategory()
             ->buildMetal()
-            ->buildInsert()
-            ->buildProperty()
+//            ->buildInsert()
+//            ->buildProperty()
             ->buildJewellery()
-            ->buildMedia()
+//            ->buildMedia()
             ->getJewellery()
             ;
     }

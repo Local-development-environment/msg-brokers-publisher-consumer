@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\JewelleryItems;
 
-use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Random\RandomException;
 
@@ -47,10 +46,10 @@ final class JewelleryItem
 
     private function getName(array $properties): string
     {
-        if (empty($properties['metalItem']['coverages'])) {
+        if (empty($properties['preciousMetals']['coverages'])) {
             $coverage = 'без покрытия';
         } else {
-            $stringCoverage = implode(' ', $properties['metalItem']['coverages']);
+            $stringCoverage = implode(' ', $properties['preciousMetals']['coverages']);
             $coverage = "покрытие ($stringCoverage)";
         }
 
@@ -66,9 +65,13 @@ final class JewelleryItem
             $inserts = "со вставками ($stringInserts)";
         }
 
-        return mb_ucfirst($properties['category']) . ' ' . $properties['metalItem']['metalType'] .
-            ' проба ' . $properties['metalItem']['hallmark'] . ' ' . ' ' . $coverage .
-             ' ' . $inserts . ' артикул ' . $this->partNumber ;
+        if (array_key_exists('preciousMetals', $properties)) {
+            return mb_ucfirst($properties['category']) . ' ' . $properties['preciousMetals']['metalType'] .
+                ' проба ' . $properties['preciousMetals']['hallmark'] . ' ' . ' ' . $coverage .
+                ' ' . $inserts . ' артикул ' . $this->partNumber ;
+        } else {
+            return mb_ucfirst($properties['category']) . ' артикул ' . $this->partNumber;
+        }
     }
 
     /**

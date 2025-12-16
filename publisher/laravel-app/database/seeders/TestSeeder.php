@@ -3,29 +3,12 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Http\Integrations\UVI\Jewelleries\Requests\GetAllJewelleries;
-use App\Http\Integrations\UVI\UVIConnector;
-use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
-use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
-use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
-use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
-use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
-use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
-use Domain\JewelleryProperties\Earrings\EarringClasps\Enums\EarringClaspBuilderEnum;
-use Domain\JewelleryProperties\Earrings\EarringTypes\Enums\EarringTypeBuilderEnum;
-use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeBuilderEnum;
-use Domain\PreciousMetals\Coverages\Enums\CoverageBuilderEnum;
-use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeBuilderEnum;
-use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingBuilderEnum;
-use Illuminate\Contracts\Container\BindingResolutionException;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
-use Spatie\QueryBuilder\QueryBuilder;
 
 final class TestSeeder extends Seeder
 {

@@ -80,20 +80,20 @@ final class BuildJewellerySeeder extends Seeder
 //        dd('stop');
         $initProperties = new initProperties();
         $initProperties->initCategoryProperties();
-        $initProperties->initBeadProperties();
-        $initProperties->initRingProperties();
-        $initProperties->initBraceletProperties();
-        $initProperties->initShareProperties();
-        $initProperties->initEarringProperties();
+//        $initProperties->initBeadProperties();
+//        $initProperties->initRingProperties();
+//        $initProperties->initBraceletProperties();
+//        $initProperties->initShareProperties();
+//        $initProperties->initEarringProperties();
 
 //        dd('ok');
         for ($i = 0; $i < $items; $i++) {
             dump($i);
             $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
-//            dump($builder);
-            $this->addJewellery($builder);
+            dump($builder);
+//            $this->addJewellery($builder);
         }
-//        dd('ok');
+        dd('ok');
 //        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
 //        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_jewelleries;');
 

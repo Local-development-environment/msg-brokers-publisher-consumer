@@ -34,12 +34,12 @@ final class FirstNatureStoneGeneration
 
     private function getPreciousStone(): array
     {
-        $randStone  = rand(0, 100);
+        $randPrecious  = rand(0, 100);
 
         $smallCarat = config('data-seed.insert-seed.stones.carat.small');
         $middleCarat = config('data-seed.insert-seed.stones.carat.middle');
 
-        if ($randStone < 30) {
+        if ($randPrecious < 30) {
             $randDiamond = rand(0, 100);
 
             if ($randDiamond < 70) {
@@ -59,7 +59,7 @@ final class FirstNatureStoneGeneration
                     ]
                 ));
             }
-        } elseif ($randStone < 45) {
+        } elseif ($randPrecious < 45) {
             $randSeaPearl = rand(0, 100);
 
             if ($randSeaPearl < 80) {
@@ -92,13 +92,24 @@ final class FirstNatureStoneGeneration
         $quantity = rand(1, 5) < 4 ? 1 : rand(2, 5);
         $preciousStone->quantity = $quantity;
         $preciousStone->weight = $weight;
-//        $preciousStone[0]->typeOrigin = TypeOriginBuilderEnum::NATURE->value;
-        dd(json_decode(json_encode($preciousStone), true));
-        return $preciousStone;
+
+        return json_decode(json_encode($preciousStone), true);
     }
 
     private function getJewelleryStone(): array
     {
+        $randJewellery  = rand(0, 100);
+
+        if ($randJewellery < 60) {
+
+        } elseif ($randJewellery < 80) {
+
+        } elseif ($randJewellery < 95) {
+
+        } else {
+
+        }
+
         $jewelleryStones = config('data-seed.insert-seed.stones.jewellery-stones');
         $middleCarat = config('data-seed.insert-seed.stones.carat.middle');
         $largeCarat = config('data-seed.insert-seed.stones.carat.large');

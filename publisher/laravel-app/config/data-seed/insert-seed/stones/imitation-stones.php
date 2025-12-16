@@ -121,25 +121,4 @@ return [
             [FacetBuilderEnum::TRILLION_CUT->value, 3],
         ]
     ],
-//    [
-//        'stoneName' => StoneBuilderEnum::EMERALD_NANOSITAL->value,
-//        'stoneDescription' => 'Абсолютный аналог природного изумруда. Выращенные в лаборатории изумруды по качеству даже превосходят натуральные: в первых практически отсутствуют дефекты, а спектр возможных оттенков шире.',
-//        'altStoneName' => 'изумруд гидротермальный',
-//        'stoneFamily' => 'Наноситал — имитация изумруда. Это новый материал, отдельная категория синтетических камней. Ситал получают путем кристаллизации стекла.',
-//        'stoneGroup' => '',
-//        'stoneGrade' => '',
-//        'opticalEffect' => OpticalEffectBuilderEnum::PLEOCHROISM->value,
-//        'colours' => [
-//            [ColourBuilderEnum::GREEN->value, 100]
-//        ],
-//        'facets' => [
-//            [FacetBuilderEnum::EMERALD_CUT->value, 30],
-//            [FacetBuilderEnum::ROUND_CUT->value, 30],
-//            [FacetBuilderEnum::CABOCHON_ROUND->value, 5],
-//            [FacetBuilderEnum::CABOCHON_OVAL->value, 5],
-//            [FacetBuilderEnum::PRINCESS_CUT->value, 10],
-//            [FacetBuilderEnum::CUSHION_CUT->value, 10],
-//            [FacetBuilderEnum::PEAR_CUT->value, 10],
-//        ]
-//    ],
 ];

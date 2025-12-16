@@ -34,7 +34,7 @@ return [
     ],
     [
         'stoneName' => StoneBuilderEnum::JET->value,
-        'stoneDescription' => 'Обычно имеет насыщенный черный цвет и матовый или жирный блеск. Излом раковистый, как у смолы.',
+        'stoneDescription' => 'Гагат обычно имеет насыщенный черный цвет и матовый или жирный блеск. Излом раковистый, как у смолы.',
         'altStoneName' => 'черный янтарь, черная яшма, гешер',
         'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
         'stoneFamily' => StoneFamilyBuilderEnum::COAL->value,

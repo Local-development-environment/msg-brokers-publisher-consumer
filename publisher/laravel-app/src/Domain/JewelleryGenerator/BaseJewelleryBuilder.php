@@ -43,7 +43,7 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
 
     public function buildInsert(): jewelleryBuilderInterface
     {
-        $insert = new InsertItem();
+        $insert                          = new InsertItem();
         $this->baseJewellery->insertItem = $insert->getInsert($this->baseJewellery->category);
 
         return $this;
@@ -53,7 +53,7 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
     {
         $property = new Property();
 
-        $properties = get_object_vars($this->baseJewellery);
+        $properties                    = get_object_vars($this->baseJewellery);
         $this->baseJewellery->property = $property->getProperties($properties);
 
         return $this;
@@ -64,7 +64,7 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
      */
     public function buildJewellery(): jewelleryBuilderInterface
     {
-        $properties = get_object_vars($this->baseJewellery);
+        $properties    = get_object_vars($this->baseJewellery);
         $jewelleryItem = new JewelleryItem();
 
         $this->baseJewellery->jewelleryItem = $jewelleryItem->jewelleryItem($properties);
@@ -74,7 +74,7 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
 
     public function buildMedia(): jewelleryBuilderInterface
     {
-        $media = new Media();
+        $media                      = new Media();
         $this->baseJewellery->media = $media->getMedia();
 
         return $this;
@@ -82,17 +82,13 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
 
     public function getJewellery(): array
     {
-        $jewellery['category']      = $this->baseJewellery->category;
-
-        $jewellery['jewelleryItem'] = $this->baseJewellery->jewelleryItem;
-
-        $jewellery['metalItem']     = $this->baseJewellery->metalItem;
-
-        $jewellery['insertItem']    = $this->baseJewellery->insertItem;
-
-        $jewellery['property']      = $this->baseJewellery->property;
-
-        $jewellery['media']         = $this->baseJewellery->media;
+        $jewellery['category']       = $this->baseJewellery->category;
+        $jewellery['jewelleryItem']  = $this->baseJewellery->jewelleryItem;
+        $jewellery['preciousMetals'] = $this->baseJewellery->metalItem['preciousMetals'];
+        $jewellery['coverages']      = $this->baseJewellery->metalItem['coverages'];
+        //        $jewellery['insertItem']     = $this->baseJewellery->insertItem;
+        //        $jewellery['property']       = $this->baseJewellery->property;
+        //        $jewellery['media']          = $this->baseJewellery->media;
 
         return $jewellery;
     }

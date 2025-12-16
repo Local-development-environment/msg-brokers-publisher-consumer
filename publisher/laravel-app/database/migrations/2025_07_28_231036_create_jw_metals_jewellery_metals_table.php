@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_metals.metal_hallmarks', function (Blueprint $table) {
+        Schema::create('jw_metals.jewellery_metals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('metal_type_id');
+            $table->unsignedBigInteger('jewellery_id');
+            $table->unsignedBigInteger('precious_metal_id');
             $table->unsignedBigInteger('hallmark_id');
             $table->timestamps();
 
-            $table->foreign('metal_type_id')->references('id')->on('jw_metals.metal_types');
+            $table->foreign('precious_metal_id')->references('id')->on('jw_metals.precious_metals');
             $table->foreign('hallmark_id')->references('id')->on('jw_metals.hallmarks');
+            $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
 
-            $table->unique(['metal_type_id', 'hallmark_id'], 'unique_metal_hallmarks');
+            $table->unique(['precious_metal_id', 'hallmark_id', 'jewellery_id'], 'unique_jewellery_metals');
         });
     }
 
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_metals.metal_hallmarks');
+        Schema::dropIfExists('jw_metals.jewellery_metals');
     }
 };
