@@ -17,19 +17,55 @@ final class MetalItem
 
     public function metalItem(string $category): array
     {
+        $preciousMetals = [];
+
         $preciousMetal = $this->getPreciousMetal();
         $hallmark      = $this->getHallmark($preciousMetal);
         $coverages     = $this->getCoverage($preciousMetal, $category);
 
-        return [
-            'preciousMetals' => [
-                [
+        $preciousMetals[] = [
+            'hallmark'      => $hallmark,
+            'preciousMetal' => $preciousMetal
+        ];
+
+        if ($preciousMetal === PreciousMetalBuilderEnum::GOLDEN_RED->value ||
+            $preciousMetal === PreciousMetalBuilderEnum::GOLDEN_WHITE->value ||
+            $preciousMetal === PreciousMetalBuilderEnum::GOLDEN_YELLOW->value) {
+
+            if (rand(0, 9) === 0) {
+                $combinedGold = $this->getCombinedGold($preciousMetal);
+
+                $preciousMetals[] = [
                     'hallmark'      => $hallmark,
-                    'preciousMetal' => $preciousMetal,
-                ],
-            ],
+                    'preciousMetal' => $combinedGold
+                ];
+            }
+        }
+
+        return [
+            'preciousMetals' => $preciousMetals,
             'coverages'      => $coverages
         ];
+    }
+
+    private function getCombinedGold(string $preciousMetal): string
+    {
+        $metals = PreciousMetalBuilderEnum::cases();
+
+        foreach ($metals as $key => $metal) {
+            if ($metal->value === $preciousMetal) {
+                Arr::forget($metals, $key);
+            } elseif ($metal->value === PreciousMetalBuilderEnum::PLATINUM->value ||
+                $metal->value === PreciousMetalBuilderEnum::PALLADIUM->value ||
+                $metal->value === PreciousMetalBuilderEnum::SILVER->value) {
+                Arr::forget($metals, $key);
+            }
+        }
+
+        $enumClass = get_class(PreciousMetalBuilderEnum::GOLDEN_RED);
+        $enumCases = $metals;
+
+        return $this->getArrElement($enumCases, $enumClass);
     }
 
     private function getPreciousMetal(): string
@@ -80,7 +116,7 @@ final class MetalItem
         if ($metalType === PreciousMetalBuilderEnum::PLATINUM->value ||
             $metalType === PreciousMetalBuilderEnum::PALLADIUM->value) {
 
-            return rand(0, 1) ? [] : [CoverageBuilderEnum::DIAMOND_CUT->value];
+            return rand(0, 3) ? [] : [CoverageBuilderEnum::DIAMOND_CUT->value];
 
         } elseif ($metalType === PreciousMetalBuilderEnum::SILVER->value) {
 
@@ -128,6 +164,7 @@ final class MetalItem
         } elseif ($randNum === 1) {
             $items[] = CoverageBuilderEnum::ENAMEL->value;
             $items[] = CoverageBuilderEnum::RHODIUM_PLATING->value;
+
             return $items;
         } else {
             return [$preparedCoverages[array_rand($preparedCoverages)]];

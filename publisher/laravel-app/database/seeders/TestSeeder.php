@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
+use Domain\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -19,6 +20,7 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
+//        dd(PreciousMetalBuilderEnum::cases());
 //        dd(file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/exterior.sql')));
 //        $file = file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/exterior.sql'))
 //            . 'where c.name = \'черный\' and s.name = \'муассанит\'';
