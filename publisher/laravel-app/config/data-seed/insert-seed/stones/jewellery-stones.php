@@ -12,19 +12,19 @@ use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
 
 return [
     [
-        'stoneName' => StoneBuilderEnum::AQUAMARINE->value,
+        'stoneName'        => StoneBuilderEnum::AQUAMARINE->value,
         'stoneDescription' => 'Аквамарин - ювелирная разновидность минерала берилла голубого или зеленовато-голубого цвета. Название камня произошло от латинского aqua marina – «морская вода», поскольку цвет камня напоминает теплые тропические моря.',
-        'altStoneName' => 'Санта Мария, берудж, голубой берилл',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::BERYL->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
-        'opticalEffect' => OpticalEffectBuilderEnum::PLEOCHROISM->value,
-        'colours' => [
+        'altStoneName'     => 'Санта Мария, берудж, голубой берилл',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::BERYL->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect'    => OpticalEffectBuilderEnum::PLEOCHROISM->value,
+        'colours'          => [
             [ColourBuilderEnum::LIGHT_BLUE->value, 50],
             [ColourBuilderEnum::BLUE->value, 50],
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::EMERALD_CUT->value, 20],
             [FacetBuilderEnum::ASSCHER_CUT->value, 20],
             [FacetBuilderEnum::ROUND_CUT->value, 20],
@@ -33,39 +33,39 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::AQUAMARINE_CAT_EYE->value,
+        'stoneName'        => StoneBuilderEnum::AQUAMARINE_CAT_EYE->value,
         'stoneDescription' => 'Аквамарин «кошачий глаз» — это редкая разновидность берилла с эффектом «кошачьего глаза», а аквамарин — это камень без этого эффекта. Главное отличие в том, что «кошачий глаз» имеет переливчатость и обычно обрабатывается в виде кабошона, а стандартный аквамарин чаще фасетной огранки. ',
-        'altStoneName' => 'берилл с эффектом кошачьего глаза',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::BERYL->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
-        'opticalEffect' => OpticalEffectBuilderEnum::CATS_YEY->value,
-        'colours' => [
+        'altStoneName'     => 'берилл с эффектом кошачьего глаза',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::BERYL->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect'    => OpticalEffectBuilderEnum::CATS_YEY->value,
+        'colours'          => [
             [ColourBuilderEnum::LIGHT_BLUE->value, 50],
             [ColourBuilderEnum::BLUE->value, 50],
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::CABOCHON_ROUND->value, 30],
             [FacetBuilderEnum::CABOCHON_OVAL->value, 30]
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::AXINITE->value,
+        'stoneName'        => StoneBuilderEnum::AXINITE->value,
         'stoneDescription' => 'Один из немногих камней, которые могут производить в себе различные цвета в зависимости от падающего на них света. Если смотреть на него под разными углами, то они будут выдавать в своём теле различные оттенки, ранее в них не замеченные.',
-        'altStoneName' => 'севергинит, тумит',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::SILICATE->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::FORTH_GRADE->value,
-        'opticalEffect' => OpticalEffectBuilderEnum::PLEOCHROISM->value,
-        'colours' => [
+        'altStoneName'     => 'севергинит, тумит',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::SILICATE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect'    => OpticalEffectBuilderEnum::PLEOCHROISM->value,
+        'colours'          => [
             [ColourBuilderEnum::BROWN->value, 25],
             [ColourBuilderEnum::BLUE->value, 25],
             [ColourBuilderEnum::YELLOW->value, 25],
             [ColourBuilderEnum::PURPLE->value, 25]
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::CABOCHON_ROUND->value, 30],
             [FacetBuilderEnum::CABOCHON_OVAL->value, 30],
             [FacetBuilderEnum::ROUND_CUT->value, 20],
@@ -73,18 +73,18 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::ALMANDINE_GARNET->value,
+        'stoneName'        => StoneBuilderEnum::ALMANDINE_GARNET->value,
         'stoneDescription' => 'Альмандин — это разновидность граната, силикат железа и алюминия, известный своей высокой твердостью и широким спектром красных, красно-фиолетовых и красно-бурых оттенков. Один из самых распространенных видов граната, используемый в ювелирном деле для изготовления украшений',
-        'altStoneName' => 'карбункул, алабандская венисса',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::POMEGRANATE->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::THIRD_GRADE->value,
-        'opticalEffect' => '',
-        'colours' => [
+        'altStoneName'     => 'карбункул, алабандская венисса',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::POMEGRANATE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::THIRD_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
             [ColourBuilderEnum::RED->value, 100]
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::ROUND_CUT->value, 35],
             [FacetBuilderEnum::OVAL_CUT->value, 35],
             [FacetBuilderEnum::TRILLION_CUT->value, 10],
@@ -93,19 +93,19 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::AMETHYST->value,
+        'stoneName'        => StoneBuilderEnum::AMETHYST->value,
         'stoneDescription' => 'Аметист — это ювелирный фиолетовый камень, разновидность кварца, популярный в ювелирном деле. Он ценится за свой насыщенный цвет, который варьируется от нежного лилового до тёмно-пурпурного.',
-        'altStoneName' => 'аметистовый кварц, камень Бахуса',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::QUARTZ->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::THIRD_GRADE->value,
-        'opticalEffect' => '',
-        'colours' => [
+        'altStoneName'     => 'аметистовый кварц, камень Бахуса',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::QUARTZ->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::THIRD_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
             [ColourBuilderEnum::PURPLE->value, 50],
             [ColourBuilderEnum::LILAC->value, 50]
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::CABOCHON_ROUND->value, 20],
             [FacetBuilderEnum::CABOCHON_OVAL->value, 20],
             [FacetBuilderEnum::ROUND_CUT->value, 20],
@@ -115,20 +115,20 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::AMETRINE->value,
+        'stoneName'        => StoneBuilderEnum::AMETRINE->value,
         'stoneDescription' => 'Аметрин (боливианит, аметист-цитрин, двухцветный аметист) — одна из разновидностей кварца, выделяемых по цвету. Редкой красивой окраски, которая распределяется в кристалле неравномерно или зонально, с чередующимися участками аметистового и цитринового цвета.',
-        'altStoneName' => 'боливианит, аметист-цитрин, двухцветный аметист',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::QUARTZ->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::THIRD_GRADE->value,
-        'opticalEffect' => OpticalEffectBuilderEnum::TWO_COLOURED->value,
-        'colours' => [
+        'altStoneName'     => 'боливианит, аметист-цитрин, двухцветный аметист',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::QUARTZ->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::THIRD_GRADE->value,
+        'opticalEffect'    => OpticalEffectBuilderEnum::TWO_COLOURED->value,
+        'colours'          => [
             [ColourBuilderEnum::YELLOW->value, 40],
             [ColourBuilderEnum::PURPLE->value, 30],
             [ColourBuilderEnum::LILAC->value, 30]
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::OVAL_CUT->value, 20],
             [FacetBuilderEnum::ROUND_CUT->value, 15],
             [FacetBuilderEnum::CABOCHON_OVAL->value, 15],
@@ -139,15 +139,15 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::ANDALUSITE->value,
+        'stoneName'        => StoneBuilderEnum::ANDALUSITE->value,
         'stoneDescription' => 'Для андалузита характерен плеохроизм, который придает ему особую красоту. Иногда его называют «александритом для бедных» за эту особенность.',
-        'altStoneName' => 'хауденит, кузеранит, апир',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::SILICATE->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::FORTH_GRADE->value,
-        'opticalEffect' => OpticalEffectBuilderEnum::PLEOCHROISM->value,
-        'colours' => [
+        'altStoneName'     => 'хауденит, кузеранит, апир',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::SILICATE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect'    => OpticalEffectBuilderEnum::PLEOCHROISM->value,
+        'colours'          => [
             [ColourBuilderEnum::GREEN->value, 20],
             [ColourBuilderEnum::BROWN->value, 20],
             [ColourBuilderEnum::YELLOW->value, 15],
@@ -155,7 +155,7 @@ return [
             [ColourBuilderEnum::RED->value, 15],
             [ColourBuilderEnum::GRAY->value, 15],
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::OVAL_CUT->value, 25],
             [FacetBuilderEnum::ROUND_CUT->value, 20],
             [FacetBuilderEnum::CABOCHON_OVAL->value, 15],
@@ -165,22 +165,22 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::ANDRADITE_GARNET->value,
+        'stoneName'        => StoneBuilderEnum::ANDRADITE_GARNET->value,
         'stoneDescription' => 'Андрадит – это минерал из группы гранатов, силикат кальция и железа, названный в честь бразильского минералога Жозе Бонифасио де Андрада е Силва. Он имеет разнообразные окраски, включая зеленый, желтый, коричневый, красный и черный, и может быть как прозрачным, так и полупрозрачным',
-        'altStoneName' => 'демантоид, топазолит, мелонит',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::POMEGRANATE->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::FORTH_GRADE->value,
-        'opticalEffect' => '',
-        'colours' => [
+        'altStoneName'     => 'демантоид, топазолит, мелонит',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::POMEGRANATE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
             [ColourBuilderEnum::GREEN->value, 20],
             [ColourBuilderEnum::YELLOW->value, 20],
             [ColourBuilderEnum::BROWN->value, 20],
             [ColourBuilderEnum::RED->value, 20],
             [ColourBuilderEnum::BLACK->value, 20],
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::OVAL_CUT->value, 25],
             [FacetBuilderEnum::ROUND_CUT->value, 20],
             [FacetBuilderEnum::CABOCHON_OVAL->value, 15],
@@ -190,18 +190,18 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::ACHROITE->value,
+        'stoneName'        => StoneBuilderEnum::ACHROITE->value,
         'stoneDescription' => 'Ахроит — это название бесцветной разновидности камня группы турмалинов.',
-        'altStoneName' => 'бесцветный турмалин',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::TOURMALINE->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::FORTH_GRADE->value,
-        'opticalEffect' => '',
-        'colours' => [
+        'altStoneName'     => 'бесцветный турмалин',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::TOURMALINE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
             [ColourBuilderEnum::COLOURLESS->value, 100]
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::OVAL_CUT->value, 25],
             [FacetBuilderEnum::ROUND_CUT->value, 20],
             [FacetBuilderEnum::CABOCHON_OVAL->value, 15],
@@ -211,18 +211,18 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::BIXBITE->value,
+        'stoneName'        => StoneBuilderEnum::BIXBITE->value,
         'stoneDescription' => 'Биксбит – чрезвычайно редкая разновидность берилла красного цвета, которая считается одним из самых редких драгоценных камней на Земле.',
-        'altStoneName' => 'красный берилл',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::BERYL->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
-        'opticalEffect' => '',
-        'colours' => [
+        'altStoneName'     => 'красный берилл',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::BERYL->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
             [ColourBuilderEnum::RED->value, 100]
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::OVAL_CUT->value, 25],
             [FacetBuilderEnum::ROUND_CUT->value, 20],
             [FacetBuilderEnum::CABOCHON_OVAL->value, 15],
@@ -232,40 +232,40 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::BRAZILIANITE->value,
+        'stoneName'        => StoneBuilderEnum::BRAZILIANITE->value,
         'stoneDescription' => 'Бразилианит и апатит — единственные фосфаты, которые серьезно используются в ювелирной промышленности. Эти камни по цвету напоминают ярко-желтый хризоберилл или желтый топаз-империал (но несолько зеленее). Бразилианит относительно недавно появился на ювелирном рынке и еще не успел получить широкого признания.',
-        'altStoneName' => 'бразилианит',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::BERYL->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::FORTH_GRADE->value,
-        'opticalEffect' => '',
-        'colours' => [
+        'altStoneName'     => 'бразилианит',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::BERYL->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
             [ColourBuilderEnum::YELLOW->value, 50],
             [ColourBuilderEnum::GREEN->value, 50],
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::CABOCHON_OVAL->value, 50],
             [FacetBuilderEnum::CABOCHON_ROUND->value, 50],
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::VESUVIANITE->value,
+        'stoneName'        => StoneBuilderEnum::VESUVIANITE->value,
         'stoneDescription' => 'Везувиан прозрачный или полупрозрачный, имеет различные оттенки зелёного, бурого, жёлтого, а его цвет зависит от примесей',
-        'altStoneName' => 'калифорнит, идокраз',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::SILICATE->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::FORTH_GRADE->value,
-        'opticalEffect' => '',
-        'colours' => [
+        'altStoneName'     => 'калифорнит, идокраз',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::SILICATE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
             [ColourBuilderEnum::YELLOW->value, 20],
             [ColourBuilderEnum::GREEN->value, 20],
             [ColourBuilderEnum::RED->value, 20],
             [ColourBuilderEnum::BLUE->value, 20],
             [ColourBuilderEnum::PURPLE->value, 20],
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::OVAL_CUT->value, 25],
             [FacetBuilderEnum::ROUND_CUT->value, 20],
             [FacetBuilderEnum::CABOCHON_OVAL->value, 15],
@@ -275,18 +275,18 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::VERDELITE->value,
+        'stoneName'        => StoneBuilderEnum::VERDELITE->value,
         'stoneDescription' => 'Верделит – это зеленая разновидность турмалина. Является наиболее распространенным из благородных турмалинов и ценится за различные оттенки зеленого: от светло-травянистого до насыщенно-изумрудного и темно-зеленого.',
-        'altStoneName' => 'бразильский изумруд',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::TOURMALINE->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::THIRD_GRADE->value,
-        'opticalEffect' => '',
-        'colours' => [
+        'altStoneName'     => 'бразильский изумруд',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::TOURMALINE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::THIRD_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
             [ColourBuilderEnum::GREEN->value, 100],
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::OVAL_CUT->value, 20],
             [FacetBuilderEnum::ROUND_CUT->value, 20],
             [FacetBuilderEnum::EMERALD_CUT->value, 20],
@@ -295,18 +295,18 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::VOROBYEVITE->value,
+        'stoneName'        => StoneBuilderEnum::VOROBYEVITE->value,
         'stoneDescription' => 'Этот камень ценится в ювелирном деле за красивый цвет от бледно-розового до насыщенного персикового, прозрачность и возможность обработки. ',
-        'altStoneName' => 'морганит',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::BERYL->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
-        'opticalEffect' => '',
-        'colours' => [
+        'altStoneName'     => 'морганит',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::BERYL->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
             [ColourBuilderEnum::PINK->value, 100]
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::OVAL_CUT->value, 20],
             [FacetBuilderEnum::ROUND_CUT->value, 20],
             [FacetBuilderEnum::EMERALD_CUT->value, 20],
@@ -317,18 +317,18 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::HELIODOR->value,
+        'stoneName'        => StoneBuilderEnum::HELIODOR->value,
         'stoneDescription' => 'Гелиодор - это жёлтая и золотистая разновидность минерала берилла. Благодаря своему привлекательному внешнему виду и превосходным физическим характеристикам гелиодор пользуется высоким спросом на ювелирном рынке.',
-        'altStoneName' => 'золотой берилл',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::BERYL->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::THIRD_GRADE->value,
-        'opticalEffect' => '',
-        'colours' => [
+        'altStoneName'     => 'золотой берилл',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::BERYL->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::THIRD_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
             [ColourBuilderEnum::YELLOW->value, 100]
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::OVAL_CUT->value, 20],
             [FacetBuilderEnum::ROUND_CUT->value, 20],
             [FacetBuilderEnum::CABOCHON_OVAL->value, 20],
@@ -339,22 +339,22 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::JACINTH->value,
+        'stoneName'        => StoneBuilderEnum::JACINTH->value,
         'stoneDescription' => 'Гиацинт — это драгоценная разновидность минерала циркона, представляющая собой прозрачный красновато-коричневый камень с сильным алмазным блеском.',
-        'altStoneName' => 'циркон',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::SILICATE->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
-        'opticalEffect' => '',
-        'colours' => [
+        'altStoneName'     => 'циркон',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::ZIRCON->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
             [ColourBuilderEnum::YELLOW->value, 20],
             [ColourBuilderEnum::PINK->value, 20],
             [ColourBuilderEnum::ORANGE->value, 20],
             [ColourBuilderEnum::RED->value, 20],
             [ColourBuilderEnum::BROWN->value, 20],
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::OVAL_CUT->value, 20],
             [FacetBuilderEnum::ROUND_CUT->value, 20],
             [FacetBuilderEnum::CABOCHON_OVAL->value, 20],
@@ -364,18 +364,18 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::HIDDENITE->value,
+        'stoneName'        => StoneBuilderEnum::HIDDENITE->value,
         'stoneDescription' => 'Гидденит — редкий и пленительный драгоценный камень, который ценится за свой потрясающий зеленый оттенок и уникальные свойства.',
-        'altStoneName' => 'литиевый изумруд',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::SILICATE->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
-        'opticalEffect' => '',
-        'colours' => [
+        'altStoneName'     => 'литиевый изумруд',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::SPODUMENE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
             [ColourBuilderEnum::GREEN->value, 100]
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::OVAL_CUT->value, 20],
             [FacetBuilderEnum::ROUND_CUT->value, 40],
             [FacetBuilderEnum::CABOCHON_OVAL->value, 20],
@@ -383,18 +383,18 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::GOSHENITE->value,
+        'stoneName'        => StoneBuilderEnum::GOSHENITE->value,
         'stoneDescription' => 'Гошенит это самая чистая форма берилла, поскольку в нем отсутствуют красители и примеси, которые придают драгоценным камням цвет.',
-        'altStoneName' => 'бесцветный берилл',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::BERYL->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::THIRD_GRADE->value,
-        'opticalEffect' => '',
-        'colours' => [
+        'altStoneName'     => 'бесцветный берилл',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::BERYL->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::THIRD_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
             [ColourBuilderEnum::COLOURLESS->value, 100]
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::OVAL_CUT->value, 20],
             [FacetBuilderEnum::ROUND_CUT->value, 40],
             [FacetBuilderEnum::CABOCHON_OVAL->value, 20],
@@ -402,23 +402,232 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::DEMANTOID->value,
+        'stoneName'        => StoneBuilderEnum::DEMANTOID->value,
         'stoneDescription' => 'Демантоид — это прозрачная, редкая и ценная ювелирная разновидность зелёного граната-андрадита. Камень имеет зелёный или желтовато-зелёный цвет, иногда с коричневыми оттенками, а его высокий блеск и яркость сделали его популярным у ценителей ювелирного искусства и ассоциирующимся с роскошью',
-        'altStoneName' => 'уральский изумруд, марвелит',
-        'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,
-        'stoneFamily' => StoneFamilyBuilderEnum::POMEGRANATE->value,
-        'stoneGroup' => StoneGroupBuilderEnum::JEWELLERIES->value,
-        'stoneGrade' => StoneGradeBuilderEnum::FIRST_GRADE->value,
-        'opticalEffect' => '',
-        'colours' => [
+        'altStoneName'     => 'уральский изумруд, марвелит',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::POMEGRANATE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::FIRST_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
             [ColourBuilderEnum::GREEN->value, 100]
         ],
-        'facets' => [
+        'facets'           => [
             [FacetBuilderEnum::OVAL_CUT->value, 20],
             [FacetBuilderEnum::ROUND_CUT->value, 20],
             [FacetBuilderEnum::PRINCESS_CUT->value, 20],
             [FacetBuilderEnum::CUSHION_CUT->value, 20],
             [FacetBuilderEnum::EMERALD_CUT->value, 10],
+            [FacetBuilderEnum::PEAR_CUT->value, 10],
+        ]
+    ],
+    [
+        'stoneName'        => StoneBuilderEnum::STAR_DIOPSIDE->value,
+        'stoneDescription' => StoneBuilderEnum::STAR_DIOPSIDE->description(),
+        'altStoneName'     => 'диопсид чёрная звезда',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::PYROXENE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::THIRD_GRADE->value,
+        'opticalEffect'    => OpticalEffectBuilderEnum::ASTERISM->value,
+        'colours'          => [
+            [ColourBuilderEnum::BLACK->value, 100]
+        ],
+        'facets'           => [
+            [FacetBuilderEnum::OVAL_CUT->value, 20],
+            [FacetBuilderEnum::ROUND_CUT->value, 40],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 20],
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 20],
+        ]
+    ],
+    [
+        'stoneName'        => StoneBuilderEnum::RHINE_STONE->value,
+        'stoneDescription' => StoneBuilderEnum::RHINE_STONE->description(),
+        'altStoneName'     => 'богемский алмаз',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::QUARTZ->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
+            [ColourBuilderEnum::COLOURLESS->value, 100]
+        ],
+        'facets'           => [
+            [FacetBuilderEnum::OVAL_CUT->value, 10],
+            [FacetBuilderEnum::ROUND_CUT->value, 20],
+            [FacetBuilderEnum::PRINCESS_CUT->value, 10],
+            [FacetBuilderEnum::CUSHION_CUT->value, 10],
+            [FacetBuilderEnum::EMERALD_CUT->value, 10],
+            [FacetBuilderEnum::PEAR_CUT->value, 10],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 10],
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 20],
+        ]
+    ],
+    [
+        'stoneName'        => StoneBuilderEnum::DRAVITE->value,
+        'stoneDescription' => StoneBuilderEnum::DRAVITE->description(),
+        'altStoneName'     => 'бурый турмалин',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::TOURMALINE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
+            [ColourBuilderEnum::YELLOW->value, 50],
+            [ColourBuilderEnum::BROWN->value, 50],
+        ],
+        'facets'           => [
+            [FacetBuilderEnum::OVAL_CUT->value, 10],
+            [FacetBuilderEnum::ROUND_CUT->value, 10],
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 40],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 40],
+        ]
+    ],
+    [
+        'stoneName'        => StoneBuilderEnum::RIVER_PEARL_NATURE->value,
+        'stoneDescription' => StoneBuilderEnum::RIVER_PEARL_NATURE->description(),
+        'altStoneName'     => 'жемчуг',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::ORGANOGENIC->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
+            [ColourBuilderEnum::YELLOW->value, 20],
+            [ColourBuilderEnum::WHITE->value, 40],
+            [ColourBuilderEnum::GREEN->value, 20],
+            [ColourBuilderEnum::GRAY->value, 20],
+        ],
+        'facets'           => [
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 50],
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 50],
+        ]
+    ],
+    [
+        'stoneName'        => StoneBuilderEnum::SEA_PEARL_CULTURED->value,
+        'stoneDescription' => StoneBuilderEnum::SEA_PEARL_CULTURED->description(),
+        'altStoneName'     => 'акойя',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::ORGANOGENIC->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::SECOND_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
+            [ColourBuilderEnum::YELLOW->value, 30],
+            [ColourBuilderEnum::WHITE->value, 40],
+            [ColourBuilderEnum::BLACK->value, 30],
+        ],
+        'facets'           => [
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 50],
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 25],
+            [FacetBuilderEnum::PEAR_CUT->value, 25],
+        ]
+    ],
+    [
+        'stoneName'        => StoneBuilderEnum::RIVER_PEARL_CULTURED->value,
+        'stoneDescription' => StoneBuilderEnum::RIVER_PEARL_CULTURED->description(),
+        'altStoneName'     => 'жемчуг речной',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::ORGANOGENIC->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
+            [ColourBuilderEnum::WHITE->value, 100],
+        ],
+        'facets'           => [
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 50],
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 25],
+            [FacetBuilderEnum::PEAR_CUT->value, 25],
+        ]
+    ],
+    [
+        'stoneName'        => StoneBuilderEnum::INDIGOLITE->value,
+        'stoneDescription' => StoneBuilderEnum::INDIGOLITE->description(),
+        'altStoneName'     => 'синий турмалин',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::TOURMALINE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::THIRD_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
+            [ColourBuilderEnum::BLUE->value, 100],
+        ],
+        'facets'           => [
+            [FacetBuilderEnum::OVAL_CUT->value, 20],
+            [FacetBuilderEnum::ROUND_CUT->value, 20],
+            [FacetBuilderEnum::EMERALD_CUT->value, 20],
+            [FacetBuilderEnum::CUSHION_CUT->value, 10],
+            [FacetBuilderEnum::ASSCHER_CUT->value, 10],
+            [FacetBuilderEnum::HEART_CUT->value, 10],
+            [FacetBuilderEnum::PEAR_CUT->value, 10],
+        ]
+    ],
+    [
+        'stoneName'        => StoneBuilderEnum::IOLITE->value,
+        'stoneDescription' => StoneBuilderEnum::IOLITE->description(),
+        'altStoneName'     => 'фиалковый камень, кордиерит',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::SILICATE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect'    => OpticalEffectBuilderEnum::PLEOCHROISM->value,
+        'colours'          => [
+            [ColourBuilderEnum::BLUE->value, 100],
+        ],
+        'facets'           => [
+            [FacetBuilderEnum::OVAL_CUT->value, 20],
+            [FacetBuilderEnum::ROUND_CUT->value, 20],
+            [FacetBuilderEnum::EMERALD_CUT->value, 20],
+            [FacetBuilderEnum::CUSHION_CUT->value, 10],
+            [FacetBuilderEnum::ASSCHER_CUT->value, 10],
+            [FacetBuilderEnum::HEART_CUT->value, 10],
+            [FacetBuilderEnum::PEAR_CUT->value, 10],
+        ]
+    ],
+    [
+        'stoneName'        => StoneBuilderEnum::CASSITERITE->value,
+        'stoneDescription' => StoneBuilderEnum::CASSITERITE->description(),
+        'altStoneName'     => 'оловянный камень',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::RUTILE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
+            [ColourBuilderEnum::BLACK->value, 20],
+            [ColourBuilderEnum::BROWN->value, 20],
+            [ColourBuilderEnum::YELLOW->value, 20],
+            [ColourBuilderEnum::RED->value, 20],
+            [ColourBuilderEnum::GREEN->value, 10],
+            [ColourBuilderEnum::BLUE->value, 10],
+        ],
+        'facets'           => [
+            [FacetBuilderEnum::OVAL_CUT->value, 20],
+            [FacetBuilderEnum::ROUND_CUT->value, 20],
+            [FacetBuilderEnum::EMERALD_CUT->value, 20],
+            [FacetBuilderEnum::CUSHION_CUT->value, 10],
+            [FacetBuilderEnum::ASSCHER_CUT->value, 10],
+            [FacetBuilderEnum::HEART_CUT->value, 10],
+            [FacetBuilderEnum::PEAR_CUT->value, 10],
+        ]
+    ],
+    [
+        'stoneName'        => StoneBuilderEnum::KYANITE->value,
+        'stoneDescription' => StoneBuilderEnum::KYANITE->description(),
+        'altStoneName'     => 'дистен, цианит',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::SILICATE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
+            [ColourBuilderEnum::BLUE->value, 100],
+        ],
+        'facets'           => [
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 20],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 20],
             [FacetBuilderEnum::PEAR_CUT->value, 10],
         ]
     ],

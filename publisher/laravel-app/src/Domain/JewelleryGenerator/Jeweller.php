@@ -12,7 +12,7 @@ final class Jeweller
             ->reset()
             ->buildCategory()
             ->buildMetal()
-//            ->buildInsert()
+            ->buildInsert()
 //            ->buildProperty()
             ->buildJewellery()
 //            ->buildMedia()

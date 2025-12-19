@@ -3,7 +3,11 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
+use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
+use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
+use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
 use Domain\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
@@ -20,7 +24,13 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-//        dd(PreciousMetalBuilderEnum::cases());
+        $jewelleries = config('data-seed.insert-seed.stones.jewellery-stones');
+        dd($jewelleries[array_rand($jewelleries)]);
+        $filteredArray = array_filter($jewelleries, function ($value) {
+            dump($value['stoneGrade']);
+            return $value['stoneGrade'] === StoneGradeBuilderEnum::SECOND_GRADE->value;
+        });
+        dd($filteredArray);
 //        dd(file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/exterior.sql')));
 //        $file = file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/exterior.sql'))
 //            . 'where c.name = \'черный\' and s.name = \'муассанит\'';

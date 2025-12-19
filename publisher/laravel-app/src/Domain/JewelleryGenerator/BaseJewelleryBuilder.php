@@ -44,7 +44,7 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
     public function buildInsert(): jewelleryBuilderInterface
     {
         $insert                          = new InsertItem();
-        $this->baseJewellery->insertItem = $insert->getInsert($this->baseJewellery->category);
+        $this->baseJewellery->insertItem = $insert->getInsert($this->baseJewellery);
 
         return $this;
     }
@@ -86,7 +86,7 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         $jewellery['jewelleryItem']  = $this->baseJewellery->jewelleryItem;
         $jewellery['preciousMetals'] = $this->baseJewellery->metalItem['preciousMetals'];
         $jewellery['coverages']      = $this->baseJewellery->metalItem['coverages'];
-        //        $jewellery['insertItem']     = $this->baseJewellery->insertItem;
+        $jewellery['insertItem']     = $this->baseJewellery->insertItem;
         //        $jewellery['property']       = $this->baseJewellery->property;
         //        $jewellery['media']          = $this->baseJewellery->media;
 
