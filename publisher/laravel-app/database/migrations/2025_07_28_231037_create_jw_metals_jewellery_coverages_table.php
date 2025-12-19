@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_metals.metal_exteriors', function (Blueprint $table) {
+        Schema::create('jw_metals.jewellery_coverages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('jewellery_id');
-            $table->unsignedBigInteger('metal_hallmark_id');
             $table->unsignedBigInteger('coverage_id');
             $table->timestamps();
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries.jewelleries');
-            $table->foreign('metal_hallmark_id')->references('id')->on('jw_metals.metal_hallmarks');
             $table->foreign('coverage_id')->references('id')->on('jw_metals.coverages');
+
+            $table->unique(['coverage_id', 'jewellery_id'], 'unique_jewellery_coverages');
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_metals.metal_exteriors');
+        Schema::dropIfExists('jw_metals.jewellery_coverages');
     }
 };

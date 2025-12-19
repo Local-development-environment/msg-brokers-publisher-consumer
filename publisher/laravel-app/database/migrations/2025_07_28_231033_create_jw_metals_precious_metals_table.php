@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_metals.metal_types', function (Blueprint $table) {
+        Schema::create('jw_metals.precious_metals', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_metals.metal_types');
+        Schema::dropIfExists('jw_metals.precious_metals');
     }
 };

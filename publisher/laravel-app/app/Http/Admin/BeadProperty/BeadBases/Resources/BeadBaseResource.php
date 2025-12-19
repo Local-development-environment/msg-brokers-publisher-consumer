@@ -24,9 +24,9 @@ final class BeadBaseResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'type' => BeadBase::TYPE_RESOURCE,
-            'attributes' => $this->attributeItems(),
+            'id'            => $this->id,
+            'type'          => BeadBase::TYPE_RESOURCE,
+            'attributes'    => $this->attributeItems(),
             'relationships' => [
                 'beads' => $this->sectionRelationships(
                     BeadBaseNameRoutesEnum::RELATED_TO_BEADS->value,

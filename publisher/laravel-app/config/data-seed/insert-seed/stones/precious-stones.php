@@ -68,7 +68,7 @@ return [
         ]
     ],
     [
-        'stoneName' => StoneBuilderEnum::SEE_PEARL_NATURE->value,
+        'stoneName' => StoneBuilderEnum::SEA_PEARL_NATURE->value,
         'stoneDescription' => 'Жемчуг - натуральный биогенный материал, округлой или неправильной формы, который растёт в раковинах двустворчатых моллюсков, используется в ювелирном деле, близок к сферической форме, округлый или каплевидный.',
         'altStoneName' => 'маргарит, акойя',
         'typeOrigin' => TypeOriginBuilderEnum::NATURE->value,

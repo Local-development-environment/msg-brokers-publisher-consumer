@@ -4,49 +4,35 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems;
 
-use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
-use Domain\JewelleryGenerator\Jewelleries\InsertItems\GrownStones\FirstGrownStoneGeneration;
-use Domain\JewelleryGenerator\Jewelleries\InsertItems\GrownStones\SecondGrownStoneGeneration;
-use Domain\JewelleryGenerator\Jewelleries\InsertItems\ImitationStones\FirstImitationStoneGeneration;
-use Domain\JewelleryGenerator\Jewelleries\InsertItems\ImitationStones\SecondImitationStoneGeneration;
-use Domain\JewelleryGenerator\Jewelleries\InsertItems\NaturalStones\FirstNatureStoneGeneration;
-use Domain\JewelleryGenerator\Jewelleries\InsertItems\NaturalStones\SecondNatureStoneGeneration;
+use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
+use Domain\JewelleryGenerator\Jewelleries\InsertItems\OrderInserts\SecondInsertGeneration;
+use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 
 final class DoubleInsertGeneration
 {
-    public function getInsert(): array
+    use ProbabilityArrayElementTrait;
+    public function getInsert(array $firstInsert): array
     {
-        $firstStone = $this->getFirstInsert();
-        $secondStone = $this->getSecondInsert($firstStone);
+        if ($firstInsert['stoneGroup'] === StoneGroupBuilderEnum::PRECIOUS->value) {
 
-        return [
-            $firstStone,
-            $secondStone,
-        ];
-    }
+            return (new SecondInsertGeneration())->getSecondInsertPreciousStone();
 
-    private function getFirstInsert(): array
-    {
-        $randOrigin = rand(0, 100);
+        } elseif ($firstInsert['stoneGroup'] === StoneGroupBuilderEnum::JEWELLERIES->value) {
 
-        if ($randOrigin < 70) {
-            $firstStone = (new FirstNatureStoneGeneration())->getStone();
-        } elseif ($randOrigin < 85) {
-            $firstStone = (new FirstGrownStoneGeneration())->getStone();
+            if (rand(0,1)) {
+
+                return (new SecondInsertGeneration())->getSecondInsertPreciousStone();
+
+            } else {
+
+                return (new SecondInsertGeneration())->getSecondInsertJewelleryStone();
+
+            }
+
         } else {
-            $firstStone = (new FirstImitationStoneGeneration())->getStone();
-        }
-        return $firstStone;
-    }
 
-    private function getSecondInsert(array $firstStone): array
-    {
-        if ($firstStone['typeOrigin'] === TypeOriginBuilderEnum::IMITATION->value) {
-            return (new SecondImitationStoneGeneration())->getStone($firstStone);
-        } elseif ($firstStone['typeOrigin'] === TypeOriginBuilderEnum::NATURE->value) {
-            return (new SecondNatureStoneGeneration())->getStone($firstStone);
-        } else {
-            return (new SecondGrownStoneGeneration())->getStone($firstStone);
+            return $firstInsert;
+
         }
     }
 }

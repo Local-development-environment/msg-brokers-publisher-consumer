@@ -3,27 +3,17 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Http\Integrations\UVI\Jewelleries\Requests\GetAllJewelleries;
-use App\Http\Integrations\UVI\UVIConnector;
-use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
-use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
+use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
+use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
+use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
-use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
-use Domain\JewelleryProperties\Earrings\EarringClasps\Enums\EarringClaspBuilderEnum;
-use Domain\JewelleryProperties\Earrings\EarringTypes\Enums\EarringTypeBuilderEnum;
-use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeBuilderEnum;
-use Domain\PreciousMetals\Coverages\Enums\CoverageBuilderEnum;
-use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeBuilderEnum;
-use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingBuilderEnum;
-use Illuminate\Contracts\Container\BindingResolutionException;
-use Illuminate\Database\Query\Builder;
+use Domain\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
-use Spatie\QueryBuilder\QueryBuilder;
 
 final class TestSeeder extends Seeder
 {
@@ -34,6 +24,22 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
+        $jewelleries = config('data-seed.insert-seed.stones.jewellery-stones');
+        dd($jewelleries[array_rand($jewelleries)]);
+        $filteredArray = array_filter($jewelleries, function ($value) {
+            dump($value['stoneGrade']);
+            return $value['stoneGrade'] === StoneGradeBuilderEnum::SECOND_GRADE->value;
+        });
+        dd($filteredArray);
+//        dd(file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/exterior.sql')));
+//        $file = file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/exterior.sql'))
+//            . 'where c.name = \'черный\' and s.name = \'муассанит\'';
+        $natureType = TypeOriginBuilderEnum::NATURE->value;
+        $file = file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/exterior.sql'))
+            . "where t.name = '{$natureType}'";
+//        dd($file);
+        $test = DB::select($file);
+        dd(collect($test)->random());
         $bases = BraceletBaseBuilderEnum::cases();
         foreach ($bases as $key => $base) {
             if ($base->value === BraceletBaseBuilderEnum::METAL_CHAIN->value ||

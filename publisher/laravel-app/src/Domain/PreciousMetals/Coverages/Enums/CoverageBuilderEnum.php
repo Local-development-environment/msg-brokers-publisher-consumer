@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\PreciousMetals\Coverages\Enums;
 
-use Domain\PreciousMetals\MetalTypes\Enums\MetalTypeBuilderEnum;
+use Domain\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
 
 enum CoverageBuilderEnum: string
 {
@@ -41,22 +41,22 @@ enum CoverageBuilderEnum: string
         return match ($this) {
             self::GOLDING,
             self::OXIDATION => [
-                MetalTypeBuilderEnum::SILVER->value
+                PreciousMetalBuilderEnum::SILVER->value
             ],
             self::RHODIUM_PLATING => [
-                MetalTypeBuilderEnum::SILVER->value,
-                MetalTypeBuilderEnum::GOLDEN_RED->value,
-                MetalTypeBuilderEnum::GOLDEN_WHITE->value,
-                MetalTypeBuilderEnum::GOLDEN_YELLOW->value
+                PreciousMetalBuilderEnum::SILVER->value,
+                PreciousMetalBuilderEnum::GOLDEN_RED->value,
+                PreciousMetalBuilderEnum::GOLDEN_WHITE->value,
+                PreciousMetalBuilderEnum::GOLDEN_YELLOW->value
             ],
             self::DIAMOND_CUT,
             self::ENAMEL => [
-                MetalTypeBuilderEnum::SILVER->value,
-                MetalTypeBuilderEnum::GOLDEN_RED->value,
-                MetalTypeBuilderEnum::GOLDEN_WHITE->value,
-                MetalTypeBuilderEnum::GOLDEN_YELLOW->value,
-                MetalTypeBuilderEnum::PALLADIUM->value,
-                MetalTypeBuilderEnum::PLATINUM->value,
+                PreciousMetalBuilderEnum::SILVER->value,
+                PreciousMetalBuilderEnum::GOLDEN_RED->value,
+                PreciousMetalBuilderEnum::GOLDEN_WHITE->value,
+                PreciousMetalBuilderEnum::GOLDEN_YELLOW->value,
+                PreciousMetalBuilderEnum::PALLADIUM->value,
+                PreciousMetalBuilderEnum::PLATINUM->value,
             ]
         };
     }

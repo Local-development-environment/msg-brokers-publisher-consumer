@@ -14,6 +14,7 @@ use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
 use Domain\JewelleryGenerator\BaseJewelleryBuilder;
 use Domain\JewelleryGenerator\InitProperties;
 use Domain\JewelleryGenerator\Jeweller;
+use Domain\JewelleryGenerator\Jewelleries\Categories\InitCategoryData;
 use Domain\JewelleryGenerator\Jewelleries\InsertItems\InitInsertData;
 use Domain\JewelleryGenerator\Jewelleries\Medias\InitMedia;
 use Domain\JewelleryGenerator\Jewelleries\MetalItems\InitMetalData;
@@ -68,6 +69,9 @@ final class BuildJewellerySeeder extends Seeder
 
         $jeweller = new Jeweller();
 
+        $category = new InitCategoryData();
+        $category();
+
         $insert = new InitInsertData;
         $insert();
 
@@ -77,23 +81,14 @@ final class BuildJewellerySeeder extends Seeder
         $media = new InitMedia();
         $media();
 
-//        dd('stop');
-        $initProperties = new initProperties();
-        $initProperties->initCategoryProperties();
-        $initProperties->initBeadProperties();
-        $initProperties->initRingProperties();
-        $initProperties->initBraceletProperties();
-        $initProperties->initShareProperties();
-        $initProperties->initEarringProperties();
-
 //        dd('ok');
         for ($i = 0; $i < $items; $i++) {
             dump($i);
             $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
-//            dump($builder);
-            $this->addJewellery($builder);
+            dump($builder);
+//            $this->addJewellery($builder);
         }
-//        dd('ok');
+        dd('ok');
 //        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
 //        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_jewelleries;');
 

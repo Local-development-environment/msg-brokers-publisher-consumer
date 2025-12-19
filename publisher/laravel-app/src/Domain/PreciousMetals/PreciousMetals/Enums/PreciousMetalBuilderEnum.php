@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Domain\PreciousMetals\MetalTypes\Enums;
+namespace Domain\PreciousMetals\PreciousMetals\Enums;
 
 use Domain\PreciousMetals\Coverages\Enums\CoverageBuilderEnum;
 use Domain\PreciousMetals\Hallmarks\Enums\HallmarkBuilderEnum;
 
-enum MetalTypeBuilderEnum: string
+enum PreciousMetalBuilderEnum: string
 {
     case GOLDEN_RED    = 'красное золото';
     case GOLDEN_WHITE  = 'белое золото';
