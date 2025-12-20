@@ -11,7 +11,7 @@ use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 final class DoubleInsertGeneration
 {
     use ProbabilityArrayElementTrait;
-    public function getInsert(array $firstInsert): array
+    public function getInsert(array $firstInsert, int $keyInsert): array
     {
         if ($firstInsert['stoneGroup'] === StoneGroupBuilderEnum::PRECIOUS->value) {
 

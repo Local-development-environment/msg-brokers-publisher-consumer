@@ -68,7 +68,7 @@ return [
         'stoneFamily' => StoneFamilyBuilderEnum::FELDSPAR->value,
         'stoneGroup' => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
         'stoneGrade' => StoneGradeBuilderEnum::SECOND_GRADE->value,
-        'opticalEffect' => OpticalEffectBuilderEnum::ADULARESCENCE,
+        'opticalEffect' => OpticalEffectBuilderEnum::ADULARESCENCE->value,
         'colours' => [
             [ColourBuilderEnum::MULTI_COLOUR->value, 15],
             [ColourBuilderEnum::GRAY->value, 10],
