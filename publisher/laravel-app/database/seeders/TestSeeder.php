@@ -24,8 +24,13 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        $jewelleries = config('data-seed.insert-seed.stones.jewellery-stones');
-        dd($jewelleries[array_rand($jewelleries)]);
+        $jewelleries = config('data-seed.insert-seed.stones.carat');
+//        dd($jewelleries);
+        $stoneMetrics = data_get($jewelleries, '*.*');
+        $filteredItems = array_filter($stoneMetrics, function ($value) {
+            return $value['carat'] >= 0.3 && $value['carat'] <= 3;
+        });
+        dd($filteredItems);
         $filteredArray = array_filter($jewelleries, function ($value) {
             dump($value['stoneGrade']);
             return $value['stoneGrade'] === StoneGradeBuilderEnum::SECOND_GRADE->value;

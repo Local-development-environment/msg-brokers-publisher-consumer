@@ -5,13 +5,10 @@ declare(strict_types=1);
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems;
 
 use Domain\JewelleryGenerator\Jewelleries\InsertItems\OrderInserts\FirstInsertGeneration;
-use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
 
 final class SingleInsertGeneration
 {
-    use ProbabilityArrayElementTrait;
-
     public function getInsert(object $jewellery): array
     {
         $metal = $jewellery->metalItem['preciousMetals'][0]['preciousMetal'];
