@@ -11,7 +11,7 @@ use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 final class DoubleInsertGeneration
 {
     use ProbabilityArrayElementTrait;
-    public function getInsert(array $firstInsert, int $keyInsert): array
+    public function getInsert(): array
     {
         $randNum = rand(1, 100);
 

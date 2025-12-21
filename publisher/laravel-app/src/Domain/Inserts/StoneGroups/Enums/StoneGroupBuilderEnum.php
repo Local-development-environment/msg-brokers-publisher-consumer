@@ -87,6 +87,7 @@ enum StoneGroupBuilderEnum: string
                 StoneBuilderEnum::IOLITE->value,
                 StoneBuilderEnum::CASSITERITE->value,
                 StoneBuilderEnum::KYANITE->value,
+                StoneBuilderEnum::CLINOHUMITE->value,
             ],
             self::JEWELLERY_ORNAMENTAL => [
                 StoneBuilderEnum::AGATE->value,

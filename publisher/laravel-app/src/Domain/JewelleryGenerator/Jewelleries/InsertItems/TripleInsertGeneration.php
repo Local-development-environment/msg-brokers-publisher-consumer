@@ -4,33 +4,22 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems;
 
-use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
 use Domain\JewelleryGenerator\Jewelleries\InsertItems\OrderInserts\ThirdInsertGeneration;
 
 final class TripleInsertGeneration
 {
-    public function getInsert(array $secondInsert): array
+    public function getInsert(): array
     {
-        if ($secondInsert['stoneGroup'] === StoneGroupBuilderEnum::JEWELLERIES->value) {
+        $randNum = rand(1, 100);
 
-            return (new ThirdInsertGeneration())->getSecondInsertPreciousStone();
-
-        } elseif ($secondInsert['stoneGroup'] === StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value) {
-
-            if (rand(0,1)) {
-
-                return (new ThirdInsertGeneration())->getSecondInsertPreciousStone();
-
-            } else {
-
-                return (new ThirdInsertGeneration())->getSecondInsertJewelleryStone();
-
-            }
-
+        if ($randNum < 25) {
+            return (new ThirdInsertGeneration())->getThirdInsertPreciousStone();
+        } elseif ($randNum < 50) {
+            return (new ThirdInsertGeneration())->getThirdInsertJewelleryFirstOrderStone();
+        } elseif ($randNum < 75) {
+            return (new ThirdInsertGeneration())->getThirdInsertCubicZirconiaStone();
         } else {
-
-            return $secondInsert;
-
+            return (new ThirdInsertGeneration())->getThirdInsertMoissaniteStone();
         }
     }
 

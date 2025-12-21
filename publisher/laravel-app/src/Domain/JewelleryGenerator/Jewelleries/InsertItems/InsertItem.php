@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems;
 
+use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 
@@ -17,7 +18,7 @@ final class InsertItem
         $category = $jewellery->category;
 
         $randNum = rand(1, 100);
-        dump($metal);
+
         if ($category === CategoryBuilderEnum::CHAINS->value || $randNum < 10) {
 
             return [];
@@ -40,7 +41,9 @@ final class InsertItem
         } elseif ($randNum < 85) {
 
             $firstInsert  = (new SingleInsertGeneration)->getInsert($jewellery);
-            $secondInsert = (new DoubleInsertGeneration)->getInsert($firstInsert, 1);
+            $secondInsert = (new DoubleInsertGeneration)->getInsert();
+
+            $secondInsert['facets']   = FacetBuilderEnum::ROUND_CUT->value;
 
             return [
                 [
@@ -62,42 +65,87 @@ final class InsertItem
             ];
 
         } elseif ($randNum < 95) {
-            dump(95);
-            $inserts = [];
-            //
-            //            $stones = (new TripleInsertGeneration())->getInsert();
-            //
-            //            foreach ($stones as $key => $stone) {
-            //
-            //                $inserts[$key] = [
-            //                    'stoneName' => $stone['stoneName'],
-            //                    'facets'    => $stone['quantity'] < 10 ?
-            //                        $this->getArrElement($stone['facets']) : FacetBuilderEnum::ROUND_CUT->value,
-            //                    'colours'   => $this->getArrElement($stone['colours']),
-            //                    'quantity'  => $stone['quantity'],
-            //                    'weight'    => $stone['weight'],
-            //                ];
-            //            }
-            //
-            return $inserts;
+
+            $firstInsert  = (new SingleInsertGeneration)->getInsert($jewellery);
+            $secondInsert = (new DoubleInsertGeneration)->getInsert();
+            $thirdInsert  = (new TripleInsertGeneration)->getInsert();
+
+            $secondInsert['quantity'] = rand(8, 16);
+            $secondInsert['facets']   = FacetBuilderEnum::ROUND_CUT->value;
+
+            return [
+                [
+                    'stoneName'  => $firstInsert['stoneName'],
+                    'facets'     => $firstInsert['facets'],
+                    'colours'    => $firstInsert['colours'],
+                    'quantity'   => $firstInsert['quantity'],
+                    'weight'     => $firstInsert['weight'],
+                    'dimensions' => $firstInsert['dimensions'],
+                ],
+                [
+                    'stoneName'  => $secondInsert['stoneName'],
+                    'facets'     => $secondInsert['facets'],
+                    'colours'    => $secondInsert['colours'],
+                    'quantity'   => $secondInsert['quantity'],
+                    'weight'     => $secondInsert['weight'],
+                    'dimensions' => $secondInsert['dimensions'],
+                ],
+                [
+                    'stoneName'  => $thirdInsert['stoneName'],
+                    'facets'     => $thirdInsert['facets'],
+                    'colours'    => $thirdInsert['colours'],
+                    'quantity'   => $thirdInsert['quantity'],
+                    'weight'     => $thirdInsert['weight'],
+                    'dimensions' => $thirdInsert['dimensions'],
+                ]
+            ];
+
         } else {
-            $inserts = [];
-            //
-            //            $stones = (new QuadrupleInsertGeneration())->getInsert();
-            //
-            //            foreach ($stones as $key => $stone) {
-            //
-            //                $inserts[$key] = [
-            //                    'stoneName' => $stone['stoneName'],
-            //                    'facets'    => $stone['quantity'] < 10 ?
-            //                        $this->getArrElement($stone['facets']) : FacetBuilderEnum::ROUND_CUT->value,
-            //                    'colours'   => $this->getArrElement($stone['colours']),
-            //                    'quantity'  => $stone['quantity'],
-            //                    'weight'    => $stone['weight'],
-            //                ];
-            //            }
-            //
-            return $inserts;
+
+            $firstInsert  = (new SingleInsertGeneration)->getInsert($jewellery);
+            $secondInsert = (new DoubleInsertGeneration)->getInsert();
+            $thirdInsert  = (new TripleInsertGeneration)->getInsert();
+            $forthInsert  = (new QuadrupleInsertGeneration)->getInsert();
+
+            $secondInsert['quantity'] = rand(8, 12);
+            $secondInsert['facets']   = FacetBuilderEnum::ROUND_CUT->value;
+            $thirdInsert['quantity'] = rand(15, 20);
+            $thirdInsert['facets']   = FacetBuilderEnum::ROUND_CUT->value;
+
+            return [
+                [
+                    'stoneName'  => $firstInsert['stoneName'],
+                    'facets'     => $firstInsert['facets'],
+                    'colours'    => $firstInsert['colours'],
+                    'quantity'   => $firstInsert['quantity'],
+                    'weight'     => $firstInsert['weight'],
+                    'dimensions' => $firstInsert['dimensions'],
+                ],
+                [
+                    'stoneName'  => $secondInsert['stoneName'],
+                    'facets'     => $secondInsert['facets'],
+                    'colours'    => $secondInsert['colours'],
+                    'quantity'   => $secondInsert['quantity'],
+                    'weight'     => $secondInsert['weight'],
+                    'dimensions' => $secondInsert['dimensions'],
+                ],
+                [
+                    'stoneName'  => $thirdInsert['stoneName'],
+                    'facets'     => $thirdInsert['facets'],
+                    'colours'    => $thirdInsert['colours'],
+                    'quantity'   => $thirdInsert['quantity'],
+                    'weight'     => $thirdInsert['weight'],
+                    'dimensions' => $thirdInsert['dimensions'],
+                ],
+                [
+                    'stoneName'  => $forthInsert['stoneName'],
+                    'facets'     => $forthInsert['facets'],
+                    'colours'    => $forthInsert['colours'],
+                    'quantity'   => $forthInsert['quantity'],
+                    'weight'     => $forthInsert['weight'],
+                    'dimensions' => $forthInsert['dimensions'],
+                ]
+            ];
         }
     }
 }
