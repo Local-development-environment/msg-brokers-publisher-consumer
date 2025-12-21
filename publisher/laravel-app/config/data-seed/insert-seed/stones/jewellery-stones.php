@@ -631,4 +631,23 @@ return [
             [FacetBuilderEnum::PEAR_CUT->value, 10],
         ]
     ],
+    [
+        'stoneName'        => StoneBuilderEnum::CLINOHUMITE->value,
+        'stoneDescription' => StoneBuilderEnum::CLINOHUMITE->description(),
+        'altStoneName'     => 'титаноливин, красный перидот',
+        'typeOrigin'       => TypeOriginBuilderEnum::NATURE->value,
+        'stoneFamily'      => StoneFamilyBuilderEnum::SILICATE->value,
+        'stoneGroup'       => StoneGroupBuilderEnum::JEWELLERIES->value,
+        'stoneGrade'       => StoneGradeBuilderEnum::FORTH_GRADE->value,
+        'opticalEffect'    => '',
+        'colours'          => [
+            [ColourBuilderEnum::YELLOW->value, 30],
+            [ColourBuilderEnum::ORANGE->value, 30],
+            [ColourBuilderEnum::RED->value, 40],
+        ],
+        'facets'           => [
+            [FacetBuilderEnum::CABOCHON_ROUND->value, 20],
+            [FacetBuilderEnum::CABOCHON_OVAL->value, 20],
+        ]
+    ],
 ];

@@ -8,18 +8,18 @@ use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
 use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 
-final class ThirdInsertGeneration
+final class ForthInsertGeneration
 {
     use ProbabilityArrayElementTrait;
 
-    public function getThirdInsertPreciousStone(): array
+    public function getForthInsertPreciousStone(): array
     {
         $preciousStones = config('data-seed.insert-seed.stones.precious-stones');
 
-        return $this->prepareInsert($preciousStones[array_rand($preciousStones)], 2);
+        return $this->prepareInsert($preciousStones[array_rand($preciousStones)], 3);
     }
 
-    public function getThirdInsertJewelleryFirstOrderStone(): array
+    public function getForthInsertJewelleryFirstOrderStone(): array
     {
         $jewelleryStones = config('data-seed.insert-seed.stones.jewellery-stones');
 
@@ -27,10 +27,10 @@ final class ThirdInsertGeneration
             return $item['stoneGrade'] === StoneGradeBuilderEnum::FIRST_GRADE->value;
         });
 
-        return $this->prepareInsert($filteredArray[array_rand($filteredArray)], 2);
+        return $this->prepareInsert($filteredArray[array_rand($filteredArray)], 3);
     }
 
-    public function getThirdInsertCubicZirconiaStone(): array
+    public function getForthInsertCubicZirconiaStone(): array
     {
         $imitationStones = config('data-seed.insert-seed.stones.imitation-stones');
 
@@ -38,10 +38,10 @@ final class ThirdInsertGeneration
             return $item['stoneName'] === StoneBuilderEnum::CUBIC_ZIRCONIA->value;
         });
 
-        return $this->prepareInsert($filteredArray[array_rand($filteredArray)], 2);
+        return $this->prepareInsert($filteredArray[array_rand($filteredArray)], 3);
     }
 
-    public function getThirdInsertMoissaniteStone(): array
+    public function getForthInsertMoissaniteStone(): array
     {
         $imitationStones = config('data-seed.insert-seed.stones.imitation-stones');
 
@@ -49,6 +49,7 @@ final class ThirdInsertGeneration
             return $item['stoneName'] === StoneBuilderEnum::MOISSANITE->value;
         });
 
-        return $this->prepareInsert($filteredArray[array_rand($filteredArray)], 2);
+        return $this->prepareInsert($filteredArray[array_rand($filteredArray)], 3);
     }
+
 }
