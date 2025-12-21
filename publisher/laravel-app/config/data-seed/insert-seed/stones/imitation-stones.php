@@ -10,7 +10,7 @@ use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
 return [
     [
         'stoneName' => StoneBuilderEnum::CUBIC_ZIRCONIA->value,
-        'stoneDescription' => 'Фианит - это искусственно выращенный кристалл, диоксид циркония, который часто используется в ювелирном деле для имитации бриллиантов.',
+        'stoneDescription' => 'Фианит - это искусственно синтезированный кристалл, диоксид циркония, который часто используется в ювелирном деле для имитации бриллиантов.',
         'altStoneName' => 'бриллиант имитация',
         'typeOrigin' => TypeOriginBuilderEnum::IMITATION->value,
         'stoneFamily' => '',

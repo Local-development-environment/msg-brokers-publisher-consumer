@@ -64,9 +64,18 @@ trait ProbabilityArrayElementTrait
                 return 1;
             }
         } elseif ($keyInsert === 1) {
-            return rand(10, 20);
+            $rand = rand(1, 100);
+            if ($rand < 25) {
+                return rand(10, 20);
+            } elseif ($rand < 50) {
+                return rand(20, 30);
+            } elseif ($rand < 75) {
+                return rand(30, 40);
+            } else {
+                return rand(40, 60);
+            }
         } elseif ($keyInsert === 2) {
-            return rand(20, 30);
+            return rand(1, 100);
         } else {
             return rand(30, 40);
         }
@@ -74,41 +83,18 @@ trait ProbabilityArrayElementTrait
 
     protected function getInsertWeight(array $insert, int $keyInsert): array
     {
-        $middle = config('data-seed.insert-seed.stones.carat.middle');
-        $small  = config('data-seed.insert-seed.stones.carat.small');
-        $large  = config('data-seed.insert-seed.stones.carat.large');
         $stoneMetrics = data_get(config('data-seed.insert-seed.stones.carat'), '*.*');
 
         if ($keyInsert === 0) {
             if ($insert['stoneGroup'] === StoneGroupBuilderEnum::PRECIOUS->value) {
 
-                if ($insert['quantity'] === 1) {
-                    $filteredItems = array_filter($stoneMetrics, function ($value) {
-                        return $value['carat'] >= 0.5 && $value['carat'] <= 0.9;
-                    });
-                } else {
-                    $filteredItems = array_filter($stoneMetrics, function ($value) {
-                        return $value['carat'] >= 0.3 && $value['carat'] <= 0.5;
-                    });
-                }
-
-                $insert['metrics'] = $filteredItems[array_rand($filteredItems)];
+                $insert = $this->getInsert0309($insert, $stoneMetrics);
 
             } elseif ($insert['stoneGroup'] === StoneGroupBuilderEnum::JEWELLERIES->value) {
 
                 if ($insert['stoneGrade'] === StoneGradeBuilderEnum::FIRST_GRADE->value) {
 
-                    if ($insert['quantity'] === 1) {
-                        $filteredItems = array_filter($stoneMetrics, function ($value) {
-                            return $value['carat'] >= 0.5 && $value['carat'] <= 0.9;
-                        });
-                    } else {
-                        $filteredItems = array_filter($stoneMetrics, function ($value) {
-                            return $value['carat'] >= 0.3 && $value['carat'] <= 0.5;
-                        });
-                    }
-
-                    $insert['metrics'] = $filteredItems[array_rand($filteredItems)];
+                    $insert = $this->getInsert0309($insert, $stoneMetrics);
 
                 }
 
@@ -116,23 +102,13 @@ trait ProbabilityArrayElementTrait
                     $insert['stoneGrade'] === StoneGradeBuilderEnum::THIRD_GRADE->value ||
                     $insert['stoneGrade'] === StoneGradeBuilderEnum::FORTH_GRADE->value) {
 
-                    if ($insert['quantity'] === 1) {
-                        $filteredItems = array_filter($stoneMetrics, function ($value) {
-                            return $value['carat'] >= 0.7 && $value['carat'] <= 2;
-                        });
-                    } else {
-                        $filteredItems = array_filter($stoneMetrics, function ($value) {
-                            return $value['carat'] >= 1 && $value['carat'] <= 5;
-                        });
-                    }
-
-                    $insert['metrics'] = $filteredItems[array_rand($filteredItems)];
+                    $insert = $this->getInsert0750($insert, $stoneMetrics);
 
                 }
 
             } else {
 
-                $insert['metrics'] = $small[array_rand($small)];
+                $insert = $this->getInsert0750($insert, $stoneMetrics);
 
             }
 
@@ -142,12 +118,37 @@ trait ProbabilityArrayElementTrait
             return $insert;
 
         } elseif ($keyInsert === 1) {
+//            dd($insert);
+            if ($insert['quantity'] >= 10 && $insert['quantity'] <= 20) {
 
-            $insert['metrics'] = $small[array_rand($small)];
+                $filteredItems = array_filter($stoneMetrics, function ($value) {
+                    return $value['carat'] >= 0.1 && $value['carat'] <= 0.2;
+                });
+
+            } elseif ($insert['quantity'] >= 20 && $insert['quantity'] <= 30) {
+
+                $filteredItems = array_filter($stoneMetrics, function ($value) {
+                    return $value['carat'] >= 0.06 && $value['carat'] <= 0.09;
+                });
+
+            } elseif ($insert['quantity'] >= 30 && $insert['quantity'] <= 40) {
+
+                $filteredItems = array_filter($stoneMetrics, function ($value) {
+                    return $value['carat'] >= 0.01 && $value['carat'] <= 0.06;
+                });
+
+            } else {
+
+                $filteredItems = array_filter($stoneMetrics, function ($value) {
+                    return $value['carat'] >= 0.0045 && $value['carat'] <= 0.009;
+                });
+
+            }
+
+            $insert['metrics'] = $filteredItems[array_rand($filteredItems)];
 
             $insert['dimensions'] = $this->getInsertDimensions($insert)['dimensions'];
-
-            $insert['weight'] = $insert['metrics']['carat'];
+            $insert['weight']     = $insert['metrics']['carat'];
 
             return $insert;
         }
@@ -185,6 +186,48 @@ trait ProbabilityArrayElementTrait
         $insert['weight']     = $metrics['weight'];
         $insert['dimensions'] = $metrics['dimensions'];
 
+        return $insert;
+    }
+
+    /**
+     * @param array $insert
+     * @param mixed $stoneMetrics
+     * @return array
+     */
+    protected function getInsert0750(array $insert, mixed $stoneMetrics): array
+    {
+        if ($insert['quantity'] === 1) {
+            $filteredItems = array_filter($stoneMetrics, function ($value) {
+                return $value['carat'] >= 0.7 && $value['carat'] <= 2;
+            });
+        } else {
+            $filteredItems = array_filter($stoneMetrics, function ($value) {
+                return $value['carat'] >= 1 && $value['carat'] <= 5;
+            });
+        }
+
+        $insert['metrics'] = $filteredItems[array_rand($filteredItems)];
+        return $insert;
+    }
+
+    /**
+     * @param array $insert
+     * @param mixed $stoneMetrics
+     * @return array
+     */
+    protected function getInsert0309(array $insert, mixed $stoneMetrics): array
+    {
+        if ($insert['quantity'] === 1) {
+            $filteredItems = array_filter($stoneMetrics, function ($value) {
+                return $value['carat'] >= 0.5 && $value['carat'] <= 0.9;
+            });
+        } else {
+            $filteredItems = array_filter($stoneMetrics, function ($value) {
+                return $value['carat'] >= 0.3 && $value['carat'] <= 0.5;
+            });
+        }
+
+        $insert['metrics'] = $filteredItems[array_rand($filteredItems)];
         return $insert;
     }
 }

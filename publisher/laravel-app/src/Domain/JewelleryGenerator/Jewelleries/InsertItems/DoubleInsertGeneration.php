@@ -13,26 +13,16 @@ final class DoubleInsertGeneration
     use ProbabilityArrayElementTrait;
     public function getInsert(array $firstInsert, int $keyInsert): array
     {
-        if ($firstInsert['stoneGroup'] === StoneGroupBuilderEnum::PRECIOUS->value) {
+        $randNum = rand(1, 100);
 
+        if ($randNum < 25) {
             return (new SecondInsertGeneration())->getSecondInsertPreciousStone();
-
-        } elseif ($firstInsert['stoneGroup'] === StoneGroupBuilderEnum::JEWELLERIES->value) {
-
-            if (rand(0,1)) {
-
-                return (new SecondInsertGeneration())->getSecondInsertPreciousStone();
-
-            } else {
-
-                return (new SecondInsertGeneration())->getSecondInsertJewelleryStone();
-
-            }
-
+        } elseif ($randNum < 50) {
+            return (new SecondInsertGeneration())->getSecondInsertJewelleryFirstOrderStone();
+        } elseif ($randNum < 75) {
+            return (new SecondInsertGeneration())->getSecondInsertCubicZirconiaStone();
         } else {
-
-            return $firstInsert;
-
+            return (new SecondInsertGeneration())->getSecondInsertMoissaniteStone();
         }
     }
 }
