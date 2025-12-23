@@ -88,7 +88,7 @@ final class BaseJewelleryBuilder implements JewelleryBuilderInterface
         $jewellery['coverages']      = $this->baseJewellery->metalItem['coverages'];
         $jewellery['insertItem']     = $this->baseJewellery->insertItem;
         //        $jewellery['property']       = $this->baseJewellery->property;
-        //        $jewellery['media']          = $this->baseJewellery->media;
+                $jewellery['media']          = $this->baseJewellery->media;
 
         return $jewellery;
     }

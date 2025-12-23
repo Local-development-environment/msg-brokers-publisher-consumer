@@ -19,7 +19,7 @@ final class JewelleryItem
     public function jewelleryItem(array $properties): array
     {
         $this->partNumber = $this->getPartNumber();
-
+//        dd($properties);
         return [
             'name'         => $this->getName($properties),
             'description'  => $this->getDescription(),

@@ -9,6 +9,7 @@ use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
 use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
+use Domain\JewelleryGenerator\Traits\StoneExteriorSQL;
 use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
 use Domain\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
 use Illuminate\Database\Seeder;
@@ -17,13 +18,19 @@ use Illuminate\Support\Facades\DB;
 
 final class TestSeeder extends Seeder
 {
-    use ProbabilityArrayElementTrait;
+    use ProbabilityArrayElementTrait, StoneExteriorSQL;
 
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
+        $inserts = DB::select(file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/inserts.sql')));
+
+        foreach ($inserts as $insert) {
+            dd(json_decode($insert->inserts));
+        }
+        dd();
         $jewelleries = config('data-seed.insert-seed.stones.carat');
 //        dd($jewelleries);
         $stoneMetrics = data_get($jewelleries, '*.*');

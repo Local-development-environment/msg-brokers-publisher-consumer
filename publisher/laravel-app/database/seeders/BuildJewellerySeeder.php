@@ -60,6 +60,9 @@ use JsonException;
 
 final class BuildJewellerySeeder extends Seeder
 {
+    /**
+     * @throws JsonException
+     */
     public function run(int $items, bool $all = true): void
     {
         if ($all) {
@@ -85,11 +88,11 @@ final class BuildJewellerySeeder extends Seeder
         for ($i = 0; $i < $items; $i++) {
             dump($i);
             $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
-            dump($builder);
-//            $this->addJewellery($builder);
+//            dump($builder);
+            $this->addJewellery($builder);
         }
-        dd('ok');
-//        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
+
+        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
 //        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_jewelleries;');
 
     }
@@ -99,7 +102,7 @@ final class BuildJewellerySeeder extends Seeder
      */
     private function addJewellery(array $jewelleryData):void
     {
-        dump($jewelleryData);
+//        dd($jewelleryData);
         $jewelleryId = DB::table(JewelleryEnum::TABLE_NAME->value)->insertGetId([
             'category_id' => DB::table(CategoryEnum::TABLE_NAME->value)->where('name',$jewelleryData['category'])
                 ->value('id'),
@@ -112,34 +115,36 @@ final class BuildJewellerySeeder extends Seeder
             'created_at' => now(),
         ]);
 
-        $this->addProperty($jewelleryData, $jewelleryId);
+//        $this->addProperty($jewelleryData, $jewelleryId);
         $this->addMedia($jewelleryData, $jewelleryId);
         $this->addInsert($jewelleryData, $jewelleryId);
     }
 
+    /**
+     * @throws JsonException
+     */
     private function addInsert(array $jewelleryData, int $jewelleryId): void
     {
         if ($jewelleryData['insertItem']) {
             foreach ($jewelleryData['insertItem'] as $item) {
+                dump($item);
                 $colourId = DB::table(ColourEnum::TABLE_NAME->value)->where('name',$item['colours'])->value('id');
                 $facetId = DB::table(FacetEnum::TABLE_NAME->value)->where('name',$item['facets'])->value('id');
                 $stoneId = DB::table(StoneEnum::TABLE_NAME->value)->where('name',$item['stoneName'])->value('id');
 
                 $exteriorId = DB::table(StoneExteriorEnum::TABLE_NAME->value)->where('stone_id',$stoneId)
                     ->where('facet_id',$facetId)->where('colour_id',$colourId)->value('id');
-//                dump($exteriorId);
 
                 DB::table(InsertEnum::TABLE_NAME->value)->insert([
                     'jewellery_id' => $jewelleryId,
                     'stone_exterior_id' => $exteriorId,
                     'quantity' => $item['quantity'],
-                    'weight' => $item['weight']['carat'],
+                    'weight' => $item['weight'],
                     'unit' => 'carat',
-                    'dimensions' => json_encode($item['weight']['diameter'], JSON_THROW_ON_ERROR),
+                    'dimensions' => json_encode($item['dimensions'], JSON_THROW_ON_ERROR),
                     'created_at' => now(),
                 ]);
             }
-//            dd($jewelleryData['jewelleryItem']);
         }
     }
 
@@ -473,6 +478,7 @@ final class BuildJewellerySeeder extends Seeder
 
     private function addMedia(array $jewelleryData, int $jewelleryId): void
     {
+//        dd($jewelleryData);
         $types = DB::table(VideoTypeEnum::TABLE_NAME->value)->get();
 
         foreach ($jewelleryData['media'] as $keyP => $producer) {
