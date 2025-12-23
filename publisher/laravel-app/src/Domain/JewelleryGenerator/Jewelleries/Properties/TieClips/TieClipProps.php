@@ -22,7 +22,7 @@ final readonly class TieClipProps implements CategoryPropsBuilderInterface
 
         return [
             'quantity' => $this->getQuantity(),
-            'price' => $this->getPriceDifferentiation($properties['metalItem']['metalType']),
+            'price' => $this->getPriceDifferentiation($properties['metalItem']['preciousMetals'][0]['preciousMetal']),
             'dimensions' => [
                 'высота' => fake()->randomFloat(1, 3, 6) . ' см',
                 'ширина' => fake()->randomFloat(1, 2, 4) . ' см',

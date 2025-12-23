@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Domain\JewelleryGenerator\Traits;
 
 use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
-use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
 
 trait StoneExteriorSQL

@@ -22,7 +22,8 @@ final readonly class ChainProps implements CategoryPropsBuilderInterface
 
     public function getProps(): array
     {
-        $metal = $this->properties['metalItem']['metalType'];
+        dump($this->properties);
+        $metal = $this->properties['metalItem']['preciousMetals'][0]['preciousMetal'];
         $category = $this->properties['category'];
 
         $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), NeckSizeBuilderEnum::cases());

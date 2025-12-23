@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems;
 
 use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
+use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 
@@ -43,7 +44,11 @@ final class InsertItem
             $firstInsert  = (new SingleInsertGeneration)->getInsert($jewellery);
             $secondInsert = (new DoubleInsertGeneration)->getInsert();
 
-            $secondInsert['facets']   = FacetBuilderEnum::ROUND_CUT->value;
+            if ($secondInsert['stoneName'] === StoneBuilderEnum::SEA_PEARL_NATURE->value) {
+                $secondInsert['facets']   = FacetBuilderEnum::CABOCHON_ROUND->value;
+            } else {
+                $secondInsert['facets']   = FacetBuilderEnum::ROUND_CUT->value;
+            }
 
             return [
                 [
@@ -71,7 +76,19 @@ final class InsertItem
             $thirdInsert  = (new TripleInsertGeneration)->getInsert();
 
             $secondInsert['quantity'] = rand(8, 16);
-            $secondInsert['facets']   = FacetBuilderEnum::ROUND_CUT->value;
+
+            if ($secondInsert['stoneName'] === StoneBuilderEnum::SEA_PEARL_NATURE->value) {
+                $secondInsert['facets']   = FacetBuilderEnum::CABOCHON_ROUND->value;
+            } else {
+                $secondInsert['facets']   = FacetBuilderEnum::ROUND_CUT->value;
+            }
+
+            if ($thirdInsert['stoneName'] === StoneBuilderEnum::SEA_PEARL_NATURE->value) {
+                $thirdInsert['facets']   = FacetBuilderEnum::CABOCHON_ROUND->value;
+            } else {
+                $thirdInsert['facets']   = FacetBuilderEnum::ROUND_CUT->value;
+            }
+
 
             return [
                 [
@@ -108,9 +125,25 @@ final class InsertItem
             $forthInsert  = (new QuadrupleInsertGeneration)->getInsert();
 
             $secondInsert['quantity'] = rand(8, 12);
-            $secondInsert['facets']   = FacetBuilderEnum::ROUND_CUT->value;
             $thirdInsert['quantity'] = rand(15, 20);
-            $thirdInsert['facets']   = FacetBuilderEnum::ROUND_CUT->value;
+
+            if ($secondInsert['stoneName'] === StoneBuilderEnum::SEA_PEARL_NATURE->value) {
+                $secondInsert['facets']   = FacetBuilderEnum::CABOCHON_ROUND->value;
+            } else {
+                $secondInsert['facets']   = FacetBuilderEnum::ROUND_CUT->value;
+            }
+
+            if ($thirdInsert['stoneName'] === StoneBuilderEnum::SEA_PEARL_NATURE->value) {
+                $thirdInsert['facets']   = FacetBuilderEnum::CABOCHON_ROUND->value;
+            } else {
+                $thirdInsert['facets']   = FacetBuilderEnum::ROUND_CUT->value;
+            }
+
+            if ($forthInsert['stoneName'] === StoneBuilderEnum::SEA_PEARL_NATURE->value) {
+                $forthInsert['facets']   = FacetBuilderEnum::CABOCHON_ROUND->value;
+            } else {
+                $forthInsert['facets']   = FacetBuilderEnum::ROUND_CUT->value;
+            }
 
             return [
                 [

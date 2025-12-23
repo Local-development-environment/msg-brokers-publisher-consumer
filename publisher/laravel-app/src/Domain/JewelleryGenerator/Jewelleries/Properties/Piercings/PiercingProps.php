@@ -22,7 +22,7 @@ final readonly class PiercingProps implements CategoryPropsBuilderInterface
 
         return [
             'quantity' => $this->getQuantity(),
-            'price' => $this->getPriceDifferentiation($properties['metalItem']['metalType']),
+            'price' => $this->getPriceDifferentiation($properties['metalItem']['preciousMetals'][0]['preciousMetal']),
         ];
     }
 }
