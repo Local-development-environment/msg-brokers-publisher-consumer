@@ -139,6 +139,7 @@ return new class extends Migration
                         'total_weight', i.quantity * i.weight
                     )
                 ) as inserts,
+                i.jewellery_id,
                 cast(max(i.weight) as decimal(8,3)) as dominant_weight,
                 ctd.stone_id,
                 ctd.stone_name,

@@ -26,7 +26,7 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
 
     public function getProps(): array
     {
-        $metal = $this->properties['metalItem']['metalType'];
+        $metal = $this->properties['metalItem']['preciousMetals'][0]['preciousMetal'];
         $insert = $this->properties['insertItem'];
 
         $sizes = BraceletSizeBuilderEnum::cases();
