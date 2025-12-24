@@ -40,6 +40,38 @@ with
                 left join jw_metals.hallmarks as h on jm.hallmark_id = h.id
                 left join jw_metals.precious_metals as pm on jm.precious_metal_id = pm.id
         group by jj.id,jm.id
+    ),
+    cte_videos as (
+        select
+            jsonb_agg(
+                jsonb_build_object(
+                    'src', vd.src,
+                    'type', vt.type,
+                    'ext', vt.extension
+                )
+            ) as video_src,
+            v.jewellery_id,
+            p.name as producer
+        from
+            jw_medias.video_details as vd
+                join jw_medias.videos v on v.id = vd.video_id
+                join jw_medias.video_types vt on vd.video_type_id = vt.id
+                join jw_medias.videos on vd.video_id = videos.id
+                left join jw_medias.producers p on v.producer_id = p.id
+        group by vd.video_id, v.jewellery_id, p.name
+    ),
+    cte_video_types as (
+        select
+            jsonb_agg(
+                jsonb_build_object(
+                    ctv.producer, ctv.video_src
+                )
+            ) as video_types,
+            ctv.jewellery_id
+        from
+            cte_videos ctv
+                join jewelleries.jewelleries as jj on ctv.jewellery_id = jj.id
+        group by jj.id, ctv.jewellery_id
     )
 select
     jj.id,
@@ -67,13 +99,15 @@ select
         else
             cvrg.coverages
         end
-        as coverings
+        as coverings,
+    cvt.video_types
 from
     jewelleries.jewelleries as jj
         left join jw_views.v_inserts vi on jj.id = vi.jewellery_id
         join jewelleries.categories as jc on jj.category_id = jc.id
         left join cte_jw_coverages as cvrg on jj.id = cvrg.jewellery_id
-        left Join cte_jw_metals as mtl on jj.id = mtl.jewellery_id
+        left join cte_jw_metals as mtl on jj.id = mtl.jewellery_id
+        join cte_video_types as cvt on jj.id = cvt.jewellery_id
 ;
 
 
@@ -112,16 +146,15 @@ with
                     jsonb_build_array()
                 else
                     jsonb_agg(
-                            jsonb_build_object(
-                                    'video_id', cvg.video_id,
-                                    'name', cvg.name,
-                                    'alt_name', cvg.alt_name,
-                                    'video_type', cvg.types,
-                                    'producer_id', cvg.producer_id,
-                                    'producer_name', cvg.producer_name,
-                                    'producer_slug', cvg.producer_slug,
-                                    'video_type', cvg.types
-                            )
+                        jsonb_build_object(
+                            'video_id', cvg.video_id,
+                            'name', cvg.name,
+                            'alt_name', cvg.alt_name,
+                            'video_type', cvg.types,
+                            'producer_id', cvg.producer_id,
+                            'producer_name', cvg.producer_name,
+                            'producer_slug', cvg.producer_slug
+                        )
                     )
                 end
                 as video_medias,
