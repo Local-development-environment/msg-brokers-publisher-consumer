@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_medias.producers', function (Blueprint $table) {
+        Schema::create('jw_medias.jewellery_pictures', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('slug')->unique();
-            $table->boolean('is_active')->default(true);
+            $table->string('alt_name');
+            $table->string('src');
+            $table->string('extension');
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_medias.producers');
+        Schema::dropIfExists('jw_medias.jewellery_pictures');
     }
 };
