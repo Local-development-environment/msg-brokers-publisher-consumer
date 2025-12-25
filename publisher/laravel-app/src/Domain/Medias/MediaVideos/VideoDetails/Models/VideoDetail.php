@@ -5,7 +5,7 @@ namespace Domain\Medias\MediaVideos\VideoDetails\Models;
 
 use Domain\Medias\MediaVideos\VideoDetails\Enums\VideoDetailEnum;
 use Domain\Medias\MediaVideos\Videos\Models\Video;
-use Domain\Medias\MediaVideos\VideoTypes\Models\VideoType;
+use Domain\Medias\Shared\VideoTypes\Models\VideoType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

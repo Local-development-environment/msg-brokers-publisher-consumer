@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_medias.jewellery_videos', function (Blueprint $table) {
+        Schema::create('jw_medias.review_pictures', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
             $table->string('alt_name');
+            $table->string('src');
+            $table->string('extension');
             $table->boolean('is_active');
             $table->timestamps();
 
-            $table->foreign('id')->references('id')->on('jw_medias.media_catalogs');
+            $table->foreign('id')->references('id')->on('jw_medias.media_reviews');
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_medias.jewellery_videos');
+        Schema::dropIfExists('jw_medias.review_pictures');
     }
 };
