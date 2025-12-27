@@ -5,12 +5,12 @@ namespace App\Http\Admin\Media\MediaVideos\VideoTypes\Controllers;
 
 use App\Http\Admin\Media\MediaVideos\VideoDetails\Resources\VideoDetailCollection;
 use App\Http\Controllers\Controller;
-use Domain\Medias\MediaVideos\VideoTypes\Services\VideoTypeVideoDetailsRelationshipService;
+use Domain\Medias\Shared\MediaTypes\Services\Relationships\MediaTypeMediaCatalogsRelationshipService;
 use Illuminate\Http\JsonResponse;
 
 final class VideoTypeVideoDetailsRelatedController extends Controller
 {
-    public function __construct(public VideoTypeVideoDetailsRelationshipService $service)
+    public function __construct(public MediaTypeMediaCatalogsRelationshipService $service)
     {
     }
 

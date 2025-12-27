@@ -8,15 +8,15 @@ use App\Http\Admin\Media\MediaVideos\VideoTypes\Requests\VideoTypeUpdateRequest;
 use App\Http\Admin\Media\MediaVideos\VideoTypes\Resources\VideoTypeCollection;
 use App\Http\Admin\Media\MediaVideos\VideoTypes\Resources\VideoTypeResource;
 use App\Http\Controllers\Controller;
-use Domain\Medias\MediaVideos\VideoTypes\Enums\VideoTypeNameRoutesEnum;
-use Domain\Medias\MediaVideos\VideoTypes\Services\Relationships\VideoTypeService;
+use Domain\Medias\Shared\MediaTypes\Services\MediaTypeService;
+use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeNameRoutesEnum;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Throwable;
 
 final class VideoTypeController extends Controller
 {
-    public function __construct(public VideoTypeService $service)
+    public function __construct(public MediaTypeService $service)
     {
     }
 

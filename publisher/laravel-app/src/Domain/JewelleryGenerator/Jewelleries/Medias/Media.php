@@ -4,32 +4,36 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\Medias;
 
-use Domain\Medias\Shared\Producers\Enums\ProducerBuilderEnum;
+use Random\RandomException;
 
 final class Media
 {
+    /**
+     * @throws RandomException
+     */
     public function getMedia(): array
     {
-//        $medias = [];
-
         return [
-            ProducerBuilderEnum::MANAGER->value => [
-                'фото' => $this->getItems(4, 'image', 'manager'),
-                'видео' => $this->getItems(1, 'video', 'manager'),
+            'catalog' => [
+                'pictures' => $this->getItems(4, 'image', 'catalog'),
+                'videos' => $this->getItems(2, 'video', 'catalog'),
             ],
-            ProducerBuilderEnum::CUSTOMER->value => [
-                'фото' => $this->getItems(rand(0,4), 'image', 'customer'),
-                'видео' => $this->getItems(rand(0,2), 'video', 'customer'),
-            ],
+            'reviews' => [
+                'pictures' => $this->getItems(rand(0,4), 'image', 'reviews'),
+                'videos' => $this->getItems(rand(0,2), 'video', 'reviews'),
+            ]
         ];
     }
 
-    private function getItems(int $num, string $category, string $producer): array
+    /**
+     * @throws RandomException
+     */
+    private function getItems(int $num, string $type, string $assignment): array
     {
         $items = [];
 
         for ($i = 0; $i < $num; $i++) {
-            $items[] = $category . '-' . $producer . '-' . rand(100000, 999000);
+            $items[] = $type . '-' . $assignment . '-' . bin2hex(random_bytes(20 / 2));
         }
 
         return $items;

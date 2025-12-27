@@ -11,6 +11,7 @@ use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\StoneExteriorSQL;
 use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
+use Domain\Medias\Shared\MediaTypes\Models\MediaType;
 use Domain\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
@@ -25,6 +26,7 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
+        dd(MediaType::find(2)->mediaCatalogs->first());
         $inserts = DB::select(file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/inserts.sql')));
 
         foreach ($inserts as $insert) {

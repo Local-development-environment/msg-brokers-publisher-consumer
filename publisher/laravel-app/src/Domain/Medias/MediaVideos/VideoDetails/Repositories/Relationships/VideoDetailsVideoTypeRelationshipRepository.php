@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Domain\Medias\MediaVideos\VideoDetails\Repositories\Relationships;
 
 use Domain\Medias\MediaVideos\VideoDetails\Models\VideoDetail;
-use Domain\Medias\MediaVideos\VideoTypes\Models\VideoType;
+use Domain\Medias\Shared\VideoTypes\Models\VideoType;
 
 final class VideoDetailsVideoTypeRelationshipRepository
 {

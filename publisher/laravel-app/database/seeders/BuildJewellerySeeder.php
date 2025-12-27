@@ -7,7 +7,6 @@ use Domain\Inserts\Colours\Enums\ColourEnum;
 use Domain\Inserts\Facets\Enums\FacetEnum;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
 use Domain\Inserts\StoneExteriours\Enums\StoneExteriorEnum;
-use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryEnum;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
@@ -45,11 +44,21 @@ use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
 use Domain\JewelleryProperties\Rings\RingMetrics\Enums\RingMetricEnum;
 use Domain\JewelleryProperties\Rings\Rings\Enums\RingEnum;
 use Domain\JewelleryProperties\TieClips\TieClips\Enums\TieClipEnum;
+use Domain\Medias\MediaCatalog\JewelleryPictures\Enums\JewelleryPictureEnum;
+use Domain\Medias\MediaCatalog\JewelleryVideoDetails\Enums\JewelleryVideoDetailEnum;
+use Domain\Medias\MediaCatalog\JewelleryVideos\Enums\JewelleryVideoEnum;
+use Domain\Medias\MediaCatalog\MediaCatalog\Enums\MediaCatalogEnum;
 use Domain\Medias\MediaPictures\Pictures\Enums\PictureEnum;
+use Domain\Medias\MediaReviews\MediaReviews\Enums\MediaReviewEnum;
+use Domain\Medias\MediaReviews\ReviewPictures\Enums\ReviewPictureEnum;
+use Domain\Medias\MediaReviews\ReviewVideoDetails\Enums\ReviewVideoDetailEnum;
+use Domain\Medias\MediaReviews\ReviewVideos\Enums\ReviewVideoEnum;
 use Domain\Medias\MediaVideos\VideoDetails\Enums\VideoDetailEnum;
 use Domain\Medias\MediaVideos\Videos\Enums\VideoEnum;
-use Domain\Medias\MediaVideos\VideoTypes\Enums\VideoTypeEnum;
+use Domain\Medias\Shared\MediaTypes\Enums\MediaTypeBuilderEnum;
+use Domain\Medias\Shared\MediaTypes\Enums\MediaTypeEnum;
 use Domain\Medias\Shared\Producers\Enums\ProducerEnum;
+use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeEnum;
 use Domain\PreciousMetals\Coverages\Enums\CoverageEnum;
 use Domain\PreciousMetals\Hallmarks\Enums\HallmarkEnum;
 use Domain\PreciousMetals\JewelleryCoverages\Enums\JewelleryCoverageEnum;
@@ -89,11 +98,18 @@ final class BuildJewellerySeeder extends Seeder
         $media = new InitMedia();
         $media();
 
+        $properties = new InitProperties();
+        $properties->initBeadProperties();
+        $properties->initBraceletProperties();
+        $properties->initEarringProperties();
+        $properties->initRingProperties();
+        $properties->initShareProperties();
+
         //        dd('ok');
         for ($i = 0; $i < $items; $i++) {
             dump($i);
             $builder = $jeweller->buildJewellery(new BaseJewelleryBuilder());
-            //            dump($builder);
+                        dump($builder);
             $this->addJewellery($builder);
         }
 
@@ -121,7 +137,8 @@ final class BuildJewellerySeeder extends Seeder
         ]);
 
         $this->addProperty($jewelleryData, $jewelleryId);
-        $this->addMedia($jewelleryData, $jewelleryId);
+        $this->addMediaCatalog($jewelleryData, $jewelleryId);
+        $this->addMediaReview($jewelleryData, $jewelleryId);
         $this->addInsert($jewelleryData, $jewelleryId);
         $this->addMetals($jewelleryData, $jewelleryId);
         $this->addCoverages($jewelleryData, $jewelleryId);
@@ -518,47 +535,112 @@ final class BuildJewellerySeeder extends Seeder
         }
     }
 
-    private function addMedia(array $jewelleryData, int $jewelleryId): void
+    private function addMediaCatalog(array $jewelleryData, int $jewelleryId): void
     {
-        $types = DB::table(VideoTypeEnum::TABLE_NAME->value)->get();
+        $videoTypes = DB::table(VideoTypeEnum::TABLE_NAME->value)->get();
 
-        foreach ($jewelleryData['media'] as $keyP => $producer) {
+        foreach ($jewelleryData['media']['catalog'] as $mediaType => $media) {
+            if ($mediaType == 'pictures') {
+                foreach ($media as $mediaItem) {
+                    $mediaItemId = DB::table(MediaCatalogEnum::TABLE_NAME->value)->insertGetId([
+                        'jewellery_id' => $jewelleryId,
+                        'media_type_id' => DB::table(MediaTypeEnum::TABLE_NAME->value)->where('name', $mediaType)->value('id'),
+                        'name' => $mediaItem,
+                        'slug' => Str::slug($mediaItem, '-'),
+                        'is_active' => true,
+                        'created_at' => now()
+                    ]);
+                    $ext = rand(0,1) ? 'png' : 'jpeg';
+                    DB::table(JewelleryPictureEnum::TABLE_NAME->value)->insert([
+                        'id' => $mediaItemId,
+                        'alt_name' => $jewelleryData['jewelleryItem']['name'],
+                        'src' => 'https://server/' . $mediaItem . '.' . $ext,
+                        'extension' => $ext,
+                        'is_active' => true,
+                        'created_at' => now()
+                    ]);
+                }
+            } else {
+                foreach ($media as $mediaItem) {
+                    $mediaItemId = DB::table(MediaCatalogEnum::TABLE_NAME->value)->insertGetId([
+                        'jewellery_id' => $jewelleryId,
+                        'media_type_id' => DB::table(MediaTypeEnum::TABLE_NAME->value)->where('name', $mediaType)->value('id'),
+                        'name' => $mediaItem,
+                        'slug' => Str::slug($mediaItem, '-'),
+                        'is_active' => true,
+                        'created_at' => now()
+                    ]);
 
-            $producerId = DB::table(ProducerEnum::TABLE_NAME->value)->where('name', $keyP)->value('id');
+                    $jewelleryVideoId = DB::table(JewelleryVideoEnum::TABLE_NAME->value)->insertGetId([
+                        'id' => $mediaItemId,
+                        'alt_name' => $jewelleryData['jewelleryItem']['name'],
+                        'is_active' => true,
+                        'created_at' => now()
+                    ]);
 
-            foreach ($producer as $keyC => $category) {
-                if ($keyC === 'фото') {
-                    foreach ($category as $item) {
-                        DB::table(PictureEnum::TABLE_NAME->value)->insertGetId([
-                            'jewellery_id' => $jewelleryId,
-                            'producer_id'  => $producerId,
-                            'name'         => $item,
-                            'alt_name'     => $jewelleryData['jewelleryItem']['name'],
-                            'extension'    => 'jpg',
-                            'type'         => 'image/jpeg',
-                            'src'          => 'https://server/' . $item . '.jpg',
-                            'is_active'    => true,
-                            'created_at'   => now()
+                    foreach ($videoTypes as $videoType) {
+                        DB::table(JewelleryVideoDetailEnum::TABLE_NAME->value)->insert([
+                            'jewellery_video_id' => $jewelleryVideoId,
+                            'video_type_id' => $videoType->id,
+                            'src' => 'https://server/' . $mediaItem . '.' . $videoType->extension,
+                            'created_at' => now()
                         ]);
                     }
-                } else {
-                    foreach ($category as $item) {
-                        $videoId = DB::table(VideoEnum::TABLE_NAME->value)->insertGetId([
-                            'jewellery_id' => $jewelleryId,
-                            'producer_id'  => $producerId,
-                            'name'         => $item,
-                            'alt_name'     => $jewelleryData['jewelleryItem']['name'],
-                            'is_active'    => true,
-                            'created_at'   => now()
+                }
+            }
+        }
+    }
+
+    private function addMediaReview(array $jewelleryData, int $jewelleryId): void
+    {
+        $videoTypes = DB::table(VideoTypeEnum::TABLE_NAME->value)->get();
+
+        foreach ($jewelleryData['media']['reviews'] as $mediaType => $media) {
+            if ($mediaType == 'pictures') {
+                foreach ($media as $mediaItem) {
+                    $mediaItemId = DB::table(MediaReviewEnum::TABLE_NAME->value)->insertGetId([
+                        'jewellery_id' => $jewelleryId,
+                        'media_type_id' => DB::table(MediaTypeEnum::TABLE_NAME->value)->where('name', $mediaType)->value('id'),
+                        'name' => $mediaItem,
+                        'slug' => Str::slug($mediaItem, '-'),
+                        'is_active' => true,
+                        'created_at' => now()
+                    ]);
+                    $ext = rand(0,1) ? 'png' : 'jpeg';
+                    DB::table(ReviewPictureEnum::TABLE_NAME->value)->insert([
+                        'id' => $mediaItemId,
+                        'alt_name' => $jewelleryData['jewelleryItem']['name'],
+                        'src' => 'https://server/' . $mediaItem . '.' . $ext,
+                        'extension' => $ext,
+                        'is_active' => true,
+                        'created_at' => now()
+                    ]);
+                }
+            } else {
+                foreach ($media as $mediaItem) {
+                    $mediaItemId = DB::table(MediaReviewEnum::TABLE_NAME->value)->insertGetId([
+                        'jewellery_id' => $jewelleryId,
+                        'media_type_id' => DB::table(MediaTypeEnum::TABLE_NAME->value)->where('name', $mediaType)->value('id'),
+                        'name' => $mediaItem,
+                        'slug' => Str::slug($mediaItem, '-'),
+                        'is_active' => true,
+                        'created_at' => now()
+                    ]);
+
+                    $reviewVideoId = DB::table(ReviewVideoEnum::TABLE_NAME->value)->insertGetId([
+                        'id' => $mediaItemId,
+                        'alt_name' => $jewelleryData['jewelleryItem']['name'],
+                        'is_active' => true,
+                        'created_at' => now()
+                    ]);
+
+                    foreach ($videoTypes as $videoType) {
+                        DB::table(ReviewVideoDetailEnum::TABLE_NAME->value)->insert([
+                            'review_video_id' => $reviewVideoId,
+                            'video_type_id' => $videoType->id,
+                            'src' => 'https://server/' . $mediaItem . '.' . $videoType->extension,
+                            'created_at' => now()
                         ]);
-                        foreach ($types as $type) {
-                            DB::table(VideoDetailEnum::TABLE_NAME->value)->insertGetId([
-                                'video_id'      => $videoId,
-                                'video_type_id' => $type->id,
-                                'src'           => 'https://server/' . $item . '.' . $type->extension,
-                                'created_at'    => now()
-                            ]);
-                        }
                     }
                 }
             }

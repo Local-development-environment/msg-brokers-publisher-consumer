@@ -15,11 +15,11 @@ final readonly class MetalMenuFilter
             ->selectRaw('distinct m.id, m.name')
             ->crossJoin(DB::raw(
                 "JSON_TABLE(
-                metals,
+                precious_metals,
                 '$[*]'
                 COLUMNS(
                     id INT PATH '$.metal_id',
-                    name varchar(50) PATH '$.metal'
+                    name varchar(50) PATH '$.precious_metal'
                 )
             ) m"
             ))
