@@ -10757,14 +10757,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/video-types/1/video-details",
+											"raw": "{{baseURL}}/media-types/1/media-catalogs",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"video-types",
+												"media-types",
 												"1",
-												"video-details"
+												"media-catalogs"
 											]
 										}
 									},
