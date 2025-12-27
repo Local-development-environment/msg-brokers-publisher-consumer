@@ -10789,14 +10789,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/media-types/1/media-catalogs",
+											"raw": "{{baseURL}}/media-types/1/media-reviews",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"media-types",
 												"1",
-												"media-catalogs"
+												"media-reviews"
 											]
 										}
 									},
