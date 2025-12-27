@@ -10629,7 +10629,7 @@
 									"response": []
 								},
 								{
-									"name": "video-types update Copy",
+									"name": "media-types update",
 									"id": "6575703-071dcd65-5edc-48c3-a950-ad9d3ea68931",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
