@@ -10509,6 +10509,343 @@
 						}
 					],
 					"id": "6575703-4376683c-8900-42d5-9148-2779077cfcf6"
+				},
+				{
+					"name": "MEDIA TYPES",
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [
+								{
+									"name": "media-types index",
+									"id": "6575703-6a53c8b4-5649-4ff1-bd31-16078a31317f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/media-types?include=mediaCatalogs",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"media-types"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "mediaCatalogs"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "media-types show",
+									"id": "6575703-2b246150-4239-40ab-be23-6483bca90182",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/media-types/1?include=mediaReviews",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"media-types",
+												"1"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "mediaReviews"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "media-types store",
+									"id": "6575703-9ef245a9-3335-4cb2-aa0e-75fd630ad4ac",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"data\": {\r\n        \"id\": 1005,\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/media-types",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"media-types"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "media-types update",
+									"id": "6575703-071dcd65-5edc-48c3-a950-ad9d3ea68931",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"data\": {\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/media-types/2",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"media-types",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "media-types destroy",
+									"id": "6575703-7fc6a574-b682-4e8f-8538-e3110843c74d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/media-types/17",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"media-types",
+												"17"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-0c344027-af20-4757-9eb3-695f979688ac"
+						},
+						{
+							"name": "RELATED",
+							"item": [
+								{
+									"name": "media-type media-catalogs index",
+									"id": "6575703-ddaf1d41-5b92-48f0-83ba-6f7df3489907",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/media-types/1/media-catalogs",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"media-types",
+												"1",
+												"media-catalogs"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "media-type media-reviews index",
+									"id": "6575703-2ef50ce1-7496-45a3-8563-190681f7650d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/media-types/1/media-reviews",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"media-types",
+												"1",
+												"media-reviews"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-8dd8c11b-8b09-44f2-8278-38144343ffc3"
+						},
+						{
+							"name": "RELATIONSHIPS",
+							"item": [
+								{
+									"name": "media-type media-catalogs index",
+									"id": "6575703-75f5ed49-7aae-4f1f-9576-a35c3d724740",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/media-types/1/relationships/media-catalogs",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"media-types",
+												"1",
+												"relationships",
+												"media-catalogs"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "media-type media-reviews index",
+									"id": "6575703-c9704f3b-fee1-42ef-acbf-524dffa6f9cb",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/media-types/1/relationships/media-reviews",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"media-types",
+												"1",
+												"relationships",
+												"media-reviews"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-8757adc1-4d63-4430-8a41-826bde64448e"
+						}
+					],
+					"id": "6575703-433e2980-4ebe-4e17-a63a-a7637367b005"
 				}
 			],
 			"id": "6575703-f9e921f2-19f3-4fc5-ac51-a2116d1bd095"
