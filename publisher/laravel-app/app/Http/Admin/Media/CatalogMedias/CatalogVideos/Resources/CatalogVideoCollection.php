@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\Media\CatalogMedias\CatalogMedias\Resources;
+namespace App\Http\Admin\Media\CatalogMedias\CatalogVideos\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-final class MediaCatalogCollection extends ResourceCollection
+final class CatalogVideoCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.

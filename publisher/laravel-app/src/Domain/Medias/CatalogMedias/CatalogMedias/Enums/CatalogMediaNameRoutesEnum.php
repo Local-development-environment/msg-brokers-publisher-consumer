@@ -16,4 +16,8 @@ enum CatalogMediaNameRoutesEnum: string
     case RELATIONSHIP_TO_JEWELLERY  = 'catalog-medias.relationships.jewellery';
     case RELATED_TO_MEDIA_TYPE      = 'catalog-medias.media-type';
     case RELATIONSHIP_TO_MEDIA_TYPE = 'catalog-medias.relationships.media-type';
+    case RELATED_TO_CATALOG_VIDEO      = 'catalog-media.catalog-video';
+    case RELATIONSHIP_TO_CATALOG_VIDEO = 'catalog-media.relationships.catalog-video';
+    case RELATED_TO_CATALOG_PICTURE      = 'catalog-medias.catalog-picture';
+    case RELATIONSHIP_TO_CATALOG_PICTURE = 'catalog-medias.relationships.catalog-picture';
 }

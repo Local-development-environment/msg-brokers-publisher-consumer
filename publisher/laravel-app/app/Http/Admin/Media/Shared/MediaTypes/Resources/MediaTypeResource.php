@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Media\Shared\MediaTypes\Resources;
 
-use App\Http\Admin\Media\CatalogMedias\CatalogMedias\Resources\MediaCatalogCollection;
+use App\Http\Admin\Media\CatalogMedias\CatalogMedias\Resources\CatalogMediaCollection;
 use App\Http\Admin\Media\ReviewMedias\ReviewMedias\Resources\MediaReviewCollection;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\Medias\Shared\MediaTypes\Enums\MediaTypeNameRoutesEnum;
@@ -31,7 +31,7 @@ final class MediaTypeResource extends JsonResource
             'relationships' => [
                 'mediaCatalog' => $this->sectionRelationships(
                     MediaTypeNameRoutesEnum::RELATED_TO_MEDIA_CATALOGS->value,
-                    MediaCatalogCollection::class
+                    CatalogMediaCollection::class
                 ),
                 'mediaReview' => $this->sectionRelationships(
                     MediaTypeNameRoutesEnum::RELATED_TO_MEDIA_REVIEWS->value,
@@ -44,8 +44,8 @@ final class MediaTypeResource extends JsonResource
     protected function relations(): array
     {
         return [
-            MediaReviewCollection::class => $this->whenLoaded(MediaTypeRelationshipsEnum::MEDIA_REVIEWS->value),
-            MediaCatalogCollection::class => $this->whenLoaded(MediaTypeRelationshipsEnum::MEDIA_CATALOGS->value),
+            MediaReviewCollection::class  => $this->whenLoaded(MediaTypeRelationshipsEnum::MEDIA_REVIEWS->value),
+            CatalogMediaCollection::class => $this->whenLoaded(MediaTypeRelationshipsEnum::MEDIA_CATALOGS->value),
         ];
     }
 }

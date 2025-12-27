@@ -8,4 +8,6 @@ enum CatalogMediaRelationshipsEnum: string
 {
     case JEWELLERY = 'jewellery';
     case MEDIA_TYPE = 'mediaType';
+    case CATALOG_VIDEO = 'catalogVideo';
+    case CATALOG_PICTURE = 'catalogPicture';
 }

@@ -5,7 +5,7 @@ namespace App\Http\Admin\Media\CatalogMedias\CatalogMedias\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-final class MediaCatalogUpdateRequest extends FormRequest
+final class CatalogMediaStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
