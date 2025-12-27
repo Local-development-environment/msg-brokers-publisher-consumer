@@ -2,11 +2,6 @@
 declare(strict_types=1);
 
 use App\Http\Admin\Media\MediaPictures\Pictures\Controllers\PictureController;
-use App\Http\Admin\Media\MediaTypes\Controllers\MediaTypeController;
-use App\Http\Admin\Media\MediaTypes\Controllers\MediaTypeMediaCatalogsRelatedController;
-use App\Http\Admin\Media\MediaTypes\Controllers\MediaTypeMediaCatalogsRelationshipController;
-use App\Http\Admin\Media\MediaTypes\Controllers\MediaTypeMediaReviewsRelatedController;
-use App\Http\Admin\Media\MediaTypes\Controllers\MediaTypeMediaReviewsRelationshipController;
 use App\Http\Admin\Media\MediaVideos\VideoDetails\Controllers\VideoDetailController;
 use App\Http\Admin\Media\MediaVideos\VideoDetails\Controllers\VideoDetailsVideoRelatedController;
 use App\Http\Admin\Media\MediaVideos\VideoDetails\Controllers\VideoDetailsVideoRelationshipController;
@@ -19,9 +14,16 @@ use App\Http\Admin\Media\MediaVideos\Videos\Controllers\VideosProducerRelatedCon
 use App\Http\Admin\Media\MediaVideos\Videos\Controllers\VideosProducerRelationshipController;
 use App\Http\Admin\Media\MediaVideos\Videos\Controllers\VideoVideoDetailsRelatedController;
 use App\Http\Admin\Media\MediaVideos\Videos\Controllers\VideoVideoDetailsRelationshipController;
-use App\Http\Admin\Media\MediaVideos\VideoTypes\Controllers\VideoTypeController;
-use App\Http\Admin\Media\MediaVideos\VideoTypes\Controllers\VideoTypeVideoDetailsRelatedController;
-use App\Http\Admin\Media\MediaVideos\VideoTypes\Controllers\VideoTypeVideoDetailsRelationshipController;
+use App\Http\Admin\Media\Shared\MediaTypes\Controllers\MediaTypeCatalogMediasRelatedController;
+use App\Http\Admin\Media\Shared\MediaTypes\Controllers\MediaTypeCatalogMediasRelationshipController;
+use App\Http\Admin\Media\Shared\MediaTypes\Controllers\MediaTypeController;
+use App\Http\Admin\Media\Shared\MediaTypes\Controllers\MediaTypeReviewMediasRelatedController;
+use App\Http\Admin\Media\Shared\MediaTypes\Controllers\MediaTypeReviewMediasRelationshipController;
+use App\Http\Admin\Media\Shared\VideoTypes\Controllers\VideoTypeController;
+use App\Http\Admin\Media\Shared\VideoTypes\Controllers\VideoTypeCatalogVideoDetailsRelatedController;
+use App\Http\Admin\Media\Shared\VideoTypes\Controllers\VideoTypeCatalogVideoDetailsRelationshipController;
+use App\Http\Admin\Media\Shared\VideoTypes\Controllers\VideoTypeReviewVideoDetailsRelatedController;
+use App\Http\Admin\Media\Shared\VideoTypes\Controllers\VideoTypeReviewVideoDetailsRelationshipController;
 use Domain\Medias\CatalogMedias\CatalogPictures\Enums\CatalogPictureNameRoutesEnum;
 use Domain\Medias\MediaVideos\VideoDetails\Enums\VideoDetailNameRoutesEnum;
 use Domain\Medias\MediaVideos\Videos\Enums\VideoNameRoutesEnum;
@@ -42,14 +44,14 @@ Route::group([
 
     // RELATIONSHIPS
     //  one-to-many Media Type to Media Catalogs
-    Route::get('media-types/{id}/relationships/media-catalogs', [MediaTypeMediaCatalogsRelationshipController::class, 'index'])
+    Route::get('media-types/{id}/relationships/media-catalogs', [MediaTypeCatalogMediasRelationshipController::class, 'index'])
          ->name(MediaTypeNameRoutesEnum::RELATIONSHIP_TO_MEDIA_CATALOG->value);
-    Route::get('media-types/{id}/media-catalogs', [MediaTypeMediaCatalogsRelatedController::class, 'index'])
+    Route::get('media-types/{id}/media-catalogs', [MediaTypeCatalogMediasRelatedController::class, 'index'])
          ->name(MediaTypeNameRoutesEnum::RELATED_TO_MEDIA_CATALOGS->value);
     //  one-to-many Media Type to Media Reviews
-    Route::get('media-types/{id}/relationships/media-reviews', [MediaTypeMediaReviewsRelationshipController::class, 'index'])
+    Route::get('media-types/{id}/relationships/media-reviews', [MediaTypeReviewMediasRelationshipController::class, 'index'])
          ->name(MediaTypeNameRoutesEnum::RELATIONSHIP_TO_MEDIA_REVIEWS->value);
-    Route::get('media-types/{id}/media-reviews', [MediaTypeMediaReviewsRelatedController::class, 'index'])
+    Route::get('media-types/{id}/media-reviews', [MediaTypeReviewMediasRelatedController::class, 'index'])
          ->name(MediaTypeNameRoutesEnum::RELATED_TO_MEDIA_REVIEWS->value);
 
     /*************************** JEWELLERY PICTURES *************************/
@@ -126,9 +128,14 @@ Route::group([
     Route::delete('video-types/{id}', [VideoTypeController::class, 'destroy'])->name(VideoTypeNameRoutesEnum::CRUD_DELETE->value);
 
     // RELATIONSHIPS
-    //  one-to-many Video Type to Video Details
-    Route::get('video-types/{id}/relationships/video-details', [VideoTypeVideoDetailsRelationshipController::class, 'index'])
+    //  one-to-many Video Type to Catalog Video Details
+    Route::get('video-types/{id}/relationships/catalog-video-details', [VideoTypeCatalogVideoDetailsRelationshipController::class, 'index'])
         ->name(VideoTypeNameRoutesEnum::RELATIONSHIP_TO_CATALOG_VIDEO_DETAILS->value);
-    Route::get('video-types/{id}/video-details', [VideoTypeVideoDetailsRelatedController::class, 'index'])
+    Route::get('video-types/{id}/catalog-video-details', [VideoTypeCatalogVideoDetailsRelatedController::class, 'index'])
         ->name(VideoTypeNameRoutesEnum::RELATED_TO_CATALOG_VIDEO_DETAILS->value);
+    //  one-to-many Video Type to Review Video Details
+    Route::get('video-types/{id}/relationships/review-video-details', [VideoTypeReviewVideoDetailsRelationshipController::class, 'index'])
+         ->name(VideoTypeNameRoutesEnum::RELATIONSHIP_TO_REVIEW_VIDEO_DETAILS->value);
+    Route::get('video-types/{id}/review-video-details', [VideoTypereviewVideoDetailsRelatedController::class, 'index'])
+         ->name(VideoTypeNameRoutesEnum::RELATED_TO_REVIEW_VIDEO_DETAILS->value);
 });

@@ -45,16 +45,14 @@ use Domain\JewelleryProperties\Rings\RingMetrics\Enums\RingMetricEnum;
 use Domain\JewelleryProperties\Rings\Rings\Enums\RingEnum;
 use Domain\JewelleryProperties\TieClips\TieClips\Enums\TieClipEnum;
 use Domain\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaEnum;
-use Domain\Medias\MediaCatalog\JewelleryPictures\Enums\CatalogPictureEnum;
-use Domain\Medias\MediaCatalog\JewelleryVideoDetails\Enums\JewelleryVideoDetailEnum;
-use Domain\Medias\MediaCatalog\JewelleryVideos\Enums\CatalogVideoEnum;
-use Domain\Medias\MediaPictures\Pictures\Enums\PictureEnum;
+use Domain\Medias\CatalogMedias\CatalogPictures\Enums\CatalogPictureEnum;
+use Domain\Medias\CatalogMedias\CatalogVideoDetails\Enums\CatalogVideoDetailEnum;
+use Domain\Medias\CatalogMedias\CatalogVideos\Enums\CatalogVideoEnum;
 use Domain\Medias\ReviewMedias\ReviewMedias\Enums\ReviewMediaEnum;
 use Domain\Medias\ReviewMedias\ReviewPictures\Enums\ReviewPictureEnum;
 use Domain\Medias\ReviewMedias\ReviewVideoDetails\Enums\ReviewVideoDetailEnum;
 use Domain\Medias\ReviewMedias\ReviewVideos\Enums\ReviewVideoEnum;
 use Domain\Medias\Shared\MediaTypes\Enums\MediaTypeEnum;
-use Domain\Medias\Shared\Producers\Enums\ProducerEnum;
 use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeEnum;
 use Domain\PreciousMetals\Coverages\Enums\CoverageEnum;
 use Domain\PreciousMetals\Hallmarks\Enums\HallmarkEnum;
@@ -111,7 +109,7 @@ final class BuildJewellerySeeder extends Seeder
         }
 
         DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
-        //        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_jewelleries;');
+        DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_jewelleries;');
 
     }
 
@@ -576,8 +574,8 @@ final class BuildJewellerySeeder extends Seeder
                     ]);
 
                     foreach ($videoTypes as $videoType) {
-                        DB::table(JewelleryVideoDetailEnum::TABLE_NAME->value)->insert([
-                            'jewellery_video_id' => $jewelleryVideoId,
+                        DB::table(CatalogVideoDetailEnum::TABLE_NAME->value)->insert([
+                            'catalog_video_id' => $jewelleryVideoId,
                             'video_type_id' => $videoType->id,
                             'src' => 'https://server/' . $mediaItem . '.' . $videoType->extension,
                             'created_at' => now()

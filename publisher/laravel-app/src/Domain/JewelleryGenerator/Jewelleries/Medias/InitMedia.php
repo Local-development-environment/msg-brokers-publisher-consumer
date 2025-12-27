@@ -5,16 +5,15 @@ declare(strict_types=1);
 namespace Domain\JewelleryGenerator\Jewelleries\Medias;
 
 use Domain\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaEnum;
-use Domain\Medias\MediaCatalog\JewelleryPictures\Enums\CatalogPictureEnum;
-use Domain\Medias\MediaCatalog\JewelleryVideoDetails\Enums\JewelleryVideoDetailEnum;
-use Domain\Medias\MediaCatalog\JewelleryVideos\Enums\CatalogVideoEnum;
+use Domain\Medias\CatalogMedias\CatalogPictures\Enums\CatalogPictureEnum;
+use Domain\Medias\CatalogMedias\CatalogVideoDetails\Enums\CatalogVideoDetailEnum;
+use Domain\Medias\CatalogMedias\CatalogVideos\Enums\CatalogVideoEnum;
 use Domain\Medias\ReviewMedias\ReviewMedias\Enums\ReviewMediaEnum;
 use Domain\Medias\ReviewMedias\ReviewPictures\Enums\ReviewPictureEnum;
 use Domain\Medias\ReviewMedias\ReviewVideoDetails\Enums\ReviewVideoDetailEnum;
 use Domain\Medias\ReviewMedias\ReviewVideos\Enums\ReviewVideoEnum;
 use Domain\Medias\Shared\MediaTypes\Enums\MediaTypeBuilderEnum;
 use Domain\Medias\Shared\MediaTypes\Enums\MediaTypeEnum;
-use Domain\Medias\Shared\Producers\Enums\ProducerEnum;
 use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeBuilderEnum;
 use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeEnum;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +28,7 @@ final class InitMedia
 
         DB::table(CatalogPictureEnum::TABLE_NAME->value)->truncate();
         DB::table(CatalogVideoEnum::TABLE_NAME->value)->truncate();
-        DB::table(JewelleryVideoDetailEnum::TABLE_NAME->value)->truncate();
+        DB::table(CatalogVideoDetailEnum::TABLE_NAME->value)->truncate();
         DB::table(CatalogMediaEnum::TABLE_NAME->value)->truncate();
         DB::table(ReviewPictureEnum::TABLE_NAME->value)->truncate();
         DB::table(ReviewVideoDetailEnum::TABLE_NAME->value)->truncate();
