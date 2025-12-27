@@ -10580,7 +10580,44 @@
 					"item": [
 						{
 							"name": "CRUD",
-							"item": [],
+							"item": [
+								{
+									"name": "media-types index Copy",
+									"id": "6575703-09b4b007-1916-4ba4-8ed3-3784feafadf4",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/media-types?include=mediaCatalogs",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"media-types"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "mediaCatalogs"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
 							"id": "6575703-a7ce06b7-1e45-48ac-8706-19f35f9a8fe5"
 						},
 						{
