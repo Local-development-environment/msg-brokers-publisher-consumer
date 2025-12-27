@@ -10517,7 +10517,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "video-types index Copy",
+									"name": "media-types index",
 									"id": "6575703-6a53c8b4-5649-4ff1-bd31-16078a31317f",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
