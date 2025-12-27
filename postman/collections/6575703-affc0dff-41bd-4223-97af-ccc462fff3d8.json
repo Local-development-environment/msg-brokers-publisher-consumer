@@ -10667,6 +10667,37 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "video-types destroy Copy",
+									"id": "6575703-7fc6a574-b682-4e8f-8538-e3110843c74d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/video-types/17",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"video-types",
+												"17"
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"id": "6575703-0c344027-af20-4757-9eb3-695f979688ac"
