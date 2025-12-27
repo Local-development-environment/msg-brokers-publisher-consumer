@@ -9589,7 +9589,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/video-types?include=videoDetails",
+											"raw": "{{baseURL}}/video-types?include=catalogVideoDetails",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -9599,7 +9599,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "videoDetails"
+													"value": "catalogVideoDetails"
 												}
 											]
 										}
