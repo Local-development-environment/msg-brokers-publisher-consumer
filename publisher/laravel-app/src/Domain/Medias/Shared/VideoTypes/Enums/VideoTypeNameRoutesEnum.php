@@ -12,6 +12,8 @@ enum VideoTypeNameRoutesEnum: string
     case CRUD_PATCH   = 'video-types.patch';
     case CRUD_DELETE  = 'video-types.delete';
 
-    case RELATED_TO_VIDEO_DETAILS      = 'video-type.video-details';
-    case RELATIONSHIP_TO_VIDEO_DETAILS = 'video-type.relationships.video-details';
+    case RELATED_TO_CATALOG_VIDEO_DETAILS      = 'video-type.catalog-video-details';
+    case RELATIONSHIP_TO_CATALOG_VIDEO_DETAILS = 'video-type.relationships.catalog-video-details';
+    case RELATED_TO_REVIEW_VIDEO_DETAILS      = 'video-type.review-video-details';
+    case RELATIONSHIP_TO_REVIEW_VIDEO_DETAILS = 'video-type.relationships.review-video-details';
 }

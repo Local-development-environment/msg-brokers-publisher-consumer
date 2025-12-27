@@ -17,7 +17,7 @@ return new class extends Migration
             $table->boolean('is_active');
             $table->timestamps();
 
-            $table->foreign('id')->references('id')->on('jw_medias.media_reviews');
+            $table->foreign('id')->references('id')->on('jw_medias.review_medias');
         });
     }
 
