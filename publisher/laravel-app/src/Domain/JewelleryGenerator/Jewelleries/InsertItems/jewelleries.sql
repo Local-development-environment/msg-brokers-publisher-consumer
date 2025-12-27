@@ -41,162 +41,113 @@ with
                 left join jw_metals.precious_metals as pm on jm.precious_metal_id = pm.id
         group by jj.id,jm.id
     ),
-    cte_videos as (
+    cte_media_review as (
         select
+            rp.id,
+            rp.alt_name,
+            rp.is_active,
             jsonb_agg(
                 jsonb_build_object(
-                    'src', vd.src,
-                    'type', vt.type,
-                    'ext', vt.extension
+                    'src', rp.src,
+                    'ext', rp.extension
                 )
-            ) as video_src,
-            v.jewellery_id,
-            p.name as producer
+            ) as metadata
         from
-            jw_medias.video_details as vd
-                join jw_medias.videos v on v.id = vd.video_id
-                join jw_medias.video_types vt on vd.video_type_id = vt.id
-                join jw_medias.videos on vd.video_id = videos.id
-                left join jw_medias.producers p on v.producer_id = p.id
-        group by vd.video_id, v.jewellery_id, p.name
-    ),
-    cte_video_types as (
+            jw_medias.review_pictures rp
+        group by rp.id
+
+        union all
+
         select
+            rv.id,
+            rv.alt_name,
+            rv.is_active,
             jsonb_agg(
                 jsonb_build_object(
-                    ctv.producer, ctv.video_src
+                    'src', rvd.src,
+                    'ext', vt.extension,
+                    'type', vt.type
                 )
-            ) as video_types,
-            ctv.jewellery_id
+            ) as metadata
         from
-            cte_videos ctv
-                join jewelleries.jewelleries as jj on ctv.jewellery_id = jj.id
-        group by jj.id, ctv.jewellery_id
-    )
-select
-    jj.id,
-    jj.category_id,
-    jc.name as category,
-    jj.name,
-    jj.slug,
-    jj.description,
-    jj.part_number,
-    jj.approx_weight,
-    jj.is_active,
-    jj.created_at,
-    jj.updated_at,
-    vi.inserts,
-    vi.stone_id as dominant_stone_id,
-    vi.stone_name as dominant_stone,
-    vi.colour_id as dominant_colour_id,
-    vi.colour_name as dominant_colour,
-    vi.facet_id as dominant_facet_id,
-    vi.facet_name as dominant_facet,
-    mtl.metals as precious_metals,
-    case
-        when cvrg.coverages isnull
-            then jsonb_build_array()
-        else
-            cvrg.coverages
-        end
-        as coverings,
-    cvt.video_types
-from
-    jewelleries.jewelleries as jj
-        left join jw_views.v_inserts vi on jj.id = vi.jewellery_id
-        join jewelleries.categories as jc on jj.category_id = jc.id
-        left join cte_jw_coverages as cvrg on jj.id = cvrg.jewellery_id
-        left join cte_jw_metals as mtl on jj.id = mtl.jewellery_id
-        join cte_video_types as cvt on jj.id = cvt.jewellery_id
-;
-
-
-
-
-with
-    cte_videos_group as (
+            jw_medias.review_videos rv
+                join jw_medias.review_video_details rvd on rv.id = rvd.review_video_id
+                join jw_medias.video_types vt on vt.id = rvd.video_type_id
+        group by rv.id
+    ),
+    cte_review as (
         select
-            jj.id as jewellery_id,
-            v.id as video_id,
-            v.name as name,
-            v.alt_name as alt_name,
-            v.producer_id as producer_id,
-            p.name as producer_name,
-            p.slug as producer_slug,
-            v.is_active as video_active,
+            mr.jewellery_id,
             jsonb_agg(
-                    jsonb_build_object(
-                            'type', vt.type,
-                            'extension', vt.extension,
-                            'src', vd.src
-                    )
-            ) as types
+                jsonb_build_object(
+                    'media_id', cmr.id,
+                    mt.name, cmr.metadata,
+                    'alt_name', cmr.alt_name,
+                    'is_active', cmr.is_active
+                )
+            ) media_review
         from
-            jewelleries.jewelleries as jj
-                join jw_medias.videos v on jj.id = v.jewellery_id
-                join jw_medias.producers as p on p.id = v.producer_id
-                join jw_medias.video_details vd on v.id = vd.video_id
-                join jw_medias.video_types vt on vd.video_type_id = vt.id
-        group by jj.id, v.name, v.id, p.name, p.slug
+            cte_media_review as cmr
+                join jw_medias.media_reviews mr on cmr.id = mr.id
+                join jw_medias.media_types mt on mr.media_type_id = mt.id
+        group by mr.jewellery_id
     ),
-    cte_jw_videos as (
+    cte_media_catalog as (
         select
-            case
-                when cvg.jewellery_id isnull then
-                    jsonb_build_array()
-                else
-                    jsonb_agg(
-                        jsonb_build_object(
-                            'video_id', cvg.video_id,
-                            'name', cvg.name,
-                            'alt_name', cvg.alt_name,
-                            'video_type', cvg.types,
-                            'producer_id', cvg.producer_id,
-                            'producer_name', cvg.producer_name,
-                            'producer_slug', cvg.producer_slug
-                        )
-                    )
-                end
-                as video_medias,
-            cvg.jewellery_id
+            jp.id,
+            jp.alt_name,
+            jp.is_active,
+            jsonb_agg(
+                jsonb_build_object(
+                    'src', jp.src,
+                    'ext', jp.extension
+                )
+            ) as metadata
         from
-            cte_videos_group as cvg
-        group by cvg.jewellery_id
+            jw_medias.jewellery_pictures jp
+        group by jp.id
+
+        union all
+
+        select
+            jv.id,
+            jv.alt_name,
+            jv.is_active,
+            jsonb_agg(
+                jsonb_build_object(
+                    'src', jvd.src,
+                    'ext', vt.extension,
+                    'type', vt.type
+                )
+            ) as metadata
+        from
+            jw_medias.jewellery_videos jv
+                join jw_medias.jewellery_video_details jvd on jv.id = jvd.jewellery_video_id
+                join jw_medias.video_types vt on vt.id = jvd.video_type_id
+        group by jv.id
     ),
-    cte_jw_pictures as (
+    cte_catalog as (
         select
-            case
-                when p.jewellery_id isnull then
-                    jsonb_build_array()
-                else
-                    jsonb_agg(
-                            jsonb_build_object(
-                                    'picture_id', p.id,
-                                    'name', p.name,
-                                    'alt_name', p.alt_name,
-                                    'extension', p.extension,
-                                    'type', p.type,
-                                    'src', p.src,
-                                    'producer_id', p.producer_id,
-                                    'picture_active', p.is_active,
-                                    'producer_name', pr.name,
-                                    'producer_slug', pr.slug
-                            )
-                    )
-                end
-                as picture_medias,
-            p.jewellery_id
+            mc.jewellery_id,
+            jsonb_agg(
+                jsonb_build_object(
+                    'media_id', cmc.id,
+                    mt.name, cmc.metadata,
+                    'alt_name', cmc.alt_name,
+                    'is_active', cmc.is_active
+                )
+            ) media_catalog
         from
-            jewelleries.jewelleries as jj
-                join jw_medias.pictures p on jj.id = p.jewellery_id
-                join jw_medias.producers pr on p.producer_id = pr.id
-        group by p.jewellery_id
+            cte_media_catalog as cmc
+                join jw_medias.media_catalogs mc on cmc.id = mc.id
+                join jw_medias.media_types mt on mc.media_type_id = mt.id
+        group by mc.jewellery_id
     ),
     cte_jw_props as (
         select
             jj.id,jwb.id as jewellery_id,
             jsonb_build_object(
-                    'brooch_id', jwb.id
+                'brooch_id', jwb.id
             ) as spec_props,
             jwb.quantity as quantity,
             cast(jwb.price as decimal(10, 2)) as avg_price,
@@ -207,7 +158,7 @@ with
                 join jewelleries.jewelleries as jj on jwb.id = jj.id
                 join jewelleries.categories as jc on jj.category_id = jc.id
 
-        union all
+         union all
 
         select
             jj.id,jwchp.jewellery_id as jewellery_id,
@@ -561,41 +512,41 @@ select
     jj.is_active,
     jj.created_at,
     jj.updated_at,
-    cjp.quantity,
-    cjp.avg_price,
-    cjp.max_price,
-    cjp.min_price,
+    vi.inserts,
+    vi.stone_id as dominant_stone_id,
+    vi.stone_name as dominant_stone,
+    vi.colour_id as dominant_colour_id,
+    vi.colour_name as dominant_colour,
+    vi.facet_id as dominant_facet_id,
+    vi.facet_name as dominant_facet,
+    mtl.metals as precious_metals,
     case
         when cjp.spec_props isnull then
             jsonb_build_object()
         else
             cjp.spec_props
         end
-            as spec_props,
+        as spec_props,
     case
-        when cjwc.coverings isnull
+        when cvrg.coverages isnull
             then jsonb_build_array()
         else
-            cjwc.coverings
+            cvrg.coverages
         end
-            as coverings,
-    cjwi.inserts,
-    cgv.video_medias,
-    cp.picture_medias,
-    cast(dominant_data->>'weight' as decimal(10, 2)) as dominant_weight,
-    cast(dominant_data->>'stone_id' as integer) as dominant_stone_id,
-    cast(dominant_data->>'stone_name' as varchar(256)) as dominant_stone_name,
-    cast(dominant_data->>'colour_id' as integer) as dominant_colour_id,
-    cast(dominant_data->>'colour_name' as varchar(256)) as dominant_colour_name,
-    cjm.metals
-from jewelleries.jewelleries as jj
-         join jewelleries.categories as jc on jj.category_id = jc.id
-         left join cte_jw_inserts as cjwi on jj.id = cjwi.jewellery_id
-         left join cte_jw_coverings as cjwc on jj.id = cjwc.jewellery_id
-         left join cte_jw_metals as cjm on jj.id = cjm.jewellery_id
-         left join cte_jw_props as cjp on  jj.id = cjp.jewellery_id
-         left join cte_jw_videos as cgv on jj.id = cgv.jewellery_id
-         left join cte_jw_pictures as cp on jj.id = cp.jewellery_id
-         left join jsonb_path_query(cjwi.inserts, '$[*].dominant_stone ? (@.weight != null)') as dominant_data on jj.id = cjwi.jewellery_id
-
-order by jj.id
+        as coverings,
+    cr.media_review,
+    cc.media_catalog,
+    cjp.quantity,
+    cjp.avg_price,
+    cjp.max_price,
+    cjp.min_price
+from
+    jewelleries.jewelleries as jj
+        left join jw_views.v_inserts vi on jj.id = vi.jewellery_id
+        join jewelleries.categories as jc on jj.category_id = jc.id
+        left join cte_jw_coverages as cvrg on jj.id = cvrg.jewellery_id
+        left join cte_jw_metals as mtl on jj.id = mtl.jewellery_id
+        left join cte_review as cr on jj.id = cr.jewellery_id
+        left join cte_catalog as cc on jj.id = cc.jewellery_id
+        left join cte_jw_props as cjp on  jj.id = cjp.jewellery_id
+;

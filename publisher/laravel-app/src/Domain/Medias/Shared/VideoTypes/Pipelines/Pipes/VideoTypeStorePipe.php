@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Domain\Medias\Shared\VideoTypes\Pipelines\Pipes;
 
-use Domain\Medias\Shared\MediaTypes\Repositories\VideoTypeRepository;
+use Domain\Medias\Shared\MediaTypes\Repositories\MediaTypeRepository;
 
 final class VideoTypeStorePipe
 {
-    public function __construct(public VideoTypeRepository $repository)
+    public function __construct(public MediaTypeRepository $repository)
     {
     }
 

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Domain\Medias\Shared\MediaTypes\Repositories\Relationships;
 
-use Domain\Medias\Shared\VideoTypes\Models\VideoType;
+use Domain\Medias\Shared\MediaTypes\Models\MediaType;
 use Illuminate\Database\Eloquent\Collection;
 
-final class VideoTypeVideoDetailsRelationshipRepository
+final class MediaTypeMediaCatalogsRelationshipRepository
 {
     public function index(int $id): Collection
     {
-        return VideoType::findOrFail($id)->videoDetails;
+        return MediaType::findOrFail($id)->mediaCatalogs;
     }
 
     public function update(array $data, int $id): void

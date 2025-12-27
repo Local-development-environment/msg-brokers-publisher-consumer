@@ -16,7 +16,7 @@ final class Media
         return [
             'catalog' => [
                 'pictures' => $this->getItems(4, 'image', 'catalog'),
-                'videos' => $this->getItems(1, 'video', 'catalog'),
+                'videos' => $this->getItems(2, 'video', 'catalog'),
             ],
             'reviews' => [
                 'pictures' => $this->getItems(rand(0,4), 'image', 'reviews'),

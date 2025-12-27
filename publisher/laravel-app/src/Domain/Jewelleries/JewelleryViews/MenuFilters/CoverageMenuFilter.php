@@ -15,7 +15,7 @@ final class CoverageMenuFilter implements MenuFilterInterface
             ->selectRaw('distinct c.id, c.name')
             ->crossJoin(DB::raw(
                 "JSON_TABLE(
-                coverages,
+                coverings,
                 '$[*]'
                 COLUMNS(
                     id INT PATH '$.coverage_id',

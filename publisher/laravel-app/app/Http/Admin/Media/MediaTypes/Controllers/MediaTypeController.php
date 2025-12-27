@@ -1,20 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\Media\MediaVideos\VideoTypes\Controllers;
+namespace App\Http\Admin\Media\MediaTypes\Controllers;
 
-use App\Http\Admin\Media\MediaVideos\Videos\Requests\VideoTypeStoreRequest;
-use App\Http\Admin\Media\MediaVideos\VideoTypes\Requests\VideoTypeUpdateRequest;
-use App\Http\Admin\Media\MediaVideos\VideoTypes\Resources\VideoTypeCollection;
-use App\Http\Admin\Media\MediaVideos\VideoTypes\Resources\VideoTypeResource;
+use App\Http\Admin\Media\MediaTypes\Requests\MediaTypeStoreRequest;
+use App\Http\Admin\Media\MediaTypes\Requests\MediaTypeUpdateRequest;
+use App\Http\Admin\Media\MediaTypes\Resources\MediaTypeCollection;
+use App\Http\Admin\Media\MediaTypes\Resources\MediaTypeResource;
 use App\Http\Controllers\Controller;
+use Domain\Medias\Shared\MediaTypes\Enums\MediaTypeNameRoutesEnum;
 use Domain\Medias\Shared\MediaTypes\Services\MediaTypeService;
-use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeNameRoutesEnum;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Throwable;
 
-final class VideoTypeController extends Controller
+final class MediaTypeController extends Controller
 {
     public function __construct(public MediaTypeService $service)
     {
@@ -28,22 +28,22 @@ final class VideoTypeController extends Controller
         $data = $request->all();
         $items = $this->service->index($data);
 
-        return (new VideoTypeCollection($items))->response();
+        return (new MediaTypeCollection($items))->response();
     }
 
     /**
      * Store a newly created resource in storage.
      * @throws Throwable
      */
-    public function store(VideoTypeStoreRequest $request): JsonResponse
+    public function store(MediaTypeStoreRequest $request): JsonResponse
     {
         $data = $request->all();
 
         $model = $this->service->store($data);
 
-        return (new VideoTypeResource($model))
+        return (new MediaTypeResource($model))
             ->response()
-            ->header('Location', route(VideoTypeNameRoutesEnum::CRUD_SHOW->value, [
+            ->header('Location', route(MediaTypeNameRoutesEnum::CRUD_SHOW->value, [
                 'id' => $model->id
             ]));
     }
@@ -57,14 +57,14 @@ final class VideoTypeController extends Controller
         data_set($data, 'id', $id);
         $model = $this->service->show($data, $id);
 
-        return (new VideoTypeResource($model))->response();
+        return (new MediaTypeResource($model))->response();
     }
 
     /**
      * Update the specified resource in storage.
      * @throws Throwable
      */
-    public function update(VideoTypeUpdateRequest $request, int $id): JsonResponse
+    public function update(MediaTypeUpdateRequest $request, int $id): JsonResponse
     {
         $data = $request->all();
 

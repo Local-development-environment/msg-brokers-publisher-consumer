@@ -2,6 +2,11 @@
 declare(strict_types=1);
 
 use App\Http\Admin\Media\MediaPictures\Pictures\Controllers\PictureController;
+use App\Http\Admin\Media\MediaTypes\Controllers\MediaTypeController;
+use App\Http\Admin\Media\MediaTypes\Controllers\MediaTypeMediaCatalogsRelatedController;
+use App\Http\Admin\Media\MediaTypes\Controllers\MediaTypeMediaCatalogsRelationshipController;
+use App\Http\Admin\Media\MediaTypes\Controllers\MediaTypeMediaReviewsRelatedController;
+use App\Http\Admin\Media\MediaTypes\Controllers\MediaTypeMediaReviewsRelationshipController;
 use App\Http\Admin\Media\MediaVideos\VideoDetails\Controllers\VideoDetailController;
 use App\Http\Admin\Media\MediaVideos\VideoDetails\Controllers\VideoDetailsVideoRelatedController;
 use App\Http\Admin\Media\MediaVideos\VideoDetails\Controllers\VideoDetailsVideoRelationshipController;
@@ -25,13 +30,35 @@ use App\Http\Admin\Media\Producers\Controllers\ProducerVideosRelationshipControl
 use Domain\Medias\MediaCatalog\JewelleryPictures\Enums\JewelleryPictureNameRoutesEnum;
 use Domain\Medias\MediaVideos\VideoDetails\Enums\VideoDetailNameRoutesEnum;
 use Domain\Medias\MediaVideos\Videos\Enums\VideoNameRoutesEnum;
+use Domain\Medias\Shared\MediaTypes\Enums\MediaTypeNameRoutesEnum;
 use Domain\Medias\Shared\Producers\Enums\ProducerNameRoutesEnum;
 use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeNameRoutesEnum;
 
 Route::group([
     'middleware' => 'auth:admin'
 ], function () {
-    /*************************** PICTURES *************************/
+
+    /*************************** MEDIA TYPES *************************/
+    // CRUD
+    Route::get('media-types', [MediaTypeController::class, 'index'])->name(MediaTypeNameRoutesEnum::CRUD_INDEX->value);
+    Route::get('media-types/{id}', [MediaTypeController::class, 'show'])->name(MediaTypeNameRoutesEnum::CRUD_SHOW->value);
+    Route::post('media-types', [MediaTypeController::class, 'store'])->name(MediaTypeNameRoutesEnum::CRUD_POST->value);
+    Route::patch('media-types/{id}', [MediaTypeController::class, 'update'])->name(MediaTypeNameRoutesEnum::CRUD_PATCH->value);
+    Route::delete('media-types/{id}', [MediaTypeController::class, 'destroy'])->name(MediaTypeNameRoutesEnum::CRUD_DELETE->value);
+
+    // RELATIONSHIPS
+    //  one-to-many Media Type to Media Catalogs
+    Route::get('media-types/{id}/relationships/media-catalogs', [MediaTypeMediaCatalogsRelationshipController::class, 'index'])
+         ->name(MediaTypeNameRoutesEnum::RELATIONSHIP_TO_MEDIA_CATALOG->value);
+    Route::get('media-types/{id}/media-catalogs', [MediaTypeMediaCatalogsRelatedController::class, 'index'])
+         ->name(MediaTypeNameRoutesEnum::RELATED_TO_MEDIA_CATALOGS->value);
+    //  one-to-many Media Type to Media Reviews
+    Route::get('media-types/{id}/relationships/media-reviews', [MediaTypeMediaReviewsRelationshipController::class, 'index'])
+         ->name(MediaTypeNameRoutesEnum::RELATIONSHIP_TO_MEDIA_REVIEWS->value);
+    Route::get('media-types/{id}/media-reviews', [MediaTypeMediaReviewsRelatedController::class, 'index'])
+         ->name(MediaTypeNameRoutesEnum::RELATED_TO_MEDIA_REVIEWS->value);
+
+    /*************************** JEWELLERY PICTURES *************************/
     // CRUD
     Route::get('jewellery-pictures', [PictureController::class, 'index'])->name(JewelleryPictureNameRoutesEnum::CRUD_INDEX->value);
     Route::get('jewellery-pictures/{id}', [PictureController::class, 'show'])->name(JewelleryPictureNameRoutesEnum::CRUD_SHOW->value);

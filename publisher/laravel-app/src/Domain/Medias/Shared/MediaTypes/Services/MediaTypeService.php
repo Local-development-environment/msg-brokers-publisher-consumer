@@ -2,19 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Domain\Medias\Shared\MediaTypes\Services\Relationships;
+namespace Domain\Medias\Shared\MediaTypes\Services;
 
-use Domain\Medias\Shared\MediaTypes\Repositories\VideoTypeRepository;
+use Domain\Medias\Shared\MediaTypes\Models\MediaType;
+use Domain\Medias\Shared\MediaTypes\Pipelines\MediaTypePipeline;
+use Domain\Medias\Shared\MediaTypes\Repositories\MediaTypeRepository;
 use Domain\Medias\Shared\VideoTypes\Models\VideoType;
-use Domain\Medias\Shared\VideoTypes\Pipelines\VideoTypePipeline;
 use Illuminate\Contracts\Pagination\Paginator;
 use Throwable;
 
-final class VideoTypeService
+final class MediaTypeService
 {
     public function __construct(
-        public VideoTypeRepository $repository,
-        public VideoTypePipeline $pipeline
+        public MediaTypeRepository $repository,
+        public MediaTypePipeline   $pipeline
     ) {}
 
     public function index(array $data): Paginator
@@ -25,12 +26,12 @@ final class VideoTypeService
     /**
      * @throws Throwable
      */
-    public function store(array $data): VideoType
+    public function store(array $data): MediaType
     {
         return $this->pipeline->store($data);
     }
 
-    public function show(array $data, int $id): VideoType
+    public function show(array $data, int $id): MediaType
     {
         return $this->repository->show($data, $id);
     }

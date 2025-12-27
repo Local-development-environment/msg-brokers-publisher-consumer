@@ -17,12 +17,12 @@ final class MediaType extends Model
 
     public const string TYPE_RESOURCE = MediaTypeEnum::TYPE_RESOURCE->value;
 
-    public function mediaCatalog(): HasMany
+    public function mediaCatalogs(): HasMany
     {
         return $this->hasMany(MediaCatalog::class);
     }
 
-    public function mediaReview(): HasMany
+    public function mediaReviews(): HasMany
     {
         return $this->hasMany(MediaReview::class);
     }
