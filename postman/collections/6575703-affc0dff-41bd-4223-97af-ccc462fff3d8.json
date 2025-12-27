@@ -10571,18 +10571,18 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/video-types/1?include=videoDetails",
+											"raw": "{{baseURL}}/media-types/1?include=mediaReviews",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"video-types",
+												"media-types",
 												"1"
 											],
 											"query": [
 												{
 													"key": "include",
-													"value": "videoDetails"
+													"value": "mediaReviews"
 												}
 											]
 										}
