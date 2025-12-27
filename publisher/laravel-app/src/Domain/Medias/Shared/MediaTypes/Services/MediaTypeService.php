@@ -7,7 +7,6 @@ namespace Domain\Medias\Shared\MediaTypes\Services;
 use Domain\Medias\Shared\MediaTypes\Models\MediaType;
 use Domain\Medias\Shared\MediaTypes\Pipelines\MediaTypePipeline;
 use Domain\Medias\Shared\MediaTypes\Repositories\MediaTypeRepository;
-use Domain\Medias\Shared\VideoTypes\Models\VideoType;
 use Illuminate\Contracts\Pagination\Paginator;
 use Throwable;
 

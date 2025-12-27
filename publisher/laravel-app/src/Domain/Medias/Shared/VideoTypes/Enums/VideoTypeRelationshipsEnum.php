@@ -6,5 +6,6 @@ namespace Domain\Medias\Shared\VideoTypes\Enums;
 
 enum VideoTypeRelationshipsEnum: string
 {
-    case VIDEO_DETAILS   = 'videoDetails';
+    case REVIEW_VIDEO_DETAILS  = 'reviewVideoDetails';
+    case CATALOG_VIDEO_DETAILS = 'catalogVideoDetails';
 }

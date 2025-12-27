@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Media\MediaVideos\VideoDetails\Controllers;
 
-use App\Http\Admin\Media\MediaVideos\VideoTypes\Resources\VideoTypeResource;
+use App\Http\Admin\Media\Shared\VideoTypes\Resources\VideoTypeResource;
 use App\Http\Controllers\Controller;
 use Domain\Medias\MediaVideos\VideoDetails\Services\Relationships\VideoDetailsVideoTypeRelationshipService;
 use Illuminate\Http\JsonResponse;

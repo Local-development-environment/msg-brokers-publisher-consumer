@@ -6,7 +6,7 @@ namespace App\Http\Admin\Media\MediaVideos\Videos\Controllers;
 use App\Http\Admin\Media\MediaVideos\Videos\Requests\VideoStoreRequest;
 use App\Http\Admin\Media\MediaVideos\Videos\Resources\VideoCollection;
 use App\Http\Admin\Media\MediaVideos\Videos\Resources\VideoResource;
-use App\Http\Admin\Media\MediaVideos\VideoTypes\Requests\VideoUpdateRequest;
+use App\Http\Admin\Media\Shared\VideoTypes\Requests\VideoUpdateRequest;
 use App\Http\Controllers\Controller;
 use Domain\Medias\MediaVideos\Videos\Enums\VideoNameRoutesEnum;
 use Domain\Medias\MediaVideos\Videos\Services\VideoService;

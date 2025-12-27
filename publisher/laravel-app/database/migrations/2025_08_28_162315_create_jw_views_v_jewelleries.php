@@ -91,7 +91,7 @@ return new class extends Migration
                     ),
                     cte_review as (
                         select
-                            mr.jewellery_id,
+                            rm.jewellery_id,
                             jsonb_agg(
                                 jsonb_build_object(
                                     'media_id', cmr.id,
@@ -102,47 +102,47 @@ return new class extends Migration
                             ) media_review
                         from
                             cte_media_review as cmr
-                                join jw_medias.media_reviews mr on cmr.id = mr.id
-                                join jw_medias.media_types mt on mr.media_type_id = mt.id
-                        group by mr.jewellery_id
+                                join jw_medias.review_medias rm on cmr.id = rm.id
+                                join jw_medias.media_types mt on rm.media_type_id = mt.id
+                        group by rm.jewellery_id
                     ),
                     cte_media_catalog as (
                         select
-                            jp.id,
-                            jp.alt_name,
-                            jp.is_active,
+                            cp.id,
+                            cp.alt_name,
+                            cp.is_active,
                             jsonb_agg(
                                 jsonb_build_object(
-                                    'src', jp.src,
-                                    'ext', jp.extension
+                                    'src', cp.src,
+                                    'ext', cp.extension
                                 )
                             ) as metadata
                         from
-                            jw_medias.jewellery_pictures jp
-                        group by jp.id
+                            jw_medias.catalog_pictures cp
+                        group by cp.id
                 
                         union all
                 
                         select
-                            jv.id,
-                            jv.alt_name,
-                            jv.is_active,
+                            cv.id,
+                            cv.alt_name,
+                            cv.is_active,
                             jsonb_agg(
                                 jsonb_build_object(
-                                    'src', jvd.src,
+                                    'src', cvd.src,
                                     'ext', vt.extension,
                                     'type', vt.type
                                 )
                             ) as metadata
                         from
-                            jw_medias.jewellery_videos jv
-                                join jw_medias.jewellery_video_details jvd on jv.id = jvd.jewellery_video_id
-                                join jw_medias.video_types vt on vt.id = jvd.video_type_id
-                        group by jv.id
+                            jw_medias.catalog_videos cv
+                                join jw_medias.catalog_video_details cvd on cv.id = cvd.catalog_video_id
+                                join jw_medias.video_types vt on vt.id = cvd.video_type_id
+                        group by cv.id
                     ),
                     cte_catalog as (
                         select
-                            mc.jewellery_id,
+                            cm.jewellery_id,
                             jsonb_agg(
                                 jsonb_build_object(
                                     'media_id', cmc.id,
@@ -153,9 +153,9 @@ return new class extends Migration
                             ) media_catalog
                         from
                             cte_media_catalog as cmc
-                                join jw_medias.media_catalogs mc on cmc.id = mc.id
-                                join jw_medias.media_types mt on mc.media_type_id = mt.id
-                        group by mc.jewellery_id
+                                join jw_medias.catalog_medias cm on cmc.id = cm.id
+                                join jw_medias.media_types mt on cm.media_type_id = mt.id
+                        group by cm.jewellery_id
                     ),
                     cte_jw_props as (
                         select
