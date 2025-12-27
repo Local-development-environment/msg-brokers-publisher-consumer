@@ -10809,7 +10809,7 @@
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
-									"name": "media-type media-catalogs index Copy",
+									"name": "media-type media-catalogs index",
 									"id": "6575703-75f5ed49-7aae-4f1f-9576-a35c3d724740",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
