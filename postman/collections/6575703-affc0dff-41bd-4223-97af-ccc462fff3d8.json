@@ -10769,6 +10769,38 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "media-type media-catalogs index Copy",
+									"id": "6575703-2ef50ce1-7496-45a3-8563-190681f7650d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/media-types/1/media-catalogs",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"media-types",
+												"1",
+												"media-catalogs"
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"id": "6575703-8dd8c11b-8b09-44f2-8278-38144343ffc3"
