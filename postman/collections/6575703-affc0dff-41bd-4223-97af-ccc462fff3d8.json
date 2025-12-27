@@ -10582,7 +10582,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "media-types index Copy",
+									"name": "catalog-medias index",
 									"id": "6575703-09b4b007-1916-4ba4-8ed3-3784feafadf4",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
