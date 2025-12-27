@@ -10627,6 +10627,46 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "video-types update Copy",
+									"id": "6575703-071dcd65-5edc-48c3-a950-ad9d3ea68931",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"data\": {\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/video-types/1002",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"video-types",
+												"1002"
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"id": "6575703-0c344027-af20-4757-9eb3-695f979688ac"
