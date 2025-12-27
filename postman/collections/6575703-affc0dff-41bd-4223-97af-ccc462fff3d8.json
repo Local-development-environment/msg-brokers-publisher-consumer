@@ -10600,12 +10600,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/media-types?include=mediaCatalogs",
+											"raw": "{{baseURL}}/catalog-medias?include=mediaCatalogs",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"media-types"
+												"catalog-medias"
 											],
 											"query": [
 												{
