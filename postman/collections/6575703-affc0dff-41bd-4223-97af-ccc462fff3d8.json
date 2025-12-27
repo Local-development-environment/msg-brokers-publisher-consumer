@@ -10600,7 +10600,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/catalog-medias?include=jewellery",
+											"raw": "{{baseURL}}/catalog-medias?include=catalogPicture",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -10610,7 +10610,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "jewellery"
+													"value": "catalogPicture"
 												}
 											]
 										}
