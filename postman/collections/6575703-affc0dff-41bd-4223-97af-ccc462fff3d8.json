@@ -8826,343 +8826,6 @@
 			"name": "MEDIA DOMAIN",
 			"item": [
 				{
-					"name": "PRODUCERS",
-					"item": [
-						{
-							"name": "CRUD",
-							"item": [
-								{
-									"name": "producers index",
-									"id": "6575703-d76f05df-f3a3-4efd-9c53-7b2b3a265c81",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/producers?include=pictures",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"producers"
-											],
-											"query": [
-												{
-													"key": "include",
-													"value": "pictures"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "producers show",
-									"id": "6575703-1a419961-16a6-459f-b557-1654c902a428",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/producers/1?include=pictures",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"producers",
-												"1"
-											],
-											"query": [
-												{
-													"key": "include",
-													"value": "pictures"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "producers store",
-									"id": "6575703-d83cfd77-4d71-4807-93e9-2a738dce0693",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"data\": {\r\n        \"id\": 1005,\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseURL}}/producers",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"producers"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "producers update",
-									"id": "6575703-f579993a-0b9d-43d3-8896-3774fea9bbcb",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "PATCH",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"data\": {\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseURL}}/producers/1002",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"producers",
-												"1002"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "producers destroy",
-									"id": "6575703-0c928447-b5c9-4bd2-a6a7-101e437ce291",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "DELETE",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/producers/17",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"producers",
-												"17"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-a2f1f4b2-d85c-42e6-a99c-e5bb6669b932"
-						},
-						{
-							"name": "RELATED",
-							"item": [
-								{
-									"name": "producer videos index",
-									"id": "6575703-969627fe-611e-4fac-a255-9a4e3dea92f3",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/producers/1/videos",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"producers",
-												"1",
-												"videos"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "producer pictures index",
-									"id": "6575703-0d0ecccc-d6dd-4cfd-9f6f-f8adc2109a12",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/producers/1/pictures",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"producers",
-												"1",
-												"pictures"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-7085f11b-5167-47ab-8b26-68a960595022"
-						},
-						{
-							"name": "RELATIONSHIPS",
-							"item": [
-								{
-									"name": "producer videos index",
-									"id": "6575703-45115b6d-7b5f-4de2-92d3-3e8175635a82",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/producers/1/relationships/videos",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"producers",
-												"1",
-												"relationships",
-												"videos"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "producer pictures index",
-									"id": "6575703-4ebdf96b-f634-4b4f-9a21-77166b3c04db",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/producers/2/relationships/pictures",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"producers",
-												"2",
-												"relationships",
-												"pictures"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-42d132e9-2a7b-4a43-96ca-471d4aa81c7b"
-						}
-					],
-					"id": "6575703-0e08d3f3-25ba-41d3-ba29-efd50fe97084"
-				},
-				{
 					"name": "PICTURES",
 					"item": [
 						{
@@ -9926,7 +9589,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/video-types?include=videoDetails",
+											"raw": "{{baseURL}}/video-types?include=catalogVideoDetails",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -9936,7 +9599,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "videoDetails"
+													"value": "catalogVideoDetails"
 												}
 											]
 										}
@@ -9962,7 +9625,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/video-types/1?include=videoDetails",
+											"raw": "{{baseURL}}/video-types/1?include=reviewVideoDetails",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -9973,7 +9636,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "videoDetails"
+													"value": "reviewVideoDetails"
 												}
 											]
 										}
@@ -10097,7 +9760,7 @@
 							"name": "RELATED",
 							"item": [
 								{
-									"name": "video-type video-details index",
+									"name": "video-type catalog-video-details index",
 									"id": "6575703-22056a7e-6bc4-44c5-b119-c827de689d21",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -10115,14 +9778,46 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/video-types/1/video-details",
+											"raw": "{{baseURL}}/video-types/1/catalog-video-details",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"video-types",
 												"1",
-												"video-details"
+												"catalog-video-details"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "video-type review-video-details index",
+									"id": "6575703-4f46a33f-f1fa-4005-b578-6ac503e27581",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/video-types/1/review-video-details",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"video-types",
+												"1",
+												"review-video-details"
 											]
 										}
 									},
@@ -10135,7 +9830,7 @@
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
-									"name": "video-type video-details index",
+									"name": "video-type catalog-video-details index",
 									"id": "6575703-b9ea0e7d-4443-495e-9445-f9c6ea90e662",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -10153,7 +9848,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/video-types/1/relationships/video-details",
+											"raw": "{{baseURL}}/video-types/1/relationships/catalog-video-details",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -10161,7 +9856,40 @@
 												"video-types",
 												"1",
 												"relationships",
-												"video-details"
+												"catalog-video-details"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "video-type review-video-details index",
+									"id": "6575703-dfdef526-3618-4fa2-8c06-a23e1607bdc8",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/video-types/1/relationships/review-video-details",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"video-types",
+												"1",
+												"relationships",
+												"review-video-details"
 											]
 										}
 									},
@@ -10846,6 +10574,101 @@
 						}
 					],
 					"id": "6575703-433e2980-4ebe-4e17-a63a-a7637367b005"
+				},
+				{
+					"name": "CATALOG MEDIAS",
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [
+								{
+									"name": "catalog-medias index",
+									"id": "6575703-09b4b007-1916-4ba4-8ed3-3784feafadf4",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/catalog-medias?include=catalogVideo",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"catalog-medias"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "catalogVideo"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "catalog-medias show",
+									"id": "6575703-ae4a9bf2-cacd-47c8-9fa4-b55ff265fe74",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/catalog-medias/3?include=catalogPicture",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"catalog-medias",
+												"3"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "catalogPicture"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-a7ce06b7-1e45-48ac-8706-19f35f9a8fe5"
+						},
+						{
+							"name": "RELATED",
+							"item": [],
+							"id": "6575703-792a1fbe-33f1-4e2b-ad87-7510f298757f"
+						},
+						{
+							"name": "RELATIONSHIP",
+							"item": [],
+							"id": "6575703-fc532dae-139f-4b9c-8cb7-d3a05be33c2b"
+						}
+					],
+					"id": "6575703-5c9214c0-dc99-476c-bf7e-d7a1a691a1e4"
 				}
 			],
 			"id": "6575703-f9e921f2-19f3-4fc5-ac51-a2116d1bd095"
