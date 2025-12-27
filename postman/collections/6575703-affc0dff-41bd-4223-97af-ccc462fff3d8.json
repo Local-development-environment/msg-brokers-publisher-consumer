@@ -10669,7 +10669,7 @@
 									"response": []
 								},
 								{
-									"name": "video-types destroy Copy",
+									"name": "media-types destroy",
 									"id": "6575703-7fc6a574-b682-4e8f-8538-e3110843c74d",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -10687,12 +10687,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/video-types/17",
+											"raw": "{{baseURL}}/media-types/17",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"video-types",
+												"media-types",
 												"17"
 											]
 										}
