@@ -10807,7 +10807,40 @@
 						},
 						{
 							"name": "RELATIONSHIPS",
-							"item": [],
+							"item": [
+								{
+									"name": "media-type media-catalogs index Copy",
+									"id": "6575703-75f5ed49-7aae-4f1f-9576-a35c3d724740",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/media-types/1/media-catalogs",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"media-types",
+												"1",
+												"media-catalogs"
+											]
+										}
+									},
+									"response": []
+								}
+							],
 							"id": "6575703-8757adc1-4d63-4430-8a41-826bde64448e"
 						}
 					],
