@@ -10600,7 +10600,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/catalog-medias?include=catalogPicture",
+											"raw": "{{baseURL}}/catalog-medias?include=catalogVideo",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -10610,7 +10610,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "catalogPicture"
+													"value": "catalogVideo"
 												}
 											]
 										}
@@ -10636,12 +10636,13 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/catalog-medias?include=catalogPicture",
+											"raw": "{{baseURL}}/catalog-medias/3?include=catalogPicture",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"catalog-medias"
+												"catalog-medias",
+												"3"
 											],
 											"query": [
 												{
