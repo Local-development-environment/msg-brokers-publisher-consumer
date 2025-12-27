@@ -10616,6 +10616,42 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "catalog-medias index Copy",
+									"id": "6575703-ae4a9bf2-cacd-47c8-9fa4-b55ff265fe74",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/catalog-medias?include=catalogPicture",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"catalog-medias"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "catalogPicture"
+												}
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"id": "6575703-a7ce06b7-1e45-48ac-8706-19f35f9a8fe5"
