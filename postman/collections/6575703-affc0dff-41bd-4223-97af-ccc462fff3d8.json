@@ -9830,7 +9830,7 @@
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
-									"name": "video-type video-details index",
+									"name": "video-type catalog-video-details index",
 									"id": "6575703-b9ea0e7d-4443-495e-9445-f9c6ea90e662",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
