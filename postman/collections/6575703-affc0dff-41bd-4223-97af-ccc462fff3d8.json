@@ -9944,6 +9944,42 @@
 									"response": []
 								},
 								{
+									"name": "video-types index Copy",
+									"id": "6575703-6a53c8b4-5649-4ff1-bd31-16078a31317f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/video-types?include=videoDetails",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"video-types"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "videoDetails"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "video-types show",
 									"id": "6575703-6c373c7e-d3ff-423d-91d3-feef91d9e9f4",
 									"protocolProfileBehavior": {
