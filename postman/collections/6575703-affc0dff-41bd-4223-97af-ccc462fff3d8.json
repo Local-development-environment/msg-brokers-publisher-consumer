@@ -10618,7 +10618,7 @@
 									"response": []
 								},
 								{
-									"name": "catalog-medias index Copy",
+									"name": "catalog-medias show",
 									"id": "6575703-ae4a9bf2-cacd-47c8-9fa4-b55ff265fe74",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
