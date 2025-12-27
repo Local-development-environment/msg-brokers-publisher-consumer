@@ -10794,14 +10794,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/media-types/relationship/1/media-catalogs",
+											"raw": "{{baseURL}}/media-types/1/relationships/media-catalogs",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"media-types",
-												"relationship",
 												"1",
+												"relationships",
 												"media-catalogs"
 											]
 										}
