@@ -10535,17 +10535,17 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/video-types?include=videoDetails",
+											"raw": "{{baseURL}}/media-types?include=mediaCatalogs",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"video-types"
+												"media-types"
 											],
 											"query": [
 												{
 													"key": "include",
-													"value": "videoDetails"
+													"value": "mediaCatalogs"
 												}
 											]
 										}
