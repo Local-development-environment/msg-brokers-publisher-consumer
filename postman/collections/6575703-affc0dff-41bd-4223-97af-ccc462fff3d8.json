@@ -10656,13 +10656,13 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseURL}}/video-types/1002",
+											"raw": "{{baseURL}}/media-types/2",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"video-types",
-												"1002"
+												"media-types",
+												"2"
 											]
 										}
 									},
