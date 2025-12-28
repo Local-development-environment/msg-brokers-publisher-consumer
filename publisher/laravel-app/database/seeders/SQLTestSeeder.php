@@ -17,6 +17,8 @@ final class SQLTestSeeder extends Seeder
      */
     public function run(): void
     {
+
+
         $group_id = 2;
 
         $group_id = DB::table(StoneEnum::TABLE_NAME->value . ' as s')

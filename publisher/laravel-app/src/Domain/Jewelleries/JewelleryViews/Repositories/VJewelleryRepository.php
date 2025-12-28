@@ -79,7 +79,8 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
     private function getMenuItems(string $className, array $params, string $nameParam): array|int
     {
         $items = new $className();
-
+//        dump($nameParam);
+//        dd($this->getVJewelleryBuilder($this->getRequestWithoutFilterItem($params, $nameParam)));
         return $items($this->getVJewelleryBuilder($this->getRequestWithoutFilterItem($params, $nameParam)));
     }
 
