@@ -6150,12 +6150,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-exteriors/2/stone",
+											"raw": "{{baseURL}}/stone-exteriors/2/stone",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-exteriors",
+												"stone-exteriors",
 												"2",
 												"stone"
 											]
