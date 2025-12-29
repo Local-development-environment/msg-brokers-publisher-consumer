@@ -8578,12 +8578,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-type-origins/3",
+											"raw": "{{baseURL}}/type-origins/3",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-type-origins",
+												"type-origins",
 												"3"
 											]
 										}
