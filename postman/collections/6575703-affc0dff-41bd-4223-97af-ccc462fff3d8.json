@@ -6059,7 +6059,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "insert-exteriors index",
+									"name": "stone-exteriors index",
 									"id": "6575703-cb85a34c-559f-4339-8250-074db818dcce",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
