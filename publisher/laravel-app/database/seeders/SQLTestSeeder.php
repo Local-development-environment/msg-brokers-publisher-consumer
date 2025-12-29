@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use Domain\Inserts\Stones\Enums\StoneEnum;
+use Domain\Inserts\Stones\Models\Stone;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
@@ -17,13 +18,18 @@ final class SQLTestSeeder extends Seeder
      */
     public function run(): void
     {
-
-
         $group_id = 2;
-
-        $group_id = DB::table(StoneEnum::TABLE_NAME->value . ' as s')
+        dd(Stone::from('jw_inserts.stones as s')
             ->join('jw_inserts.type_origins as to', 's.type_origin_id', '=', 'to.id')
-            ->join('jw_inserts.natural_stones as ns','s.id', '=', 'ns.id')
+            ->select(
+                'to.*', 'to.description as to_description', 'to.name as to_name',
+                's.*'
+            )
+            ->get()
+        );
+        $group = DB::table(StoneEnum::TABLE_NAME->value . ' as s')
+            ->join('jw_inserts.type_origins as to', 's.type_origin_id', '=', 'to.id')
+            ->join('jw_inserts.natural_stones as ns', 's.id', '=', 'ns.id')
             ->join('jw_inserts.group_grades as gg', 'ns.id', '=', 'gg.id')
             ->join('jw_inserts.stone_groups as sg', 'gg.stone_group_id', '=', 'sg.id')
             ->select(
@@ -37,13 +43,13 @@ final class SQLTestSeeder extends Seeder
             ->where('sg.id', '=', $group_id)
             ->inRandomOrder()->first();
 
-        dd($group_id);
+        dd($group);
         DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_inserts;');
         DB::statement('REFRESH MATERIALIZED VIEW jw_views.v_jewelleries;');
         dd('ok');
         dump(Factory::create()->e164PhoneNumber);
         preg_match_all('/\d+/', Factory::create()->e164PhoneNumber, $matches);
-        dd(implode('',$matches[0]));
+        dd(implode('', $matches[0]));
 
         dd(data_get(Config::array('data-seed.insert-seed'), '*.stones.*'));
         $stones = DB::table('jw_inserts.stones AS s')
@@ -62,8 +68,7 @@ final class SQLTestSeeder extends Seeder
             ->leftJoin('jw_inserts.imitation_stones AS is', 'is.stone_id', '=', 's.id')
             ->join('jw_inserts.type_origins AS t', 't.id', '=', 's.type_origin_id')
             ->orderBy('s.id')
-            ->get()
-            ;
+            ->get();
 //        dd($stones->where('id', '>', 1)->toArray());
 
         $groupIds = [];

@@ -11,6 +11,6 @@ final class ColourInsertStonesRelationshipRepository
 {
     public function index(int $id): Collection
     {
-        return Colour::find($id)->insertExteriors;
+        return Colour::find($id)->stoneExteriors;
     }
 }

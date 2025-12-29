@@ -24,8 +24,8 @@ final class ColourResource extends JsonResource
             'type' => ColourEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
-                ColourRelationshipsEnum::INSERT_EXTERIORS->value => $this->sectionRelationships(
-                    ColourNameRoutesEnum::RELATED_TO_INSERT_EXTERIORS->value,
+                ColourRelationshipsEnum::STONE_EXTERIORS->value => $this->sectionRelationships(
+                    ColourNameRoutesEnum::RELATED_TO_STONE_EXTERIORS->value,
                     StoneExteriorCollection::class
                 )
             ]
@@ -35,7 +35,7 @@ final class ColourResource extends JsonResource
     protected function relations(): array
     {
         return [
-            StoneExteriorCollection::class => $this->whenLoaded(ColourRelationshipsEnum::INSERT_EXTERIORS->value),
+            StoneExteriorCollection::class => $this->whenLoaded(ColourRelationshipsEnum::STONE_EXTERIORS->value),
         ];
     }
 }

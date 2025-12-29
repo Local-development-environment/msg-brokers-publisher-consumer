@@ -15,7 +15,7 @@ final class StoneRepository
 {
     public function index(array $data): Paginator
     {
-        return QueryBuilder::for(Stone::class)
+        return QueryBuilder::for(Stone::from('jw_inserts.stones as s'))
             ->allowedIncludes([
                 StoneRelationshipsEnum::TYPE_ORIGIN->value,
                 StoneRelationshipsEnum::IMITATION_STONE->value,
@@ -27,6 +27,11 @@ final class StoneRepository
             ->allowedFilters([
                 AllowedFilter::exact(StoneEnum::PRIMARY_KEY->value),
             ])
+            ->join('jw_inserts.type_origins as to', 's.type_origin_id', '=', 'to.id')
+            ->select(
+                'to.*', 'to.description as to_description', 'to.name as to_name',
+                's.*'
+            )
             ->paginate($data['per_page'] ?? null)
             ->appends($data);
     }

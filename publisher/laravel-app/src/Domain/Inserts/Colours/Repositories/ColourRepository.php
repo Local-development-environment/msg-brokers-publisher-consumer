@@ -17,7 +17,7 @@ final class ColourRepository
     {
         return QueryBuilder::for(Colour::class)
             ->allowedIncludes([
-                ColourRelationshipsEnum::INSERT_EXTERIORS->value
+                ColourRelationshipsEnum::STONE_EXTERIORS->value
             ])
             ->allowedFilters([
                 AllowedFilter::exact(ColourEnum::PRIMARY_KEY->value),
@@ -36,7 +36,7 @@ final class ColourRepository
         return QueryBuilder::for(Colour::class)
             ->where(ColourEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
-                ColourRelationshipsEnum::INSERT_EXTERIORS->value
+                ColourRelationshipsEnum::STONE_EXTERIORS->value
             ])
             ->firstOrFail();
     }

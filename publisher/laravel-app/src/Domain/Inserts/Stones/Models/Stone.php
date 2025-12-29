@@ -63,7 +63,7 @@ class Stone extends Model
             Facet::class,
             StoneExteriorEnum::TABLE_NAME->value,
             StoneExteriorEnum::FK_STONE->value,
-            StoneExteriorEnum::FK_STONE_FACET->value
+            StoneExteriorEnum::FK_FACET->value
         );
     }
 
@@ -73,7 +73,7 @@ class Stone extends Model
             Colour::class,
             StoneExteriorEnum::TABLE_NAME->value,
             StoneExteriorEnum::FK_STONE->value,
-            StoneExteriorEnum::FK_STONE_COLOUR->value
+            StoneExteriorEnum::FK_COLOUR->value
         );
     }
 }

@@ -5,5 +5,5 @@ namespace Domain\Inserts\Colours\Enums;
 
 enum ColourRelationshipsEnum: string
 {
-    case INSERT_EXTERIORS = 'insertExteriors';
+    case STONE_EXTERIORS = 'stoneExteriors';
 }

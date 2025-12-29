@@ -15,7 +15,7 @@ final class Colour extends Model
 
     public const string TYPE_RESOURCE = ColourEnum::TYPE_RESOURCE->value;
 
-    public function insertExteriors(): HasMany
+    public function stoneExteriors(): HasMany
     {
         return $this->hasMany(StoneExterior::class, StoneExteriorEnum::FK_COLOUR->value);
     }

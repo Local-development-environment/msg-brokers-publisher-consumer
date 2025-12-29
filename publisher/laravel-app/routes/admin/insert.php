@@ -16,9 +16,6 @@ use App\Http\Admin\Insert\GrownStones\Controllers\GrownStoneStoneRelationshipCon
 use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneController;
 use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneStoneRelatedController;
 use App\Http\Admin\Insert\ImitationStones\Controllers\ImitationStoneStoneRelationshipController;
-use App\Http\Admin\Insert\InsertMetrics\Controllers\InsertMetricController;
-use App\Http\Admin\Insert\InsertMetrics\Controllers\InsertMetricInsertRelatedController;
-use App\Http\Admin\Insert\InsertMetrics\Controllers\InsertMetricInsertRelationshipController;
 use App\Http\Admin\Insert\InsertOptionalInfos\Controllers\InsertOptionalInfoController;
 use App\Http\Admin\Insert\InsertOptionalInfos\Controllers\InsertOptionalInfoInsertRelatedController;
 use App\Http\Admin\Insert\InsertOptionalInfos\Controllers\InsertOptionalInfoInsertRelationshipController;
@@ -92,7 +89,6 @@ use Domain\Inserts\Facets\Enums\FacetNameRoutesEnum;
 use Domain\Inserts\GroupGrades\Enums\GroupGradeNameRoutsEnum;
 use Domain\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
-use Domain\Inserts\InsertMetrics\Enums\InsertMetricNameRoutesEnum;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoNameRoutesEnum;
 use Domain\Inserts\Inserts\Enums\InsertNameRoutesEnum;
 use Domain\Inserts\NaturalStones\Enums\NatureStoneNameRoutesEnum;
@@ -234,9 +230,9 @@ Route::group([
 // RELATIONSHIPS
 //  one-to-many Colour StoneExteriours
     Route::get('stone-colours/{id}/relationships/stone-exteriors', [ColourInsertStonesRelationshipController::class, 'index'])
-        ->name(ColourNameRoutesEnum::RELATIONSHIP_TO_INSERT_EXTERIORS->value);
+        ->name(ColourNameRoutesEnum::RELATIONSHIP_TO_STONE_EXTERIORS->value);
     Route::get('stone-colours/{id}/insert-exteriors', [ColourInsertStonesRelatedController::class, 'index'])
-        ->name(ColourNameRoutesEnum::RELATED_TO_INSERT_EXTERIORS->value);
+        ->name(ColourNameRoutesEnum::RELATED_TO_STONE_EXTERIORS->value);
 
     /*************************** FACETS *************************/
 // CRUD
