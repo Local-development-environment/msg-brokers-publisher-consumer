@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Admin\Insert\StoneTypeOrigins\Controllers;
+namespace App\Http\Admin\Insert\TypeOrigins\Controllers;
 
-use App\Http\Admin\Insert\StoneTypeOrigins\Resources\StoneTypeOriginCollection;
+use App\Http\Admin\Insert\TypeOrigins\Resources\TypeOriginCollection;
 use App\Http\Controllers\Controller;
 use Domain\Inserts\TypeOrigins\Services\StoneTypeOriginService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class StoneTypeOriginController extends Controller
+class TypeOriginController extends Controller
 {
     public function __construct(public StoneTypeOriginService $service)
     {
@@ -22,7 +22,7 @@ class StoneTypeOriginController extends Controller
         $data = $request->all();
         $items = $this->service->index($data);
 
-        return (new StoneTypeOriginCollection($items))->response();
+        return (new TypeOriginCollection($items))->response();
     }
 
     /**

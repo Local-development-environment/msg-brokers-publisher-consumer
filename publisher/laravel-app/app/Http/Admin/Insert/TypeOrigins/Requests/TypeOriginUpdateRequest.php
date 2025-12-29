@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Admin\Insert\StoneTypeOrigins\Requests;
+namespace App\Http\Admin\Insert\TypeOrigins\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoneTypeOriginUpdateRequest extends FormRequest
+class TypeOriginUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**

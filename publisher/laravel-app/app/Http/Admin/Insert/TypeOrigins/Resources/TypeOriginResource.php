@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Admin\Insert\StoneTypeOrigins\Resources;
+namespace App\Http\Admin\Insert\TypeOrigins\Resources;
 
 use App\Http\Admin\Insert\Stones\Resources\StoneCollection;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin TypeOrigin */
-class StoneTypeOriginResource extends JsonResource
+final class TypeOriginResource extends JsonResource
 {
     use IncludeRelatedEntitiesResourceTrait;
 

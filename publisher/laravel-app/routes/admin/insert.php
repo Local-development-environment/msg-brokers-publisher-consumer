@@ -81,9 +81,9 @@ use App\Http\Admin\Insert\Stones\Controllers\StonesFacetsRelatedController;
 use App\Http\Admin\Insert\Stones\Controllers\StonesFacetsRelationshipController;
 use App\Http\Admin\Insert\Stones\Controllers\StonesTypeOriginStoneRelatedController;
 use App\Http\Admin\Insert\Stones\Controllers\StonesTypeOriginStoneRelationshipController;
-use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginController;
-use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRelatedController;
-use App\Http\Admin\Insert\StoneTypeOrigins\Controllers\StoneTypeOriginStonesRelationshipController;
+use App\Http\Admin\Insert\TypeOrigins\Controllers\TypeOriginController;
+use App\Http\Admin\Insert\TypeOrigins\Controllers\TypeOriginStonesRelatedController;
+use App\Http\Admin\Insert\TypeOrigins\Controllers\TypeOriginStonesRelationshipController;
 use Domain\Inserts\Colours\Enums\ColourNameRoutesEnum;
 use Domain\Inserts\Facets\Enums\FacetNameRoutesEnum;
 use Domain\Inserts\GroupGrades\Enums\GroupGradeNameRoutsEnum;
@@ -228,7 +228,7 @@ Route::group([
         ->name(ColourNameRoutesEnum::CRUD_DELETE->value);
 
 // RELATIONSHIPS
-//  one-to-many Colour StoneExteriours
+//  one-to-many Colour StoneExteriors
     Route::get('stone-colours/{id}/relationships/stone-exteriors', [ColourInsertStonesRelationshipController::class, 'index'])
         ->name(ColourNameRoutesEnum::RELATIONSHIP_TO_STONE_EXTERIORS->value);
     Route::get('stone-colours/{id}/insert-exteriors', [ColourInsertStonesRelatedController::class, 'index'])
@@ -510,25 +510,25 @@ Route::group([
     Route::get('stone-groups/{id}/group-grades', [StoneGroupNaturalStonesRelatedController::class, 'index'])
         ->name(StoneGroupNameRoutesEnum::RELATED_TO_GROUP_GRADES->value);
 
-    /*************************** STONE TYPE ORIGINS *************************/
+    /*************************** TYPE ORIGINS *************************/
 // CRUD
-    Route::get('stone-type-origins', [StoneTypeOriginController::class, 'index'])
-        ->name(StoneNameRoutesEnum::CRUD_INDEX->value);
-    Route::get('stone-type-origins/{id}', [StoneTypeOriginController::class, 'show'])
-        ->name(StoneNameRoutesEnum::CRUD_SHOW->value);
-    Route::post('stone-type-origins', [StoneTypeOriginController::class, 'store'])
-        ->name(StoneNameRoutesEnum::CRUD_POST->value);
-    Route::patch('stone-type-origins/{id}', [StoneTypeOriginController::class, 'update'])
-        ->name(StoneNameRoutesEnum::CRUD_PATCH->value);
-    Route::delete('stone-type-origins/{id}', [StoneTypeOriginController::class, 'destroy'])
-        ->name(StoneNameRoutesEnum::CRUD_DELETE->value);
+    Route::get('type-origins', [TypeOriginController::class, 'index'])
+        ->name(TypeOriginNameRoutesEnum::CRUD_INDEX->value);
+    Route::get('type-origins/{id}', [TypeOriginController::class, 'show'])
+        ->name(TypeOriginNameRoutesEnum::CRUD_SHOW->value);
+    Route::post('type-origins', [TypeOriginController::class, 'store'])
+        ->name(TypeOriginNameRoutesEnum::CRUD_POST->value);
+    Route::patch('type-origins/{id}', [TypeOriginController::class, 'update'])
+        ->name(TypeOriginNameRoutesEnum::CRUD_PATCH->value);
+    Route::delete('type-origins/{id}', [TypeOriginController::class, 'destroy'])
+        ->name(TypeOriginNameRoutesEnum::CRUD_DELETE->value);
 
 // RELATIONSHIPS
-//  one-to-many StoneTypeOrigin to Stones
-    Route::get('stone-type-origins/{id}/relationships/stones', [StoneTypeOriginStonesRelationshipController::class, 'index'])
+//  one-to-many TypeOrigin to Stones
+    Route::get('type-origins/{id}/relationships/stones', [TypeOriginStonesRelationshipController::class, 'index'])
         ->name(TypeOriginNameRoutesEnum::RELATIONSHIP_TO_STONES->value);
-//Route::patch('stone-type-origins/{id}/relationships/stones', [StoneTypeOriginStonesRelationshipController::class, 'update'])
-//    ->name('stone-type-origin.relationships.stones');
-    Route::get('stone-type-origins/{id}/stones', [StoneTypeOriginStonesRelatedController::class, 'index'])
+//Route::patch('type-origins/{id}/relationships/stones', [TypeOriginStonesRelationshipController::class, 'update'])
+//    ->name('type-origin.relationships.stones');
+    Route::get('type-origins/{id}/stones', [TypeOriginStonesRelatedController::class, 'index'])
         ->name(TypeOriginNameRoutesEnum::RELATED_TO_STONES->value);
 });
