@@ -8560,7 +8560,7 @@
 									"response": []
 								},
 								{
-									"name": "stone-type-origins show",
+									"name": "type-origins show",
 									"id": "6575703-e7a0f201-ac19-4399-a7f8-8c4edf7936a6",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
