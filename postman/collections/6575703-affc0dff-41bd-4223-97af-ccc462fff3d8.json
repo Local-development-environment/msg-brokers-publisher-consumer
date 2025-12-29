@@ -6113,12 +6113,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-exteriors/2",
+											"raw": "{{baseURL}}/stone-exteriors/2",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-exteriors",
+												"stone-exteriors",
 												"2"
 											]
 										}
