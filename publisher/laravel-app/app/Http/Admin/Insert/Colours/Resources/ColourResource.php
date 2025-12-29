@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Colours\Resources;
 
-use App\Http\Admin\Insert\StoneExteriours\Resources\StoneExteriorCollection;
+use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorCollection;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\Inserts\Colours\Enums\ColourEnum;
 use Domain\Inserts\Colours\Enums\ColourNameRoutesEnum;
