@@ -8635,7 +8635,7 @@
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
-									"name": "stone-type-origin stones index",
+									"name": "type-origin stones index",
 									"id": "6575703-f5dd8947-894f-4ad4-bf3c-5d6aceea0cf1",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
