@@ -6228,7 +6228,7 @@
 									"response": []
 								},
 								{
-									"name": "insert-exteriors inserts index",
+									"name": "stone-exteriors inserts index",
 									"id": "6575703-9d61e19b-6633-470b-9403-94c82c6314f5",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -6246,12 +6246,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-exteriors/2/inserts",
+											"raw": "{{baseURL}}/stone-exteriors/2/inserts",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-exteriors",
+												"stone-exteriors",
 												"2",
 												"inserts"
 											]
