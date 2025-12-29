@@ -6132,7 +6132,7 @@
 							"name": "RELATED",
 							"item": [
 								{
-									"name": "insert-exteriors stone index",
+									"name": "stone-exteriors stone index",
 									"id": "6575703-c7a87189-c187-4bbd-82e3-ec2f8aeb035d",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
