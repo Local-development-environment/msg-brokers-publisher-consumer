@@ -8524,7 +8524,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "stone-type-origins index",
+									"name": "type-origins index",
 									"id": "6575703-024c9b8f-c685-4655-b1a3-fca7aa521be2",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
