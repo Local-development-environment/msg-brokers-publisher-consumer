@@ -8542,12 +8542,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-type-origins?include=stones",
+											"raw": "{{baseURL}}/type-origins?include=stones",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-type-origins"
+												"type-origins"
 											],
 											"query": [
 												{
