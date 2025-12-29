@@ -8615,12 +8615,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-type-origins/2/stones",
+											"raw": "{{baseURL}}/type-origins/2/stones",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-type-origins",
+												"type-origins",
 												"2",
 												"stones"
 											]
