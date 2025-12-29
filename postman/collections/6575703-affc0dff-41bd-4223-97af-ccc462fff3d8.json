@@ -6196,7 +6196,7 @@
 									"response": []
 								},
 								{
-									"name": "insert-exteriors facet index",
+									"name": "stone-exteriors facet index",
 									"id": "6575703-137a1f1c-faf7-44e1-87a4-30e60eba8d9c",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -6214,12 +6214,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-exteriors/2/facet",
+											"raw": "{{baseURL}}/stone-exteriors/2/facet",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-exteriors",
+												"stone-exteriors",
 												"2",
 												"facet"
 											]
