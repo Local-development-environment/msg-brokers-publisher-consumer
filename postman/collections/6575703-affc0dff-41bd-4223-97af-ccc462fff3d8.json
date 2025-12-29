@@ -4675,12 +4675,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-colours?include=insertExteriors",
+											"raw": "{{baseURL}}/stone-colours?include=insertExteriors",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-colours"
+												"stone-colours"
 											],
 											"query": [
 												{
