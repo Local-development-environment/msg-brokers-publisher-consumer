@@ -4412,42 +4412,6 @@
 											"response": []
 										},
 										{
-											"name": "brooches index Copy",
-											"id": "6575703-0a48a09d-95b4-4fe0-94ad-4ebd5ab6c0eb",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true,
-												"disabledSystemHeaders": {
-													"accept": true
-												}
-											},
-											"request": {
-												"method": "GET",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/vnd.api+json",
-														"type": "text"
-													}
-												],
-												"url": {
-													"raw": "{{baseURL}}/brooches?include=jewellery",
-													"host": [
-														"{{baseURL}}"
-													],
-													"path": [
-														"brooches"
-													],
-													"query": [
-														{
-															"key": "include",
-															"value": "jewellery"
-														}
-													]
-												}
-											},
-											"response": []
-										},
-										{
 											"name": "brooches show",
 											"id": "6575703-88999489-41cb-48a5-a729-8545a243eea4",
 											"protocolProfileBehavior": {
@@ -4688,7 +4652,44 @@
 							"item": [
 								{
 									"name": "CRUD",
-									"item": [],
+									"item": [
+										{
+											"name": "brooches index Copy",
+											"id": "6575703-0a48a09d-95b4-4fe0-94ad-4ebd5ab6c0eb",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/brooches?include=jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"brooches"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "jewellery"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
 									"id": "6575703-8c3978df-7c0a-4182-bdef-6668818741a3"
 								}
 							],
