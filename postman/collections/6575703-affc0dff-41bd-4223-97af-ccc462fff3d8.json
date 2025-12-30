@@ -4648,8 +4648,14 @@
 					"name": "BRACELETS PROPERTIES",
 					"item": [
 						{
-							"name": "New Folder",
-							"item": [],
+							"name": "BRACELETS",
+							"item": [
+								{
+									"name": "New Folder",
+									"item": [],
+									"id": "6575703-8c3978df-7c0a-4182-bdef-6668818741a3"
+								}
+							],
 							"id": "6575703-d13f957e-7f53-4988-9452-be1da8fe72c6"
 						}
 					],
