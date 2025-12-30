@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Domain\Inserts\Colours\Models;
 
 use Domain\Inserts\Colours\Enums\ColourEnum;
-use Domain\Inserts\StoneExteriours\Enums\StoneExteriorEnum;
-use Domain\Inserts\StoneExteriours\Models\StoneExterior;
+use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
+use Domain\Inserts\StoneExteriors\Models\StoneExterior;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 

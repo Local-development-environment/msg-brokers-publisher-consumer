@@ -6,7 +6,7 @@ namespace Database\Seeders;
 use Domain\Inserts\Colours\Enums\ColourEnum;
 use Domain\Inserts\Facets\Enums\FacetEnum;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
-use Domain\Inserts\StoneExteriours\Enums\StoneExteriorEnum;
+use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Jewelleries\Categories\Enums\CategoryEnum;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
@@ -280,7 +280,7 @@ final class BuildJewellerySeeder extends Seeder
     private function addPendants(array $jewelleryData, int $jewelleryId): void
     {
         DB::table(PendantEnum::TABLE_NAME->value)->insertGetId([
-            'jewellery_id' => $jewelleryId,
+            'id' => $jewelleryId,
             'quantity'     => $jewelleryData['property']['parameters']['quantity'],
             'price'        => $jewelleryData['property']['parameters']['price'],
             'dimensions'   => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
