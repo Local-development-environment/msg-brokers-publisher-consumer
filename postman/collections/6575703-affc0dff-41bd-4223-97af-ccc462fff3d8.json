@@ -4690,7 +4690,7 @@
 											"response": []
 										},
 										{
-											"name": "bracelets index Copy",
+											"name": "bracelets show",
 											"id": "6575703-bfd2bcd5-5b0e-497e-ab6e-bfd73590c314",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
