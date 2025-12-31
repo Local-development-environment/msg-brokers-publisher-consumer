@@ -4708,13 +4708,13 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bracelets/7?include=jewellery",
+													"raw": "{{baseURL}}/bracelets/11?include=jewellery",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
 														"bracelets",
-														"7"
+														"11"
 													],
 													"query": [
 														{
