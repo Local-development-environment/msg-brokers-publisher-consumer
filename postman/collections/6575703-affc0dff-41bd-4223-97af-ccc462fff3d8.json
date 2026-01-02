@@ -4878,12 +4878,13 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bracelet-sizes?include=bracelets,bracelet-metrics",
+													"raw": "{{baseURL}}/bracelet-sizes/1?include=bracelets,bracelet-metrics",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"bracelet-sizes"
+														"bracelet-sizes",
+														"1"
 													],
 													"query": [
 														{
