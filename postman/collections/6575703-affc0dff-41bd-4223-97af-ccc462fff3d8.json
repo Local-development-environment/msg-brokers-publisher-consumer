@@ -4775,42 +4775,6 @@
 											"response": []
 										},
 										{
-											"name": "bracelet-metrics index Copy",
-											"id": "6575703-4253ba7e-535f-4bca-9836-c717f9f78f3c",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true,
-												"disabledSystemHeaders": {
-													"accept": true
-												}
-											},
-											"request": {
-												"method": "GET",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/vnd.api+json",
-														"type": "text"
-													}
-												],
-												"url": {
-													"raw": "{{baseURL}}/bracelet-metrics?include=bracelet,bracelet-size",
-													"host": [
-														"{{baseURL}}"
-													],
-													"path": [
-														"bracelet-metrics"
-													],
-													"query": [
-														{
-															"key": "include",
-															"value": "bracelet,bracelet-size"
-														}
-													]
-												}
-											},
-											"response": []
-										},
-										{
 											"name": "bracelet-metrics show",
 											"id": "6575703-33ea15fd-ff11-4185-9675-e720de84cb85",
 											"protocolProfileBehavior": {
@@ -4858,7 +4822,44 @@
 							"item": [
 								{
 									"name": "CRUD",
-									"item": [],
+									"item": [
+										{
+											"name": "bracelet-metrics index Copy",
+											"id": "6575703-4253ba7e-535f-4bca-9836-c717f9f78f3c",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelet-metrics?include=bracelet,bracelet-size",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelet-metrics"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "bracelet,bracelet-size"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
 									"id": "6575703-2fc32a40-1488-409a-a5a8-c04884499e83"
 								}
 							],
