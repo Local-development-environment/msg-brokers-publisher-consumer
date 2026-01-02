@@ -4827,39 +4827,6 @@
 												}
 											},
 											"response": []
-										},
-										{
-											"name": "bracelets bracelet sizes index",
-											"id": "6575703-8b70ffb5-fc0a-4bd0-b368-ce322497ea20",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true,
-												"disabledSystemHeaders": {
-													"accept": true
-												}
-											},
-											"request": {
-												"method": "GET",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/vnd.api+json",
-														"type": "text"
-													}
-												],
-												"url": {
-													"raw": "{{baseURL}}/bracelets/11/relationships/bracelet-sizes",
-													"host": [
-														"{{baseURL}}"
-													],
-													"path": [
-														"bracelets",
-														"11",
-														"relationships",
-														"bracelet-sizes"
-													]
-												}
-											},
-											"response": []
 										}
 									],
 									"id": "6575703-903c6fc3-9113-4a30-a394-20f9b6a74f08"
@@ -4928,6 +4895,39 @@
 														"11",
 														"relationships",
 														"bracelet-metrics"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "bracelets bracelet sizes index",
+											"id": "6575703-8b70ffb5-fc0a-4bd0-b368-ce322497ea20",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelets/11/relationships/bracelet-sizes",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelets",
+														"11",
+														"relationships",
+														"bracelet-sizes"
 													]
 												}
 											},
