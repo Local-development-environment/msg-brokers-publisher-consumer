@@ -4853,13 +4853,14 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bracelets/2/jewellery",
+													"raw": "{{baseURL}}/bracelets/11/relationship/jewellery",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
 														"bracelets",
-														"2",
+														"11",
+														"relationship",
 														"jewellery"
 													]
 												}
