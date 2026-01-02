@@ -5055,6 +5055,38 @@
 												}
 											},
 											"response": []
+										},
+										{
+											"name": "bracelet metrics bracelet index Copy",
+											"id": "6575703-d2c4ca83-bb9b-467f-8839-71312c154ca5",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelet-metrics/2/bracelet",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelet-metrics",
+														"2",
+														"bracelet"
+													]
+												}
+											},
+											"response": []
 										}
 									],
 									"id": "6575703-77f64171-898b-46bc-9de0-007fadfd34d7"
