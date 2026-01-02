@@ -4860,7 +4860,7 @@
 											"response": []
 										},
 										{
-											"name": "bracelet-sizes index Copy",
+											"name": "bracelet-sizes show",
 											"id": "6575703-0e0c7cf4-1fe8-4a60-9a9e-9816d9f51c2b",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
