@@ -4734,7 +4734,13 @@
 						},
 						{
 							"name": "BRACELET METRICS",
-							"item": [],
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [],
+									"id": "6575703-98e2051a-4e5d-47bf-af01-4f8a4534878b"
+								}
+							],
 							"id": "6575703-7407c8b1-e59d-4d8b-b9ed-8d154d1a4d75"
 						},
 						{
