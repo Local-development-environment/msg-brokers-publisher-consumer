@@ -5093,7 +5093,40 @@
 								},
 								{
 									"name": "RELATIONSHIPS",
-									"item": [],
+									"item": [
+										{
+											"name": "bracelet metrics bracelet index Copy",
+											"id": "6575703-72c2b7c3-c047-4e87-a0c8-e72258fe3002",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelet-metrics/2/bracelet",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelet-metrics",
+														"2",
+														"bracelet"
+													]
+												}
+											},
+											"response": []
+										}
+									],
 									"id": "6575703-e61c1a68-00a0-4784-a39b-1b5c0e9d08d5"
 								}
 							],
