@@ -5095,7 +5095,7 @@
 									"name": "RELATIONSHIPS",
 									"item": [
 										{
-											"name": "bracelet metrics bracelet index Copy",
+											"name": "bracelet-metrics bracelet-size index",
 											"id": "6575703-72c2b7c3-c047-4e87-a0c8-e72258fe3002",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -5113,14 +5113,14 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bracelet-metrics/2/bracelet",
+													"raw": "{{baseURL}}/bracelet-metrics/2/bracelet-size",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
 														"bracelet-metrics",
 														"2",
-														"bracelet"
+														"bracelet-size"
 													]
 												}
 											},
