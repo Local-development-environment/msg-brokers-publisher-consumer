@@ -4765,38 +4765,6 @@
 											"response": []
 										},
 										{
-											"name": "bracelets jewellery index Copy",
-											"id": "6575703-2fb977aa-b0c5-4af4-99d5-c65ca09073be",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true,
-												"disabledSystemHeaders": {
-													"accept": true
-												}
-											},
-											"request": {
-												"method": "GET",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/vnd.api+json",
-														"type": "text"
-													}
-												],
-												"url": {
-													"raw": "{{baseURL}}/bracelets/2/jewellery",
-													"host": [
-														"{{baseURL}}"
-													],
-													"path": [
-														"bracelets",
-														"2",
-														"jewellery"
-													]
-												}
-											},
-											"response": []
-										},
-										{
 											"name": "bracelets bracelet metrics index",
 											"id": "6575703-0fbfc396-4d08-4197-b9d7-ede7c44c958c",
 											"protocolProfileBehavior": {
@@ -4865,7 +4833,40 @@
 								},
 								{
 									"name": "RELATIONSHIPS",
-									"item": [],
+									"item": [
+										{
+											"name": "bracelets jewellery index",
+											"id": "6575703-2fb977aa-b0c5-4af4-99d5-c65ca09073be",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelets/2/jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelets",
+														"2",
+														"jewellery"
+													]
+												}
+											},
+											"response": []
+										}
+									],
 									"id": "6575703-66e78dbd-8222-43c3-8cca-141877121339"
 								}
 							],
