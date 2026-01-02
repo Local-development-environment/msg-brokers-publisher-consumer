@@ -4847,14 +4847,15 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bracelets/11/relationshipsbracelet-sizes",
+													"raw": "{{baseURL}}/bracelets/11/relationships/bracelet-sizes",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
 														"bracelets",
 														"11",
-														"relationshipsbracelet-sizes"
+														"relationships",
+														"bracelet-sizes"
 													]
 												}
 											},
