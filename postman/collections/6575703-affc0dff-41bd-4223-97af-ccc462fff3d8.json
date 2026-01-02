@@ -4751,12 +4751,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/brooches/2/jewellery",
+													"raw": "{{baseURL}}/bracelets/2/jewellery",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"brooches",
+														"bracelets",
 														"2",
 														"jewellery"
 													]
