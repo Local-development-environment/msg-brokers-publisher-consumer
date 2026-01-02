@@ -4793,12 +4793,13 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bracelet-metrics?include=bracelet,bracelet-size",
+													"raw": "{{baseURL}}/bracelet-metrics/1?include=bracelet,bracelet-size",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"bracelet-metrics"
+														"bracelet-metrics",
+														"1"
 													],
 													"query": [
 														{
