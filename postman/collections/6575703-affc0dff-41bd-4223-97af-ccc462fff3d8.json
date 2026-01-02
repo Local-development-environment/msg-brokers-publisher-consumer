@@ -4783,14 +4783,14 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bracelets/2/jewellery",
+													"raw": "{{baseURL}}/bracelets/2/bracelet-metrics",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
 														"bracelets",
 														"2",
-														"jewellery"
+														"bracelet-metrics"
 													]
 												}
 											},
