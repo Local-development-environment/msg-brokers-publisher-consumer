@@ -4824,7 +4824,7 @@
 									"name": "CRUD",
 									"item": [
 										{
-											"name": "bracelet-metrics index Copy",
+											"name": "bracelet-sizes index",
 											"id": "6575703-4253ba7e-535f-4bca-9836-c717f9f78f3c",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
