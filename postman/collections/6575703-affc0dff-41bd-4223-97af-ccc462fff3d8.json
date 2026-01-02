@@ -5075,14 +5075,14 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bracelet-metrics/2/bracelet",
+													"raw": "{{baseURL}}/bracelet-metrics/2/bracelet-sizes",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
 														"bracelet-metrics",
 														"2",
-														"bracelet"
+														"bracelet-sizes"
 													]
 												}
 											},
