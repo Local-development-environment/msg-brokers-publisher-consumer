@@ -4775,7 +4775,7 @@
 											"response": []
 										},
 										{
-											"name": "bracelet-metrics index Copy",
+											"name": "bracelet-metrics show",
 											"id": "6575703-33ea15fd-ff11-4185-9675-e720de84cb85",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
