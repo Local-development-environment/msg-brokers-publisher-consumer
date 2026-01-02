@@ -4595,6 +4595,38 @@
 												}
 											},
 											"response": []
+										},
+										{
+											"name": "brooches jewellery index Copy",
+											"id": "6575703-78106ec7-7485-4ab7-bfec-b0c02973d47d",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/brooches/2/jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"brooches",
+														"2",
+														"jewellery"
+													]
+												}
+											},
+											"response": []
 										}
 									],
 									"id": "6575703-27b2b2e2-a518-4a3b-b080-85f654c50ac0"
