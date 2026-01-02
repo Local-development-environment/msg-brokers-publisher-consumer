@@ -5125,6 +5125,38 @@
 												}
 											},
 											"response": []
+										},
+										{
+											"name": "bracelet-metrics bracelet-size index Copy",
+											"id": "6575703-23553fc1-26d9-47c0-bfdc-1db3e865ed31",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelet-metrics/2/bracelet-size",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelet-metrics",
+														"2",
+														"bracelet-size"
+													]
+												}
+											},
+											"response": []
 										}
 									],
 									"id": "6575703-e61c1a68-00a0-4784-a39b-1b5c0e9d08d5"
