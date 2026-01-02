@@ -4886,13 +4886,14 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bracelets/2/bracelet-metrics",
+													"raw": "{{baseURL}}/bracelets/11/relationships/bracelet-metrics",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
 														"bracelets",
-														"2",
+														"11",
+														"relationships",
 														"bracelet-metrics"
 													]
 												}
