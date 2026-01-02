@@ -4763,6 +4763,38 @@
 												}
 											},
 											"response": []
+										},
+										{
+											"name": "bracelets jewellery index Copy",
+											"id": "6575703-0fbfc396-4d08-4197-b9d7-ede7c44c958c",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelets/2/jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelets",
+														"2",
+														"jewellery"
+													]
+												}
+											},
+											"response": []
 										}
 									],
 									"id": "6575703-903c6fc3-9113-4a30-a394-20f9b6a74f08"
