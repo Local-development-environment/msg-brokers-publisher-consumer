@@ -4745,7 +4745,13 @@
 						},
 						{
 							"name": "BRACELET SIZES",
-							"item": [],
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [],
+									"id": "6575703-2fc32a40-1488-409a-a5a8-c04884499e83"
+								}
+							],
 							"id": "6575703-c395522b-6b11-42f2-a273-bd8d2e0ffd6a"
 						}
 					],
