@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Http\Admin\Jewellery\Categories\Controllers\JewelleriesCategoryRelatedController;
+use App\Http\Admin\Jewellery\Categories\Controllers\JewelleriesCategoryRelationshipController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryBeadRelatedController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryBeadRelationshipController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryController;
@@ -24,5 +26,10 @@ Route::group([
         ->name(JewelleryNameRoutesEnum::RELATIONSHIP_TO_BEAD->value);
     Route::get('jewelleries/{id}/bead', [JewelleryBeadRelatedController::class, 'index'])
         ->name(JewelleryNameRoutesEnum::RELATED_TO_BEAD->value);
+    //  many-to-one Jewelleries to Category
+    Route::get('jewelleries/{id}/relationships/category', [JewelleriesCategoryRelationshipController::class, 'index'])
+        ->name(JewelleryNameRoutesEnum::RELATIONSHIP_TO_CATEGORY->value);
+    Route::get('jewelleries/{id}/category', [JewelleriesCategoryRelatedController::class, 'index'])
+        ->name(JewelleryNameRoutesEnum::RELATED_TO_CATEGORY->value);
 
 });

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Requests;
+namespace App\Http\Admin\SpecProperties\Pendants\Pendants\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

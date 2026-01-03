@@ -8,6 +8,7 @@ use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Resources\NecklaceMetricColl
 use App\Http\Admin\SharedProperty\Clasps\Resources\ClaspResource;
 use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeCollection;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+//use App\Http\Shared\Resources\Traits\ImprovedTraits\IncludeRelatedEntitiesResourceTrait;
 use Domain\JewelleryProperties\Necklaces\Necklaces\Enums\NecklaceNameRoutesEnum;
 use Domain\JewelleryProperties\Necklaces\Necklaces\Enums\NecklaceRelationshipsEnum;
 use Domain\JewelleryProperties\Necklaces\Necklaces\Models\Necklace;

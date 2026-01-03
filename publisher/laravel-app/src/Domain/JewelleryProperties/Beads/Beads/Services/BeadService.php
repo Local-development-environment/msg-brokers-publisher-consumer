@@ -8,6 +8,7 @@ use Domain\JewelleryProperties\Beads\Beads\Models\Bead;
 use Domain\JewelleryProperties\Beads\Beads\Pipelines\BeadPipeline;
 use Domain\JewelleryProperties\Beads\Beads\Repositories\BeadRepository;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Model;
 use Throwable;
 
 final class BeadService
@@ -25,7 +26,7 @@ final class BeadService
     /**
      * @throws Throwable
      */
-    public function store(array $data): Bead
+    public function store(array $data): Bead|Model
     {
         return $this->pipeline->store($data);
     }

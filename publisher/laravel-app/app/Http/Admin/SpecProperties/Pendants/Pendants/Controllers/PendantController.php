@@ -1,13 +1,15 @@
 <?php
 declare(strict_types=1);
 
+namespace App\Http\Admin\SpecProperties\Pendants\Pendants\Controllers;
+
+use App\Http\Admin\SpecProperties\Pendants\Pendants\Requests\PendantStoreRequest;
+use App\Http\Admin\SpecProperties\Pendants\Pendants\Requests\PendantUpdateRequest;
 use Domain\JewelleryProperties\Pendants\Pendants\Enums\PendantEnum;
 use Domain\JewelleryProperties\Pendants\Pendants\Enums\PendantNameRoutesEnum;
 use Domain\JewelleryProperties\Pendants\Pendants\Services\PendantService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Requests\PendantStoreRequest;
-use Requests\PendantUpdateRequest;
 
 final class PendantController extends \App\Http\Controllers\Controller
 {

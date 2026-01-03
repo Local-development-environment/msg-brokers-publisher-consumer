@@ -3,6 +3,7 @@
 namespace App\Http\Admin\Jewellery\Jewelleries\Resources;
 
 use App\Http\Admin\BeadProperty\Beads\Resources\BeadResource;
+use App\Http\Admin\Jewellery\Categories\Resources\CategoryResource;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryNameRoutesEnum;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryRelationshipsEnum;
@@ -27,9 +28,9 @@ class JewelleryResource extends JsonResource
             'type' => Jewellery::TYPE_RESOURCE,
             'attributes' => $this->attributeItems(),
             'relationships' => [
-                'bead' => $this->sectionRelationships(
-                    JewelleryNameRoutesEnum::RELATED_TO_BEAD->value,
-                    BeadResource::class
+                'categories' => $this->sectionRelationships(
+                    JewelleryNameRoutesEnum::RELATED_TO_CATEGORY->value,
+                    CategoryResource::class
                 )
             ]
         ];
@@ -38,7 +39,7 @@ class JewelleryResource extends JsonResource
     protected function relations(): array
     {
         return [
-            BeadResource::class => $this->whenLoaded(JewelleryRelationshipsEnum::BEAD->value),
+            CategoryResource::class => $this->whenLoaded(JewelleryRelationshipsEnum::CATEGORY->value),
         ];
     }
 }
