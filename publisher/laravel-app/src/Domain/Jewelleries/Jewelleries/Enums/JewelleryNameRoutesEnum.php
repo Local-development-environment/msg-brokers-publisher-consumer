@@ -50,4 +50,6 @@ enum JewelleryNameRoutesEnum: string
     case RELATIONSHIP_TO_COVERAGES      = 'jewellery.relationships.coverages';
     case RELATED_TO_PROMOTIONS            = 'jewellery.promotions';
     case RELATIONSHIP_TO_PROMOTIONS      = 'jewellery.relationships.promotions';
+    case RELATED_TO_CATEGORY            = 'jewelleries.category';
+    case RELATIONSHIP_TO_CATEGORY      = 'jewelleries.relationships.category';
 }

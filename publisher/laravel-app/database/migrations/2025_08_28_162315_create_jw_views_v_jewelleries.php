@@ -69,9 +69,9 @@ return new class extends Migration
                         from
                             jw_medias.review_pictures rp
                         group by rp.id
-                
+
                         union all
-                
+
                         select
                             rv.id,
                             rv.alt_name,
@@ -120,9 +120,9 @@ return new class extends Migration
                         from
                             jw_medias.catalog_pictures cp
                         group by cp.id
-                
+
                         union all
-                
+
                         select
                             cv.id,
                             cv.alt_name,
@@ -171,9 +171,9 @@ return new class extends Migration
                             jw_properties.brooches as jwb
                                 join jewelleries.jewelleries as jj on jwb.id = jj.id
                                 join jewelleries.categories as jc on jj.category_id = jc.id
-                
+
                          union all
-                
+
                         select
                             jj.id,jwchp.jewellery_id as jewellery_id,
                             jsonb_build_object(
@@ -187,9 +187,9 @@ return new class extends Migration
                             jw_properties.charm_pendants as jwchp
                                 join jewelleries.jewelleries as jj on jwchp.jewellery_id = jj.id
                                 join jewelleries.categories as jc on jj.category_id = jc.id
-                
+
                         union all
-                
+
                         select
                             jj.id,jwtc.jewellery_id as jewellery_id,
                             jsonb_build_object(
@@ -203,11 +203,11 @@ return new class extends Migration
                             jw_properties.tie_clips as jwtc
                                 join jewelleries.jewelleries as jj on jwtc.jewellery_id = jj.id
                                 join jewelleries.categories as jc on jj.category_id = jc.id
-                
+
                         union all
-                
+
                         select
-                            jj.id,jwp.jewellery_id as jewellery_id,
+                            jj.id,jwp.id as jewellery_id,
                             jsonb_build_object(
                                     'pendant_id', jwp.id
                             ) as spec_props,
@@ -217,11 +217,11 @@ return new class extends Migration
                             cast(jwp.price as decimal(10, 2)) as min_price
                         from
                             jw_properties.pendants as jwp
-                                join jewelleries.jewelleries as jj on jwp.jewellery_id = jj.id
+                                join jewelleries.jewelleries as jj on jwp.id = jj.id
                                 join jewelleries.categories as jc on jj.category_id = jc.id
-                
+
                         union all
-                
+
                         select
                             jj.id,jwcl.jewellery_id as jewellery_id,
                             jsonb_build_object(
@@ -235,9 +235,9 @@ return new class extends Migration
                             jw_properties.cuff_links as jwcl
                                 join jewelleries.jewelleries as jj on jwcl.jewellery_id = jj.id
                                 join jewelleries.categories as jc on jj.category_id = jc.id
-                
+
                         union all
-                
+
                         select
                             jj.id,jwprc.id as jewellery_id,
                             jsonb_build_object(
@@ -251,9 +251,9 @@ return new class extends Migration
                             jw_properties.piercings as jwprc
                                 join jewelleries.jewelleries as jj on jwprc.id = jj.id
                                 join jewelleries.categories as jc on jj.category_id = jc.id
-                
+
                         union all
-                
+
                         select
                             jj.id,jwerr.jewellery_id as jewellery_id,
                             jsonb_build_object(
@@ -274,9 +274,9 @@ return new class extends Migration
                                 join jw_properties.earring_clasps as jwerc on jwerr.earring_clasp_id = jwerc.id
                                 join jw_properties.earring_earring_type as jweet on jwerr.id = jweet.earring_id
                                 join jw_properties.earring_types as jwet on jweet.earring_type_id = jwet.id
-                
+
                         union all
-                
+
                         select
                             jj.id,jwrng.id as jewellery_id,
                             jsonb_build_object(
@@ -305,9 +305,9 @@ return new class extends Migration
                                 left join jw_properties.ring_metrics as jwrm on jwrng.id = jwrm.ring_id
                                 left join jw_properties.ring_sizes as jwrs on jwrm.ring_size_id = jwrs.id
                         group by jj.id,jwrng.id,jwrf.id
-                
+
                         union all
-                
+
                         select
                             jj.id,b.id as jewellery_id,
                             jsonb_build_object(
@@ -367,7 +367,7 @@ return new class extends Migration
                                     jw_properties.bracelets as b
                                         left join jw_properties.bracelet_metrics as brm on b.id = brm.bracelet_id
                                         left join jw_properties.bracelet_sizes as bs on brm.bracelet_size_id = bs.id
-                
+
                                 group by b.id
                             ) as metrics on metrics.bracelet_id = b.id
                                 left join jw_properties.clasps as c on c.id = b.clasp_id
@@ -376,9 +376,9 @@ return new class extends Migration
                                 left join jewelleries.jewelleries as jj on b.id = jj.id
                                 left join jw_properties.bracelet_metrics as brm on b.id = brm.bracelet_id
                         group by b.id, metrics.metrics, weaving.weaving, jj.id, c. name, bb.name, bp.name, c.description
-                
+
                         union all
-                
+
                         select
                             jj.id,ch.id as jewellery_id,
                             jsonb_build_object(
@@ -444,9 +444,9 @@ return new class extends Migration
                                 left join jewelleries.jewelleries as jj on ch.id = jj.id
                                 left join jw_properties.chain_metrics as chm on ch.id = chm.chain_id
                         group by ch.id, metrics.metrics, weaving.weaving, jj.id, c.name, c.description
-                
+
                         union all
-                
+
                         select
                             jj.id,jwnck.id as jewellery_id,
                             jsonb_build_object(
@@ -477,9 +477,9 @@ return new class extends Migration
                                 left join jw_properties.neck_sizes as jwns on jwnckm.neck_size_id = jwns.id
                                 join jw_properties.length_names as jwln on jwns.length_name_id = jwln.id
                         group by jj.id,jwnck.id,jwnck.id,jwcls.id
-                
+
                         union all
-                
+
                         select
                             jj.id,jwbd.id as jewellery_id,
                             jsonb_build_object(
@@ -563,9 +563,9 @@ return new class extends Migration
                         left join cte_review as cr on jj.id = cr.jewellery_id
                         left join cte_catalog as cc on jj.id = cc.jewellery_id
                         left join cte_jw_props as cjp on  jj.id = cjp.jewellery_id
-                
+
                 order by jj.id
-                
+
                 with data;
             SQL
         );

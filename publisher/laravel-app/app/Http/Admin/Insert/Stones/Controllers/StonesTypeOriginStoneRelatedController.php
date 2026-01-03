@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Stones\Controllers;
 
-use App\Http\Admin\Insert\StoneTypeOrigins\Resources\StoneTypeOriginResource;
 use App\Http\Controllers\Controller;
 use Domain\Inserts\Stones\Services\Relationships\StonesTypeOriginStoneRelationshipService;
 use Illuminate\Http\JsonResponse;
+use Resources\TypeOriginResource;
 
 final class StonesTypeOriginStoneRelatedController extends Controller
 {
@@ -18,6 +18,6 @@ final class StonesTypeOriginStoneRelatedController extends Controller
     {
         $model = $this->service->index($id);
 
-        return (new StoneTypeOriginResource($model))->response();
+        return (new TypeOriginResource($model))->response();
     }
 }

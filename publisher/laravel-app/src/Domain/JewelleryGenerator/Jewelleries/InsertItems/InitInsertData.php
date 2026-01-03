@@ -14,7 +14,7 @@ use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
 use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectBuilderEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectEnum;
-use Domain\Inserts\StoneExteriours\Enums\StoneExteriorEnum;
+use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyBuilderEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;

@@ -27,4 +27,5 @@ enum JewelleryRelationshipsEnum: string
     case METALS = 'metals';
     case COVERAGES = 'coverages';
     case PROMOTIONS = 'promotions';
+    case CATEGORY = 'category';
 }

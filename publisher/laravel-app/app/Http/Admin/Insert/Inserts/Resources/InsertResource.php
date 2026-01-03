@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Admin\Insert\Inserts\Resources;
 
 use App\Http\Admin\Insert\InsertOptionalInfos\Resources\InsertOptionalInfoResource;
-use App\Http\Admin\Insert\StoneExteriours\Resources\StoneExteriorResource;
+use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorResource;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
 use Domain\Inserts\Inserts\Enums\InsertNameRoutesEnum;
