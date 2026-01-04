@@ -136,12 +136,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/jewelley-categories/1",
+											"raw": "{{baseURL}}/jewellery-categories/1",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"jewelley-categories",
+												"jewellery-categories",
 												"1"
 											]
 										}
