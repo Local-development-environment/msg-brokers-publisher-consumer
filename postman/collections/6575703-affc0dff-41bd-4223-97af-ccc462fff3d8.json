@@ -43,6 +43,36 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "jewelleries index Copy",
+									"id": "6575703-f624a0ab-bcaa-433f-940a-1b8cb8632b48",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/jewelleries",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"jewelleries"
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"id": "6575703-2b4fb5a1-abf2-4754-aeda-7299316d239f"
