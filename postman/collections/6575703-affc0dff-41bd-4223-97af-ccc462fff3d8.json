@@ -5471,13 +5471,19 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-colours/5",
+											"raw": "{{baseURL}}/stone-colours/5?include=stoneExteriors",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"stone-colours",
 												"5"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "stoneExteriors"
+												}
 											]
 										}
 									},
