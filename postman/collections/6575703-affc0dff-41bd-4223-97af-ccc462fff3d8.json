@@ -1198,7 +1198,7 @@
 					"id": "6575703-022f0261-e714-4b28-bae0-693aca301a36"
 				},
 				{
-					"name": "NECKLACES PROPERTIES Copy",
+					"name": "NECKLACES PROPERTIES",
 					"item": [
 						{
 							"name": "NECKLACE METRICS",
@@ -4643,6 +4643,652 @@
 						}
 					],
 					"id": "6575703-1810f675-5faf-4510-8667-ef09271ba413"
+				},
+				{
+					"name": "BRACELETS PROPERTIES",
+					"item": [
+						{
+							"name": "BRACELETS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "bracelets index",
+											"id": "6575703-0a48a09d-95b4-4fe0-94ad-4ebd5ab6c0eb",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelets?include=jewellery,braceletMetrics,braceletSizes",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelets"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "jewellery",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "braceletSizes",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "braceletMetrics",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "braceletSizes,braceletMetrics",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "jewellery,braceletSizes",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "jewellery,braceletMetrics",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "jewellery,braceletMetrics,braceletSizes",
+															"type": "text"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "bracelets show",
+											"id": "6575703-bfd2bcd5-5b0e-497e-ab6e-bfd73590c314",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelets/11?include=jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelets",
+														"11"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "jewellery"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-8c3978df-7c0a-4182-bdef-6668818741a3"
+								},
+								{
+									"name": "RELATED",
+									"item": [
+										{
+											"name": "bracelets jewellery index",
+											"id": "6575703-78106ec7-7485-4ab7-bfec-b0c02973d47d",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelets/2/jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelets",
+														"2",
+														"jewellery"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "bracelets bracelet metrics index",
+											"id": "6575703-0fbfc396-4d08-4197-b9d7-ede7c44c958c",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelets/2/bracelet-metrics",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelets",
+														"2",
+														"bracelet-metrics"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "bracelets bracelet sizes index",
+											"id": "6575703-3d546d8e-afc9-4a9c-b653-a5e41f8391a4",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelets/2/bracelet-sizes",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelets",
+														"2",
+														"bracelet-sizes"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-903c6fc3-9113-4a30-a394-20f9b6a74f08"
+								},
+								{
+									"name": "RELATIONSHIPS",
+									"item": [
+										{
+											"name": "bracelets jewellery index",
+											"id": "6575703-2fb977aa-b0c5-4af4-99d5-c65ca09073be",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelets/11/relationships/jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelets",
+														"11",
+														"relationships",
+														"jewellery"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "bracelets bracelet metrics index",
+											"id": "6575703-0999fc1e-3b24-4c16-8a03-bd614a350aa0",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelets/11/relationships/bracelet-metrics",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelets",
+														"11",
+														"relationships",
+														"bracelet-metrics"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "bracelets bracelet sizes index",
+											"id": "6575703-8b70ffb5-fc0a-4bd0-b368-ce322497ea20",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelets/11/relationships/bracelet-sizes",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelets",
+														"11",
+														"relationships",
+														"bracelet-sizes"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-66e78dbd-8222-43c3-8cca-141877121339"
+								}
+							],
+							"id": "6575703-d13f957e-7f53-4988-9452-be1da8fe72c6"
+						},
+						{
+							"name": "BRACELET METRICS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "bracelet-metrics index",
+											"id": "6575703-008c970c-2251-4222-b2e0-a0319430f089",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelet-metrics?include=bracelet,bracelet-size",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelet-metrics"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "bracelet,bracelet-size"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "bracelet-metrics show",
+											"id": "6575703-33ea15fd-ff11-4185-9675-e720de84cb85",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelet-metrics/1?include=bracelet,bracelet-size",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelet-metrics",
+														"1"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "bracelet,bracelet-size"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-98e2051a-4e5d-47bf-af01-4f8a4534878b"
+								},
+								{
+									"name": "RELATED",
+									"item": [
+										{
+											"name": "bracelet metrics bracelet index",
+											"id": "6575703-16a34db3-d202-4ebe-9240-20a51cf57fa8",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelet-metrics/2/bracelet",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelet-metrics",
+														"2",
+														"bracelet"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "bracelet-metrics bracelet-size index",
+											"id": "6575703-d2c4ca83-bb9b-467f-8839-71312c154ca5",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelet-metrics/2/bracelet-size",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelet-metrics",
+														"2",
+														"bracelet-size"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-77f64171-898b-46bc-9de0-007fadfd34d7"
+								},
+								{
+									"name": "RELATIONSHIPS",
+									"item": [
+										{
+											"name": "bracelet-metrics bracelet-size index",
+											"id": "6575703-72c2b7c3-c047-4e87-a0c8-e72258fe3002",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelet-metrics/2/relationships/bracelet-size",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelet-metrics",
+														"2",
+														"relationships",
+														"bracelet-size"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "bracelet-metrics bracelet index",
+											"id": "6575703-23553fc1-26d9-47c0-bfdc-1db3e865ed31",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelet-metrics/2/relationships/bracelet",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelet-metrics",
+														"2",
+														"relationships",
+														"bracelet"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-e61c1a68-00a0-4784-a39b-1b5c0e9d08d5"
+								}
+							],
+							"id": "6575703-7407c8b1-e59d-4d8b-b9ed-8d154d1a4d75"
+						},
+						{
+							"name": "BRACELET SIZES",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "bracelet-sizes index",
+											"id": "6575703-4253ba7e-535f-4bca-9836-c717f9f78f3c",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelet-sizes?include=bracelets,bracelet-metrics",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelet-sizes"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "bracelets,bracelet-metrics"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "bracelet-sizes show",
+											"id": "6575703-0e0c7cf4-1fe8-4a60-9a9e-9816d9f51c2b",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelet-sizes/1?include=bracelets,bracelet-metrics",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelet-sizes",
+														"1"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "bracelets,bracelet-metrics"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-2fc32a40-1488-409a-a5a8-c04884499e83"
+								}
+							],
+							"id": "6575703-c395522b-6b11-42f2-a273-bd8d2e0ffd6a"
+						}
+					],
+					"id": "6575703-95031743-0151-41bb-976a-824dfeb575d2"
 				}
 			],
 			"id": "6575703-2aa7e837-6ac9-42f1-bb01-098ed7f9ff14"
@@ -4657,7 +5303,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "insert-colours index",
+									"name": "stone-colours index",
 									"id": "6575703-74343b92-72b7-41da-bfae-6d117b82f999",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -4675,12 +5321,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-colours?include=insertExteriors",
+											"raw": "{{baseURL}}/stone-colours?include=insertExteriors",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-colours"
+												"stone-colours"
 											],
 											"query": [
 												{
@@ -6053,13 +6699,13 @@
 					"id": "6575703-e735f45d-f137-4c02-9e15-8f80724e60a4"
 				},
 				{
-					"name": "INSERT EXTERIORS",
+					"name": "STONE EXTERIORS",
 					"item": [
 						{
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "insert-exteriors index",
+									"name": "stone-exteriors index",
 									"id": "6575703-cb85a34c-559f-4339-8250-074db818dcce",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -6077,12 +6723,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-exteriors?include=stone,insertColour,facet,inserts",
+											"raw": "{{baseURL}}/stone-exteriors?include=stone,insertColour,facet,inserts",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-exteriors"
+												"stone-exteriors"
 											],
 											"query": [
 												{
@@ -6095,7 +6741,7 @@
 									"response": []
 								},
 								{
-									"name": "insert-exteriors show",
+									"name": "stone-exteriors show",
 									"id": "6575703-e9c6b92c-e5bd-4072-a5dc-ff8d6e726539",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -6113,12 +6759,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-exteriors/2",
+											"raw": "{{baseURL}}/stone-exteriors/2",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-exteriors",
+												"stone-exteriors",
 												"2"
 											]
 										}
@@ -6132,7 +6778,7 @@
 							"name": "RELATED",
 							"item": [
 								{
-									"name": "insert-exteriors stone index",
+									"name": "stone-exteriors stone index",
 									"id": "6575703-c7a87189-c187-4bbd-82e3-ec2f8aeb035d",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -6150,12 +6796,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-exteriors/2/stone",
+											"raw": "{{baseURL}}/stone-exteriors/2/stone",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-exteriors",
+												"stone-exteriors",
 												"2",
 												"stone"
 											]
@@ -6164,7 +6810,7 @@
 									"response": []
 								},
 								{
-									"name": "insert-exteriors-colour index",
+									"name": "stone-exteriors-colour index",
 									"id": "6575703-9d585d6a-cb50-4941-ba48-40e20cb3fac0",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -6182,12 +6828,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-exteriors/2/colour",
+											"raw": "{{baseURL}}/stone-exteriors/2/colour",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-exteriors",
+												"stone-exteriors",
 												"2",
 												"colour"
 											]
@@ -6196,7 +6842,7 @@
 									"response": []
 								},
 								{
-									"name": "insert-exteriors facet index",
+									"name": "stone-exteriors facet index",
 									"id": "6575703-137a1f1c-faf7-44e1-87a4-30e60eba8d9c",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -6214,12 +6860,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-exteriors/2/facet",
+											"raw": "{{baseURL}}/stone-exteriors/2/facet",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-exteriors",
+												"stone-exteriors",
 												"2",
 												"facet"
 											]
@@ -6228,7 +6874,7 @@
 									"response": []
 								},
 								{
-									"name": "insert-exteriors inserts index",
+									"name": "stone-exteriors inserts index",
 									"id": "6575703-9d61e19b-6633-470b-9403-94c82c6314f5",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -6246,12 +6892,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/insert-exteriors/2/inserts",
+											"raw": "{{baseURL}}/stone-exteriors/2/inserts",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"insert-exteriors",
+												"stone-exteriors",
 												"2",
 												"inserts"
 											]
@@ -8518,13 +9164,13 @@
 					"id": "6575703-07971991-a384-46c8-b8eb-a30431a67b54"
 				},
 				{
-					"name": "STONE TYPE ORIGINS",
+					"name": "TYPE ORIGINS",
 					"item": [
 						{
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "stone-type-origins index",
+									"name": "type-origins index",
 									"id": "6575703-024c9b8f-c685-4655-b1a3-fca7aa521be2",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -8542,12 +9188,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-type-origins?include=stones",
+											"raw": "{{baseURL}}/type-origins?include=stones",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-type-origins"
+												"type-origins"
 											],
 											"query": [
 												{
@@ -8560,7 +9206,7 @@
 									"response": []
 								},
 								{
-									"name": "stone-type-origins show",
+									"name": "type-origins show",
 									"id": "6575703-e7a0f201-ac19-4399-a7f8-8c4edf7936a6",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -8578,12 +9224,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-type-origins/3",
+											"raw": "{{baseURL}}/type-origins/3",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-type-origins",
+												"type-origins",
 												"3"
 											]
 										}
@@ -8597,7 +9243,7 @@
 							"name": "RELATED",
 							"item": [
 								{
-									"name": "stone-type-origin stones index",
+									"name": "type-origin stones index",
 									"id": "6575703-7376bc21-a934-40e0-be9b-3582b2ec0b48",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -8615,12 +9261,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-type-origins/2/stones",
+											"raw": "{{baseURL}}/type-origins/2/stones",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-type-origins",
+												"type-origins",
 												"2",
 												"stones"
 											]
@@ -8635,7 +9281,7 @@
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
-									"name": "stone-type-origin stones index",
+									"name": "type-origin stones index",
 									"id": "6575703-f5dd8947-894f-4ad4-bf3c-5d6aceea0cf1",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -8653,12 +9299,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-type-origins/2/relationships/stones",
+											"raw": "{{baseURL}}/type-origins/2/relationships/stones",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-type-origins",
+												"type-origins",
 												"2",
 												"relationships",
 												"stones"
