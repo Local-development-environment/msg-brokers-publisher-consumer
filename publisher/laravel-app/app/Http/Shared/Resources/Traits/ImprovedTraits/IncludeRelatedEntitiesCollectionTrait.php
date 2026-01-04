@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Shared\Resources\Traits\ImprovedTraits;
 
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\MissingValue;
 use Illuminate\Support\Collection;
 
@@ -14,40 +16,24 @@ trait IncludeRelatedEntitiesCollectionTrait
     /**
      * Transform the resource collection into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|Arrayable|\JsonSerializable
+     * @return array<int|string, mixed>
      */
-    public function toArray(Request $request): array|\JsonSerializable|Arrayable
+    public function toArray(Request $request): array
     {
+        /** @var JsonResource $this */
         return [
-            'data'     => $this->collection,
+            'data' => $this->collection,
             'included' => $this->mergeIncludedRelations($request),
-            'meta' => [
-//                'total' => $this->total() ?? null
-//                'total' => $this->collection->count()
-            ]
         ];
     }
 
-    /**
-     * @param $request
-     * @return MissingValue|Collection
-     */
-    private function mergeIncludedRelations($request): MissingValue|Collection
+    private function mergeIncludedRelations($request): MissingValue|Collection|Model
     {
-//        $includes = $this->collection->flatMap(function ($resource) use ($request) {
-//            return $resource->included($request);
-//        })->unique('glob_id')->values();
-//
-//        return $includes->isNotEmpty() ? $includes : new MissingValue();
-
-        $includes = $this->collection->flatMap(function ($resource) use($request){
-//            dump($resource);
+        $includes = $this->collection->flatMap(function ($resource) use(
+            $request){
             return $resource->included($request);
         })->unique()->values();
 
         return $includes->isNotEmpty() ? $includes : new MissingValue();
     }
-
-//    abstract protected function total(): int;
 }

@@ -4,9 +4,9 @@ declare(strict_types=1);
 use App\Http\Admin\BroochProperty\Brooches\Controllers\BroochController;
 use App\Http\Admin\BroochProperty\Brooches\Controllers\BroochJewelleryRelatedController;
 use App\Http\Admin\BroochProperty\Brooches\Controllers\BroochJewelleryRelationshipController;
-use App\Http\Admin\Piercing\Piercings\Controllers\PiercingController;
-use App\Http\Admin\Piercing\Piercings\Controllers\PiercingJewelleryRelatedController;
-use App\Http\Admin\Piercing\Piercings\Controllers\PiercingJewelleryRelationshipController;
+use App\Http\Admin\SpecProperties\Piercings\Piercings\Controllers\PiercingController;
+use App\Http\Admin\SpecProperties\Piercings\Piercings\Controllers\PiercingJewelleryRelatedController;
+use App\Http\Admin\SpecProperties\Piercings\Piercings\Controllers\PiercingJewelleryRelationshipController;
 use Domain\JewelleryProperties\Brooches\Brooches\Enums\BroochNameRoutesEnum;
 use Domain\JewelleryProperties\Piercings\Piercings\Enums\PiercingNameRoutesEnum;
 

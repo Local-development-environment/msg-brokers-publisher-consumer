@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\Piercing\Piercings\Resources;
+namespace App\Http\Admin\SpecProperties\Piercings\Piercings\Resources;
 
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;

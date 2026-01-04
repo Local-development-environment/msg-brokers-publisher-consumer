@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\Piercing\Piercings\Requests;
+namespace App\Http\Admin\SpecProperties\Piercings\Piercings\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

@@ -7,80 +7,32 @@ namespace App\Http\Shared\Resources\Traits\ImprovedTraits;
 use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\MissingValue;
 use Illuminate\Support\Collection;
 
 trait IncludeRelatedEntitiesResourceTrait
 {
-    /**
-     * @var array $newRelations
-     */
-    protected array $newRelations = [];
+    abstract function relations();
 
-    /**
-     * relations array
-     *
-     * return [
-     *      PersonCollection::class          => $this->whenLoaded('persons'),
-     *      LevelCollection::class           => $this->whenLoaded('levels'),
-     *      -----------------
-     *      LandVersionResource::class     => $this->whenLoaded('landVersion'),
-     * ];
-     */
-    abstract protected function relations(): array;
-
-    /**
-     * @return array
-     */
-    protected function prepareRelations(): array
+    public function included(Request $request): Collection
     {
-        $relations = $this->relations();
-        $newRelations = [];
-
-        /** @var ResourceCollection $key */
-        /** @var Model|MissingValue|Collection $relation */
-        foreach ($relations as $key => $relation) {
-            dump($key);
-            if ($relation instanceof Model) {
-                // set glob_id unique virtual attribute to exclude duplicates into included section
-                $relation->setAttribute('glob_id', $relation->getTable() . '-' . $relation->id);
-
-                $newRelations[] = $key::collection([$relation]);
-            }
-            if ($relation instanceof Collection) {
-                $limitedRelations = $relation->take(config('api-settings.limit-included'));
-                // set glob_id unique virtual attribute to exclude duplicates into included section
-                foreach ($limitedRelations as $keyItem => $item) {
-                    $item->setAttribute('glob_id', $item->getTable() . '-' . $item->id);
-                }
-
-                $newRelations[] = new $key($limitedRelations);
-            }
-            if ($relation instanceof MissingValue) {
-                $newRelations[] = $key::collection($relation);
-            }
-        }
-
-        return $newRelations;
-    }
-
-    /**
-     * @param Request $request
-     * @return array|Collection
-     */
-    public function included(Request $request): array|Collection
-    {
-        return collect($this->prepareRelations())
-            ->filter(function ($resource) {
-                return $resource->collection !== null;
+        return collect($this->relations())
+            // filter to-many $this->>whenLoaded('relation') is a MissingValue
+            ->filter(function ($relation) {
+                return !$relation->resource instanceof MissingValue;
             })
-            ->flatMap(function ($resource) use ($request) {
-                return $resource->toArray($request);
+            // filter empty collection
+            ->filter(function ($relation) {
+                return $relation->collection !== null;
+            })
+            // filter to-one $this->whenLoaded('relation') is a MissingValue
+            ->filter(function ($relation) {
+                return !$relation->collection[0]->resource instanceof MissingValue;
+            })
+            ->flatMap(function ($relation) use ($request) {
+                return $relation->toArray($request);
             });
-//            ->flatMap(function ($resource) {
-//                return $resource->flatten();
-//            });
     }
 
     /**
@@ -98,10 +50,8 @@ trait IncludeRelatedEntitiesResourceTrait
         return $with;
     }
 
-    protected function relatedIdentifiers(string $nameClassResource)
+    protected function relatedIdentifiers($resource)
     {
-        $resource = $this->relations()[$nameClassResource];
-
         if ($resource instanceof Model) {
             return new ApiEntityIdentifierResource($resource);
         }
@@ -117,17 +67,17 @@ trait IncludeRelatedEntitiesResourceTrait
         return null;
     }
 
-    protected function sectionRelationships(string $relatedUrlName, string $relatedResource): array
+    protected function sectionRelationships(string $relatedUrlName, string $relation): array
     {
-        $resource = $this->relations()[$relatedResource];
+        $resource = $this->whenLoaded($relation);
 
         $explodedName = explode('.', $relatedUrlName);
         array_splice($explodedName, 1, 0, 'relationships');
         $selfUrlName = implode('.', $explodedName);
-
+        /** @var JsonResource $this */
         if ($resource instanceof Collection) {
             $related = [
-                'href' => route($relatedUrlName, ['id' => $this->id]),
+                'href' => route($relatedUrlName, ['id' => $this->resource->id]),
                 'meta' => [
                     'total' => $this->totalRelatedData($resource),
                     'limit' => $this->limitRelatedItems()
@@ -135,16 +85,16 @@ trait IncludeRelatedEntitiesResourceTrait
             ];
         } else {
             $related = [
-                'href' => route($relatedUrlName, ['id' => $this->id])
+                'href' => route($relatedUrlName, ['id' => $this->resource->id])
             ];
         }
 
         return [
             'links' => [
-                'self' => route($selfUrlName, ['id' => $this->id]),
+                'self' => route($selfUrlName, ['id' => $this->resource->id]),
                 'related' => $related
             ],
-            'data' => $this->relatedIdentifiers($relatedResource)
+            'data' => $this->relatedIdentifiers($resource)
         ];
     }
 
@@ -166,7 +116,7 @@ trait IncludeRelatedEntitiesResourceTrait
      */
     protected function attributeItems(): array
     {
-        $attributes = $this->getAttributes();
+        $attributes = $this->resource->getAttributes();
         unset($attributes['id']);
 
         return $attributes;
