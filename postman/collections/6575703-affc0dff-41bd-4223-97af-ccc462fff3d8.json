@@ -4672,7 +4672,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bracelets?include=jewellery",
+													"raw": "{{baseURL}}/bracelets?include=jewellery,braceletMetrics,braceletSizes",
 													"host": [
 														"{{baseURL}}"
 													],
@@ -4682,7 +4682,43 @@
 													"query": [
 														{
 															"key": "include",
-															"value": "jewellery"
+															"value": "jewellery",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "braceletSizes",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "braceletMetrics",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "braceletSizes,braceletMetrics",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "jewellery,braceletSizes",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "jewellery,braceletMetrics",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "jewellery,braceletMetrics,braceletSizes",
+															"type": "text"
 														}
 													]
 												}
