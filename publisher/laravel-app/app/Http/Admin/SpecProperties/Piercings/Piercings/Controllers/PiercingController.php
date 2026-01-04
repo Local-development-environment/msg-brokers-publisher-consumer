@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\Piercing\Piercings\Controllers;
+namespace App\Http\Admin\SpecProperties\Piercings\Piercings\Controllers;
 
-use App\Http\Admin\Piercing\Piercings\Requests\PiercingStoreRequest;
-use App\Http\Admin\Piercing\Piercings\Requests\PiercingUpdateRequest;
-use App\Http\Admin\Piercing\Piercings\Resources\PiercingCollection;
-use App\Http\Admin\Piercing\Piercings\Resources\PiercingResource;
+use App\Http\Admin\SpecProperties\Piercings\Piercings\Requests\PiercingStoreRequest;
+use App\Http\Admin\SpecProperties\Piercings\Piercings\Requests\PiercingUpdateRequest;
+use App\Http\Admin\SpecProperties\Piercings\Piercings\Resources\PiercingCollection;
+use App\Http\Admin\SpecProperties\Piercings\Piercings\Resources\PiercingResource;
 use App\Http\Controllers\Controller;
 use Domain\JewelleryProperties\Piercings\Piercings\Enums\PiercingEnum;
 use Domain\JewelleryProperties\Piercings\Piercings\Enums\PiercingNameRoutesEnum;

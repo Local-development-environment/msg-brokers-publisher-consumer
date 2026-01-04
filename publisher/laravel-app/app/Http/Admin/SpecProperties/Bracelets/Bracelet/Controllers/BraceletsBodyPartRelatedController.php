@@ -5,7 +5,7 @@ namespace App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers;
 
 use App\Http\Controllers\Controller;
 
-final class BraceletBodyPartRelationshipController extends Controller
+final class BraceletsBodyPartRelatedController extends Controller
 {
     //
 }
