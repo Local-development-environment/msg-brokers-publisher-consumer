@@ -12,6 +12,89 @@
 					"name": "JEWELLERIES",
 					"item": [
 						{
+							"name": "JEWELLERY CATEGORY",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "jewellery-categories index",
+											"id": "6575703-8dd89c0b-cfa1-427c-b90f-738f3e87454b",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/jewelley-categories",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"jewelley-categories"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "jewellery-categories show",
+											"id": "6575703-07dbadf7-8c9c-48a5-b544-621505be2872",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/jewelley-categories/1",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"jewelley-categories",
+														"1"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-4655c9fe-06fa-44d2-bc38-7841599b9413"
+								},
+								{
+									"name": "RELATED",
+									"item": [],
+									"id": "6575703-2cfcea71-bfc7-4a6c-8012-d6ef9ae6f9ce"
+								},
+								{
+									"name": "RELATIONSHIPS",
+									"item": [],
+									"id": "6575703-6544032b-de33-4771-81f4-d96ffb3901c9"
+								}
+							],
+							"id": "6575703-dcf2fc70-ada0-4c7d-8bde-a8b8efbc32b4"
+						},
+						{
 							"name": "CRUD",
 							"item": [
 								{
@@ -5320,89 +5403,6 @@
 						}
 					],
 					"id": "6575703-95031743-0151-41bb-976a-824dfeb575d2"
-				},
-				{
-					"name": "JEWELLERY CATEGORY",
-					"item": [
-						{
-							"name": "CRUD",
-							"item": [
-								{
-									"name": "jewellery-categories index",
-									"id": "6575703-8dd89c0b-cfa1-427c-b90f-738f3e87454b",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/jewelley-categories",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"jewelley-categories"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "jewellery-categories show",
-									"id": "6575703-07dbadf7-8c9c-48a5-b544-621505be2872",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/jewelley-categories/1",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"jewelley-categories",
-												"1"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"id": "6575703-4655c9fe-06fa-44d2-bc38-7841599b9413"
-						},
-						{
-							"name": "RELATED",
-							"item": [],
-							"id": "6575703-2cfcea71-bfc7-4a6c-8012-d6ef9ae6f9ce"
-						},
-						{
-							"name": "RELATIONSHIPS",
-							"item": [],
-							"id": "6575703-6544032b-de33-4771-81f4-d96ffb3901c9"
-						}
-					],
-					"id": "6575703-dcf2fc70-ada0-4c7d-8bde-a8b8efbc32b4"
 				}
 			],
 			"id": "6575703-2aa7e837-6ac9-42f1-bb01-098ed7f9ff14"
