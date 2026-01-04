@@ -5358,7 +5358,7 @@
 									"response": []
 								},
 								{
-									"name": "jewellery-categories index Copy",
+									"name": "jewellery-categories show",
 									"id": "6575703-07dbadf7-8c9c-48a5-b544-621505be2872",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
