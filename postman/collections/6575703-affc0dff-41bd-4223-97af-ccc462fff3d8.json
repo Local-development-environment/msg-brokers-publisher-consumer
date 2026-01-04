@@ -5376,12 +5376,13 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/jewelley-categories",
+											"raw": "{{baseURL}}/jewelley-categories/1",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"jewelley-categories"
+												"jewelley-categories",
+												"1"
 											]
 										}
 									},
