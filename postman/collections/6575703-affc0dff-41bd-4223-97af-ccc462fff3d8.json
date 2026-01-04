@@ -5292,7 +5292,13 @@
 				},
 				{
 					"name": "JEWELLERY CATEGORY",
-					"item": [],
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [],
+							"id": "6575703-4655c9fe-06fa-44d2-bc38-7841599b9413"
+						}
+					],
 					"id": "6575703-dcf2fc70-ada0-4c7d-8bde-a8b8efbc32b4"
 				}
 			],
