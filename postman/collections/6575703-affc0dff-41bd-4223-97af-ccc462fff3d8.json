@@ -5346,12 +5346,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/jewelleries",
+											"raw": "{{baseURL}}/jewelley-categories",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"jewelleries"
+												"jewelley-categories"
 											]
 										}
 									},
