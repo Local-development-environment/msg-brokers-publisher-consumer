@@ -3580,42 +3580,6 @@
 											"response": []
 										},
 										{
-											"name": "neck-sizes index Copy",
-											"id": "6575703-467f98a0-0641-4a03-9687-38f11c000a5d",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true,
-												"disabledSystemHeaders": {
-													"accept": true
-												}
-											},
-											"request": {
-												"method": "GET",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/vnd.api+json",
-														"type": "text"
-													}
-												],
-												"url": {
-													"raw": "{{baseURL}}/neck-sizes?include=necklaces",
-													"host": [
-														"{{baseURL}}"
-													],
-													"path": [
-														"neck-sizes"
-													],
-													"query": [
-														{
-															"key": "include",
-															"value": "necklaces"
-														}
-													]
-												}
-											},
-											"response": []
-										},
-										{
 											"name": "neck-sizes show",
 											"id": "6575703-5bba3b2c-a6ed-4de1-8721-43bfefaa39c9",
 											"protocolProfileBehavior": {
@@ -4240,7 +4204,44 @@
 							"item": [
 								{
 									"name": "CRUD",
-									"item": [],
+									"item": [
+										{
+											"name": "neck-sizes index Copy",
+											"id": "6575703-467f98a0-0641-4a03-9687-38f11c000a5d",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/neck-sizes?include=necklaces",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"neck-sizes"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "necklaces"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
 									"id": "6575703-ea54c644-956c-4ef7-94ae-ee3711ccd610"
 								},
 								{
