@@ -4224,12 +4224,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/neck-sizes?include=necklaces",
+													"raw": "{{baseURL}}/weavings?include=necklaces",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"neck-sizes"
+														"weavings"
 													],
 													"query": [
 														{
