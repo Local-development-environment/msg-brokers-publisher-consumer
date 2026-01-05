@@ -4224,7 +4224,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/weavings?include=necklaces",
+													"raw": "{{baseURL}}/weavings",
 													"host": [
 														"{{baseURL}}"
 													],
@@ -4234,7 +4234,8 @@
 													"query": [
 														{
 															"key": "include",
-															"value": "necklaces"
+															"value": "necklaces",
+															"disabled": true
 														}
 													]
 												}
