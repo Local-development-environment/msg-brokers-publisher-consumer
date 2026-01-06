@@ -17,7 +17,6 @@ trait JsonApiSpecificationResourceTrait
 
     public function included(Request $request): Collection
     {
-//        dd($this->relations());
         return collect($this->relations())
             ->filter(function ($relation) {
                 return !$relation->resource instanceof MissingValue;
@@ -51,7 +50,6 @@ trait JsonApiSpecificationResourceTrait
     protected function relatedIdentifiers($resource)
     {
         if ($resource instanceof Model) {
-//            dump($resource);
             return new ApiEntityIdentifierResource($resource);
         }
 
@@ -89,7 +87,7 @@ trait JsonApiSpecificationResourceTrait
                 'href' => route($relatedUrlName, ['id' => $this->resource->id])
             ];
         }
-//        dump($this->relatedIdentifiers($resource));
+
         if ($resource instanceof MissingValue) {
             return [
                 'links' => [
@@ -105,17 +103,8 @@ trait JsonApiSpecificationResourceTrait
                 ],
 
                 'data' => $this->relatedIdentifiers($resource),
-//
             ];
         }
-//        return [
-//            'links' => [
-//                'self'    => route($selfUrlName, ['id' => $this->resource->id]),
-//                'related' => $related
-//            ],
-//
-//            'data' => $this->relatedIdentifiers($resource)
-//        ];
     }
 
     /**
