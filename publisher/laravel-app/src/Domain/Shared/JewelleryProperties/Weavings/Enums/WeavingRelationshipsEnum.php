@@ -6,7 +6,9 @@ namespace Domain\Shared\JewelleryProperties\Weavings\Enums;
 
 enum WeavingRelationshipsEnum: string
 {
-    case BASE_WEAVING = 'baseWeaving';
-    case CHAIN_WEAVINGS = 'chainWeavings';
+    case BASE_WEAVING      = 'baseWeaving';
+    case CHAIN_WEAVINGS    = 'chainWeavings';
     case BRACELET_WEAVINGS = 'braceletWeavings';
+    case BRACELETS         = 'bracelets';
+    case CHAINS            = 'chains';
 }

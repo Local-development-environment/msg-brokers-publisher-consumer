@@ -2,16 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Shared\Resources\Traits\ImprovedTraits;
+namespace App\Http\Shared\Resources\Traits;
 
-use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\MissingValue;
 use Illuminate\Support\Collection;
 
-trait IncludeRelatedEntitiesCollectionTrait
+trait JsonApiSpecificationCollectionTrait
 {
     /**
      * Transform the resource collection into an array.

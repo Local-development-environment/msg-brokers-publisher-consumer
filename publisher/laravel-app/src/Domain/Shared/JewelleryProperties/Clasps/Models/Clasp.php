@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Domain\Shared\JewelleryProperties\Clasps\Models;
 
 use Domain\JewelleryProperties\Beads\Beads\Models\Bead;
+use Domain\JewelleryProperties\Bracelets\Bracelets\Models\Bracelet;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -18,5 +19,10 @@ final class Clasp extends Model
     public function beads(): HasMany
     {
         return $this->hasMany(Bead::class);
+    }
+
+    public function bracelets(): HasMany
+    {
+        return $this->hasMany(Bracelet::class);
     }
 }

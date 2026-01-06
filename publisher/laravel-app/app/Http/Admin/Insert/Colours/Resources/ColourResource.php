@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace App\Http\Admin\Insert\Colours\Resources;
 
 use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorCollection;
+use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorResource;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Inserts\Colours\Enums\ColourEnum;
 use Domain\Inserts\Colours\Enums\ColourNameRoutesEnum;
 use Domain\Inserts\Colours\Enums\ColourRelationshipsEnum;
@@ -15,7 +17,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /** @mixin Colour */
 final class ColourResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     public function toArray(Request $request): array
     {
@@ -26,7 +28,7 @@ final class ColourResource extends JsonResource
             'relationships' => [
                 ColourRelationshipsEnum::STONE_EXTERIORS->value => $this->sectionRelationships(
                     ColourNameRoutesEnum::RELATED_TO_STONE_EXTERIORS->value,
-                    StoneExteriorCollection::class
+                    ColourRelationshipsEnum::STONE_EXTERIORS->value,
                 )
             ]
         ];
@@ -35,7 +37,7 @@ final class ColourResource extends JsonResource
     protected function relations(): array
     {
         return [
-            StoneExteriorCollection::class => $this->whenLoaded(ColourRelationshipsEnum::STONE_EXTERIORS->value),
+            StoneExteriorResource::collection($this->whenLoaded(ColourRelationshipsEnum::STONE_EXTERIORS->value)),
         ];
     }
 }

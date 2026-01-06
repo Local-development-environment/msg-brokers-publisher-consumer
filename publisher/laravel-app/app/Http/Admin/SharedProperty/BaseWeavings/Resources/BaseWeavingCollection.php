@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\Jewellery\Categories\Resources;
+namespace App\Http\Admin\SharedProperty\BaseWeavings\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-final class CategoryCollection extends ResourceCollection
+final class BaseWeavingCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.

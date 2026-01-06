@@ -170,7 +170,7 @@ return new class extends Migration
                         from
                             jw_properties.brooches as jwb
                                 join jewelleries.jewelleries as jj on jwb.id = jj.id
-                                join jewelleries.categories as jc on jj.category_id = jc.id
+                                join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
 
                          union all
 
@@ -186,7 +186,7 @@ return new class extends Migration
                         from
                             jw_properties.charm_pendants as jwchp
                                 join jewelleries.jewelleries as jj on jwchp.jewellery_id = jj.id
-                                join jewelleries.categories as jc on jj.category_id = jc.id
+                                join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
 
                         union all
 
@@ -202,7 +202,7 @@ return new class extends Migration
                         from
                             jw_properties.tie_clips as jwtc
                                 join jewelleries.jewelleries as jj on jwtc.jewellery_id = jj.id
-                                join jewelleries.categories as jc on jj.category_id = jc.id
+                                join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
 
                         union all
 
@@ -218,7 +218,7 @@ return new class extends Migration
                         from
                             jw_properties.pendants as jwp
                                 join jewelleries.jewelleries as jj on jwp.id = jj.id
-                                join jewelleries.categories as jc on jj.category_id = jc.id
+                                join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
 
                         union all
 
@@ -234,7 +234,7 @@ return new class extends Migration
                         from
                             jw_properties.cuff_links as jwcl
                                 join jewelleries.jewelleries as jj on jwcl.jewellery_id = jj.id
-                                join jewelleries.categories as jc on jj.category_id = jc.id
+                                join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
 
                         union all
 
@@ -250,7 +250,7 @@ return new class extends Migration
                         from
                             jw_properties.piercings as jwprc
                                 join jewelleries.jewelleries as jj on jwprc.id = jj.id
-                                join jewelleries.categories as jc on jj.category_id = jc.id
+                                join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
 
                         union all
 
@@ -270,7 +270,7 @@ return new class extends Migration
                         from
                             jw_properties.earrings as jwerr
                                 join jewelleries.jewelleries as jj on jwerr.jewellery_id = jj.id
-                                join jewelleries.categories as jc on jj.category_id = jc.id
+                                join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
                                 join jw_properties.earring_clasps as jwerc on jwerr.earring_clasp_id = jwerc.id
                                 join jw_properties.earring_earring_type as jweet on jwerr.id = jweet.earring_id
                                 join jw_properties.earring_types as jwet on jweet.earring_type_id = jwet.id
@@ -300,7 +300,7 @@ return new class extends Migration
                         from
                             jw_properties.rings as jwrng
                                 join jewelleries.jewelleries as jj on jwrng.id = jj.id
-                                join jewelleries.categories as jc on jj.category_id = jc.id
+                                join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
                                 join jw_properties.ring_fingers as jwrf on jwrng.ring_finger_id = jwrf.id
                                 left join jw_properties.ring_metrics as jwrm on jwrng.id = jwrm.ring_id
                                 left join jw_properties.ring_sizes as jwrs on jwrm.ring_size_id = jwrs.id
@@ -471,7 +471,7 @@ return new class extends Migration
                         from
                             jw_properties.necklaces as jwnck
                                 join jewelleries.jewelleries as jj on jwnck.id = jj.id
-                                join jewelleries.categories as jc on jj.category_id = jc.id
+                                join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
                                 join jw_properties.clasps as jwcls on jwnck.clasp_id = jwcls.id
                                 left join jw_properties.necklace_metrics as jwnckm on jwnck.id = jwnckm.necklace_id
                                 left join jw_properties.neck_sizes as jwns on jwnckm.neck_size_id = jwns.id
@@ -506,7 +506,7 @@ return new class extends Migration
                         from
                             jw_properties.beads as jwbd
                                 join jewelleries.jewelleries as jj on jwbd.id = jj.id
-                                join jewelleries.categories as jc on jj.category_id = jc.id
+                                join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
                                 join jw_properties.bead_bases as jwbb on jwbd.bead_base_id = jwbb.id
                                 join jw_properties.clasps as jwcls on jwbd.clasp_id = jwcls.id
                                 left join jw_properties.bead_metrics as jwbdm on jwbd.id = jwbdm.bead_id
@@ -516,7 +516,7 @@ return new class extends Migration
                     )
                 select
                     jj.id,
-                    jj.category_id,
+                    jj.jewellery_category_id,
                     jc.name as category,
                     jj.name,
                     jj.slug,
@@ -557,7 +557,7 @@ return new class extends Migration
                 from
                     jewelleries.jewelleries as jj
                         left join jw_views.v_inserts vi on jj.id = vi.jewellery_id
-                        join jewelleries.categories as jc on jj.category_id = jc.id
+                        join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
                         left join cte_jw_coverages as cvrg on jj.id = cvrg.jewellery_id
                         left join cte_jw_metals as mtl on jj.id = mtl.jewellery_id
                         left join cte_review as cr on jj.id = cr.jewellery_id

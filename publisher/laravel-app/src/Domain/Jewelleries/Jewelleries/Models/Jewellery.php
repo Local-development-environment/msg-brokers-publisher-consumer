@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Domain\Jewelleries\Jewelleries\Models;
 
 use Domain\Inserts\Inserts\Models\Insert;
+use Domain\Jewelleries\JewelleryCategories\Models\JewelleryCategory;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
-use Domain\JewelleryGenerator\Jewelleries\Categories\Category;
 use Domain\JewelleryProperties\Beads\Beads\Models\Bead;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Models\Bracelet;
+use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -25,14 +26,19 @@ final class Jewellery extends Model
         return $this->hasMany(Insert::class);
     }
 
-    public function category(): BelongsTo
+    public function jewelleryCategory(): BelongsTo
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(JewelleryCategory::class);
     }
 
     public function bracelet(): HasOne
     {
-        return $this->hasOne(Bracelet::class);
+        return $this->hasOne(Bracelet::class, 'id');
+    }
+
+    public function chain(): HasOne
+    {
+        return $this->hasOne(Chain::class, 'id');
     }
 
     public function bead(): HasOne

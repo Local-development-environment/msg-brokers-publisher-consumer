@@ -4,11 +4,21 @@ declare(strict_types=1);
 
 use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletBraceletMetricsRelatedController;
 use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletBraceletMetricsRelationshipController;
+use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletBraceletWeavingsRelatedController;
+use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletBraceletWeavingsRelationshipController;
 use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletController;
 use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletJewelleryRelatedController;
 use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletJewelleryRelationshipController;
+use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletsBodyPartRelatedController;
+use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletsBodyPartRelationshipController;
+use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletsBraceletBaseRelatedController;
+use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletsBraceletBaseRelationshipController;
 use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletsBraceletSizesRelatedController;
 use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletsBraceletSizesRelationshipController;
+use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletsClaspRelatedController;
+use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletsClaspRelationshipController;
+use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletsWeavingsRelatedController;
+use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Controllers\BraceletsWeavingsRelationshipController;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletMetrics\Controllers\BraceletMetricController;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletMetrics\Controllers\BraceletMetricsBraceletRelatedController;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletMetrics\Controllers\BraceletMetricsBraceletRelationshipController;
@@ -51,6 +61,31 @@ Route::group([
         ->name(BraceletNameRoutesEnum::RELATIONSHIP_TO_BRACELET_SIZES->value);
     Route::get('bracelets/{id}/bracelet-sizes', [BraceletsBraceletSizesRelatedController::class, 'index'])
         ->name(BraceletNameRoutesEnum::RELATED_TO_BRACELET_SIZES->value);
+    //  many-to-one Bracelets to Clasp
+    Route::get('bracelets/{id}/relationships/clasp', [BraceletsClaspRelationshipController::class, 'index'])
+        ->name(BraceletNameRoutesEnum::RELATIONSHIP_TO_CLASP->value);
+    Route::get('bracelets/{id}/clasp', [BraceletsClaspRelatedController::class, 'index'])
+        ->name(BraceletNameRoutesEnum::RELATED_TO_CLASP->value);
+    //  many-to-one Bracelets to Body Part
+    Route::get('bracelets/{id}/relationships/body-part', [BraceletsBodyPartRelationshipController::class, 'index'])
+        ->name(BraceletNameRoutesEnum::RELATIONSHIP_TO_BODY_PART->value);
+    Route::get('bracelets/{id}/body-part', [BraceletsBodyPartRelatedController::class, 'index'])
+        ->name(BraceletNameRoutesEnum::RELATED_TO_BODY_PART->value);
+    //  many-to-one Bracelets to Bracelet Base
+    Route::get('bracelets/{id}/relationships/bracelet-base', [BraceletsBraceletBaseRelationshipController::class, 'index'])
+        ->name(BraceletNameRoutesEnum::RELATIONSHIP_TO_BODY_PART->value);
+    Route::get('bracelets/{id}/bracelet-base', [BraceletsBraceletBaseRelatedController::class, 'index'])
+        ->name(BraceletNameRoutesEnum::RELATED_TO_BODY_PART->value);
+    //  one-to-many Bracelet to Bracelet Weavings
+    Route::get('bracelets/{id}/relationships/bracelet-weavings', [BraceletBraceletWeavingsRelationshipController::class, 'index'])
+        ->name(BraceletNameRoutesEnum::RELATIONSHIP_TO_BRACELET_WEAVINGS->value);
+    Route::get('bracelets/{id}/bracelet-weavings', [BraceletBraceletWeavingsRelatedController::class, 'index'])
+        ->name(BraceletNameRoutesEnum::RELATED_TO_BRACELET_WEAVINGS->value);
+    //  many-to-many Bracelets to Weavings
+    Route::get('bracelets/{id}/relationships/weavings', [BraceletsWeavingsRelationshipController::class, 'index'])
+        ->name(BraceletNameRoutesEnum::RELATIONSHIP_TO_WEAVINGS->value);
+    Route::get('bracelets/{id}/bracelet-weavings', [BraceletsWeavingsRelatedController::class, 'index'])
+        ->name(BraceletNameRoutesEnum::RELATED_TO_WEAVINGS->value);
 
     /*************************** BRACELET SIZES *************************/
     // CRUD

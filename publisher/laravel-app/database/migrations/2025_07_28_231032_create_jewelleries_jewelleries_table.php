@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('jewelleries.jewelleries', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('jewellery_category_id');
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->boolean('is_active')->default(true);
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('jewelleries.categories');
+            $table->foreign('jewellery_category_id')->references('id')->on('jewelleries.jewellery_categories');
         });
     }
 

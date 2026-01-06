@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\MetalItems;
 
-use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
+use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\PreciousMetals\Coverages\Enums\CoverageBuilderEnum;
 use Domain\PreciousMetals\Hallmarks\Enums\HallmarkBuilderEnum;
@@ -109,7 +109,7 @@ final class MetalItem
 
     private function getCoverage(string $metalType, string $category): array
     {
-        if ($category === CategoryBuilderEnum::BEADS->value) {
+        if ($category === JewelleryCategoryBuilderEnum::BEADS->value) {
             return [CoverageBuilderEnum::RHODIUM_PLATING->value];
         }
 
