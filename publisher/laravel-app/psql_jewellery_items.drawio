@@ -286,8 +286,8 @@
             <mxPoint x="510" y="1200" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="2udTcqZomceSiDcU7UTF-1" value="&lt;b&gt;Category is a Discriminator&lt;/b&gt;" style="shape=note;size=20;whiteSpace=wrap;html=1;dashed=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
-          <mxGeometry x="440" y="1380" width="190" height="26" as="geometry" />
+        <mxCell id="2udTcqZomceSiDcU7UTF-1" value="&lt;b&gt;Jewellery Category is a Discriminator&lt;/b&gt;" style="shape=note;size=20;whiteSpace=wrap;html=1;dashed=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="450" y="1364" width="180" height="46" as="geometry" />
         </mxCell>
         <mxCell id="RpIDK-135BAkSg7zhBXw-1" value="brooches" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;rounded=1;swimlaneFillColor=none;fillColor=#f8cecc;strokeColor=#b85450;columnLines=1;arcSize=10;" parent="1" vertex="1">
           <mxGeometry x="970" y="630" width="180" height="118" as="geometry" />
