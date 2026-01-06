@@ -464,7 +464,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bead-metrics?include=bead,beadSize",
+													"raw": "{{baseURL}}/bead-metrics?include=bead",
 													"host": [
 														"{{baseURL}}"
 													],
@@ -474,7 +474,7 @@
 													"query": [
 														{
 															"key": "include",
-															"value": "bead,beadSize"
+															"value": "bead"
 														}
 													]
 												}
