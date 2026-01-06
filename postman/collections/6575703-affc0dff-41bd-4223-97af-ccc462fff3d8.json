@@ -5495,41 +5495,6 @@
 													"query": [
 														{
 															"key": "include",
-															"value": "jewellery",
-															"disabled": true
-														},
-														{
-															"key": "include",
-															"value": "braceletSizes",
-															"type": "text",
-															"disabled": true
-														},
-														{
-															"key": "include",
-															"value": "braceletMetrics",
-															"type": "text",
-															"disabled": true
-														},
-														{
-															"key": "include",
-															"value": "braceletSizes,braceletMetrics",
-															"type": "text",
-															"disabled": true
-														},
-														{
-															"key": "include",
-															"value": "jewellery,braceletSizes",
-															"type": "text",
-															"disabled": true
-														},
-														{
-															"key": "include",
-															"value": "jewellery,braceletMetrics",
-															"type": "text",
-															"disabled": true
-														},
-														{
-															"key": "include",
 															"value": "bracelets,braceletBases,clasps"
 														}
 													]
