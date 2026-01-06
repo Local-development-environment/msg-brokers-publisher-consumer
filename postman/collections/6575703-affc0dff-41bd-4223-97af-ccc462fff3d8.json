@@ -5601,17 +5601,17 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bracelet-metrics?include=bracelet,bracelet-size",
+													"raw": "{{baseURL}}/bracelet-weaving?include=bracelet,weaving",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"bracelet-metrics"
+														"bracelet-weaving"
 													],
 													"query": [
 														{
 															"key": "include",
-															"value": "bracelet,bracelet-size"
+															"value": "bracelet,weaving"
 														}
 													]
 												}
