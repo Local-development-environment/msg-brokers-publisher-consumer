@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\SharedProperty\NeckSizes\Controllers;
+namespace App\Http\Admin\SpecProperties\Beads\BeadBase\Controllers;
 
 use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadCollection;
 use App\Http\Controllers\Controller;
-use Domain\Shared\JewelleryProperties\NeckSizes\Services\Relationships\NeckSizesBeadsRelationshipService;
+use Domain\JewelleryProperties\Beads\BeadBases\Services\Relationships\BeadBaseBeadsRelationshipService;
 use Illuminate\Http\JsonResponse;
 
-final class NeckSizesBeadsRelatedController extends Controller
+final class BeadBaseBeadsRelatedController extends Controller
 {
-    public function __construct(public NeckSizesBeadsRelationshipService $service)
+    public function __construct(public BeadBaseBeadsRelationshipService $service)
     {
     }
 

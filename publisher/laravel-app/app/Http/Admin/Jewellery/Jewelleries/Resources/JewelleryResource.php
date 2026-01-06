@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Jewellery\Jewelleries\Resources;
 
-use App\Http\Admin\BeadProperty\Beads\Resources\BeadResource;
 use App\Http\Admin\ChainProperty\Chains\Resources\ChainResource;
 use App\Http\Admin\Jewellery\Categories\Resources\JewelleryCategoryResource;
+use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadResource;
 use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Resources\BraceletResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryNameRoutesEnum;
