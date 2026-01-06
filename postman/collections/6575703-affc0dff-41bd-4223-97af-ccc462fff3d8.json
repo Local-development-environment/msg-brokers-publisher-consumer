@@ -5543,7 +5543,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bracelet-bases?include=bracelets,braceletBases,clasps",
+													"raw": "{{baseURL}}/bracelet-bases?include=bracelets,bodyParts,clasps",
 													"host": [
 														"{{baseURL}}"
 													],
@@ -5553,7 +5553,7 @@
 													"query": [
 														{
 															"key": "include",
-															"value": "bracelets,braceletBases,clasps"
+															"value": "bracelets,bodyParts,clasps"
 														}
 													]
 												}
