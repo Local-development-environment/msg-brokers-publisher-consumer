@@ -10,6 +10,7 @@ use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
 use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\StoneExteriorSQL;
+use Domain\JewelleryProperties\Bracelets\BodyParts\Models\BodyPart;
 use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Models\BraceletMetric;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Models\Bracelet;
@@ -28,7 +29,7 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        dd(Jewellery::first()->jewelleryCategory);
+        dd(Bracelet::first()->bodyPart);
         $inserts = DB::select(file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/inserts.sql')));
 
         foreach ($inserts as $insert) {

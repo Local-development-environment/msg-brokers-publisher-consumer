@@ -30,17 +30,9 @@ final class BraceletBaseResource extends JsonResource
             'type' => BraceletBase::TYPE_RESOURCE,
             'attributes' => $this->attributeItems(),
             'relationships' => [
-                BraceletBaseRelationshipsEnum::CLASPS->value => $this->sectionRelationships(
-                    BraceletBaseNameRoutesEnum::RELATED_TO_CLASPS->value,
-                    BraceletBaseRelationshipsEnum::CLASPS->value
-                ),
                 BraceletBaseRelationshipsEnum::BRACELETS->value => $this->sectionRelationships(
                     BraceletBaseNameRoutesEnum::RELATED_TO_BRACELETS->value,
                     BraceletBaseRelationshipsEnum::BRACELETS->value
-                ),
-                BraceletBaseRelationshipsEnum::BODY_PARTS->value => $this->sectionRelationships(
-                    BraceletBaseNameRoutesEnum::RELATED_TO_BODY_PARTS->value,
-                    BraceletBaseRelationshipsEnum::BODY_PARTS->value
                 )
             ]
         ];
@@ -49,9 +41,7 @@ final class BraceletBaseResource extends JsonResource
     function relations(): array
     {
         return [
-            BraceletResource::collection($this->whenLoaded(BraceletBaseRelationshipsEnum::BRACELETS->value)),
-            ClaspResource::collection($this->whenLoaded(BraceletBaseRelationshipsEnum::CLASPS->value)),
-            BodyPartResource::collection($this->whenLoaded(BraceletBaseRelationshipsEnum::BODY_PARTS->value)),
+            BraceletResource::collection($this->whenLoaded(BraceletBaseRelationshipsEnum::BRACELETS->value))
         ];
     }
 }

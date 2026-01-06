@@ -18,8 +18,6 @@ final class BraceletBaseRepository
         return QueryBuilder::for(BraceletBase::class)
             ->allowedIncludes([
                 BraceletBaseRelationshipsEnum::BRACELETS->value,
-                BraceletBaseRelationshipsEnum::BODY_PARTS->value,
-                BraceletBaseRelationshipsEnum::CLASPS->value,
             ])
             ->allowedFilters([
                 AllowedFilter::exact(BraceletBaseEnum::PRIMARY_KEY->value)
@@ -38,9 +36,7 @@ final class BraceletBaseRepository
         return QueryBuilder::for(BraceletBase::class)
             ->where(BraceletBaseEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
-                BraceletBaseRelationshipsEnum::BRACELETS->value,
-                BraceletBaseRelationshipsEnum::BODY_PARTS->value,
-                BraceletBaseRelationshipsEnum::CLASPS->value,
+                BraceletBaseRelationshipsEnum::BRACELETS->value
             ])
             ->firstOrFail();
     }

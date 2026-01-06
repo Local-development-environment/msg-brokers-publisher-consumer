@@ -24,6 +24,7 @@ final class BraceletRepository
                 BraceletRelationshipsEnum::JEWELLERY->value,
                 BraceletRelationshipsEnum::CLASP->value,
                 BraceletRelationshipsEnum::BRACELET_SIZES->value,
+                BraceletRelationshipsEnum::WEAVINGS->value,
             ])
             ->allowedFilters([
                 AllowedFilter::exact(BraceletEnum::PRIMARY_KEY->value)
@@ -49,6 +50,7 @@ final class BraceletRepository
                 BraceletRelationshipsEnum::JEWELLERY->value,
                 BraceletRelationshipsEnum::CLASP->value,
                 BraceletRelationshipsEnum::BRACELET_SIZES->value,
+                BraceletRelationshipsEnum::WEAVINGS->value,
             ])
             ->firstOrFail();
     }
