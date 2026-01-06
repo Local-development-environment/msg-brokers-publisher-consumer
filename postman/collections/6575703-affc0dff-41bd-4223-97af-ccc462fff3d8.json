@@ -5459,6 +5459,122 @@
 								}
 							],
 							"id": "6575703-c395522b-6b11-42f2-a273-bd8d2e0ffd6a"
+						},
+						{
+							"name": "BODY PARTS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "body-parts index",
+											"id": "6575703-8440e228-dbf9-437a-9336-1392e317aed7",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/body-parts?include=bracelets,braceletBases,clasps",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"body-parts"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "bracelets,braceletBases,clasps"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-42af4207-2c1a-46a2-bf8b-8c3af2c0d13b"
+								},
+								{
+									"name": "RELATED",
+									"item": [],
+									"id": "6575703-6a22e298-eb67-4e27-9abc-ac408d646ff4"
+								},
+								{
+									"name": "RELATIONSHIPS",
+									"item": [],
+									"id": "6575703-75a478db-27c9-44af-8b9d-d0236c30617b"
+								}
+							],
+							"id": "6575703-b3095f7c-c4f3-4449-b562-3248811cf424"
+						},
+						{
+							"name": "BRACELET BASES",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "bracelet-bases index",
+											"id": "6575703-aca262d2-e0ef-48de-8280-1a53df686536",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelet-bases?include=bracelets,bodyParts,clasps",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelet-bases"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "bracelets,bodyParts,clasps"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-fea6c109-0b28-4ce6-a3c8-43dcb188a94f"
+								},
+								{
+									"name": "RELATED",
+									"item": [],
+									"id": "6575703-1af63e58-2950-4d5f-8e85-8e9c5bd14396"
+								},
+								{
+									"name": "RELATIONSHIPS",
+									"item": [],
+									"id": "6575703-b6a637ec-7b32-44d3-9495-aa7d597a4495"
+								}
+							],
+							"id": "6575703-985e694c-8912-4bf4-a281-61c116859a74"
 						}
 					],
 					"id": "6575703-95031743-0151-41bb-976a-824dfeb575d2"
