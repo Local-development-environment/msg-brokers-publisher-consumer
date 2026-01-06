@@ -5583,7 +5583,7 @@
 									"name": "CRUD",
 									"item": [
 										{
-											"name": "bracelet-metrics index Copy",
+											"name": "bracelet-weavings index",
 											"id": "6575703-b295fe1d-1449-403a-95f7-3352e9bb26cd",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
