@@ -43,12 +43,126 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "jewelleries show",
+									"id": "6575703-f624a0ab-bcaa-433f-940a-1b8cb8632b48",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/jewelleries/1",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"jewelleries",
+												"1"
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"id": "6575703-2b4fb5a1-abf2-4754-aeda-7299316d239f"
 						}
 					],
 					"id": "6575703-c30708a7-fb3c-442e-9dca-2a77ce179a16"
+				},
+				{
+					"name": "JEWELLERY CATEGORY",
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [
+								{
+									"name": "jewellery-categories index",
+									"id": "6575703-8dd89c0b-cfa1-427c-b90f-738f3e87454b",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/jewellery-categories",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"jewellery-categories"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "jewellery-categories show",
+									"id": "6575703-07dbadf7-8c9c-48a5-b544-621505be2872",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/jewellery-categories/1",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"jewellery-categories",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-4655c9fe-06fa-44d2-bc38-7841599b9413"
+						},
+						{
+							"name": "RELATED",
+							"item": [],
+							"id": "6575703-2cfcea71-bfc7-4a6c-8012-d6ef9ae6f9ce"
+						},
+						{
+							"name": "RELATIONSHIPS",
+							"item": [],
+							"id": "6575703-6544032b-de33-4771-81f4-d96ffb3901c9"
+						}
+					],
+					"id": "6575703-dcf2fc70-ada0-4c7d-8bde-a8b8efbc32b4"
 				},
 				{
 					"name": "BEADS PROPERTIES",
@@ -4084,6 +4198,65 @@
 								}
 							],
 							"id": "6575703-3b9625b4-bbda-4b2f-a417-050a0190dc32"
+						},
+						{
+							"name": "WEAVINGS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "weavings index",
+											"id": "6575703-467f98a0-0641-4a03-9687-38f11c000a5d",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/weavings",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"weavings"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "necklaces",
+															"disabled": true
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-ea54c644-956c-4ef7-94ae-ee3711ccd610"
+								},
+								{
+									"name": "RELATED",
+									"item": [],
+									"id": "6575703-3f329ef1-1b72-4ee4-b590-88a82204be83"
+								},
+								{
+									"name": "RELATIONSHIPS",
+									"item": [],
+									"id": "6575703-90c8f831-07dc-42f2-9434-4eee95d6a678"
+								}
+							],
+							"id": "6575703-4a877881-9005-471d-aa0f-84e0ecec64b4"
 						}
 					],
 					"id": "6575703-1b62000f-949a-4200-987b-50fbb7a05f2d"
@@ -5321,7 +5494,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-colours?include=insertExteriors",
+											"raw": "{{baseURL}}/stone-colours?include=stoneExteriors",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -5331,7 +5504,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "insertExteriors"
+													"value": "stoneExteriors"
 												}
 											]
 										}
@@ -5357,13 +5530,19 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-colours/5",
+											"raw": "{{baseURL}}/stone-colours/5?include=stoneExteriors",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
 												"stone-colours",
 												"5"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "stoneExteriors"
+												}
 											]
 										}
 									},
