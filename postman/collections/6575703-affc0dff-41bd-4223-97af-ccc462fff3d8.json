@@ -5523,13 +5523,55 @@
 							"item": [
 								{
 									"name": "CRUD",
-									"item": [],
+									"item": [
+										{
+											"name": "body-parts index Copy",
+											"id": "6575703-aca262d2-e0ef-48de-8280-1a53df686536",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/body-parts?include=bracelets,braceletBases,clasps",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"body-parts"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "bracelets,braceletBases,clasps"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
 									"id": "6575703-fea6c109-0b28-4ce6-a3c8-43dcb188a94f"
 								},
 								{
 									"name": "RELATED",
 									"item": [],
 									"id": "6575703-1af63e58-2950-4d5f-8e85-8e9c5bd14396"
+								},
+								{
+									"name": "RELATIONSHIPS",
+									"item": [],
+									"id": "6575703-b6a637ec-7b32-44d3-9495-aa7d597a4495"
 								}
 							],
 							"id": "6575703-985e694c-8912-4bf4-a281-61c116859a74"
