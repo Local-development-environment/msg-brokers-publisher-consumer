@@ -5543,12 +5543,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/body-parts?include=bracelets,braceletBases,clasps",
+													"raw": "{{baseURL}}/bracelet-bases?include=bracelets,braceletBases,clasps",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"body-parts"
+														"bracelet-bases"
 													],
 													"query": [
 														{
