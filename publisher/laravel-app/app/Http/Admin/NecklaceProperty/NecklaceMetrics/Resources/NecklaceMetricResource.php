@@ -5,7 +5,7 @@ namespace App\Http\Admin\NecklaceProperty\NecklaceMetrics\Resources;
 
 use App\Http\Admin\NecklaceProperty\Necklaces\Resources\NecklaceResource;
 use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeResource;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Enums\NecklaceMetricNameRoutesEnum;
 use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Enums\NecklaceMetricRelationshipsEnum;
 use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Models\NecklaceMetric;
@@ -15,7 +15,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /** @mixin NecklaceMetric */
 final class NecklaceMetricResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource into an array.
@@ -31,11 +31,11 @@ final class NecklaceMetricResource extends JsonResource
             'relationships' => [
                 'necklace' => $this->sectionRelationships(
                     NecklaceMetricNameRoutesEnum::RELATED_TO_NECKLACE->value,
-                    NecklaceResource::class
+                    NecklaceMetricRelationshipsEnum::NECKLACE->value
                 ),
                 'necklaceSize' => $this->sectionRelationships(
                     NecklaceMetricNameRoutesEnum::RELATED_TO_NECK_SIZE->value,
-                    NeckSizeResource::class
+                    NecklaceMetricRelationshipsEnum::NECK_SIZE->value
                 )
             ]
         ];
@@ -44,8 +44,8 @@ final class NecklaceMetricResource extends JsonResource
     protected function relations(): array
     {
         return [
-            NecklaceResource::class => $this->whenLoaded(NecklaceMetricRelationshipsEnum::NECKLACE->value),
-            NeckSizeResource::class => $this->whenLoaded(NecklaceMetricRelationshipsEnum::NECK_SIZE->value),
+            NecklaceResource::collection([$this->whenLoaded(NecklaceMetricRelationshipsEnum::NECKLACE->value)]),
+            NeckSizeResource::collection([$this->whenLoaded(NecklaceMetricRelationshipsEnum::NECK_SIZE->value)]),
         ];
     }
 }

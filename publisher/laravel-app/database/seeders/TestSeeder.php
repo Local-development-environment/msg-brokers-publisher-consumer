@@ -28,7 +28,7 @@ final class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        dd(Bracelet::first()->braceletSizes);
+        dd(Jewellery::first()->jewelleryCategory);
         $inserts = DB::select(file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/inserts.sql')));
 
         foreach ($inserts as $insert) {

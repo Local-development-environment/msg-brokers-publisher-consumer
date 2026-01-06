@@ -6,11 +6,11 @@ namespace Domain\Jewelleries\Jewelleries\Enums;
 
 enum JewelleryNameRoutesEnum: string
 {
-    case CRUD_INDEX              = 'jewelleries.index';
-    case CRUD_SHOW               = 'jewelleries.show';
-    case CRUD_POST               = 'jewelleries.post';
-    case CRUD_PATCH              = 'jewelleries.patch';
-    case CRUD_DELETE             = 'jewelleries.delete';
+    case CRUD_INDEX  = 'jewelleries.index';
+    case CRUD_SHOW   = 'jewelleries.show';
+    case CRUD_POST   = 'jewelleries.post';
+    case CRUD_PATCH  = 'jewelleries.patch';
+    case CRUD_DELETE = 'jewelleries.delete';
     //*********** PROPERTIES BY CATEGORY ****************/
     case RELATED_TO_BEAD               = 'jewellery.bead';
     case RELATIONSHIP_TO_BEAD          = 'jewellery.relationships.bead';
@@ -38,18 +38,18 @@ enum JewelleryNameRoutesEnum: string
     case RELATIONSHIP_TO_EARRING       = 'jewellery.relationships.earring';
 
     /****************** PROPERTIES ****************/
-    case RELATED_TO_INSERTS            = 'jewellery.inserts';
-    case RELATIONSHIP_TO_INSERTS       = 'jewellery.relationships.inserts';
-    case RELATED_TO_PICTURES            = 'jewellery.pictures';
-    case RELATIONSHIP_TO_PICTURES       = 'jewellery.relationships.pictures';
-    case RELATED_TO_VIDEOS            = 'jewellery.videos';
-    case RELATIONSHIP_TO_VIDEOS       = 'jewellery.relationships.videos';
-    case RELATED_TO_METALS            = 'jewellery.metals';
-    case RELATIONSHIP_TO_METALS       = 'jewellery.relationships.metals';
-    case RELATED_TO_COVERAGES            = 'jewellery.coverages';
-    case RELATIONSHIP_TO_COVERAGES      = 'jewellery.relationships.coverages';
-    case RELATED_TO_PROMOTIONS            = 'jewellery.promotions';
-    case RELATIONSHIP_TO_PROMOTIONS      = 'jewellery.relationships.promotions';
-    case RELATED_TO_CATEGORY            = 'jewelleries.category';
-    case RELATIONSHIP_TO_CATEGORY      = 'jewelleries.relationships.category';
+    case RELATED_TO_INSERTS                 = 'jewellery.inserts';
+    case RELATIONSHIP_TO_INSERTS            = 'jewellery.relationships.inserts';
+    case RELATED_TO_PICTURES                = 'jewellery.pictures';
+    case RELATIONSHIP_TO_PICTURES           = 'jewellery.relationships.pictures';
+    case RELATED_TO_VIDEOS                  = 'jewellery.videos';
+    case RELATIONSHIP_TO_VIDEOS             = 'jewellery.relationships.videos';
+    case RELATED_TO_METALS                  = 'jewellery.metals';
+    case RELATIONSHIP_TO_METALS             = 'jewellery.relationships.metals';
+    case RELATED_TO_COVERAGES               = 'jewellery.coverages';
+    case RELATIONSHIP_TO_COVERAGES          = 'jewellery.relationships.coverages';
+    case RELATED_TO_PROMOTIONS              = 'jewellery.promotions';
+    case RELATIONSHIP_TO_PROMOTIONS         = 'jewellery.relationships.promotions';
+    case RELATED_TO_JEWELLERY_CATEGORY      = 'jewelleries.jewellery-category';
+    case RELATIONSHIP_TO_JEWELLERY_CATEGORY = 'jewelleries.relationships.jewellery-category';
 }

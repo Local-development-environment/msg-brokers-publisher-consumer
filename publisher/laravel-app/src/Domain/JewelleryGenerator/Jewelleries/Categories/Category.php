@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\Categories;
 
-use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
+use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 
 final class Category
@@ -13,8 +13,8 @@ final class Category
 
     public function getCategory(): string
     {
-        $enumClass = get_class(CategoryBuilderEnum::BEADS);
-        $enumCases = CategoryBuilderEnum::cases();
+        $enumClass = get_class(JewelleryCategoryBuilderEnum::BEADS);
+        $enumCases = JewelleryCategoryBuilderEnum::cases();
 
         return $this->getArrElement($enumCases, $enumClass);
     }

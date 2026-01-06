@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\Jewellery\Categories\Resources;
+namespace App\Http\Admin\SpecProperties\Bracelets\BraceletWeaving\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-final class CategoryResource extends JsonResource
+final class BraceletWeavingResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

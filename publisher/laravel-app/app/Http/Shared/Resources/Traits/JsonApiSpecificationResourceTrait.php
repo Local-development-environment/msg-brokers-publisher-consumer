@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Shared\Resources\Traits\ImprovedTraits;
+namespace App\Http\Shared\Resources\Traits;
 
 use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
 use Illuminate\Database\Eloquent\Model;
@@ -11,27 +11,25 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\MissingValue;
 use Illuminate\Support\Collection;
 
-trait IncludeRelatedEntitiesResourceTrait
+trait JsonApiSpecificationResourceTrait
 {
-    abstract function relations();
+    abstract function relations(): array;
 
     public function included(Request $request): Collection
     {
+//        dd($this->relations());
         return collect($this->relations())
-            // filter to-many $this->>whenLoaded('relation') is a MissingValue
             ->filter(function ($relation) {
                 return !$relation->resource instanceof MissingValue;
-            })
-            // filter empty collection
-            ->filter(function ($relation) {
-                return $relation->collection !== null;
-            })
-            // filter to-one $this->whenLoaded('relation') is a MissingValue
-            ->filter(function ($relation) {
-                return !$relation->collection[0]->resource instanceof MissingValue;
+            })->filter(function ($relation) {
+                return $relation->resource !== null ?? new MissingValue();
             })
             ->flatMap(function ($relation) use ($request) {
-                return $relation->toArray($request);
+                if ($relation->resource instanceof Collection) {
+                    return $relation->toArray($request);
+                } else {
+                    return [$relation->toArray($request)];
+                }
             });
     }
 
@@ -53,11 +51,14 @@ trait IncludeRelatedEntitiesResourceTrait
     protected function relatedIdentifiers($resource)
     {
         if ($resource instanceof Model) {
+//            dump($resource);
             return new ApiEntityIdentifierResource($resource);
         }
 
         if ($resource instanceof Collection) {
-            return ApiEntityIdentifierResource::collection($resource)->take(config('api-settings.limit-included'));
+            return $resource->count() ?
+                ApiEntityIdentifierResource::collection($resource)->take(config('api-settings.limit-included')) :
+                new MissingValue();
         }
 
         if ($resource instanceof MissingValue) {
@@ -88,14 +89,33 @@ trait IncludeRelatedEntitiesResourceTrait
                 'href' => route($relatedUrlName, ['id' => $this->resource->id])
             ];
         }
+//        dump($this->relatedIdentifiers($resource));
+        if ($resource instanceof MissingValue) {
+            return [
+                'links' => [
+                    'self'    => route($selfUrlName, ['id' => $this->resource->id]),
+                    'related' => $related
+                ],
+            ];
+        } else {
+            return [
+                'links' => [
+                    'self'    => route($selfUrlName, ['id' => $this->resource->id]),
+                    'related' => $related
+                ],
 
-        return [
-            'links' => [
-                'self' => route($selfUrlName, ['id' => $this->resource->id]),
-                'related' => $related
-            ],
-            'data' => $this->relatedIdentifiers($resource)
-        ];
+                'data' => $this->relatedIdentifiers($resource),
+//
+            ];
+        }
+//        return [
+//            'links' => [
+//                'self'    => route($selfUrlName, ['id' => $this->resource->id]),
+//                'related' => $related
+//            ],
+//
+//            'data' => $this->relatedIdentifiers($resource)
+//        ];
     }
 
     /**
@@ -127,8 +147,8 @@ trait IncludeRelatedEntitiesResourceTrait
      */
     protected function limitRelatedItems(): int|null
     {
-        $limit = (int) config('api-settings.limit-included');
+        $limit = (int)config('api-settings.limit-included');
 
-        return $limit ? : null;
+        return $limit ?: null;
     }
 }

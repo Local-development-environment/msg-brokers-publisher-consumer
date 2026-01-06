@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\NecklaceProperty\Necklaces\Controllers;
 
@@ -12,7 +13,7 @@ use Domain\JewelleryProperties\Necklaces\Necklaces\Services\NecklaceService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class NecklaceController extends Controller
+final class NecklaceController extends Controller
 {
     public function __construct(public NecklaceService $service)
     {

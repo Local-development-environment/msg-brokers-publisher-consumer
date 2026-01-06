@@ -10,13 +10,14 @@ use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Enums\BraceletMetricEnu
 use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Models\BraceletMetric;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Models\BraceletSize;
+use Domain\JewelleryProperties\Bracelets\BraceletWeavings\Enums\BraceletWeavingEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletWeavings\Models\BraceletWeaving;
 use Domain\Shared\JewelleryProperties\Clasps\Models\Clasp;
+use Domain\Shared\JewelleryProperties\Weavings\Models\Weaving;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 final class Bracelet extends Model
 {
@@ -57,5 +58,10 @@ final class Bracelet extends Model
     public function braceletWeavings(): HasMany
     {
         return $this->hasMany(BraceletWeaving::class);
+    }
+
+    public function weavings(): BelongsToMany
+    {
+        return $this->belongsToMany(Weaving::class, BraceletWeavingEnum::TABLE_NAME->value);
     }
 }

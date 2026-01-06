@@ -6,7 +6,7 @@ namespace Domain\JewelleryGenerator\Jewelleries\InsertItems;
 
 use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
 use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
-use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
+use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 
 final class InsertItem
@@ -20,7 +20,7 @@ final class InsertItem
 
         $randNum = rand(1, 100);
 
-        if ($category === CategoryBuilderEnum::CHAINS->value || $randNum < 10) {
+        if ($category === JewelleryCategoryBuilderEnum::CHAINS->value || $randNum < 10) {
 
             return [];
 

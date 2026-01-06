@@ -5,7 +5,7 @@ namespace App\Http\Admin\Jewellery\Categories\Controllers;
 
 use App\Http\Controllers\Controller;
 
-final class JewelleriesCategoryRelationshipController extends Controller
+final class JewelleryCategoryJewelleriesRelationshipController extends Controller
 {
     //
 }

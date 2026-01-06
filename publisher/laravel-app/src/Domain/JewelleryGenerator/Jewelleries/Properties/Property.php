@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\Properties;
 
-use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
+use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
 
 final class Property
 {
@@ -22,36 +22,36 @@ final class Property
     private function getNameFunction($category): string
     {
         return match ($category) {
-            CategoryBuilderEnum::BRACELETS->value      => 'getBraceletProps',
-            CategoryBuilderEnum::BROOCHES->value       => 'getBroochProps',
-            CategoryBuilderEnum::TIE_CLIPS->value      => 'getTieClipProps',
-            CategoryBuilderEnum::CUFF_LINKS->value     => 'getCuffLinkProps',
-            CategoryBuilderEnum::NECKLACES->value      => 'getNecklaceProps',
-            CategoryBuilderEnum::RINGS->value          => 'getRingProps',
-            CategoryBuilderEnum::PIERCINGS->value      => 'getPiercingProps',
-            CategoryBuilderEnum::PENDANTS->value       => 'getPendantProps',
-            CategoryBuilderEnum::CHARM_PENDANTS->value => 'getCharmPendantProps',
-            CategoryBuilderEnum::EARRINGS->value       => 'getEarringProps',
-            CategoryBuilderEnum::CHAINS->value         => 'getChainProps',
-            CategoryBuilderEnum::BEADS->value          => 'getBeadProps',
+            JewelleryCategoryBuilderEnum::BRACELETS->value      => 'getBraceletProps',
+            JewelleryCategoryBuilderEnum::BROOCHES->value       => 'getBroochProps',
+            JewelleryCategoryBuilderEnum::TIE_CLIPS->value      => 'getTieClipProps',
+            JewelleryCategoryBuilderEnum::CUFF_LINKS->value     => 'getCuffLinkProps',
+            JewelleryCategoryBuilderEnum::NECKLACES->value      => 'getNecklaceProps',
+            JewelleryCategoryBuilderEnum::RINGS->value          => 'getRingProps',
+            JewelleryCategoryBuilderEnum::PIERCINGS->value      => 'getPiercingProps',
+            JewelleryCategoryBuilderEnum::PENDANTS->value       => 'getPendantProps',
+            JewelleryCategoryBuilderEnum::CHARM_PENDANTS->value => 'getCharmPendantProps',
+            JewelleryCategoryBuilderEnum::EARRINGS->value       => 'getEarringProps',
+            JewelleryCategoryBuilderEnum::CHAINS->value         => 'getChainProps',
+            JewelleryCategoryBuilderEnum::BEADS->value          => 'getBeadProps',
         };
     }
 
     private function getClassName($category): string
     {
         return match ($category) {
-            CategoryBuilderEnum::BRACELETS->value      => 'Domain\JewelleryGenerator\Jewelleries\Properties\Bracelets\BraceletProps',
-            CategoryBuilderEnum::BROOCHES->value       => 'Domain\JewelleryGenerator\Jewelleries\Properties\Brooches\BroochProps',
-            CategoryBuilderEnum::TIE_CLIPS->value      => 'Domain\JewelleryGenerator\Jewelleries\Properties\TieClips\TieClipProps',
-            CategoryBuilderEnum::CUFF_LINKS->value     => 'Domain\JewelleryGenerator\Jewelleries\Properties\CuffLinks\CuffLinkProps',
-            CategoryBuilderEnum::NECKLACES->value      => 'Domain\JewelleryGenerator\Jewelleries\Properties\Necklaces\NecklaceProps',
-            CategoryBuilderEnum::RINGS->value          => 'Domain\JewelleryGenerator\Jewelleries\Properties\Rings\RingProps',
-            CategoryBuilderEnum::PIERCINGS->value      => 'Domain\JewelleryGenerator\Jewelleries\Properties\Piercings\PiercingProps',
-            CategoryBuilderEnum::PENDANTS->value       => 'Domain\JewelleryGenerator\Jewelleries\Properties\Pendants\PendantProps',
-            CategoryBuilderEnum::CHARM_PENDANTS->value => 'Domain\JewelleryGenerator\Jewelleries\Properties\CharmPendants\CharmPendantProps',
-            CategoryBuilderEnum::EARRINGS->value       => 'Domain\JewelleryGenerator\Jewelleries\Properties\Earrings\EarringProps',
-            CategoryBuilderEnum::CHAINS->value         => 'Domain\JewelleryGenerator\Jewelleries\Properties\Chains\ChainProps',
-            CategoryBuilderEnum::BEADS->value          => 'Domain\JewelleryGenerator\Jewelleries\Properties\Beads\BeadProps',
+            JewelleryCategoryBuilderEnum::BRACELETS->value      => 'Domain\JewelleryGenerator\Jewelleries\Properties\Bracelets\BraceletProps',
+            JewelleryCategoryBuilderEnum::BROOCHES->value       => 'Domain\JewelleryGenerator\Jewelleries\Properties\Brooches\BroochProps',
+            JewelleryCategoryBuilderEnum::TIE_CLIPS->value      => 'Domain\JewelleryGenerator\Jewelleries\Properties\TieClips\TieClipProps',
+            JewelleryCategoryBuilderEnum::CUFF_LINKS->value     => 'Domain\JewelleryGenerator\Jewelleries\Properties\CuffLinks\CuffLinkProps',
+            JewelleryCategoryBuilderEnum::NECKLACES->value      => 'Domain\JewelleryGenerator\Jewelleries\Properties\Necklaces\NecklaceProps',
+            JewelleryCategoryBuilderEnum::RINGS->value          => 'Domain\JewelleryGenerator\Jewelleries\Properties\Rings\RingProps',
+            JewelleryCategoryBuilderEnum::PIERCINGS->value      => 'Domain\JewelleryGenerator\Jewelleries\Properties\Piercings\PiercingProps',
+            JewelleryCategoryBuilderEnum::PENDANTS->value       => 'Domain\JewelleryGenerator\Jewelleries\Properties\Pendants\PendantProps',
+            JewelleryCategoryBuilderEnum::CHARM_PENDANTS->value => 'Domain\JewelleryGenerator\Jewelleries\Properties\CharmPendants\CharmPendantProps',
+            JewelleryCategoryBuilderEnum::EARRINGS->value       => 'Domain\JewelleryGenerator\Jewelleries\Properties\Earrings\EarringProps',
+            JewelleryCategoryBuilderEnum::CHAINS->value         => 'Domain\JewelleryGenerator\Jewelleries\Properties\Chains\ChainProps',
+            JewelleryCategoryBuilderEnum::BEADS->value          => 'Domain\JewelleryGenerator\Jewelleries\Properties\Beads\BeadProps',
         };
     }
 }

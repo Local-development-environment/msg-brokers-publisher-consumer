@@ -8,8 +8,8 @@ use Domain\Inserts\Facets\Enums\FacetEnum;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
 use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
 use Domain\Inserts\Stones\Enums\StoneEnum;
-use Domain\Jewelleries\Categories\Enums\CategoryEnum;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
+use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryEnum;
 use Domain\JewelleryGenerator\BaseJewelleryBuilder;
 use Domain\JewelleryGenerator\InitProperties;
 use Domain\JewelleryGenerator\Jeweller;
@@ -120,7 +120,7 @@ final class BuildJewellerySeeder extends Seeder
     {
         //        dd($jewelleryData);
         $jewelleryId = DB::table(JewelleryEnum::TABLE_NAME->value)->insertGetId([
-            'category_id'   => DB::table(CategoryEnum::TABLE_NAME->value)->where('name', $jewelleryData['category'])
+            'jewellery_category_id'   => DB::table(JewelleryCategoryEnum::TABLE_NAME->value)->where('name', $jewelleryData['category'])
                                  ->value('id'),
             'name'          => $jewelleryData['jewelleryItem']['name'],
             'slug'          => Str::slug($jewelleryData['jewelleryItem']['name']),

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Domain\Jewelleries\Categories\Enums;
+namespace Domain\Jewelleries\JewelleryCategories\Enums;
 
-enum CategoryBuilderEnum: string
+enum JewelleryCategoryBuilderEnum: string
 {
     case BEADS = 'бусы';
     case BRACELETS      = 'браслеты';

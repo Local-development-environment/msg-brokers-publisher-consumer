@@ -4,9 +4,11 @@ declare(strict_types=1);
 namespace App\Http\Admin\SpecProperties\Bracelets\Bracelet\Resources;
 
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
+use App\Http\Admin\SharedProperty\Clasps\Resources\ClaspResource;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletMetrics\Resources\BraceletMetricResource;
+use App\Http\Admin\SpecProperties\Bracelets\BraceletSizes\Resources\BraceletSizeCollection;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletSizes\Resources\BraceletSizeResource;
-use App\Http\Shared\Resources\Traits\ImprovedTraits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletEnum;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletNameRoutesEnum;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletRelationshipsEnum;
@@ -17,7 +19,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /** @mixin Bracelet */
 final class BraceletResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource into an array.
@@ -42,6 +44,10 @@ final class BraceletResource extends JsonResource
                 'braceletSizes'   => $this->sectionRelationships(
                     BraceletNameRoutesEnum::RELATED_TO_BRACELET_SIZES->value,
                     BraceletRelationshipsEnum::BRACELET_SIZES->value,
+                ),
+                'clasp'           => $this->sectionRelationships(
+                    BraceletNameRoutesEnum::RELATED_TO_CLASP->value,
+                    BraceletRelationshipsEnum::CLASP->value,
                 )
             ]
         ];
@@ -50,9 +56,11 @@ final class BraceletResource extends JsonResource
     private function relations(): array
     {
         return [
-            BraceletMetricResource::collection($this->whenLoaded('braceletMetrics')),
-            BraceletSizeResource::collection($this->whenLoaded('braceletSizes')),
-            JewelleryResource::collection([$this->whenLoaded('jewellery')])
+            BraceletMetricResource::collection($this->whenLoaded(BraceletRelationshipsEnum::BRACELET_METRICS->value)),
+            BraceletSizeResource::collection($this->whenLoaded(BraceletRelationshipsEnum::BRACELET_SIZES->value)),
+            new JewelleryResource($this->whenLoaded(BraceletRelationshipsEnum::JEWELLERY->value)),
+            new ClaspResource($this->whenLoaded(BraceletRelationshipsEnum::CLASP->value)),
+//            new BodyPartResource($this->whenLoaded(BraceletRelationshipsEnum::BODY_PART->value)),
         ];
     }
 }
