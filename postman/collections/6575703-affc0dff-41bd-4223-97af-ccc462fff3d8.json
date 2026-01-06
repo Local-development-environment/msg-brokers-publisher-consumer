@@ -4899,6 +4899,78 @@
 											"response": []
 										},
 										{
+											"name": "bracelets index Copy",
+											"id": "6575703-8440e228-dbf9-437a-9336-1392e317aed7",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelets?include=jewellery,braceletMetrics,braceletSizes",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelets"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "jewellery",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "braceletSizes",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "braceletMetrics",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "braceletSizes,braceletMetrics",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "jewellery,braceletSizes",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "jewellery,braceletMetrics",
+															"type": "text",
+															"disabled": true
+														},
+														{
+															"key": "include",
+															"value": "jewellery,braceletMetrics,braceletSizes",
+															"type": "text"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
 											"name": "bracelets show",
 											"id": "6575703-bfd2bcd5-5b0e-497e-ab6e-bfd73590c314",
 											"protocolProfileBehavior": {
