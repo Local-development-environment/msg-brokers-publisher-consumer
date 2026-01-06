@@ -5467,7 +5467,7 @@
 									"name": "CRUD",
 									"item": [
 										{
-											"name": "bracelets index Copy",
+											"name": "body-parts index",
 											"id": "6575703-8440e228-dbf9-437a-9336-1392e317aed7",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
