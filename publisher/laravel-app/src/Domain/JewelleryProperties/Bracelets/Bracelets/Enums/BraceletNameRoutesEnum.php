@@ -13,10 +13,10 @@ enum BraceletNameRoutesEnum: string
     case CRUD_DELETE                       = 'bracelets.delete';
     case RELATED_TO_JEWELLERY              = 'bracelet.jewellery';
     case RELATIONSHIP_TO_JEWELLERY         = 'bracelet.relationships.jewellery';
-    case RELATED_TO_BODY_PART              = 'bracelet.body-part';
-    case RELATIONSHIP_TO_BODY_PART         = 'bracelet.relationships.body-part';
-    case RELATED_TO_BRACELET_BASE          = 'bracelets.bracelet-brace';
-    case RELATIONSHIP_TO_BRACELET_BASE     = 'bracelets.relationships.bracelet-brace';
+    case RELATED_TO_BODY_PART              = 'bracelets.body-part';
+    case RELATIONSHIP_TO_BODY_PART         = 'bracelets.relationships.body-part';
+    case RELATED_TO_BRACELET_BASE          = 'bracelets.bracelet-base';
+    case RELATIONSHIP_TO_BRACELET_BASE     = 'bracelets.relationships.bracelet-base';
     case RELATED_TO_CLASP                  = 'bracelets.clasp';
     case RELATIONSHIP_TO_CLASP             = 'bracelets.relationships.clasp';
     case RELATED_TO_BRACELET_WEAVINGS      = 'bracelet.bracelet-weavings';

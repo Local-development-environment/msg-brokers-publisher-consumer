@@ -5,6 +5,7 @@ namespace App\Http\Admin\SpecProperties\Bracelets\Bracelet\Resources;
 
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Admin\SharedProperty\Clasps\Resources\ClaspResource;
+use App\Http\Admin\SpecProperties\Bracelets\BodyPart\Resources\BodyPartResource;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletMetrics\Resources\BraceletMetricResource;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletSizes\Resources\BraceletSizeCollection;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletSizes\Resources\BraceletSizeResource;
@@ -60,7 +61,7 @@ final class BraceletResource extends JsonResource
             BraceletSizeResource::collection($this->whenLoaded(BraceletRelationshipsEnum::BRACELET_SIZES->value)),
             new JewelleryResource($this->whenLoaded(BraceletRelationshipsEnum::JEWELLERY->value)),
             new ClaspResource($this->whenLoaded(BraceletRelationshipsEnum::CLASP->value)),
-//            new BodyPartResource($this->whenLoaded(BraceletRelationshipsEnum::BODY_PART->value)),
+            new BodyPartResource($this->whenLoaded(BraceletRelationshipsEnum::BODY_PART->value)),
         ];
     }
 }
