@@ -13,4 +13,5 @@ enum BraceletRelationshipsEnum: string
     case BRACELET_WEAVINGS = 'braceletWeavings';
     case BODY_PART         = 'bodyPart';
     case BRACELET_SIZES    = 'braceletSizes';
+    case WEAVINGS          = 'weavings';
 }

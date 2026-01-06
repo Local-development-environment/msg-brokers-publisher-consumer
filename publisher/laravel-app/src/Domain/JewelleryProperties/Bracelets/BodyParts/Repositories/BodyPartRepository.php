@@ -17,9 +17,7 @@ final class BodyPartRepository
     {
         return QueryBuilder::for(BodyPart::class)
             ->allowedIncludes([
-                BodyPartRelationshipsEnum::BRACELETS->value,
-                BodyPartRelationshipsEnum::BRACELET_BASES->value,
-                BodyPartRelationshipsEnum::CLASPS->value,
+                BodyPartRelationshipsEnum::BRACELETS->value
             ])
             ->allowedFilters([
                 AllowedFilter::exact(BodyPartEnum::PRIMARY_KEY->value)
@@ -38,9 +36,7 @@ final class BodyPartRepository
         return QueryBuilder::for(BodyPart::class)
             ->where(BodyPartEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
-                BodyPartRelationshipsEnum::BRACELETS->value,
-                BodyPartRelationshipsEnum::BRACELET_BASES->value,
-                BodyPartRelationshipsEnum::CLASPS->value,
+                BodyPartRelationshipsEnum::BRACELETS->value
             ])
             ->firstOrFail();
     }
