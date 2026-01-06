@@ -5578,7 +5578,18 @@
 						},
 						{
 							"name": "BRACELET WEAVINGS",
-							"item": [],
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [],
+									"id": "6575703-93fcb7a8-8d1f-4f49-beac-33abd40c2369"
+								},
+								{
+									"name": "New Folder",
+									"item": [],
+									"id": "6575703-adb756c0-27dc-427b-9bb4-e8f3189d1eaf"
+								}
+							],
 							"id": "6575703-bb6d8c6c-828e-4a7b-aec7-129260e18dbd"
 						}
 					],
