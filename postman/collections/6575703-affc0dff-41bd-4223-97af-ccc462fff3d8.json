@@ -5601,12 +5601,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bracelet-weaving?include=bracelet,weaving",
+													"raw": "{{baseURL}}/bracelet-weavings?include=bracelet,weaving",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"bracelet-weaving"
+														"bracelet-weavings"
 													],
 													"query": [
 														{
