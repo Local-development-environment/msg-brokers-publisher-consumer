@@ -4299,6 +4299,43 @@
 												}
 											},
 											"response": []
+										},
+										{
+											"name": "weavings index Copy",
+											"id": "6575703-109b2c59-d441-4019-81d0-992527c357ef",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/weavings",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"weavings"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "necklaces",
+															"disabled": true
+														}
+													]
+												}
+											},
+											"response": []
 										}
 									],
 									"id": "6575703-ea54c644-956c-4ef7-94ae-ee3711ccd610"
