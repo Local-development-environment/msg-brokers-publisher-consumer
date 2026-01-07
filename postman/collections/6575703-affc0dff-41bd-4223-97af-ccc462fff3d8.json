@@ -4341,12 +4341,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/weavings",
+													"raw": "{{baseURL}}/base-weavings",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"weavings"
+														"base-weavings"
 													],
 													"query": [
 														{
