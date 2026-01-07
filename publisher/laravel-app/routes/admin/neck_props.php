@@ -1,24 +1,6 @@
 <?php
 declare(strict_types=1);
 
-use App\Http\Admin\SpecProperties\BeadMetrics\Controllers\BeadMetricController;
-use App\Http\Admin\SpecProperties\BeadMetrics\Controllers\BeadMetricsBeadRelatedController;
-use App\Http\Admin\SpecProperties\BeadMetrics\Controllers\BeadMetricsBeadRelationshipController;
-use App\Http\Admin\SpecProperties\BeadMetrics\Controllers\BeadMetricsBeadSizeRelatedController;
-use App\Http\Admin\SpecProperties\BeadMetrics\Controllers\BeadMetricsBeadSizeRelationshipController;
-use App\Http\Admin\ChainProperty\Chains\Controllers\ChainChainMetricsRelatedController;
-use App\Http\Admin\ChainProperty\Chains\Controllers\ChainChainMetricsRelationshipController;
-use App\Http\Admin\ChainProperty\Chains\Controllers\ChainChainWeavingsRelatedController;
-use App\Http\Admin\ChainProperty\Chains\Controllers\ChainChainWeavingsRelationshipController;
-use App\Http\Admin\ChainProperty\Chains\Controllers\ChainController;
-use App\Http\Admin\ChainProperty\Chains\Controllers\ChainJewelleryRelatedController;
-use App\Http\Admin\ChainProperty\Chains\Controllers\ChainJewelleryRelationshipController;
-use App\Http\Admin\ChainProperty\Chains\Controllers\ChainsClaspRelatedController;
-use App\Http\Admin\ChainProperty\Chains\Controllers\ChainsClaspRelationshipController;
-use App\Http\Admin\ChainProperty\Chains\Controllers\ChainsNeckSizesRelatedController;
-use App\Http\Admin\ChainProperty\Chains\Controllers\ChainsNeckSizesRelationshipController;
-use App\Http\Admin\ChainProperty\Chains\Controllers\ChainsWeavingsRelatedController;
-use App\Http\Admin\ChainProperty\Chains\Controllers\ChainsWeavingsRelationshipController;
 use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricController;
 use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricsNecklaceRelatedController;
 use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricsNecklaceRelationshipController;
@@ -47,10 +29,40 @@ use App\Http\Admin\SpecProperties\Beads\Bead\Controllers\BeadsNeckSizesRelations
 use app\Http\Admin\SpecProperties\Beads\BeadBase\Controllers\BeadBaseBeadsRelatedController;
 use app\Http\Admin\SpecProperties\Beads\BeadBase\Controllers\BeadBaseBeadsRelationshipController;
 use app\Http\Admin\SpecProperties\Beads\BeadBase\Controllers\BeadBaseController;
+use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Controllers\BeadMetricController;
+use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Controllers\BeadMetricsBeadRelatedController;
+use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Controllers\BeadMetricsBeadRelationshipController;
+use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Controllers\BeadMetricsBeadSizeRelatedController;
+use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Controllers\BeadMetricsBeadSizeRelationshipController;
+use App\Http\Admin\SpecProperties\Chains\Chain\Controllers\ChainChainMetricsRelatedController;
+use App\Http\Admin\SpecProperties\Chains\Chain\Controllers\ChainChainMetricsRelationshipController;
+use App\Http\Admin\SpecProperties\Chains\Chain\Controllers\ChainChainWeavingsRelatedController;
+use App\Http\Admin\SpecProperties\Chains\Chain\Controllers\ChainChainWeavingsRelationshipController;
+use App\Http\Admin\SpecProperties\Chains\Chain\Controllers\ChainController;
+use App\Http\Admin\SpecProperties\Chains\Chain\Controllers\ChainJewelleryRelatedController;
+use App\Http\Admin\SpecProperties\Chains\Chain\Controllers\ChainJewelleryRelationshipController;
+use App\Http\Admin\SpecProperties\Chains\Chain\Controllers\ChainsClaspRelatedController;
+use App\Http\Admin\SpecProperties\Chains\Chain\Controllers\ChainsClaspRelationshipController;
+use App\Http\Admin\SpecProperties\Chains\Chain\Controllers\ChainsNeckSizesRelatedController;
+use App\Http\Admin\SpecProperties\Chains\Chain\Controllers\ChainsNeckSizesRelationshipController;
+use App\Http\Admin\SpecProperties\Chains\Chain\Controllers\ChainsWeavingsRelatedController;
+use App\Http\Admin\SpecProperties\Chains\Chain\Controllers\ChainsWeavingsRelationshipController;
+use App\Http\Admin\SpecProperties\Chains\ChainMetrics\Controllers\ChainMetricController;
+use App\Http\Admin\SpecProperties\Chains\ChainMetrics\Controllers\ChainMetricsChainRelatedController;
+use App\Http\Admin\SpecProperties\Chains\ChainMetrics\Controllers\ChainMetricsChainRelationshipController;
+use App\Http\Admin\SpecProperties\Chains\ChainMetrics\Controllers\ChainMetricsNeckSizeRelatedController;
+use App\Http\Admin\SpecProperties\Chains\ChainMetrics\Controllers\ChainMetricsNeckSizeRelationshipController;
+use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Controllers\ChainWeavingController;
+use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Controllers\ChainWeavingsChainRelatedController;
+use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Controllers\ChainWeavingsChainRelationshipController;
+use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Controllers\ChainWeavingsWeavingRelatedController;
+use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Controllers\ChainWeavingsWeavingRelationshipController;
 use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\Beads\Enums\BeadNameRoutesEnum;
+use Domain\JewelleryProperties\Chains\ChainMetrics\Enums\ChainMetricNameRoutesEnum;
 use Domain\JewelleryProperties\Chains\Chains\Enums\ChainNameRoutesEnum;
+use Domain\JewelleryProperties\Chains\ChainWeavings\Enums\ChainWeavingNameRoutesEnum;
 use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Enums\NecklaceMetricNameRoutesEnum;
 use Domain\JewelleryProperties\Necklaces\Necklaces\Enums\NecklaceNameRoutesEnum;
 
@@ -216,4 +228,52 @@ Route::group([
         ->name(ChainNameRoutesEnum::RELATIONSHIP_TO_CLASP->value);
     Route::get('chains/{id}/clasp', [ChainsClaspRelatedController::class, 'index'])
         ->name(ChainNameRoutesEnum::RELATED_TO_CLASP->value);
+
+    /*************************** CHAIN METRICS *************************/
+    // CRUD
+    Route::get('chain-metrics', [ChainMetricController::class, 'index'])
+        ->name(ChainMetricNameRoutesEnum::CRUD_INDEX->value);
+    Route::get('chain-metrics/{id}', [ChainMetricController::class, 'show'])
+        ->name(ChainMetricNameRoutesEnum::CRUD_SHOW->value);
+    Route::post('chain-metrics', [ChainMetricController::class, 'store'])
+        ->name(ChainMetricNameRoutesEnum::CRUD_POST->value);
+    Route::patch('chain-metrics/{id}', [ChainMetricController::class, 'update'])
+        ->name(ChainMetricNameRoutesEnum::CRUD_PATCH->value);
+    Route::delete('chain-metrics/{id}', [ChainMetricController::class, 'destroy'])
+        ->name(ChainMetricNameRoutesEnum::CRUD_DELETE->value);
+
+    //  many-to-one ChainMetrics to Chain
+    Route::get('chain-metrics/{id}/relationships/chain', [ChainMetricsChainRelationshipController::class, 'index'])
+        ->name(ChainMetricNameRoutesEnum::RELATIONSHIP_TO_CHAIN->value);
+    Route::get('chain-metrics/{id}/chain', [ChainMetricsChainRelatedController::class, 'index'])
+        ->name(ChainMetricNameRoutesEnum::RELATED_TO_CHAIN->value);
+    //  many-to-one ChainMetrics to NeckSize
+    Route::get('chain-metrics/{id}/relationships/neck-size', [ChainMetricsNeckSizeRelationshipController::class, 'index'])
+        ->name(ChainMetricNameRoutesEnum::RELATIONSHIP_TO_NECK_SIZE->value);
+    Route::get('chain-metrics/{id}/neck-size', [ChainMetricsNeckSizeRelatedController::class, 'index'])
+        ->name(ChainMetricNameRoutesEnum::RELATED_TO_NECK_SIZE->value);
+
+    /*************************** CHAIN WEAVING *************************/
+    // CRUD
+    Route::get('chain-weavings', [ChainWeavingController::class, 'index'])
+        ->name(ChainWeavingNameRoutesEnum::CRUD_INDEX->value);
+    Route::get('chain-weavings/{id}', [ChainWeavingController::class, 'show'])
+        ->name(ChainWeavingNameRoutesEnum::CRUD_SHOW->value);
+    Route::post('chain-weavings', [ChainWeavingController::class, 'store'])
+        ->name(ChainWeavingNameRoutesEnum::CRUD_POST->value);
+    Route::patch('chain-weavings/{id}', [ChainWeavingController::class, 'update'])
+        ->name(ChainWeavingNameRoutesEnum::CRUD_PATCH->value);
+    Route::delete('chain-weavings/{id}', [ChainWeavingController::class, 'destroy'])
+        ->name(ChainWeavingNameRoutesEnum::CRUD_DELETE->value);
+
+    //  many-to-one ChainWeavings to Chain
+    Route::get('chain-weavings/{id}/relationships/chain', [ChainWeavingsChainRelationshipController::class, 'index'])
+        ->name(ChainWeavingNameRoutesEnum::RELATIONSHIP_TO_CHAIN->value);
+    Route::get('chain-weavings/{id}/chain', [ChainWeavingsChainRelatedController::class, 'index'])
+        ->name(ChainWeavingNameRoutesEnum::RELATED_TO_CHAIN->value);
+    //  many-to-one ChainWeavings to Weaving
+    Route::get('chain-weavings/{id}/relationships/weaving', [ChainWeavingsWeavingRelationshipController::class, 'index'])
+        ->name(ChainWeavingNameRoutesEnum::RELATIONSHIP_TO_WEAVING->value);
+    Route::get('chain-weavings/{id}/weaving', [ChainWeavingsWeavingRelatedController::class, 'index'])
+        ->name(ChainWeavingNameRoutesEnum::RELATED_TO_WEAVING->value);
 });
