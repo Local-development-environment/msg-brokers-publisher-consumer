@@ -3018,12 +3018,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/chain-metrics?include=chain,weaving",
+													"raw": "{{baseURL}}/chain-weavings?include=chain,weaving",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"chain-metrics"
+														"chain-weavings"
 													],
 													"query": [
 														{
