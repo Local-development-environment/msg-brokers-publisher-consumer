@@ -17,7 +17,7 @@ final class LengthNameRepository
     {
         return QueryBuilder::for(LengthName::class)
             ->allowedIncludes([
-                LengthNameRelationshipsEnum::BEAD_SIZES->value
+                LengthNameRelationshipsEnum::NECK_SIZES->value
             ])
             ->allowedFilters([
                 AllowedFilter::exact(LengthNameEnum::PRIMARY_KEY->value)
@@ -36,7 +36,7 @@ final class LengthNameRepository
         return QueryBuilder::for(LengthName::class)
             ->where(LengthNameEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
-                LengthNameRelationshipsEnum::BEAD_SIZES->value
+                LengthNameRelationshipsEnum::NECK_SIZES->value
             ])
             ->firstOrFail();
     }

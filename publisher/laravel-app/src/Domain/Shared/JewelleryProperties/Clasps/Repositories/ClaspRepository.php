@@ -17,7 +17,9 @@ final class ClaspRepository
     {
         return QueryBuilder::for(Clasp::class)
             ->allowedIncludes([
-                ClaspRelationshipsEnum::BEADS->value
+                ClaspRelationshipsEnum::BEADS->value,
+                ClaspRelationshipsEnum::BRACELETS->value,
+                ClaspRelationshipsEnum::CHAINS->value,
             ])
             ->allowedFilters([
                 AllowedFilter::exact(ClaspEnum::PRIMARY_KEY->value)
@@ -36,7 +38,9 @@ final class ClaspRepository
         return QueryBuilder::for(Clasp::class)
             ->where(ClaspEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
-                ClaspRelationshipsEnum::BEADS->value
+                ClaspRelationshipsEnum::BEADS->value,
+                ClaspRelationshipsEnum::BRACELETS->value,
+                ClaspRelationshipsEnum::CHAINS->value,
             ])
             ->firstOrFail();
     }

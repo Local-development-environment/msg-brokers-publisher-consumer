@@ -2,8 +2,15 @@
 
 declare(strict_types=1);
 
+use App\Http\Admin\SharedProperty\BaseWeavings\Controllers\BaseWeavingController;
+use App\Http\Admin\SharedProperty\BaseWeavings\Controllers\BaseWeavingWeavingsRelatedController;
+use App\Http\Admin\SharedProperty\BaseWeavings\Controllers\BaseWeavingWeavingsRelationshipController;
 use App\Http\Admin\SharedProperty\Clasps\Controllers\ClaspBeadsRelatedController;
 use App\Http\Admin\SharedProperty\Clasps\Controllers\ClaspBeadsRelationshipController;
+use App\Http\Admin\SharedProperty\Clasps\Controllers\ClaspBraceletsRelatedController;
+use App\Http\Admin\SharedProperty\Clasps\Controllers\ClaspBraceletsRelationshipController;
+use App\Http\Admin\SharedProperty\Clasps\Controllers\ClaspChainsRelatedController;
+use App\Http\Admin\SharedProperty\Clasps\Controllers\ClaspChainsRelationshipController;
 use App\Http\Admin\SharedProperty\Clasps\Controllers\ClaspController;
 use App\Http\Admin\SharedProperty\LengthNames\Controllers\LengthNameBeadSizesRelatedController;
 use App\Http\Admin\SharedProperty\LengthNames\Controllers\LengthNameBeadSizesRelationshipController;
@@ -30,6 +37,7 @@ use App\Http\Admin\SharedProperty\Weaving\Controllers\WeavingsBaseWeavingRelated
 use App\Http\Admin\SharedProperty\Weaving\Controllers\WeavingsBaseWeavingRelationshipController;
 use App\Http\Admin\SharedProperty\Weaving\Controllers\WeavingsBraceletsRelatedController;
 use App\Http\Admin\SharedProperty\Weaving\Controllers\WeavingsBraceletsRelationshipController;
+use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingNameRoutesEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspNameRoutesEnum;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameNameRoutesEnum;
 use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeNameRoutesEnum;
@@ -52,6 +60,16 @@ Route::group([
         ->name(ClaspNameRoutesEnum::RELATIONSHIP_TO_BEADS->value);
     Route::get('clasps/{id}/beads', [ClaspBeadsRelatedController::class, 'index'])
         ->name(ClaspNameRoutesEnum::RELATED_TO_BEADS->value);
+    //  one-to-many Clasp to Bracelets
+    Route::get('clasps/{id}/relationships/bracelets', [ClaspBraceletsRelationshipController::class, 'index'])
+        ->name(ClaspNameRoutesEnum::RELATIONSHIP_TO_BRACELETS->value);
+    Route::get('clasps/{id}/bracelets', [ClaspBraceletsRelatedController::class, 'index'])
+        ->name(ClaspNameRoutesEnum::RELATED_TO_BRACELETS->value);
+    //  one-to-many Clasp to Chains
+    Route::get('clasps/{id}/relationships/chains', [ClaspChainsRelationshipController::class, 'index'])
+        ->name(ClaspNameRoutesEnum::RELATIONSHIP_TO_CHAINS->value);
+    Route::get('clasps/{id}/chains', [ClaspChainsRelatedController::class, 'index'])
+        ->name(ClaspNameRoutesEnum::RELATED_TO_CHAINS->value);
 
     /*************************** LENGTH NAMES *************************/
     // CRUD
@@ -137,4 +155,18 @@ Route::group([
     Route::get('weavings/{id}/base-weaving', [WeavingsBaseWeavingRelatedController::class, 'index'])
         ->name(WeavingNameRoutesEnum::RELATED_TO_BASE_WEAVING->value);
 
+    /*************************** BASE WEAVINGS *************************/
+    // CRUD
+    Route::get('base-weavings', [BaseWeavingController::class, 'index'])->name(BaseWeavingNameRoutesEnum::CRUD_INDEX->value);
+    Route::get('base-weavings/{id}', [BaseWeavingController::class, 'show'])->name(BaseWeavingNameRoutesEnum::CRUD_SHOW->value);
+    Route::post('base-weavings', [BaseWeavingController::class, 'store'])->name(BaseWeavingNameRoutesEnum::CRUD_POST->value);
+    Route::patch('base-weavings/{id}', [BaseWeavingController::class, 'update'])->name(BaseWeavingNameRoutesEnum::CRUD_PATCH->value);
+    Route::delete('base-weavings/{id}', [BaseWeavingController::class, 'destroy'])->name(BaseWeavingNameRoutesEnum::CRUD_DELETE->value);
+
+    // RELATIONSHIPS
+    //  one-to-many Base Weaving to Weavings
+    Route::get('base-weavings/{id}/relationships/weavings', [BaseWeavingWeavingsRelationshipController::class, 'index'])
+        ->name(BaseWeavingNameRoutesEnum::RELATIONSHIP_TO_WEAVINGS->value);
+    Route::get('base-weavings/{id}/weavings', [BaseWeavingWeavingsRelatedController::class, 'index'])
+        ->name(BaseWeavingNameRoutesEnum::RELATED_TO_WEAVINGS->value);
 });
