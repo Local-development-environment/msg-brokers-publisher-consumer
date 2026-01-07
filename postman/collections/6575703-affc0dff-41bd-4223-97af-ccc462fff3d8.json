@@ -464,7 +464,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/bead-metrics?include=bead,beadSize",
+													"raw": "{{baseURL}}/bead-metrics?include=bead",
 													"host": [
 														"{{baseURL}}"
 													],
@@ -474,7 +474,7 @@
 													"query": [
 														{
 															"key": "include",
-															"value": "bead,beadSize"
+															"value": "bead"
 														}
 													]
 												}
@@ -2992,6 +2992,64 @@
 								}
 							],
 							"id": "6575703-6e5d7b2b-fcc6-4ac0-81d7-ed3a8cccbc42"
+						},
+						{
+							"name": "CHAIN WEAVINGS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "chain-weavings index",
+											"id": "6575703-1c15f321-0e26-44dc-a256-3b64e5b706b1",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/chain-weavings?include=chain,weaving",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"chain-weavings"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "chain,weaving"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-97c99b14-ff55-4122-9960-c0f14bd4f14c"
+								},
+								{
+									"name": "RELATED",
+									"item": [],
+									"id": "6575703-56bb7d91-341a-4b24-a193-cb555bed4f21"
+								},
+								{
+									"name": "RELATIONSHIPS",
+									"item": [],
+									"id": "6575703-aef49bf1-44d1-4419-9d35-d5ecc346d751"
+								}
+							],
+							"id": "6575703-03e1bb1e-0e4e-450c-bfdf-e657238d470f"
 						}
 					],
 					"id": "6575703-4590e11d-d23b-49db-b9a7-ff521d2425ab"
@@ -5575,6 +5633,64 @@
 								}
 							],
 							"id": "6575703-985e694c-8912-4bf4-a281-61c116859a74"
+						},
+						{
+							"name": "BRACELET WEAVINGS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "bracelet-weavings index",
+											"id": "6575703-b295fe1d-1449-403a-95f7-3352e9bb26cd",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/bracelet-weavings?include=bracelet,weaving",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"bracelet-weavings"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "bracelet,weaving"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-93fcb7a8-8d1f-4f49-beac-33abd40c2369"
+								},
+								{
+									"name": "RELATED",
+									"item": [],
+									"id": "6575703-adb756c0-27dc-427b-9bb4-e8f3189d1eaf"
+								},
+								{
+									"name": "RELATIONSHIPS",
+									"item": [],
+									"id": "6575703-5106b9b6-e349-4c7f-b566-8a4f2b35b764"
+								}
+							],
+							"id": "6575703-bb6d8c6c-828e-4a7b-aec7-129260e18dbd"
 						}
 					],
 					"id": "6575703-95031743-0151-41bb-976a-824dfeb575d2"
