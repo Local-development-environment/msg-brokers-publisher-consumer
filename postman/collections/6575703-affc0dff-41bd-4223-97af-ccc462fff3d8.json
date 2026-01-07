@@ -3082,7 +3082,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/clasps?include=beads",
+													"raw": "{{baseURL}}/clasps?include=beads,bracelets,chains",
 													"host": [
 														"{{baseURL}}"
 													],
@@ -3092,7 +3092,7 @@
 													"query": [
 														{
 															"key": "include",
-															"value": "beads"
+															"value": "beads,bracelets,chains"
 														}
 													]
 												}
@@ -4315,6 +4315,64 @@
 								}
 							],
 							"id": "6575703-4a877881-9005-471d-aa0f-84e0ecec64b4"
+						},
+						{
+							"name": "BASE WEAVINGS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "base-weavings index",
+											"id": "6575703-109b2c59-d441-4019-81d0-992527c357ef",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/base-weavings?include=weavings",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"base-weavings"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "weavings"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-0c83d6dc-74ca-42d7-bad6-50af4dcfc30d"
+								},
+								{
+									"name": "RELATED",
+									"item": [],
+									"id": "6575703-1c8cd545-cf46-47a0-b650-3b2f7720a30d"
+								},
+								{
+									"name": "RELATIONSHIPS",
+									"item": [],
+									"id": "6575703-53852400-f459-4c7f-b5ee-ea7f6c481c41"
+								}
+							],
+							"id": "6575703-8abc124f-94f3-45d4-8005-ecfe185e9bce"
 						}
 					],
 					"id": "6575703-1b62000f-949a-4200-987b-50fbb7a05f2d"
