@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Jewellery\Jewelleries\Controllers;
 
-use App\Http\Admin\BeadProperty\Beads\Resources\BeadResource;
+use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadResource;
 use App\Http\Controllers\Controller;
 use Domain\Jewelleries\Jewelleries\Services\Relationships\JewelleryBeadRelationshipService;
 use Illuminate\Http\JsonResponse;

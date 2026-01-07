@@ -1,11 +1,12 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\ChainProperty\ChainMetrics\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class ChainMetricCollection extends ResourceCollection
+final class ChainMetricCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.

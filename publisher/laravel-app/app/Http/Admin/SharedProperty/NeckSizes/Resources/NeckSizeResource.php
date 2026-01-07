@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace App\Http\Admin\SharedProperty\NeckSizes\Resources;
 
 use App\Http\Admin\BeadProperty\BeadMetrics\Resources\BeadMetricCollection;
-use App\Http\Admin\BeadProperty\Beads\Resources\BeadCollection;
 use App\Http\Admin\ChainProperty\Chains\Resources\ChainCollection;
 use App\Http\Admin\NecklaceProperty\Necklaces\Resources\NecklaceCollection;
 use App\Http\Admin\SharedProperty\LengthNames\Resources\LengthNameResource;
+use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadCollection;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeNameRoutesEnum;
 use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeRelationshipsEnum;

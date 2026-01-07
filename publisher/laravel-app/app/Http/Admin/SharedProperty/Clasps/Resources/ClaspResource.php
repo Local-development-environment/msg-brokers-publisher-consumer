@@ -3,9 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\SharedProperty\Clasps\Resources;
 
-use App\Http\Admin\BeadProperty\BeadBases\Resources\BeadBaseCollection;
-use App\Http\Admin\BeadProperty\Beads\Resources\BeadCollection;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadCollection;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspNameRoutesEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspRelationshipsEnum;

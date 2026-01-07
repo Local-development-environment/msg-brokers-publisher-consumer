@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\SharedProperty\NeckSizes\Controllers;
 
-use App\Http\Admin\BeadProperty\Beads\Resources\BeadCollection;
+use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadCollection;
 use App\Http\Controllers\Controller;
 use Domain\Shared\JewelleryProperties\NeckSizes\Services\Relationships\NeckSizesBeadsRelationshipService;
 use Illuminate\Http\JsonResponse;
