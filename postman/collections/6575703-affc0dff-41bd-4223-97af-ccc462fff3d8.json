@@ -2995,7 +2995,13 @@
 						},
 						{
 							"name": "CHAIN WEAVINGS",
-							"item": [],
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [],
+									"id": "6575703-97c99b14-ff55-4122-9960-c0f14bd4f14c"
+								}
+							],
 							"id": "6575703-03e1bb1e-0e4e-450c-bfdf-e657238d470f"
 						}
 					],
