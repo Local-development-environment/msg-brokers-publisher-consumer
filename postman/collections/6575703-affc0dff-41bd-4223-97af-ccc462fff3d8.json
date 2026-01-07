@@ -6841,7 +6841,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/inserts?include=insertOptionalInfo,insertMetric,insertStone",
+											"raw": "{{baseURL}}/inserts?include=insertOptionalInfo,jewellery,stoneExterior",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -6851,7 +6851,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "insertOptionalInfo,insertMetric,insertStone"
+													"value": "insertOptionalInfo,jewellery,stoneExterior"
 												}
 											]
 										}
