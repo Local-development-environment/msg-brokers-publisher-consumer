@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Domain\Shared\JewelleryProperties\LengthNames\Services;
+namespace Domain\Shared\JewelleryProperties\BaseWeavings\Services;
 
-use Domain\Shared\JewelleryProperties\LengthNames\Models\LengthName;
-use Domain\Shared\JewelleryProperties\LengthNames\Pipelines\LengthNamePipeline;
-use Domain\Shared\JewelleryProperties\LengthNames\Repositories\LengthNameRepository;
+use Domain\Shared\JewelleryProperties\BaseWeavings\Models\BaseWeaving;
+use Domain\Shared\JewelleryProperties\BaseWeavings\Pipelines\BaseWeavingPipeline;
+use Domain\Shared\JewelleryProperties\BaseWeavings\Repositories\BaseWeavingRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;
 use Throwable;
 
-final class LengthNameService
+final class BaseWeavingService
 {
     public function __construct(
-        public LengthNameRepository $repository,
-        public LengthNamePipeline $pipeline
+        public BaseWeavingRepository $repository,
+        public BaseWeavingPipeline $pipeline
     ) {}
 
     public function index(array $data): Paginator
@@ -26,12 +26,12 @@ final class LengthNameService
     /**
      * @throws Throwable
      */
-    public function store(array $data): LengthName|Model
+    public function store(array $data): BaseWeaving|Model
     {
         return $this->pipeline->store($data);
     }
 
-    public function show(array $data, int $id): LengthName
+    public function show(array $data, int $id): BaseWeaving
     {
         return $this->repository->show($data, $id);
     }

@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace App\Http\Admin\SharedProperty\Clasps\Resources;
 
 use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadCollection;
+use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadResource;
+use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Resources\BraceletResource;
+use App\Http\Admin\SpecProperties\Chains\Chain\Resources\ChainResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspNameRoutesEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspRelationshipsEnum;
@@ -28,9 +31,17 @@ final class ClaspResource extends JsonResource
             'type' => Clasp::TYPE_RESOURCE,
             'attributes' => $this->attributeItems(),
             'relationships' => [
-                'beads' => $this->sectionRelationships(
+                ClaspRelationshipsEnum::BEADS->value => $this->sectionRelationships(
                     ClaspNameRoutesEnum::RELATED_TO_BEADS->value,
-                    BeadCollection::class
+                    ClaspRelationshipsEnum::BEADS->value
+                ),
+                ClaspRelationshipsEnum::BRACELETS->value => $this->sectionRelationships(
+                    ClaspNameRoutesEnum::RELATED_TO_BRACELETS->value,
+                    ClaspRelationshipsEnum::BRACELETS->value
+                ),
+                ClaspRelationshipsEnum::CHAINS->value => $this->sectionRelationships(
+                    ClaspNameRoutesEnum::RELATED_TO_CHAINS->value,
+                    ClaspRelationshipsEnum::CHAINS->value
                 )
             ]
         ];
@@ -39,7 +50,9 @@ final class ClaspResource extends JsonResource
     protected function relations(): array
     {
         return [
-            BeadCollection::class => $this->whenLoaded(ClaspRelationshipsEnum::BEADS->value)
+            BeadResource::collection($this->whenLoaded(ClaspRelationshipsEnum::BEADS->value)),
+            BraceletResource::collection($this->whenLoaded(ClaspRelationshipsEnum::BRACELETS->value)),
+            ChainResource::collection($this->whenLoaded(ClaspRelationshipsEnum::CHAINS->value)),
         ];
     }
 }
