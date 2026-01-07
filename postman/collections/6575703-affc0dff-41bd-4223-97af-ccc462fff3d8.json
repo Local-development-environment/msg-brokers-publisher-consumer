@@ -3000,7 +3000,7 @@
 									"name": "CRUD",
 									"item": [
 										{
-											"name": "chain-metrics index Copy",
+											"name": "chain-weavings index",
 											"id": "6575703-1c15f321-0e26-44dc-a256-3b64e5b706b1",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
