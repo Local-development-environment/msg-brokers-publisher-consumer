@@ -4351,11 +4351,6 @@
 													"query": [
 														{
 															"key": "include",
-															"value": "necklaces",
-															"disabled": true
-														},
-														{
-															"key": "include",
 															"value": "weavings"
 														}
 													]
