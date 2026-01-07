@@ -3082,7 +3082,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/clasps?include=beads",
+													"raw": "{{baseURL}}/clasps?include=beads,bracelets,chains",
 													"host": [
 														"{{baseURL}}"
 													],
@@ -3092,7 +3092,7 @@
 													"query": [
 														{
 															"key": "include",
-															"value": "beads"
+															"value": "beads,bracelets,chains"
 														}
 													]
 												}
