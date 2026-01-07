@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-use App\Http\Admin\BroochProperty\Brooches\Controllers\BroochController;
-use App\Http\Admin\BroochProperty\Brooches\Controllers\BroochJewelleryRelatedController;
-use App\Http\Admin\BroochProperty\Brooches\Controllers\BroochJewelleryRelationshipController;
+use app\Http\Admin\SpecProperties\Brooches\Brooch\Controllers\BroochController;
+use app\Http\Admin\SpecProperties\Brooches\Brooch\Controllers\BroochJewelleryRelatedController;
+use app\Http\Admin\SpecProperties\Brooches\Brooch\Controllers\BroochJewelleryRelationshipController;
 use App\Http\Admin\SpecProperties\Piercings\Piercings\Controllers\PiercingController;
 use App\Http\Admin\SpecProperties\Piercings\Piercings\Controllers\PiercingJewelleryRelatedController;
 use App\Http\Admin\SpecProperties\Piercings\Piercings\Controllers\PiercingJewelleryRelationshipController;

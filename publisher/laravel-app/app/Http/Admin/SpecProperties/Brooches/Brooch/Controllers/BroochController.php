@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\BroochProperty\Brooches\Controllers;
+namespace app\Http\Admin\SpecProperties\Brooches\Brooch\Controllers;
 
-use App\Http\Admin\BroochProperty\Brooches\Requests\BroochStoreRequest;
-use App\Http\Admin\BroochProperty\Brooches\Requests\BroochUpdateRequest;
-use App\Http\Admin\BroochProperty\Brooches\Resources\BroochCollection;
-use App\Http\Admin\BroochProperty\Brooches\Resources\BroochResource;
+use app\Http\Admin\SpecProperties\Brooches\Brooch\Requests\BroochStoreRequest;
+use app\Http\Admin\SpecProperties\Brooches\Brooch\Requests\BroochUpdateRequest;
+use app\Http\Admin\SpecProperties\Brooches\Brooch\Resources\BroochCollection;
+use app\Http\Admin\SpecProperties\Brooches\Brooch\Resources\BroochResource;
 use App\Http\Controllers\Controller;
 use Domain\JewelleryProperties\Brooches\Brooches\Enums\BroochEnum;
 use Domain\JewelleryProperties\Brooches\Brooches\Enums\BroochNameRoutesEnum;

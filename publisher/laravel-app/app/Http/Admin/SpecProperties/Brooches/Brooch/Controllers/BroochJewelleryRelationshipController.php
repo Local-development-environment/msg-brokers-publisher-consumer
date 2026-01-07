@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\BroochProperty\Brooches\Controllers;
+namespace app\Http\Admin\SpecProperties\Brooches\Brooch\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;

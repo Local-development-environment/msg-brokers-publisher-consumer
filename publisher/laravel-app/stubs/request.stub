@@ -1,18 +1,17 @@
 <?php
-declare(strict_types=1);
 
-namespace App\Http\Admin\BroochProperty\Brooches\Requests;
+namespace {{ namespace }};
 
 use Illuminate\Foundation\Http\FormRequest;
 
-final class BroochUpdateRequest extends FormRequest
+class {{ class }} extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**

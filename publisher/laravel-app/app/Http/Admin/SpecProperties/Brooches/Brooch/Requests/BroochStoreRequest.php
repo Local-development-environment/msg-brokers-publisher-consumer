@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\BroochProperty\Brooches\Requests;
+namespace app\Http\Admin\SpecProperties\Brooches\Brooch\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
