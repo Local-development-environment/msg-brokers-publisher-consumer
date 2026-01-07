@@ -8345,7 +8345,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "optical-effect-stones index",
+									"name": "stone-optical-effects index",
 									"id": "6575703-6647bf63-6977-4bab-9a82-d1eccfebc368",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
