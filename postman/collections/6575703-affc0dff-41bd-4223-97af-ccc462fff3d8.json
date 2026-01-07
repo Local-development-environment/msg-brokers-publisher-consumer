@@ -4318,7 +4318,13 @@
 						},
 						{
 							"name": "BASE WEAVINGS",
-							"item": [],
+							"item": [
+								{
+									"name": "New Folder",
+									"item": [],
+									"id": "6575703-0c83d6dc-74ca-42d7-bad6-50af4dcfc30d"
+								}
+							],
 							"id": "6575703-8abc124f-94f3-45d4-8005-ecfe185e9bce"
 						}
 					],
