@@ -8363,12 +8363,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/optical-effect-stones?include=opticalEffect,stone",
+											"raw": "{{baseURL}}/stone-optical-effects?include=opticalEffect,stone",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"optical-effect-stones"
+												"stone-optical-effects"
 											],
 											"query": [
 												{
@@ -8381,7 +8381,7 @@
 									"response": []
 								},
 								{
-									"name": "optical-effect-stones show",
+									"name": "stone-optical-effects show",
 									"id": "6575703-372f5222-28e5-4f7a-bb4a-977da6d64b11",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -8399,12 +8399,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/optical-effect-stones/2",
+											"raw": "{{baseURL}}/stone-optical-effects/2",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"optical-effect-stones",
+												"stone-optical-effects",
 												"2"
 											]
 										}
