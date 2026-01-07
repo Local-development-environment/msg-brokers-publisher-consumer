@@ -4323,7 +4323,7 @@
 									"name": "CRUD",
 									"item": [
 										{
-											"name": "weavings index Copy",
+											"name": "base-weavings index",
 											"id": "6575703-109b2c59-d441-4019-81d0-992527c357ef",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
