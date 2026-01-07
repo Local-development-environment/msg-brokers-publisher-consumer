@@ -5,8 +5,8 @@ namespace App\Http\Admin\SpecProperties\Beads\BeadMetrics\Controllers;
 
 use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Requests\BeadMetricStoreRequest;
 use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Requests\BeadMetricUpdateRequest;
-use App\Http\Admin\SpecProperties\BeadMetrics\Resources\BeadMetricCollection;
-use App\Http\Admin\SpecProperties\BeadMetrics\Resources\BeadMetricResource;
+use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Resources\BeadMetricCollection;
+use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Resources\BeadMetricResource;
 use App\Http\Controllers\Controller;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Services\BeadMetricService;

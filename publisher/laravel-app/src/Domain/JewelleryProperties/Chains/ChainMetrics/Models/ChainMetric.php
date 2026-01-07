@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Chains\ChainMetrics\Models;
 
@@ -8,7 +9,7 @@ use Domain\Shared\JewelleryProperties\NeckSizes\Models\NeckSize;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ChainMetric extends Model
+final class ChainMetric extends Model
 {
     protected $table = ChainMetricEnum::TABLE_NAME->value;
     protected $fillable = ['neck_size_id', 'necklace_id', 'quantity', 'price'];
@@ -20,7 +21,7 @@ class ChainMetric extends Model
         return $this->belongsTo(NeckSize::class);
     }
 
-    public function necklace(): BelongsTo
+    public function chain(): BelongsTo
     {
         return $this->belongsTo(Chain::class);
     }

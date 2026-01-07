@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\SharedProperty\NeckSizes\Controllers;
 
-use App\Http\Admin\ChainProperty\Chains\Resources\ChainCollection;
+use App\Http\Admin\SpecProperties\Chains\Chain\Resources\ChainCollection;
 use App\Http\Controllers\Controller;
 use Domain\Shared\JewelleryProperties\NeckSizes\Services\Relationships\NeckSizesChainsRelationshipService;
 use Illuminate\Http\JsonResponse;

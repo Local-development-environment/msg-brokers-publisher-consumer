@@ -1,0 +1,87 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Admin\SpecProperties\Chains\ChainWeaving\Controllers;
+
+use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Requests\ChainWeavingStoreRequest;
+use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Requests\ChainWeavingUpdateRequest;
+use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Resources\ChainWeavingCollection;
+use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Resources\ChainWeavingResource;
+use App\Http\Controllers\Controller;
+use Domain\JewelleryProperties\Chains\ChainWeavings\Enums\ChainWeavingNameRoutesEnum;
+use Domain\JewelleryProperties\Chains\ChainWeavings\Services\ChainWeavingService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Throwable;
+
+final class ChainWeavingController extends Controller
+{
+    public function __construct(public ChainWeavingService $service)
+    {
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request): JsonResponse
+    {
+        $data = $request->all();
+        $items = $this->service->index($data);
+
+        return (new ChainWeavingCollection($items))->response();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     * @throws Throwable|\Throwable
+     */
+    public function store(ChainWeavingStoreRequest $request): JsonResponse
+    {
+        $data = $request->all();
+
+        $model = $this->service->store($data);
+
+        return (new ChainWeavingResource($model))
+            ->response()
+            ->header('Location', route(ChainWeavingNameRoutesEnum::CRUD_SHOW->value, [
+                'id' => $model->id
+            ]));
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Request $request, int $id): JsonResponse
+    {
+        $data = $request->all();
+        data_set($data, 'id', $id);
+        $model = $this->service->show($data, $id);
+
+        return (new ChainWeavingResource($model))->response();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * @throws Throwable
+     */
+    public function update(ChainWeavingUpdateRequest $request, int $id): JsonResponse
+    {
+        $data = $request->all();
+
+        $this->service->update($data, $id);
+
+        return response()->json(null, 204);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     * @throws Throwable
+     */
+    public function destroy(int $id): JsonResponse
+    {
+        $this->service->destroy($id);
+
+        return response()->json(null, 204);
+    }
+}
