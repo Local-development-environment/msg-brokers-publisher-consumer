@@ -2167,42 +2167,6 @@
 											"response": []
 										},
 										{
-											"name": "chain-metrics index Copy",
-											"id": "6575703-1c15f321-0e26-44dc-a256-3b64e5b706b1",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true,
-												"disabledSystemHeaders": {
-													"accept": true
-												}
-											},
-											"request": {
-												"method": "GET",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/vnd.api+json",
-														"type": "text"
-													}
-												],
-												"url": {
-													"raw": "{{baseURL}}/chain-metrics?include=chain,neckSize",
-													"host": [
-														"{{baseURL}}"
-													],
-													"path": [
-														"chain-metrics"
-													],
-													"query": [
-														{
-															"key": "include",
-															"value": "chain,neckSize"
-														}
-													]
-												}
-											},
-											"response": []
-										},
-										{
 											"name": "chain-metrics show",
 											"id": "6575703-6554802a-0ea9-41a5-b4cf-9e6191e51fd5",
 											"protocolProfileBehavior": {
@@ -3046,6 +3010,42 @@
 									"name": "RELATIONSHIPS",
 									"item": [],
 									"id": "6575703-aef49bf1-44d1-4419-9d35-d5ecc346d751"
+								},
+								{
+									"name": "chain-metrics index Copy",
+									"id": "6575703-1c15f321-0e26-44dc-a256-3b64e5b706b1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/chain-metrics?include=chain,neckSize",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"chain-metrics"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "chain,neckSize"
+												}
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"id": "6575703-03e1bb1e-0e4e-450c-bfdf-e657238d470f"
