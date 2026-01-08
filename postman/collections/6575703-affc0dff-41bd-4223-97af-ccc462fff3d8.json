@@ -7525,7 +7525,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "natural-stone-grades index",
+									"name": "group-grades index",
 									"id": "6575703-0f04f106-691c-4bd2-bb93-a704001d5381",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
