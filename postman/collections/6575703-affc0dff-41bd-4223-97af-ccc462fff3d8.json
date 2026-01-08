@@ -7592,7 +7592,7 @@
 									"response": []
 								},
 								{
-									"name": "natural-stone-grades store",
+									"name": "group-grades store",
 									"id": "6575703-c643a750-35e2-4980-be12-5cd5c31b63e3",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
