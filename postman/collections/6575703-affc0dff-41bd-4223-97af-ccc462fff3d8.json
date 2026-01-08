@@ -7760,7 +7760,7 @@
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
-									"name": "natural-stone-grade natural-stone index",
+									"name": "group-grade natural-stone index",
 									"id": "6575703-a69ee3dc-9dde-42c1-81ee-32d0501646cf",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -7778,12 +7778,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3/relationships/natural-stone",
+											"raw": "{{baseURL}}/group-grades/3/relationships/natural-stone",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades",
+												"group-grades",
 												"3",
 												"relationships",
 												"natural-stone"
