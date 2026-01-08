@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\StoneGroups\Controllers;
 
@@ -9,7 +10,7 @@ use Domain\Inserts\StoneGroups\Services\StoneGroupService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class StoneGroupController extends Controller
+final class StoneGroupController extends Controller
 {
     public function __construct(private StoneGroupService $service, private StoneGroup $stoneGroup)
     {

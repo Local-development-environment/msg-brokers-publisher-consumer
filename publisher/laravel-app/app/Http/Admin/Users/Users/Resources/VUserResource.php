@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Users\Users\Resources;
 
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Users\VUsers\Enums\VUserEnum;
 use Domain\Users\VUsers\Models\VUser;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /** @mixin VUser */
 class VUserResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource into an array.

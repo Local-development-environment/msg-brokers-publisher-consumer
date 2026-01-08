@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\GrownStones\Controllers;
 
@@ -7,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Domain\Inserts\GrownStones\Services\Relationships\GrownStonesStoneFamilyRelationshipService;
 use Illuminate\Http\JsonResponse;
 
-class GrownStonesStoneFamilyRelatedController extends Controller
+final class GrownStonesStoneFamilyRelatedController extends Controller
 {
     public function __construct(public GrownStonesStoneFamilyRelationshipService $service)
     {

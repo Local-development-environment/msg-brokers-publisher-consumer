@@ -6,7 +6,7 @@ namespace App\Http\Admin\Insert\StoneItemGrades\Controllers;
 
 use App\Http\Controllers\Controller;
 
-final class StoneGradeStoneItemGradesRelatedController extends Controller
+final class StoneItemGradesStoneGradeRelationshipController extends Controller
 {
     //
 }

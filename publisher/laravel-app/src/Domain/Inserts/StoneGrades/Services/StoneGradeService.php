@@ -13,7 +13,7 @@ final class StoneGradeService
 {
     public function __construct(
         public StoneGradeRepository $repository,
-//        public StoneTypeOriginPipeline $pipeline
+//        public StoneGradePipeline $pipeline
     ) {}
 
     public function index(array $data): Paginator

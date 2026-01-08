@@ -4,11 +4,20 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\StoneItemGrades\Resources;
 
+use App\Http\Admin\Insert\GroupGrades\Resources\GroupGradeResource;
+use App\Http\Admin\Insert\StoneGrades\Resources\StoneGradeResource;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
+use Domain\Inserts\StoneItemGrades\Enums\StoneItemGradeNameRoutesEnum;
+use Domain\Inserts\StoneItemGrades\Enums\StoneItemGradeRelationshipsEnum;
+use Domain\Inserts\StoneItemGrades\Models\StoneItemGrade;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/** @mixin StoneItemGrade */
 final class StoneItemGradeResource extends JsonResource
 {
+    use JsonApiSpecificationResourceTrait;
+
     /**
      * Transform the resource into an array.
      *
@@ -16,6 +25,28 @@ final class StoneItemGradeResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'type' => StoneItemGrade::TYPE_RESOURCE,
+            'attributes' => $this->attributeItems(),
+            'relationships' => [
+                StoneItemGradeRelationshipsEnum::STONE_GRADE->value => $this->sectionRelationships(
+                    StoneItemGradeNameRoutesEnum::RELATED_TO_STONE_GRADE->value,
+                    StoneItemGradeRelationshipsEnum::STONE_GRADE->value
+                ),
+                StoneItemGradeRelationshipsEnum::GROUP_GRADE->value => $this->sectionRelationships(
+                    StoneItemGradeNameRoutesEnum::RELATED_TO_GROUP_GRADE->value,
+                    StoneItemGradeRelationshipsEnum::GROUP_GRADE->value
+                )
+            ]
+        ];
+    }
+
+    function relations(): array
+    {
+        return [
+            new StoneGradeResource($this->whenLoaded(StoneItemGradeRelationshipsEnum::STONE_GRADE->value)),
+            new GroupGradeResource($this->whenLoaded(StoneItemGradeRelationshipsEnum::GROUP_GRADE->value)),
+        ];
     }
 }

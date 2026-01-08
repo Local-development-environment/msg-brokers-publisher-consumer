@@ -18,7 +18,7 @@ final class VideoTypeRepository
         return QueryBuilder::for(VideoType::class)
                            ->allowedIncludes([
                                VideoTypeRelationshipsEnum::CATALOG_VIDEO_DETAILS->value,
-                               VideoTypeRelationshipsEnum::REVIEW_VIDEO_DETAILS->value,
+                               VideoTypeRelationshipsEnum::VIDEO_DETAILS->value,
                            ])
                            ->allowedFilters([
                                AllowedFilter::exact(VideoTypeEnum::PRIMARY_KEY->value)
@@ -38,7 +38,7 @@ final class VideoTypeRepository
                            ->where(VideoTypeEnum::PRIMARY_KEY->value, $id)
                            ->allowedIncludes([
                                VideoTypeRelationshipsEnum::CATALOG_VIDEO_DETAILS->value,
-                               VideoTypeRelationshipsEnum::REVIEW_VIDEO_DETAILS->value,
+                               VideoTypeRelationshipsEnum::VIDEO_DETAILS->value,
                            ])
                            ->firstOrFail();
     }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Domain\Inserts\StoneGroups\Models;
 
@@ -7,7 +8,7 @@ use Domain\Inserts\StoneGroups\Enums\StoneGroupEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class StoneGroup extends Model
+final class StoneGroup extends Model
 {
     protected $table = StoneGroupEnum::TABLE_NAME->value;
 
