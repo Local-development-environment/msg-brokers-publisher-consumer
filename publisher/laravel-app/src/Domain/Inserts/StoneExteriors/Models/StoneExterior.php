@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\StoneExteriors\Models;
 
-use Domain\Inserts\Colours\Models\StoneColour;
 use Domain\Inserts\Facets\Models\Facet;
 use Domain\Inserts\Inserts\Models\Insert;
+use Domain\Inserts\StoneColours\Models\StoneColour;
 use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
 use Domain\Inserts\Stones\Models\Stone;
 use Illuminate\Database\Eloquent\Model;

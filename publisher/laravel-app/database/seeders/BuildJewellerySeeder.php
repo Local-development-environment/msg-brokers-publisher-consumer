@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use Domain\Inserts\Colours\Enums\StoneColourEnum;
 use Domain\Inserts\Facets\Enums\FacetEnum;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourEnum;
 use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;

@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Stones\Resources;
 
-use App\Http\Admin\Insert\Colours\Resources\ColourCollection;
-use App\Http\Admin\Insert\Colours\Resources\ColourResource;
+use App\Http\Admin\Insert\Colours\Resources\StoneColourCollection;
+use App\Http\Admin\Insert\Colours\Resources\StoneColourResource;
 use App\Http\Admin\Insert\Facets\Resources\StoneFacetCollection;
 use App\Http\Admin\Insert\Facets\Resources\StoneFacetResource;
 use App\Http\Admin\Insert\GrownStones\Resources\GrownStoneResource;
@@ -78,7 +78,7 @@ final class StoneResource extends JsonResource
             new GrownStoneResource($this->whenLoaded(StoneRelationshipsEnum::GROWN_STONE->value)),
             new NaturalStoneResource($this->whenLoaded(StoneRelationshipsEnum::NATURAL_STONE->value)),
             StoneFacetResource::collection($this->whenLoaded(StoneRelationshipsEnum::FACETS->value)),
-            ColourResource::collection($this->whenLoaded(StoneRelationshipsEnum::COLOURS->value)),
+            StoneColourResource::collection($this->whenLoaded(StoneRelationshipsEnum::COLOURS->value)),
             StoneExteriorResource::collection($this->whenLoaded(StoneRelationshipsEnum::STONE_EXTERIORS->value)),
         ];
     }

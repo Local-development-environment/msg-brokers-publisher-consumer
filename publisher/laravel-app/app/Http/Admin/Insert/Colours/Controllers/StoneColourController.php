@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Colours\Controllers;
 
-use App\Http\Admin\Insert\Colours\Resources\ColourCollection;
+use App\Http\Admin\Insert\Colours\Resources\StoneColourCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\Colours\Services\StoneColourService;
+use Domain\Inserts\StoneColours\Services\StoneColourService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-final class ColourController extends Controller
+final class StoneColourController extends Controller
 {
     public function __construct(public StoneColourService $service)
     {
@@ -23,7 +23,7 @@ final class ColourController extends Controller
         $data = $request->all();
         $items = $this->service->index($data);
 
-        return (new ColourCollection($items))->response();
+        return (new StoneColourCollection($items))->response();
     }
 
     /**

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Domain\Inserts\Colours\Repositories;
+namespace Domain\Inserts\StoneColours\Repositories;
 
-use Domain\Inserts\Colours\Enums\StoneColourEnum;
-use Domain\Inserts\Colours\Enums\StoneColourRelationshipsEnum;
-use Domain\Inserts\Colours\Models\StoneColour;
+use Domain\Inserts\StoneColours\Enums\StoneColourEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourRelationshipsEnum;
+use Domain\Inserts\StoneColours\Models\StoneColour;
 use Illuminate\Contracts\Pagination\Paginator;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;

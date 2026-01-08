@@ -3,19 +3,17 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Colours\Resources;
 
-use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorCollection;
 use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorResource;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\Colours\Enums\StoneColourEnum;
-use Domain\Inserts\Colours\Enums\StoneColourNameRoutesEnum;
-use Domain\Inserts\Colours\Enums\StoneColourRelationshipsEnum;
-use Domain\Inserts\Colours\Models\StoneColour;
+use Domain\Inserts\StoneColours\Enums\StoneColourEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourNameRoutesEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourRelationshipsEnum;
+use Domain\Inserts\StoneColours\Models\StoneColour;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin StoneColour */
-final class ColourResource extends JsonResource
+final class StoneColourResource extends JsonResource
 {
     use JsonApiSpecificationResourceTrait;
 

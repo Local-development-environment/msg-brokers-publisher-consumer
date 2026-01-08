@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Colours\Controllers;
 
+use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorCollection;
 use App\Http\Controllers\Controller;
-use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
-use Domain\Inserts\Colours\Services\Relationships\StoneColourStoneExteriorsRelationshipService;
+use Domain\Inserts\StoneColours\Services\Relationships\StoneColourStoneExteriorsRelationshipService;
 use Illuminate\Http\JsonResponse;
 
-final class ColourInsertStonesRelationshipController extends Controller
+final class StoneColourStoneExteriorsRelatedController extends Controller
 {
     public function __construct(public StoneColourStoneExteriorsRelationshipService $service)
     {
@@ -18,6 +18,6 @@ final class ColourInsertStonesRelationshipController extends Controller
     {
         $collection = $this->service->index($id);
 
-        return ApiEntityIdentifierResource::collection($collection)->response();
+        return (new StoneExteriorCollection($collection))->response();
     }
 }

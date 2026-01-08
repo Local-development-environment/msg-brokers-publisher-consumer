@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Jewelleries\JewelleryViews\MenuFilters;
 
-use Domain\Inserts\Colours\Enums\StoneColourEnum;
-use Domain\Jewelleries\JewelleryViews\Enums\VJewelleryEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourEnum;
 use Spatie\QueryBuilder\QueryBuilder;
 
 final class InsertStoneColourMenuFilter

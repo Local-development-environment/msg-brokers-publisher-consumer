@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-use Domain\Inserts\Colours\Enums\StoneColourBuilderEnum;
 use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourBuilderEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyBuilderEnum;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
 use Domain\Inserts\Stones\Enums\StoneBuilderEnum;

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Domain\Inserts\Colours\Models;
+namespace Domain\Inserts\StoneColours\Models;
 
-use Domain\Inserts\Colours\Enums\StoneColourEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourEnum;
 use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
 use Domain\Inserts\StoneExteriors\Models\StoneExterior;
 use Illuminate\Database\Eloquent\Model;

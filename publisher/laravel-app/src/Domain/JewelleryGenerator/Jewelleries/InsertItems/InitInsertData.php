@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems;
 
-use Domain\Inserts\Colours\Enums\StoneColourBuilderEnum;
-use Domain\Inserts\Colours\Enums\StoneColourEnum;
 use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
 use Domain\Inserts\Facets\Enums\FacetEnum;
 use Domain\Inserts\GroupGrades\Enums\GroupGradeEnum;
@@ -14,6 +12,8 @@ use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
 use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectBuilderEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourBuilderEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourEnum;
 use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyBuilderEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyEnum;

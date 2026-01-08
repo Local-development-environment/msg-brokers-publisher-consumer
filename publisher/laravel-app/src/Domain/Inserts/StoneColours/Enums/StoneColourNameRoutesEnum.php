@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Inserts\Colours\Enums;
+namespace Domain\Inserts\StoneColours\Enums;
 
 enum StoneColourNameRoutesEnum: string
 {

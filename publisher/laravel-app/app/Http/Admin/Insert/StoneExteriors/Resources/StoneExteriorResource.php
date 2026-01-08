@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\StoneExteriors\Resources;
 
-use App\Http\Admin\Insert\Colours\Resources\ColourResource;
+use App\Http\Admin\Insert\Colours\Resources\StoneColourResource;
 use App\Http\Admin\Insert\Facets\Resources\StoneFacetResource;
 use App\Http\Admin\Insert\Inserts\Resources\InsertResource;
 use App\Http\Admin\Insert\Stones\Resources\StoneResource;
@@ -58,7 +58,7 @@ final class StoneExteriorResource extends JsonResource
             new StoneResource($this->whenLoaded(StoneExteriorRelationshipsEnum::STONE->value)),
             InsertResource::collection($this->whenLoaded(StoneExteriorRelationshipsEnum::INSERTS->value)),
             new StoneFacetResource($this->whenLoaded(StoneExteriorRelationshipsEnum::FACET->value)),
-            new ColourResource($this->whenLoaded(StoneExteriorRelationshipsEnum::STONE_COLOUR->value)),
+            new StoneColourResource($this->whenLoaded(StoneExteriorRelationshipsEnum::STONE_COLOUR->value)),
         ];
     }
 }

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Domain\Inserts\Colours\Services;
+namespace Domain\Inserts\StoneColours\Services;
 
-use Domain\Inserts\Colours\Models\StoneColour;
-use Domain\Inserts\Colours\Pipelines\StoneColourPipeline;
-use Domain\Inserts\Colours\Repositories\StoneColourRepository;
+use Domain\Inserts\StoneColours\Models\StoneColour;
+use Domain\Inserts\StoneColours\Pipelines\StoneColourPipeline;
+use Domain\Inserts\StoneColours\Repositories\StoneColourRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Throwable;
 
