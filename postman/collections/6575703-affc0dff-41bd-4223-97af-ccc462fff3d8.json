@@ -8823,42 +8823,6 @@
 									"response": []
 								},
 								{
-									"name": "stone-grades index Copy",
-									"id": "6575703-4c4e903e-7772-483a-b368-820c6a682a51",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/stone-grades?include=stoneItemGrades",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"stone-grades"
-											],
-											"query": [
-												{
-													"key": "include",
-													"value": "stoneItemGrades"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "stone-grades show",
 									"id": "6575703-046c6ab6-c8b0-4f32-a83a-09c4cbaa322f",
 									"protocolProfileBehavior": {
@@ -9829,7 +9793,44 @@
 					"item": [
 						{
 							"name": "CRUD",
-							"item": [],
+							"item": [
+								{
+									"name": "stone-grades index Copy",
+									"id": "6575703-4c4e903e-7772-483a-b368-820c6a682a51",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/stone-grades?include=stoneItemGrades",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"stone-grades"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "stoneItemGrades"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
 							"id": "6575703-e428f063-0894-45cd-b785-1aabc594f350"
 						},
 						{
