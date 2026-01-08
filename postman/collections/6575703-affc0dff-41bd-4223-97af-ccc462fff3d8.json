@@ -9795,7 +9795,7 @@
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "stone-grades index Copy",
+									"name": "stone-item-grades index",
 									"id": "6575703-4c4e903e-7772-483a-b368-820c6a682a51",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
