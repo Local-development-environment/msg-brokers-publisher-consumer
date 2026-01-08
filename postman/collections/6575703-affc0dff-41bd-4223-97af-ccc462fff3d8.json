@@ -7811,15 +7811,15 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3/relationships/stone-grade",
+											"raw": "{{baseURL}}/group-grades/3/relationships/stone-item-grade",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades",
+												"group-grades",
 												"3",
 												"relationships",
-												"stone-grade"
+												"stone-item-grade"
 											]
 										}
 									},
