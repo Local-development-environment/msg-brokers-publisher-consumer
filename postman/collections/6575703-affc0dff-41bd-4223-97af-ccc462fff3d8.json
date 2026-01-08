@@ -9813,17 +9813,17 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-grades?include=stoneItemGrades",
+											"raw": "{{baseURL}}/stone-item-grades?include=stoneGrade",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"stone-grades"
+												"stone-item-grades"
 											],
 											"query": [
 												{
 													"key": "include",
-													"value": "stoneItemGrades"
+													"value": "stoneGrade"
 												}
 											]
 										}
