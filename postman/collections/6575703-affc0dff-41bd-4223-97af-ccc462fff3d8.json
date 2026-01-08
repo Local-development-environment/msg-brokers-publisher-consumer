@@ -7192,7 +7192,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-exteriors?include=stone,insertColour,facet,inserts",
+											"raw": "{{baseURL}}/stone-exteriors?include=stone,stoneColour,facet,inserts",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -7202,7 +7202,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "stone,insertColour,facet,inserts"
+													"value": "stone,stoneColour,facet,inserts"
 												}
 											]
 										}
