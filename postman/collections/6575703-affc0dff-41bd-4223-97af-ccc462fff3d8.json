@@ -7192,7 +7192,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-exteriors?include=stone,insertColour,facet,inserts",
+											"raw": "{{baseURL}}/stone-exteriors?include=stone,stoneColour,facet,inserts",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -7202,7 +7202,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "stone,insertColour,facet,inserts"
+													"value": "stone,stoneColour,facet,inserts"
 												}
 											]
 										}
@@ -7519,13 +7519,13 @@
 					"id": "6575703-63f7d597-1a95-4405-8406-b592ddb2de93"
 				},
 				{
-					"name": "NATURAL STONE GRADES",
+					"name": "GROUP GRADES",
 					"item": [
 						{
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "natural-stone-grades index",
+									"name": "group-grades index",
 									"id": "6575703-0f04f106-691c-4bd2-bb93-a704001d5381",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -7543,17 +7543,17 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades?include=stoneGrade,naturalStone",
+											"raw": "{{baseURL}}/group-grades?include=naturalStone,stoneItemGrade,stoneGroup",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades"
+												"group-grades"
 											],
 											"query": [
 												{
 													"key": "include",
-													"value": "stoneGrade,naturalStone"
+													"value": "naturalStone,stoneItemGrade,stoneGroup"
 												}
 											]
 										}
@@ -7561,7 +7561,7 @@
 									"response": []
 								},
 								{
-									"name": "natural-stone-grades show",
+									"name": "group-grades show",
 									"id": "6575703-637790fe-d424-4eb3-be55-ad1ccf89e191",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -7579,12 +7579,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3",
+											"raw": "{{baseURL}}/group-grades/3",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades",
+												"group-grades",
 												"3"
 											]
 										}
@@ -7592,7 +7592,7 @@
 									"response": []
 								},
 								{
-									"name": "natural-stone-grades store",
+									"name": "group-grades store",
 									"id": "6575703-c643a750-35e2-4980-be12-5cd5c31b63e3",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -7610,19 +7610,19 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades",
+											"raw": "{{baseURL}}/group-grades",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades"
+												"group-grades"
 											]
 										}
 									},
 									"response": []
 								},
 								{
-									"name": "natural-stone-grades update",
+									"name": "group-grades update",
 									"id": "6575703-14b14d33-772d-44b7-971f-2b34219613c9",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -7640,12 +7640,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3",
+											"raw": "{{baseURL}}/group-grades/3",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades",
+												"group-grades",
 												"3"
 											]
 										}
@@ -7653,7 +7653,7 @@
 									"response": []
 								},
 								{
-									"name": "natural-stone-grades  destroy",
+									"name": "group-grades  destroy",
 									"id": "6575703-5961d2bb-d706-4a18-9baa-e3a93c60112c",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -7671,12 +7671,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3",
+											"raw": "{{baseURL}}/group-grades/3",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades",
+												"group-grades",
 												"3"
 											]
 										}
@@ -7690,7 +7690,7 @@
 							"name": "RELATED",
 							"item": [
 								{
-									"name": "natural-stone-grade natural-stone index",
+									"name": "group-grade natural-stone index",
 									"id": "6575703-61bb961c-1a96-4e08-afb6-45a6da64b08a",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -7708,12 +7708,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3/natural-stone",
+											"raw": "{{baseURL}}/group-grades/3/natural-stone",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades",
+												"group-grades",
 												"3",
 												"natural-stone"
 											]
@@ -7722,7 +7722,7 @@
 									"response": []
 								},
 								{
-									"name": "natural-stone-grades stone-grade index",
+									"name": "group-grades stone-item-grade index",
 									"id": "6575703-d1f73867-3efd-4bd1-9cfa-f8bdfc6dbc26",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -7740,14 +7740,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3/stone-grade",
+											"raw": "{{baseURL}}/group-grades/3/stone-item-grade",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades",
+												"group-grades",
 												"3",
-												"stone-grade"
+												"stone-item-grade"
 											]
 										}
 									},
@@ -7760,7 +7760,7 @@
 							"name": "RELATIONSHIPS",
 							"item": [
 								{
-									"name": "natural-stone-grade natural-stone index",
+									"name": "group-grade natural-stone index",
 									"id": "6575703-a69ee3dc-9dde-42c1-81ee-32d0501646cf",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -7778,12 +7778,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3/relationships/natural-stone",
+											"raw": "{{baseURL}}/group-grades/3/relationships/natural-stone",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades",
+												"group-grades",
 												"3",
 												"relationships",
 												"natural-stone"
@@ -7793,7 +7793,7 @@
 									"response": []
 								},
 								{
-									"name": "natural-stone-grades stone-grade index",
+									"name": "group-grades stone-item-grade index",
 									"id": "6575703-bc18ce83-306f-4b14-a758-911b987e983d",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -7811,15 +7811,15 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3/relationships/stone-grade",
+											"raw": "{{baseURL}}/group-grades/3/relationships/stone-item-grade",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades",
+												"group-grades",
 												"3",
 												"relationships",
-												"stone-grade"
+												"stone-item-grade"
 											]
 										}
 									},
@@ -9053,7 +9053,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-groups?include=naturalStones",
+											"raw": "{{baseURL}}/stone-groups?include=groupGrades",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -9063,7 +9063,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "naturalStones"
+													"value": "groupGrades"
 												}
 											]
 										}
@@ -9306,7 +9306,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stones?include=typeOrigin,naturalStone,imitationStone,grownStone,stoneColours,stoneFacets",
+											"raw": "{{baseURL}}/stones?include=typeOrigin,naturalStone,imitationStone,grownStone,stoneColours,stoneFacets,stoneExteriors",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -9316,7 +9316,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "typeOrigin,naturalStone,imitationStone,grownStone,stoneColours,stoneFacets"
+													"value": "typeOrigin,naturalStone,imitationStone,grownStone,stoneColours,stoneFacets,stoneExteriors"
 												}
 											]
 										}
@@ -9787,6 +9787,64 @@
 						}
 					],
 					"id": "6575703-0f907ca8-45fd-4299-bbdb-5b5c4847f913"
+				},
+				{
+					"name": "STONE ITEM GRADES",
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [
+								{
+									"name": "stone-item-grades index",
+									"id": "6575703-4c4e903e-7772-483a-b368-820c6a682a51",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/stone-item-grades?include=groupGrade,stoneGrade",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"stone-item-grades"
+											],
+											"query": [
+												{
+													"key": "include",
+													"value": "groupGrade,stoneGrade"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "6575703-e428f063-0894-45cd-b785-1aabc594f350"
+						},
+						{
+							"name": "RELATED",
+							"item": [],
+							"id": "6575703-3b7a1a53-8b04-496d-a393-40a5d2813c16"
+						},
+						{
+							"name": "RELATIONSHIPS",
+							"item": [],
+							"id": "6575703-11f88f78-4992-4a16-b262-81e476a3e5be"
+						}
+					],
+					"id": "6575703-76dcaae3-2434-44c6-93e1-3a1421358f6b"
 				}
 			],
 			"id": "6575703-0b92dffd-01e4-4ee1-a7a9-b87788e88e20"
