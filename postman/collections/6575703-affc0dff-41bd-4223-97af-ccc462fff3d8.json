@@ -7543,17 +7543,17 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades?include=stoneGrade,naturalStone",
+											"raw": "{{baseURL}}/group-grades?include=naturalStone,stoneItemGrade,stoneGroup",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades"
+												"group-grades"
 											],
 											"query": [
 												{
 													"key": "include",
-													"value": "stoneGrade,naturalStone"
+													"value": "naturalStone,stoneItemGrade,stoneGroup"
 												}
 											]
 										}
