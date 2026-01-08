@@ -7561,7 +7561,7 @@
 									"response": []
 								},
 								{
-									"name": "natural-stone-grades show",
+									"name": "group-grades show",
 									"id": "6575703-637790fe-d424-4eb3-be55-ad1ccf89e191",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
