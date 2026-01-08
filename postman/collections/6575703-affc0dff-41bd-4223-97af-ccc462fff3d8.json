@@ -7793,7 +7793,7 @@
 									"response": []
 								},
 								{
-									"name": "natural-stone-grades stone-grade index",
+									"name": "group-grades stone-item-grade index",
 									"id": "6575703-bc18ce83-306f-4b14-a758-911b987e983d",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
