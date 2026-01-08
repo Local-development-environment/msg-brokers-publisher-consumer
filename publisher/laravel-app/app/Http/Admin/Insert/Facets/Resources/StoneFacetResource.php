@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Facets\Resources;
 
-use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorCollection;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorResource;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Inserts\Facets\Enums\FacetEnum;
 use Domain\Inserts\Facets\Enums\FacetNameRoutesEnum;
 use Domain\Inserts\Facets\Enums\FacetRelationshipsEnum;
@@ -15,7 +15,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /** @mixin Facet */
 final class StoneFacetResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     public function toArray(Request $request): array
     {
@@ -24,9 +24,9 @@ final class StoneFacetResource extends JsonResource
             'type' => FacetEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
-                FacetRelationshipsEnum::INSERT_EXTERIORS->value => $this->sectionRelationships(
-                    FacetNameRoutesEnum::RELATED_TO_INSERT_EXTERIORS->value,
-                    StoneExteriorCollection::class
+                FacetRelationshipsEnum::STONE_EXTERIORS->value => $this->sectionRelationships(
+                    FacetNameRoutesEnum::RELATED_TO_STONE_EXTERIORS->value,
+                    FacetRelationshipsEnum::STONE_EXTERIORS->value
                 )
             ]
         ];
@@ -35,7 +35,7 @@ final class StoneFacetResource extends JsonResource
     protected function relations(): array
     {
         return [
-            StoneExteriorCollection::class => $this->whenLoaded(FacetRelationshipsEnum::INSERT_EXTERIORS->value),
+            StoneExteriorResource::collection($this->whenLoaded(FacetRelationshipsEnum::STONE_EXTERIORS->value)),
         ];
     }
 }

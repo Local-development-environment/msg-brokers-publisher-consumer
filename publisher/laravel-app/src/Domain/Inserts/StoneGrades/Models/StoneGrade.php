@@ -5,7 +5,9 @@ namespace Domain\Inserts\StoneGrades\Models;
 
 use Domain\Inserts\GroupGrades\Models\GroupGrade;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeEnum;
+use Domain\Inserts\StoneItemGrades\Models\StoneItemGrade;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 final class StoneGrade extends Model
@@ -14,8 +16,8 @@ final class StoneGrade extends Model
 
     public const string TYPE_RESOURCE = StoneGradeEnum::TYPE_RESOURCE->value;
 
-    public function groupGrade(): HasOne
+    public function stoneItemGrades(): HasMany
     {
-        return $this->hasOne(GroupGrade::class);
+        return $this->hasMany(StoneItemGrade::class);
     }
 }

@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\ImitationStones\Resources;
 
 use App\Http\Admin\Insert\Stones\Resources\StoneResource;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
 use Domain\Inserts\ImitationStones\Enums\ImitationStoneRelationshipsEnum;
@@ -12,9 +13,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin ImitationStone */
-class ImitationStoneResource extends JsonResource
+final class ImitationStoneResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource into an array.
@@ -23,6 +24,7 @@ class ImitationStoneResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+//        dd($this->resource);
         return [
             'id' => $this->id,
             'type' => ImitationStoneEnum::TYPE_RESOURCE->value,
@@ -30,7 +32,7 @@ class ImitationStoneResource extends JsonResource
             'relationships' => [
                 ImitationStoneRelationshipsEnum::STONE->value => $this->sectionRelationships(
                     ImitationStoneNameRoutesEnum::RELATED_TO_STONE->value,
-                    StoneResource::class
+                    ImitationStoneRelationshipsEnum::STONE->value
                 )
             ]
         ];
@@ -39,7 +41,7 @@ class ImitationStoneResource extends JsonResource
     protected function relations(): array
     {
         return [
-            StoneResource::class => $this->whenLoaded(ImitationStoneRelationshipsEnum::STONE->value)
+            new StoneResource($this->whenLoaded(ImitationStoneRelationshipsEnum::STONE->value))
         ];
     }
 }

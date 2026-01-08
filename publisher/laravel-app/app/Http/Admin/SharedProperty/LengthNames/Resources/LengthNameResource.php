@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\SharedProperty\LengthNames\Resources;
 
-use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeCollection;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeResource;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameNameRoutesEnum;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameRelationshipsEnum;
 use Domain\Shared\JewelleryProperties\LengthNames\Models\LengthName;
@@ -11,9 +12,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin LengthName */
-class LengthNameResource extends JsonResource
+final class LengthNameResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource collection into an array.
@@ -27,9 +28,9 @@ class LengthNameResource extends JsonResource
             'type' => LengthName::TYPE_RESOURCE,
             'attributes' => $this->attributeItems(),
             'relationships' => [
-                'neckSizes' => $this->sectionRelationships(
-                    LengthNameNameRoutesEnum::RELATED_TO_BEAD_SIZES->value,
-                    NeckSizeCollection::class
+                LengthNameRelationshipsEnum::NECK_SIZES->value => $this->sectionRelationships(
+                    LengthNameNameRoutesEnum::RELATED_TO_NECK_SIZES->value,
+                    LengthNameRelationshipsEnum::NECK_SIZES->value
                 )
             ]
         ];
@@ -38,7 +39,7 @@ class LengthNameResource extends JsonResource
     protected function relations(): array
     {
         return [
-            NeckSizeCollection::class => $this->whenLoaded(LengthNameRelationshipsEnum::NECK_SIZES->value),
+            NeckSizeResource::collection($this->whenLoaded(LengthNameRelationshipsEnum::NECK_SIZES->value)),
         ];
     }
 }

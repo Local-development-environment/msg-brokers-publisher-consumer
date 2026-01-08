@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace Domain\Inserts\OpticalEffects\Enums;
 
 enum OpticalEffectRelationshipsEnum: string
 {
-    case OPTICAL_EFFECT_STONES = 'opticalEffectStones';
+    case STONE_OPTICAL_EFFECTS = 'stoneOpticalEffects';
 }

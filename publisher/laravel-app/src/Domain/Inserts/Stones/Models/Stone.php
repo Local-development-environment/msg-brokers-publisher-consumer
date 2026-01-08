@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Domain\Inserts\Stones\Models;
 
@@ -10,9 +11,10 @@ use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
 use Domain\Inserts\ImitationStones\Models\ImitationStone;
 use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
 use Domain\Inserts\NaturalStones\Models\NaturalStone;
-use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneEnum;
-use Domain\Inserts\OpticalEffectStones\Models\OpticalEffectStone;
-use Domain\Inserts\StoneExteriours\Enums\StoneExteriorEnum;
+use Domain\Inserts\OpticalEffectStones\Enums\StoneOpticalEffectEnum;
+use Domain\Inserts\OpticalEffectStones\Models\StoneOpticalEffect;
+use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
+use Domain\Inserts\StoneExteriors\Models\StoneExterior;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Inserts\TypeOrigins\Models\TypeOrigin;
 use Illuminate\Database\Eloquent\Model;
@@ -21,7 +23,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Stone extends Model
+final class Stone extends Model
 {
     protected $table = StoneEnum::TABLE_NAME->value;
 
@@ -47,14 +49,19 @@ class Stone extends Model
         return $this->hasOne(GrownStone::class, GrownStoneEnum::PRIMARY_KEY->value);
     }
 
-    public function opticalEffectStone(): HasOne
+    public function stoneOpticalEffect(): HasOne
     {
-        return $this->hasOne(OpticalEffectStone::class, OpticalEffectStoneEnum::PRIMARY_KEY->value);
+        return $this->hasOne(StoneOpticalEffect::class, StoneOpticalEffectEnum::PRIMARY_KEY->value);
     }
 
     public function insertStones(): HasMany
     {
         return $this->hasMany(GrownStone::class);
+    }
+
+    public function stoneExteriors(): HasMany
+    {
+        return $this->hasMany(StoneExterior::class);
     }
 
     public function stoneFacets(): BelongsToMany

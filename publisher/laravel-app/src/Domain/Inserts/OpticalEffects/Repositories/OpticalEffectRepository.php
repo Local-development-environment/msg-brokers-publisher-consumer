@@ -17,7 +17,7 @@ final class OpticalEffectRepository
     {
         return QueryBuilder::for(OpticalEffect::class)
             ->allowedIncludes([
-                OpticalEffectRelationshipsEnum::OPTICAL_EFFECT_STONES->value
+                OpticalEffectRelationshipsEnum::STONE_OPTICAL_EFFECTS->value
             ])
             ->allowedFilters([
                 AllowedFilter::exact(OpticalEffectEnum::PRIMARY_KEY->value),
@@ -36,7 +36,7 @@ final class OpticalEffectRepository
         return QueryBuilder::for(OpticalEffect::class)
             ->where(OpticalEffectEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
-                OpticalEffectRelationshipsEnum::OPTICAL_EFFECT_STONES->value
+                OpticalEffectRelationshipsEnum::STONE_OPTICAL_EFFECTS->value
             ])
             ->firstOrFail();
     }

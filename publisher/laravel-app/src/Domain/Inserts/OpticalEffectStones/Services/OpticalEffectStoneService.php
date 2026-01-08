@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\OpticalEffectStones\Services;
 
-use Domain\Inserts\OpticalEffectStones\Models\OpticalEffectStone;
+use Domain\Inserts\OpticalEffectStones\Models\StoneOpticalEffect;
 use Domain\Inserts\OpticalEffectStones\Repositories\OpticalEffectStoneRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Throwable;
@@ -24,12 +24,12 @@ final class OpticalEffectStoneService
     /**
      * @throws Throwable
      */
-    public function store(array $data): OpticalEffectStone
+    public function store(array $data): StoneOpticalEffect
     {
 //        return $this->pipeline->store($data);
     }
 
-    public function show(array $data, int $id): OpticalEffectStone
+    public function show(array $data, int $id): StoneOpticalEffect
     {
         return $this->repository->show($data, $id);
     }

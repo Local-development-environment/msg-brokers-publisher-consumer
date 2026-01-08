@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Admin\Insert\InsertOptionalInfos\Resources;
 
 use App\Http\Admin\Insert\Inserts\Resources\InsertResource;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoNameRoutesEnum;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoRelationshipsEnum;
@@ -15,7 +15,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /** @mixin InsertOptionalInfo */
 final class InsertOptionalInfoResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     public function toArray(Request $request): array
     {
@@ -26,7 +26,7 @@ final class InsertOptionalInfoResource extends JsonResource
             'relationships' => [
                 InsertOptionalInfoRelationshipsEnum::INSERT->value => $this->sectionRelationships(
                     InsertOptionalInfoNameRoutesEnum::RELATED_TO_INSERT->value,
-                    InsertResource::class
+                    InsertOptionalInfoRelationshipsEnum::INSERT->value
                 )
             ]
         ];
@@ -35,7 +35,7 @@ final class InsertOptionalInfoResource extends JsonResource
     protected function relations(): array
     {
         return [
-            InsertResource::class => $this->whenLoaded(InsertOptionalInfoRelationshipsEnum::INSERT->value),
+            new InsertResource($this->whenLoaded(InsertOptionalInfoRelationshipsEnum::INSERT->value)),
         ];
     }
 }

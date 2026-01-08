@@ -1,10 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\OpticalEffectStones\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OpticalEffectStoneUpdateRequest extends FormRequest
+final class StoneOpticalEffectUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

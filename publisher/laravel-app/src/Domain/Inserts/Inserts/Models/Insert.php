@@ -6,7 +6,7 @@ namespace Domain\Inserts\Inserts\Models;
 use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Inserts\InsertOptionalInfos\Models\InsertOptionalInfo;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
-use Domain\Inserts\StoneExteriours\Models\StoneExterior;
+use Domain\Inserts\StoneExteriors\Models\StoneExterior;
 use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

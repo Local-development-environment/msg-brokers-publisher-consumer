@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\OpticalEffects\Controllers;
 
@@ -7,7 +8,7 @@ use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
 use Domain\Inserts\OpticalEffects\Services\Relationships\OpticalEffectOpticalEffectStonesRelationshipService;
 use Illuminate\Http\JsonResponse;
 
-class OpticalEffectOpticalEffectStonesRelationshipController extends Controller
+final class OpticalEffectStoneOpticalEffectsRelationshipController extends Controller
 {
     public function __construct(public OpticalEffectOpticalEffectStonesRelationshipService $service)
     {

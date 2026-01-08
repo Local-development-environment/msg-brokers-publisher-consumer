@@ -82,9 +82,9 @@ Route::group([
     // RELATIONSHIPS
     //  one-to-many Length Name to Bead Sizes
     Route::get('length-names/{id}/relationships/bead-sizes', [LengthNameBeadSizesRelationshipController::class, 'index'])
-        ->name(LengthNameNameRoutesEnum::RELATIONSHIP_TO_BEAD_SIZES->value);
+        ->name(LengthNameNameRoutesEnum::RELATIONSHIP_TO_NECK_SIZES->value);
     Route::get('length-names/{id}/bead-sizes', [LengthNameBeadSizesRelatedController::class, 'index'])
-        ->name(LengthNameNameRoutesEnum::RELATED_TO_BEAD_SIZES->value);
+        ->name(LengthNameNameRoutesEnum::RELATED_TO_NECK_SIZES->value);
 
     /*************************** NECK SIZES *************************/
     // CRUD

@@ -1,13 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\OpticalEffects\Controllers;
 
-use App\Http\Admin\Insert\OpticalEffectStones\Resources\OpticalEffectStoneCollection;
+use App\Http\Admin\Insert\OpticalEffectStones\Resources\StoneOpticalEffectCollection;
 use App\Http\Controllers\Controller;
 use Domain\Inserts\OpticalEffects\Services\Relationships\OpticalEffectOpticalEffectStonesRelationshipService;
 use Illuminate\Http\JsonResponse;
 
-class OpticalEffectOpticalEffectStonesRelatedController extends Controller
+final class OpticalEffectStoneOpticalEffectsRelatedController extends Controller
 {
     public function __construct(public OpticalEffectOpticalEffectStonesRelationshipService $service)
     {
@@ -17,6 +18,6 @@ class OpticalEffectOpticalEffectStonesRelatedController extends Controller
     {
         $collection = $this->service->index($id);
 
-        return (new OpticalEffectStoneCollection($collection))->response();
+        return (new StoneOpticalEffectCollection($collection))->response();
     }
 }

@@ -3,10 +3,13 @@
 namespace App\Http\Admin\Insert\ImitationStones\Controllers;
 
 use App\Http\Admin\Insert\ImitationStones\Resources\ImitationStoneCollection;
+use App\Http\Admin\Insert\ImitationStones\Resources\ImitationStoneResource;
 use App\Http\Controllers\Controller;
+use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
 use Domain\Inserts\ImitationStones\Services\ImitationStoneService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Throwable;
 
 class ImitationStoneController extends Controller
 {
@@ -27,18 +30,31 @@ class ImitationStoneController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * @throws Throwable
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        //
+        $data = $request->all();
+
+        $model = $this->service->store($data);
+
+        return (new ImitationStoneResource($model))
+            ->response()
+            ->header('Location', route(ImitationStoneNameRoutesEnum::CRUD_SHOW->value, [
+                'id' => $model->id
+            ]));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request, int $id): JsonResponse
     {
-        //
+        $data = $request->all();
+        data_set($data, 'id', $id);
+        $model = $this->service->show($data, $id);
+
+        return (new ImitationStoneResource($model))->response();
     }
 
     /**
