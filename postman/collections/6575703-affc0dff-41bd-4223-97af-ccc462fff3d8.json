@@ -3354,7 +3354,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/length-names?include=beadSizes",
+													"raw": "{{baseURL}}/length-names?include=neckSizes",
 													"host": [
 														"{{baseURL}}"
 													],
@@ -3364,7 +3364,7 @@
 													"query": [
 														{
 															"key": "include",
-															"value": "beadSizes"
+															"value": "neckSizes"
 														}
 													]
 												}
@@ -6841,7 +6841,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/inserts?include=insertOptionalInfo,insertMetric,insertStone",
+											"raw": "{{baseURL}}/inserts?include=insertOptionalInfo,jewellery,stoneExterior",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -6851,7 +6851,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "insertOptionalInfo,insertMetric,insertStone"
+													"value": "insertOptionalInfo,jewellery,stoneExterior"
 												}
 											]
 										}
@@ -8339,13 +8339,13 @@
 					"id": "6575703-324a8dea-c996-4761-9cf6-6a654a2b4934"
 				},
 				{
-					"name": "OPTICAL EFFECT STONES",
+					"name": "STONE OPTICAL EFFECTS",
 					"item": [
 						{
 							"name": "CRUD",
 							"item": [
 								{
-									"name": "optical-effect-stones index",
+									"name": "stone-optical-effects index",
 									"id": "6575703-6647bf63-6977-4bab-9a82-d1eccfebc368",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -8363,12 +8363,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/optical-effect-stones?include=opticalEffect,stone",
+											"raw": "{{baseURL}}/stone-optical-effects?include=opticalEffect,stone",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"optical-effect-stones"
+												"stone-optical-effects"
 											],
 											"query": [
 												{
@@ -8381,7 +8381,7 @@
 									"response": []
 								},
 								{
-									"name": "optical-effect-stones show",
+									"name": "stone-optical-effects show",
 									"id": "6575703-372f5222-28e5-4f7a-bb4a-977da6d64b11",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -8399,12 +8399,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/optical-effect-stones/2",
+											"raw": "{{baseURL}}/stone-optical-effects/2",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"optical-effect-stones",
+												"stone-optical-effects",
 												"2"
 											]
 										}
@@ -8805,7 +8805,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-grades?include=naturalStoneGrades",
+											"raw": "{{baseURL}}/stone-grades?include=stoneItemGrades",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -8815,7 +8815,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "naturalStoneGrades"
+													"value": "stoneItemGrades"
 												}
 											]
 										}
