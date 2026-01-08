@@ -7622,7 +7622,7 @@
 									"response": []
 								},
 								{
-									"name": "natural-stone-grades update",
+									"name": "group-grades update",
 									"id": "6575703-14b14d33-772d-44b7-971f-2b34219613c9",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
