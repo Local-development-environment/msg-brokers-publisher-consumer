@@ -7653,7 +7653,7 @@
 									"response": []
 								},
 								{
-									"name": "natural-stone-grades  destroy",
+									"name": "group-grades  destroy",
 									"id": "6575703-5961d2bb-d706-4a18-9baa-e3a93c60112c",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -7671,12 +7671,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3",
+											"raw": "{{baseURL}}/group-grades/3",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades",
+												"group-grades",
 												"3"
 											]
 										}
