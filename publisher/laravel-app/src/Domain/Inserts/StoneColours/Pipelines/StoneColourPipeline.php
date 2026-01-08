@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Domain\Inserts\Colours\Pipelines;
+namespace Domain\Inserts\StoneColours\Pipelines;
 
 use Domain\Shared\AbstractPipeline;
 use Illuminate\Database\Eloquent\Model;
 
-final class ColourPipeline extends AbstractPipeline
+final class StoneColourPipeline extends AbstractPipeline
 {
 
     /**

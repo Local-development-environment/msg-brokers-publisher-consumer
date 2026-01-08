@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-use Domain\Inserts\Colours\Enums\ColourBuilderEnum;
 use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourBuilderEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyBuilderEnum;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
 use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
@@ -19,13 +19,13 @@ return [
         'stoneGrade' => '',
         'opticalEffect' => '',
         'colours' => [
-            [ColourBuilderEnum::GRAY->value, 10],
-            [ColourBuilderEnum::RED->value, 15],
-            [ColourBuilderEnum::PINK->value, 15],
-            [ColourBuilderEnum::GREEN->value, 15],
-            [ColourBuilderEnum::YELLOW->value, 15],
-            [ColourBuilderEnum::LILAC->value, 15],
-            [ColourBuilderEnum::WHITE->value, 15]
+            [StoneColourBuilderEnum::GRAY->value, 10],
+            [StoneColourBuilderEnum::RED->value, 15],
+            [StoneColourBuilderEnum::PINK->value, 15],
+            [StoneColourBuilderEnum::GREEN->value, 15],
+            [StoneColourBuilderEnum::YELLOW->value, 15],
+            [StoneColourBuilderEnum::LILAC->value, 15],
+            [StoneColourBuilderEnum::WHITE->value, 15]
         ],
         'facets' => [
             [FacetBuilderEnum::CABOCHON_ROUND->value, 50],
@@ -42,7 +42,7 @@ return [
         'stoneGrade' => '',
         'opticalEffect' => '',
         'colours' => [
-            [ColourBuilderEnum::BLACK->value, 100]
+            [StoneColourBuilderEnum::BLACK->value, 100]
         ],
         'facets' => [
             [FacetBuilderEnum::CABOCHON_ROUND->value, 50],

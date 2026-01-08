@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-use Domain\Inserts\Colours\Enums\ColourBuilderEnum;
 use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectBuilderEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourBuilderEnum;
 use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
 
@@ -18,15 +18,15 @@ return [
         'stoneGrade' => '',
         'opticalEffect' => '',
         'colours' => [
-            [ColourBuilderEnum::GREEN->value, 1],
-            [ColourBuilderEnum::BROWN->value, 3],
-            [ColourBuilderEnum::YELLOW->value, 1],
-            [ColourBuilderEnum::COLOURLESS->value, 60],
-            [ColourBuilderEnum::LIGHT_BLUE->value, 30],
-            [ColourBuilderEnum::BLUE->value, 1],
-            [ColourBuilderEnum::PINK->value, 1],
-            [ColourBuilderEnum::RED->value, 1],
-            [ColourBuilderEnum::BLACK->value, 2]
+            [StoneColourBuilderEnum::GREEN->value, 1],
+            [StoneColourBuilderEnum::BROWN->value, 3],
+            [StoneColourBuilderEnum::YELLOW->value, 1],
+            [StoneColourBuilderEnum::COLOURLESS->value, 60],
+            [StoneColourBuilderEnum::LIGHT_BLUE->value, 30],
+            [StoneColourBuilderEnum::BLUE->value, 1],
+            [StoneColourBuilderEnum::PINK->value, 1],
+            [StoneColourBuilderEnum::RED->value, 1],
+            [StoneColourBuilderEnum::BLACK->value, 2]
         ],
         'facets' => [
             [FacetBuilderEnum::RADIANT_CUT->value, 3],
@@ -50,15 +50,15 @@ return [
         'stoneGrade' => '',
         'opticalEffect' => '',
         'colours' => [
-            [ColourBuilderEnum::GREEN->value, 1],
-            [ColourBuilderEnum::BROWN->value, 3],
-            [ColourBuilderEnum::YELLOW->value, 1],
-            [ColourBuilderEnum::COLOURLESS->value, 60],
-            [ColourBuilderEnum::LIGHT_BLUE->value, 30],
-            [ColourBuilderEnum::BLUE->value, 1],
-            [ColourBuilderEnum::PINK->value, 1],
-            [ColourBuilderEnum::RED->value, 1],
-            [ColourBuilderEnum::BLACK->value, 2]
+            [StoneColourBuilderEnum::GREEN->value, 1],
+            [StoneColourBuilderEnum::BROWN->value, 3],
+            [StoneColourBuilderEnum::YELLOW->value, 1],
+            [StoneColourBuilderEnum::COLOURLESS->value, 60],
+            [StoneColourBuilderEnum::LIGHT_BLUE->value, 30],
+            [StoneColourBuilderEnum::BLUE->value, 1],
+            [StoneColourBuilderEnum::PINK->value, 1],
+            [StoneColourBuilderEnum::RED->value, 1],
+            [StoneColourBuilderEnum::BLACK->value, 2]
         ],
         'facets' => [
             [FacetBuilderEnum::RADIANT_CUT->value, 3],
@@ -82,10 +82,10 @@ return [
         'stoneGrade' => '',
         'opticalEffect' => OpticalEffectBuilderEnum::OPALESCENCE->value,
         'colours' => [
-            [ColourBuilderEnum::PURPLE->value, 25],
-            [ColourBuilderEnum::YELLOW->value, 25],
-            [ColourBuilderEnum::BLUE->value, 25],
-            [ColourBuilderEnum::PINK->value, 25]
+            [StoneColourBuilderEnum::PURPLE->value, 25],
+            [StoneColourBuilderEnum::YELLOW->value, 25],
+            [StoneColourBuilderEnum::BLUE->value, 25],
+            [StoneColourBuilderEnum::PINK->value, 25]
         ],
         'facets' => [
             [FacetBuilderEnum::CABOCHON_OVAL->value, 50],
@@ -102,12 +102,12 @@ return [
         'stoneGrade' => '',
         'opticalEffect' => '',
         'colours' => [
-            [ColourBuilderEnum::PURPLE->value, 20],
-            [ColourBuilderEnum::YELLOW->value, 20],
-            [ColourBuilderEnum::BLUE->value, 20],
-            [ColourBuilderEnum::GREEN->value, 20],
-            [ColourBuilderEnum::RED->value, 15],
-            [ColourBuilderEnum::BROWN->value, 5],
+            [StoneColourBuilderEnum::PURPLE->value, 20],
+            [StoneColourBuilderEnum::YELLOW->value, 20],
+            [StoneColourBuilderEnum::BLUE->value, 20],
+            [StoneColourBuilderEnum::GREEN->value, 20],
+            [StoneColourBuilderEnum::RED->value, 15],
+            [StoneColourBuilderEnum::BROWN->value, 5],
         ],
         'facets' => [
             [FacetBuilderEnum::RADIANT_CUT->value, 3],

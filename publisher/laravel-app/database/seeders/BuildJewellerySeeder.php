@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use Domain\Inserts\Colours\Enums\ColourEnum;
 use Domain\Inserts\Facets\Enums\FacetEnum;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourEnum;
 use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
@@ -147,12 +147,12 @@ final class BuildJewellerySeeder extends Seeder
         if ($jewelleryData['insertItem']) {
             foreach ($jewelleryData['insertItem'] as $item) {
                 dump($item);
-                $colourId = DB::table(ColourEnum::TABLE_NAME->value)->where('name', $item['colours'])->value('id');
+                $colourId = DB::table(StoneColourEnum::TABLE_NAME->value)->where('name', $item['colours'])->value('id');
                 $facetId  = DB::table(FacetEnum::TABLE_NAME->value)->where('name', $item['facets'])->value('id');
                 $stoneId  = DB::table(StoneEnum::TABLE_NAME->value)->where('name', $item['stoneName'])->value('id');
 
                 $exteriorId = DB::table(StoneExteriorEnum::TABLE_NAME->value)->where('stone_id', $stoneId)
-                                ->where('facet_id', $facetId)->where('colour_id', $colourId)->value('id')
+                                ->where('facet_id', $facetId)->where('stone_colour_id', $colourId)->value('id')
                 ;
 
                 DB::table(InsertEnum::TABLE_NAME->value)->insert([

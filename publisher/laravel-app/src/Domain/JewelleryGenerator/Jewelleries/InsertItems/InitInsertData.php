@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems;
 
-use Domain\Inserts\Colours\Enums\ColourBuilderEnum;
-use Domain\Inserts\Colours\Enums\ColourEnum;
 use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
 use Domain\Inserts\Facets\Enums\FacetEnum;
 use Domain\Inserts\GroupGrades\Enums\GroupGradeEnum;
@@ -14,6 +12,8 @@ use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
 use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectBuilderEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourBuilderEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourEnum;
 use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyBuilderEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyEnum;
@@ -37,7 +37,7 @@ final class InitInsertData
         Schema::disableForeignKeyConstraints();
 
         DB::table(FacetEnum::TABLE_NAME->value)->truncate();
-        DB::table(ColourEnum::TABLE_NAME->value)->truncate();
+        DB::table(StoneColourEnum::TABLE_NAME->value)->truncate();
         DB::table(TypeOriginEnum::TABLE_NAME->value)->truncate();
         DB::table(StoneGroupEnum::TABLE_NAME->value)->truncate();
         DB::table(StoneGradeEnum::TABLE_NAME->value)->truncate();
@@ -61,8 +61,8 @@ final class InitInsertData
 
         $imitationStone = config('data-seed.insert-seed.stones.imitation-stones');
 
-        foreach (ColourBuilderEnum::cases() as $case) {
-            DB::table(ColourEnum::TABLE_NAME->value)->insert([
+        foreach (StoneColourBuilderEnum::cases() as $case) {
+            DB::table(StoneColourEnum::TABLE_NAME->value)->insert([
                 'name' => $case->value,
                 'slug' => Str::slug($case->value),
                 'description' => $case->description(),
@@ -232,7 +232,7 @@ final class InitInsertData
     {
         foreach ($stones['colours'] as $colour) {
 
-            $colourId = DB::table(ColourEnum::TABLE_NAME->value)
+            $colourId = DB::table(StoneColourEnum::TABLE_NAME->value)
                 ->where('name', $colour)
                 ->value('id');
 
@@ -244,7 +244,7 @@ final class InitInsertData
 
                 DB::table(StoneExteriorEnum::TABLE_NAME->value)
                     ->insert([
-                        'colour_id' => $colourId,
+                        'stone_colour_id' => $colourId,
                         'facet_id' => $facetId,
                         'stone_id' => $stoneId,
                         'created_at' => now(),

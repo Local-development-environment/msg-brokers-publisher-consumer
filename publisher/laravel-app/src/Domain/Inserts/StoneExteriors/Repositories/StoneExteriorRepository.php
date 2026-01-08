@@ -19,7 +19,7 @@ final class StoneExteriorRepository
             ->allowedIncludes([
                 StoneExteriorRelationshipsEnum::STONE->value,
                 StoneExteriorRelationshipsEnum::INSERTS->value,
-                StoneExteriorRelationshipsEnum::COLOUR->value,
+                StoneExteriorRelationshipsEnum::STONE_COLOUR->value,
                 StoneExteriorRelationshipsEnum::FACET->value
             ])
             ->allowedFilters([
@@ -41,7 +41,7 @@ final class StoneExteriorRepository
             ->allowedIncludes([
                 StoneExteriorRelationshipsEnum::STONE->value,
                 StoneExteriorRelationshipsEnum::INSERTS->value,
-                StoneExteriorRelationshipsEnum::COLOUR->value,
+                StoneExteriorRelationshipsEnum::STONE_COLOUR->value,
                 StoneExteriorRelationshipsEnum::FACET->value
             ])
             ->firstOrFail();

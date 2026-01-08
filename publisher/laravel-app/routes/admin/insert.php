@@ -2,9 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Http\Admin\Insert\Colours\Controllers\ColourController;
-use App\Http\Admin\Insert\Colours\Controllers\ColourInsertStonesRelatedController;
-use App\Http\Admin\Insert\Colours\Controllers\ColourInsertStonesRelationshipController;
 use App\Http\Admin\Insert\Facets\Controllers\FacetController;
 use App\Http\Admin\Insert\Facets\Controllers\FacetInsertStonesRelatedController;
 use App\Http\Admin\Insert\Facets\Controllers\FacetInsertStonesRelationshipController;
@@ -49,6 +46,9 @@ use App\Http\Admin\Insert\OpticalEffectStones\Controllers\StoneOpticalEffectsOpt
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\StoneOpticalEffectsOpticalEffectRelationshipController;
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\StoneOpticalEffectStoneRelatedController;
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\StoneOpticalEffectStoneRelationshipController;
+use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourController;
+use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourStoneExteriorsRelatedController;
+use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourStoneExteriorsRelationshipController;
 use App\Http\Admin\Insert\StoneExteriors\Controllers\StoneExteriorController;
 use App\Http\Admin\Insert\StoneExteriors\Controllers\StoneExteriorInsertsRelatedController;
 use App\Http\Admin\Insert\StoneExteriors\Controllers\StoneExteriorInsertsRelationshipController;
@@ -72,7 +72,6 @@ use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupNaturalStonesRelatio
 use App\Http\Admin\Insert\StoneItemGrades\Controllers\StoneItemGradeController;
 use App\Http\Admin\Insert\StoneItemGrades\Controllers\StoneItemGradeGroupGradeRelatedController;
 use App\Http\Admin\Insert\StoneItemGrades\Controllers\StoneItemGradeGroupGradeRelationshipController;
-use App\Http\Admin\Insert\StoneItemGrades\Controllers\StoneItemGradesStoneGradeRelatedController;
 use App\Http\Admin\Insert\StoneItemGrades\Controllers\StoneItemGradesStoneGradeRelationshipController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneGrownStoneRelatedController;
@@ -92,7 +91,6 @@ use App\Http\Admin\Insert\Stones\Controllers\StonesTypeOriginStoneRelationshipCo
 use App\Http\Admin\Insert\TypeOrigins\Controllers\TypeOriginController;
 use App\Http\Admin\Insert\TypeOrigins\Controllers\TypeOriginStonesRelatedController;
 use App\Http\Admin\Insert\TypeOrigins\Controllers\TypeOriginStonesRelationshipController;
-use Domain\Inserts\Colours\Enums\ColourNameRoutesEnum;
 use Domain\Inserts\Facets\Enums\FacetNameRoutesEnum;
 use Domain\Inserts\GroupGrades\Enums\GroupGradeNameRoutesEnum;
 use Domain\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
@@ -102,6 +100,7 @@ use Domain\Inserts\Inserts\Enums\InsertNameRoutesEnum;
 use Domain\Inserts\NaturalStones\Enums\NatureStoneNameRoutesEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectNameRoutesEnum;
 use Domain\Inserts\OpticalEffectStones\Enums\StoneOpticalEffectNameRoutesEnum;
+use Domain\Inserts\StoneColours\Enums\StoneColourNameRoutesEnum;
 use Domain\Inserts\StoneExteriors\Enums\StoneExteriorNameRoutesEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeNameRoutesEnum;
@@ -116,23 +115,23 @@ Route::group([
 
     /*************************** COLOURS *************************/
     // CRUD
-    Route::get('stone-colours', [ColourController::class, 'index'])
-        ->name(ColourNameRoutesEnum::CRUD_INDEX->value);
-    Route::get('stone-colours/{id}', [ColourController::class, 'show'])
-        ->name(ColourNameRoutesEnum::CRUD_SHOW->value);
-    Route::post('stone-colours', [ColourController::class, 'store'])
-        ->name(ColourNameRoutesEnum::CRUD_POST->value);
-    Route::patch('stone-colours/{id}', [ColourController::class, 'update'])
-        ->name(ColourNameRoutesEnum::CRUD_PATCH->value);
-    Route::delete('stone-colours/{id}', [ColourController::class, 'destroy'])
-        ->name(ColourNameRoutesEnum::CRUD_DELETE->value);
+    Route::get('stone-colours', [StoneColourController::class, 'index'])
+        ->name(StoneColourNameRoutesEnum::CRUD_INDEX->value);
+    Route::get('stone-colours/{id}', [StoneColourController::class, 'show'])
+        ->name(StoneColourNameRoutesEnum::CRUD_SHOW->value);
+    Route::post('stone-colours', [StoneColourController::class, 'store'])
+        ->name(StoneColourNameRoutesEnum::CRUD_POST->value);
+    Route::patch('stone-colours/{id}', [StoneColourController::class, 'update'])
+        ->name(StoneColourNameRoutesEnum::CRUD_PATCH->value);
+    Route::delete('stone-colours/{id}', [StoneColourController::class, 'destroy'])
+        ->name(StoneColourNameRoutesEnum::CRUD_DELETE->value);
 
     // RELATIONSHIPS
-    //  one-to-many Colour StoneExteriors
-    Route::get('stone-colours/{id}/relationships/stone-exteriors', [ColourInsertStonesRelationshipController::class, 'index'])
-        ->name(ColourNameRoutesEnum::RELATIONSHIP_TO_STONE_EXTERIORS->value);
-    Route::get('stone-colours/{id}/stone-exteriors', [ColourInsertStonesRelatedController::class, 'index'])
-        ->name(ColourNameRoutesEnum::RELATED_TO_STONE_EXTERIORS->value);
+    //  one-to-many StoneColour StoneExteriors
+    Route::get('stone-colours/{id}/relationships/stone-exteriors', [StoneColourStoneExteriorsRelationshipController::class, 'index'])
+        ->name(StoneColourNameRoutesEnum::RELATIONSHIP_TO_STONE_EXTERIORS->value);
+    Route::get('stone-colours/{id}/stone-exteriors', [StoneColourStoneExteriorsRelatedController::class, 'index'])
+        ->name(StoneColourNameRoutesEnum::RELATED_TO_STONE_EXTERIORS->value);
 
     /*************************** FACETS *************************/
     // CRUD

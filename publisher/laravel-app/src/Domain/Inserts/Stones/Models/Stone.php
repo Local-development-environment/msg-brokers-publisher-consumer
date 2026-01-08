@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\Stones\Models;
 
-use Domain\Inserts\Colours\Models\Colour;
 use Domain\Inserts\Facets\Models\Facet;
 use Domain\Inserts\GrownStones\Enums\GrownStoneEnum;
 use Domain\Inserts\GrownStones\Models\GrownStone;
@@ -13,6 +12,7 @@ use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
 use Domain\Inserts\NaturalStones\Models\NaturalStone;
 use Domain\Inserts\OpticalEffectStones\Enums\StoneOpticalEffectEnum;
 use Domain\Inserts\OpticalEffectStones\Models\StoneOpticalEffect;
+use Domain\Inserts\StoneColours\Models\StoneColour;
 use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
 use Domain\Inserts\StoneExteriors\Models\StoneExterior;
 use Domain\Inserts\Stones\Enums\StoneEnum;
@@ -77,7 +77,7 @@ final class Stone extends Model
     public function stoneColours(): BelongsToMany
     {
         return $this->belongsToMany(
-            Colour::class,
+            StoneColour::class,
             StoneExteriorEnum::TABLE_NAME->value,
             StoneExteriorEnum::FK_STONE->value,
             StoneExteriorEnum::FK_COLOUR->value

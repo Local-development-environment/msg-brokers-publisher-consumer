@@ -12,8 +12,8 @@ enum StoneExteriorNameRoutesEnum: string
     case CRUD_DELETE                  = 'stone-exteriors.delete';
     case RELATED_TO_STONE             = 'stone-exteriors.stone';
     case RELATIONSHIP_TO_STONE        = 'stone-exteriors.relationships.stone';
-    case RELATED_TO_STONE_COLOUR      = 'stone-exteriors.colour';
-    case RELATIONSHIP_TO_STONE_COLOUR = 'stone-exteriors.relationships.colour';
+    case RELATED_TO_STONE_COLOUR      = 'stone-exteriors.stone-colour';
+    case RELATIONSHIP_TO_STONE_COLOUR = 'stone-exteriors.relationships.stone-colour';
     case RELATED_TO_STONE_FACET       = 'stone-exteriors.facet';
     case RELATIONSHIP_TO_STONE_FACET  = 'stone-exteriors.relationships.facet';
     case RELATED_TO_INSERTS           = 'stone-exterior.inserts';

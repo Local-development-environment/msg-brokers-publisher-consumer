@@ -21,16 +21,16 @@ return new class extends Migration
                         i.jewellery_id,
                         i.weight,
                         se.stone_id,
-                        se.colour_id,
+                        se.stone_colour_id,
                         se.facet_id,
                         s.name as stone_name,
-                        c.name as colour_name,
+                        sc.name as colour_name,
                         f.name as facet_name
                     from
                         jw_inserts.inserts as i
                             join jw_inserts.stone_exteriors se on i.stone_exterior_id = se.id
                             join jw_inserts.stones s on se.stone_id = s.id
-                            join jw_inserts.colours c on se.colour_id = c.id
+                            join jw_inserts.stone_colours sc on se.stone_colour_id = sc.id
                             join jw_inserts.facets f on se.facet_id = f.id
                             join
                         (
@@ -58,9 +58,9 @@ return new class extends Migration
                     from
                         jw_inserts.grown_stones as gs
                             join jw_inserts.stone_families sf on gs.stone_family_id = sf.id
-            
+
                     union all
-            
+
                     select
                         ns.id as stone_id,
                         ns.stone_family_id as family_id,
@@ -79,9 +79,9 @@ return new class extends Migration
                             join jw_inserts.stone_groups sg on gg.stone_group_id = sg.id
                             left join jw_inserts.stone_item_grades sig on gg.id = sig.id
                             left join jw_inserts.stone_grades g on sig.stone_grade_id = g.id
-            
+
                     union all
-            
+
                     select
                         ist.id as stone_id,
                         null as family_id,
@@ -104,13 +104,13 @@ return new class extends Migration
                         'quantity', i.quantity,
                         'weight', i.weight,
                         'dimensions', i.dimensions,
-                        'exterior', concat_ws(' ',s.name,c.name,f.name),
+                        'exterior', concat_ws(' ',s.name,sc.name,f.name),
                         'stone_id', s.id,
                         'stone_name', s.name,
                         'stone_description', s.description,
-                        'colour_id', c.id,
-                        'colour_name', c.name,
-                        'colour_description', c.description,
+                        'colour_id', sc.id,
+                        'colour_name', sc.name,
+                        'colour_description', sc.description,
                         'facet_id', f.id,
                         'facet_name', f.name,
                         'facet_description', f.description,
@@ -143,7 +143,7 @@ return new class extends Migration
                 cast(max(i.weight) as decimal(8,3)) as dominant_weight,
                 ctd.stone_id,
                 ctd.stone_name,
-                ctd.colour_id,
+                ctd.stone_colour_id,
                 ctd.colour_name,
                 ctd.facet_id,
                 ctd.facet_name
@@ -154,13 +154,13 @@ return new class extends Migration
                     left join jw_inserts.stone_optical_effects soe on s.id = soe.id
                     left join jw_inserts.optical_effects oe on soe.optical_effect_id = oe.id
                     join jw_inserts.stone_exteriors se on s.id = se.stone_id
-                    join jw_inserts.colours c on se.colour_id = c.id
+                    join jw_inserts.stone_colours sc on se.stone_colour_id = sc.id
                     join jw_inserts.facets f on se.facet_id = f.id
                     join jw_inserts.inserts i on se.id = i.stone_exterior_id
                     join cte_dominant ctd on i.jewellery_id = ctd.jewellery_id
-            group by i.jewellery_id, ctd.stone_id, ctd.stone_name, ctd.colour_id, ctd.colour_name, ctd.facet_id, ctd.facet_name
+            group by i.jewellery_id, ctd.stone_id, ctd.stone_name, ctd.stone_colour_id, ctd.colour_name, ctd.facet_id, ctd.facet_name
             with data
-            
+
             SQL
         );
     }

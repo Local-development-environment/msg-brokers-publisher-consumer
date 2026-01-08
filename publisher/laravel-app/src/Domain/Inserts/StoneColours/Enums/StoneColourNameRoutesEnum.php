@@ -1,8 +1,8 @@
 <?php
 
-namespace Domain\Inserts\Colours\Enums;
+namespace Domain\Inserts\StoneColours\Enums;
 
-enum ColourNameRoutesEnum: string
+enum StoneColourNameRoutesEnum: string
 {
     //    There are a few different colour entities (metal colour, insert colour) so in some cases we must use a
     //    clarifying word - insert or metal before colour.

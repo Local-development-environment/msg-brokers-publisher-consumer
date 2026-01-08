@@ -2,18 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Domain\Inserts\Colours\Services;
+namespace Domain\Inserts\StoneColours\Services;
 
-use Domain\Inserts\Colours\Models\Colour;
-use Domain\Inserts\Colours\Repositories\ColourRepository;
+use Domain\Inserts\StoneColours\Models\StoneColour;
+use Domain\Inserts\StoneColours\Pipelines\StoneColourPipeline;
+use Domain\Inserts\StoneColours\Repositories\StoneColourRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Throwable;
 
-final class ColourService
+final class StoneColourService
 {
     public function __construct(
-        public ColourRepository $repository,
-//        public InsertStonePipeline $pipeline
+        public StoneColourRepository $repository,
+        public StoneColourPipeline $pipeline
     ) {}
 
     public function index(array $data): Paginator
@@ -24,12 +25,12 @@ final class ColourService
     /**
      * @throws Throwable
      */
-    public function store(array $data): Colour
+    public function store(array $data): StoneColour
     {
 //        return $this->pipeline->store($data);
     }
 
-    public function show(array $data, int $id): Colour
+    public function show(array $data, int $id): StoneColour
     {
         return $this->repository->show($data, $id);
     }

@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\Insert\Colours\Requests;
+namespace App\Http\Admin\Insert\StoneColours\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-final class ColourStoreRequest extends FormRequest
+final class StoneColourStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
