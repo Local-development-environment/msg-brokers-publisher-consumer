@@ -7722,7 +7722,7 @@
 									"response": []
 								},
 								{
-									"name": "natural-stone-grades stone-grade index",
+									"name": "group-grades stone-item-grade index",
 									"id": "6575703-d1f73867-3efd-4bd1-9cfa-f8bdfc6dbc26",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
@@ -7740,14 +7740,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades/3/stone-grade",
+											"raw": "{{baseURL}}/group-grades/3/stone-item-grade",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades",
+												"group-grades",
 												"3",
-												"stone-grade"
+												"stone-item-grade"
 											]
 										}
 									},
