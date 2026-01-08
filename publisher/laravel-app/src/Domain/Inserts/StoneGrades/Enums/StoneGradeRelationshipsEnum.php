@@ -5,5 +5,5 @@ namespace Domain\Inserts\StoneGrades\Enums;
 
 enum StoneGradeRelationshipsEnum: string
 {
-    case GROUP_GRADES = 'groupGrades';
+    case STONE_ITEM_GRADES = 'stoneItemGrades';
 }

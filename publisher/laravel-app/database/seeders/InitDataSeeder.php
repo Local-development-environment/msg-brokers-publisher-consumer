@@ -12,7 +12,7 @@ use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
 use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectEnum;
-use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneEnum;
+use Domain\Inserts\OpticalEffectStones\Enums\StoneOpticalEffectEnum;
 use Domain\Inserts\StoneExteriours\Enums\StoneExteriorEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeEnum;
@@ -89,7 +89,7 @@ final class InitDataSeeder extends Seeder
         DB::table(TypeOriginEnum::TABLE_NAME->value)->truncate();
         DB::table(StoneEnum::TABLE_NAME->value)->truncate();
         DB::table(OpticalEffectEnum::TABLE_NAME->value)->truncate();
-        DB::table(OpticalEffectStoneEnum::TABLE_NAME->value)->truncate();
+        DB::table(StoneOpticalEffectEnum::TABLE_NAME->value)->truncate();
         DB::table(ColourEnum::TABLE_NAME->value)->truncate();
         DB::table(FacetEnum::TABLE_NAME->value)->truncate();
         DB::table(StoneExteriorEnum::TABLE_NAME->value)->truncate();

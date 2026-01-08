@@ -23,6 +23,7 @@ final class StoneRepository
                 StoneRelationshipsEnum::NATURAL_STONE->value,
                 StoneRelationshipsEnum::FACETS->value,
                 StoneRelationshipsEnum::COLOURS->value,
+                StoneRelationshipsEnum::STONE_EXTERIORS->value,
             ])
             ->allowedFilters([
                 AllowedFilter::exact(StoneEnum::PRIMARY_KEY->value),
@@ -52,6 +53,7 @@ final class StoneRepository
                 StoneRelationshipsEnum::NATURAL_STONE->value,
                 StoneRelationshipsEnum::FACETS->value,
                 StoneRelationshipsEnum::COLOURS->value,
+                StoneRelationshipsEnum::STONE_EXTERIORS->value,
             ])
             ->firstOrFail();
     }

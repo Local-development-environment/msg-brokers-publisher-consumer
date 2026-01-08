@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\StoneGrades\Resources;
 
-use App\Http\Admin\Insert\NaturalStoneGrades\Resources\NaturalStoneGradeCollection;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Admin\Insert\StoneItemGrades\Resources\StoneItemGradeResource;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeNameRoutesEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeRelationshipsEnum;
@@ -12,9 +13,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin StoneGrade */
-class StoneGradeResource extends JsonResource
+final class StoneGradeResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource into an array.
@@ -28,9 +29,9 @@ class StoneGradeResource extends JsonResource
             'type' => StoneGradeEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
-                StoneGradeRelationshipsEnum::NATURAL_STONE_GRADES->value => $this->sectionRelationships(
-                    StoneGradeNameRoutesEnum::RELATED_TO_GROUP_GRADES->value,
-                    NaturalStoneGradeCollection::class
+                StoneGradeRelationshipsEnum::STONE_ITEM_GRADES->value => $this->sectionRelationships(
+                    StoneGradeNameRoutesEnum::RELATED_TO_STONE_ITEM_GRADES->value,
+                    StoneGradeRelationshipsEnum::STONE_ITEM_GRADES->value
                 )
             ]
         ];
@@ -39,7 +40,7 @@ class StoneGradeResource extends JsonResource
     protected function relations(): array
     {
         return [
-            NaturalStoneGradeCollection::class => $this->whenLoaded(StoneGradeRelationshipsEnum::NATURAL_STONE_GRADES->value),
+            StoneItemGradeResource::collection($this->whenLoaded(StoneGradeRelationshipsEnum::STONE_ITEM_GRADES->value)),
         ];
     }
 }

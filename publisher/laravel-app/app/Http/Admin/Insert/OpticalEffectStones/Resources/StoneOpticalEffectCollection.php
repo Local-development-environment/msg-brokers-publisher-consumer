@@ -1,12 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\OpticalEffectStones\Resources;
 
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesCollectionTrait;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationCollectionTrait;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class OpticalEffectStoneCollection extends ResourceCollection
+final class StoneOpticalEffectCollection extends ResourceCollection
 {
-    use IncludeRelatedEntitiesCollectionTrait;
+    use JsonApiSpecificationCollectionTrait;
 }

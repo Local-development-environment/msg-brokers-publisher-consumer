@@ -17,7 +17,7 @@ final class FacetRepository
     {
         return QueryBuilder::for(Facet::class)
             ->allowedIncludes([
-                FacetRelationshipsEnum::INSERT_EXTERIORS->value
+                FacetRelationshipsEnum::STONE_EXTERIORS->value
             ])
             ->allowedFilters([
                 AllowedFilter::exact(FacetEnum::PRIMARY_KEY->value),
@@ -36,7 +36,7 @@ final class FacetRepository
         return QueryBuilder::for(Facet::class)
             ->where(FacetEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
-                FacetRelationshipsEnum::INSERT_EXTERIORS->value
+                FacetRelationshipsEnum::STONE_EXTERIORS->value
             ])
             ->firstOrFail();
     }

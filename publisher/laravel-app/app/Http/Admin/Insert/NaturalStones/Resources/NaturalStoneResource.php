@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\NaturalStones\Resources;
 
@@ -6,7 +7,7 @@ use App\Http\Admin\Insert\NaturalStoneGrades\Resources\NaturalStoneGradeResource
 use App\Http\Admin\Insert\StoneFamilies\Resources\StoneFamilyResource;
 use App\Http\Admin\Insert\StoneGroups\Resources\StoneGroupResource;
 use App\Http\Admin\Insert\Stones\Resources\StoneResource;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
 use Domain\Inserts\NaturalStones\Enums\NatureStoneNameRoutesEnum;
 use Domain\Inserts\NaturalStones\Enums\NatureStoneRelationshipsEnum;
@@ -15,9 +16,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin NaturalStone */
-class NaturalStoneResource extends JsonResource
+final class NaturalStoneResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource into an array.
@@ -33,19 +34,19 @@ class NaturalStoneResource extends JsonResource
             'relationships' => [
                 NatureStoneRelationshipsEnum::STONE->value => $this->sectionRelationships(
                     NatureStoneNameRoutesEnum::RELATED_TO_STONE->value,
-                    StoneResource::class
+                    NatureStoneRelationshipsEnum::STONE->value
                 ),
                 NatureStoneRelationshipsEnum::NATURAL_STONE_GRADE->value => $this->sectionRelationships(
                     NatureStoneNameRoutesEnum::RELATED_TO_NATURAL_STONE_GRADE->value,
-                    NaturalStoneGradeResource::class
+                    NatureStoneRelationshipsEnum::NATURAL_STONE_GRADE->value
                 ),
                 NatureStoneRelationshipsEnum::STONE_GROUP->value => $this->sectionRelationships(
                     NatureStoneNameRoutesEnum::RELATED_TO_STONE_GROUP->value,
-                    StoneGroupResource::class
+                    NatureStoneRelationshipsEnum::STONE_GROUP->value
                 ),
                 NatureStoneRelationshipsEnum::STONE_FAMILY->value => $this->sectionRelationships(
                     NatureStoneNameRoutesEnum::RELATED_TO_STONE_FAMILY->value,
-                    StoneFamilyResource::class
+                    NatureStoneRelationshipsEnum::STONE_FAMILY->value
                 ),
             ]
         ];
@@ -54,10 +55,10 @@ class NaturalStoneResource extends JsonResource
     protected function relations(): array
     {
         return [
-            StoneResource::class => $this->whenLoaded(NatureStoneRelationshipsEnum::STONE->value),
-            NaturalStoneGradeResource::class => $this->whenLoaded(NatureStoneRelationshipsEnum::NATURAL_STONE_GRADE->value),
-            StoneGroupResource::class => $this->whenLoaded(NatureStoneRelationshipsEnum::STONE_GROUP->value),
-            StoneFamilyResource::class => $this->whenLoaded(NatureStoneRelationshipsEnum::STONE_FAMILY->value),
+            new StoneResource($this->whenLoaded(NatureStoneRelationshipsEnum::STONE->value)),
+            new NaturalStoneGradeResource($this->whenLoaded(NatureStoneRelationshipsEnum::NATURAL_STONE_GRADE->value)),
+            new StoneGroupResource($this->whenLoaded(NatureStoneRelationshipsEnum::STONE_GROUP->value)),
+            new StoneFamilyResource($this->whenLoaded(NatureStoneRelationshipsEnum::STONE_FAMILY->value)),
         ];
     }
 }

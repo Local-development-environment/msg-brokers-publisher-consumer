@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\OpticalEffectStones\Repositories;
 
-use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneEnum;
-use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneRelationshipsEnum;
-use Domain\Inserts\OpticalEffectStones\Models\OpticalEffectStone;
+use Domain\Inserts\OpticalEffectStones\Enums\StoneOpticalEffectEnum;
+use Domain\Inserts\OpticalEffectStones\Enums\StoneOpticalEffectRelationshipsEnum;
+use Domain\Inserts\OpticalEffectStones\Models\StoneOpticalEffect;
 use Illuminate\Contracts\Pagination\Paginator;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -15,41 +15,41 @@ final class OpticalEffectStoneRepository
 {
     public function index(array $data): Paginator
     {
-        return QueryBuilder::for(OpticalEffectStone::class)
+        return QueryBuilder::for(StoneOpticalEffect::class)
             ->allowedIncludes([
-                OpticalEffectStoneRelationshipsEnum::OPTICAL_EFFECT->value,
-                OpticalEffectStoneRelationshipsEnum::STONE->value
+                StoneOpticalEffectRelationshipsEnum::OPTICAL_EFFECT->value,
+                StoneOpticalEffectRelationshipsEnum::STONE->value
             ])
             ->allowedFilters([
-                AllowedFilter::exact(OpticalEffectStoneEnum::PRIMARY_KEY->value),
+                AllowedFilter::exact(StoneOpticalEffectEnum::PRIMARY_KEY->value),
             ])
             ->paginate($data['per_page'] ?? null)
             ->appends($data);
     }
 
-    public function store(array $data): OpticalEffectStone
+    public function store(array $data): StoneOpticalEffect
     {
-        return OpticalEffectStone::create($data);
+        return StoneOpticalEffect::create($data);
     }
 
-    public function show(array $data, int $id): OpticalEffectStone
+    public function show(array $data, int $id): StoneOpticalEffect
     {
-        return QueryBuilder::for(OpticalEffectStone::class)
-            ->where(OpticalEffectStoneEnum::PRIMARY_KEY->value, $id)
+        return QueryBuilder::for(StoneOpticalEffect::class)
+            ->where(StoneOpticalEffectEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
-                OpticalEffectStoneRelationshipsEnum::OPTICAL_EFFECT->value,
-                OpticalEffectStoneRelationshipsEnum::STONE->value
+                StoneOpticalEffectRelationshipsEnum::OPTICAL_EFFECT->value,
+                StoneOpticalEffectRelationshipsEnum::STONE->value
             ])
             ->firstOrFail();
     }
 
     public function update(array $data, int $id): void
     {
-        OpticalEffectStone::findOrFail($id)->update($data);
+        StoneOpticalEffect::findOrFail($id)->update($data);
     }
 
     public function destroy(int $id): void
     {
-        OpticalEffectStone::findOrFail($id)->delete();
+        StoneOpticalEffect::findOrFail($id)->delete();
     }
 }

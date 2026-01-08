@@ -41,13 +41,13 @@ use App\Http\Admin\Insert\NaturalStones\Controllers\NaturalStonesStoneGroupRelat
 use App\Http\Admin\Insert\NaturalStones\Controllers\NaturalStoneStoneRelatedController;
 use App\Http\Admin\Insert\NaturalStones\Controllers\NaturalStoneStoneRelationshipController;
 use App\Http\Admin\Insert\OpticalEffects\Controllers\OpticalEffectController;
-use App\Http\Admin\Insert\OpticalEffects\Controllers\OpticalEffectOpticalEffectStonesRelatedController;
-use App\Http\Admin\Insert\OpticalEffects\Controllers\OpticalEffectOpticalEffectStonesRelationshipController;
-use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStoneController;
-use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStonesOpticalEffectRelatedController;
-use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStonesOpticalEffectRelationshipController;
-use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStoneStoneRelatedController;
-use App\Http\Admin\Insert\OpticalEffectStones\Controllers\OpticalEffectStoneStoneRelationshipController;
+use App\Http\Admin\Insert\OpticalEffects\Controllers\OpticalEffectStoneOpticalEffectsRelatedController;
+use App\Http\Admin\Insert\OpticalEffects\Controllers\OpticalEffectStoneOpticalEffectsRelationshipController;
+use App\Http\Admin\Insert\OpticalEffectStones\Controllers\StoneOpticalEffectController;
+use App\Http\Admin\Insert\OpticalEffectStones\Controllers\StoneOpticalEffectsOpticalEffectRelatedController;
+use App\Http\Admin\Insert\OpticalEffectStones\Controllers\StoneOpticalEffectsOpticalEffectRelationshipController;
+use App\Http\Admin\Insert\OpticalEffectStones\Controllers\StoneOpticalEffectStoneRelatedController;
+use App\Http\Admin\Insert\OpticalEffectStones\Controllers\StoneOpticalEffectStoneRelationshipController;
 use App\Http\Admin\Insert\StoneExteriors\Controllers\StoneExteriorController;
 use App\Http\Admin\Insert\StoneExteriors\Controllers\StoneExteriorInsertsRelatedController;
 use App\Http\Admin\Insert\StoneExteriors\Controllers\StoneExteriorInsertsRelationshipController;
@@ -68,6 +68,8 @@ use App\Http\Admin\Insert\StoneGrades\Controllers\StoneGradeNaturalStoneGradesRe
 use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupController;
 use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupNaturalStonesRelatedController;
 use App\Http\Admin\Insert\StoneGroups\Controllers\StoneGroupNaturalStonesRelationshipController;
+use App\Http\Admin\Insert\StoneItemGrades\Controllers\StoneGradeStoneItemGradesRelatedController;
+use App\Http\Admin\Insert\StoneItemGrades\Controllers\StoneGradeStoneItemGradesRelationshipController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneGrownStoneRelatedController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneGrownStoneRelationshipController;
@@ -93,7 +95,7 @@ use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoNameRoutesEnum;
 use Domain\Inserts\Inserts\Enums\InsertNameRoutesEnum;
 use Domain\Inserts\NaturalStones\Enums\NatureStoneNameRoutesEnum;
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectNameRoutesEnum;
-use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneNameRoutesEnum;
+use Domain\Inserts\OpticalEffectStones\Enums\StoneOpticalEffectNameRoutesEnum;
 use Domain\Inserts\StoneExteriors\Enums\StoneExteriorNameRoutesEnum;
 use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
 use Domain\Inserts\StoneGrades\Enums\StoneGradeNameRoutesEnum;
@@ -250,9 +252,9 @@ Route::group([
 // RELATIONSHIPS
 //  one-to-many Facet to InsertExteriors
     Route::get('facets/{id}/relationships/stone-exteriors', [FacetInsertStonesRelationshipController::class, 'index'])
-        ->name(FacetNameRoutesEnum::RELATIONSHIP_TO_INSERT_EXTERIORS->value);
+        ->name(FacetNameRoutesEnum::RELATIONSHIP_TO_STONE_EXTERIORS->value);
     Route::get('facets/{id}/stone-exteriors', [FacetInsertStonesRelatedController::class, 'index'])
-        ->name(FacetNameRoutesEnum::RELATED_TO_INSERT_EXTERIORS->value);
+        ->name(FacetNameRoutesEnum::RELATED_TO_STONE_EXTERIORS->value);
 
     /*************************** GROWN STONES *************************/
 // CRUD
@@ -388,40 +390,40 @@ Route::group([
 // RELATIONSHIPS
 //  one-to-many OpticalEffect to OpticalEffectStones
     Route::get('optical-effects/{id}/relationships/optical-effect-stones', [
-        OpticalEffectOpticalEffectStonesRelationshipController::class, 'index'
-    ])->name(OpticalEffectNameRoutesEnum::RELATIONSHIP_TO_OPTICAL_EFFECT_STONES->value);
+        OpticalEffectStoneOpticalEffectsRelationshipController::class, 'index'
+    ])->name(OpticalEffectNameRoutesEnum::RELATIONSHIP_TO_STONE_OPTICAL_EFFECTS->value);
     Route::get('optical-effects/{id}/optical-effect-stones', [
-        OpticalEffectOpticalEffectStonesRelatedController::class, 'index'
-    ])->name(OpticalEffectNameRoutesEnum::RELATED_TO_OPTICAL_EFFECT_STONES->value);
+        OpticalEffectStoneOpticalEffectsRelatedController::class, 'index'
+    ])->name(OpticalEffectNameRoutesEnum::RELATED_TO_STONE_OPTICAL_EFFECTS->value);
 
-    /*************************** OPTICAL EFFECT STONES *************************/
+    /*************************** STONE OPTICAL EFFECTS *************************/
 // CRUD
-    Route::get('optical-effect-stones', [OpticalEffectStoneController::class, 'index'])
+    Route::get('stone-optical-effects', [StoneOpticalEffectController::class, 'index'])
         ->name(OpticalEffectNameRoutesEnum::CRUD_INDEX->value);
-    Route::get('optical-effect-stones/{id}', [OpticalEffectStoneController::class, 'show'])
+    Route::get('stone-optical-effects/{id}', [StoneOpticalEffectController::class, 'show'])
         ->name(OpticalEffectNameRoutesEnum::CRUD_SHOW->value);
-    Route::post('optical-effect-stones', [OpticalEffectStoneController::class, 'store'])
+    Route::post('stone-optical-effects', [StoneOpticalEffectController::class, 'store'])
         ->name(OpticalEffectNameRoutesEnum::CRUD_POST->value);
-    Route::patch('optical-effect-stones/{id}', [OpticalEffectStoneController::class, 'update'])
+    Route::patch('stone-optical-effects/{id}', [StoneOpticalEffectController::class, 'update'])
         ->name(OpticalEffectNameRoutesEnum::CRUD_PATCH->value);
-    Route::delete('optical-effect-stones/{id}', [OpticalEffectStoneController::class, 'destroy'])
+    Route::delete('stone-optical-effects/{id}', [StoneOpticalEffectController::class, 'destroy'])
         ->name(OpticalEffectNameRoutesEnum::CRUD_DELETE->value);
 
 // RELATIONSHIPS
-//  many-to-one OpticalEffectStones to OpticalEffect
-    Route::get('optical-effect-stones/{id}/relationships/optical-effect', [
-        OpticalEffectStonesOpticalEffectRelationshipController::class, 'index'
-    ])->name(OpticalEffectStoneNameRoutesEnum::RELATIONSHIP_TO_OPTICAL_EFFECT->value);
-    Route::get('optical-effect-stones/{id}/optical-effect', [
-        OpticalEffectStonesOpticalEffectRelatedController::class, 'index'
-    ])->name(OpticalEffectStoneNameRoutesEnum::RELATED_TO_OPTICAL_EFFECT->value);
+//  many-to-one StoneOpticalEffects to OpticalEffect
+    Route::get('stone-optical-effects/{id}/relationships/optical-effect', [
+        StoneOpticalEffectsOpticalEffectRelationshipController::class, 'index'
+    ])->name(StoneOpticalEffectNameRoutesEnum::RELATIONSHIP_TO_OPTICAL_EFFECT->value);
+    Route::get('stone-optical-effects/{id}/optical-effect', [
+        StoneOpticalEffectsOpticalEffectRelatedController::class, 'index'
+    ])->name(StoneOpticalEffectNameRoutesEnum::RELATED_TO_OPTICAL_EFFECT->value);
 
-//  one-to-one OpticalEffectStone to Stone
-    Route::get('optical-effect-stones/{id}/relationships/stone', [
-        OpticalEffectStoneStoneRelationshipController::class, 'index'
-    ])->name(OpticalEffectStoneNameRoutesEnum::RELATIONSHIP_TO_STONE->value);
-    Route::get('optical-effect-stones/{id}/stone', [OpticalEffectStoneStoneRelatedController::class, 'index'])
-        ->name(OpticalEffectStoneNameRoutesEnum::RELATED_TO_STONE->value);
+//  one-to-one StoneOpticalEffect to Stone
+    Route::get('stone-optical-effects/{id}/relationships/stone', [
+        StoneOpticalEffectStoneRelationshipController::class, 'index'
+    ])->name(StoneOpticalEffectNameRoutesEnum::RELATIONSHIP_TO_STONE->value);
+    Route::get('stone-optical-effects/{id}/stone', [StoneOpticalEffectStoneRelatedController::class, 'index'])
+        ->name(StoneOpticalEffectNameRoutesEnum::RELATED_TO_STONE->value);
 
     /*************************** INSERT OPTIONAL INFOS *************************/
 // CRUD
@@ -457,12 +459,12 @@ Route::group([
         ->name(StoneGradeNameRoutesEnum::CRUD_DELETE->value);
 
 // RELATIONSHIPS
-//  one-to-many StoneGrade to NaturalStoneGrades
-    Route::get('stone-grades/{id}/relationships/natural-stone-grades', [
-        StoneGradeNaturalStoneGradesRelationshipController::class, 'index'
-    ])->name(StoneGradeNameRoutesEnum::RELATIONSHIP_TO_GROUP_GRADES->value);
-    Route::get('stone-grades/{id}/natural-stone-grades', [StoneGradeNaturalStoneGradesRelatedController::class, 'index'])
-        ->name(StoneGradeNameRoutesEnum::RELATED_TO_GROUP_GRADES->value);
+//  one-to-many StoneGrade to StoneItemGrades
+    Route::get('stone-grades/{id}/relationships/stone-item-grades', [
+        StoneGradeStoneItemGradesRelationshipController::class, 'index'
+    ])->name(StoneGradeNameRoutesEnum::RELATIONSHIP_TO_STONE_ITEM_GRADES->value);
+    Route::get('stone-grades/{id}/stone-item-grades', [StoneGradeStoneItemGradesRelatedController::class, 'index'])
+        ->name(StoneGradeNameRoutesEnum::RELATED_TO_STONE_ITEM_GRADES->value);
 
     /*************************** STONE FAMILIES *************************/
 // CRUD

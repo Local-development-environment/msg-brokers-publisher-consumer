@@ -1,15 +1,17 @@
 <?php
+declare(strict_types=1);
 
 namespace Domain\Inserts\Stones\Enums;
 
 enum StoneRelationshipsEnum: string
 {
-    case TYPE_ORIGIN = 'typeOrigin';
-    case IMITATION_STONE = 'imitationStone';
-    case GROWN_STONE = 'grownStone';
-    case NATURAL_STONE = 'naturalStone';
-    case INSERT_STONES = 'insertStones';
+    case TYPE_ORIGIN          = 'typeOrigin';
+    case IMITATION_STONE      = 'imitationStone';
+    case GROWN_STONE          = 'grownStone';
+    case NATURAL_STONE        = 'naturalStone';
+    case INSERT_STONES        = 'insertStones';
     case OPTICAL_EFFECT_STONE = 'opticalEffectStone';
-    case FACETS = 'stoneFacets';
-    case COLOURS = 'stoneColours';
+    case FACETS               = 'stoneFacets';
+    case COLOURS              = 'stoneColours';
+    case STONE_EXTERIORS      = 'stoneExteriors';
 }

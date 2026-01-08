@@ -16,7 +16,7 @@ final class StoneGradeRepository
     public function index(array $data): Paginator
     {
         return QueryBuilder::for(StoneGrade::class)
-            ->allowedIncludes([StoneGradeRelationshipsEnum::NATURAL_STONE_GRADES->value])
+            ->allowedIncludes([StoneGradeRelationshipsEnum::STONE_ITEM_GRADES->value])
             ->allowedFilters([
                 AllowedFilter::exact(StoneGradeEnum::PRIMARY_KEY->value),
             ])
@@ -33,7 +33,7 @@ final class StoneGradeRepository
     {
         return QueryBuilder::for(StoneGrade::class)
             ->where(StoneGradeEnum::PRIMARY_KEY->value, $id)
-            ->allowedIncludes([StoneGradeRelationshipsEnum::NATURAL_STONE_GRADES->value])
+            ->allowedIncludes([StoneGradeRelationshipsEnum::STONE_ITEM_GRADES->value])
             ->firstOrFail();
     }
 

@@ -1,19 +1,20 @@
 <?php
+declare(strict_types=1);
 
 namespace Domain\Inserts\OpticalEffectStones\Models;
 
 use Domain\Inserts\OpticalEffects\Models\OpticalEffect;
-use Domain\Inserts\OpticalEffectStones\Enums\OpticalEffectStoneEnum;
+use Domain\Inserts\OpticalEffectStones\Enums\StoneOpticalEffectEnum;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Inserts\Stones\Models\Stone;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class OpticalEffectStone extends Model
+final class StoneOpticalEffect extends Model
 {
-    protected $table = OpticalEffectStoneEnum::TABLE_NAME->value;
+    protected $table = StoneOpticalEffectEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = OpticalEffectStoneEnum::TYPE_RESOURCE->value;
+    public const string TYPE_RESOURCE = StoneOpticalEffectEnum::TYPE_RESOURCE->value;
 
     public function opticalEffect(): BelongsTo
     {

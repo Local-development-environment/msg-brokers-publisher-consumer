@@ -3,7 +3,7 @@
 namespace Domain\Inserts\OpticalEffects\Models;
 
 use Domain\Inserts\OpticalEffects\Enums\OpticalEffectEnum;
-use Domain\Inserts\OpticalEffectStones\Models\OpticalEffectStone;
+use Domain\Inserts\OpticalEffectStones\Models\StoneOpticalEffect;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -15,6 +15,6 @@ class OpticalEffect extends Model
 
     public function opticalEffectStones(): HasMany
     {
-        return $this->hasMany(OpticalEffectStone::class);
+        return $this->hasMany(StoneOpticalEffect::class);
     }
 }

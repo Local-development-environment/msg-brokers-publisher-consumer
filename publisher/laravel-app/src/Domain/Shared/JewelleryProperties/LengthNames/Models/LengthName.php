@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Domain\Shared\JewelleryProperties\LengthNames\Models;
 
-use Domain\JewelleryProperties\Beads\BeadSizes\Models\BeadSize;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameEnum;
+use Domain\Shared\JewelleryProperties\NeckSizes\Models\NeckSize;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -15,8 +15,8 @@ final class LengthName extends Model
 
     public const string TYPE_RESOURCE = LengthNameEnum::TYPE_RESOURCE->value;
 
-    public function beadSizes(): HasMany
+    public function neckSizes(): HasMany
     {
-        return $this->hasMany(BeadSize::class);
+        return $this->hasMany(NeckSize::class);
     }
 }
