@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\GrownStones\Controllers;
 
@@ -7,7 +8,7 @@ use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
 use Domain\Inserts\GrownStones\Services\Relationships\GrownStoneStoneRelationshipService;
 use Illuminate\Http\JsonResponse;
 
-class GrownStoneStoneRelationshipController extends Controller
+final class GrownStoneStoneRelationshipController extends Controller
 {
     public function __construct(public GrownStoneStoneRelationshipService $service)
     {

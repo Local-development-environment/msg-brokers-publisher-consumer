@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\GrownStones\Controllers;
 
@@ -12,7 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class GrownStoneController extends Controller
+final class GrownStoneController extends Controller
 {
     public function __construct(public GrownStoneService $service, public GrownStone $grownStone)
     {

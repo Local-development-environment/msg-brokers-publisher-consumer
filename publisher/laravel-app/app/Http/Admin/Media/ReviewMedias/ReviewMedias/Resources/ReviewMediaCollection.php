@@ -6,7 +6,7 @@ namespace App\Http\Admin\Media\ReviewMedias\ReviewMedias\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-final class MediaReviewCollection extends ResourceCollection
+final class ReviewMediaCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.

@@ -12,8 +12,8 @@ enum MediaTypeNameRoutesEnum: string
     case CRUD_PATCH  = 'media-types.patch';
     case CRUD_DELETE = 'media-types.delete';
 
-    case RELATED_TO_MEDIA_CATALOGS      = 'media-type.media-catalogs';
-    case RELATIONSHIP_TO_MEDIA_CATALOG = 'media-type.relationships.media-catalogs';
-    case RELATED_TO_MEDIA_REVIEWS      = 'media-type.media-reviews';
-    case RELATIONSHIP_TO_MEDIA_REVIEWS = 'media-type.relationships.media-reviews';
+    case RELATED_TO_CATALOG_MEDIAS      = 'media-type.catalog-medias';
+    case RELATIONSHIP_TO_CATALOG_MEDIAS = 'media-type.relationships.catalog-medias';
+    case RELATED_TO_REVIEW_MEDIAS       = 'media-type.review-medias';
+    case RELATIONSHIP_TO_REVIEW_MEDIAS  = 'media-type.relationships.review-medias';
 }

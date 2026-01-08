@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Http\Admin\Insert\NaturalStoneGrades\Requests;
+declare(strict_types=1);
+
+namespace App\Http\Admin\Insert\StoneItemGrades\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NaturalStoneGradeStoreRequest extends FormRequest
+final class StoneItemGradeUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**

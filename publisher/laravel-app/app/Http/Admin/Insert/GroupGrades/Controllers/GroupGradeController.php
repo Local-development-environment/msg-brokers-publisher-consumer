@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Http\Admin\Insert\NaturalStoneGrades\Controllers;
+declare(strict_types=1);
 
-use App\Http\Admin\Insert\NaturalStoneGrades\Resources\NaturalStoneGradeCollection;
+namespace App\Http\Admin\Insert\GroupGrades\Controllers;
+
+use App\Http\Admin\Insert\GroupGrades\Resources\GroupGradeCollection;
+use App\Http\Admin\Insert\GroupGrades\Resources\GroupGradeResource;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\GroupGrades\Models\GroupGrade;
 use Domain\Inserts\GroupGrades\Services\GroupGradeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class NaturalStoneGradeController extends Controller
+final class GroupGradeController extends Controller
 {
-    public function __construct(public GroupGradeService $service, public GroupGrade $naturalStoneGrade)
+    public function __construct(public GroupGradeService $service)
     {
     }
 
@@ -20,12 +22,10 @@ class NaturalStoneGradeController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        $this->authorize('viewAny', $this->naturalStoneGrade);
-
         $data = $request->all();
         $items = $this->service->index($data);
 
-        return (new NaturalStoneGradeCollection($items))->response();
+        return (new GroupGradeCollection($items))->response();
     }
 
     /**
@@ -33,15 +33,20 @@ class NaturalStoneGradeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('create', $this->naturalStoneGrade);
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request, int $id): JsonResponse
     {
-        //
+        $data = $request->all();
+
+        data_set($data, 'id', $id);
+        $model = $this->service->show($data, $id);
+
+        return (new GroupGradeResource($model))->response();
     }
 
     /**
@@ -49,7 +54,7 @@ class NaturalStoneGradeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $this->authorize('update', $this->naturalStoneGrade);
+        //
     }
 
     /**
@@ -57,6 +62,6 @@ class NaturalStoneGradeController extends Controller
      */
     public function destroy(string $id)
     {
-        $this->authorize('delete', $this->naturalStoneGrade);
+        //
     }
 }

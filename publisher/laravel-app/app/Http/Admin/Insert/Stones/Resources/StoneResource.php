@@ -1,14 +1,19 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Stones\Resources;
 
 use App\Http\Admin\Insert\Colours\Resources\ColourCollection;
+use App\Http\Admin\Insert\Colours\Resources\ColourResource;
 use App\Http\Admin\Insert\Facets\Resources\StoneFacetCollection;
+use App\Http\Admin\Insert\Facets\Resources\StoneFacetResource;
 use App\Http\Admin\Insert\GrownStones\Resources\GrownStoneResource;
 use App\Http\Admin\Insert\ImitationStones\Resources\ImitationStoneResource;
 use App\Http\Admin\Insert\NaturalStones\Resources\NaturalStoneResource;
+use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorResource;
 use App\Http\Admin\Insert\TypeOrigins\Resources\TypeOriginResource;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Inserts\Stones\Enums\StoneNameRoutesEnum;
 use Domain\Inserts\Stones\Enums\StoneRelationshipsEnum;
@@ -17,9 +22,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin Stone */
-class StoneResource extends JsonResource
+final class StoneResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource into an array.
@@ -35,28 +40,32 @@ class StoneResource extends JsonResource
             'relationships' => [
                 StoneRelationshipsEnum::TYPE_ORIGIN->value => $this->sectionRelationships(
                     StoneNameRoutesEnum::RELATED_TO_STONE_TYPE_ORIGIN->value,
-                    TypeOriginResource::class
+                    StoneRelationshipsEnum::TYPE_ORIGIN->value
                 ),
                 StoneRelationshipsEnum::IMITATION_STONE->value => $this->sectionRelationships(
                     StoneNameRoutesEnum::RELATED_TO_IMITATION_STONE->value,
-                    ImitationStoneResource::class
+                    StoneRelationshipsEnum::IMITATION_STONE->value
                 ),
                 StoneRelationshipsEnum::GROWN_STONE->value => $this->sectionRelationships(
                     StoneNameRoutesEnum::RELATED_TO_GROWN_STONE->value,
-                    GrownStoneResource::class
+                    StoneRelationshipsEnum::GROWN_STONE->value
                 ),
                 StoneRelationshipsEnum::NATURAL_STONE->value => $this->sectionRelationships(
                     StoneNameRoutesEnum::RELATED_TO_NATURAL_STONE->value,
-                    NaturalStoneResource::class
+                    StoneRelationshipsEnum::NATURAL_STONE->value
                 ),
                 StoneRelationshipsEnum::FACETS->value => $this->sectionRelationships(
                     StoneNameRoutesEnum::RELATED_TO_FACETS->value,
-                    StoneFacetCollection::class
+                    StoneRelationshipsEnum::FACETS->value
                 ),
                 StoneRelationshipsEnum::COLOURS->value => $this->sectionRelationships(
                     StoneNameRoutesEnum::RELATED_TO_COLOURS->value,
-                    ColourCollection::class
+                    StoneRelationshipsEnum::COLOURS->value
                 ),
+                StoneRelationshipsEnum::STONE_EXTERIORS->value => $this->sectionRelationships(
+                    StoneNameRoutesEnum::RELATED_TO_STONE_EXTERIORS->value,
+                    StoneRelationshipsEnum::STONE_EXTERIORS->value
+                )
             ]
         ];
     }
@@ -64,12 +73,13 @@ class StoneResource extends JsonResource
     protected function relations(): array
     {
         return [
-            TypeOriginResource::class => $this->whenLoaded(StoneRelationshipsEnum::TYPE_ORIGIN->value),
-            ImitationStoneResource::class => $this->whenLoaded(StoneRelationshipsEnum::IMITATION_STONE->value),
-            GrownStoneResource::class => $this->whenLoaded(StoneRelationshipsEnum::GROWN_STONE->value),
-            NaturalStoneResource::class => $this->whenLoaded(StoneRelationshipsEnum::NATURAL_STONE->value),
-            StoneFacetCollection::class => $this->whenLoaded(StoneRelationshipsEnum::FACETS->value),
-            ColourCollection::class => $this->whenLoaded(StoneRelationshipsEnum::COLOURS->value),
+            new TypeOriginResource($this->whenLoaded(StoneRelationshipsEnum::TYPE_ORIGIN->value)),
+            new ImitationStoneResource($this->whenLoaded(StoneRelationshipsEnum::IMITATION_STONE->value)),
+            new GrownStoneResource($this->whenLoaded(StoneRelationshipsEnum::GROWN_STONE->value)),
+            new NaturalStoneResource($this->whenLoaded(StoneRelationshipsEnum::NATURAL_STONE->value)),
+            StoneFacetResource::collection($this->whenLoaded(StoneRelationshipsEnum::FACETS->value)),
+            ColourResource::collection($this->whenLoaded(StoneRelationshipsEnum::COLOURS->value)),
+            StoneExteriorResource::collection($this->whenLoaded(StoneRelationshipsEnum::STONE_EXTERIORS->value)),
         ];
     }
 }

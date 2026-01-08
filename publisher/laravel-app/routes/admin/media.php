@@ -81,14 +81,14 @@ Route::group([
     // RELATIONSHIPS
     //  one-to-many Media Type to Media Catalogs
     Route::get('media-types/{id}/relationships/media-catalogs', [MediaTypeCatalogMediasRelationshipController::class, 'index'])
-         ->name(MediaTypeNameRoutesEnum::RELATIONSHIP_TO_MEDIA_CATALOG->value);
+         ->name(MediaTypeNameRoutesEnum::RELATIONSHIP_TO_CATALOG_MEDIAS->value);
     Route::get('media-types/{id}/media-catalogs', [MediaTypeCatalogMediasRelatedController::class, 'index'])
-         ->name(MediaTypeNameRoutesEnum::RELATED_TO_MEDIA_CATALOGS->value);
+         ->name(MediaTypeNameRoutesEnum::RELATED_TO_CATALOG_MEDIAS->value);
     //  one-to-many Media Type to Media Reviews
     Route::get('media-types/{id}/relationships/media-reviews', [MediaTypeReviewMediasRelationshipController::class, 'index'])
-         ->name(MediaTypeNameRoutesEnum::RELATIONSHIP_TO_MEDIA_REVIEWS->value);
+         ->name(MediaTypeNameRoutesEnum::RELATIONSHIP_TO_REVIEW_MEDIAS->value);
     Route::get('media-types/{id}/media-reviews', [MediaTypeReviewMediasRelatedController::class, 'index'])
-         ->name(MediaTypeNameRoutesEnum::RELATED_TO_MEDIA_REVIEWS->value);
+         ->name(MediaTypeNameRoutesEnum::RELATED_TO_REVIEW_MEDIAS->value);
 
     /*************************** CATALOG MEDIAS *************************/
     // CRUD

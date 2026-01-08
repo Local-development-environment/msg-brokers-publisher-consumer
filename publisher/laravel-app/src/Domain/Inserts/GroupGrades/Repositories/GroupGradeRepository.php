@@ -17,8 +17,9 @@ final class GroupGradeRepository
     {
         return QueryBuilder::for(GroupGrade::class)
             ->allowedIncludes([
-                GroupGradeRelationshipsEnum::STONE_GRADE->value,
+                GroupGradeRelationshipsEnum::STONE_ITEM_GRADE->value,
                 GroupGradeRelationshipsEnum::NATURAL_STONE->value,
+                GroupGradeRelationshipsEnum::STONE_GROUP->value,
             ])
             ->allowedFilters([
                 AllowedFilter::exact(GroupGradeEnum::PRIMARY_KEY->value)
@@ -37,8 +38,9 @@ final class GroupGradeRepository
         return QueryBuilder::for(GroupGrade::class)
             ->where(GroupGradeEnum::PRIMARY_KEY->value, $id)
             ->allowedIncludes([
-                GroupGradeRelationshipsEnum::STONE_GRADE->value,
+                GroupGradeRelationshipsEnum::STONE_ITEM_GRADE->value,
                 GroupGradeRelationshipsEnum::NATURAL_STONE->value,
+                GroupGradeRelationshipsEnum::STONE_GROUP->value,
             ])
             ->firstOrFail();
     }

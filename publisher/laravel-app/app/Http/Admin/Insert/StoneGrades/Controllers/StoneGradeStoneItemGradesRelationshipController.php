@@ -1,15 +1,15 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\StoneGrades\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
-use Domain\Inserts\StoneGrades\Services\Relationships\StoneGradeNaturalStoneGradesRelationshipService;
 use Illuminate\Http\JsonResponse;
 
-class StoneGradeNaturalStoneGradesRelationshipController extends Controller
+final class StoneGradeStoneItemGradesRelationshipController extends Controller
 {
-    public function __construct(public StoneGradeNaturalStoneGradesRelationshipService $service)
+    public function __construct(public StoneGradeStoneItemGradesRelationshipService $service)
     {
     }
 

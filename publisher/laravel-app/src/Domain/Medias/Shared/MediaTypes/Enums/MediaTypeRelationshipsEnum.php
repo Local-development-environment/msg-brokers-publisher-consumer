@@ -6,6 +6,6 @@ namespace Domain\Medias\Shared\MediaTypes\Enums;
 
 enum MediaTypeRelationshipsEnum: string
 {
-    case MEDIA_CATALOGS = 'mediaCatalogs';
-    case MEDIA_REVIEWS = 'mediaReviews';
+    case CATALOG_MEDIAS = 'catalogMedias';
+    case REVIEW_MEDIAS = 'reviewMedias';
 }

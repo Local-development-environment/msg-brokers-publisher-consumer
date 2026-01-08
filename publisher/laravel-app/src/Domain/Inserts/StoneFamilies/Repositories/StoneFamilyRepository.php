@@ -17,6 +17,9 @@ final class StoneFamilyRepository
     public function index(array $data): Paginator
     {
         return QueryBuilder::for(StoneFamily::class)
+            ->allowedFields([
+                'id', 'name'
+            ])
             ->allowedIncludes([
                 StoneFamilyRelationshipsEnum::GROWN_STONES->value,
                 StoneFamilyRelationshipsEnum::NATURAL_STONES->value,

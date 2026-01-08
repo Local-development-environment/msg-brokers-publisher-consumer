@@ -1,12 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Http\Admin\Insert\NaturalStoneGrades\Resources;
+namespace App\Http\Admin\Insert\GroupGrades\Resources;
 
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationCollectionTrait;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-final class NaturalStoneGradeCollection extends ResourceCollection
+final class GroupGradeCollection extends ResourceCollection
 {
     use JsonApiSpecificationCollectionTrait;
 }

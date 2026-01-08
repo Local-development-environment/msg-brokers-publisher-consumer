@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\StoneGroups\Resources;
 
-use App\Http\Admin\Insert\NaturalStones\Resources\NaturalStoneCollection;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Admin\Insert\GroupGrades\Resources\GroupGradeResource;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupEnum;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupNameRoutesEnum;
 use Domain\Inserts\StoneGroups\Enums\StoneGroupRelationshipsEnum;
@@ -12,9 +13,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin StoneGroup */
-class StoneGroupResource extends JsonResource
+final class StoneGroupResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource into an array.
@@ -28,9 +29,9 @@ class StoneGroupResource extends JsonResource
             'type' => StoneGroupEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
-                StoneGroupRelationshipsEnum::NATURAL_STONES->value => $this->sectionRelationships(
-                    StoneGroupNameRoutesEnum::RELATED_TO_NATURAL_STONES->value,
-                    NaturalStoneCollection::class
+                StoneGroupRelationshipsEnum::GROUP_GRADES->value => $this->sectionRelationships(
+                    StoneGroupNameRoutesEnum::RELATED_TO_GROUP_GRADES->value,
+                    StoneGroupRelationshipsEnum::GROUP_GRADES->value
                 )
             ]
         ];
@@ -39,7 +40,7 @@ class StoneGroupResource extends JsonResource
     protected function relations(): array
     {
         return [
-            NaturalStoneCollection::class => $this->whenLoaded(StoneGroupRelationshipsEnum::NATURAL_STONES->value),
+            GroupGradeResource::collection($this->whenLoaded(StoneGroupRelationshipsEnum::GROUP_GRADES->value)),
         ];
     }
 }

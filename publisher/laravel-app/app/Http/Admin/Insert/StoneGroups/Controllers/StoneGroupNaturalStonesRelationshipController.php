@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\StoneGroups\Controllers;
 
@@ -7,7 +8,7 @@ use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
 use Domain\Inserts\StoneGroups\Services\Relationships\StoneGroupNaturalStonesRelationshipService;
 use Illuminate\Http\JsonResponse;
 
-class StoneGroupNaturalStonesRelationshipController extends Controller
+final class StoneGroupNaturalStonesRelationshipController extends Controller
 {
     public function __construct(public StoneGroupNaturalStonesRelationshipService $service)
     {

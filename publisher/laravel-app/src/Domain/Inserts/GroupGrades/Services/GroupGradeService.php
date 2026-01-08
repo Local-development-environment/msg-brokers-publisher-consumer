@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domain\Inserts\GroupGrades\Services;
 
 use Domain\Inserts\GroupGrades\Models\GroupGrade;
+use Domain\Inserts\GroupGrades\Pipelines\GroupGradePipeline;
 use Domain\Inserts\GroupGrades\Repositories\GroupGradeRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Throwable;
@@ -13,7 +14,7 @@ final class GroupGradeService
 {
     public function __construct(
         public GroupGradeRepository $repository,
-//        public NaturalStoneGradePipeline $pipeline
+        public GroupGradePipeline $pipeline
     ) {}
 
     public function index(array $data): Paginator
