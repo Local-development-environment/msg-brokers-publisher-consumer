@@ -5,12 +5,12 @@ namespace App\Http\Admin\Insert\Colours\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
-use Domain\Inserts\Colours\Services\Relationships\ColourInsertStonesRelationshipService;
+use Domain\Inserts\Colours\Services\Relationships\StoneColourStoneExteriorsRelationshipService;
 use Illuminate\Http\JsonResponse;
 
 final class ColourInsertStonesRelationshipController extends Controller
 {
-    public function __construct(public ColourInsertStonesRelationshipService $service)
+    public function __construct(public StoneColourStoneExteriorsRelationshipService $service)
     {
     }
 

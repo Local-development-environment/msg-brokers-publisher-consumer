@@ -7,14 +7,14 @@ use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorCollection;
 use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorResource;
 use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\Colours\Enums\ColourEnum;
-use Domain\Inserts\Colours\Enums\ColourNameRoutesEnum;
-use Domain\Inserts\Colours\Enums\ColourRelationshipsEnum;
-use Domain\Inserts\Colours\Models\Colour;
+use Domain\Inserts\Colours\Enums\StoneColourEnum;
+use Domain\Inserts\Colours\Enums\StoneColourNameRoutesEnum;
+use Domain\Inserts\Colours\Enums\StoneColourRelationshipsEnum;
+use Domain\Inserts\Colours\Models\StoneColour;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin Colour */
+/** @mixin StoneColour */
 final class ColourResource extends JsonResource
 {
     use JsonApiSpecificationResourceTrait;
@@ -23,12 +23,12 @@ final class ColourResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => ColourEnum::TYPE_RESOURCE->value,
+            'type' => StoneColourEnum::TYPE_RESOURCE->value,
             'attributes' => $this->attributeItems(),
             'relationships' => [
-                ColourRelationshipsEnum::STONE_EXTERIORS->value => $this->sectionRelationships(
-                    ColourNameRoutesEnum::RELATED_TO_STONE_EXTERIORS->value,
-                    ColourRelationshipsEnum::STONE_EXTERIORS->value,
+                StoneColourRelationshipsEnum::STONE_EXTERIORS->value => $this->sectionRelationships(
+                    StoneColourNameRoutesEnum::RELATED_TO_STONE_EXTERIORS->value,
+                    StoneColourRelationshipsEnum::STONE_EXTERIORS->value,
                 )
             ]
         ];
@@ -37,7 +37,7 @@ final class ColourResource extends JsonResource
     protected function relations(): array
     {
         return [
-            StoneExteriorResource::collection($this->whenLoaded(ColourRelationshipsEnum::STONE_EXTERIORS->value)),
+            StoneExteriorResource::collection($this->whenLoaded(StoneColourRelationshipsEnum::STONE_EXTERIORS->value)),
         ];
     }
 }

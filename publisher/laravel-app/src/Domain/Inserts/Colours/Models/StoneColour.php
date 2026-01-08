@@ -3,17 +3,17 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\Colours\Models;
 
-use Domain\Inserts\Colours\Enums\ColourEnum;
+use Domain\Inserts\Colours\Enums\StoneColourEnum;
 use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
 use Domain\Inserts\StoneExteriors\Models\StoneExterior;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-final class Colour extends Model
+final class StoneColour extends Model
 {
-    protected $table = ColourEnum::TABLE_NAME->value;
+    protected $table = StoneColourEnum::TABLE_NAME->value;
 
-    public const string TYPE_RESOURCE = ColourEnum::TYPE_RESOURCE->value;
+    public const string TYPE_RESOURCE = StoneColourEnum::TYPE_RESOURCE->value;
 
     public function stoneExteriors(): HasMany
     {

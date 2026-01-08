@@ -92,7 +92,7 @@ use App\Http\Admin\Insert\Stones\Controllers\StonesTypeOriginStoneRelationshipCo
 use App\Http\Admin\Insert\TypeOrigins\Controllers\TypeOriginController;
 use App\Http\Admin\Insert\TypeOrigins\Controllers\TypeOriginStonesRelatedController;
 use App\Http\Admin\Insert\TypeOrigins\Controllers\TypeOriginStonesRelationshipController;
-use Domain\Inserts\Colours\Enums\ColourNameRoutesEnum;
+use Domain\Inserts\Colours\Enums\StoneColourNameRoutesEnum;
 use Domain\Inserts\Facets\Enums\FacetNameRoutesEnum;
 use Domain\Inserts\GroupGrades\Enums\GroupGradeNameRoutesEnum;
 use Domain\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
@@ -117,22 +117,22 @@ Route::group([
     /*************************** COLOURS *************************/
     // CRUD
     Route::get('stone-colours', [ColourController::class, 'index'])
-        ->name(ColourNameRoutesEnum::CRUD_INDEX->value);
+        ->name(StoneColourNameRoutesEnum::CRUD_INDEX->value);
     Route::get('stone-colours/{id}', [ColourController::class, 'show'])
-        ->name(ColourNameRoutesEnum::CRUD_SHOW->value);
+        ->name(StoneColourNameRoutesEnum::CRUD_SHOW->value);
     Route::post('stone-colours', [ColourController::class, 'store'])
-        ->name(ColourNameRoutesEnum::CRUD_POST->value);
+        ->name(StoneColourNameRoutesEnum::CRUD_POST->value);
     Route::patch('stone-colours/{id}', [ColourController::class, 'update'])
-        ->name(ColourNameRoutesEnum::CRUD_PATCH->value);
+        ->name(StoneColourNameRoutesEnum::CRUD_PATCH->value);
     Route::delete('stone-colours/{id}', [ColourController::class, 'destroy'])
-        ->name(ColourNameRoutesEnum::CRUD_DELETE->value);
+        ->name(StoneColourNameRoutesEnum::CRUD_DELETE->value);
 
     // RELATIONSHIPS
-    //  one-to-many Colour StoneExteriors
+    //  one-to-many StoneColour StoneExteriors
     Route::get('stone-colours/{id}/relationships/stone-exteriors', [ColourInsertStonesRelationshipController::class, 'index'])
-        ->name(ColourNameRoutesEnum::RELATIONSHIP_TO_STONE_EXTERIORS->value);
+        ->name(StoneColourNameRoutesEnum::RELATIONSHIP_TO_STONE_EXTERIORS->value);
     Route::get('stone-colours/{id}/stone-exteriors', [ColourInsertStonesRelatedController::class, 'index'])
-        ->name(ColourNameRoutesEnum::RELATED_TO_STONE_EXTERIORS->value);
+        ->name(StoneColourNameRoutesEnum::RELATED_TO_STONE_EXTERIORS->value);
 
     /*************************** FACETS *************************/
     // CRUD

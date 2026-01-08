@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\Colours\Enums;
 
-enum ColourEnum: string
+enum StoneColourEnum: string
 {
 //    There are a few different colour entities (metal colour, insert colour) so in some cases we must use a clarifying
 //    word - insert or metal before colour.

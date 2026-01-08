@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\Colours\Services\Relationships;
 
-use Domain\Inserts\Colours\Repositories\Relationships\ColourInsertStonesRelationshipRepository;
+use Domain\Inserts\Colours\Repositories\Relationships\StoneColourStoneExteriorsRelationshipRepository;
 use Illuminate\Database\Eloquent\Collection;
 
-final class ColourInsertStonesRelationshipService
+final class StoneColourStoneExteriorsRelationshipService
 {
-    public function __construct(public ColourInsertStonesRelationshipRepository $repository)
+    public function __construct(public StoneColourStoneExteriorsRelationshipRepository $repository)
     {
     }
 

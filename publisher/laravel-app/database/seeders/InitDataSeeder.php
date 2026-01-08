@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use Domain\Inserts\Colours\Enums\ColourEnum;
+use Domain\Inserts\Colours\Enums\StoneColourEnum;
 use Domain\Inserts\Facets\Enums\FacetEnum;
 use Domain\Inserts\GroupGrades\Enums\GroupGradeEnum;
 use Domain\Inserts\GrownStones\Enums\GrownStoneEnum;
@@ -90,7 +90,7 @@ final class InitDataSeeder extends Seeder
         DB::table(StoneEnum::TABLE_NAME->value)->truncate();
         DB::table(OpticalEffectEnum::TABLE_NAME->value)->truncate();
         DB::table(StoneOpticalEffectEnum::TABLE_NAME->value)->truncate();
-        DB::table(ColourEnum::TABLE_NAME->value)->truncate();
+        DB::table(StoneColourEnum::TABLE_NAME->value)->truncate();
         DB::table(FacetEnum::TABLE_NAME->value)->truncate();
         DB::table(StoneExteriorEnum::TABLE_NAME->value)->truncate();
         DB::table(InsertOptionalInfoEnum::TABLE_NAME->value)->truncate();

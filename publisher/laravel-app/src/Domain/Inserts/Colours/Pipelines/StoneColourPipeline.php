@@ -7,7 +7,7 @@ namespace Domain\Inserts\Colours\Pipelines;
 use Domain\Shared\AbstractPipeline;
 use Illuminate\Database\Eloquent\Model;
 
-final class ColourPipeline extends AbstractPipeline
+final class StoneColourPipeline extends AbstractPipeline
 {
 
     /**

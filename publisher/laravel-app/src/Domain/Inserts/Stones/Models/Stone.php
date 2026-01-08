@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\Stones\Models;
 
-use Domain\Inserts\Colours\Models\Colour;
+use Domain\Inserts\Colours\Models\StoneColour;
 use Domain\Inserts\Facets\Models\Facet;
 use Domain\Inserts\GrownStones\Enums\GrownStoneEnum;
 use Domain\Inserts\GrownStones\Models\GrownStone;
@@ -77,7 +77,7 @@ final class Stone extends Model
     public function stoneColours(): BelongsToMany
     {
         return $this->belongsToMany(
-            Colour::class,
+            StoneColour::class,
             StoneExteriorEnum::TABLE_NAME->value,
             StoneExteriorEnum::FK_STONE->value,
             StoneExteriorEnum::FK_COLOUR->value

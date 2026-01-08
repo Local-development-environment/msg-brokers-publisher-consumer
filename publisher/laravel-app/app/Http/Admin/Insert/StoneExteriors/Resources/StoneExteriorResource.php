@@ -44,9 +44,9 @@ final class StoneExteriorResource extends JsonResource
                     StoneExteriorNameRoutesEnum::RELATED_TO_STONE_FACET->value,
                     StoneExteriorNameRoutesEnum::RELATED_TO_STONE_FACET->value
                 ),
-                StoneExteriorRelationshipsEnum::COLOUR->value => $this->sectionRelationships(
+                StoneExteriorRelationshipsEnum::STONE_COLOUR->value => $this->sectionRelationships(
                     StoneExteriorNameRoutesEnum::RELATED_TO_STONE_COLOUR->value,
-                    StoneExteriorRelationshipsEnum::COLOUR->value
+                    StoneExteriorRelationshipsEnum::STONE_COLOUR->value
                 ),
             ]
         ];
@@ -58,7 +58,7 @@ final class StoneExteriorResource extends JsonResource
             new StoneResource($this->whenLoaded(StoneExteriorRelationshipsEnum::STONE->value)),
             InsertResource::collection($this->whenLoaded(StoneExteriorRelationshipsEnum::INSERTS->value)),
             new StoneFacetResource($this->whenLoaded(StoneExteriorRelationshipsEnum::FACET->value)),
-            new ColourResource($this->whenLoaded(StoneExteriorRelationshipsEnum::COLOUR->value)),
+            new ColourResource($this->whenLoaded(StoneExteriorRelationshipsEnum::STONE_COLOUR->value)),
         ];
     }
 }

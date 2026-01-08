@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\Colours\Enums;
 
-enum ColourBuilderEnum: string
+enum StoneColourBuilderEnum: string
 {
     case WHITE        = 'белый';
     case TURQUOISE    = 'бирюзовый';

@@ -5,13 +5,13 @@ namespace App\Http\Admin\Insert\Colours\Controllers;
 
 use App\Http\Admin\Insert\Colours\Resources\ColourCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\Colours\Services\ColourService;
+use Domain\Inserts\Colours\Services\StoneColourService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 final class ColourController extends Controller
 {
-    public function __construct(public ColourService $service)
+    public function __construct(public StoneColourService $service)
     {
     }
 

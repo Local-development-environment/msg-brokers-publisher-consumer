@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Inserts\StoneExteriors\Services\Relationships;
 
-use Domain\Inserts\Colours\Models\Colour;
+use Domain\Inserts\Colours\Models\StoneColour;
 use Domain\Inserts\StoneExteriors\Repositories\Relationships\StoneExteriorsColourRelationshipRepository;
 
 final class StoneExteriorsStoneColourRelationshipService
@@ -13,7 +13,7 @@ final class StoneExteriorsStoneColourRelationshipService
     {
     }
 
-    public function index($id): Colour
+    public function index($id): StoneColour
     {
         return $this->repository->index($id);
     }
