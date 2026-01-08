@@ -7690,7 +7690,7 @@
 							"name": "RELATED",
 							"item": [
 								{
-									"name": "natural-stone-grade natural-stone index",
+									"name": "group-grade natural-stone index",
 									"id": "6575703-61bb961c-1a96-4e08-afb6-45a6da64b08a",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true,
