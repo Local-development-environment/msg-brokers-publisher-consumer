@@ -8805,7 +8805,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-grades?include=naturalStoneGrades",
+											"raw": "{{baseURL}}/stone-grades?include=stoneItemGrades",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -8815,7 +8815,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "naturalStoneGrades"
+													"value": "stoneItemGrades"
 												}
 											]
 										}
