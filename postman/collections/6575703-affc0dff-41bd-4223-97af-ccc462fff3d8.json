@@ -7610,12 +7610,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/natural-stone-grades",
+											"raw": "{{baseURL}}/group-grades",
 											"host": [
 												"{{baseURL}}"
 											],
 											"path": [
-												"natural-stone-grades"
+												"group-grades"
 											]
 										}
 									},
