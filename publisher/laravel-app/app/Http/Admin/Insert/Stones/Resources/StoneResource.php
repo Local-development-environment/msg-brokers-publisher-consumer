@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Stones\Resources;
 
-use App\Http\Admin\Insert\Colours\Resources\StoneColourCollection;
-use App\Http\Admin\Insert\Colours\Resources\StoneColourResource;
+use Resources\StoneColourCollection;
+use Resources\StoneColourResource;
 use App\Http\Admin\Insert\Facets\Resources\StoneFacetCollection;
 use App\Http\Admin\Insert\Facets\Resources\StoneFacetResource;
 use App\Http\Admin\Insert\GrownStones\Resources\GrownStoneResource;

@@ -244,7 +244,7 @@ final class InitInsertData
 
                 DB::table(StoneExteriorEnum::TABLE_NAME->value)
                     ->insert([
-                        'colour_id' => $colourId,
+                        'stone_colour_id' => $colourId,
                         'facet_id' => $facetId,
                         'stone_id' => $stoneId,
                         'created_at' => now(),

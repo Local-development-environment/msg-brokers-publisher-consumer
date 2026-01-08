@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\Insert\Colours\Controllers;
+namespace App\Http\Admin\Insert\StoneColours\Controllers;
 
-use App\Http\Admin\Insert\Colours\Resources\StoneColourCollection;
+use App\Http\Admin\Insert\StoneColours\Resources\StoneColourCollection;
 use App\Http\Controllers\Controller;
 use Domain\Inserts\StoneColours\Services\StoneColourService;
 use Illuminate\Http\JsonResponse;

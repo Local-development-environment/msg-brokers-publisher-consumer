@@ -9,6 +9,6 @@ enum StoneColourEnum: string
 //    word - insert or metal before colour.
 
     case TYPE_RESOURCE = 'stoneColours';
-    case TABLE_NAME    = 'jw_inserts.colours';
+    case TABLE_NAME    = 'jw_inserts.stone_colours';
     case PRIMARY_KEY   = 'id';
 }

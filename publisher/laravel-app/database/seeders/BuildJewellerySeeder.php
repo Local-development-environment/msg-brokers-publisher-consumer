@@ -152,7 +152,7 @@ final class BuildJewellerySeeder extends Seeder
                 $stoneId  = DB::table(StoneEnum::TABLE_NAME->value)->where('name', $item['stoneName'])->value('id');
 
                 $exteriorId = DB::table(StoneExteriorEnum::TABLE_NAME->value)->where('stone_id', $stoneId)
-                                ->where('facet_id', $facetId)->where('colour_id', $colourId)->value('id')
+                                ->where('facet_id', $facetId)->where('stone_colour_id', $colourId)->value('id')
                 ;
 
                 DB::table(InsertEnum::TABLE_NAME->value)->insert([

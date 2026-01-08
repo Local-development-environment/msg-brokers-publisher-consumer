@@ -2,9 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Http\Admin\Insert\Colours\Controllers\StoneColourController;
-use App\Http\Admin\Insert\Colours\Controllers\StoneColourStoneExteriorsRelatedController;
-use App\Http\Admin\Insert\Colours\Controllers\StoneColourStoneExteriorsRelationshipController;
 use App\Http\Admin\Insert\Facets\Controllers\FacetController;
 use App\Http\Admin\Insert\Facets\Controllers\FacetInsertStonesRelatedController;
 use App\Http\Admin\Insert\Facets\Controllers\FacetInsertStonesRelationshipController;
@@ -49,6 +46,9 @@ use App\Http\Admin\Insert\OpticalEffectStones\Controllers\StoneOpticalEffectsOpt
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\StoneOpticalEffectsOpticalEffectRelationshipController;
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\StoneOpticalEffectStoneRelatedController;
 use App\Http\Admin\Insert\OpticalEffectStones\Controllers\StoneOpticalEffectStoneRelationshipController;
+use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourController;
+use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourStoneExteriorsRelatedController;
+use App\Http\Admin\Insert\StoneColours\Controllers\StoneColourStoneExteriorsRelationshipController;
 use App\Http\Admin\Insert\StoneExteriors\Controllers\StoneExteriorController;
 use App\Http\Admin\Insert\StoneExteriors\Controllers\StoneExteriorInsertsRelatedController;
 use App\Http\Admin\Insert\StoneExteriors\Controllers\StoneExteriorInsertsRelationshipController;

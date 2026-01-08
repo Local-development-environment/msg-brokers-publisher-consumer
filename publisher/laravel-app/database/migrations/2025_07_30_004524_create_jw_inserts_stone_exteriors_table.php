@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('jw_inserts.stone_exteriors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('stone_id');
-            $table->unsignedBigInteger('colour_id');
+            $table->unsignedBigInteger('stone_colour_id');
             $table->unsignedBigInteger('facet_id');
             $table->timestamps();
 
             $table->foreign('stone_id')->references('id')->on('jw_inserts.stones');
-            $table->foreign('colour_id')->references('id')->on('jw_inserts.colours');
+            $table->foreign('stone_colour_id')->references('id')->on('jw_inserts.stone_colours');
             $table->foreign('facet_id')->references('id')->on('jw_inserts.facets');
 
-            $table->unique(['stone_id', 'colour_id', 'facet_id'], 'stone_exteriors_unique');
+            $table->unique(['stone_id', 'stone_colour_id', 'facet_id'], 'stone_exteriors_unique');
         });
     }
 

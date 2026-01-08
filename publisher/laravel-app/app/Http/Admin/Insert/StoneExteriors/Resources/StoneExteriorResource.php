@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\StoneExteriors\Resources;
 
-use App\Http\Admin\Insert\Colours\Resources\StoneColourResource;
+use Resources\StoneColourResource;
 use App\Http\Admin\Insert\Facets\Resources\StoneFacetResource;
 use App\Http\Admin\Insert\Inserts\Resources\InsertResource;
 use App\Http\Admin\Insert\Stones\Resources\StoneResource;

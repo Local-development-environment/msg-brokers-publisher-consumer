@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\Insert\Colours\Resources;
+namespace App\Http\Admin\Insert\StoneColours\Resources;
 
 use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;

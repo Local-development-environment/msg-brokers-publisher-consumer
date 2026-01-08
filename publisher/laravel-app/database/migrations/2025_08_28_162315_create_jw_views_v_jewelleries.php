@@ -529,7 +529,7 @@ return new class extends Migration
                     vi.inserts,
                     vi.stone_id as dominant_stone_id,
                     vi.stone_name as dominant_stone,
-                    vi.colour_id as dominant_colour_id,
+                    vi.stone_colour_id as dominant_colour_id,
                     vi.colour_name as dominant_colour,
                     vi.facet_id as dominant_facet_id,
                     vi.facet_name as dominant_facet,

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_inserts.colours', function (Blueprint $table) {
+        Schema::create('jw_inserts.stone_colours', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->text('description');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_inserts.colours');
+        Schema::dropIfExists('jw_inserts.stone_colours');
     }
 };

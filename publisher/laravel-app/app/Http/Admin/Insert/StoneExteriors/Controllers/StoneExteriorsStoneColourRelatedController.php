@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\StoneExteriors\Controllers;
 
-use App\Http\Admin\Insert\Colours\Resources\StoneColourResource;
+use Resources\StoneColourResource;
 use App\Http\Controllers\Controller;
 use Domain\Inserts\StoneExteriors\Services\Relationships\StoneExteriorsStoneColourRelationshipService;
 use Illuminate\Http\JsonResponse;
