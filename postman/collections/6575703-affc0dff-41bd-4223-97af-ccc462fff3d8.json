@@ -9053,7 +9053,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-groups?include=naturalStones",
+											"raw": "{{baseURL}}/stone-groups?include=groupGrades",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -9063,7 +9063,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "naturalStones"
+													"value": "groupGrades"
 												}
 											]
 										}
@@ -9306,7 +9306,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stones?include=typeOrigin,naturalStone,imitationStone,grownStone,stoneColours,stoneFacets",
+											"raw": "{{baseURL}}/stones?include=typeOrigin,naturalStone,imitationStone,grownStone,stoneColours,stoneFacets,stoneExteriors",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -9316,7 +9316,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "typeOrigin,naturalStone,imitationStone,grownStone,stoneColours,stoneFacets"
+													"value": "typeOrigin,naturalStone,imitationStone,grownStone,stoneColours,stoneFacets,stoneExteriors"
 												}
 											]
 										}
