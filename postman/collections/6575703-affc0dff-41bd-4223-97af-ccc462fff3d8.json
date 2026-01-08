@@ -9813,7 +9813,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseURL}}/stone-item-grades?include=stoneGrade",
+											"raw": "{{baseURL}}/stone-item-grades?include=groupGrade,stoneGrade",
 											"host": [
 												"{{baseURL}}"
 											],
@@ -9823,7 +9823,7 @@
 											"query": [
 												{
 													"key": "include",
-													"value": "stoneGrade"
+													"value": "groupGrade,stoneGrade"
 												}
 											]
 										}
