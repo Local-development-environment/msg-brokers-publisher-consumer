@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Domain\Inserts\OpticalEffectStones\Repositories\Relationships;
+namespace Domain\Inserts\StoneOpticalEffects\Repositories\Relationships;
 
 use Domain\Inserts\OpticalEffects\Models\OpticalEffect;
 use Domain\Inserts\OpticalEffectStones\Models\StoneOpticalEffect;
 
-final class OpticalEffectStonesOpticalEffectRelationshipRepository
+final class StoneOpticalEffectsOpticalEffectRelationshipRepository
 {
     public function index(int $id): OpticalEffect
     {

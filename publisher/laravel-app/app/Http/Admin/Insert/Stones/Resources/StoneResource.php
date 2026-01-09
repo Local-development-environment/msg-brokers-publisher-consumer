@@ -3,16 +3,14 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\Stones\Resources;
 
-use Resources\StoneColourCollection;
-use Resources\StoneColourResource;
-use App\Http\Admin\Insert\Facets\Resources\StoneFacetCollection;
 use App\Http\Admin\Insert\Facets\Resources\StoneFacetResource;
 use App\Http\Admin\Insert\GrownStones\Resources\GrownStoneResource;
 use App\Http\Admin\Insert\ImitationStones\Resources\ImitationStoneResource;
 use App\Http\Admin\Insert\NaturalStones\Resources\NaturalStoneResource;
+use App\Http\Admin\Insert\OpticalEffectStones\Resources\StoneOpticalEffectResource;
+use App\Http\Admin\Insert\StoneColours\Resources\StoneColourResource;
 use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorResource;
 use App\Http\Admin\Insert\TypeOrigins\Resources\TypeOriginResource;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Inserts\Stones\Enums\StoneNameRoutesEnum;
@@ -58,13 +56,17 @@ final class StoneResource extends JsonResource
                     StoneNameRoutesEnum::RELATED_TO_FACETS->value,
                     StoneRelationshipsEnum::FACETS->value
                 ),
-                StoneRelationshipsEnum::COLOURS->value => $this->sectionRelationships(
-                    StoneNameRoutesEnum::RELATED_TO_COLOURS->value,
-                    StoneRelationshipsEnum::COLOURS->value
+                StoneRelationshipsEnum::STONE_COLOURS->value => $this->sectionRelationships(
+                    StoneNameRoutesEnum::RELATED_TO_STONE_COLOURS->value,
+                    StoneRelationshipsEnum::STONE_COLOURS->value
                 ),
                 StoneRelationshipsEnum::STONE_EXTERIORS->value => $this->sectionRelationships(
                     StoneNameRoutesEnum::RELATED_TO_STONE_EXTERIORS->value,
                     StoneRelationshipsEnum::STONE_EXTERIORS->value
+                ),
+                StoneRelationshipsEnum::STONE_OPTICAL_EFFECT->value => $this->sectionRelationships(
+                    StoneNameRoutesEnum::RELATED_TO_STONE_OPTICAL_EFFECT->value,
+                    StoneRelationshipsEnum::STONE_OPTICAL_EFFECT->value
                 )
             ]
         ];
@@ -78,8 +80,9 @@ final class StoneResource extends JsonResource
             new GrownStoneResource($this->whenLoaded(StoneRelationshipsEnum::GROWN_STONE->value)),
             new NaturalStoneResource($this->whenLoaded(StoneRelationshipsEnum::NATURAL_STONE->value)),
             StoneFacetResource::collection($this->whenLoaded(StoneRelationshipsEnum::FACETS->value)),
-            StoneColourResource::collection($this->whenLoaded(StoneRelationshipsEnum::COLOURS->value)),
+            StoneColourResource::collection($this->whenLoaded(StoneRelationshipsEnum::STONE_COLOURS->value)),
             StoneExteriorResource::collection($this->whenLoaded(StoneRelationshipsEnum::STONE_EXTERIORS->value)),
+            new StoneOpticalEffectResource($this->whenLoaded(StoneRelationshipsEnum::STONE_OPTICAL_EFFECT->value)),
         ];
     }
 }

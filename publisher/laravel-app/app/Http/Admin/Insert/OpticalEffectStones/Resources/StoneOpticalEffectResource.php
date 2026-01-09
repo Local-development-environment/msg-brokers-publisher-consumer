@@ -6,10 +6,10 @@ namespace App\Http\Admin\Insert\OpticalEffectStones\Resources;
 use App\Http\Admin\Insert\OpticalEffects\Resources\OpticalEffectResource;
 use App\Http\Admin\Insert\Stones\Resources\StoneResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\OpticalEffectStones\Enums\StoneOpticalEffectEnum;
-use Domain\Inserts\OpticalEffectStones\Enums\StoneOpticalEffectNameRoutesEnum;
-use Domain\Inserts\OpticalEffectStones\Enums\StoneOpticalEffectRelationshipsEnum;
-use Domain\Inserts\OpticalEffectStones\Models\StoneOpticalEffect;
+use Domain\Inserts\StoneOpticalEffects\Enums\StoneOpticalEffectEnum;
+use Domain\Inserts\StoneOpticalEffects\Enums\StoneOpticalEffectNameRoutesEnum;
+use Domain\Inserts\StoneOpticalEffects\Enums\StoneOpticalEffectRelationshipsEnum;
+use Domain\Inserts\StoneOpticalEffects\Models\StoneOpticalEffect;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 

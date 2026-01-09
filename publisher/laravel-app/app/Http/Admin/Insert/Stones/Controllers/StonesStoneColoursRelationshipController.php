@@ -5,7 +5,7 @@ namespace App\Http\Admin\Insert\Stones\Controllers;
 
 use App\Http\Controllers\Controller;
 
-final class StonesColoursRelationshipController extends Controller
+final class StonesStoneColoursRelationshipController extends Controller
 {
     public function index()
     {

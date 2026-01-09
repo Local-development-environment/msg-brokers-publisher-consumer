@@ -2,18 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Domain\Inserts\OpticalEffectStones\Services;
+namespace Domain\Inserts\StoneOpticalEffects\Services;
 
 use Domain\Inserts\OpticalEffectStones\Models\StoneOpticalEffect;
-use Domain\Inserts\OpticalEffectStones\Repositories\OpticalEffectStoneRepository;
+use Domain\Inserts\StoneOpticalEffects\Pipelines\StoneOpticalEffectPipeline;
+use Domain\Inserts\StoneOpticalEffects\Repositories\StoneOpticalEffectRepository;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Model;
 use Throwable;
 
-final class OpticalEffectStoneService
+final class StoneOpticalEffectService
 {
     public function __construct(
-        public OpticalEffectStoneRepository $repository,
-//        public StoneTypeOriginPipeline $pipeline
+        public StoneOpticalEffectRepository $repository,
+        public StoneOpticalEffectPipeline $pipeline
     ) {}
 
     public function index(array $data): Paginator
@@ -29,7 +31,7 @@ final class OpticalEffectStoneService
 //        return $this->pipeline->store($data);
     }
 
-    public function show(array $data, int $id): StoneOpticalEffect
+    public function show(array $data, int $id): StoneOpticalEffect|Model
     {
         return $this->repository->show($data, $id);
     }

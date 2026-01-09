@@ -5,13 +5,13 @@ namespace App\Http\Admin\Insert\OpticalEffectStones\Controllers;
 
 use App\Http\Admin\Insert\OpticalEffectStones\Resources\StoneOpticalEffectCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\OpticalEffectStones\Services\OpticalEffectStoneService;
+use Domain\Inserts\StoneOpticalEffects\Services\StoneOpticalEffectService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 final class StoneOpticalEffectController extends Controller
 {
-    public function __construct(public OpticalEffectStoneService $service)
+    public function __construct(public StoneOpticalEffectService $service)
     {
     }
 

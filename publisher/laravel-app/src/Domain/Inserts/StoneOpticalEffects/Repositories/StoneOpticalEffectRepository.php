@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Domain\Inserts\OpticalEffectStones\Repositories;
+namespace Domain\Inserts\StoneOpticalEffects\Repositories;
 
-use Domain\Inserts\OpticalEffectStones\Enums\StoneOpticalEffectEnum;
-use Domain\Inserts\OpticalEffectStones\Enums\StoneOpticalEffectRelationshipsEnum;
-use Domain\Inserts\OpticalEffectStones\Models\StoneOpticalEffect;
+use Domain\Inserts\StoneOpticalEffects\Enums\StoneOpticalEffectEnum;
+use Domain\Inserts\StoneOpticalEffects\Enums\StoneOpticalEffectRelationshipsEnum;
+use Domain\Inserts\StoneOpticalEffects\Models\StoneOpticalEffect;
 use Illuminate\Contracts\Pagination\Paginator;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-final class OpticalEffectStoneRepository
+final class StoneOpticalEffectRepository
 {
     public function index(array $data): Paginator
     {

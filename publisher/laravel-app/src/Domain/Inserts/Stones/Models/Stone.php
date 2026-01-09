@@ -10,11 +10,11 @@ use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
 use Domain\Inserts\ImitationStones\Models\ImitationStone;
 use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
 use Domain\Inserts\NaturalStones\Models\NaturalStone;
-use Domain\Inserts\OpticalEffectStones\Enums\StoneOpticalEffectEnum;
-use Domain\Inserts\OpticalEffectStones\Models\StoneOpticalEffect;
 use Domain\Inserts\StoneColours\Models\StoneColour;
 use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
 use Domain\Inserts\StoneExteriors\Models\StoneExterior;
+use Domain\Inserts\StoneOpticalEffects\Enums\StoneOpticalEffectEnum;
+use Domain\Inserts\StoneOpticalEffects\Models\StoneOpticalEffect;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Inserts\TypeOrigins\Models\TypeOrigin;
 use Illuminate\Database\Eloquent\Model;
@@ -54,17 +54,12 @@ final class Stone extends Model
         return $this->hasOne(StoneOpticalEffect::class, StoneOpticalEffectEnum::PRIMARY_KEY->value);
     }
 
-    public function insertStones(): HasMany
-    {
-        return $this->hasMany(GrownStone::class);
-    }
-
     public function stoneExteriors(): HasMany
     {
         return $this->hasMany(StoneExterior::class);
     }
 
-    public function stoneFacets(): BelongsToMany
+    public function facets(): BelongsToMany
     {
         return $this->belongsToMany(
             Facet::class,
