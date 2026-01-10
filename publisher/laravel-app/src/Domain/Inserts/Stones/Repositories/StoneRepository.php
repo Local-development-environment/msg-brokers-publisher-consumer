@@ -22,8 +22,9 @@ final class StoneRepository
                 StoneRelationshipsEnum::GROWN_STONE->value,
                 StoneRelationshipsEnum::NATURAL_STONE->value,
                 StoneRelationshipsEnum::FACETS->value,
-                StoneRelationshipsEnum::COLOURS->value,
+                StoneRelationshipsEnum::STONE_COLOURS->value,
                 StoneRelationshipsEnum::STONE_EXTERIORS->value,
+                StoneRelationshipsEnum::STONE_OPTICAL_EFFECT->value,
             ])
             ->allowedFilters([
                 AllowedFilter::exact(StoneEnum::PRIMARY_KEY->value),
@@ -52,8 +53,9 @@ final class StoneRepository
                 StoneRelationshipsEnum::GROWN_STONE->value,
                 StoneRelationshipsEnum::NATURAL_STONE->value,
                 StoneRelationshipsEnum::FACETS->value,
-                StoneRelationshipsEnum::COLOURS->value,
+                StoneRelationshipsEnum::STONE_COLOURS->value,
                 StoneRelationshipsEnum::STONE_EXTERIORS->value,
+                StoneRelationshipsEnum::STONE_OPTICAL_EFFECT->value,
             ])
             ->firstOrFail();
     }
