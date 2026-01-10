@@ -9851,7 +9851,13 @@
 					"item": [
 						{
 							"name": "RINGS",
-							"item": [],
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [],
+									"id": "6575703-1dde17cb-b967-4610-a214-6f31f32426be"
+								}
+							],
 							"id": "6575703-aef33639-7ea4-4c9c-bbd9-f84cab546716"
 						}
 					],
