@@ -9848,7 +9848,13 @@
 				},
 				{
 					"name": "RING PROPERTIES",
-					"item": [],
+					"item": [
+						{
+							"name": "RINGS",
+							"item": [],
+							"id": "6575703-aef33639-7ea4-4c9c-bbd9-f84cab546716"
+						}
+					],
 					"id": "6575703-caf75fbb-7af0-4ee4-94d4-5841c7bda6b8"
 				}
 			],
