@@ -6597,6 +6597,42 @@
 											"response": []
 										},
 										{
+											"name": "chains index Copy",
+											"id": "6575703-cf86a575-9519-4109-acce-7ffb0f5e2044",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/chains?include=jewellery,neckSizes,chainMetrics,clasp,chainWeavings,weavings",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"chains"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "jewellery,neckSizes,chainMetrics,clasp,chainWeavings,weavings"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
 											"name": "chains show",
 											"id": "6575703-f0273fe3-aa98-4e8c-bf01-5def8c31bd9a",
 											"protocolProfileBehavior": {
