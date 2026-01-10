@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator;
 
-use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
-use Domain\Jewelleries\Categories\Enums\CategoryEnum;
 use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseBuildEnum;
 use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseEnum;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricEnum;
