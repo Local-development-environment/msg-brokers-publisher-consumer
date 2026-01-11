@@ -10096,7 +10096,7 @@
 									"name": "CRUD",
 									"item": [
 										{
-											"name": "ring-types index Copy",
+											"name": "ring-types index",
 											"id": "6575703-354b1d54-9b92-417b-a056-6f77b8ceb75a",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
