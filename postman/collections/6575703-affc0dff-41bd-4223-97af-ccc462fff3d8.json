@@ -10034,7 +10034,19 @@
 												}
 											},
 											"response": []
-										},
+										}
+									],
+									"id": "6575703-4feb25e4-daf7-4675-8c93-28bb8a0081e7"
+								}
+							],
+							"id": "6575703-02e0c88d-29ff-4bf7-a803-029b6854cc1e"
+						},
+						{
+							"name": "RING SIZES",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
 										{
 											"name": "ring-metrics index Copy",
 											"id": "6575703-dc50e7f4-830c-410d-b674-5f14f4e32217",
@@ -10072,17 +10084,6 @@
 											"response": []
 										}
 									],
-									"id": "6575703-4feb25e4-daf7-4675-8c93-28bb8a0081e7"
-								}
-							],
-							"id": "6575703-02e0c88d-29ff-4bf7-a803-029b6854cc1e"
-						},
-						{
-							"name": "RING SIZES",
-							"item": [
-								{
-									"name": "CRUD",
-									"item": [],
 									"id": "6575703-d5efe732-4c00-48e8-9c35-d04c83114f48"
 								}
 							],
