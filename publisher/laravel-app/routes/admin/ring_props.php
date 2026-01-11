@@ -12,6 +12,29 @@ use App\Http\Admin\SpecProperties\Rings\Ring\Controllers\RingsRingSizesRelatedCo
 use App\Http\Admin\SpecProperties\Rings\Ring\Controllers\RingsRingSizesRelationshipController;
 use App\Http\Admin\SpecProperties\Rings\Ring\Controllers\RingsRingTypesRelatedController;
 use App\Http\Admin\SpecProperties\Rings\Ring\Controllers\RingsRingTypesRelationshipController;
+use App\Http\Admin\SpecProperties\Rings\RingDetails\Controllers\RingDetailController;
+use App\Http\Admin\SpecProperties\Rings\RingDetails\Controllers\RingDetailsRingRelatedController;
+use App\Http\Admin\SpecProperties\Rings\RingDetails\Controllers\RingDetailsRingRelationshipController;
+use App\Http\Admin\SpecProperties\Rings\RingDetails\Controllers\RingDetailsRingTypeRelatedController;
+use App\Http\Admin\SpecProperties\Rings\RingDetails\Controllers\RingDetailsRingTypeRelationshipController;
+use App\Http\Admin\SpecProperties\Rings\RingFingers\Controllers\RingFingerController;
+use App\Http\Admin\SpecProperties\Rings\RingFingers\Controllers\RingFingerRingsRelatedController;
+use App\Http\Admin\SpecProperties\Rings\RingFingers\Controllers\RingFingerRingsRelationshipController;
+use App\Http\Admin\SpecProperties\Rings\RingMetrics\Controllers\RingMetricController;
+use App\Http\Admin\SpecProperties\Rings\RingMetrics\Controllers\RingMetricsRingRelatedController;
+use App\Http\Admin\SpecProperties\Rings\RingMetrics\Controllers\RingMetricsRingRelationshipController;
+use App\Http\Admin\SpecProperties\Rings\RingMetrics\Controllers\RingMetricsRingSizeRelatedController;
+use App\Http\Admin\SpecProperties\Rings\RingMetrics\Controllers\RingMetricsRingSizeRelationshipController;
+use App\Http\Admin\SpecProperties\Rings\RingSizes\Controllers\RingSizeController;
+use App\Http\Admin\SpecProperties\Rings\RingSizes\Controllers\RingSizeRingMetricsRelatedController;
+use App\Http\Admin\SpecProperties\Rings\RingSizes\Controllers\RingSizeRingMetricsRelationshipController;
+use App\Http\Admin\SpecProperties\Rings\RingSizes\Controllers\RingSizesRingsRelatedController;
+use App\Http\Admin\SpecProperties\Rings\RingSizes\Controllers\RingSizesRingsRelationshipController;
+use App\Http\Admin\SpecProperties\Rings\RingTypes\Controllers\RingTypeController;
+use App\Http\Admin\SpecProperties\Rings\RingTypes\Controllers\RingTypeRingDetailsRelatedController;
+use App\Http\Admin\SpecProperties\Rings\RingTypes\Controllers\RingTypeRingDetailsRelationshipController;
+use App\Http\Admin\SpecProperties\Rings\RingTypes\Controllers\RingTypesRingsRelatedController;
+use App\Http\Admin\SpecProperties\Rings\RingTypes\Controllers\RingTypesRingsRelationshipController;
 use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailNameRoutesEnum;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerNameRoutesEnum;
 use Domain\JewelleryProperties\Rings\RingMetrics\Enums\RingMetricNameRoutesEnum;
@@ -30,6 +53,19 @@ Route::group([
     Route::patch('ring-types/{id}', [RingTypeController::class, 'update'])->name(RingTypeNameRoutesEnum::CRUD_PATCH->value);
     Route::delete('ring-types/{id}', [RingTypeController::class, 'destroy'])->name(RingTypeNameRoutesEnum::CRUD_DELETE->value);
 
+    // RELATIONSHIPS
+    //  many-to-many RingTypes Rings
+    Route::get('ring-types/{id}/relationships/rings', [RingTypesRingsRelationshipController::class, 'index'])
+        ->name(RingTypeNameRoutesEnum::RELATIONSHIP_TO_RINGS->value);
+    Route::get('ring-types/{id}/rings', [RingTypesRingsRelatedController::class, 'index'])
+        ->name(RingTypeNameRoutesEnum::RELATED_TO_RINGS->value);
+
+    //  one-to-many RingType RingDetails
+    Route::get('ring-types/{id}/relationships/ring-details', [RingTypeRingDetailsRelationshipController::class, 'index'])
+        ->name(RingTypeNameRoutesEnum::RELATIONSHIP_TO_RING_DETAILS->value);
+    Route::get('ring-types/{id}/ring-details', [RingTypeRingDetailsRelatedController::class, 'index'])
+        ->name(RingTypeNameRoutesEnum::RELATED_TO_RING_DETAILS->value);
+
     /*************************** RING FINGERS *************************/
     // CRUD
     Route::get('ring-fingers', [RingFingerController::class, 'index'])->name(RingFingerNameRoutesEnum::CRUD_INDEX->value);
@@ -37,6 +73,13 @@ Route::group([
     Route::post('ring-fingers', [RingFingerController::class, 'store'])->name(RingFingerNameRoutesEnum::CRUD_POST->value);
     Route::patch('ring-fingers/{id}', [RingFingerController::class, 'update'])->name(RingFingerNameRoutesEnum::CRUD_PATCH->value);
     Route::delete('ring-fingers/{id}', [RingFingerController::class, 'destroy'])->name(RingFingerNameRoutesEnum::CRUD_DELETE->value);
+
+    // RELATIONSHIPS
+    //  one-to-many RingFinger Fingers
+    Route::get('ring-fingers/{id}/relationships/rings', [RingFingerRingsRelationshipController::class, 'index'])
+        ->name(RingFingerNameRoutesEnum::RELATIONSHIP_TO_RINGS->value);
+    Route::get('ring-fingers/{id}/rings', [RingFingerRingsRelatedController::class, 'index'])
+        ->name(RingFingerNameRoutesEnum::RELATED_TO_RINGS->value);
 
     /*************************** RING SIZES *************************/
     // CRUD
@@ -46,6 +89,19 @@ Route::group([
     Route::patch('ring-sizes/{id}', [RingSizeController::class, 'update'])->name(RingSizeNameRoutesEnum::CRUD_PATCH->value);
     Route::delete('ring-sizes/{id}', [RingSizeController::class, 'destroy'])->name(RingSizeNameRoutesEnum::CRUD_DELETE->value);
 
+    // RELATIONSHIPS
+    //  many-to-many RingSizes Rings
+    Route::get('ring-sizes/{id}/relationships/rings', [RingSizesRingsRelationshipController::class, 'index'])
+        ->name(RingSizeNameRoutesEnum::RELATIONSHIP_TO_RINGS->value);
+    Route::get('ring-sizes/{id}/rings', [RingSizesRingsRelatedController::class, 'index'])
+        ->name(RingSizeNameRoutesEnum::RELATED_TO_RINGS->value);
+
+    //  one-to-many RingSize ringMetrics
+    Route::get('ring-sizes/{id}/relationships/ring-metrics', [RingSizeRingMetricsRelationshipController::class, 'index'])
+        ->name(RingSizeNameRoutesEnum::RELATIONSHIP_TO_RING_METRICS->value);
+    Route::get('ring-sizes/{id}/ring-metrics', [RingSizeRingMetricsRelatedController::class, 'index'])
+        ->name(RingSizeNameRoutesEnum::RELATED_TO_RING_METRICS->value);
+
     /*************************** RING DETAILS *************************/
     // CRUD
     Route::get('ring-details', [RingDetailController::class, 'index'])->name(RingDetailNameRoutesEnum::CRUD_INDEX->value);
@@ -54,6 +110,19 @@ Route::group([
     Route::patch('ring-details/{id}', [RingDetailController::class, 'update'])->name(RingDetailNameRoutesEnum::CRUD_PATCH->value);
     Route::delete('ring-details/{id}', [RingDetailController::class, 'destroy'])->name(RingDetailNameRoutesEnum::CRUD_DELETE->value);
 
+    // RELATIONSHIPS
+    //  many-to-one RingDetails ring
+    Route::get('ring-details/{id}/relationships/ring', [RingDetailsRingRelationshipController::class, 'index'])
+        ->name(RingDetailNameRoutesEnum::RELATIONSHIP_TO_RING->value);
+    Route::get('ring-details/{id}/ring', [RingDetailsRingRelatedController::class, 'index'])
+        ->name(RingDetailNameRoutesEnum::RELATED_TO_RING->value);
+
+    //  many-to-one RingDetails ringType
+    Route::get('ring-details/{id}/relationships/ring-type', [RingDetailsRingTypeRelationshipController::class, 'index'])
+        ->name(RingDetailNameRoutesEnum::RELATIONSHIP_TO_RING_TYPE->value);
+    Route::get('ring-details/{id}/ring-type', [RingDetailsRingTypeRelatedController::class, 'index'])
+        ->name(RingDetailNameRoutesEnum::RELATED_TO_RING_TYPE->value);
+
     /*************************** RING METRICS *************************/
     // CRUD
     Route::get('ring-metrics', [RingMetricController::class, 'index'])->name(RingMetricNameRoutesEnum::CRUD_INDEX->value);
@@ -61,6 +130,19 @@ Route::group([
     Route::post('ring-metrics', [RingMetricController::class, 'store'])->name(RingMetricNameRoutesEnum::CRUD_POST->value);
     Route::patch('ring-metrics/{id}', [RingMetricController::class, 'update'])->name(RingMetricNameRoutesEnum::CRUD_PATCH->value);
     Route::delete('ring-metrics/{id}', [RingMetricController::class, 'destroy'])->name(RingMetricNameRoutesEnum::CRUD_DELETE->value);
+
+    // RELATIONSHIPS
+    //  many-to-one RingMetrics Ring
+    Route::get('ring-metrics/{id}/relationships/ring', [RingMetricsRingRelationshipController::class, 'index'])
+        ->name(RingMetricNameRoutesEnum::RELATIONSHIP_TO_RING->value);
+    Route::get('ring-metrics/{id}/ring', [RingMetricsRingRelatedController::class, 'index'])
+        ->name(RingMetricNameRoutesEnum::RELATED_TO_RING->value);
+
+    //  many-to-one RingMetrics RingSize
+    Route::get('ring-metrics/{id}/relationships/ring-size', [RingMetricsRingSizeRelationshipController::class, 'index'])
+        ->name(RingMetricNameRoutesEnum::RELATIONSHIP_TO_RING_SIZE->value);
+    Route::get('ring-metrics/{id}/ring-size', [RingMetricsRingSizeRelatedController::class, 'index'])
+        ->name(RingMetricNameRoutesEnum::RELATED_TO_RING_SIZE->value);
 
     /*************************** RINGS *************************/
     // CRUD

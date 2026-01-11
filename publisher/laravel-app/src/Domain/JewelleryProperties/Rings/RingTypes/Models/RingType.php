@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Rings\RingTypes\Models;
 
+use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailEnum;
 use Domain\JewelleryProperties\Rings\RingDetails\Models\RingDetail;
 use Domain\JewelleryProperties\Rings\Rings\Models\Ring;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeEnum;
@@ -20,7 +21,7 @@ final class RingType extends Model
 
     public function rings(): BelongsToMany
     {
-        return $this->belongsToMany(Ring::class, 'id');
+        return $this->belongsToMany(Ring::class, RingDetailEnum::TABLE_NAME->value);
     }
 
     public function ringDetails(): HasMany
