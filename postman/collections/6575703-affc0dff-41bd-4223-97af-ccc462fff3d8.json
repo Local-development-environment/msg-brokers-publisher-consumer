@@ -9995,7 +9995,13 @@
 						},
 						{
 							"name": "RING METRICS",
-							"item": [],
+							"item": [
+								{
+									"name": "New Folder",
+									"item": [],
+									"id": "6575703-4feb25e4-daf7-4675-8c93-28bb8a0081e7"
+								}
+							],
 							"id": "6575703-02e0c88d-29ff-4bf7-a803-029b6854cc1e"
 						}
 					],
