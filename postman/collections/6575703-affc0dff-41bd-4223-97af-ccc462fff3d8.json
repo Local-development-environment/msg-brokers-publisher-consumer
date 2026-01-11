@@ -10094,7 +10094,44 @@
 							"item": [
 								{
 									"name": "CRUD",
-									"item": [],
+									"item": [
+										{
+											"name": "ring-types index Copy",
+											"id": "6575703-354b1d54-9b92-417b-a056-6f77b8ceb75a",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/ring-types?include=rings,ringDetails",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"ring-types"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "rings,ringDetails"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
 									"id": "6575703-83928d71-4d87-4b79-a139-2837907710e9"
 								}
 							],
