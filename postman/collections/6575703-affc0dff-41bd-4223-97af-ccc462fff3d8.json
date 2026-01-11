@@ -9904,7 +9904,7 @@
 									"name": "CRUD",
 									"item": [
 										{
-											"name": "rings index Copy",
+											"name": "ring-details index",
 											"id": "6575703-e737811a-395d-44b9-b477-59ea8c265124",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
