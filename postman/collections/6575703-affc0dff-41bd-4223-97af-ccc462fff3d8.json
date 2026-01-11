@@ -10066,17 +10066,17 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/ring-metrics?include=ring,ringSize",
+													"raw": "{{baseURL}}/ring-types?include=rings,ringDetails",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"ring-metrics"
+														"ring-types"
 													],
 													"query": [
 														{
 															"key": "include",
-															"value": "ring,ringSize"
+															"value": "rings,ringDetails"
 														}
 													]
 												}
