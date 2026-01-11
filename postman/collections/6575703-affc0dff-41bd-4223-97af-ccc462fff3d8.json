@@ -9922,17 +9922,17 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/rings?include=jewellery",
+													"raw": "{{baseURL}}/ring-details?include=ring,ringType",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"rings"
+														"ring-details"
 													],
 													"query": [
 														{
 															"key": "include",
-															"value": "jewellery"
+															"value": "ring,ringType"
 														}
 													]
 												}
