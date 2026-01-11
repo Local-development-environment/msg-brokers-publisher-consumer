@@ -10034,6 +10034,42 @@
 												}
 											},
 											"response": []
+										},
+										{
+											"name": "ring-metrics index Copy",
+											"id": "6575703-dc50e7f4-830c-410d-b674-5f14f4e32217",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/ring-metrics?include=ring,ringSize",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"ring-metrics"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "ring,ringSize"
+														}
+													]
+												}
+											},
+											"response": []
 										}
 									],
 									"id": "6575703-4feb25e4-daf7-4675-8c93-28bb8a0081e7"
