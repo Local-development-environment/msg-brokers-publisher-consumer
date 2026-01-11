@@ -361,7 +361,6 @@ final class BuildJewellerySeeder extends Seeder
                           ->value('id')
         ;
 
-
         $ringId = DB::table(RingEnum::TABLE_NAME->value)->insertGetId([
             'id'             => $jewelleryId,
             'ring_finger_id' => $ringFingerId,
@@ -387,7 +386,6 @@ final class BuildJewellerySeeder extends Seeder
                         ->where('name', $jewelleryData['property']['parameters']['body_part'])
                         ->value('id')
         ;
-
 
         $braceletId = DB::table(BraceletEnum::TABLE_NAME->value)->insertGetId([
             'id'               => $jewelleryId,

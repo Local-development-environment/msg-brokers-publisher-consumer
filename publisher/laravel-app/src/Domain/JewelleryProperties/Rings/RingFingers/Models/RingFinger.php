@@ -7,7 +7,7 @@ namespace Domain\JewelleryProperties\Rings\RingFingers\Models;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
 use Domain\JewelleryProperties\Rings\Rings\Models\Ring;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 final class RingFinger extends Model
 {
@@ -16,8 +16,8 @@ final class RingFinger extends Model
 
     public const string TYPE_RESOURCE = RingFingerEnum::TYPE_RESOURCE->value;
 
-    public function ring(): BelongsTo
+    public function rings(): HasMany
     {
-        return $this->belongsTo(Ring::class, 'id');
+        return $this->hasMany(Ring::class);
     }
 }
