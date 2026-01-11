@@ -9986,6 +9986,42 @@
 												}
 											},
 											"response": []
+										},
+										{
+											"name": "ring-details index Copy",
+											"id": "6575703-e8c19e37-b5c8-420d-84ce-50c96f4bb468",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/ring-details?include=ring,ringType",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"ring-details"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "ring,ringType"
+														}
+													]
+												}
+											},
+											"response": []
 										}
 									],
 									"id": "6575703-f4e60163-7f74-4a22-a70e-f347c29d4cc7"
@@ -9997,7 +10033,7 @@
 							"name": "RING METRICS",
 							"item": [
 								{
-									"name": "New Folder",
+									"name": "CRUD",
 									"item": [],
 									"id": "6575703-4feb25e4-daf7-4675-8c93-28bb8a0081e7"
 								}
