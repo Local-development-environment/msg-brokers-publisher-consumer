@@ -9902,7 +9902,44 @@
 							"item": [
 								{
 									"name": "CRUD",
-									"item": [],
+									"item": [
+										{
+											"name": "rings index Copy",
+											"id": "6575703-e737811a-395d-44b9-b477-59ea8c265124",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/rings?include=jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"rings"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "jewellery"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
 									"id": "6575703-f4e60163-7f74-4a22-a70e-f347c29d4cc7"
 								}
 							],
