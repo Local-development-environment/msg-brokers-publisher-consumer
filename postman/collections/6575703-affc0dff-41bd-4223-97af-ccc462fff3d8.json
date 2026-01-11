@@ -9850,6 +9850,54 @@
 					"name": "RING PROPERTIES",
 					"item": [
 						{
+							"name": "RING FINGERS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "ring-fingers index",
+											"id": "6575703-819a7b8a-d4b3-479e-9595-e9968aee6bda",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/ring-fingers?include=rings",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"ring-fingers"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "rings"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-e2a23a5b-26cd-4595-b7df-031a7507367a"
+								}
+							],
+							"id": "6575703-31a1a620-2500-4120-9160-ce414aa748b6"
+						},
+						{
 							"name": "RINGS",
 							"item": [
 								{
@@ -9941,54 +9989,6 @@
 										}
 									],
 									"id": "6575703-f4e60163-7f74-4a22-a70e-f347c29d4cc7"
-								},
-								{
-									"name": "RING FINGERS",
-									"item": [
-										{
-											"name": "CRUD",
-											"item": [
-												{
-													"name": "ring-fingers index",
-													"id": "6575703-819a7b8a-d4b3-479e-9595-e9968aee6bda",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true,
-														"disabledSystemHeaders": {
-															"accept": true
-														}
-													},
-													"request": {
-														"method": "GET",
-														"header": [
-															{
-																"key": "Accept",
-																"value": "application/vnd.api+json",
-																"type": "text"
-															}
-														],
-														"url": {
-															"raw": "{{baseURL}}/ring-fingers?include=rings",
-															"host": [
-																"{{baseURL}}"
-															],
-															"path": [
-																"ring-fingers"
-															],
-															"query": [
-																{
-																	"key": "include",
-																	"value": "rings"
-																}
-															]
-														}
-													},
-													"response": []
-												}
-											],
-											"id": "6575703-e2a23a5b-26cd-4595-b7df-031a7507367a"
-										}
-									],
-									"id": "6575703-31a1a620-2500-4120-9160-ce414aa748b6"
 								}
 							],
 							"id": "6575703-041f2d87-5e39-4573-9eb7-535246b2f48c"
