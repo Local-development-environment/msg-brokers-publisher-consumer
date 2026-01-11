@@ -9938,42 +9938,6 @@
 												}
 											},
 											"response": []
-										},
-										{
-											"name": "ring-details index Copy",
-											"id": "6575703-819a7b8a-d4b3-479e-9595-e9968aee6bda",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true,
-												"disabledSystemHeaders": {
-													"accept": true
-												}
-											},
-											"request": {
-												"method": "GET",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/vnd.api+json",
-														"type": "text"
-													}
-												],
-												"url": {
-													"raw": "{{baseURL}}/ring-details?include=ring,ringType",
-													"host": [
-														"{{baseURL}}"
-													],
-													"path": [
-														"ring-details"
-													],
-													"query": [
-														{
-															"key": "include",
-															"value": "ring,ringType"
-														}
-													]
-												}
-											},
-											"response": []
 										}
 									],
 									"id": "6575703-f4e60163-7f74-4a22-a70e-f347c29d4cc7"
@@ -9983,7 +9947,44 @@
 									"item": [
 										{
 											"name": "CRUD",
-											"item": [],
+											"item": [
+												{
+													"name": "ring-details index Copy",
+													"id": "6575703-819a7b8a-d4b3-479e-9595-e9968aee6bda",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true,
+														"disabledSystemHeaders": {
+															"accept": true
+														}
+													},
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/vnd.api+json",
+																"type": "text"
+															}
+														],
+														"url": {
+															"raw": "{{baseURL}}/ring-details?include=ring,ringType",
+															"host": [
+																"{{baseURL}}"
+															],
+															"path": [
+																"ring-details"
+															],
+															"query": [
+																{
+																	"key": "include",
+																	"value": "ring,ringType"
+																}
+															]
+														}
+													},
+													"response": []
+												}
+											],
 											"id": "6575703-e2a23a5b-26cd-4595-b7df-031a7507367a"
 										}
 									],
