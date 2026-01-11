@@ -9967,17 +9967,17 @@
 															}
 														],
 														"url": {
-															"raw": "{{baseURL}}/ring-details?include=ring,ringType",
+															"raw": "{{baseURL}}/ring-fingers?include=rings",
 															"host": [
 																"{{baseURL}}"
 															],
 															"path": [
-																"ring-details"
+																"ring-fingers"
 															],
 															"query": [
 																{
 																	"key": "include",
-																	"value": "ring,ringType"
+																	"value": "rings"
 																}
 															]
 														}
