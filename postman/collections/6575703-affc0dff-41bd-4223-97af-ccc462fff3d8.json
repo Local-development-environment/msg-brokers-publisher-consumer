@@ -9188,7 +9188,7 @@
 											"response": []
 										},
 										{
-											"name": "brooches destroy",
+											"name": "charm-pendants destroy",
 											"id": "6575703-d0825183-1290-4aa3-8d23-930a7266c5b2",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -9206,12 +9206,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/brooches/17",
+													"raw": "{{baseURL}}/charm-pendants/17",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"brooches",
+														"charm-pendants",
 														"17"
 													]
 												}
