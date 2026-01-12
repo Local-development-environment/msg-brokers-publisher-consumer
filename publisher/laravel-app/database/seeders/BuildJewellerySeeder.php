@@ -40,6 +40,7 @@ use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Enums\NecklaceMetricEnu
 use Domain\JewelleryProperties\Necklaces\Necklaces\Enums\NecklaceEnum;
 use Domain\JewelleryProperties\Pendants\Pendants\Enums\PendantEnum;
 use Domain\JewelleryProperties\Piercings\Piercings\Enums\PiercingEnum;
+use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailEnum;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
 use Domain\JewelleryProperties\Rings\RingMetrics\Enums\RingMetricEnum;
 use Domain\JewelleryProperties\Rings\Rings\Enums\RingEnum;
@@ -378,6 +379,16 @@ final class BuildJewellerySeeder extends Seeder
                 'created_at'   => now()
             ]);
         }
+//        dd($jewelleryData);
+//        foreach ($jewelleryData['property']['parameters'] as $ringType) {
+//            dd($ringType);
+            DB::table(RingDetailEnum::TABLE_NAME->value)->insertGetId([
+                'ring_id'      => $ringId,
+                'ring_type_id' => DB::table('jw_properties.ring_types')
+                    ->where('name', $jewelleryData['property']['parameters']['ring_type'])->value('id'),
+                'created_at'   => now()
+            ]);
+//        }
     }
 
     private function addBracelets(array $jewelleryData, int $jewelleryId): void
