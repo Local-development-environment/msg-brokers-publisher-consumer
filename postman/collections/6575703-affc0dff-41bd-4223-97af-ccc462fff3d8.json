@@ -9109,7 +9109,7 @@
 											"response": []
 										},
 										{
-											"name": "brooches store",
+											"name": "charm-pendants store",
 											"id": "6575703-a4b78d5b-9b0d-432a-9c96-d8fee92885fb",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -9136,12 +9136,12 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseURL}}/brooches",
+													"raw": "{{baseURL}}/charm-pendants",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"brooches"
+														"charm-pendants"
 													]
 												}
 											},
