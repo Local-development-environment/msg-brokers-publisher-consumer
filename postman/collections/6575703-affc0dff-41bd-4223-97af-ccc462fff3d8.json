@@ -9072,7 +9072,7 @@
 											"response": []
 										},
 										{
-											"name": "brooches show",
+											"name": "charm-pendants show",
 											"id": "6575703-5c462df5-e34b-4edc-a2bf-646b9d3b72e3",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -9090,12 +9090,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/brooches/2?include=jewellery",
+													"raw": "{{baseURL}}/charm-pendants/2?include=jewellery",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"brooches",
+														"charm-pendants",
 														"2"
 													],
 													"query": [
