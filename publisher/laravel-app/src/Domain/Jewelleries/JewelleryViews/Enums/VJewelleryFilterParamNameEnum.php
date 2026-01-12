@@ -5,9 +5,9 @@ namespace Domain\Jewelleries\JewelleryViews\Enums;
 
 enum VJewelleryFilterParamNameEnum: string
 {
-    case OWN_ID             = 'id';
-    case CATEGORY_ID        = 'category_id';
-    case METAL_ID           = 'metal_id';
+    case OWN_ID                = 'id';
+    case JEWELLERY_CATEGORY_ID = 'jewellery_category_id';
+    case METAL_ID              = 'metal_id';
     case STONE_FAMILY_ID    = 'family_id';
     case COVERAGE_ID        = 'coverage_id';
     case STONE_ID           = 'stone_id';

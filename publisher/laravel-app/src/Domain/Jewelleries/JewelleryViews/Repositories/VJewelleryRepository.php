@@ -61,7 +61,7 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
             ->allowedFilters([
                 AllowedFilter::exact(VJewelleryFilterParamNameEnum::OWN_ID->value),
                 AllowedFilter::exact(VJewelleryFilterParamNameEnum::PART_NUMBER->value),
-                AllowedFilter::exact(VJewelleryFilterParamNameEnum::CATEGORY_ID->value),
+                AllowedFilter::exact(VJewelleryFilterParamNameEnum::JEWELLERY_CATEGORY_ID->value),
                 AllowedFilter::exact(VJewelleryFilterParamNameEnum::DOMINANT_COLOUR_ID->value),
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::IS_INSERTS->value, new IsInsertFilter)->nullable(),
                 AllowedFilter::custom(VJewelleryFilterParamNameEnum::APPROX_WEIGHT->value, new ApproxWeightFilter),
@@ -86,10 +86,10 @@ final class VJewelleryRepository extends AbstractMenuFilter implements VJeweller
 
     private function getMenu(array $params): array
     {
-//        dd($params['filter'][VJewelleryFilterParamNameEnum::FK_CATEGORY->value]);
+//        dd($params['filter'][VJewelleryFilterParamNameEnum::FK_JEWELLERY_CATEGORY->value]);
         return [
             'categories' => $this->getMenuItems(
-                CategoryMenuFilter::class, $params, VJewelleryFilterParamNameEnum::CATEGORY_ID->value
+                CategoryMenuFilter::class, $params, VJewelleryFilterParamNameEnum::JEWELLERY_CATEGORY_ID->value
             ),
             'price_range' => $this->getMenuItems(
                 PriceRangeMenuFilter::class, $params, VJewelleryFilterParamNameEnum::PRICE_RANGE->value
