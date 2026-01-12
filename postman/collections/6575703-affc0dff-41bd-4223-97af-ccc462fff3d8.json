@@ -9148,7 +9148,7 @@
 											"response": []
 										},
 										{
-											"name": "brooches update",
+											"name": "charm-pendants update",
 											"id": "6575703-10100557-2c62-4723-9122-49bd51c32504",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -9175,12 +9175,12 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseURL}}/brooches/1002",
+													"raw": "{{baseURL}}/charm-pendants/1002",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"brooches",
+														"charm-pendants",
 														"1002"
 													]
 												}
