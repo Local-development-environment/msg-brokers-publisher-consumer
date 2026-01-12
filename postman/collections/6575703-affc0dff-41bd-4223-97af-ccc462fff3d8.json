@@ -9263,7 +9263,7 @@
 									"name": "RELATIONSHIPS",
 									"item": [
 										{
-											"name": "brooches jewellery index",
+											"name": "charm-pendants jewellery index",
 											"id": "6575703-516a44d6-92b7-4e42-93b7-bbf698991719",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -9281,12 +9281,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/brooches/2/relationships/jewellery",
+													"raw": "{{baseURL}}/charm-pendants/2/relationships/jewellery",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"brooches",
+														"charm-pendants",
 														"2",
 														"relationships",
 														"jewellery"
