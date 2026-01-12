@@ -278,33 +278,57 @@ return new class extends Migration
                         union all
 
                         select
-                            jj.id,jwrng.id as jewellery_id,
+                            jj.id, jwr.id as jewellery_id,
                             jsonb_build_object(
-                                    'ring_id', jwrng.id,
-                                    'ring_finger_id', jwrf.id,
-                                    'ring_finger', jwrf.name,
-                                    'dimensions', jwrng.dimensions,
-                                    'size_price_quantity',
-                                    jsonb_agg(
-                                            jsonb_build_object(
-                                                    'size', jwrs.value,
-                                                    'price', jwrm.price,
-                                                    'quantity', jwrm.quantity
-                                            )
-                                    )
+                                    'types', details.details,
+                                    'metrics', metrics.metrics,
+                                    'finger', rf.name,
+                                    'finger_id', rf.id
                             ) as spec_props,
-                            sum(jwrm.quantity) as quantity,
-                            cast(avg(jwrm.price) as decimal(10, 2)) as avg_price,
-                            cast(max(jwrm.price) as decimal(10, 2)) as max_price,
-                            cast(min(jwrm.price) as decimal(10, 2)) as min_price
+                            metrics.quantity as quantity,
+                            metrics.avg_price,
+                            metrics.max_price,
+                            metrics.min_price
                         from
-                            jw_properties.rings as jwrng
-                                join jewelleries.jewelleries as jj on jwrng.id = jj.id
-                                join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
-                                join jw_properties.ring_fingers as jwrf on jwrng.ring_finger_id = jwrf.id
-                                left join jw_properties.ring_metrics as jwrm on jwrng.id = jwrm.ring_id
-                                left join jw_properties.ring_sizes as jwrs on jwrm.ring_size_id = jwrs.id
-                        group by jj.id,jwrng.id,jwrf.id
+                            jw_properties.rings as jwr
+                                join (
+                                select
+                                    r.id,
+                                    jsonb_agg(
+                                        jsonb_build_object(
+                                            'ring_type_id', rd.ring_type_id,
+                                            'ring_type', rt.name,
+                                            'description', rt.description
+                                        )
+                                    ) as details
+                                from jw_properties.rings as r
+                                         join jw_properties.ring_details rd on r.id = rd.ring_id
+                                         join jw_properties.ring_types rt on rd.ring_type_id = rt.id
+                                group by r.id
+                            ) as details on jwr.id = details.id
+                                join (
+                                select
+                                    r.id,
+                                    sum(rm.quantity) as quantity,
+                                    cast(avg(rm.price) as decimal(10, 2)) as avg_price,
+                                    cast(max(rm.price) as decimal(10, 2)) as max_price,
+                                    cast(min(rm.price) as decimal(10, 2)) as min_price,
+                                    jsonb_agg(
+                                        jsonb_build_object(
+                                            'ring_size_id', rs.id,
+                                            'quantity', rm.quantity,
+                                            'price', rm.price,
+                                            'size', rs.value,
+                                            'unit', rs.unit
+                                        )
+                                    ) as metrics
+                                from jw_properties.rings as r
+                                         join jw_properties.ring_metrics rm on r.id = rm.ring_id
+                                         join jw_properties.ring_sizes rs on rm.ring_size_id = rs.id
+                                group by r.id
+                            ) as metrics on jwr.id = metrics.id
+                        join jw_properties.ring_fingers rf on rf.id = jwr.ring_finger_id
+                        join jewelleries.jewelleries jj on jwr.id = jj.id
 
                         union all
 
