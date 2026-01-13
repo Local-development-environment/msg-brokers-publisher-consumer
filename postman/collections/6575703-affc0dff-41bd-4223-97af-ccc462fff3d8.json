@@ -9586,7 +9586,7 @@
 					"name": "TIE CLIP PROPERTIES",
 					"item": [
 						{
-							"name": "PENDANTS",
+							"name": "TIE CLIPS",
 							"item": [
 								{
 									"name": "CRUD",
@@ -9853,6 +9853,18 @@
 										}
 									],
 									"id": "6575703-32e5ba10-d2ad-4dd4-9ad2-13214135b3ec"
+								},
+								{
+									"name": "New Request",
+									"id": "6575703-91611562-f50c-4199-8269-8bd63e766fa6",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": []
+									},
+									"response": []
 								}
 							],
 							"id": "6575703-d0ea904d-9f20-4552-9087-2e4ebdeb710e"
