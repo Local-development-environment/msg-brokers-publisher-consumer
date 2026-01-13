@@ -9368,12 +9368,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/charm-pendants/2?include=jewellery",
+													"raw": "{{baseURL}}/pendants/2?include=jewellery",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"charm-pendants",
+														"pendants",
 														"2"
 													],
 													"query": [
