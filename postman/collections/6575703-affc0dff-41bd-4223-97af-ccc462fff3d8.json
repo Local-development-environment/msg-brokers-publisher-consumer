@@ -9484,12 +9484,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/charm-pendants/17",
+													"raw": "{{baseURL}}/pendants/17",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"charm-pendants",
+														"pendants",
 														"17"
 													]
 												}
