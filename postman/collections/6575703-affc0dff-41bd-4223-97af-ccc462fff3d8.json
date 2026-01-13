@@ -9027,6 +9027,284 @@
 					"id": "6575703-1810f675-5faf-4510-8667-ef09271ba413"
 				},
 				{
+					"name": "CHARM PENDANT PROPERTIES",
+					"item": [
+						{
+							"name": "CHARM PENDANTS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "charm-pendants index",
+											"id": "6575703-e31c7e90-cf28-4202-af3f-51534ac2caba",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/charm-pendants?include=jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"charm-pendants"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "jewellery"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "charm-pendants show",
+											"id": "6575703-5c462df5-e34b-4edc-a2bf-646b9d3b72e3",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/charm-pendants/2?include=jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"charm-pendants",
+														"2"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "jewellery"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "charm-pendants store",
+											"id": "6575703-a4b78d5b-9b0d-432a-9c96-d8fee92885fb",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"data\": {\r\n        \"id\": 1005,\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseURL}}/charm-pendants",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"charm-pendants"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "charm-pendants update",
+											"id": "6575703-10100557-2c62-4723-9122-49bd51c32504",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"data\": {\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseURL}}/charm-pendants/1002",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"charm-pendants",
+														"1002"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "charm-pendants destroy",
+											"id": "6575703-d0825183-1290-4aa3-8d23-930a7266c5b2",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/charm-pendants/17",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"charm-pendants",
+														"17"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-d1827d31-ca7f-4703-bce6-7e09783cab9f"
+								},
+								{
+									"name": "RELATED",
+									"item": [
+										{
+											"name": "charm-pendants jewellery index",
+											"id": "6575703-fe6c6333-66fc-42ae-9a8b-1c528fd864cc",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/charm-pendants/2/jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"charm-pendants",
+														"2",
+														"jewellery"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-39623d3b-0d7f-4dc5-bb24-26cd47b643c2"
+								},
+								{
+									"name": "RELATIONSHIPS",
+									"item": [
+										{
+											"name": "charm-pendants jewellery index",
+											"id": "6575703-516a44d6-92b7-4e42-93b7-bbf698991719",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/charm-pendants/2/relationships/jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"charm-pendants",
+														"2",
+														"relationships",
+														"jewellery"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-e14432b1-fe65-4111-be45-4c9b03b231a3"
+								}
+							],
+							"id": "6575703-6cb7d7c3-6372-41c5-97b5-1eea46aae7e1"
+						}
+					],
+					"id": "6575703-c29f87d2-9a56-43b4-ba4b-703ee6e73f77"
+				},
+				{
 					"name": "BRACELETS PROPERTIES",
 					"item": [
 						{
@@ -9850,13 +10128,61 @@
 					"name": "RING PROPERTIES",
 					"item": [
 						{
+							"name": "RING FINGERS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "ring-fingers index",
+											"id": "6575703-819a7b8a-d4b3-479e-9595-e9968aee6bda",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/ring-fingers?include=rings",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"ring-fingers"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "rings"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-e2a23a5b-26cd-4595-b7df-031a7507367a"
+								}
+							],
+							"id": "6575703-31a1a620-2500-4120-9160-ce414aa748b6"
+						},
+						{
 							"name": "RINGS",
 							"item": [
 								{
 									"name": "CRUD",
 									"item": [
 										{
-											"name": "chains index Copy",
+											"name": "rings index",
 											"id": "6575703-cf86a575-9519-4109-acce-7ffb0f5e2044",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -9896,6 +10222,198 @@
 								}
 							],
 							"id": "6575703-aef33639-7ea4-4c9c-bbd9-f84cab546716"
+						},
+						{
+							"name": "RING DETAILS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "ring-details index",
+											"id": "6575703-e737811a-395d-44b9-b477-59ea8c265124",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/ring-details?include=ring,ringType",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"ring-details"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "ring,ringType"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-f4e60163-7f74-4a22-a70e-f347c29d4cc7"
+								}
+							],
+							"id": "6575703-041f2d87-5e39-4573-9eb7-535246b2f48c"
+						},
+						{
+							"name": "RING METRICS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "ring-metrics index",
+											"id": "6575703-e8c19e37-b5c8-420d-84ce-50c96f4bb468",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/ring-metrics?include=ring,ringSize",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"ring-metrics"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "ring,ringSize"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-4feb25e4-daf7-4675-8c93-28bb8a0081e7"
+								}
+							],
+							"id": "6575703-02e0c88d-29ff-4bf7-a803-029b6854cc1e"
+						},
+						{
+							"name": "RING SIZES",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "ring-sizes index",
+											"id": "6575703-dc50e7f4-830c-410d-b674-5f14f4e32217",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/ring-sizes?include=rings,ringMetrics",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"ring-sizes"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "rings,ringMetrics"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-d5efe732-4c00-48e8-9c35-d04c83114f48"
+								}
+							],
+							"id": "6575703-581aaa90-f996-4be1-a5a9-3ea177541d78"
+						},
+						{
+							"name": "RING TYPES",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "ring-types index",
+											"id": "6575703-354b1d54-9b92-417b-a056-6f77b8ceb75a",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/ring-types?include=rings,ringDetails",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"ring-types"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "rings,ringDetails"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-83928d71-4d87-4b79-a139-2837907710e9"
+								}
+							],
+							"id": "6575703-c337542b-c3bf-4363-9fd2-bc7b2cae7123"
 						}
 					],
 					"id": "6575703-caf75fbb-7af0-4ee4-94d4-5841c7bda6b8"
