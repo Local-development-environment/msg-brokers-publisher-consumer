@@ -9704,7 +9704,7 @@
 											"response": []
 										},
 										{
-											"name": "pendants update",
+											"name": "tie-clips update",
 											"id": "6575703-84cd053b-25e8-4f57-915c-c40a487ea1b3",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -9731,12 +9731,12 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseURL}}/pendants/1002",
+													"raw": "{{baseURL}}/tie-clips/1002",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"pendants",
+														"tie-clips",
 														"1002"
 													]
 												}
