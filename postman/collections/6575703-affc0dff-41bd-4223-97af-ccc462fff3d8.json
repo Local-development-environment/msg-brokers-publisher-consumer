@@ -9781,7 +9781,7 @@
 									"name": "RELATED",
 									"item": [
 										{
-											"name": "pendants jewellery index",
+											"name": "tie-clips jewellery index",
 											"id": "6575703-207c0bb1-2db9-48e9-a682-b50c7e0d61b9",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -9799,12 +9799,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/pendants/2/jewellery",
+													"raw": "{{baseURL}}/tie-clips/2/jewellery",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"pendants",
+														"tie-clips",
 														"2",
 														"jewellery"
 													]
