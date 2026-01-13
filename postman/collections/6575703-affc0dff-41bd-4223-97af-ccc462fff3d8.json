@@ -9387,7 +9387,7 @@
 											"response": []
 										},
 										{
-											"name": "charm-pendants store",
+											"name": "pendants store",
 											"id": "6575703-7405758d-e59d-40cf-9a53-0949cc7ed8a5",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -9414,12 +9414,12 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseURL}}/charm-pendants",
+													"raw": "{{baseURL}}/pendants",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"charm-pendants"
+														"pendants"
 													]
 												}
 											},
