@@ -11,6 +11,6 @@ enum BroochNameRoutesEnum: string
     case CRUD_POST                 = 'brooches.post';
     case CRUD_PATCH                = 'brooches.patch';
     case CRUD_DELETE               = 'brooches.delete';
-    case RELATED_TO_JEWELLERY      = 'brooches.jewellery';
-    case RELATIONSHIP_TO_JEWELLERY = 'brooches.relationships.jewellery';
+    case RELATED_TO_JEWELLERY      = 'brooch.jewellery';
+    case RELATIONSHIP_TO_JEWELLERY = 'brooch.relationships.jewellery';
 }

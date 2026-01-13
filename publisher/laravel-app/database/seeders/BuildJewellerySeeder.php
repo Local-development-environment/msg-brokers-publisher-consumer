@@ -267,7 +267,7 @@ final class BuildJewellerySeeder extends Seeder
     private function addCharmPendants(array $jewelleryData, int $jewelleryId): void
     {
         DB::table(CharmPendantEnum::TABLE_NAME->value)->insertGetId([
-            'jewellery_id' => $jewelleryId,
+            'id' => $jewelleryId,
             'quantity'     => $jewelleryData['property']['parameters']['quantity'],
             'price'        => $jewelleryData['property']['parameters']['price'],
             'dimensions'   => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),

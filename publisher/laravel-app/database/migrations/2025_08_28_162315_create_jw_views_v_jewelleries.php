@@ -175,7 +175,7 @@ return new class extends Migration
                          union all
 
                         select
-                            jj.id,jwchp.jewellery_id as jewellery_id,
+                            jj.id,jwchp.id as jewellery_id,
                             jsonb_build_object(
                                     'charm_pendant_id', jwchp.id
                             ) as spec_props,
@@ -185,7 +185,7 @@ return new class extends Migration
                             cast(jwchp.price as decimal(10, 2)) as min_price
                         from
                             jw_properties.charm_pendants as jwchp
-                                join jewelleries.jewelleries as jj on jwchp.jewellery_id = jj.id
+                                join jewelleries.jewelleries as jj on jwchp.id = jj.id
                                 join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
 
                         union all
