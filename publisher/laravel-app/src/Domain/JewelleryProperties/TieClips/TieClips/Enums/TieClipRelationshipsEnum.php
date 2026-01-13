@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\TieClips\TieClips\Enums;
 
-enum TieClipRelationshipsEnum
+enum TieClipRelationshipsEnum: string
 {
-
+    case JEWELLERY = 'jewellery';
 }

@@ -296,7 +296,7 @@ final class BuildJewellerySeeder extends Seeder
     {
         //        dd($jewelleryData);
         DB::table(TieClipEnum::TABLE_NAME->value)->insertGetId([
-            'jewellery_id' => $jewelleryId,
+            'id' => $jewelleryId,
             'quantity'     => $jewelleryData['property']['parameters']['quantity'],
             'price'        => $jewelleryData['property']['parameters']['price'],
             'dimensions'   => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),

@@ -1,19 +1,20 @@
 <?php
+
 declare(strict_types=1);
 
-namespace Domain\JewelleryProperties\Pendants\Pendants\Models;
+namespace Domain\JewelleryProperties\TieClips\TieClips\Models;
 
 use Domain\Jewelleries\Jewelleries\Models\Jewellery;
-use Domain\JewelleryProperties\Pendants\Pendants\Enums\PendantEnum;
+use Domain\JewelleryProperties\TieClips\TieClips\Enums\TieClipEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-final class Pendant extends Model
+final class TieClip extends Model
 {
-    protected $table = PendantEnum::TABLE_NAME->value;
+    protected $table = TieClipEnum::TABLE_NAME->value;
     protected $fillable = ['quantity','price','id', 'dimensions'];
 
-    public const string TYPE_RESOURCE = PendantEnum::TYPE_RESOURCE->value;
+    public const string TYPE_RESOURCE = TieClipEnum::TYPE_RESOURCE->value;
 
     public function jewellery(): BelongsTo
     {
