@@ -9744,7 +9744,7 @@
 											"response": []
 										},
 										{
-											"name": "pendants destroy",
+											"name": "tie-clips destroy",
 											"id": "6575703-f8e28ffc-6190-4f28-bcfa-99941ebc7635",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -9762,12 +9762,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/pendants/17",
+													"raw": "{{baseURL}}/tie-clips/17",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"pendants",
+														"tie-clips",
 														"17"
 													]
 												}
