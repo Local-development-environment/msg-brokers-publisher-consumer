@@ -9583,6 +9583,284 @@
 					"id": "6575703-0f01e63f-bf44-42bc-98ff-d0fca2d3de53"
 				},
 				{
+					"name": "PENDANT PROPERTIES Copy",
+					"item": [
+						{
+							"name": "PENDANTS",
+							"item": [
+								{
+									"name": "CRUD",
+									"item": [
+										{
+											"name": "pendants index",
+											"id": "6575703-775c0a17-0480-4bae-b7a1-0a30dae9bebc",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/pendants?include=jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"pendants"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "jewellery"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "pendants show",
+											"id": "6575703-28d09c52-bb8c-437a-981f-07f0bf6e3951",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/pendants/2?include=jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"pendants",
+														"2"
+													],
+													"query": [
+														{
+															"key": "include",
+															"value": "jewellery"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "pendants store",
+											"id": "6575703-3f0d9fd9-c913-45e7-ad8e-0c5d720b5966",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"data\": {\r\n        \"id\": 1005,\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1005,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseURL}}/pendants",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"pendants"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "pendants update",
+											"id": "6575703-84cd053b-25e8-4f57-915c-c40a487ea1b3",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"data\": {\r\n        \"type\": \"beads\",\r\n        \"attributes\": {\r\n            \"bead_base_id\": 2,\r\n            \"clasp_id\": 4\r\n        },\r\n        \"relationships\": {\r\n            \"beadMetrics\": {\r\n               \"data\": [\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 3,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 230000.00\r\n                    },\r\n                    {\r\n                        \"bead_id\": 1002,\r\n                        \"neck_size_id\": 4,\r\n                        \"type\": \"beadMetrics\",\r\n                        \"quantity\": 4,\r\n                        \"price\": 235000.00\r\n                    }\r\n               ]\r\n            }\r\n        }\r\n    }\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseURL}}/pendants/1002",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"pendants",
+														"1002"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "pendants destroy",
+											"id": "6575703-f8e28ffc-6190-4f28-bcfa-99941ebc7635",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/pendants/17",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"pendants",
+														"17"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-9b6db20b-d8a6-4faa-a525-91162cdb42c8"
+								},
+								{
+									"name": "RELATED",
+									"item": [
+										{
+											"name": "pendants jewellery index",
+											"id": "6575703-207c0bb1-2db9-48e9-a682-b50c7e0d61b9",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/pendants/2/jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"pendants",
+														"2",
+														"jewellery"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-3d846cc1-8622-41c9-8cfb-33d678617939"
+								},
+								{
+									"name": "RELATIONSHIPS",
+									"item": [
+										{
+											"name": "pendants jewellery index",
+											"id": "6575703-5feb34a8-bb52-48d6-845f-ba9bdbb43798",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true,
+												"disabledSystemHeaders": {
+													"accept": true
+												}
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.api+json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseURL}}/pendants/2/relationships/jewellery",
+													"host": [
+														"{{baseURL}}"
+													],
+													"path": [
+														"pendants",
+														"2",
+														"relationships",
+														"jewellery"
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "6575703-32e5ba10-d2ad-4dd4-9ad2-13214135b3ec"
+								}
+							],
+							"id": "6575703-d0ea904d-9f20-4552-9087-2e4ebdeb710e"
+						}
+					],
+					"id": "6575703-8341d721-08d8-442f-861f-9003f1643dfc"
+				},
+				{
 					"name": "BRACELETS PROPERTIES",
 					"item": [
 						{
