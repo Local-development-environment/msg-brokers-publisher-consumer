@@ -9665,7 +9665,7 @@
 											"response": []
 										},
 										{
-											"name": "pendants store",
+											"name": "tie-clips store",
 											"id": "6575703-3f0d9fd9-c913-45e7-ad8e-0c5d720b5966",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -9692,12 +9692,12 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseURL}}/pendants",
+													"raw": "{{baseURL}}/tie-clips",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"pendants"
+														"tie-clips"
 													]
 												}
 											},
