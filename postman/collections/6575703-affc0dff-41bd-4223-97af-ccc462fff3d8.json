@@ -9592,7 +9592,7 @@
 									"name": "CRUD",
 									"item": [
 										{
-											"name": "pendants index",
+											"name": "tie-clips index",
 											"id": "6575703-775c0a17-0480-4bae-b7a1-0a30dae9bebc",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -9610,12 +9610,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/pendants?include=jewellery",
+													"raw": "{{baseURL}}/tie-clips?include=jewellery",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"pendants"
+														"tie-clips"
 													],
 													"query": [
 														{
