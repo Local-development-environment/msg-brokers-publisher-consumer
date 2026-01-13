@@ -9,7 +9,9 @@ use Domain\Jewelleries\JewelleryCategories\Models\JewelleryCategory;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
 use Domain\JewelleryProperties\Beads\Beads\Models\Bead;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Models\Bracelet;
+use Domain\JewelleryProperties\Brooches\Brooches\Models\Brooch;
 use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
+use Domain\JewelleryProperties\Rings\Rings\Models\Ring;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -44,5 +46,15 @@ final class Jewellery extends Model
     public function bead(): HasOne
     {
         return $this->hasOne(Bead::class, 'id');
+    }
+
+    public function ring(): HasOne
+    {
+        return $this->hasOne(Ring::class, 'id');
+    }
+
+    public function brooch(): HasOne
+    {
+        return $this->hasOne(Brooch::class, 'id');
     }
 }
