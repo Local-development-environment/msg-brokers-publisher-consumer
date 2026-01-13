@@ -9628,7 +9628,7 @@
 											"response": []
 										},
 										{
-											"name": "pendants show",
+											"name": "tie-clips show",
 											"id": "6575703-28d09c52-bb8c-437a-981f-07f0bf6e3951",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
@@ -9646,12 +9646,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/pendants/2?include=jewellery",
+													"raw": "{{baseURL}}/tie-clips/2?include=jewellery",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"pendants",
+														"tie-clips",
 														"2"
 													],
 													"query": [
