@@ -1,22 +1,24 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Http\Admin\SpecProperties\Pendants\Pendants\Controllers;
+namespace App\Http\Admin\SpecProperties\TieClips\TieClip\Controllers;
 
-use App\Http\Admin\SpecProperties\Pendants\Pendants\Requests\PendantStoreRequest;
-use App\Http\Admin\SpecProperties\Pendants\Pendants\Requests\PendantUpdateRequest;
-use App\Http\Admin\SpecProperties\Pendants\Pendants\Resources\PendantCollection;
-use App\Http\Admin\SpecProperties\Pendants\Pendants\Resources\PendantResource;
-use Domain\JewelleryProperties\Pendants\Pendants\Enums\PendantEnum;
-use Domain\JewelleryProperties\Pendants\Pendants\Enums\PendantNameRoutesEnum;
-use Domain\JewelleryProperties\Pendants\Pendants\Services\PendantService;
+use App\Http\Admin\SpecProperties\TieClips\TieClip\Requests\TieClipStoreRequest;
+use App\Http\Admin\SpecProperties\TieClips\TieClip\Requests\TieClipUpdateRequest;
+use App\Http\Admin\SpecProperties\TieClips\TieClip\Resources\TieClipCollection;
+use App\Http\Admin\SpecProperties\TieClips\TieClip\Resources\TieClipResource;
+use App\Http\Controllers\Controller;
+use Domain\JewelleryProperties\TieClips\TieClips\Enums\TieClipEnum;
+use Domain\JewelleryProperties\TieClips\TieClips\Enums\TieClipNameRoutesEnum;
+use Domain\JewelleryProperties\TieClips\TieClips\Services\TieClipService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Throwable;
 
-final class PendantController extends \App\Http\Controllers\Controller
+final class TieClipController extends Controller
 {
-    public function __construct(public PendantService $service)
+    public function __construct(public TieClipService $service)
     {
     }
 
@@ -28,23 +30,23 @@ final class PendantController extends \App\Http\Controllers\Controller
         $data = $request->all();
         $items = $this->service->index($data);
 
-        return (new PendantCollection($items))->response();
+        return (new TieClipCollection($items))->response();
     }
 
     /**
      * Store a newly created resource in storage.
      * @throws Throwable
      */
-    public function store(PendantStoreRequest $request): JsonResponse
+    public function store(TieClipStoreRequest $request): JsonResponse
     {
         $data = $request->all();
 
         $model = $this->service->store($data);
 
-        return (new PendantResource($model))
+        return (new TieClipResource($model))
             ->response()
-            ->header('Location', route(PendantNameRoutesEnum::CRUD_SHOW->value, [
-                PendantEnum::PRIMARY_KEY->value => $model->id
+            ->header('Location', route(TieClipNameRoutesEnum::CRUD_SHOW->value, [
+                TieClipEnum::PRIMARY_KEY->value => $model->id
             ]));
     }
 
@@ -57,14 +59,14 @@ final class PendantController extends \App\Http\Controllers\Controller
         data_set($data, 'id', $id);
         $model = $this->service->show($data, $id);
 
-        return (new PendantResource($model))->response();
+        return (new TieClipResource($model))->response();
     }
 
     /**
      * Update the specified resource in storage.
      * @throws Throwable
      */
-    public function update(PendantUpdateRequest $request, int $id): JsonResponse
+    public function update(TieClipUpdateRequest $request, int $id): JsonResponse
     {
         $data = $request->all();
 

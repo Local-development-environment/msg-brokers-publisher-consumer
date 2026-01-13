@@ -13,7 +13,17 @@ use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryBraceletRelatedCon
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryBraceletRelationshipController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryChainRelatedController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryChainRelationshipController;
+use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryCharmPendantRelatedController;
+use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryCharmPendantRelationshipController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryController;
+use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryPendantRelatedController;
+use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryPendantRelationshipController;
+use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryRingRelatedController;
+use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryRingRelationshipController;
+use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryTieClipRelatedController;
+use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryTieClipRelationshipController;
+use App\Http\Controllers\JewelleryBroochRelatedController;
+use App\Http\Controllers\JewelleryBroochRelationshipController;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryNameRoutesEnum;
 use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryNameRoutesEnum;
 
@@ -54,6 +64,31 @@ Route::group([
         ->name(JewelleryNameRoutesEnum::RELATIONSHIP_TO_CHAIN->value);
     Route::get('jewelleries/{id}/chain', [JewelleryChainRelatedController::class, 'index'])
         ->name(JewelleryNameRoutesEnum::RELATED_TO_CHAIN->value);
+    //  one-to-one Jewellery to Ring
+    Route::get('jewelleries/{id}/relationships/ring', [JewelleryRingRelationshipController::class, 'index'])
+        ->name(JewelleryNameRoutesEnum::RELATIONSHIP_TO_RING->value);
+    Route::get('jewelleries/{id}/ring', [JewelleryRingRelatedController::class, 'index'])
+        ->name(JewelleryNameRoutesEnum::RELATED_TO_RING->value);
+    //  one-to-one Jewellery to Charm Pendant
+    Route::get('jewelleries/{id}/relationships/charm-pendant', [JewelleryCharmPendantRelationshipController::class, 'index'])
+        ->name(JewelleryNameRoutesEnum::RELATIONSHIP_TO_CHARM_PENDANT->value);
+    Route::get('jewelleries/{id}/charm-pendant', [JewelleryCharmPendantRelatedController::class, 'index'])
+        ->name(JewelleryNameRoutesEnum::RELATED_TO_CHARM_PENDANT->value);
+    //  one-to-one Jewellery to Pendant
+    Route::get('jewelleries/{id}/relationships/pendant', [JewelleryPendantRelationshipController::class, 'index'])
+        ->name(JewelleryNameRoutesEnum::RELATIONSHIP_TO_PENDANT->value);
+    Route::get('jewelleries/{id}/pendant', [JewelleryPendantRelatedController::class, 'index'])
+        ->name(JewelleryNameRoutesEnum::RELATED_TO_PENDANT->value);
+    //  one-to-one Jewellery to Tie Clip
+    Route::get('jewelleries/{id}/relationships/tie-clip', [JewelleryTieClipRelationshipController::class, 'index'])
+        ->name(JewelleryNameRoutesEnum::RELATIONSHIP_TO_TIE_CLIP->value);
+    Route::get('jewelleries/{id}/tie-clip', [JewelleryTieClipRelatedController::class, 'index'])
+        ->name(JewelleryNameRoutesEnum::RELATED_TO_TIE_CLIP->value);
+    //  one-to-one Jewellery to Brooch
+    Route::get('jewelleries/{id}/relationships/brooch', [JewelleryBroochRelationshipController::class, 'index'])
+        ->name(JewelleryNameRoutesEnum::RELATIONSHIP_TO_BROOCH->value);
+    Route::get('jewelleries/{id}/brooch', [JewelleryBroochRelatedController::class, 'index'])
+        ->name(JewelleryNameRoutesEnum::RELATED_TO_BROOCH->value);
 
     /*************************** JEWELLERY CATEGORIES *************************/
     // CRUD

@@ -11,7 +11,10 @@ use Domain\JewelleryProperties\Beads\Beads\Models\Bead;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Models\Bracelet;
 use Domain\JewelleryProperties\Brooches\Brooches\Models\Brooch;
 use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
+use Domain\JewelleryProperties\CharmPendants\CharmPendants\Models\CharmPendant;
+use Domain\JewelleryProperties\Pendants\Pendants\Models\Pendant;
 use Domain\JewelleryProperties\Rings\Rings\Models\Ring;
+use Domain\JewelleryProperties\TieClips\TieClips\Models\TieClip;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -56,5 +59,20 @@ final class Jewellery extends Model
     public function brooch(): HasOne
     {
         return $this->hasOne(Brooch::class, 'id');
+    }
+
+    public function charmPendant(): HasOne
+    {
+        return $this->hasOne(CharmPendant::class, 'id');
+    }
+
+    public function pendant(): HasOne
+    {
+        return $this->hasOne(Pendant::class, 'id');
+    }
+
+    public function tieClip(): HasOne
+    {
+        return $this->hasOne(TieClip::class, 'id');
     }
 }

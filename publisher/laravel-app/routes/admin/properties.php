@@ -7,12 +7,20 @@ use app\Http\Admin\SpecProperties\Brooches\Brooch\Controllers\BroochJewelleryRel
 use App\Http\Admin\SpecProperties\CharmPendants\CharmPendant\Controllers\CharmPendantController;
 use App\Http\Admin\SpecProperties\CharmPendants\CharmPendant\Controllers\CharmPendantJewelleryRelatedController;
 use App\Http\Admin\SpecProperties\CharmPendants\CharmPendant\Controllers\CharmPendantJewelleryRelationshipController;
+use App\Http\Admin\SpecProperties\Pendants\Pendants\Controllers\PendantController;
+use App\Http\Admin\SpecProperties\Pendants\Pendants\Controllers\PendantJewelleryRelatedController;
+use App\Http\Admin\SpecProperties\Pendants\Pendants\Controllers\PendantJewelleryRelationshipController;
 use App\Http\Admin\SpecProperties\Piercings\Piercings\Controllers\PiercingController;
 use App\Http\Admin\SpecProperties\Piercings\Piercings\Controllers\PiercingJewelleryRelatedController;
 use App\Http\Admin\SpecProperties\Piercings\Piercings\Controllers\PiercingJewelleryRelationshipController;
+use App\Http\Admin\SpecProperties\TieClips\TieClip\Controllers\TieClipController;
+use App\Http\Admin\SpecProperties\TieClips\TieClip\Controllers\TieClipJewelleryRelatedController;
+use App\Http\Admin\SpecProperties\TieClips\TieClip\Controllers\TieClipJewelleryRelationshipController;
 use Domain\JewelleryProperties\Brooches\Brooches\Enums\BroochNameRoutesEnum;
 use Domain\JewelleryProperties\CharmPendants\CharmPendants\Enums\CharmPendantNameRoutesEnum;
+use Domain\JewelleryProperties\Pendants\Pendants\Enums\PendantNameRoutesEnum;
 use Domain\JewelleryProperties\Piercings\Piercings\Enums\PiercingNameRoutesEnum;
+use Domain\JewelleryProperties\TieClips\TieClips\Enums\TieClipNameRoutesEnum;
 
 Route::group([
     'middleware' => 'auth:admin'
@@ -56,11 +64,41 @@ Route::group([
     Route::delete('charm-pendants/{id}', [CharmPendantController::class, 'destroy'])->name(CharmPendantNameRoutesEnum::CRUD_DELETE->value);
 
     // RELATIONSHIPS
-    //  one-to-one Brooch to Jewellery
+    //  one-to-one Charm Pendant to Jewellery
     Route::get('charm-pendants/{id}/relationships/jewellery', [CharmPendantJewelleryRelationshipController::class, 'index'])
         ->name(CharmPendantNameRoutesEnum::RELATIONSHIP_TO_JEWELLERY->value);
     Route::get('charm-pendants/{id}/jewellery', [CharmPendantJewelleryRelatedController::class, 'index'])
         ->name(CharmPendantNameRoutesEnum::RELATED_TO_JEWELLERY->value);
+
+    /*************************** PENDANTS *************************/
+    // CRUD
+    Route::get('pendants', [PendantController::class, 'index'])->name(PendantNameRoutesEnum::CRUD_INDEX->value);
+    Route::get('pendants/{id}', [PendantController::class, 'show'])->name(PendantNameRoutesEnum::CRUD_SHOW->value);
+    Route::post('pendants', [PendantController::class, 'store'])->name(PendantNameRoutesEnum::CRUD_POST->value);
+    Route::patch('pendants/{id}', [PendantController::class, 'update'])->name(PendantNameRoutesEnum::CRUD_PATCH->value);
+    Route::delete('pendants/{id}', [PendantController::class, 'destroy'])->name(PendantNameRoutesEnum::CRUD_DELETE->value);
+
+    // RELATIONSHIPS
+    //  one-to-one Pendant to Jewellery
+    Route::get('pendants/{id}/relationships/jewellery', [PendantJewelleryRelationshipController::class, 'index'])
+        ->name(PendantNameRoutesEnum::RELATIONSHIP_TO_JEWELLERY->value);
+    Route::get('pendants/{id}/jewellery', [PendantJewelleryRelatedController::class, 'index'])
+        ->name(PendantNameRoutesEnum::RELATED_TO_JEWELLERY->value);
+
+    /*************************** TIE CLIPS *************************/
+    // CRUD
+    Route::get('tie-clips', [TieClipController::class, 'index'])->name(TieClipNameRoutesEnum::CRUD_INDEX->value);
+    Route::get('tie-clips/{id}', [TieClipController::class, 'show'])->name(TieClipNameRoutesEnum::CRUD_SHOW->value);
+    Route::post('tie-clips', [TieClipController::class, 'store'])->name(TieClipNameRoutesEnum::CRUD_POST->value);
+    Route::patch('tie-clips/{id}', [TieClipController::class, 'update'])->name(TieClipNameRoutesEnum::CRUD_PATCH->value);
+    Route::delete('tie-clips/{id}', [TieClipController::class, 'destroy'])->name(TieClipNameRoutesEnum::CRUD_DELETE->value);
+
+    // RELATIONSHIPS
+    //  one-to-one Tie Clip to Jewellery
+    Route::get('tie-clips/{id}/relationships/jewellery', [TieClipJewelleryRelationshipController::class, 'index'])
+        ->name(TieClipNameRoutesEnum::RELATIONSHIP_TO_JEWELLERY->value);
+    Route::get('tie-clips/{id}/jewellery', [TieClipJewelleryRelatedController::class, 'index'])
+        ->name(TieClipNameRoutesEnum::RELATED_TO_JEWELLERY->value);
 });
 
 
