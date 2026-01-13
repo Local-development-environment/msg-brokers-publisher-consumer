@@ -9466,7 +9466,7 @@
 											"response": []
 										},
 										{
-											"name": "charm-pendants destroy",
+											"name": "pendants destroy",
 											"id": "6575703-0ef088e6-49cf-437f-a06f-a0f458785a14",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
