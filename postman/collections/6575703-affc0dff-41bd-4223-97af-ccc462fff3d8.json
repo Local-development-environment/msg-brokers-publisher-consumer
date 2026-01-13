@@ -9350,7 +9350,7 @@
 											"response": []
 										},
 										{
-											"name": "charm-pendants show",
+											"name": "pendants show",
 											"id": "6575703-12cf791d-c1cc-4571-9764-2365e098d3c3",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
