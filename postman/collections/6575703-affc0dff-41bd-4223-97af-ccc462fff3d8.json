@@ -9314,7 +9314,7 @@
 									"name": "CRUD",
 									"item": [
 										{
-											"name": "charm-pendants index",
+											"name": "pendants index",
 											"id": "6575703-f3195583-4cf4-4af9-b0b7-c38f537fad99",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
