@@ -9426,7 +9426,7 @@
 											"response": []
 										},
 										{
-											"name": "charm-pendants update",
+											"name": "pendants update",
 											"id": "6575703-1178e0f1-4de5-4e5f-a502-4b9dfa55f950",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true,
