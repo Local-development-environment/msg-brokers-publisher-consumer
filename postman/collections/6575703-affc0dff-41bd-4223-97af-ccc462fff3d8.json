@@ -9332,12 +9332,12 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseURL}}/charm-pendants?include=jewellery",
+													"raw": "{{baseURL}}/pendants?include=jewellery",
 													"host": [
 														"{{baseURL}}"
 													],
 													"path": [
-														"charm-pendants"
+														"pendants"
 													],
 													"query": [
 														{
