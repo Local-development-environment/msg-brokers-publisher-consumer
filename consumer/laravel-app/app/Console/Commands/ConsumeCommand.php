@@ -31,8 +31,8 @@ class ConsumeCommand extends Command
         $queue = select(
             label: 'What is a queue you need?',
             options: [
-                'jewellery:store' => 'Jewellery store',
-                'jewellery:update' => 'Jewellery update',
+                'jewellery.store' => 'Jewellery store',
+                'jewellery.update' => 'Jewellery update',
             ],
         );
         $callback = function ($msg) {
