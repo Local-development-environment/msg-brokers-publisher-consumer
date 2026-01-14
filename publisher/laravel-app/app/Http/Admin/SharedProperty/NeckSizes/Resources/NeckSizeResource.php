@@ -3,11 +3,11 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\SharedProperty\NeckSizes\Resources;
 
-use App\Http\Admin\NecklaceProperty\Necklaces\Resources\NecklaceResource;
 use App\Http\Admin\SharedProperty\LengthNames\Resources\LengthNameResource;
 use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadResource;
 use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Resources\BeadMetricResource;
 use App\Http\Admin\SpecProperties\Chains\Chain\Resources\ChainResource;
+use App\Http\Admin\SpecProperties\Necklaces\Necklace\Resources\NecklaceResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeNameRoutesEnum;
 use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeRelationshipsEnum;

@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Admin\SharedProperty\NeckSizes\Controllers;
+namespace App\Http\Admin\SpecProperties\Necklaces\Necklace\Controllers;
 
 use App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Resources\NecklaceMetricCollection;
 use App\Http\Controllers\Controller;
-use Domain\Shared\JewelleryProperties\NeckSizes\Services\Relationships\NeckSizeNecklaceMetricsRelationshipService;
+use Domain\JewelleryProperties\Necklaces\Necklaces\Services\Relationships\NecklaceNecklaceMetricsRelationshipService;
 use Illuminate\Http\JsonResponse;
 
-final class NeckSizeNecklaceMetricsRelatedController extends Controller
+final class NecklaceNecklaceMetricsRelatedController extends Controller
 {
-    public function __construct(public NeckSizeNecklaceMetricsRelationshipService $service)
+    public function __construct(public NecklaceNecklaceMetricsRelationshipService $service)
     {
     }
 
