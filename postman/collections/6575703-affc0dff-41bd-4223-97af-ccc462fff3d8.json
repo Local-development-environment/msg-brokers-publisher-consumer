@@ -4138,36 +4138,6 @@
 									"response": []
 								},
 								{
-									"name": "jewelleries index Copy",
-									"id": "6575703-40b850db-da64-436d-a13e-c165403b8ff6",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true,
-										"disabledSystemHeaders": {
-											"accept": true
-										}
-									},
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/vnd.api+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseURL}}/jewelleries",
-											"host": [
-												"{{baseURL}}"
-											],
-											"path": [
-												"jewelleries"
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "jewelleries show",
 									"id": "6575703-f624a0ab-bcaa-433f-940a-1b8cb8632b48",
 									"protocolProfileBehavior": {
@@ -4193,6 +4163,36 @@
 											"path": [
 												"jewelleries",
 												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "jewelleries index Copy",
+									"id": "6575703-40b850db-da64-436d-a13e-c165403b8ff6",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}/jewelleries",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"jewelleries"
 											]
 										}
 									},
