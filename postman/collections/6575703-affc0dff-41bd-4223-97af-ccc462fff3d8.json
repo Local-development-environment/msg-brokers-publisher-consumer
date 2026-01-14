@@ -4178,7 +4178,7 @@
 										}
 									},
 									"request": {
-										"method": "GET",
+										"method": "POST",
 										"header": [
 											{
 												"key": "Accept",
@@ -4186,6 +4186,15 @@
 												"type": "text"
 											}
 										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"data\": {\n        \"type\": \"jewelleries\",\n        \"attributes\": {\n            \"jewellery_category_id\": 1,\n            \"name\": \"леска ювелирная\",\n            \"part_number\": 2222,\n            \"description\": \"description\",\n            \"is_active\": 1,\n            \"approx_weight\": 2.34\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
 										"url": {
 											"raw": "{{baseURL}}/jewelleries",
 											"host": [
