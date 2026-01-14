@@ -68,7 +68,7 @@ final class JewelleryItem
         if (array_key_exists('preciousMetals', $properties)) {
             return mb_ucfirst($properties['category']) . ' ' . $properties['preciousMetals']['metalType'] .
                 ' проба ' . $properties['preciousMetals']['hallmark'] . ' ' . ' ' . $coverage .
-                ' ' . $inserts . ' артикул ' . $this->partNumber ;
+                ' ' . $inserts . ' артикул ' . $this->partNumber;
         } else {
             return mb_ucfirst($properties['category']) . ' артикул ' . $this->partNumber;
         }

@@ -1,20 +1,6 @@
 <?php
 declare(strict_types=1);
 
-use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricController;
-use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricsNecklaceRelatedController;
-use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricsNecklaceRelationshipController;
-use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricsNeckSizeRelatedController;
-use App\Http\Admin\NecklaceProperty\NecklaceMetrics\Controllers\NecklaceMetricsNeckSizeRelationshipController;
-use App\Http\Admin\NecklaceProperty\Necklaces\Controllers\NecklaceController;
-use App\Http\Admin\NecklaceProperty\Necklaces\Controllers\NecklaceJewelleryRelatedController;
-use App\Http\Admin\NecklaceProperty\Necklaces\Controllers\NecklaceJewelleryRelationshipController;
-use App\Http\Admin\NecklaceProperty\Necklaces\Controllers\NecklaceNecklaceMetricsRelatedController;
-use App\Http\Admin\NecklaceProperty\Necklaces\Controllers\NecklaceNecklaceMetricsRelationshipController;
-use App\Http\Admin\NecklaceProperty\Necklaces\Controllers\NecklacesClaspRelatedController;
-use App\Http\Admin\NecklaceProperty\Necklaces\Controllers\NecklacesClaspRelationshipController;
-use App\Http\Admin\NecklaceProperty\Necklaces\Controllers\NecklacesNeckSizesRelatedController;
-use App\Http\Admin\NecklaceProperty\Necklaces\Controllers\NecklacesNeckSizesRelationshipController;
 use App\Http\Admin\SpecProperties\Beads\Bead\Controllers\BeadBeadMetricsRelatedController;
 use App\Http\Admin\SpecProperties\Beads\Bead\Controllers\BeadBeadMetricsRelationshipController;
 use App\Http\Admin\SpecProperties\Beads\Bead\Controllers\BeadController;
@@ -57,6 +43,20 @@ use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Controllers\ChainWeavingsC
 use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Controllers\ChainWeavingsChainRelationshipController;
 use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Controllers\ChainWeavingsWeavingRelatedController;
 use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Controllers\ChainWeavingsWeavingRelationshipController;
+use App\Http\Admin\SpecProperties\Necklaces\Necklace\Controllers\NecklaceController;
+use App\Http\Admin\SpecProperties\Necklaces\Necklace\Controllers\NecklaceJewelleryRelatedController;
+use App\Http\Admin\SpecProperties\Necklaces\Necklace\Controllers\NecklaceJewelleryRelationshipController;
+use App\Http\Admin\SpecProperties\Necklaces\Necklace\Controllers\NecklaceNecklaceMetricsRelatedController;
+use App\Http\Admin\SpecProperties\Necklaces\Necklace\Controllers\NecklaceNecklaceMetricsRelationshipController;
+use App\Http\Admin\SpecProperties\Necklaces\Necklace\Controllers\NecklacesClaspRelatedController;
+use App\Http\Admin\SpecProperties\Necklaces\Necklace\Controllers\NecklacesClaspRelationshipController;
+use App\Http\Admin\SpecProperties\Necklaces\Necklace\Controllers\NecklacesNeckSizesRelatedController;
+use App\Http\Admin\SpecProperties\Necklaces\Necklace\Controllers\NecklacesNeckSizesRelationshipController;
+use App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Controllers\NecklaceMetricController;
+use App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Controllers\NecklaceMetricsNecklaceRelatedController;
+use App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Controllers\NecklaceMetricsNecklaceRelationshipController;
+use App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Controllers\NecklaceMetricsNeckSizeRelatedController;
+use App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Controllers\NecklaceMetricsNeckSizeRelationshipController;
 use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\Beads\Enums\BeadNameRoutesEnum;
