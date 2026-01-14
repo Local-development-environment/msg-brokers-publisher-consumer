@@ -34,7 +34,7 @@ final class ConsumerCommand extends Command
      */
     public function handle(AMQPClient $client): int
     {
-        $client->consume('my_queue', function (\Closure $callback) {
+        $client->consume('jewellery.store', function (\Closure $callback) {
             return $callback();
         });
 
