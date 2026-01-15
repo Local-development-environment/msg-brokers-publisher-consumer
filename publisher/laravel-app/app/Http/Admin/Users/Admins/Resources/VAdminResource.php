@@ -1,17 +1,17 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Users\Admins\Resources;
 
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
-use Domain\Users\VAdmins\Enums\VAdminEnum;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Users\VAdmins\Models\VAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin VAdmin */
-class VAdminResource extends JsonResource
+final class VAdminResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource into an array.
@@ -22,7 +22,7 @@ class VAdminResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => VAdminEnum::RESOURCE->value,
+            'type' => VAdmin::TYPE_RESOURCE,
             'attributes' => $this->attributeItems(),
         ];
     }

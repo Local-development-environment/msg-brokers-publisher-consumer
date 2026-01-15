@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Site\Jewelleries\Resources;
 
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Jewelleries\JewelleryViews\Enums\VJewelleryEnum;
 use Domain\Jewelleries\JewelleryViews\Models\VJewellery;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 final class VJewelleryResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource into an array.

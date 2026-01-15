@@ -7,7 +7,7 @@ use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Admin\Media\CatalogMedias\CatalogPictures\Resources\CatalogPictureResource;
 use App\Http\Admin\Media\CatalogMedias\CatalogVideos\Resources\CatalogVideoResource;
 use App\Http\Admin\Media\Shared\MediaTypes\Resources\MediaTypeResource;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaNameRoutesEnum;
 use Domain\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaRelationshipsEnum;
 use Domain\Medias\CatalogMedias\CatalogMedias\Models\CatalogMedia;
@@ -17,7 +17,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /** @mixin CatalogMedia */
 final class CatalogMediaResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource into an array.

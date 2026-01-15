@@ -31,6 +31,7 @@ final class JewelleryRepository
 
     public function store(array $data): Jewellery
     {
+//        dd($data);
         return Jewellery::create($data);
     }
 

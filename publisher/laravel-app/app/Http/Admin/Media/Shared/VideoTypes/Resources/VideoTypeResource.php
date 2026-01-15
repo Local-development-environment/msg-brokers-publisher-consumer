@@ -5,7 +5,6 @@ namespace App\Http\Admin\Media\Shared\VideoTypes\Resources;
 
 use App\Http\Admin\Media\CatalogMedias\CatalogVideoDetails\Resources\CatalogVideoDetailCollection;
 use App\Http\Admin\Media\ReviewMedias\ReviewVideoDetails\Resources\ReviewVideoDetailCollection;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeNameRoutesEnum;
 use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeRelationshipsEnum;
@@ -30,7 +29,7 @@ final class VideoTypeResource extends JsonResource
             'type'          => VideoType::TYPE_RESOURCE,
             'attributes'    => $this->attributeItems(),
             'relationships' => [
-                VideoTypeRelationshipsEnum::CATALOG_VIDEO_DETAILS => $this->sectionRelationships(
+                VideoTypeRelationshipsEnum::CATALOG_VIDEO_DETAILS->value => $this->sectionRelationships(
                     VideoTypeNameRoutesEnum::RELATED_TO_CATALOG_VIDEO_DETAILS->value,
                     CatalogVideoDetailCollection::class
                 ),

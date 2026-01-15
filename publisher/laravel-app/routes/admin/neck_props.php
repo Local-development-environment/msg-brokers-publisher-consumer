@@ -14,7 +14,7 @@ use App\Http\Admin\SpecProperties\Beads\Bead\Controllers\BeadsNeckSizesRelatedCo
 use App\Http\Admin\SpecProperties\Beads\Bead\Controllers\BeadsNeckSizesRelationshipController;
 use app\Http\Admin\SpecProperties\Beads\BeadBase\Controllers\BeadBaseBeadsRelatedController;
 use app\Http\Admin\SpecProperties\Beads\BeadBase\Controllers\BeadBaseBeadsRelationshipController;
-use app\Http\Admin\SpecProperties\Beads\BeadBase\Controllers\BeadBaseController;
+use App\Http\Admin\SpecProperties\Beads\BeadBase\Controllers\BeadBaseController;
 use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Controllers\BeadMetricController;
 use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Controllers\BeadMetricsBeadRelatedController;
 use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Controllers\BeadMetricsBeadRelationshipController;
@@ -123,7 +123,7 @@ Route::group([
         ->name(BeadNameRoutesEnum::RELATIONSHIP_TO_NECK_SIZES->value);
     Route::get('beads/{id}/neck-sizes', [BeadsNeckSizesRelatedController::class, 'index'])
         ->name(BeadNameRoutesEnum::RELATED_TO_NECK_SIZES->value);
-    //  one-to-many Bead Metrics to Beads
+    //  one-to-many Bead to BeadMetrics
     Route::get('beads/{id}/relationships/bead-metrics', [BeadBeadMetricsRelationshipController::class, 'index'])
         ->name(BeadNameRoutesEnum::RELATIONSHIP_TO_BEAD_METRICS->value);
     Route::get('beads/{id}/bead-metrics', [BeadBeadMetricsRelatedController::class, 'index'])

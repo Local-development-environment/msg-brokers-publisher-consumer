@@ -1,12 +1,12 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Users\Customers\Resources;
 
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesCollectionTrait;
-use Illuminate\Http\Request;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationCollectionTrait;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class VCustomerCollection extends ResourceCollection
+final class VCustomerCollection extends ResourceCollection
 {
-    use IncludeRelatedEntitiesCollectionTrait;
+    use JsonApiSpecificationCollectionTrait;
 }

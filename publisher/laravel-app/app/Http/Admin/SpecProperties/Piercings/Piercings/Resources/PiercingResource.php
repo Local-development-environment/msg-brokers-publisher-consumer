@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Admin\SpecProperties\Piercings\Piercings\Resources;
 
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\JewelleryProperties\Piercings\Piercings\Enums\PiercingNameRoutesEnum;
 use Domain\JewelleryProperties\Piercings\Piercings\Enums\PiercingRelationshipsEnum;
 use Domain\JewelleryProperties\Piercings\Piercings\Models\Piercing;
@@ -14,7 +14,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /** @mixin Piercing */
 final class PiercingResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource into an array.

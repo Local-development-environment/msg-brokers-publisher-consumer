@@ -27,7 +27,7 @@ final class JewelleryService
      */
     public function store(array $data): Jewellery
     {
-//        return $this->pipeline->store($data);
+        return $this->pipeline->store($data);
     }
 
     public function show(array $data, int $id): Jewellery

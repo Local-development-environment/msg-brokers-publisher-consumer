@@ -6,7 +6,6 @@ namespace App\Http\Admin\Insert\Inserts\Resources;
 use App\Http\Admin\Insert\InsertOptionalInfos\Resources\InsertOptionalInfoResource;
 use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorResource;
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Inserts\Inserts\Enums\InsertEnum;
 use Domain\Inserts\Inserts\Enums\InsertNameRoutesEnum;

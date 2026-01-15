@@ -26,6 +26,8 @@ final class Jewellery extends Model
 
     public const string TYPE_RESOURCE = JewelleryEnum::TYPE_RESOURCE->value;
 
+    protected $fillable = ['jewellery_category_id', 'name', 'description','part_number','approx_weight','is_active','slug'];
+
     public function inserts(): HasMany
     {
         return $this->hasMany(Insert::class);
