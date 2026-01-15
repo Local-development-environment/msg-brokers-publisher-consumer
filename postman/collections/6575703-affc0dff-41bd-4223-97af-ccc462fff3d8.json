@@ -4167,6 +4167,76 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "jewelleries create",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "e4ffdedc-88b2-4b5d-9c0e-75b81c36d996",
+												"exec": [
+													"const partNumber = Math.random().toString(36).substring(2)",
+													"",
+													"let body = {",
+													"    \"data\": {",
+													"        \"type\": \"jewelleries\",",
+													"        \"attributes\": {",
+													"            \"jewellery_category_id\": 2,",
+													"            \"name\": \"Браслет артикул \" + partNumber,",
+													"            \"part_number\": partNumber,",
+													"            \"description\": \"description\",",
+													"            \"is_active\": 1,",
+													"            \"approx_weight\": 2.34",
+													"        }",
+													"    }",
+													"}",
+													"",
+													"let body_str = JSON.stringify(body);",
+													"pm.environment.set('request_body', body_str);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"id": "6575703-40b850db-da64-436d-a13e-c165403b8ff6",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/vnd.api+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{{request_body}}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/jewelleries",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"jewelleries"
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"id": "6575703-2b4fb5a1-abf2-4754-aeda-7299316d239f"
