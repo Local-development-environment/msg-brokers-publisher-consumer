@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\SpecProperties\Beads\BeadBase\Controllers;
 
-use App\Http\Admin\SpecProperties\BeadBases\Requests\BeadBaseStoreRequest;
-use App\Http\Admin\SpecProperties\BeadBases\Requests\BeadBaseUpdateRequest;
-use App\Http\Admin\BeadProperty\BeadBases\Resources\BeadBaseCollection;
-use App\Http\Admin\BeadProperty\BeadBases\Resources\BeadBaseResource;
+use App\Http\Admin\SpecProperties\Beads\BeadBase\Requests\BeadBaseStoreRequest;
+use App\Http\Admin\SpecProperties\Beads\BeadBase\Requests\BeadBaseUpdateRequest;
+use App\Http\Admin\SpecProperties\Beads\BeadBase\Resources\BeadBaseCollection;
+use App\Http\Admin\SpecProperties\Beads\BeadBase\Resources\BeadBaseResource;
 use App\Http\Controllers\Controller;
 use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseNameRoutesEnum;
 use Domain\JewelleryProperties\Beads\BeadBases\Services\BeadBaseService;

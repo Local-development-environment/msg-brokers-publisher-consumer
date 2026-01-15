@@ -1,17 +1,17 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Users\Employees\Resources;
 
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
-use Domain\Users\VEmployees\Enums\VEmployeeEnum;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Users\VEmployees\Models\VEmployee;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin VEmployee */
-class VEmployeeResource extends JsonResource
+final class VEmployeeResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource into an array.
@@ -22,7 +22,7 @@ class VEmployeeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => VEmployeeEnum::RESOURCE->value,
+            'type' => VEmployee::TYPE_RESOURCE,
             'attributes' => $this->attributeItems(),
         ];
     }

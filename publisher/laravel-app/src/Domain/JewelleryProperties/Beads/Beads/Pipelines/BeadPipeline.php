@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Beads\Beads\Pipelines;
 
+use Domain\JewelleryProperties\Beads\Beads\Models\Bead;
 use Domain\JewelleryProperties\Beads\Beads\Pipelines\Pipes\BeadBeadMetricsStoreRelationshipPipe;
 use Domain\JewelleryProperties\Beads\Beads\Pipelines\Pipes\BeadDestroyPipe;
 use Domain\JewelleryProperties\Beads\Beads\Pipelines\Pipes\BeadStorePipe;
@@ -21,7 +22,7 @@ final class BeadPipeline extends AbstractPipeline
      * @inheritDoc
      * @throws Throwable
      */
-    public function store(array $data): Model
+    public function store(array $data): Model|Bead
     {
         try {
             DB::beginTransaction();

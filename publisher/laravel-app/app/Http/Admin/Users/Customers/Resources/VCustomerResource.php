@@ -1,17 +1,17 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Admin\Users\Customers\Resources;
 
-use App\Http\Shared\Resources\Traits\IncludeRelatedEntitiesResourceTrait;
-use Domain\Users\VCustomers\Enums\VCustomerEnum;
+use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\Users\VCustomers\Models\VCustomer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin VCustomer */
-class VCustomerResource extends JsonResource
+final class VCustomerResource extends JsonResource
 {
-    use IncludeRelatedEntitiesResourceTrait;
+    use JsonApiSpecificationResourceTrait;
 
     /**
      * Transform the resource into an array.
@@ -22,7 +22,7 @@ class VCustomerResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => VCustomerEnum::RESOURCE->value,
+            'type' => VCustomer::TYPE_RESOURCE,
             'attributes' => $this->attributeItems(),
         ];
     }
