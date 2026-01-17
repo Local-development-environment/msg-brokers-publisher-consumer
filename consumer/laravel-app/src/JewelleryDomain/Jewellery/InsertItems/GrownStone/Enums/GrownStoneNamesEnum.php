@@ -1,10 +1,8 @@
 <?php
 
-declare(strict_types=1);
+namespace JewelleryDomain\Jewellery\InsertItems\GrownStone\Enums;
 
-namespace Domain\Inserts\GrownStones\Enums;
-
-enum GrownStoneBuilderEnum: string
+enum GrownStoneNamesEnum: string
 {
     case GILSON_OPAL       = 'опал Жильсона';
     case GROWN_EMERALD     = 'изумруд выращенный';

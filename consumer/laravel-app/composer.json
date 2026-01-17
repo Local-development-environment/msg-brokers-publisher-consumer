@@ -24,6 +24,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
+            "JewelleryDomain\\": "src/JewelleryDomain/",
+            "UserDomain\\": "src/UserDomain/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

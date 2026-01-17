@@ -9,6 +9,7 @@ use Domain\Inserts\StoneColours\Enums\StoneColourEnum;
 use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
 use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
+use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
 use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryEnum;
 use Domain\JewelleryGenerator\BaseJewelleryBuilder;
 use Domain\JewelleryGenerator\InitProperties;
@@ -147,7 +148,7 @@ final class BuildJewellerySeeder extends Seeder
     {
         if ($jewelleryData['insertItem']) {
             foreach ($jewelleryData['insertItem'] as $item) {
-                dump($item);
+
                 $colourId = DB::table(StoneColourEnum::TABLE_NAME->value)->where('name', $item['colours'])->value('id');
                 $facetId  = DB::table(FacetEnum::TABLE_NAME->value)->where('name', $item['facets'])->value('id');
                 $stoneId  = DB::table(StoneEnum::TABLE_NAME->value)->where('name', $item['stoneName'])->value('id');
@@ -175,73 +176,73 @@ final class BuildJewellerySeeder extends Seeder
     private function addProperty(array $jewelleryData, int $jewelleryId): void
     {
         if ($jewelleryData['property']) {
-            if ($jewelleryData['category'] === 'броши') {
+            if ($jewelleryData['category'] === JewelleryCategoryBuilderEnum::BROOCHES->value) {
                 $this->addBrooches($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['property']) {
-            if ($jewelleryData['category'] === 'подвески-шарм') {
+            if ($jewelleryData['category'] === JewelleryCategoryBuilderEnum::CHARM_PENDANTS->value) {
                 $this->addCharmPendants($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['property']) {
-            if ($jewelleryData['category'] === 'зажимы для галстука') {
+            if ($jewelleryData['category'] === JewelleryCategoryBuilderEnum::TIE_CLIPS->value) {
                 $this->addTieClips($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['property']) {
-            if ($jewelleryData['category'] === 'подвески') {
+            if ($jewelleryData['category'] === JewelleryCategoryBuilderEnum::PENDANTS->value) {
                 $this->addPendants($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['property']) {
-            if ($jewelleryData['category'] === 'запонки') {
+            if ($jewelleryData['category'] === JewelleryCategoryBuilderEnum::CUFF_LINKS->value) {
                 $this->addCuffLinks($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['property']) {
-            if ($jewelleryData['category'] === 'пирсинг') {
+            if ($jewelleryData['category'] === JewelleryCategoryBuilderEnum::PIERCINGS->value) {
                 $this->addPiercings($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['property']) {
-            if ($jewelleryData['category'] === 'серьги') {
+            if ($jewelleryData['category'] === JewelleryCategoryBuilderEnum::EARRINGS->value) {
                 $this->addEarrings($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['property']) {
-            if ($jewelleryData['category'] === 'кольца') {
+            if ($jewelleryData['category'] === JewelleryCategoryBuilderEnum::RINGS->value) {
                 $this->addRings($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['property']) {
-            if ($jewelleryData['category'] === 'браслеты') {
+            if ($jewelleryData['category'] === JewelleryCategoryBuilderEnum::BRACELETS->value) {
                 $this->addBracelets($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['property']) {
-            if ($jewelleryData['category'] === 'цепи') {
+            if ($jewelleryData['category'] === JewelleryCategoryBuilderEnum::CHAINS->value) {
                 $this->addChains($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['property']) {
-            if ($jewelleryData['category'] === 'колье') {
+            if ($jewelleryData['category'] === JewelleryCategoryBuilderEnum::NECKLACES->value) {
                 $this->addNecklaces($jewelleryData, $jewelleryId);
             }
         }
 
         if ($jewelleryData['property']) {
-            if ($jewelleryData['category'] === 'бусы') {
+            if ($jewelleryData['category'] === JewelleryCategoryBuilderEnum::BEADS->value) {
                 $this->addBeads($jewelleryData, $jewelleryId);
             }
         }
