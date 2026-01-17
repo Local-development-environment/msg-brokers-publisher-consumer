@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\AMQP\AMQPAdapter\MessageParser;
 use App\AMQP\AMQPClient;
 use Illuminate\Console\Command;
 use function Laravel\Prompts\select;
@@ -37,9 +38,7 @@ class ConsumeCommand extends Command
         );
         $callback = function ($msg) {
 
-            dd($msg);
-//            echo ' [x] Received ', $msg->getBody(), "\n";
-//            sleep(substr_count($msg->getBody(), '.'));
+            (new MessageParser($msg))->parser();
             echo " [x] Done\n";
         };
 
