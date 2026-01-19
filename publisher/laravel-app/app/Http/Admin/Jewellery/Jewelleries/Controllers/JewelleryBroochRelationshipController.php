@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Admin\Jewellery\Jewelleries\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 final class JewelleryBroochRelationshipController extends Controller
 {
