@@ -1,12 +1,10 @@
 <?php
 
-declare(strict_types=1);
+namespace JewelleryDomain\Jewellery\InsertItems\NaturalStone\Enums;
 
-namespace Domain\Inserts\NaturalStones\Enums;
+use JewelleryDomain\Jewellery\InsertItems\StoneGroup\Enums\StoneGroupNamesEnum;
 
-use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
-
-enum NatureStoneBuilderEnum: string
+enum NaturalStoneNamesEnum: string
 {
     /** PRECIOUS */
     case DIAMOND          = 'бриллиант';
@@ -68,7 +66,7 @@ enum NatureStoneBuilderEnum: string
             self::SEE_PEARL_NATURE,
             self::EMERALD,
             self::RUBY,
-            self::SAPPHIRE    => StoneGroupBuilderEnum::PRECIOUS->value,
+            self::SAPPHIRE    => StoneGroupNamesEnum::PRECIOUS->value,
             self::DEMANTOID,
             self::AQUAMARINE,
             self::AQUAMARINE_CAT_EYE,
@@ -87,15 +85,15 @@ enum NatureStoneBuilderEnum: string
             self::ANDRADITE_GARNET,
             self::ACHROITE,
             self::BRAZILIANITE,
-            self::VESUVIANITE => StoneGroupBuilderEnum::JEWELLERIES->value,
+            self::VESUVIANITE => StoneGroupNamesEnum::JEWELLERIES->value,
             self::AGATE,
             self::AZURITE,
             self::AVENTURINE,
             self::MOONSTONE,
             self::ACTINOLITE,
-            self::AMAZONITE   => StoneGroupBuilderEnum::JEWELLERY_ORNAMENTAL->value,
+            self::AMAZONITE   => StoneGroupNamesEnum::JEWELLERY_ORNAMENTAL->value,
             self::AGALMATOLITE,
-            self::JET         => StoneGroupBuilderEnum::ORNAMENTAL->value,
+            self::JET         => StoneGroupNamesEnum::ORNAMENTAL->value,
         };
     }
 }

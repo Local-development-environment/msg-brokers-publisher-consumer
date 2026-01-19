@@ -11,6 +11,8 @@ use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryBeadRelatedControl
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryBeadRelationshipController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryBraceletRelatedController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryBraceletRelationshipController;
+use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryBroochRelatedController;
+use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryBroochRelationshipController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryChainRelatedController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryChainRelationshipController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryCharmPendantRelatedController;
@@ -22,8 +24,6 @@ use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryRingRelatedControl
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryRingRelationshipController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryTieClipRelatedController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryTieClipRelationshipController;
-use App\Http\Controllers\JewelleryBroochRelatedController;
-use App\Http\Controllers\JewelleryBroochRelationshipController;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryNameRoutesEnum;
 use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryNameRoutesEnum;
 
