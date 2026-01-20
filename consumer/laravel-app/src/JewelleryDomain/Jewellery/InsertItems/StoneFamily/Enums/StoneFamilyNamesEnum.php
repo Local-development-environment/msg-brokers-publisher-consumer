@@ -13,6 +13,7 @@ enum StoneFamilyNamesEnum: string
     case CARBONATE   = 'карбонат';
     case ORGANOGENIC = 'органоген';
     case CORUNDUM    = 'корунд';
+    case STAR_CORUNDUM    = 'звездчатый корунд'; // store ruby, store sapphire
     case COAL        = 'каменный уголь';
     case POMEGRANATE = 'гранат';
     case TOURMALINE  = 'турмалин';

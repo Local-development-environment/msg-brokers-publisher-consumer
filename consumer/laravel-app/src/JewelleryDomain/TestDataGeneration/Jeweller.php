@@ -11,8 +11,10 @@ final class Jeweller
         return $builder
             ->reset()
             ->buildJewelleryCategory()
+            ->buildProperty()
             ->buildPreciousMetals()
             ->buildCoverages()
+//            ->buildInsert()
             ->getJewellery();
     }
 }

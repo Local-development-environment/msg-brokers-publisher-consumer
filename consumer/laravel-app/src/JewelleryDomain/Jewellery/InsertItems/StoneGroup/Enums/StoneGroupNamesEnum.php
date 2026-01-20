@@ -49,7 +49,7 @@ enum StoneGroupNamesEnum: string
                 StoneNamesEnum::RUBY->value,
                 StoneNamesEnum::EMERALD->value,
                 StoneNamesEnum::SAPPHIRE->value,
-                StoneNamesEnum::SEA_PEARL_NATURE->value,
+                StoneNamesEnum::NATURAL_SEA_PEARL->value,
             ],
             self::ORNAMENTAL => [
                 StoneNamesEnum::AGALMATOLITE->value,

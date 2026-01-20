@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace JewelleryDomain\TestDataGeneration;
 
@@ -10,5 +11,7 @@ interface JewelleryGenerateInterface
     public function buildJewelleryCategory(): JewelleryGenerateInterface;
     public function buildPreciousMetals(): JewelleryGenerateInterface;
     public function buildCoverages(): JewelleryGenerateInterface;
+    public function buildProperty(): JewelleryGenerateInterface;
+//    public function buildInsert(): JewelleryGenerateInterface;
     public function getJewellery(): array;
 }
