@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace JewelleryDomain\TestDataGeneration;
 
 use JewelleryDomain\TestDataGeneration\CoverageItems\CoverageGenerator;
+use JewelleryDomain\TestDataGeneration\InsertItems\InsertGenerator;
 use JewelleryDomain\TestDataGeneration\JewelleryCategories\JewelleryCategoryGenerator;
 use JewelleryDomain\TestDataGeneration\PreciousMetals\PreciousMetalGenerator;
+use JewelleryDomain\TestDataGeneration\Properties\Property;
 
 final class BaseJewelleryGenerator implements JewelleryGenerateInterface
 {
@@ -47,16 +49,35 @@ final class BaseJewelleryGenerator implements JewelleryGenerateInterface
         return $this;
     }
 
+    public function buildProperty(): JewelleryGenerateInterface
+    {
+        $property = new Property();
+
+        $properties                    = get_object_vars($this->baseJewellery);
+        $this->baseJewellery->property = $property->getProperties($properties);
+
+        return $this;
+    }
+
+//    public function buildInsert(): JewelleryGenerateInterface
+//    {
+//        $inserts = new InsertGenerator();
+//        $properties = get_object_vars($this->baseJewellery);
+//
+//        $this->baseJewellery->inserts = $inserts->getInsert($properties);
+//    }
+
     public function getJewellery(): array
     {
         $jewellery['jewelleryCategory'] = $this->baseJewellery->jewelleryCategory;
 //        $jewellery['jewelleryItem']  = $this->baseJewellery->jewelleryItem;
         $jewellery['preciousMetals'] = $this->baseJewellery->preciousMetals;
         $jewellery['coverages'] = $this->baseJewellery->coverages;
-//        $jewellery['insertItem']     = $this->baseJewellery->insertItem;
-//        $jewellery['property']       = $this->baseJewellery->property;
+//        $jewellery['inserts']     = $this->baseJewellery->inserts;
+        $jewellery ['specProperties']    = $this->baseJewellery->property;
 //        $jewellery['media']          = $this->baseJewellery->media;
 
         return $jewellery;
     }
+
 }
