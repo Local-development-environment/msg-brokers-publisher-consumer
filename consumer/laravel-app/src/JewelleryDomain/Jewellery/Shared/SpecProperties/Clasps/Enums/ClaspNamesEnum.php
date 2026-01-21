@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace JewelleryDomain\Jewellery\Shared\SpecProperties\Clasps\Clasp\Enums;
+namespace JewelleryDomain\Jewellery\Shared\SpecProperties\Clasps\Enums;
 
 enum ClaspNamesEnum: string
 {

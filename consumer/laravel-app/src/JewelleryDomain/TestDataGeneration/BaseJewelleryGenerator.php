@@ -30,6 +30,16 @@ final class BaseJewelleryGenerator implements JewelleryGenerateInterface
         return $this;
     }
 
+    public function buildProperty(): JewelleryGenerateInterface
+    {
+        $property = new Property();
+
+        $properties                    = get_object_vars($this->baseJewellery);
+        $this->baseJewellery->property = $property->getProperties($properties);
+
+        return $this;
+    }
+
     public function buildPreciousMetals(): JewelleryGenerateInterface
     {
         $preciousMetal = new PreciousMetalGenerator();
@@ -42,19 +52,9 @@ final class BaseJewelleryGenerator implements JewelleryGenerateInterface
     public function buildCoverages(): JewelleryGenerateInterface
     {
         $coverages = new CoverageGenerator();
-        $properties = get_object_vars($this->baseJewellery);
 
+        $properties                     = get_object_vars($this->baseJewellery);
         $this->baseJewellery->coverages = $coverages->getCoverages($properties);
-
-        return $this;
-    }
-
-    public function buildProperty(): JewelleryGenerateInterface
-    {
-        $property = new Property();
-
-        $properties                    = get_object_vars($this->baseJewellery);
-        $this->baseJewellery->property = $property->getProperties($properties);
 
         return $this;
     }
@@ -70,11 +70,11 @@ final class BaseJewelleryGenerator implements JewelleryGenerateInterface
     public function getJewellery(): array
     {
         $jewellery['jewelleryCategory'] = $this->baseJewellery->jewelleryCategory;
-//        $jewellery['jewelleryItem']  = $this->baseJewellery->jewelleryItem;
-        $jewellery['preciousMetals'] = $this->baseJewellery->preciousMetals;
-        $jewellery['coverages'] = $this->baseJewellery->coverages;
+        $jewellery ['specProperties']   = $this->baseJewellery->property;
+        $jewellery['preciousMetals']    = $this->baseJewellery->preciousMetals;
+        $jewellery['coverages']         = $this->baseJewellery->coverages;
 //        $jewellery['inserts']     = $this->baseJewellery->inserts;
-        $jewellery ['specProperties']    = $this->baseJewellery->property;
+//        $jewellery['jewelleryItem']  = $this->baseJewellery->jewelleryItem;
 //        $jewellery['media']          = $this->baseJewellery->media;
 
         return $jewellery;
