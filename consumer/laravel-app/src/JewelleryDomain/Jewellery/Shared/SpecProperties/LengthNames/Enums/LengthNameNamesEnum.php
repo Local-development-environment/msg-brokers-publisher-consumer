@@ -1,6 +1,6 @@
 <?php
 
-namespace JewelleryDomain\Jewellery\Shared\SpecProperties\LengthNames\LengthName\Enums;
+namespace JewelleryDomain\Jewellery\Shared\SpecProperties\LengthNames\Enums;
 
 enum LengthNameNamesEnum: string
 {

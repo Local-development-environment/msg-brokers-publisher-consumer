@@ -1,6 +1,6 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.5 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" version="28.2.5" pages="16">
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.5 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" version="28.2.5" pages="17">
   <diagram id="wUipztQis7D_Z5Pn4Eys" name="catalog">
-    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
+    <mxGraphModel dx="1426" dy="802" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -4486,7 +4486,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="YSq6BnnyyZQaQ4t4gP9A" name="rings">
-    <mxGraphModel dx="1426" dy="802" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -5393,7 +5393,7 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="ZRfUSohvt5CvOk54pvza" name="jw_bracelet_props">
+  <diagram id="ZRfUSohvt5CvOk54pvza" name="bracelets">
     <mxGraphModel dx="1426" dy="802" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
       <root>
         <mxCell id="0" />
@@ -5654,7 +5654,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="YBj3-JbroWxjWtmozGqq-22" value="bracelet_sizes" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;rounded=1;swimlaneFillColor=none;fillColor=#bac8d3;strokeColor=#23445d;columnLines=1;arcSize=10;" parent="1" vertex="1">
-          <mxGeometry x="1100" y="220" width="180" height="96" as="geometry" />
+          <mxGeometry x="1100" y="160" width="180" height="96" as="geometry" />
         </mxCell>
         <mxCell id="YBj3-JbroWxjWtmozGqq-23" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;rounded=0;" parent="YBj3-JbroWxjWtmozGqq-22" vertex="1">
           <mxGeometry y="30" width="180" height="22" as="geometry" />
@@ -5702,7 +5702,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="YBj3-JbroWxjWtmozGqq-33" value="bracelet_metrics" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;rounded=1;swimlaneFillColor=none;fillColor=#bac8d3;strokeColor=#23445d;columnLines=1;arcSize=10;" parent="1" vertex="1">
-          <mxGeometry x="860" y="220" width="180" height="140" as="geometry" />
+          <mxGeometry x="860" y="160" width="180" height="140" as="geometry" />
         </mxCell>
         <mxCell id="YBj3-JbroWxjWtmozGqq-34" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;rounded=0;" parent="YBj3-JbroWxjWtmozGqq-33" vertex="1">
           <mxGeometry y="30" width="180" height="22" as="geometry" />
@@ -6007,7 +6007,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="97M8zjML_pPkdAydI6cK-1" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;BRACELET SPEC PROPS&lt;/h1&gt;&lt;p&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Bracelets can have one, multi and null weavings option&lt;/font&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;" parent="1" vertex="1">
-          <mxGeometry x="620" y="40" width="330" height="100" as="geometry" />
+          <mxGeometry x="280" y="10" width="330" height="100" as="geometry" />
         </mxCell>
         <mxCell id="9BtItrr6VO5m3OV3J8lL-1" value="base_weavings" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;rounded=1;swimlaneFillColor=none;fillColor=#bac8d3;strokeColor=#23445d;columnLines=1;arcSize=10;" parent="1" vertex="1">
           <mxGeometry x="1100" y="520" width="180" height="118" as="geometry" />
@@ -6080,12 +6080,15 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="GfB_dr73g1_a4SQQwvGV-1" value="It maybe better to move &lt;i&gt;&lt;font style=&quot;color: rgb(153, 0, 0);&quot;&gt;quantity &lt;/font&gt;&lt;/i&gt;and &lt;i&gt;&lt;font style=&quot;color: rgb(153, 0, 0);&quot;&gt;price &lt;/font&gt;&lt;/i&gt;from &lt;b&gt;bracelet_metrics &lt;/b&gt;to &lt;b&gt;bracelets &lt;/b&gt;table" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;" parent="1" vertex="1">
-          <mxGeometry x="660" y="210" width="140" height="100" as="geometry" />
+          <mxGeometry x="670" y="240" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="zGwx0EpSk9j2axPybmKI-2" value="It&#39;s maybe better to do &lt;b&gt;fulness&lt;/b&gt; table and &lt;b&gt;FK fullness_id&lt;/b&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="860" y="320" width="180" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="WXfTx-NxbNPDcREbo8Om" name="jw_chain_props">
+  <diagram id="WXfTx-NxbNPDcREbo8Om" name="chain">
     <mxGraphModel dx="1426" dy="802" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
       <root>
         <mxCell id="0" />
@@ -8198,8 +8201,8 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram name="jw_bead_props" id="lRTgTc9twAo2Fh7PCuFf">
-    <mxGraphModel dx="1540" dy="899" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
+  <diagram name="beads" id="lRTgTc9twAo2Fh7PCuFf">
+    <mxGraphModel dx="1426" dy="802" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
       <root>
         <mxCell id="XR4F8wwBK38xCPIRqBWH-0" />
         <mxCell id="XR4F8wwBK38xCPIRqBWH-1" parent="XR4F8wwBK38xCPIRqBWH-0" />
@@ -9457,6 +9460,14 @@
             <mxPoint x="900" y="500" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="EUr7QStDwyNvAryshbsR" name="cuff_links">
+    <mxGraphModel dx="1426" dy="802" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
       </root>
     </mxGraphModel>
   </diagram>

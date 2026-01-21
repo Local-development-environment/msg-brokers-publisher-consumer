@@ -1,8 +1,8 @@
 <?php
 
-namespace JewelleryDomain\Jewellery\Shared\SpecProperties\NeckSizes\NeckSize\Enums;
+namespace JewelleryDomain\Jewellery\Shared\SpecProperties\NeckSizes\Enums;
 
-use JewelleryDomain\Jewellery\Shared\SpecProperties\LengthNames\LengthName\Enums\LengthNameNamesEnum;
+use JewelleryDomain\Jewellery\Shared\SpecProperties\LengthNames\Enums\LengthNameNamesEnum;
 
 enum NeckSizeValuesEnum: int
 {
