@@ -38,6 +38,8 @@ use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeBuilderEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeBuilderEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeEnum;
+use Domain\JewelleryProperties\TieClips\TieClipTypes\Enums\TieClipTypeBuilderEnum;
+use Domain\JewelleryProperties\TieClips\TieClipTypes\Enums\TieClipTypeEnum;
 use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeBuilderEnum;
 use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeEnum;
 use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingEnum;
@@ -117,6 +119,7 @@ final class InitDataSeeder extends Seeder
         DB::table(CuffLinkTypeEnum::TABLE_NAME->value)->truncate();
         DB::table(BroochTypeEnum::TABLE_NAME->value)->truncate();
         DB::table(BroochClaspEnum::TABLE_NAME->value)->truncate();
+        DB::table(TieClipTypeEnum::TABLE_NAME->value)->truncate();
 
         Schema::enableForeignKeyConstraints();
 //        dd(DB::table(BraceletSizeEnum::TABLE_NAME->value)->get());
@@ -238,6 +241,15 @@ final class InitDataSeeder extends Seeder
                 'name'        => $cuff_link_type->value,
                 'slug'        => Str::slug($cuff_link_type->value, '-'),
                 'description' => $cuff_link_type->description(),
+                'created_at'  => now()
+            ]);
+        }
+
+        foreach (TieClipTypeBuilderEnum::cases() as $tie_clip_type) {
+            DB::table(TieClipTypeEnum::TABLE_NAME->value)->insertGetId([
+                'name'        => $tie_clip_type->value,
+                'slug'        => Str::slug($tie_clip_type->value, '-'),
+                'description' => $tie_clip_type->description(),
                 'created_at'  => now()
             ]);
         }

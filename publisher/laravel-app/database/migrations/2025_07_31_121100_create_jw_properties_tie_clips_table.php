@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('jw_properties.tie_clips', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
+            $table->unsignedBigInteger('tie_clip_type_id');
             $table->integer('quantity');
             $table->decimal('price', 10, 2);
             $table->jsonb('dimensions');
             $table->timestamps();
 
             $table->foreign('id')->references('id')->on('jewelleries.jewelleries');
+            $table->foreign('tie_clip_type_id')->references('id')->on('jw_properties.tie_clip_types');
         });
     }
 
