@@ -27,7 +27,9 @@ use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Enums\BraceletMetricEnu
 use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletWeavings\Enums\BraceletWeavingEnum;
+use Domain\JewelleryProperties\Brooches\BroochClasps\Enums\BroochClaspEnum;
 use Domain\JewelleryProperties\Brooches\Brooches\Enums\BroochEnum;
+use Domain\JewelleryProperties\Brooches\BroochTypes\Enums\BroochTypeEnum;
 use Domain\JewelleryProperties\Chains\ChainMetrics\Enums\ChainMetricEnum;
 use Domain\JewelleryProperties\Chains\Chains\Enums\ChainEnum;
 use Domain\JewelleryProperties\Chains\ChainWeavings\Enums\ChainWeavingEnum;
@@ -255,8 +257,15 @@ final class BuildJewellerySeeder extends Seeder
      */
     private function addBrooches(array $jewelleryData, int $jewelleryId): void
     {
+        $broochClaspId = DB::table(BroochClaspEnum::TABLE_NAME->value)
+            ->where('name', $jewelleryData['property']['parameters']['broochClasp'])->value('id');
+        $broochTypeId = DB::table(BroochTypeEnum::TABLE_NAME->value)
+            ->where('name', $jewelleryData['property']['parameters']['broochType'])->value('id');
+
         DB::table(BroochEnum::TABLE_NAME->value)->insertGetId([
             'id'         => $jewelleryId,
+            'brooch_clasp_id' => $broochClaspId,
+            'brooch_type_id' => $broochTypeId,
             'quantity'   => $jewelleryData['property']['parameters']['quantity'],
             'price'      => $jewelleryData['property']['parameters']['price'],
             'dimensions' => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
