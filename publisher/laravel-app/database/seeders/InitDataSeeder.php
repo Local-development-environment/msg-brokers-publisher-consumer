@@ -21,12 +21,22 @@ use Domain\Inserts\Stones\Enums\StoneEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginEnum;
 use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeBuilderEnum;
+use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeEnum;
+use Domain\JewelleryProperties\CuffLinks\CuffLinkClasps\Enums\CuffLinkClaspBuilderEnum;
+use Domain\JewelleryProperties\CuffLinks\CuffLinkClasps\Enums\CuffLinkClaspEnum;
+use Domain\JewelleryProperties\CuffLinks\CuffLinkForms\Enums\CuffLinkFormBuilderEnum;
+use Domain\JewelleryProperties\CuffLinks\CuffLinkForms\Enums\CuffLinkFormEnum;
+use Domain\JewelleryProperties\CuffLinks\CuffLinkTypes\Enums\CuffLinkTypeBuilderEnum;
+use Domain\JewelleryProperties\CuffLinks\CuffLinkTypes\Enums\CuffLinkTypeEnum;
 use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailEnum;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerBuilderEnum;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeBuilderEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeBuilderEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeEnum;
+use Domain\Medias\Shared\MediaTypes\Enums\MediaTypeBuilderEnum;
+use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeBuilderEnum;
+use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeEnum;
 use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingEnum;
 use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameBuilderEnum;
 use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeBuilderEnum;
@@ -56,7 +66,7 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_properties.length_names')->truncate();
         DB::table('jw_properties.bracelet_weavings')->truncate();
         DB::table('jw_properties.bracelet_metrics')->truncate();
-        DB::table('jw_properties.bracelet_sizes')->truncate();
+        DB::table(BraceletSizeEnum::TABLE_NAME->value)->truncate();
         DB::table(WeavingEnum::TABLE_NAME->value)->truncate();
         DB::table(BaseWeavingEnum::TABLE_NAME->value)->truncate();
         DB::table('jw_properties.bracelets')->truncate();
@@ -81,11 +91,7 @@ final class InitDataSeeder extends Seeder
         DB::table('jw_properties.brooches')->truncate();
         DB::table('jw_promotions.jewellery_promotion')->truncate();
         DB::table('jw_promotions.promotions')->truncate();
-        DB::table('jw_medias.pictures')->truncate();
-        DB::table('jw_medias.video_details')->truncate();
-        DB::table('jw_medias.videos')->truncate();
         DB::table('jw_medias.video_types')->truncate();
-        DB::table('jw_medias.producers')->truncate();
         DB::table(TypeOriginEnum::TABLE_NAME->value)->truncate();
         DB::table(StoneEnum::TABLE_NAME->value)->truncate();
         DB::table(OpticalEffectEnum::TABLE_NAME->value)->truncate();
@@ -103,10 +109,13 @@ final class InitDataSeeder extends Seeder
         DB::table(GrownStoneEnum::TABLE_NAME->value)->truncate();
         DB::table(ImitationStoneEnum::TABLE_NAME->value)->truncate();
         DB::table(JewelleryEnum::TABLE_NAME->value)->truncate();
+        DB::table(CuffLinkClaspEnum::TABLE_NAME->value)->truncate();
+        DB::table(CuffLinkFormEnum::TABLE_NAME->value)->truncate();
+        DB::table(CuffLinkTypeEnum::TABLE_NAME->value)->truncate();
 
         Schema::enableForeignKeyConstraints();
-
-        $body_parts = config('data-seed.data_items.body_parts');
+//        dd(DB::table(BraceletSizeEnum::TABLE_NAME->value)->get());
+//        $body_parts = config('data-seed.data_items.body_parts');
         $promotions = config('data-seed.data_items.jw_promotions');
 
         $this->jwMediasSeed();
@@ -121,7 +130,7 @@ final class InitDataSeeder extends Seeder
                 'created_at' => now(),
             ]);
         }
-
+        $body_parts = ['запястье', 'щиколотка'];
         foreach ($body_parts as $body_part) {
             DB::table('jw_properties.body_parts')->insert([
                 'name' => $body_part,
@@ -173,6 +182,8 @@ final class InitDataSeeder extends Seeder
         }
 
         foreach (BraceletSizeBuilderEnum::cases() as $bracelet_size) {
+//            dump(DB::table('jw_properties.bracelet_sizes')->get());
+//            dump($bracelet_size->value);
             DB::table('jw_properties.bracelet_sizes')->insert([
                 'value'      => $bracelet_size->value,
                 'unit'       => $bracelet_size->unitMeasurement(),
@@ -180,25 +191,62 @@ final class InitDataSeeder extends Seeder
                 'created_at' => now(),
             ]);
         }
+
+//        foreach (BraceletSizeBuilderEnum::cases() as $bracelet_size) {
+//            DB::table(BraceletSizeEnum::TABLE_NAME->value)->insert([
+//                'value'      => $bracelet_size->value,
+//                'unit'       => $bracelet_size->unitMeasurement(),
+//                'annotation' => $bracelet_size->wrist(),
+//                'created_at' => now(),
+//            ]);
+//        }
+
+        foreach (CuffLinkClaspBuilderEnum::cases() as $cuff_link_clasp) {
+//            dd(CuffLinkClaspBuilderEnum::description());
+            DB::table(CuffLinkClaspEnum::TABLE_NAME->value)->insertGetId([
+                'name'        => $cuff_link_clasp->value,
+                'slug'        => Str::slug($cuff_link_clasp->value, '-'),
+                'description' => $cuff_link_clasp->description(),
+                'created_at'  => now()
+            ]);
+        }
+
+        foreach (CuffLinkFormBuilderEnum::cases() as $cuff_link_form) {
+            DB::table(CuffLinkFormEnum::TABLE_NAME->value)->insertGetId([
+                'name'        => $cuff_link_form->value,
+                'slug'        => Str::slug($cuff_link_form->value, '-'),
+                'description' => $cuff_link_form->description(),
+                'created_at'  => now()
+            ]);
+        }
+
+        foreach (CuffLinkTypeBuilderEnum::cases() as $cuff_link_type) {
+            DB::table(CuffLinkTypeEnum::TABLE_NAME->value)->insertGetId([
+                'name'        => $cuff_link_type->value,
+                'slug'        => Str::slug($cuff_link_type->value, '-'),
+                'description' => $cuff_link_type->description(),
+                'created_at'  => now()
+            ]);
+        }
     }
 
     private function jwMediasSeed(): void
     {
-        $jwMediaProducers = config('data-seed.data_items.medias.jw_media_producers');
-        $jwMediaVideoTypes = config('data-seed.data_items.medias.jw_video_types');
+//        $jwMediaProducers = config('data-seed.data_items.medias.jw_media_producers');
+//        $jwMediaVideoTypes = config('data-seed.data_items.medias.jw_video_types');
 
-        foreach ($jwMediaProducers as $producer) {
-            DB::table('jw_medias.producers')->insert([
-                'name' => $producer,
-                'slug' => Str::slug($producer),
-                'created_at' => now(),
-            ]);
-        }
+//        foreach ($jwMediaProducers as $producer) {
+//            DB::table('jw_medias.producers')->insert([
+//                'name' => $producer,
+//                'slug' => Str::slug($producer),
+//                'created_at' => now(),
+//            ]);
+//        }
 
-        foreach ($jwMediaVideoTypes as $videoType) {
-            DB::table('jw_medias.video_types')->insert([
-                'type' => $videoType['name'],
-                'extension' => $videoType['extension'],
+        foreach (VideoTypeBuilderEnum::cases() as $videoType) {
+            DB::table(VideoTypeEnum::TABLE_NAME->value)->insert([
+                'type' => $videoType->value,
+                'extension' => $videoType->extension(),
                 'created_at' => now(),
             ]);
         }

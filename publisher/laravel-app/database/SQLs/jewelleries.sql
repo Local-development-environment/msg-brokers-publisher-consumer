@@ -208,9 +208,12 @@ with
         union all
 
         select
-            jj.id,jwcl.jewellery_id as jewellery_id,
+            jj.id,jwcl.id as jewellery_id,
             jsonb_build_object(
-                    'cuff_links_id', jwcl.id
+                'cuff_links_id', jwcl.id,
+                'cuff_links_clasp', jclc.name,
+                'cuff_links_form', jclf.name,
+                'cuff_links_type', jclt.name
             ) as spec_props,
             jwcl.quantity as quantity,
             cast(jwcl.price as decimal(10, 2)) as avg_price,
@@ -218,8 +221,11 @@ with
             cast(jwcl.price as decimal(10, 2)) as min_price
         from
             jw_properties.cuff_links as jwcl
-                join jewelleries.jewelleries as jj on jwcl.jewellery_id = jj.id
+                join jewelleries.jewelleries as jj on jwcl.id = jj.id
                 join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
+                join jw_properties.cuff_link_clasps as jclc on jwcl.cuff_link_clasp_id = jclc.id
+                join jw_properties.cuff_link_forms as jclf on jwcl.cuff_link_clasp_id = jclf.id
+                join jw_properties.cuff_link_types as jclt on jwcl.cuff_link_clasp_id = jclt.id
 
         union all
 
