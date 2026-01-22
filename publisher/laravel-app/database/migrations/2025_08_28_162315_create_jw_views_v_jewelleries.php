@@ -182,7 +182,7 @@ return new class extends Migration
                         select
                             jj.id,jwchp.id as jewellery_id,
                             jsonb_build_object(
-                                    'charm_pendant_id', jwchp.id
+                                'charm_pendant_id', jwchp.id
                             ) as spec_props,
                             jwchp.quantity as quantity,
                             cast(jwchp.price as decimal(10, 2)) as avg_price,
@@ -198,7 +198,9 @@ return new class extends Migration
                         select
                             jj.id,jwtc.id as jewellery_id,
                             jsonb_build_object(
-                                    'tie_clip_id', jwtc.id
+                                'tie_clip_id', jwtc.id,
+                                'tie_clip_type', jtct.name,
+                                'dimensions', jwtc.dimensions
                             ) as spec_props,
                             jwtc.quantity as quantity,
                             cast(jwtc.price as decimal(10, 2)) as avg_price,
@@ -208,6 +210,7 @@ return new class extends Migration
                             jw_properties.tie_clips as jwtc
                                 join jewelleries.jewelleries as jj on jwtc.id = jj.id
                                 join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
+                                join jw_properties.tie_clip_types as jtct on jwtc.tie_clip_type_id = jtct.id
 
                         union all
 

@@ -67,7 +67,7 @@ trait SpecPropertyTrait
                 'height' => random_int(20, 40),
                 'width'  => random_int(5, 15),
             ];
-        } elseif ($this->properties['jewelleryCategory'] === JewelleryCategoryNamesEnum::CUFF_LINKS->value) {
+        } elseif ($this->properties['jewelleryCategory'] === JewelleryCategoryNamesEnum::PENDANTS->value) {
             $dimensions = [
                 'height' => random_int(10, 25),
                 'width'  => random_int(10, 15),

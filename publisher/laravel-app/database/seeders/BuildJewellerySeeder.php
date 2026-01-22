@@ -51,6 +51,7 @@ use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
 use Domain\JewelleryProperties\Rings\RingMetrics\Enums\RingMetricEnum;
 use Domain\JewelleryProperties\Rings\Rings\Enums\RingEnum;
 use Domain\JewelleryProperties\TieClips\TieClips\Enums\TieClipEnum;
+use Domain\JewelleryProperties\TieClips\TieClipTypes\Enums\TieClipTypeEnum;
 use Domain\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaEnum;
 use Domain\Medias\CatalogMedias\CatalogPictures\Enums\CatalogPictureEnum;
 use Domain\Medias\CatalogMedias\CatalogVideoDetails\Enums\CatalogVideoDetailEnum;
@@ -306,9 +307,12 @@ final class BuildJewellerySeeder extends Seeder
      */
     private function addTieClips(array $jewelleryData, int $jewelleryId): void
     {
-        //        dd($jewelleryData);
+        $tieClipTypeId = DB::table(TieClipTypeEnum::TABLE_NAME->value)
+            ->where('name', $jewelleryData['property']['parameters']['tieClipType'])->value('id');
+
         DB::table(TieClipEnum::TABLE_NAME->value)->insertGetId([
             'id'         => $jewelleryId,
+            'tie_clip_type_id' => $tieClipTypeId,
             'quantity'   => $jewelleryData['property']['parameters']['quantity'],
             'price'      => $jewelleryData['property']['parameters']['price'],
             'dimensions' => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
