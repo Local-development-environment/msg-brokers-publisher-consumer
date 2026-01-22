@@ -146,7 +146,10 @@ with
         select
             jj.id,jwb.id as jewellery_id,
             jsonb_build_object(
-                'brooch_id', jwb.id
+                'brooch_id', jwb.id,
+                'brooch_clasp', jbc.name,
+                'brooch_type', jbt.name,
+                'dimensions', jwb.dimensions
             ) as spec_props,
             jwb.quantity as quantity,
             cast(jwb.price as decimal(10, 2)) as avg_price,
@@ -156,6 +159,8 @@ with
             jw_properties.brooches as jwb
                 join jewelleries.jewelleries as jj on jwb.id = jj.id
                 join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
+                join jw_properties.brooch_clasps as jbc on jwb.brooch_clasp_id = jbc.id
+                join jw_properties.brooch_types as jbt on jwb.brooch_type_id = jbt.id
 
          union all
 

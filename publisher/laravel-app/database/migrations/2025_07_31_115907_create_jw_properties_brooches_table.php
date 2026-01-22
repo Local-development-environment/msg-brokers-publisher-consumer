@@ -13,12 +13,16 @@ return new class extends Migration
     {
         Schema::create('jw_properties.brooches', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
+            $table->unsignedBigInteger('brooch_clasp_id');
+            $table->unsignedBigInteger('brooch_type_id');
             $table->integer('quantity');
             $table->decimal('price', 10, 2);
             $table->jsonb('dimensions');
             $table->timestamps();
 
             $table->foreign('id')->references('id')->on('jewelleries.jewelleries');
+            $table->foreign('brooch_clasp_id')->references('id')->on('jw_properties.brooch_clasps');
+            $table->foreign('brooch_type_id')->references('id')->on('jw_properties.brooch_types');
         });
     }
 

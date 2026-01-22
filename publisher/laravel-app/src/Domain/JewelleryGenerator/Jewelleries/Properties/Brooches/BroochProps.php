@@ -6,27 +6,49 @@ namespace Domain\JewelleryGenerator\Jewelleries\Properties\Brooches;
 
 use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
+use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
+use Domain\JewelleryProperties\Brooches\BroochClasps\Enums\BroochClaspBuilderEnum;
+use Domain\JewelleryProperties\Brooches\BroochTypes\Enums\BroochTypeBuilderEnum;
+use Random\RandomException;
 
 final readonly class BroochProps implements CategoryPropsBuilderInterface
 {
-    use SizePricePropsTrait, MetalPriceDifferentiationTrait;
+    use SizePricePropsTrait, MetalPriceDifferentiationTrait, ProbabilityArrayElementTrait;
 
     public function __construct(private array $properties)
     {
     }
 
+    /**
+     * @throws RandomException
+     */
     public function getProps(): array
     {
         $properties = $this->properties;
 
         return [
+            'broochClasp' => $this->getBroochClasp(),
+            'broochType' => $this->getBroochType(),
+            'dimensions' => ['height' => random_int(15, 40), 'width' => random_int(15, 40)],
             'quantity' => $this->getQuantity(),
             'price' => $this->getPriceDifferentiation($properties['metalItem']['preciousMetals'][0]['preciousMetal']),
-            'dimensions' => [
-                'высота' => fake()->randomFloat(1, 3, 6) . ' см',
-                'ширина' => fake()->randomFloat(1, 2, 4) . ' см',
-            ],
         ];
+    }
+
+    private function getBroochClasp(): string
+    {
+        $enumClass = get_class(BroochClaspBuilderEnum::MAGNET);
+        $enumCases = BroochClaspBuilderEnum::cases();
+
+        return $this->getArrElement($enumCases, $enumClass);
+    }
+
+    private function getBroochType(): string
+    {
+        $enumClass = get_class(BroochTypeBuilderEnum::CHATELAINE);
+        $enumCases = BroochTypeBuilderEnum::cases();
+
+        return $this->getArrElement($enumCases, $enumClass);
     }
 }
