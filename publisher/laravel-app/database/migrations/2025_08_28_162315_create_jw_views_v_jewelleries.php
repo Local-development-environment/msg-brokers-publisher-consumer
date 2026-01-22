@@ -228,7 +228,8 @@ return new class extends Migration
                                 'cuff_links_id', jwcl.id,
                                 'cuff_link_clasp', jclc.name,
                                 'cuff_link_form', jclf.name,
-                                'cuff_link_type', jclt.name
+                                'cuff_link_type', jclt.name,
+                                'dimensions', jwcl.dimensions
                             ) as spec_props,
                             jwcl.quantity as quantity,
                             cast(jwcl.price as decimal(10, 2)) as avg_price,
@@ -239,8 +240,8 @@ return new class extends Migration
                                 join jewelleries.jewelleries as jj on jwcl.id = jj.id
                                 join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
                                 join jw_properties.cuff_link_clasps as jclc on jwcl.cuff_link_clasp_id = jclc.id
-                                join jw_properties.cuff_link_forms as jclf on jwcl.cuff_link_clasp_id = jclf.id
-                                join jw_properties.cuff_link_types as jclt on jwcl.cuff_link_clasp_id = jclt.id
+                                join jw_properties.cuff_link_forms as jclf on jwcl.cuff_link_form_id = jclf.id
+                                join jw_properties.cuff_link_types as jclt on jwcl.cuff_link_type_id = jclt.id
 
                         union all
 
