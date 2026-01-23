@@ -6,11 +6,14 @@ namespace Domain\JewelleryGenerator\Jewelleries\Properties\Piercings;
 
 use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
+use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
+use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
+use Domain\JewelleryProperties\Piercings\PiercingTypes\Enums\PiercingTypeBuilderEnum;
 
 final readonly class PiercingProps implements CategoryPropsBuilderInterface
 {
-    use SizePricePropsTrait, MetalPriceDifferentiationTrait;
+    use SizePricePropsTrait, MetalPriceDifferentiationTrait, ProbabilityArrayElementTrait;
 
     public function __construct(private array $properties)
     {
@@ -19,10 +22,20 @@ final readonly class PiercingProps implements CategoryPropsBuilderInterface
     public function getProps(): array
     {
         $properties = $this->properties;
+        $piercingType = $this->getPiercingType();
 
         return [
+            'piercingType' => $piercingType,
             'quantity' => $this->getQuantity(),
             'price' => $this->getPriceDifferentiation($properties['metalItem']['preciousMetals'][0]['preciousMetal']),
         ];
+    }
+
+    private function getPiercingType(): string
+    {
+        $enumClass = get_class(PiercingTypeBuilderEnum::BANANA);
+        $enumCases = PiercingTypeBuilderEnum::cases();
+
+        return $this->getArrElement($enumCases, $enumClass);
     }
 }

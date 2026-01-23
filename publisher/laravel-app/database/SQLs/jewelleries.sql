@@ -202,7 +202,7 @@ with
         select
             jj.id,jwp.id as jewellery_id,
             jsonb_build_object(
-                    'pendant_id', jwp.id
+                'pendant_id', jwp.id
             ) as spec_props,
             jwp.quantity as quantity,
             cast(jwp.price as decimal(10, 2)) as avg_price,
@@ -241,7 +241,14 @@ with
         select
             jj.id,jwprc.id as jewellery_id,
             jsonb_build_object(
-                    'piercing_id', jwprc.id
+                'piercing_id', jwprc.id,
+                'piercing_type', jpt.name,
+                'piercing_sites', jsonb_agg(
+                    jsonb_build_object(
+                        'piercing_site_id', jps.id,
+                        'piercing_sites', jps.name
+                    )
+                )
             ) as spec_props,
             jwprc.quantity as quantity,
             cast(jwprc.price as decimal(10, 2)) as avg_price,
@@ -251,6 +258,10 @@ with
             jw_properties.piercings as jwprc
                 join jewelleries.jewelleries as jj on jwprc.id = jj.id
                 join jewelleries.jewellery_categories as jc on jj.jewellery_category_id = jc.id
+                join jw_properties.piercing_types as jpt on jwprc.piercing_type_id = jpt.id
+                left join jw_properties.piercing_suitable as jpsu on jpt.id = jpsu.piercing_type_id
+                left join jw_properties.piercing_sites as jps on jpsu.piercing_site_id = jps.id
+        group by jj.id, jwprc.id, jpt.name
 
         union all
 
