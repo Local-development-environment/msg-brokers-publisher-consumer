@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_properties.piercings', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary();
-            $table->integer('quantity');
-            $table->decimal('price', 10, 2);
+        Schema::create('jw_properties.piercing_sites', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('slug');
+            $table->text('description');
             $table->timestamps();
-
-            $table->foreign('id')->references('id')->on('jewelleries.jewelleries');
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_properties.piercings');
+        Schema::dropIfExists('jw_properties.piercing_sites');
     }
 };

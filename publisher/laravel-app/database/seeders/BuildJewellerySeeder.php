@@ -46,6 +46,7 @@ use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Enums\NecklaceMetricEnu
 use Domain\JewelleryProperties\Necklaces\Necklaces\Enums\NecklaceEnum;
 use Domain\JewelleryProperties\Pendants\Pendants\Enums\PendantEnum;
 use Domain\JewelleryProperties\Piercings\Piercings\Enums\PiercingEnum;
+use Domain\JewelleryProperties\Piercings\PiercingTypes\Enums\PiercingTypeEnum;
 use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailEnum;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
 use Domain\JewelleryProperties\Rings\RingMetrics\Enums\RingMetricEnum;
@@ -346,8 +347,12 @@ final class BuildJewellerySeeder extends Seeder
 
     private function addPiercings(array $jewelleryData, int $jewelleryId): void
     {
+        $piercingTypeId = DB::table(PiercingTypeEnum::TABLE_NAME->value)
+            ->where('name', $jewelleryData['property']['parameters']['piercingType'])->value('id');
+
         DB::table(PiercingEnum::TABLE_NAME->value)->insertGetId([
             'id'         => $jewelleryId,
+            'piercing_type_id' => $piercingTypeId,
             'quantity'   => $jewelleryData['property']['parameters']['quantity'],
             'price'      => $jewelleryData['property']['parameters']['price'],
             'created_at' => now()

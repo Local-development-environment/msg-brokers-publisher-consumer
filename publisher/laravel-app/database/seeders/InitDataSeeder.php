@@ -32,6 +32,11 @@ use Domain\JewelleryProperties\CuffLinks\CuffLinkForms\Enums\CuffLinkFormBuilder
 use Domain\JewelleryProperties\CuffLinks\CuffLinkForms\Enums\CuffLinkFormEnum;
 use Domain\JewelleryProperties\CuffLinks\CuffLinkTypes\Enums\CuffLinkTypeBuilderEnum;
 use Domain\JewelleryProperties\CuffLinks\CuffLinkTypes\Enums\CuffLinkTypeEnum;
+use Domain\JewelleryProperties\Piercings\PiercingSuitable\Enums\PiercingSuitableEnum;
+use Domain\JewelleryProperties\Piercings\PiercingSites\Enums\PiercingSiteBuilderEnum;
+use Domain\JewelleryProperties\Piercings\PiercingSites\Enums\PiercingSiteEnum;
+use Domain\JewelleryProperties\Piercings\PiercingTypes\Enums\PiercingTypeBuilderEnum;
+use Domain\JewelleryProperties\Piercings\PiercingTypes\Enums\PiercingTypeEnum;
 use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailEnum;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerBuilderEnum;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
@@ -120,6 +125,9 @@ final class InitDataSeeder extends Seeder
         DB::table(BroochTypeEnum::TABLE_NAME->value)->truncate();
         DB::table(BroochClaspEnum::TABLE_NAME->value)->truncate();
         DB::table(TieClipTypeEnum::TABLE_NAME->value)->truncate();
+        DB::table(PiercingTypeEnum::TABLE_NAME->value)->truncate();
+        DB::table(PiercingSiteEnum::TABLE_NAME->value)->truncate();
+        DB::table(PiercingSuitableEnum::TABLE_NAME->value)->truncate();
 
         Schema::enableForeignKeyConstraints();
 //        dd(DB::table(BraceletSizeEnum::TABLE_NAME->value)->get());
@@ -190,8 +198,6 @@ final class InitDataSeeder extends Seeder
         }
 
         foreach (BraceletSizeBuilderEnum::cases() as $bracelet_size) {
-//            dump(DB::table('jw_properties.bracelet_sizes')->get());
-//            dump($bracelet_size->value);
             DB::table('jw_properties.bracelet_sizes')->insert([
                 'value'      => $bracelet_size->value,
                 'unit'       => $bracelet_size->unitMeasurement(),
@@ -252,6 +258,33 @@ final class InitDataSeeder extends Seeder
                 'description' => $tie_clip_type->description(),
                 'created_at'  => now()
             ]);
+        }
+
+        foreach (PiercingSiteBuilderEnum::cases() as $piercing_site) {
+            $piercingSiteId = DB::table(PiercingSiteEnum::TABLE_NAME->value)->insertGetId([
+                'name'        => $piercing_site->value,
+                'slug'        => Str::slug($piercing_site->value, '-'),
+                'description' => $piercing_site->description(),
+                'created_at'  => now()
+            ]);
+        }
+
+        foreach (PiercingTypeBuilderEnum::cases() as $piercing_type) {
+            $piercingTypeId = DB::table(PiercingTypeEnum::TABLE_NAME->value)->insertGetId([
+                'name'        => $piercing_type->value,
+                'slug'        => Str::slug($piercing_type->value, '-'),
+                'description' => $piercing_type->description(),
+                'created_at'  => now()
+            ]);
+            foreach ($piercing_type->suitable() as $suitable) {
+//                dd($suitable);
+                DB::table(PiercingSuitableEnum::TABLE_NAME->value)->insertGetId([
+                    'piercing_type_id'        => $piercingTypeId,
+                    'piercing_site_id'        => DB::table(PiercingSiteEnum::TABLE_NAME->value)
+                        ->where('name', $suitable)->value('id'),
+                    'created_at'  => now()
+                ]);
+            }
         }
     }
 
