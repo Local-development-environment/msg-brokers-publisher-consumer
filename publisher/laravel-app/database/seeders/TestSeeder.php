@@ -4,21 +4,11 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
-use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
-use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
-use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\StoneExteriorSQL;
-use Domain\JewelleryProperties\Bracelets\BodyParts\Models\BodyPart;
-use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Models\BraceletMetric;
-use Domain\JewelleryProperties\Bracelets\Bracelets\Models\Bracelet;
-use Domain\JewelleryProperties\CuffLinks\CuffLinkClasps\Enums\CuffLinkClaspBuilderEnum;
+use Domain\JewelleryProperties\Bracelets\BraceletTypes\Enums\BraceletTypeBuilderEnum;
 use Domain\JewelleryProperties\Piercings\PiercingTypes\Enums\PiercingTypeBuilderEnum;
-use Domain\JewelleryProperties\Rings\Rings\Models\Ring;
-use Domain\Medias\Shared\MediaTypes\Models\MediaType;
-use Domain\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -60,12 +50,12 @@ final class TestSeeder extends Seeder
 //        dd($file);
         $test = DB::select($file);
         dd(collect($test)->random());
-        $bases = BraceletBaseBuilderEnum::cases();
+        $bases = BraceletTypeBuilderEnum::cases();
         foreach ($bases as $key => $base) {
-            if ($base->value === BraceletBaseBuilderEnum::METAL_CHAIN->value ||
-                $base->value === BraceletBaseBuilderEnum::METAL_MONOLITH->value ||
-                $base->value === BraceletBaseBuilderEnum::SEGMENTAL_ITEMS->value ||
-                $base->value === BraceletBaseBuilderEnum::LEATHER->value) {
+            if ($base->value === BraceletTypeBuilderEnum::METAL_CHAIN->value ||
+                $base->value === BraceletTypeBuilderEnum::METAL_MONOLITH->value ||
+                $base->value === BraceletTypeBuilderEnum::SEGMENTAL_ITEMS->value ||
+                $base->value === BraceletTypeBuilderEnum::LEATHER->value) {
                 Arr::forget($bases, $key);
             }
             dump($base->value);

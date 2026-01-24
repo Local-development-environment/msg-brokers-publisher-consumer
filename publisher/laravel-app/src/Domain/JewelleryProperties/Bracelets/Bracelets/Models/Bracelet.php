@@ -5,11 +5,11 @@ namespace Domain\JewelleryProperties\Bracelets\Bracelets\Models;
 
 use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Domain\JewelleryProperties\Bracelets\BodyParts\Models\BodyPart;
-use Domain\JewelleryProperties\Bracelets\BraceletBases\Models\BraceletBase;
 use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Enums\BraceletMetricEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Models\BraceletMetric;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Models\BraceletSize;
+use Domain\JewelleryProperties\Bracelets\BraceletTypes\Models\BraceletType;
 use Domain\JewelleryProperties\Bracelets\BraceletWeavings\Enums\BraceletWeavingEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletWeavings\Models\BraceletWeaving;
 use Domain\Shared\JewelleryProperties\Clasps\Models\Clasp;
@@ -37,7 +37,7 @@ final class Bracelet extends Model
 
     public function braceletBase(): BelongsTo
     {
-        return $this->belongsTo(BraceletBase::class);
+        return $this->belongsTo(BraceletType::class);
     }
 
     public function clasp(): BelongsTo

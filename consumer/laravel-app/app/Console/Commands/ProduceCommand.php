@@ -1,11 +1,15 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Console\Commands;
 
 use App\AMQP\AMQPClient;
 use Illuminate\Console\Command;
+use JewelleryDomain\TestDataGeneration\BaseJewelleryGenerator;
+use JewelleryDomain\TestDataGeneration\Jeweller;
+use function Laravel\Prompts\select;
 
-class ProduceCommand extends Command
+final class ProduceCommand extends Command
 {
     /**
      * The name and signature of the console command.
@@ -27,11 +31,21 @@ class ProduceCommand extends Command
      */
     public function handle(AMQPClient $connection): int
     {
-        $data = [
-            'message' => 'Hello World from artisan command',
-            'from' => 'artisan'
-        ];
-        $connection->publish('my_queue', $data);
+        $queue = select(
+            label: 'What a queue do you want to use?',
+            options: [
+                'consumer jw.generate' => 'jw.generate'
+            ],
+        );
+
+        $jeweller = new Jeweller();
+
+        for ($i = 0; $i <= 100; $i++) {
+            $data = json_encode($jeweller->buildJewellery(new BaseJewelleryGenerator()), JSON_UNESCAPED_UNICODE);
+            $connection->publish($queue, $data);
+        }
+
+//        $connection->publish($queue, $data);
 
         return Command::SUCCESS;
     }

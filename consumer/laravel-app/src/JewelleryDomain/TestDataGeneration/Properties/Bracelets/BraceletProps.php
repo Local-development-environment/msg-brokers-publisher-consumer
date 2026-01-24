@@ -7,8 +7,8 @@ namespace JewelleryDomain\TestDataGeneration\Properties\Bracelets;
 use JewelleryDomain\Jewellery\Shared\SpecProperties\Clasps\Enums\ClaspNamesEnum;
 use JewelleryDomain\Jewellery\Shared\SpecProperties\Weavings\Enums\WeavingNamesEnum;
 use JewelleryDomain\Jewellery\SpecProperties\Bracelets\BodyPart\Enums\BodyPartNamesEnum;
-use JewelleryDomain\Jewellery\SpecProperties\Bracelets\BraceletBase\Enums\BraceletBaseNamesEnum;
 use JewelleryDomain\Jewellery\SpecProperties\Bracelets\BraceletSize\Enums\BraceletSizeValuesEnum;
+use JewelleryDomain\Jewellery\SpecProperties\Bracelets\BraceletType\Enums\BraceletTypeNamesEnum;
 use JewelleryDomain\TestDataGeneration\PropertyGeneratorInterface;
 use JewelleryDomain\TestDataGeneration\Traits\RandomArrayElementWithProbabilityTrait;
 use JewelleryDomain\TestDataGeneration\Traits\SpecPropertyTrait;
@@ -30,30 +30,40 @@ final readonly class BraceletProps implements PropertyGeneratorInterface
     {
         $specProps = [];
 
+        $braceletType = $this->getBraceletType();
+
         $specProps['nameFunction'] = $this->getNameFunction($this->properties['jewelleryCategory']);
-        $specProps['braceletBase'] = $this->getBraceletBase();
-        $specProps['clasp']        = $this->getClasp();
+        $specProps['braceletType'] = $braceletType;
+        $specProps['clasp']        = $this->getClasp($braceletType);
         $specProps['metrics']      = $this->getMetrics();
-        $specProps['weaving']      = $this->getWeaving($specProps);
-        $specProps['bodyPart']     = $this->getBodyPart();
+        $specProps['weaving']      = $this->getWeaving($braceletType);
+        $specProps['bodyPart']     = $this->getBodyPart($braceletType);
 
         return $specProps;
     }
 
-    private function getBraceletBase(): string
+    private function getBraceletType(): string
     {
-        $enumClass = get_class(BraceletBaseNamesEnum::LEATHER);
-        $enumCases = BraceletBaseNamesEnum::cases();
+        $enumClass = get_class(BraceletTypeNamesEnum::CHAINED);
+        $enumCases = BraceletTypeNamesEnum::cases();
 
         return $this->getArrElement($enumCases, $enumClass);
     }
 
-    private function getClasp(): string
+    private function getClasp(string $braceletType): string | null
     {
-        $enumClass = get_class(ClaspNamesEnum::CARABINER);
-        $enumCases = ClaspNamesEnum::cases();
+        if ($braceletType === BraceletTypeNamesEnum::CHAINED->value ||
+            $braceletType === BraceletTypeNamesEnum::WICKER->value ||
+            $braceletType === BraceletTypeNamesEnum::GLIDER->value ||
+            $braceletType === BraceletTypeNamesEnum::SLAVE->value ) {
 
-        return $this->getArrElement($enumCases, $enumClass);
+            $enumClass = get_class(ClaspNamesEnum::CARABINER);
+            $enumCases = ClaspNamesEnum::cases();
+
+            return $this->getArrElement($enumCases, $enumClass);
+        }
+
+        return null;
     }
 
     /**
@@ -70,11 +80,11 @@ final readonly class BraceletProps implements PropertyGeneratorInterface
     /**
      * @throws RandomException
      */
-    private function getWeaving(array $specProps): array
+    private function getWeaving(string $braceletType): array
     {
         $fullness = ['пустотелая', 'полнотелая'];
 
-        if ($specProps['braceletBase'] === BraceletBaseNamesEnum::METAL_CHAIN->value) {
+        if ($braceletType === BraceletTypeNamesEnum::CHAINED->value) {
             $enumClass = get_class(WeavingNamesEnum::ANCHOR);
             $enumCases = WeavingNamesEnum::cases();
 
@@ -88,11 +98,19 @@ final readonly class BraceletProps implements PropertyGeneratorInterface
         }
     }
 
-    private function getBodyPart(): string
+    private function getBodyPart(string $braceletType): string
     {
-        $enumClass = get_class(BodyPartNamesEnum::WRIST);
-        $enumCases = BodyPartNamesEnum::cases();
+        if ($braceletType === BraceletTypeNamesEnum::CHAINED->value ||
+            $braceletType === BraceletTypeNamesEnum::WICKER->value ||
+            $braceletType === BraceletTypeNamesEnum::GLIDER->value ||
+            $braceletType === BraceletTypeNamesEnum::UNCLOSED_RING->value ) {
 
-        return $this->getArrElement($enumCases, $enumClass);
+            $enumClass = get_class(ClaspNamesEnum::CARABINER);
+            $enumCases = ClaspNamesEnum::cases();
+
+            return $this->getArrElement($enumCases, $enumClass);
+        }
+
+        return BodyPartNamesEnum::WRIST->value;
     }
 }

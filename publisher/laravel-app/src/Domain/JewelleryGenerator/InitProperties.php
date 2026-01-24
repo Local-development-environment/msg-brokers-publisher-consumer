@@ -10,12 +10,12 @@ use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricEnum;
 use Domain\JewelleryProperties\Beads\Beads\Enums\BeadEnum;
 use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartBuilderEnum;
 use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Enums\BraceletMetricEnum;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeBuilderEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeEnum;
+use Domain\JewelleryProperties\Bracelets\BraceletTypes\Enums\BraceletTypeBuilderEnum;
+use Domain\JewelleryProperties\Bracelets\BraceletTypes\Enums\BraceletTypeEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletWeavings\Enums\BraceletWeavingEnum;
 use Domain\JewelleryProperties\Earrings\EarringClasps\Enums\EarringClaspBuilderEnum;
 use Domain\JewelleryProperties\Earrings\EarringClasps\Enums\EarringClaspEnum;
@@ -78,12 +78,12 @@ final class InitProperties
         DB::table(BraceletSizeEnum::TABLE_NAME->value)->truncate();
         DB::table(BraceletMetricEnum::TABLE_NAME->value)->truncate();
         DB::table(BraceletWeavingEnum::TABLE_NAME->value)->truncate();
-        DB::table(BraceletBaseEnum::TABLE_NAME->value)->truncate();
+        DB::table(BraceletTypeEnum::TABLE_NAME->value)->truncate();
 
         Schema::enableForeignKeyConstraints();
 
-        foreach (BraceletBaseBuilderEnum::cases() as $braceletBase) {
-            DB::table(BraceletBaseEnum::TABLE_NAME->value)->insert([
+        foreach (BraceletTypeBuilderEnum::cases() as $braceletBase) {
+            DB::table(BraceletTypeEnum::TABLE_NAME->value)->insert([
                 'name' => $braceletBase->value,
                 'slug' => Str::slug($braceletBase->value),
                 'description' => $braceletBase->description(),

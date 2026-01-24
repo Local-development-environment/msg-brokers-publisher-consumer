@@ -15,8 +15,8 @@ enum BraceletNameRoutesEnum: string
     case RELATIONSHIP_TO_JEWELLERY         = 'bracelet.relationships.jewellery';
     case RELATED_TO_BODY_PART              = 'bracelets.body-part';
     case RELATIONSHIP_TO_BODY_PART         = 'bracelets.relationships.body-part';
-    case RELATED_TO_BRACELET_BASE          = 'bracelets.bracelet-base';
-    case RELATIONSHIP_TO_BRACELET_BASE     = 'bracelets.relationships.bracelet-base';
+    case RELATED_TO_BRACELET_TYPE          = 'bracelets.bracelet-type';
+    case RELATIONSHIP_TO_BRACELET_TYPE     = 'bracelets.relationships.bracelet-type';
     case RELATED_TO_CLASP                  = 'bracelets.clasp';
     case RELATIONSHIP_TO_CLASP             = 'bracelets.relationships.clasp';
     case RELATED_TO_BRACELET_WEAVINGS      = 'bracelet.bracelet-weavings';

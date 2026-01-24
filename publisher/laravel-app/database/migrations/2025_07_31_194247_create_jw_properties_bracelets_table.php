@@ -15,13 +15,13 @@ return new class extends Migration
             $table->unsignedBigInteger('id')->primary();
             $table->unsignedBigInteger('clasp_id');
             $table->unsignedBigInteger('body_part_id');
-            $table->unsignedBigInteger('bracelet_base_id');
+            $table->unsignedBigInteger('bracelet_type_id');
             $table->timestamps();
 
             $table->foreign('id')->references('id')->on('jewelleries.jewelleries')->cascadeOnDelete();
             $table->foreign('clasp_id')->references('id')->on('jw_properties.clasps')->cascadeOnDelete();
             $table->foreign('body_part_id')->references('id')->on('jw_properties.body_parts')->cascadeOnDelete();
-            $table->foreign('bracelet_base_id')->references('id')->on('jw_properties.bracelet_bases')->cascadeOnDelete();
+            $table->foreign('bracelet_type_id')->references('id')->on('jw_properties.bracelet_types')->cascadeOnDelete();
         });
     }
 

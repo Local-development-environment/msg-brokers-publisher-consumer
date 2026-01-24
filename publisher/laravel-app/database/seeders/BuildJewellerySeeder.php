@@ -22,10 +22,10 @@ use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseEnum;
 use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricEnum;
 use Domain\JewelleryProperties\Beads\Beads\Enums\BeadEnum;
 use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Enums\BraceletMetricEnum;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeEnum;
+use Domain\JewelleryProperties\Bracelets\BraceletTypes\Enums\BraceletTypeEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletWeavings\Enums\BraceletWeavingEnum;
 use Domain\JewelleryProperties\Brooches\BroochClasps\Enums\BroochClaspEnum;
 use Domain\JewelleryProperties\Brooches\Brooches\Enums\BroochEnum;
@@ -434,8 +434,8 @@ final class BuildJewellerySeeder extends Seeder
             'body_part_id'     => $bodyPartId,
             'clasp_id'         => DB::table(ClaspEnum::TABLE_NAME->value)
                 ->where('name', $jewelleryData['property']['parameters']['clasp'])->value('id'),
-            'bracelet_base_id' => DB::table(BraceletBaseEnum::TABLE_NAME->value)
-                ->where('name', $jewelleryData['property']['parameters']['bracelet_bases'])->value('id'),
+            'bracelet_type_id' => DB::table(BraceletTypeEnum::TABLE_NAME->value)
+                ->where('name', $jewelleryData['property']['parameters']['bracelet_types'])->value('id'),
             'created_at'       => now()
         ]);
 

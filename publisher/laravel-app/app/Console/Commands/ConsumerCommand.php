@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use App\AMQP\AMQPAdapter\MessageParser;
 use App\AMQP\AMQPClient;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\App;
-use PhpAmqpLib\Connection\AbstractConnection;
-use PhpAmqpLib\Connection\AMQPStreamConnection;
-use PhpAmqpLib\Message\AMQPMessage;
-use Symfony\Component\Console\Command\Command as CommandAlias;
+use function Laravel\Prompts\select;
 
 final class ConsumerCommand extends Command
 {
@@ -32,11 +29,20 @@ final class ConsumerCommand extends Command
      * Execute the console command.
      * @throws \Exception
      */
-    public function handle(AMQPClient $client): int
+    public function handle(AMQPClient $connection): int
     {
-        $client->consume('jewellery.store', function (\Closure $callback) {
-            return $callback();
-        });
+        $queue = select(
+            label: 'What is a queue you need?',
+            options: [
+                'consumer jw.generate' => 'jw.generate'
+            ],
+        );
+
+        $callback = function ($msg) {
+            (new MessageParser($msg))->parser();
+        };
+
+        $connection->consume($queue, $callback);
 
         return Command::SUCCESS;
     }

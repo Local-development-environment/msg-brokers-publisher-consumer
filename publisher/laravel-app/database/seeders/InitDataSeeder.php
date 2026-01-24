@@ -81,7 +81,7 @@ final class InitDataSeeder extends Seeder
         DB::table(BaseWeavingEnum::TABLE_NAME->value)->truncate();
         DB::table('jw_properties.bracelets')->truncate();
         DB::table('jw_properties.body_parts')->truncate();
-        DB::table('jw_properties.bracelet_bases')->truncate();
+        DB::table('jw_properties.bracelet_types')->truncate();
         DB::table('jw_properties.clasps')->truncate();
         DB::table('jw_properties.ring_metrics')->truncate();
         DB::table('jw_properties.rings')->truncate();
