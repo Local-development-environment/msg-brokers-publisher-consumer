@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace JewelleryDomain\TestDataGeneration\Properties\Brooches;
 
-use JewelleryDomain\Jewellery\SpecProperties\Brooches\BroochClasp\Enums\BroochClaspNameEnum;
-use JewelleryDomain\Jewellery\SpecProperties\Brooches\BroochType\Enums\BroochTypeNameEnum;
+use JewelleryDomain\Jewellery\SpecProperties\Brooches\BroochClasp\Enums\BroochClaspNamesEnum;
+use JewelleryDomain\Jewellery\SpecProperties\Brooches\BroochType\Enums\BroochTypeNamesEnum;
 use JewelleryDomain\TestDataGeneration\PropertyGeneratorInterface;
 use JewelleryDomain\TestDataGeneration\Traits\RandomArrayElementWithProbabilityTrait;
 use JewelleryDomain\TestDataGeneration\Traits\SpecPropertyTrait;
@@ -26,6 +26,7 @@ final readonly class BroochProps implements PropertyGeneratorInterface
     public function getProps(): array
     {
         return [
+            'nameFunction' => $this->getNameFunction($this->properties['jewelleryCategory']),
             'broochClasp' => $this->getBroochClasp(),
             'broochType' => $this->getBroochType(),
             'dimensions' => ['height' => random_int(15, 40), 'width' => random_int(15, 40)],
@@ -35,16 +36,16 @@ final readonly class BroochProps implements PropertyGeneratorInterface
 
     private function getBroochClasp(): string
     {
-        $enumClass = get_class(BroochClaspNameEnum::MAGNET);
-        $enumCases = BroochClaspNameEnum::cases();
+        $enumClass = get_class(BroochClaspNamesEnum::MAGNET);
+        $enumCases = BroochClaspNamesEnum::cases();
 
         return $this->getArrElement($enumCases, $enumClass);
     }
 
     private function getBroochType(): string
     {
-        $enumClass = get_class(BroochTypeNameEnum::CHATELAINE);
-        $enumCases = BroochTypeNameEnum::cases();
+        $enumClass = get_class(BroochTypeNamesEnum::CHATELAINE);
+        $enumCases = BroochTypeNamesEnum::cases();
 
         return $this->getArrElement($enumCases, $enumClass);
     }

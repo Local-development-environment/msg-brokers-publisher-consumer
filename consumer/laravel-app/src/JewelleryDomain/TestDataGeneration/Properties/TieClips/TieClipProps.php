@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace JewelleryDomain\TestDataGeneration\Properties\TieClips;
 
-use JewelleryDomain\Jewellery\SpecProperties\TieClips\TieClipType\Enums\TieClipTypeNameEnum;
+use JewelleryDomain\Jewellery\SpecProperties\TieClips\TieClipType\Enums\TieClipTypeNamesEnum;
 use JewelleryDomain\TestDataGeneration\PropertyGeneratorInterface;
 use JewelleryDomain\TestDataGeneration\Traits\RandomArrayElementWithProbabilityTrait;
 use JewelleryDomain\TestDataGeneration\Traits\SpecPropertyTrait;
@@ -25,6 +25,7 @@ final readonly class TieClipProps implements PropertyGeneratorInterface
     public function getProps(): array
     {
         return [
+            'nameFunction' => $this->getNameFunction($this->properties['jewelleryCategory']),
             'tieClipType' => $this->getTieClipType(),
             'dimensions' => ['height' => random_int(5, 10), 'length' => random_int(30, 40)],
             'quantity' => random_int(0, 10),
@@ -33,8 +34,8 @@ final readonly class TieClipProps implements PropertyGeneratorInterface
 
     private function getTieClipType(): string
     {
-        $enumClass = get_class(TieClipTypeNameEnum::CLIP);
-        $enumCases = TieClipTypeNameEnum::cases();
+        $enumClass = get_class(TieClipTypeNamesEnum::CLIP);
+        $enumCases = TieClipTypeNamesEnum::cases();
 
         return $this->getArrElement($enumCases, $enumClass);
     }

@@ -71,8 +71,8 @@ final class BaseJewelleryGenerator implements JewelleryGenerateInterface
     {
         $jewellery['jewelleryCategory'] = $this->baseJewellery->jewelleryCategory;
         $jewellery ['specProperties']   = $this->baseJewellery->property;
-        $jewellery['preciousMetals']    = $this->baseJewellery->preciousMetals;
-        $jewellery['coverages']         = $this->baseJewellery->coverages;
+//        $jewellery['preciousMetals']    = $this->baseJewellery->preciousMetals;
+//        $jewellery['coverages']         = $this->baseJewellery->coverages;
 //        $jewellery['inserts']     = $this->baseJewellery->inserts;
 //        $jewellery['jewelleryItem']  = $this->baseJewellery->jewelleryItem;
 //        $jewellery['media']          = $this->baseJewellery->media;

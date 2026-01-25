@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\Properties\Bracelets;
 
-use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
 use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartBuilderEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletBases\Enums\BraceletBaseBuilderEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeBuilderEnum;
+use Domain\JewelleryProperties\Bracelets\BraceletTypes\Enums\BraceletTypeBuilderEnum;
 use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspBuilderEnum;
 use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingBuilderEnum;
 use Illuminate\Support\Arr;
@@ -39,7 +38,7 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
             'weaving' => $this->getWeaving(),
             'body_part' => $this->getBodyPart(),
             'bracelet_sizes' => data_get($sizePrices, '*.size'),
-            'bracelet_bases' => $this->getBraceletBase($insert),
+            'bracelet_types' => $this->getBraceletType($insert),
             'quantity' => data_get($sizePrices, '*.quantity'),
             'price' => data_get($sizePrices, '*.price')
         ];
@@ -69,15 +68,15 @@ final readonly class BraceletProps implements CategoryPropsBuilderInterface
         return $this->getArrElement($enumCases, $enumClass);
     }
 
-    private function getBraceletBase(array $insert): string
+    private function getBraceletType(array $insert): string
     {
         if ($insert) {
-            $enumClass = get_class(BraceletBaseBuilderEnum::METAL_CHAIN);
-            $enumCases = BraceletBaseBuilderEnum::cases();
+            $enumClass = get_class(BraceletTypeBuilderEnum::CHAINED);
+            $enumCases = BraceletTypeBuilderEnum::cases();
 
             return $this->getArrElement($enumCases, $enumClass);
         } else {
-            return BraceletBaseBuilderEnum::METAL_CHAIN->value;
+            return BraceletTypeBuilderEnum::CHAINED->value;
         }
     }
 }

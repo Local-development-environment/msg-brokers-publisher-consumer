@@ -5,62 +5,91 @@ declare(strict_types=1);
 namespace JewelleryDomain\TestDataGeneration\PreciousMetals;
 
 use Illuminate\Support\Arr;
+use JewelleryDomain\Jewellery\JewelleryCategoryItems\JewelleryCategory\Enums\JewelleryCategoryNamesEnum;
 use JewelleryDomain\Jewellery\PreciousMetalItems\Hallmark\Enums\HallmarkNamesEnum;
 use JewelleryDomain\Jewellery\PreciousMetalItems\PreciousMetal\Enums\PreciousMetalNamesEnum;
 use JewelleryDomain\TestDataGeneration\Traits\RandomArrayElementWithProbabilityTrait;
+use Random\RandomException;
 
 final class PreciousMetalGenerator
 {
     use RandomArrayElementWithProbabilityTrait;
 
+    /**
+     * @throws RandomException
+     */
     public function getPreciousMetals(string $jewelleryCategory): array
     {
         $preciousMetals = [];
 
-        $preciousMetal = $this->getPreciousMetal();
-        $hallmark      = $this->getHallmark($preciousMetal);
-
-        $preciousMetals[] = [
-            'hallmark'      => $hallmark,
-            'preciousMetal' => $preciousMetal
-        ];
-
-        if ($preciousMetal === PreciousMetalNamesEnum::GOLDEN_RED->value ||
-            $preciousMetal === PreciousMetalNamesEnum::GOLDEN_WHITE->value ||
-            $preciousMetal === PreciousMetalNamesEnum::GOLDEN_YELLOW->value) {
-
-            if (rand(0, 9) === 0) {
-                $combinedGold = $this->getCombinedGold($preciousMetal);
-
-                $preciousMetals[] = [
-                    'hallmark'      => $hallmark,
-                    'preciousMetal' => $combinedGold
-                ];
-            }
+        if($jewelleryCategory === JewelleryCategoryNamesEnum::RINGS->value) {
+            return $preciousMetals[] = $this->getCombinedGold();
+        } else {
+            return $preciousMetals[] = $this->getSingleMetal();
         }
 
-        return $preciousMetals;
+//        return [
+//            'preciousMetal' => $preciousMetal,
+//            'hallmark' => $this->getHallmark($preciousMetal),
+//        ];
+
+//        $preciousMetal = $this->getPreciousMetal();
+//        $hallmark      = $this->getHallmark($preciousMetal);
+//
+//        $preciousMetals[] = [
+//            'hallmark'      => $hallmark,
+//            'preciousMetal' => $preciousMetal
+//        ];
+//
+//        if ($preciousMetal === PreciousMetalNamesEnum::GOLDEN_RED->value ||
+//            $preciousMetal === PreciousMetalNamesEnum::GOLDEN_WHITE->value ||
+//            $preciousMetal === PreciousMetalNamesEnum::GOLDEN_YELLOW->value) {
+//
+//            if (rand(0, 9) === 0) {
+//                $combinedGold = $this->getCombinedGold($preciousMetal);
+//
+//                $preciousMetals[] = [
+//                    'hallmark'      => $hallmark,
+//                    'preciousMetal' => $combinedGold
+//                ];
+//            }
+//        }
+//
+//        return $preciousMetals;
     }
 
-    private function getCombinedGold(string $preciousMetal): string
+    private function getSingleMetal(): array
     {
-        $metals = PreciousMetalNamesEnum::cases();
-
-        foreach ($metals as $key => $metal) {
-            if ($metal->value === $preciousMetal) {
-                Arr::forget($metals, $key);
-            } elseif ($metal->value === PreciousMetalNamesEnum::PLATINUM->value ||
-                $metal->value === PreciousMetalNamesEnum::PALLADIUM->value ||
-                $metal->value === PreciousMetalNamesEnum::SILVER->value) {
-                Arr::forget($metals, $key);
-            }
-        }
-
-        $enumClass = get_class(PreciousMetalNamesEnum::GOLDEN_RED);
-        $enumCases = $metals;
-
-        return $this->getArrElement($enumCases, $enumClass);
+        return [
+            'preciousMetal' => PreciousMetalNamesEnum::GOLDEN_RED->value,
+            'hallmark' => 585,
+        ];
     }
+
+    private function getCombinedGold(): array
+    {
+        return [];
+    }
+
+//    private function getCombinedGold(string $preciousMetal): string
+//    {
+//        $metals = PreciousMetalNamesEnum::cases();
+//
+//        foreach ($metals as $key => $metal) {
+//            if ($metal->value === $preciousMetal) {
+//                Arr::forget($metals, $key);
+//            } elseif ($metal->value === PreciousMetalNamesEnum::PLATINUM->value ||
+//                $metal->value === PreciousMetalNamesEnum::PALLADIUM->value ||
+//                $metal->value === PreciousMetalNamesEnum::SILVER->value) {
+//                Arr::forget($metals, $key);
+//            }
+//        }
+//
+//        $enumClass = get_class(PreciousMetalNamesEnum::GOLDEN_RED);
+//        $enumCases = $metals;
+//
+//        return $this->getArrElement($enumCases, $enumClass);
+//    }
 
     private function getPreciousMetal(): string
     {

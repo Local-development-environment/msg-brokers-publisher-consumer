@@ -21,11 +21,11 @@ final class MessageParser
     {
         $data = $this->messages;
 
-        $category = data_get($data, 'category');
-        $jewellery = data_get($data, 'jewelleryItem');
-        $metal = data_get($data, 'preciousMetals');
-        $coverages = data_get($data, 'coverages');
-        $insertItem = data_get($data, 'insertItem');
+        $category     = data_get($data, 'category');
+        $jewellery    = data_get($data, 'jewelleryItem');
+        $metal        = data_get($data, 'preciousMetals');
+        $coverages    = data_get($data, 'coverages');
+        $insertItem   = data_get($data, 'insertItem');
         $specProperty = data_get($data, 'property');
         dump($data);
         (new JewelleryCategoryValidator($category))->jewelleryCategoryValidation();

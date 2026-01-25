@@ -7,10 +7,9 @@ use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Admin\SharedProperty\Clasps\Resources\ClaspResource;
 use App\Http\Admin\SharedProperty\Weaving\Resources\WeavingResource;
 use App\Http\Admin\SpecProperties\Bracelets\BodyPart\Resources\BodyPartResource;
-use App\Http\Admin\SpecProperties\Bracelets\BraceletBase\Resources\BraceletBaseResource;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletMetrics\Resources\BraceletMetricResource;
-use App\Http\Admin\SpecProperties\Bracelets\BraceletSizes\Resources\BraceletSizeCollection;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletSizes\Resources\BraceletSizeResource;
+use App\Http\Admin\SpecProperties\Bracelets\BraceletType\Resources\BraceletTypeResource;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletWeaving\Resources\BraceletWeavingResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletEnum;
@@ -62,7 +61,7 @@ final class BraceletResource extends JsonResource
                     BraceletRelationshipsEnum::BRACELET_WEAVINGS->value,
                 ),
                 BraceletRelationshipsEnum::BRACELET_BASE->value => $this->sectionRelationships(
-                    BraceletNameRoutesEnum::RELATED_TO_BRACELET_BASE->value,
+                    BraceletNameRoutesEnum::RELATED_TO_BRACELET_TYPE->value,
                     BraceletRelationshipsEnum::BRACELET_BASE->value,
                 ),
                 BraceletRelationshipsEnum::WEAVINGS->value => $this->sectionRelationships(
@@ -82,7 +81,7 @@ final class BraceletResource extends JsonResource
             new JewelleryResource($this->whenLoaded(BraceletRelationshipsEnum::JEWELLERY->value)),
             new ClaspResource($this->whenLoaded(BraceletRelationshipsEnum::CLASP->value)),
             new BodyPartResource($this->whenLoaded(BraceletRelationshipsEnum::BODY_PART->value)),
-            new BraceletBaseResource($this->whenLoaded(BraceletRelationshipsEnum::BRACELET_BASE->value)),
+            new BraceletTypeResource($this->whenLoaded(BraceletRelationshipsEnum::BRACELET_BASE->value)),
             BraceletWeavingResource::collection($this->whenLoaded(BraceletRelationshipsEnum::BRACELET_WEAVINGS->value)),
             WeavingResource::collection($this->whenLoaded(BraceletRelationshipsEnum::WEAVINGS->value)),
         ];

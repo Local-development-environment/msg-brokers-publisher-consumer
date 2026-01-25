@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('jw_properties.ring_details', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ring_type_id');
+            $table->unsignedBigInteger('ring_specific_id');
             $table->unsignedBigInteger('ring_id');
             $table->timestamps();
 
-            $table->foreign('ring_type_id')->references('id')->on('jw_properties.ring_types');
+            $table->foreign('ring_specific_id')->references('id')->on('jw_properties.ring_specifics');
             $table->foreign('ring_id')->references('id')->on('jw_properties.rings');
         });
     }

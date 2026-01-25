@@ -306,10 +306,12 @@ return new class extends Migration
                         select
                             jj.id, jwr.id as jewellery_id,
                             jsonb_build_object(
-                                    'types', details.details,
-                                    'metrics', metrics.metrics,
-                                    'finger', rf.name,
-                                    'finger_id', rf.id
+                                'specifics', details.details,
+                                'metrics', metrics.metrics,
+                                'type_id', rt.id,
+                                'type', rt.name,
+                                'finger', rf.name,
+                                'finger_id', rf.id
                             ) as spec_props,
                             metrics.quantity as quantity,
                             metrics.avg_price,
@@ -322,14 +324,14 @@ return new class extends Migration
                                     r.id,
                                     jsonb_agg(
                                         jsonb_build_object(
-                                            'ring_type_id', rd.ring_type_id,
-                                            'ring_type', rt.name,
-                                            'description', rt.description
+                                            'ring_specific_id', rd.ring_specific_id,
+                                            'ring_specific', rs.name,
+                                            'description', rs.description
                                         )
                                     ) as details
                                 from jw_properties.rings as r
                                          join jw_properties.ring_details rd on r.id = rd.ring_id
-                                         join jw_properties.ring_types rt on rd.ring_type_id = rt.id
+                                         join jw_properties.ring_specifics rs on rd.ring_specific_id = rs.id
                                 group by r.id
                             ) as details on jwr.id = details.id
                                 join (
@@ -354,6 +356,7 @@ return new class extends Migration
                                 group by r.id
                             ) as metrics on jwr.id = metrics.id
                         join jw_properties.ring_fingers rf on rf.id = jwr.ring_finger_id
+                        join jw_properties.ring_types rt on rt.id = jwr.ring_type_id
                         join jewelleries.jewelleries jj on jwr.id = jj.id
 
                         union all
@@ -366,8 +369,8 @@ return new class extends Migration
                                     'clasp_id', b.clasp_id,
                                     'clasp_name', c.name,
                                     'clasp_description', c.description,
-                                    'base_id', b.bracelet_base_id,
-                                    'base_name', bb.name,
+                                    'type_id', b.bracelet_type_id,
+                                    'type_name', bt.name,
                                     'body_part_id', b.body_part_id,
                                     'body_part_name', bp.name
                             ) as details,
@@ -385,14 +388,14 @@ return new class extends Migration
                                             jsonb_build_object()
                                         else
                                             jsonb_agg(
-                                                    jsonb_build_object(
-                                                            'base_weaving_id', w.base_weaving_id,
-                                                            'base_weaving_name', bw.name,
-                                                            'weaving_id', w.id,
-                                                            'weaving', w.name,
-                                                            'fullness', brw.fullness,
-                                                            'wire_diameter', brw.diameter
-                                                    )
+                                                jsonb_build_object(
+                                                    'base_weaving_id', w.base_weaving_id,
+                                                    'base_weaving_name', bw.name,
+                                                    'weaving_id', w.id,
+                                                    'weaving', w.name,
+                                                    'fullness', brw.fullness,
+                                                    'wire_diameter', brw.diameter
+                                                )
                                             )
                                         end as weaving
                                 from
@@ -406,12 +409,12 @@ return new class extends Migration
                                 select
                                     b.id as bracelet_id,
                                     jsonb_agg(
-                                            jsonb_build_object(
-                                                    'size', bs.value,
-                                                    'price', brm.price,
-                                                    'quantity', brm.quantity,
-                                                    'unit', bs.unit
-                                            )
+                                        jsonb_build_object(
+                                            'size', bs.value,
+                                            'price', brm.price,
+                                            'quantity', brm.quantity,
+                                            'unit', bs.unit
+                                        )
                                     ) as metrics
                                 from
                                     jw_properties.bracelets as b
@@ -421,11 +424,11 @@ return new class extends Migration
                                 group by b.id
                             ) as metrics on metrics.bracelet_id = b.id
                                 left join jw_properties.clasps as c on c.id = b.clasp_id
-                                left join jw_properties.bracelet_bases as bb on bb.id = b.bracelet_base_id
+                                left join jw_properties.bracelet_types as bt on bt.id = b.bracelet_type_id
                                 left join jw_properties.body_parts as bp on bp.id = b.body_part_id
                                 left join jewelleries.jewelleries as jj on b.id = jj.id
                                 left join jw_properties.bracelet_metrics as brm on b.id = brm.bracelet_id
-                        group by b.id, metrics.metrics, weaving.weaving, jj.id, c. name, bb.name, bp.name, c.description
+                        group by b.id, metrics.metrics, weaving.weaving, jj.id, c. name, bt.name, bp.name, c.description
 
                         union all
 
