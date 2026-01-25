@@ -12,6 +12,7 @@ use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerBuilderEnum;
 use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeBuilderEnum;
+use Domain\JewelleryProperties\Rings\RingSpecifics\Enums\RingSpecificBuilderEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeBuilderEnum;
 use Domain\JewelleryProperties\Rings\RingTypes\Models\RingType;
 use Illuminate\Support\Arr;
@@ -26,50 +27,52 @@ final readonly class RingProps implements CategoryPropsBuilderInterface
 
     public function getProps(): array
     {
-//        dd(RingTypeBuilderEnum::from('комбинированное'));
-        $ringTypeCases = RingTypeBuilderEnum::cases();
-//    dump($this->properties['insertItem']);
-//        dd(!$this->properties['insertItem']);
-        if (count($this->properties['metalItem']['preciousMetals']) > 1) {
-            $ringType = RingTypeBuilderEnum::COMBINATION->value;
-        } elseif (!$this->properties['insertItem']) {
-            $types = array_filter($ringTypeCases, function (object $v, int $k) {
-                return $v->value === RingTypeBuilderEnum::WEDDING->value ||
-                    $v->value === RingTypeBuilderEnum::SIGNET_RING->value;
-            }, ARRAY_FILTER_USE_BOTH);
-            $ringType = $types[array_rand($types)]->value;
-
-        } elseif ($this->properties['insertItem'] === 1) {
-            $types = array_filter($ringTypeCases, function (object $v, int $k) {
-                return $v->value === RingTypeBuilderEnum::ENGAGEMENT->value ||
-                    $v->value === RingTypeBuilderEnum::MASSIVE_RING->value ||
-                    $v->value === RingTypeBuilderEnum::CLASSIC->value;
-            }, ARRAY_FILTER_USE_BOTH);
-            $ringType = $types[array_rand($types)]->value;
-        } elseif ($this->properties['insertItem'] > 1) {
-            $types = array_filter($ringTypeCases, function (object $v, int $k) {
-                return $v->value === RingTypeBuilderEnum::CLASSIC->value ||
-                    $v->value === RingTypeBuilderEnum::MASSIVE_RING->value;
-            }, ARRAY_FILTER_USE_BOTH);
-            $ringType = $types[array_rand($types)]->value;
-        }
-        else {
-            $types = array_filter($ringTypeCases, function (object $v, int $k) {
-                return $v->value !== RingTypeBuilderEnum::COMBINATION->value;
-            }, ARRAY_FILTER_USE_BOTH);
-
-            $ringType = $types[array_rand($types)]->value;
-        }
-
+//        $ringTypeCases = RingTypeBuilderEnum::cases();
+//
+//        if (count($this->properties['metalItem']['preciousMetals']) > 1) {
+//            $ringSpecific = RingSpecificBuilderEnum::COMBINATION->value;
+//        } elseif (!$this->properties['insertItem']) {
+//            $types = array_filter($ringTypeCases, function (object $v, int $k) {
+//                return $v->value === RingSpecificBuilderEnum::WEDDING->value ||
+//                    $v->value === RingSpecificBuilderEnum::SIGNET_RING->value;
+//            }, ARRAY_FILTER_USE_BOTH);
+//            $ringType = $types[array_rand($types)]->value;
+//
+//        } elseif ($this->properties['insertItem'] === 1) {
+//            $types = array_filter($ringTypeCases, function (object $v, int $k) {
+//                return $v->value === RingTypeBuilderEnum::ENGAGEMENT->value ||
+//                    $v->value === RingTypeBuilderEnum::MASSIVE_RING->value ||
+//                    $v->value === RingTypeBuilderEnum::CLASSIC->value;
+//            }, ARRAY_FILTER_USE_BOTH);
+//            $ringType = $types[array_rand($types)]->value;
+//        } elseif ($this->properties['insertItem'] > 1) {
+//            $types = array_filter($ringTypeCases, function (object $v, int $k) {
+//                return $v->value === RingTypeBuilderEnum::CLASSIC->value ||
+//                    $v->value === RingTypeBuilderEnum::MASSIVE_RING->value;
+//            }, ARRAY_FILTER_USE_BOTH);
+//            $ringType = $types[array_rand($types)]->value;
+//        }
+//        else {
+//            $types = array_filter($ringTypeCases, function (object $v, int $k) {
+//                return $v->value !== RingSpecificBuilderEnum::COMBINATION->value;
+//            }, ARRAY_FILTER_USE_BOTH);
+//
+//            $ringSpecific = $types[array_rand($types)]->value;
+//        }
+//
         $metal = $this->properties['metalItem']['preciousMetals'][0]['preciousMetal'];
         $insert = $this->properties['insertItem'];
 
+        $ringType = $this->getRingType();
+        $ringSpecific = $this->getRingSpecific();
+//
         $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), RingSizeBuilderEnum::cases());
 
         return [
             'size_price_quantity' => $sizePrices,
             /** ring_type property needs adding to ring generator */
             'ring_type' => $ringType,
+            'ring_specific' => $ringSpecific,
             'ring_finger' => $this->getRingFinger(),
             'ring_sizes' => data_get($sizePrices, '*.size'),
             'quantity' => data_get($sizePrices, '*.quantity'),
@@ -88,10 +91,18 @@ final readonly class RingProps implements CategoryPropsBuilderInterface
         return $this->getArrElement($enumCases, $enumClass);
     }
 
-    private function getRingType(array $t): string
+    private function getRingType(): string
     {
         $enumClass = get_class(RingTypeBuilderEnum::CLASSIC);
-        $enumCases = $t;
+        $enumCases = RingTypeBuilderEnum::cases();
+
+        return $this->getArrElement($enumCases, $enumClass);
+    }
+
+    private function getRingSpecific(): string
+    {
+        $enumClass = get_class(RingSpecificBuilderEnum::COMBINATION);
+        $enumCases = RingSpecificBuilderEnum::cases();
 
         return $this->getArrElement($enumCases, $enumClass);
     }

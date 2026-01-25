@@ -51,6 +51,7 @@ use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailEnum;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerEnum;
 use Domain\JewelleryProperties\Rings\RingMetrics\Enums\RingMetricEnum;
 use Domain\JewelleryProperties\Rings\Rings\Enums\RingEnum;
+use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeEnum;
 use Domain\JewelleryProperties\TieClips\TieClips\Enums\TieClipEnum;
 use Domain\JewelleryProperties\TieClips\TieClipTypes\Enums\TieClipTypeEnum;
 use Domain\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaEnum;
@@ -106,8 +107,15 @@ final class BuildJewellerySeeder extends Seeder
         $properties->initBeadProperties();
         $properties->initBraceletProperties();
         $properties->initEarringProperties();
+        $properties->initNecklaceProperties();
         $properties->initRingProperties();
         $properties->initShareProperties();
+        $properties->initCuffLinkProperties();
+        $properties->initPiercingProperties();
+        $properties->initBroochProperties();
+        $properties->initTieClipProperties();
+        $properties->initCharmPendantProperties();
+        $properties->initPendantProperties();
 
         //        dd('ok');
         for ($i = 0; $i < $items; $i++) {
@@ -393,10 +401,15 @@ final class BuildJewellerySeeder extends Seeder
         $ringFingerId = DB::table(RingFingerEnum::TABLE_NAME->value)
             ->where('name', $jewelleryData['property']['parameters']['ring_finger'])
             ->value('id');
+        $ringTypeId = DB::table(RingTypeEnum::TABLE_NAME->value)
+            ->where('name', $jewelleryData['property']['parameters']['ring_type'])
+            ->value('id');
+
 
         $ringId = DB::table(RingEnum::TABLE_NAME->value)->insertGetId([
             'id'             => $jewelleryId,
             'ring_finger_id' => $ringFingerId,
+            'ring_type_id' => $ringTypeId,
             'dimensions'     => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
             'created_at'     => now()
         ]);
@@ -416,8 +429,8 @@ final class BuildJewellerySeeder extends Seeder
 //            dd($ringType);
         DB::table(RingDetailEnum::TABLE_NAME->value)->insertGetId([
             'ring_id'      => $ringId,
-            'ring_type_id' => DB::table('jw_properties.ring_types')
-                ->where('name', $jewelleryData['property']['parameters']['ring_type'])->value('id'),
+            'ring_specific_id' => DB::table('jw_properties.ring_specifics')
+                ->where('name', $jewelleryData['property']['parameters']['ring_specific'])->value('id'),
             'created_at'   => now()
         ]);
 //        }

@@ -268,11 +268,11 @@ with
         select
             jj.id,jwerr.jewellery_id as jewellery_id,
             jsonb_build_object(
-                    'earring_id', jwerr.id,
-                    'earring_clasp_id', jwerc.id,
-                    'earring_clasp', jwerc.name,
-                    'earring_type_id', jwet.id,
-                    'earring_type', jwet.name
+                'earring_id', jwerr.id,
+                'earring_clasp_id', jwerc.id,
+                'earring_clasp', jwerc.name,
+                'earring_type_id', jwet.id,
+                'earring_type', jwet.name
             ) as spec_props,
             jwerr.quantity as quantity,
             cast(jwerr.price as decimal(10, 2)) as avg_price,
@@ -291,8 +291,10 @@ with
         select
             jj.id,jwr.id as jewellery_id,
             jsonb_build_object(
-                'types', details.details,
+                'specifics', details.details,
                 'metrics', metrics.metrics,
+                'type_id', rt.id,
+                'type', rt.name,
                 'finger', rf.name,
                 'finger_id', rf.id
             ) as spec_props,
@@ -307,14 +309,14 @@ with
                         r.id,
                         jsonb_agg(
                             jsonb_build_object(
-                                'ring_type_id', rd.ring_type_id,
-                                'ring_type', rt.name,
-                                'description', rt.description
+                                'ring_specific_id', rd.ring_specific_id,
+                                'ring_specific', rs.name,
+                                'description', rs.description
                             )
                         ) as details
                     from jw_properties.rings as r
-                             join jw_properties.ring_details rd on r.id = rd.ring_id
-                             join jw_properties.ring_types rt on rd.ring_type_id = rt.id
+                        join jw_properties.ring_details rd on r.id = rd.ring_id
+                        join jw_properties.ring_specifics rs on rd.ring_specific_id = rs.id
                     group by r.id
                 ) as details on jwr.id = details.id
                 join (
@@ -334,11 +336,12 @@ with
                             )
                         ) as metrics
                     from jw_properties.rings as r
-                             join jw_properties.ring_metrics rm on r.id = rm.ring_id
-                             join jw_properties.ring_sizes rs on rm.ring_size_id = rs.id
+                        join jw_properties.ring_metrics rm on r.id = rm.ring_id
+                        join jw_properties.ring_sizes rs on rm.ring_size_id = rs.id
                     group by r.id
                 ) as metrics on jwr.id = metrics.id
         join jw_properties.ring_fingers rf on rf.id = jwr.ring_finger_id
+        join jw_properties.ring_types rt on rt.id = jwr.ring_type_id
         join jewelleries.jewelleries jj on jwr.id = jj.id
 
         union all
@@ -351,7 +354,7 @@ with
                 'clasp_id', b.clasp_id,
                 'clasp_name', c.name,
                 'clasp_description', c.description,
-                'base_id', b.bracelet_base_id,
+                'base_id', b.bracelet_type_id,
                 'base_name', bb.name,
                 'body_part_id', b.body_part_id,
                 'body_part_name', bp.name
@@ -406,7 +409,7 @@ with
                 group by b.id
             ) as metrics on metrics.bracelet_id = b.id
                 left join jw_properties.clasps as c on c.id = b.clasp_id
-                left join jw_properties.bracelet_bases as bb on bb.id = b.bracelet_base_id
+                left join jw_properties.bracelet_types as bb on bb.id = b.bracelet_type_id
                 left join jw_properties.body_parts as bp on bp.id = b.body_part_id
                 left join jewelleries.jewelleries as jj on b.id = jj.id
                 left join jw_properties.bracelet_metrics as brm on b.id = brm.bracelet_id

@@ -306,10 +306,12 @@ return new class extends Migration
                         select
                             jj.id, jwr.id as jewellery_id,
                             jsonb_build_object(
-                                    'types', details.details,
-                                    'metrics', metrics.metrics,
-                                    'finger', rf.name,
-                                    'finger_id', rf.id
+                                'specifics', details.details,
+                                'metrics', metrics.metrics,
+                                'type_id', rt.id,
+                                'type', rt.name,
+                                'finger', rf.name,
+                                'finger_id', rf.id
                             ) as spec_props,
                             metrics.quantity as quantity,
                             metrics.avg_price,
@@ -322,14 +324,14 @@ return new class extends Migration
                                     r.id,
                                     jsonb_agg(
                                         jsonb_build_object(
-                                            'ring_type_id', rd.ring_type_id,
-                                            'ring_type', rt.name,
-                                            'description', rt.description
+                                            'ring_specific_id', rd.ring_specific_id,
+                                            'ring_specific', rs.name,
+                                            'description', rs.description
                                         )
                                     ) as details
                                 from jw_properties.rings as r
                                          join jw_properties.ring_details rd on r.id = rd.ring_id
-                                         join jw_properties.ring_types rt on rd.ring_type_id = rt.id
+                                         join jw_properties.ring_specifics rs on rd.ring_specific_id = rs.id
                                 group by r.id
                             ) as details on jwr.id = details.id
                                 join (
@@ -354,6 +356,7 @@ return new class extends Migration
                                 group by r.id
                             ) as metrics on jwr.id = metrics.id
                         join jw_properties.ring_fingers rf on rf.id = jwr.ring_finger_id
+                        join jw_properties.ring_types rt on rt.id = jwr.ring_type_id
                         join jewelleries.jewelleries jj on jwr.id = jj.id
 
                         union all

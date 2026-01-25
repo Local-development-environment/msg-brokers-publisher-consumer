@@ -6,6 +6,7 @@ namespace JewelleryDomain\TestDataGeneration\Properties\Rings;
 
 use JewelleryDomain\Jewellery\SpecProperties\Rings\RingFinger\Enums\RingFingerNamesEnum;
 use JewelleryDomain\Jewellery\SpecProperties\Rings\RingSize\Enums\RingSizeValuesEnum;
+use JewelleryDomain\Jewellery\SpecProperties\Rings\RingSpecific\Enums\RingSpecificNamesEnum;
 use JewelleryDomain\Jewellery\SpecProperties\Rings\RingType\Enums\RingTypeNamesEnum;
 use JewelleryDomain\TestDataGeneration\PropertyGeneratorInterface;
 use JewelleryDomain\TestDataGeneration\Traits\RandomArrayElementWithProbabilityTrait;
@@ -32,6 +33,7 @@ final readonly class RingProps implements PropertyGeneratorInterface
         $specProps['nameFunction'] = $this->getNameFunction($this->properties['jewelleryCategory']);
         $specProps['ringType'] = $ringTypes;
         $specProps['ringFinger'] = $this->getRingFinger($ringTypes);
+        $specProps['ringSpecific'] = $this->getRingSpecific($specProps);
         $specProps['metrics'] = $this->getMetrics();
 
         return $specProps;
@@ -65,6 +67,48 @@ final readonly class RingProps implements PropertyGeneratorInterface
             return random_int(0, 10) === 0 ? RingFingerNamesEnum::TOE->value : RingFingerNamesEnum::FINGER->value;
         } else {
             return RingFingerNamesEnum::FINGER->value;
+        }
+    }
+
+    /**
+     * @throws RandomException
+     */
+    private function getRingSpecific(array $specProps): array
+    {
+        if ($specProps['ringFinger'] === RingFingerNamesEnum::FINGER->value) {
+            if ($specProps['ringType'] === RingTypeNamesEnum::CLASSIC->value) {
+
+                $randNum = random_int(1, 3);
+
+                if ($randNum === 1) {
+                    return [RingSpecificNamesEnum::WEDDING->value];
+                } elseif ($randNum === 2) {
+                    return [RingSpecificNamesEnum::ENGAGEMENT->value];
+                } else {
+                    return [];
+                }
+            } elseif ($specProps['ringType'] === RingTypeNamesEnum::MASSIVE_RING->value ||
+                $specProps['ringType'] === RingTypeNamesEnum::SIGNET_RING->value ||
+                $specProps['ringType'] === RingTypeNamesEnum::PHALANX->value ||
+                $specProps['ringType'] === RingTypeNamesEnum::KNUCKLE->value) {
+
+                return [];
+
+            } else {
+
+                $randNum = random_int(1, 3);
+
+                if ($randNum === 1) {
+                    return [RingSpecificNamesEnum::WEDDING->value];
+                } elseif ($randNum === 2) {
+                    return [RingSpecificNamesEnum::ENGAGEMENT->value];
+                } else {
+                    return [];
+                }
+            }
+
+        } else {
+            return [];
         }
     }
 }
