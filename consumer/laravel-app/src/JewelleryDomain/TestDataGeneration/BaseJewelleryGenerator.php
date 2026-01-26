@@ -9,6 +9,7 @@ use JewelleryDomain\TestDataGeneration\InsertItems\InsertGenerator;
 use JewelleryDomain\TestDataGeneration\JewelleryCategories\JewelleryCategoryGenerator;
 use JewelleryDomain\TestDataGeneration\PreciousMetals\PreciousMetalGenerator;
 use JewelleryDomain\TestDataGeneration\Properties\Property;
+use Random\RandomException;
 
 final class BaseJewelleryGenerator implements JewelleryGenerateInterface
 {
@@ -40,11 +41,15 @@ final class BaseJewelleryGenerator implements JewelleryGenerateInterface
         return $this;
     }
 
+    /**
+     * @throws RandomException
+     */
     public function buildPreciousMetals(): JewelleryGenerateInterface
     {
         $preciousMetal = new PreciousMetalGenerator();
 
-        $this->baseJewellery->preciousMetals = $preciousMetal->getPreciousMetals($this->baseJewellery->jewelleryCategory);
+        $properties                          = get_object_vars($this->baseJewellery);
+        $this->baseJewellery->preciousMetals = $preciousMetal->getPreciousMetals($properties);
 
         return $this;
     }
@@ -71,8 +76,8 @@ final class BaseJewelleryGenerator implements JewelleryGenerateInterface
     {
         $jewellery['jewelleryCategory'] = $this->baseJewellery->jewelleryCategory;
         $jewellery ['specProperties']   = $this->baseJewellery->property;
-//        $jewellery['preciousMetals']    = $this->baseJewellery->preciousMetals;
-//        $jewellery['coverages']         = $this->baseJewellery->coverages;
+        $jewellery['preciousMetals']    = $this->baseJewellery->preciousMetals;
+        $jewellery['coverages']         = $this->baseJewellery->coverages;
 //        $jewellery['inserts']     = $this->baseJewellery->inserts;
 //        $jewellery['jewelleryItem']  = $this->baseJewellery->jewelleryItem;
 //        $jewellery['media']          = $this->baseJewellery->media;

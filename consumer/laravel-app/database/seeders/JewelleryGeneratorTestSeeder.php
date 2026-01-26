@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
+use JewelleryDomain\Jewellery\PreciousMetalItems\PreciousMetal\Enums\PreciousMetalNamesEnum;
 use JewelleryDomain\TestDataGeneration\BaseJewelleryGenerator;
 use JewelleryDomain\TestDataGeneration\Jeweller;
 use JewelleryDomain\TestDataGeneration\Traits\RandomArrayElementWithProbabilityTrait;
@@ -15,10 +17,6 @@ class JewelleryGeneratorTestSeeder extends Seeder
      */
     public function run(): void
     {
-//        $enumClass = get_class(JewelleryCategoryNamesEnum::BEADS);
-//        $enumCases = JewelleryCategoryNamesEnum::cases();
-//        $array = json_decode((string) json_encode(NeckSizeValuesEnum::cases()), true);
-//        dd($array);
         $builder = new Jeweller();
 
         dd($builder->buildJewellery(new BaseJewelleryGenerator()));

@@ -31,10 +31,10 @@ final readonly class RingProps implements PropertyGeneratorInterface
         $ringTypes = $this->getRingType();
 
         $specProps['nameFunction'] = $this->getNameFunction($this->properties['jewelleryCategory']);
-        $specProps['ringType'] = $ringTypes;
-        $specProps['ringFinger'] = $this->getRingFinger($ringTypes);
+        $specProps['ringType']     = $ringTypes;
+        $specProps['ringFinger']   = $this->getRingFinger($ringTypes);
         $specProps['ringSpecific'] = $this->getRingSpecific($specProps);
-        $specProps['metrics'] = $this->getMetrics();
+        $specProps['metrics']      = $this->getMetrics();
 
         return $specProps;
     }
@@ -45,7 +45,7 @@ final readonly class RingProps implements PropertyGeneratorInterface
     private function getMetrics(): array
     {
         $randNumElements = rand(2, count(RingSizeValuesEnum::cases()));
-        $array = json_decode((string) json_encode(RingSizeValuesEnum::cases()), true);
+        $array           = json_decode((string)json_encode(RingSizeValuesEnum::cases()), true);
 
         return $this->getSizeQuantity($array, $randNumElements);
     }
@@ -85,7 +85,7 @@ final readonly class RingProps implements PropertyGeneratorInterface
                 } elseif ($randNum === 2) {
                     return [RingSpecificNamesEnum::ENGAGEMENT->value];
                 } else {
-                    return [];
+                    return [RingSpecificNamesEnum::COMBINATION->value];
                 }
             } elseif ($specProps['ringType'] === RingTypeNamesEnum::MASSIVE_RING->value ||
                 $specProps['ringType'] === RingTypeNamesEnum::SIGNET_RING->value ||

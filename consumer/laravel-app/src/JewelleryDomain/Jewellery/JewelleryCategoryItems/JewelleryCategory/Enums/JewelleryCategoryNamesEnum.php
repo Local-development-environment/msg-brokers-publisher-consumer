@@ -4,7 +4,7 @@ namespace JewelleryDomain\Jewellery\JewelleryCategoryItems\JewelleryCategory\Enu
 
 enum JewelleryCategoryNamesEnum: string
 {
-    case BEADS = 'бусы';
+    case BEADS          = 'бусы';
     case BRACELETS      = 'браслеты';
     case BROOCHES       = 'броши';
     case CHAINS         = 'цепи';
@@ -49,25 +49,25 @@ enum JewelleryCategoryNamesEnum: string
             self::BRACELETS,
             self::CHAINS,
             self::RINGS,
-            self::EARRINGS => 15
+            self::EARRINGS  => 15
         };
     }
 
     public function facets(): array
     {
         return match ($this) {
-            self::BEADS => throw new \Exception('To be implemented'),
-            self::BRACELETS => throw new \Exception('To be implemented'),
-            self::BROOCHES => throw new \Exception('To be implemented'),
-            self::CHAINS => throw new \Exception('To be implemented'),
+            self::BEADS          => throw new \Exception('To be implemented'),
+            self::BRACELETS      => throw new \Exception('To be implemented'),
+            self::BROOCHES       => throw new \Exception('To be implemented'),
+            self::CHAINS         => throw new \Exception('To be implemented'),
             self::CHARM_PENDANTS => throw new \Exception('To be implemented'),
-            self::CUFF_LINKS => throw new \Exception('To be implemented'),
-            self::EARRINGS => throw new \Exception('To be implemented'),
-            self::NECKLACES => throw new \Exception('To be implemented'),
-            self::PENDANTS => throw new \Exception('To be implemented'),
-            self::PIERCINGS => throw new \Exception('To be implemented'),
-            self::RINGS => throw new \Exception('To be implemented'),
-            self::TIE_CLIPS => throw new \Exception('To be implemented'),
+            self::CUFF_LINKS     => throw new \Exception('To be implemented'),
+            self::EARRINGS       => throw new \Exception('To be implemented'),
+            self::NECKLACES      => throw new \Exception('To be implemented'),
+            self::PENDANTS       => throw new \Exception('To be implemented'),
+            self::PIERCINGS      => throw new \Exception('To be implemented'),
+            self::RINGS          => throw new \Exception('To be implemented'),
+            self::TIE_CLIPS      => throw new \Exception('To be implemented'),
         };
     }
 }
