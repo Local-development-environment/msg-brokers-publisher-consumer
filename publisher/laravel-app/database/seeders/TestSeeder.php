@@ -5,24 +5,30 @@ namespace Database\Seeders;
 
 use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
 use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
+use Domain\JewelleryGenerator\Jewelleries\MetalItems\MetalItem;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\StoneExteriorSQL;
+use Domain\JewelleryGenerator\Traits\TestEnumsTrait;
 use Domain\JewelleryProperties\Bracelets\BraceletTypes\Enums\BraceletTypeBuilderEnum;
 use Domain\JewelleryProperties\Piercings\PiercingTypes\Enums\PiercingTypeBuilderEnum;
+use Domain\PreciousMetals\Hallmarks\Enums\HallmarkBuilderEnum;
+use Domain\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 final class TestSeeder extends Seeder
 {
-    use ProbabilityArrayElementTrait, StoneExteriorSQL;
+    use ProbabilityArrayElementTrait, StoneExteriorSQL, TestEnumsTrait;
 
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        dd(PiercingTypeBuilderEnum::BANANA->suitable());
+//        dd(PreciousMetalBuilderEnum::GOLDEN_WHITE);
+        $removeElements = PreciousMetalBuilderEnum::GOLDEN_RED->hallmarks();
+        dd($this->removeCases(HallmarkBuilderEnum::cases(), $removeElements));
         $inserts = DB::select(file_get_contents(base_path('src/Domain/JewelleryGenerator/Jewelleries/InsertItems/inserts.sql')));
 
         foreach ($inserts as $insert) {

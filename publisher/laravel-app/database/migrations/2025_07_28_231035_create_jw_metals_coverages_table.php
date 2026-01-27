@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('jw_metals.coverages', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('coverage_type_id');
             $table->string('name');
             $table->text('description');
             $table->string('slug');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
+
+            $table->foreign('coverage_type_id')->references('id')->on('jw_metals.coverage_types');
         });
     }
 

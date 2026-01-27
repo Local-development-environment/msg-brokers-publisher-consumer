@@ -398,9 +398,6 @@ final class BuildJewellerySeeder extends Seeder
      */
     private function addRings(array $jewelleryData, int $jewelleryId): void
     {
-        $ringFingerId = DB::table(RingFingerEnum::TABLE_NAME->value)
-            ->where('name', $jewelleryData['property']['parameters']['ring_finger'])
-            ->value('id');
         $ringTypeId = DB::table(RingTypeEnum::TABLE_NAME->value)
             ->where('name', $jewelleryData['property']['parameters']['ring_type'])
             ->value('id');
@@ -408,7 +405,6 @@ final class BuildJewellerySeeder extends Seeder
 
         $ringId = DB::table(RingEnum::TABLE_NAME->value)->insertGetId([
             'id'             => $jewelleryId,
-            'ring_finger_id' => $ringFingerId,
             'ring_type_id' => $ringTypeId,
             'dimensions'     => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
             'created_at'     => now()

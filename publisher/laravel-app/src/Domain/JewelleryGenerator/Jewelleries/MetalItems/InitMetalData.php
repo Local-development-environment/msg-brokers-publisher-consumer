@@ -6,6 +6,8 @@ namespace Domain\JewelleryGenerator\Jewelleries\MetalItems;
 
 use Domain\PreciousMetals\Coverages\Enums\CoverageBuilderEnum;
 use Domain\PreciousMetals\Coverages\Enums\CoverageEnum;
+use Domain\PreciousMetals\CoverageTypes\Enums\CoverageTypeBuilderEnum;
+use Domain\PreciousMetals\CoverageTypes\Enums\CoverageTypeEnum;
 use Domain\PreciousMetals\Hallmarks\Enums\HallmarkBuilderEnum;
 use Domain\PreciousMetals\Hallmarks\Enums\HallmarkEnum;
 use Domain\PreciousMetals\JewelleryCoverages\Enums\JewelleryCoverageEnum;
@@ -23,6 +25,7 @@ final class InitMetalData
         Schema::disableForeignKeyConstraints();
 
         DB::table(CoverageEnum::TABLE_NAME->value)->truncate();
+        DB::table(CoverageTypeEnum::TABLE_NAME->value)->truncate();
         DB::table(PreciousMetalEnum::TABLE_NAME->value)->truncate();
         DB::table(HallmarkEnum::TABLE_NAME->value)->truncate();
         DB::table(JewelleryMetalEnum::TABLE_NAME->value)->truncate();
@@ -30,14 +33,26 @@ final class InitMetalData
 
         Schema::enableForeignKeyConstraints();
 
-        foreach (CoverageBuilderEnum::cases() as $case) {
-            DB::table(CoverageEnum::TABLE_NAME->value)->insert([
+//        dd(CoverageTypeBuilderEnum::DECORATION->coverages());
+
+        foreach (CoverageTypeBuilderEnum::cases() as $case) {
+            $coverageTypeId = DB::table(CoverageTypeEnum::TABLE_NAME->value)->insertGetId([
                 'name' => $case->value,
                 'slug' => Str::slug($case->value),
                 'description' => $case->description(),
-                'is_active' => true,
                 'created_at' => now(),
             ]);
+
+            foreach ($case->coverages() as $coverage) {
+                DB::table(CoverageEnum::TABLE_NAME->value)->insert([
+                    'name' => CoverageBuilderEnum::{$coverage}->value,
+                    'coverage_type_id' => $coverageTypeId,
+                    'slug' => Str::slug(CoverageBuilderEnum::{$coverage}->value),
+                    'description' => CoverageBuilderEnum::{$coverage}->description(),
+                    'is_active' => true,
+                    'created_at' => now(),
+                ]);
+            }
         }
 
         foreach (PreciousMetalBuilderEnum::cases() as $case) {

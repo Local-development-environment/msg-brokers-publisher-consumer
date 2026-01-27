@@ -12,8 +12,8 @@ final class Jeweller
             ->reset()
             ->buildJewelleryCategory()
             ->buildProperty()
-            ->buildPreciousMetals()
-            ->buildCoverages()
+//            ->buildPreciousMetals()
+//            ->buildCoverages()
 //            ->buildInsert()
             ->getJewellery();
     }

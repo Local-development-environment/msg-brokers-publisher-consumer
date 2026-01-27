@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace JewelleryDomain\Jewellery\CoverageItems\Coverage\Enums;
 
+use JewelleryDomain\Jewellery\CoverageItems\CoverageType\Enums\CoverageTypeNamesEnum;
 use JewelleryDomain\Jewellery\PreciousMetalItems\PreciousMetal\Enums\PreciousMetalNamesEnum;
 
 enum CoverageNamesEnum: string
@@ -39,24 +40,35 @@ enum CoverageNamesEnum: string
     {
         return match ($this) {
             self::GOLDING,
-            self::OXIDATION => [
-                PreciousMetalNamesEnum::SILVER->value
+            self::OXIDATION       => [
+                PreciousMetalNamesEnum::SILVER->name
             ],
             self::RHODIUM_PLATING => [
-                PreciousMetalNamesEnum::SILVER->value,
-                PreciousMetalNamesEnum::GOLDEN_RED->value,
-                PreciousMetalNamesEnum::GOLDEN_WHITE->value,
-                PreciousMetalNamesEnum::GOLDEN_YELLOW->value
+                PreciousMetalNamesEnum::SILVER->name,
+                PreciousMetalNamesEnum::GOLDEN_RED->name,
+                PreciousMetalNamesEnum::GOLDEN_WHITE->name,
+                PreciousMetalNamesEnum::GOLDEN_YELLOW->name
             ],
             self::DIAMOND_CUT,
-            self::ENAMEL => [
-                PreciousMetalNamesEnum::SILVER->value,
-                PreciousMetalNamesEnum::GOLDEN_RED->value,
-                PreciousMetalNamesEnum::GOLDEN_WHITE->value,
-                PreciousMetalNamesEnum::GOLDEN_YELLOW->value,
-                PreciousMetalNamesEnum::PALLADIUM->value,
-                PreciousMetalNamesEnum::PLATINUM->value,
+            self::ENAMEL          => [
+                PreciousMetalNamesEnum::SILVER->name,
+                PreciousMetalNamesEnum::GOLDEN_RED->name,
+                PreciousMetalNamesEnum::GOLDEN_WHITE->name,
+                PreciousMetalNamesEnum::GOLDEN_YELLOW->name,
+                PreciousMetalNamesEnum::PALLADIUM->name,
+                PreciousMetalNamesEnum::PLATINUM->name,
             ]
+        };
+    }
+
+    public function coverageTypes(): string
+    {
+        return match ($this) {
+            self::GOLDING,
+            self::ENAMEL,
+            self::DIAMOND_CUT => CoverageTypeNamesEnum::DECORATION->value,
+            self::RHODIUM_PLATING,
+            self::OXIDATION   => CoverageTypeNamesEnum::PROTECTION->value,
         };
     }
 }

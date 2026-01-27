@@ -20,7 +20,8 @@ return new class extends Migration
                                 jsonb_build_object(
                                     'coverage_id', jc.coverage_id,
                                     'coverage', c.name,
-                                    'coverage_description', c.description
+                                    'coverage_description', c.description,
+                                    'coverage_type', ct.name
                                 )
                             )
                                 as coverages,
@@ -29,6 +30,7 @@ return new class extends Migration
                             jewelleries.jewelleries as jj
                                 left join jw_metals.jewellery_coverages jc on jj.id = jc.jewellery_id
                                 left join jw_metals.coverages as c on jc.coverage_id = c.id
+                                left join jw_metals.coverage_types as ct on c.coverage_type_id = ct.id
                         group by jj.id,jc.jewellery_id
                     ),
                     cte_jw_metals as (
@@ -309,9 +311,7 @@ return new class extends Migration
                                 'specifics', details.details,
                                 'metrics', metrics.metrics,
                                 'type_id', rt.id,
-                                'type', rt.name,
-                                'finger', rf.name,
-                                'finger_id', rf.id
+                                'type', rt.name
                             ) as spec_props,
                             metrics.quantity as quantity,
                             metrics.avg_price,
@@ -355,7 +355,6 @@ return new class extends Migration
                                          join jw_properties.ring_sizes rs on rm.ring_size_id = rs.id
                                 group by r.id
                             ) as metrics on jwr.id = metrics.id
-                        join jw_properties.ring_fingers rf on rf.id = jwr.ring_finger_id
                         join jw_properties.ring_types rt on rt.id = jwr.ring_type_id
                         join jewelleries.jewelleries jj on jwr.id = jj.id
 

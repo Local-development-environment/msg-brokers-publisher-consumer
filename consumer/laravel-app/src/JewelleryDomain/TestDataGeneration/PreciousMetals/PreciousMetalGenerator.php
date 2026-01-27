@@ -24,6 +24,23 @@ final class PreciousMetalGenerator
     {
         $preciousMetals = [];
 
+        $metals = match ($properties['jewelleryCategory']) {
+            JewelleryCategoryNamesEnum::BEADS->value => $this->getMetalShare(),
+            JewelleryCategoryNamesEnum::BRACELETS->value => $this->getMetalShare(),
+            JewelleryCategoryNamesEnum::BROOCHES->value => $this->getMetalShare(),
+            JewelleryCategoryNamesEnum::CHAINS->value => $this->getMetalShare(),
+            JewelleryCategoryNamesEnum::CHARM_PENDANTS->value => $this->getMetalShare(),
+            JewelleryCategoryNamesEnum::CUFF_LINKS->value => $this->getMetalShare(),
+            JewelleryCategoryNamesEnum::EARRINGS->value => $this->getMetalShare(),
+            JewelleryCategoryNamesEnum::NECKLACES->value => $this->getMetalShare(),
+            JewelleryCategoryNamesEnum::PENDANTS->value => $this->getMetalShare(),
+            JewelleryCategoryNamesEnum::PIERCINGS->value => $this->getMetalShare(),
+            JewelleryCategoryNamesEnum::RINGS->value => $this->getMetalRing(),
+            JewelleryCategoryNamesEnum::TIE_CLIPS->value => $this->getMetalShare(),
+        };
+
+//        return $preciousMetals;
+
         if ($properties['jewelleryCategory'] === JewelleryCategoryNamesEnum::RINGS->value) {
 
             if (!empty($properties['property']['ringSpecific']) && $properties['property']['ringSpecific'][0] === RingSpecificNamesEnum::COMBINATION->value) {
@@ -123,5 +140,15 @@ final class PreciousMetalGenerator
         }
 
         return $this->getArrElement($enumCases, $enumClass);
+    }
+
+    private function getMetalShare(): array
+    {
+
+    }
+
+    private function getMetalRing(): array
+    {
+
     }
 }
