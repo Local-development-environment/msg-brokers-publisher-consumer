@@ -12,6 +12,6 @@ interface JewelleryGenerateInterface
     public function buildPreciousMetals(): JewelleryGenerateInterface;
     public function buildCoverages(): JewelleryGenerateInterface;
     public function buildProperty(): JewelleryGenerateInterface;
-//    public function buildInsert(): JewelleryGenerateInterface;
+    public function buildInsert(): JewelleryGenerateInterface;
     public function getJewellery(): array;
 }

@@ -64,21 +64,23 @@ final class BaseJewelleryGenerator implements JewelleryGenerateInterface
         return $this;
     }
 
-//    public function buildInsert(): JewelleryGenerateInterface
-//    {
-//        $inserts = new InsertGenerator();
-//        $properties = get_object_vars($this->baseJewellery);
-//
-//        $this->baseJewellery->inserts = $inserts->getInsert($properties);
-//    }
+    public function buildInsert(): JewelleryGenerateInterface
+    {
+        $inserts    = new InsertGenerator();
+        $properties = get_object_vars($this->baseJewellery);
+
+        $this->baseJewellery->inserts = $inserts->getInsert($properties);
+
+        return $this;
+    }
 
     public function getJewellery(): array
     {
         $jewellery['jewelleryCategory'] = $this->baseJewellery->jewelleryCategory;
         $jewellery ['specProperties']   = $this->baseJewellery->property;
-        $jewellery['preciousMetals']    = $this->baseJewellery->preciousMetals;
-        $jewellery['coverages']         = $this->baseJewellery->coverages;
-//        $jewellery['inserts']     = $this->baseJewellery->inserts;
+//        $jewellery['preciousMetals']    = $this->baseJewellery->preciousMetals;
+//        $jewellery['coverages']         = $this->baseJewellery->coverages;
+//        $jewellery['inserts']           = $this->baseJewellery->inserts;
 //        $jewellery['jewelleryItem']  = $this->baseJewellery->jewelleryItem;
 //        $jewellery['media']          = $this->baseJewellery->media;
 

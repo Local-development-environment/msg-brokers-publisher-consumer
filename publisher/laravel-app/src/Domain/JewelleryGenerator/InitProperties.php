@@ -256,7 +256,6 @@ final class InitProperties
         Schema::disableForeignKeyConstraints();
 
         DB::table(RingEnum::TABLE_NAME->value)->truncate();
-        DB::table(RingFingerEnum::TABLE_NAME->value)->truncate();
         DB::table(RingMetricEnum::TABLE_NAME->value)->truncate();
         DB::table(RingDetailEnum::TABLE_NAME->value)->truncate();
         DB::table(RingSizeEnum::TABLE_NAME->value)->truncate();
@@ -264,14 +263,6 @@ final class InitProperties
         DB::table(RingSpecificEnum::TABLE_NAME->value)->truncate();
 
         Schema::enableForeignKeyConstraints();
-
-        foreach (RingFingerBuilderEnum::cases() as $case) {
-            DB::table(RingFingerEnum::TABLE_NAME->value)->insert([
-                'name' => $case->value,
-                'slug' => Str::slug($case->value),
-                'created_at' => now(),
-            ]);
-        }
 
         foreach (RingTypeBuilderEnum::cases() as $case) {
             DB::table(RingTypeEnum::TABLE_NAME->value)->insert([

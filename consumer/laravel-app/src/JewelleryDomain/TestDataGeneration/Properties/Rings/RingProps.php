@@ -32,8 +32,7 @@ final readonly class RingProps implements PropertyGeneratorInterface
 
         $specProps['nameFunction'] = $this->getNameFunction($this->properties['jewelleryCategory']);
         $specProps['ringType']     = $ringTypes;
-        $specProps['ringFinger']   = $this->getRingFinger($ringTypes);
-        $specProps['ringSpecific'] = $this->getRingSpecific($specProps);
+        $specProps['ringSpecific'] = $this->getRingSpecific($ringTypes);
         $specProps['metrics']      = $this->getMetrics();
 
         return $specProps;
@@ -61,52 +60,100 @@ final readonly class RingProps implements PropertyGeneratorInterface
     /**
      * @throws RandomException
      */
-    private function getRingFinger(string $ringType): string
+    private function getRingSpecific(string $ringType): array
     {
-        if ($ringType === RingTypeNamesEnum::CLASSIC->value) {
-            return random_int(0, 10) === 0 ? RingFingerNamesEnum::TOE->value : RingFingerNamesEnum::FINGER->value;
-        } else {
-            return RingFingerNamesEnum::FINGER->value;
-        }
+        return match ($ringType) {
+            RingTypeNamesEnum::CLASSIC->value      => $this->getClassicSpecific(),
+            RingTypeNamesEnum::PHALANX->value      => $this->getPhalanxSpecific(),
+            RingTypeNamesEnum::KNUCKLE->value      => $this->getKnuckleSpecific(),
+            RingTypeNamesEnum::MASSIVE_RING->value => $this->getMassiveRingSpecific(),
+            RingTypeNamesEnum::SIGNET_RING->value  => $this->getSignetRingSpecific(),
+            RingTypeNamesEnum::PEDICLET->value     => $this->getPedicletSpecific(),
+        };
     }
 
     /**
      * @throws RandomException
      */
-    private function getRingSpecific(array $specProps): array
+    private function getClassicSpecific(): array
     {
-        if ($specProps['ringFinger'] === RingFingerNamesEnum::FINGER->value) {
-            if ($specProps['ringType'] === RingTypeNamesEnum::CLASSIC->value) {
+        $num = random_int(1, 100);
+        dump($num);
+        return match (true) {
+            $num < 10 => [RingSpecificNamesEnum::ENGAGEMENT->value, RingSpecificNamesEnum::COMBINATION->value],
+            $num < 20 => [RingSpecificNamesEnum::WEDDING->value, RingSpecificNamesEnum::COMBINATION->value],
+            $num < 70 => random_int(0, 1) === 0 ? [RingSpecificNamesEnum::ENGAGEMENT->value] : [RingSpecificNamesEnum::WEDDING->value],
+            $num < 80 => [RingSpecificNamesEnum::COMBINATION->value],
+            $num < 90 => [RingSpecificNamesEnum::SET_RING->value],
+            $num < 100 => [],
+        };
 
-                $randNum = random_int(1, 3);
+//        if ($num < 10) {
+//            return [RingSpecificNamesEnum::ENGAGEMENT->value, RingSpecificNamesEnum::COMBINATION->value];
+//        } else if ($num < 20) {
+//            return [RingSpecificNamesEnum::WEDDING->value, RingSpecificNamesEnum::COMBINATION->value];
+//        } else if ($num < 70) {
+//            return random_int(0, 1) === 0 ? [RingSpecificNamesEnum::ENGAGEMENT->value] : [RingSpecificNamesEnum::WEDDING->value];
+//        } else if ($num < 80) {
+//            return [RingSpecificNamesEnum::COMBINATION->value];
+//        } else if ($num < 90) {
+//            return [RingSpecificNamesEnum::SET_RING->value];
+//        } else {
+//            return [];
+//        }
+    }
 
-                if ($randNum === 1) {
-                    return [RingSpecificNamesEnum::WEDDING->value];
-                } elseif ($randNum === 2) {
-                    return [RingSpecificNamesEnum::ENGAGEMENT->value];
-                } else {
-                    return [RingSpecificNamesEnum::COMBINATION->value];
-                }
-            } elseif ($specProps['ringType'] === RingTypeNamesEnum::MASSIVE_RING->value ||
-                $specProps['ringType'] === RingTypeNamesEnum::SIGNET_RING->value ||
-                $specProps['ringType'] === RingTypeNamesEnum::PHALANX->value ||
-                $specProps['ringType'] === RingTypeNamesEnum::KNUCKLE->value) {
+    /**
+     * @throws RandomException
+     */
+    private function getPhalanxSpecific(): array
+    {
+        return [
+            random_int(0, 10) === 0 ? [RingSpecificNamesEnum::COMBINATION->value] : [],
+        ];
+    }
 
-                return [];
+    /**
+     * @throws RandomException
+     */
+    private function getKnuckleSpecific(): array
+    {
+        return [
+            random_int(0, 10) === 0 ? [RingSpecificNamesEnum::COMBINATION->value] : [],
+        ];
+    }
 
-            } else {
+    /**
+     * @throws RandomException
+     */
+    private function getMassiveRingSpecific(): array
+    {
+        return [
+            random_int(0, 10) === 0 ? [RingSpecificNamesEnum::COMBINATION->value] : [],
+        ];
+    }
 
-                $randNum = random_int(1, 3);
+    /**
+     * @throws RandomException
+     */
+    private function getSignetRingSpecific(): array
+    {
+        return [
+            random_int(0, 10) === 0 ? [RingSpecificNamesEnum::COMBINATION->value] : [],
+        ];
+    }
 
-                if ($randNum === 1) {
-                    return [RingSpecificNamesEnum::WEDDING->value];
-                } elseif ($randNum === 2) {
-                    return [RingSpecificNamesEnum::ENGAGEMENT->value];
-                } else {
-                    return [];
-                }
-            }
+    /**
+     * @throws RandomException
+     */
+    private function getPedicletSpecific(): array
+    {
+        $num = random_int(1, 100);
 
+        if ($num < 10) {
+            return [RingSpecificNamesEnum::COMBINATION->value];
+        } else if ($num < 20) {
+            return [RingSpecificNamesEnum::SET_RING->value];
         } else {
             return [];
         }

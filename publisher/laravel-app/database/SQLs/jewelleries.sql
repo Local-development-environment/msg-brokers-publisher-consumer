@@ -5,7 +5,8 @@ with
                 jsonb_build_object(
                     'coverage_id', jc.coverage_id,
                     'coverage', c.name,
-                    'coverage_description', c.description
+                    'coverage_description', c.description,
+                    'coverage_type', ct.name
                 )
             )
                 as coverages,
@@ -14,6 +15,7 @@ with
             jewelleries.jewelleries as jj
                 left join jw_metals.jewellery_coverages jc on jj.id = jc.jewellery_id
                 left join jw_metals.coverages as c on jc.coverage_id = c.id
+                left join jw_metals.coverage_types as ct on c.coverage_type_id = ct.id
         group by jj.id,jc.jewellery_id
     ),
     cte_jw_metals as (

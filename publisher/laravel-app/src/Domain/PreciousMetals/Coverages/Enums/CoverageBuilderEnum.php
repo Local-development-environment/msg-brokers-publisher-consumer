@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\PreciousMetals\Coverages\Enums;
 
+use Domain\PreciousMetals\CoverageTypes\Enums\CoverageTypeBuilderEnum;
 use Domain\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
 
 enum CoverageBuilderEnum: string
@@ -41,23 +42,34 @@ enum CoverageBuilderEnum: string
         return match ($this) {
             self::GOLDING,
             self::OXIDATION => [
-                PreciousMetalBuilderEnum::SILVER->value
+                PreciousMetalBuilderEnum::SILVER->name
             ],
             self::RHODIUM_PLATING => [
-                PreciousMetalBuilderEnum::SILVER->value,
-                PreciousMetalBuilderEnum::GOLDEN_RED->value,
-                PreciousMetalBuilderEnum::GOLDEN_WHITE->value,
-                PreciousMetalBuilderEnum::GOLDEN_YELLOW->value
+                PreciousMetalBuilderEnum::SILVER->name,
+                PreciousMetalBuilderEnum::GOLDEN_RED->name,
+                PreciousMetalBuilderEnum::GOLDEN_WHITE->name,
+                PreciousMetalBuilderEnum::GOLDEN_YELLOW->name
             ],
             self::DIAMOND_CUT,
             self::ENAMEL => [
-                PreciousMetalBuilderEnum::SILVER->value,
-                PreciousMetalBuilderEnum::GOLDEN_RED->value,
-                PreciousMetalBuilderEnum::GOLDEN_WHITE->value,
-                PreciousMetalBuilderEnum::GOLDEN_YELLOW->value,
-                PreciousMetalBuilderEnum::PALLADIUM->value,
-                PreciousMetalBuilderEnum::PLATINUM->value,
+                PreciousMetalBuilderEnum::SILVER->name,
+                PreciousMetalBuilderEnum::GOLDEN_RED->name,
+                PreciousMetalBuilderEnum::GOLDEN_WHITE->name,
+                PreciousMetalBuilderEnum::GOLDEN_YELLOW->name,
+                PreciousMetalBuilderEnum::PALLADIUM->name,
+                PreciousMetalBuilderEnum::PLATINUM->name,
             ]
+        };
+    }
+
+    public function coverageTypes(): string
+    {
+        return match ($this) {
+            self::GOLDING,
+            self::ENAMEL,
+            self::DIAMOND_CUT => CoverageTypeBuilderEnum::DECORATION->value,
+            self::RHODIUM_PLATING,
+            self::OXIDATION   => CoverageTypeBuilderEnum::PROTECTION->value,
         };
     }
 }

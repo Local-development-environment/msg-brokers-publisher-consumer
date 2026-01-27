@@ -65,7 +65,7 @@ final readonly class RingProps implements CategoryPropsBuilderInterface
 
         $ringType = $this->getRingType();
         $ringSpecific = $this->getRingSpecific();
-//
+
         $sizePrices = $this->getSizePrice($this->getPriceDifferentiation($metal), RingSizeBuilderEnum::cases());
 
         return [
@@ -73,7 +73,6 @@ final readonly class RingProps implements CategoryPropsBuilderInterface
             /** ring_type property needs adding to ring generator */
             'ring_type' => $ringType,
             'ring_specific' => $ringSpecific,
-            'ring_finger' => $this->getRingFinger(),
             'ring_sizes' => data_get($sizePrices, '*.size'),
             'quantity' => data_get($sizePrices, '*.quantity'),
             'price' => data_get($sizePrices, '*.price'),
@@ -81,14 +80,6 @@ final readonly class RingProps implements CategoryPropsBuilderInterface
                 'ширина шинки' => fake()->randomFloat(1, 1, 6) . ' мм',
             ],
         ];
-    }
-
-    private function getRingFinger(): string
-    {
-        $enumClass = get_class(RingFingerBuilderEnum::FINGER);
-        $enumCases = RingFingerBuilderEnum::cases();
-
-        return $this->getArrElement($enumCases, $enumClass);
     }
 
     private function getRingType(): string

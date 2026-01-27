@@ -13,7 +13,7 @@ final class CoverageGenerator
     public function getCoverages(array $properties): array
     {
         $preciousMetal = data_get($properties, 'preciousMetals.*.preciousMetal');
-        $category = data_get($properties, 'jewelleryCategory');
+        $category      = data_get($properties, 'jewelleryCategory');
 
         return $this->getRandomCoverage($preciousMetal, $category);
     }
@@ -47,7 +47,7 @@ final class CoverageGenerator
     private function getSilverCovering(array $coverages): array
     {
         $randNum = rand(0, 4);
-        $items = [];
+        $items   = [];
 
         $preparedCoverages = $this->prepareCoverages($coverages);
 
@@ -64,7 +64,7 @@ final class CoverageGenerator
     private function getGoldCovering(array $coverages): array
     {
         $randNum = rand(0, 4);
-        $items = [];
+        $items   = [];
 
         $preparedCoverages = $this->prepareCoverages($coverages);
         if ($randNum === 0) {
