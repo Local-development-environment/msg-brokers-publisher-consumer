@@ -85,7 +85,7 @@ final readonly class RingProps implements PropertyGeneratorInterface
             $num < 70 => random_int(0, 1) === 0 ? [RingSpecificNamesEnum::ENGAGEMENT->value] : [RingSpecificNamesEnum::WEDDING->value],
             $num < 80 => [RingSpecificNamesEnum::COMBINATION->value],
             $num < 90 => [RingSpecificNamesEnum::SET_RING->value],
-            $num < 100 => [],
+            $num <= 100 => [],
         };
     }
 
@@ -139,7 +139,7 @@ final readonly class RingProps implements PropertyGeneratorInterface
         return match (true) {
             $num < 10 => [RingSpecificNamesEnum::COMBINATION->value],
             $num < 20 => [RingSpecificNamesEnum::SET_RING->value],
-            $num < 100 => [],
+            $num <= 100 => [],
         };
     }
 }

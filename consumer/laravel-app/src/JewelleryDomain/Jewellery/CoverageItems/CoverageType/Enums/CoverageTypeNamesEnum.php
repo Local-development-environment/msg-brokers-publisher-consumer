@@ -14,13 +14,13 @@ enum CoverageTypeNamesEnum: string
     {
         return match ($this) {
             self::DECORATION => [
-                CoverageNamesEnum::DIAMOND_CUT->name,
-                CoverageNamesEnum::ENAMEL->name,
-                CoverageNamesEnum::GOLDING->name
+                CoverageNamesEnum::DIAMOND_CUT->value,
+                CoverageNamesEnum::ENAMEL->value,
+                CoverageNamesEnum::GOLDING->value
             ],
             self::PROTECTION => [
-                CoverageNamesEnum::OXIDATION->name,
-                CoverageNamesEnum::RHODIUM_PLATING->name,
+                CoverageNamesEnum::OXIDATION->value,
+                CoverageNamesEnum::RHODIUM_PLATING->value,
             ],
         };
     }

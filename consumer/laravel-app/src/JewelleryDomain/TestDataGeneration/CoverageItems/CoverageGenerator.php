@@ -5,95 +5,227 @@ declare(strict_types=1);
 namespace JewelleryDomain\TestDataGeneration\CoverageItems;
 
 use JewelleryDomain\Jewellery\CoverageItems\Coverage\Enums\CoverageNamesEnum;
+use JewelleryDomain\Jewellery\CoverageItems\CoverageType\Enums\CoverageTypeNamesEnum;
 use JewelleryDomain\Jewellery\JewelleryCategoryItems\JewelleryCategory\Enums\JewelleryCategoryNamesEnum;
 use JewelleryDomain\Jewellery\PreciousMetalItems\PreciousMetal\Enums\PreciousMetalNamesEnum;
+use JewelleryDomain\Jewellery\SpecProperties\Bracelets\BraceletType\Enums\BraceletTypeNamesEnum;
+use JewelleryDomain\TestDataGeneration\CoverageItems\MetalCoverages\GoldCoverage;
+use JewelleryDomain\TestDataGeneration\CoverageItems\MetalCoverages\PalladiumCoverage;
+use JewelleryDomain\TestDataGeneration\CoverageItems\MetalCoverages\PlatinumCoverage;
+use JewelleryDomain\TestDataGeneration\CoverageItems\MetalCoverages\SilverCoverage;
+use JewelleryDomain\TestDataGeneration\Traits\RandomArrayElementWithProbabilityTrait;
+use JewelleryDomain\TestDataGeneration\Traits\SpecPropertyTrait;
+use Random\RandomException;
 
-final class CoverageGenerator
+final readonly class CoverageGenerator
 {
-    public function getCoverages(array $properties): array
-    {
-        $preciousMetal = data_get($properties, 'preciousMetals.*.preciousMetal');
-        $category      = data_get($properties, 'jewelleryCategory');
+    use RandomArrayElementWithProbabilityTrait, SpecPropertyTrait;
 
-        return $this->getRandomCoverage($preciousMetal, $category);
+    public function __construct(protected array $properties)
+    {
     }
 
-    private function getRandomCoverage(array $metalType, string $category): array
+    /**
+     * @throws RandomException
+     */
+    public function getCoverages(): array
     {
-        if ($category === JewelleryCategoryNamesEnum::BEADS->value) {
-            return [CoverageNamesEnum::RHODIUM_PLATING->value];
-        }
-
-        if ($metalType[0] === PreciousMetalNamesEnum::PLATINUM->value ||
-            $metalType[0] === PreciousMetalNamesEnum::PALLADIUM->value) {
-
-            return rand(0, 3) ? [] : [CoverageNamesEnum::DIAMOND_CUT->value];
-
-        } elseif ($metalType[0] === PreciousMetalNamesEnum::SILVER->value) {
-
-            return $this->getSilverCovering(PreciousMetalNamesEnum::SILVER->coverages());
-
-        } elseif ($metalType[0] === PreciousMetalNamesEnum::GOLDEN_YELLOW->value ||
-            $metalType[0] === PreciousMetalNamesEnum::GOLDEN_RED->value ||
-            $metalType[0] === PreciousMetalNamesEnum::GOLDEN_WHITE->value) {
-
-            return $this->getGoldCovering(PreciousMetalNamesEnum::GOLDEN_RED->coverages());
-
-        }
-
-        return [];
+        return match ($this->properties['jewelleryCategory']) {
+            JewelleryCategoryNamesEnum::BEADS->value          => $this->getCoverageBead(),
+            JewelleryCategoryNamesEnum::BRACELETS->value      => $this->getCoverageBracelet($this->properties),
+            JewelleryCategoryNamesEnum::BROOCHES->value       => $this->getCoverageBrooch($this->properties),
+            JewelleryCategoryNamesEnum::CHAINS->value         => $this->getCoverageChain($this->properties),
+            JewelleryCategoryNamesEnum::CHARM_PENDANTS->value => $this->getCoverageCharmPendant($this->properties),
+            JewelleryCategoryNamesEnum::CUFF_LINKS->value     => $this->getCoverageCuffLink($this->properties),
+            JewelleryCategoryNamesEnum::EARRINGS->value       => $this->getCoverageEarring($this->properties),
+            JewelleryCategoryNamesEnum::NECKLACES->value      => $this->getCoverageNecklace($this->properties),
+            JewelleryCategoryNamesEnum::PENDANTS->value       => $this->getCoveragePendant($this->properties),
+            JewelleryCategoryNamesEnum::PIERCINGS->value      => $this->getCoveragePiercing($this->properties),
+            JewelleryCategoryNamesEnum::RINGS->value          => $this->getCoverageRing($this->properties),
+            JewelleryCategoryNamesEnum::TIE_CLIPS->value      => $this->getCoverageTieClip($this->properties),
+        };
     }
 
-    private function getSilverCovering(array $coverages): array
+    private function getCoverageBead(): array
     {
-        $randNum = rand(0, 4);
-        $items   = [];
+        return [
+            CoverageNamesEnum::RHODIUM_PLATING->value
+        ];
+    }
 
-        $preparedCoverages = $this->prepareCoverages($coverages);
-
-        if ($randNum === 0) {
-            $items[] = CoverageNamesEnum::DIAMOND_CUT->value;
-            $items[] = rand(0, 1) ? CoverageNamesEnum::OXIDATION->value : CoverageNamesEnum::RHODIUM_PLATING->value;
-
-            return $items;
+    /**
+     * @throws RandomException
+     */
+    private function getCoverageBracelet(array $properties): array
+    {
+        if ($properties['property']['braceletType'] === BraceletTypeNamesEnum::WICKER->value) {
+            return [
+                CoverageNamesEnum::RHODIUM_PLATING->value
+            ];
         } else {
-            return [$preparedCoverages[array_rand($preparedCoverages)]];
+            $metal = $properties['preciousMetals'][0]['preciousMetal'];
+            return match ($metal) {
+                PreciousMetalNamesEnum::GOLDEN_YELLOW->value,
+                PreciousMetalNamesEnum::GOLDEN_RED->value,
+                PreciousMetalNamesEnum::GOLDEN_WHITE->value => (new GoldCoverage)->getGoldCoverage(),
+                PreciousMetalNamesEnum::SILVER->value       => (new SilverCoverage())->getSilverCoverage(),
+                PreciousMetalNamesEnum::PLATINUM->value     => (new PlatinumCoverage())->getPlatinumCoverage(),
+                PreciousMetalNamesEnum::PALLADIUM->value    => (new PalladiumCoverage())->getPalladiumCoverage(),
+            };
         }
     }
 
-    private function getGoldCovering(array $coverages): array
+    /**
+     * @throws RandomException
+     */
+    private function getCoverageBrooch(array $properties): array
     {
-        $randNum = rand(0, 4);
-        $items   = [];
+        $metal = $properties['preciousMetals'][0]['preciousMetal'];
 
-        $preparedCoverages = $this->prepareCoverages($coverages);
-        if ($randNum === 0) {
-            $items[] = CoverageNamesEnum::DIAMOND_CUT->value;
-            $items[] = CoverageNamesEnum::RHODIUM_PLATING->value;
-
-            return $items;
-        } elseif ($randNum === 1) {
-            $items[] = CoverageNamesEnum::ENAMEL->value;
-            $items[] = CoverageNamesEnum::RHODIUM_PLATING->value;
-
-            return $items;
-        } else {
-            return [$preparedCoverages[array_rand($preparedCoverages)]];
-        }
+        return match ($metal) {
+            PreciousMetalNamesEnum::GOLDEN_YELLOW->value,
+            PreciousMetalNamesEnum::GOLDEN_RED->value,
+            PreciousMetalNamesEnum::GOLDEN_WHITE->value => (new GoldCoverage)->getGoldCoverage(),
+            PreciousMetalNamesEnum::SILVER->value       => (new SilverCoverage())->getSilverCoverage(),
+            PreciousMetalNamesEnum::PLATINUM->value     => (new PlatinumCoverage())->getPlatinumCoverage(),
+            PreciousMetalNamesEnum::PALLADIUM->value    => (new PalladiumCoverage())->getPalladiumCoverage(),
+        };
     }
 
-    private function prepareCoverages(array $coverages): array
+    /**
+     * @throws RandomException
+     */
+    private function getCoverageChain(array $properties): array
     {
-        foreach ($coverages as $key => $coverage) {
-            if ($coverage === CoverageNamesEnum::DIAMOND_CUT->value) {
-                unset($coverages[$key]);
-            }
+        $metal = $properties['preciousMetals'][0]['preciousMetal'];
 
-            if ($coverage === CoverageNamesEnum::ENAMEL->value) {
-                unset($coverages[$key]);
-            }
-        }
+        return match ($metal) {
+            PreciousMetalNamesEnum::GOLDEN_YELLOW->value,
+            PreciousMetalNamesEnum::GOLDEN_RED->value,
+            PreciousMetalNamesEnum::GOLDEN_WHITE->value => (new GoldCoverage)->getGoldCoverage(enamel: false),
+            PreciousMetalNamesEnum::SILVER->value       => (new SilverCoverage())->getSilverCoverage(enamel: false),
+            PreciousMetalNamesEnum::PLATINUM->value     => (new PlatinumCoverage())->getPlatinumCoverage(),
+            PreciousMetalNamesEnum::PALLADIUM->value    => (new PalladiumCoverage())->getPalladiumCoverage(),
+        };
+    }
 
-        return $coverages;
+    /**
+     * @throws RandomException
+     */
+    private function getCoverageCharmPendant(array $properties): array
+    {
+        $metal = $properties['preciousMetals'][0]['preciousMetal'];
+
+        return match ($metal) {
+            PreciousMetalNamesEnum::GOLDEN_YELLOW->value,
+            PreciousMetalNamesEnum::GOLDEN_RED->value,
+            PreciousMetalNamesEnum::GOLDEN_WHITE->value => (new GoldCoverage)->getGoldCoverage(),
+            PreciousMetalNamesEnum::SILVER->value       => (new SilverCoverage())->getSilverCoverage(),
+            PreciousMetalNamesEnum::PLATINUM->value     => (new PlatinumCoverage())->getPlatinumCoverage(),
+            PreciousMetalNamesEnum::PALLADIUM->value    => (new PalladiumCoverage())->getPalladiumCoverage(),
+        };
+    }
+
+    /**
+     * @throws RandomException
+     */
+    private function getCoverageCuffLink(array $properties): array
+    {
+        $metal = $properties['preciousMetals'][0]['preciousMetal'];
+
+        return match ($metal) {
+            PreciousMetalNamesEnum::GOLDEN_YELLOW->value,
+            PreciousMetalNamesEnum::GOLDEN_RED->value,
+            PreciousMetalNamesEnum::GOLDEN_WHITE->value => (new GoldCoverage)->getGoldCoverage(),
+            PreciousMetalNamesEnum::SILVER->value       => (new SilverCoverage())->getSilverCoverage(),
+            PreciousMetalNamesEnum::PLATINUM->value     => (new PlatinumCoverage())->getPlatinumCoverage(),
+            PreciousMetalNamesEnum::PALLADIUM->value    => (new PalladiumCoverage())->getPalladiumCoverage(),
+        };
+    }
+
+    /**
+     * @throws RandomException
+     */
+    private function getCoverageEarring(array $properties): array
+    {
+        $metal = $properties['preciousMetals'][0]['preciousMetal'];
+
+        return match ($metal) {
+            PreciousMetalNamesEnum::GOLDEN_YELLOW->value,
+            PreciousMetalNamesEnum::GOLDEN_RED->value,
+            PreciousMetalNamesEnum::GOLDEN_WHITE->value => (new GoldCoverage)->getGoldCoverage(),
+            PreciousMetalNamesEnum::SILVER->value       => (new SilverCoverage())->getSilverCoverage(),
+            PreciousMetalNamesEnum::PLATINUM->value     => (new PlatinumCoverage())->getPlatinumCoverage(),
+            PreciousMetalNamesEnum::PALLADIUM->value    => (new PalladiumCoverage())->getPalladiumCoverage(),
+        };
+    }
+
+    /**
+     * @throws RandomException
+     */
+    private function getCoverageNecklace(array $properties): array
+    {
+        $metal = $properties['preciousMetals'][0]['preciousMetal'];
+
+        return match ($metal) {
+            PreciousMetalNamesEnum::GOLDEN_YELLOW->value,
+            PreciousMetalNamesEnum::GOLDEN_RED->value,
+            PreciousMetalNamesEnum::GOLDEN_WHITE->value => (new GoldCoverage)->getGoldCoverage(),
+            PreciousMetalNamesEnum::SILVER->value       => (new SilverCoverage())->getSilverCoverage(),
+            PreciousMetalNamesEnum::PLATINUM->value     => (new PlatinumCoverage())->getPlatinumCoverage(),
+            PreciousMetalNamesEnum::PALLADIUM->value    => (new PalladiumCoverage())->getPalladiumCoverage(),
+        };
+    }
+
+    /**
+     * @throws RandomException
+     */
+    private function getCoveragePendant(array $properties): array
+    {
+        $metal = $properties['preciousMetals'][0]['preciousMetal'];
+
+        return match ($metal) {
+            PreciousMetalNamesEnum::GOLDEN_YELLOW->value,
+            PreciousMetalNamesEnum::GOLDEN_RED->value,
+            PreciousMetalNamesEnum::GOLDEN_WHITE->value => (new GoldCoverage)->getGoldCoverage(),
+            PreciousMetalNamesEnum::SILVER->value       => (new SilverCoverage())->getSilverCoverage(),
+            PreciousMetalNamesEnum::PLATINUM->value     => (new PlatinumCoverage())->getPlatinumCoverage(),
+            PreciousMetalNamesEnum::PALLADIUM->value    => (new PalladiumCoverage())->getPalladiumCoverage(),
+        };
+    }
+
+    private function getCoveragePiercing(array $properties): array
+    {
+        return [
+            [CoverageNamesEnum::RHODIUM_PLATING->value],
+        ];
+    }
+
+    private function getCoverageRing(array $properties): array
+    {
+        $metal = $properties['preciousMetals'][0]['preciousMetal'];
+
+        return match ($metal) {
+            PreciousMetalNamesEnum::GOLDEN_YELLOW->value,
+            PreciousMetalNamesEnum::GOLDEN_RED->value,
+            PreciousMetalNamesEnum::GOLDEN_WHITE->value => (new GoldCoverage)->getGoldCoverage(),
+            PreciousMetalNamesEnum::SILVER->value       => (new SilverCoverage())->getSilverCoverage(),
+            PreciousMetalNamesEnum::PLATINUM->value     => (new PlatinumCoverage())->getPlatinumCoverage(),
+            PreciousMetalNamesEnum::PALLADIUM->value    => (new PalladiumCoverage())->getPalladiumCoverage(),
+        };
+    }
+
+    private function getCoverageTieClip(array $properties): array
+    {
+        $metal = $properties['preciousMetals'][0]['preciousMetal'];
+
+        return match ($metal) {
+            PreciousMetalNamesEnum::GOLDEN_YELLOW->value,
+            PreciousMetalNamesEnum::GOLDEN_RED->value,
+            PreciousMetalNamesEnum::GOLDEN_WHITE->value => (new GoldCoverage)->getGoldCoverage(),
+            PreciousMetalNamesEnum::SILVER->value       => (new SilverCoverage())->getSilverCoverage(),
+            PreciousMetalNamesEnum::PLATINUM->value     => (new PlatinumCoverage())->getPlatinumCoverage(),
+            PreciousMetalNamesEnum::PALLADIUM->value    => (new PalladiumCoverage())->getPalladiumCoverage(),
+        };
     }
 }

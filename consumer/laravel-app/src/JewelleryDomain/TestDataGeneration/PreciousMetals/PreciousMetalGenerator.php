@@ -22,6 +22,9 @@ final class PreciousMetalGenerator
     {
     }
 
+    /**
+     * @throws RandomException
+     */
     public function getPreciousMetals(): array
     {
         return match ($this->properties['jewelleryCategory']) {
@@ -36,7 +39,7 @@ final class PreciousMetalGenerator
             JewelleryCategoryNamesEnum::PENDANTS->value       => $this->getMetalPendant(),
             JewelleryCategoryNamesEnum::PIERCINGS->value      => $this->getMetalPiercing(),
             JewelleryCategoryNamesEnum::RINGS->value          => $this->getMetalRing($this->properties),
-            JewelleryCategoryNamesEnum::TIE_CLIPS->value      => $this->getMetalTieClasp(),
+            JewelleryCategoryNamesEnum::TIE_CLIPS->value      => $this->getMetalTieClip(),
         };
     }
 
@@ -51,7 +54,6 @@ final class PreciousMetalGenerator
     private function getHallmark(string $metal): int
     {
         $cases = PreciousMetalNamesEnum::cases();
-        dump($metal);
 
         $name = match ($metal) {
             PreciousMetalNamesEnum::GOLDEN_RED->value,
@@ -187,27 +189,29 @@ final class PreciousMetalGenerator
         ];
     }
 
+    /**
+     * @throws RandomException
+     */
     protected function getMetalRing(array $properties): array
     {
-        $specific = $properties['property']['ringSpecific'];
-        $metal = $this->getPreciousMetal();
+        $RingSpecific = $properties['property']['ringSpecific'];
 
-        if (in_array(RingSpecificNamesEnum::COMBINATION->value, $specific)) {
+        if (in_array(RingSpecificNamesEnum::COMBINATION->value, $RingSpecific)) {
+            return $this->getGoldMetalCases();
+        } else {
+            $metal    = $this->getPreciousMetal();
+            $hallmark = $this->getHallmark($metal);
+
             return [
-                [],
-                []
+                [
+                    'preciousMetal' => $metal,
+                    'hallmark'      => $hallmark
+                ],
             ];
         }
-
-        return [
-            [
-                'preciousMetal' => $metal,
-                'hallmark'      => $this->getHallmark($metal)
-            ],
-        ];
     }
 
-    private function getMetalTieClasp(): array
+    private function getMetalTieClip(): array
     {
         $metal = $this->getPreciousMetal();
 
@@ -219,75 +223,28 @@ final class PreciousMetalGenerator
         ];
     }
 
-//    /**
-//     * @throws RandomException
-//     */
-//    private function getCombinedGold(): array
-//    {
-//        $metals      = PreciousMetalNamesEnum::cases();
-//        $combination = [];
-//
-//        foreach ($metals as $key => $metal) {
-//            if ($metal->value === PreciousMetalNamesEnum::PLATINUM->value ||
-//                $metal->value === PreciousMetalNamesEnum::PALLADIUM->value ||
-//                $metal->value === PreciousMetalNamesEnum::SILVER->value) {
-//
-//                Arr::forget($metals, $key);
-//            }
-//        }
-//
-//        $randNum = random_int(1, 5);
-//
-//        if ($randNum === 1) {
-//            $keys = array_rand($metals, 3);
-//        } else {
-//            $keys = array_rand($metals, 2);
-//        }
-//
-//        $hallmark = $this->getHallmark($metals[0]->value);
-//
-//        foreach ($keys as $k => $key) {
-//            $combination[$k] = [
-//                'preciousMetal' => $metals[$key]->value,
-//                'hallmark'      => $hallmark,
-//            ];
-//        }
-//
-//        return $combination;
-//    }
-//
+    /**
+     * @throws RandomException
+     */
+    private function getGoldMetalCases(): array
+    {
+        $goldCases = $this->selectCases(PreciousMetalNamesEnum::cases(), [
+            PreciousMetalNamesEnum::GOLDEN_WHITE->value,
+            PreciousMetalNamesEnum::GOLDEN_RED->value,
+            PreciousMetalNamesEnum::GOLDEN_YELLOW->value,
+        ]);
 
+        $num      = random_int(0, 5) === 0 ? 3 : 2;
+        $randKeys = array_rand($goldCases, $num);
 
-//    private function getHallmark(string $preciousMetal): int
-//    {
-//        $enumClass = get_class(HallmarkNamesEnum::H_375);
-//        $enumCases = HallmarkNamesEnum::cases();
-//
-//        foreach ($enumCases as $key => $case) {
-//
-//            if (!in_array($preciousMetal, $case::{$case->name}->metals()) ||
-//                $case::{$case->name}->value === HallmarkNamesEnum::H_999->value) {
-//                Arr::forget($enumCases, $key);
-//            }
-//
-//            if ($preciousMetal === PreciousMetalNamesEnum::GOLDEN_RED->value &&
-//                $case::{$case->name}->value === HallmarkNamesEnum::H_500->value) {
-//                Arr::forget($enumCases, $key);
-//            }
-//
-//            if ($preciousMetal === PreciousMetalNamesEnum::PLATINUM->value &&
-//                $case::{$case->name}->value === HallmarkNamesEnum::H_585->value) {
-//                Arr::forget($enumCases, $key);
-//            }
-//
-//            if ($preciousMetal === PreciousMetalNamesEnum::PLATINUM->value &&
-//                $case::{$case->name}->value === HallmarkNamesEnum::H_850->value) {
-//                Arr::forget($enumCases, $key);
-//            }
-//        }
-//
-//        return $this->getArrElement($enumCases, $enumClass);
-//    }
+        $combinedMetals = [];
+        foreach ($randKeys as $key => $randKey) {
+            $combinedMetals[] = [
+                'preciousMetal' => $goldCases[$randKey]->value,
+                'hallmark'      => 585
+            ];
 
-
+        }
+        return $combinedMetals;
+    }
 }

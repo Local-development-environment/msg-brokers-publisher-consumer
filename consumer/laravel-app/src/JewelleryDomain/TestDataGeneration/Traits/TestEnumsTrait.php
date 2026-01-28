@@ -16,10 +16,10 @@ trait TestEnumsTrait
         return array_values($enumCases);
     }
 
-    public function selectCases(array $enumCases, array $removeValues): array
+    public function selectCases(array $enumCases, array $selectValues): array
     {
         foreach ($enumCases as $key => $enumCase) {
-            if ((in_array($enumCase->value, $removeValues)) === false) {
+            if ((in_array($enumCase->value, $selectValues)) === false) {
                 unset($enumCases[$key]);
             }
         }
