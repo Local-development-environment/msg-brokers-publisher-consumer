@@ -105,8 +105,8 @@ final readonly class BraceletProps implements PropertyGeneratorInterface
             $braceletType === BraceletTypeNamesEnum::GLIDER->value ||
             $braceletType === BraceletTypeNamesEnum::UNCLOSED_RING->value ) {
 
-            $enumClass = get_class(ClaspNamesEnum::CARABINER);
-            $enumCases = ClaspNamesEnum::cases();
+            $enumClass = get_class(BodyPartNamesEnum::WRIST);
+            $enumCases = BodyPartNamesEnum::cases();
 
             return $this->getArrElement($enumCases, $enumClass);
         }

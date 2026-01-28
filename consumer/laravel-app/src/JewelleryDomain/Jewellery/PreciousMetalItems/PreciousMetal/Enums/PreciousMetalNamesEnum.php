@@ -68,44 +68,44 @@ enum PreciousMetalNamesEnum: string
         return match ($this) {
             self::GOLDEN_RED => [
                 HallmarkNamesEnum::H_375->value,
-                HallmarkNamesEnum::H_500->value,
-                HallmarkNamesEnum::H_583->value,
+//                HallmarkNamesEnum::H_500->value,
+//                HallmarkNamesEnum::H_583->value,
                 HallmarkNamesEnum::H_585->value,
-                HallmarkNamesEnum::H_333->value
+//                HallmarkNamesEnum::H_333->value
             ],
             self::GOLDEN_WHITE => [
                 HallmarkNamesEnum::H_750->value,
-                HallmarkNamesEnum::H_875->value,
+//                HallmarkNamesEnum::H_875->value,
                 HallmarkNamesEnum::H_585->value,
             ],
             self::GOLDEN_YELLOW => [
-                HallmarkNamesEnum::H_916->value,
-                HallmarkNamesEnum::H_958->value,
-                HallmarkNamesEnum::H_875->value,
-                HallmarkNamesEnum::H_583->value,
+//                HallmarkNamesEnum::H_916->value,
+//                HallmarkNamesEnum::H_958->value,
+//                HallmarkNamesEnum::H_875->value,
+//                HallmarkNamesEnum::H_583->value,
                 HallmarkNamesEnum::H_585->value,
                 HallmarkNamesEnum::H_750->value,
-                HallmarkNamesEnum::H_333->value,
+//                HallmarkNamesEnum::H_333->value,
             ],
             self::SILVER => [
-                HallmarkNamesEnum::H_800->value,
-                HallmarkNamesEnum::H_830->value,
-                HallmarkNamesEnum::H_875->value,
+//                HallmarkNamesEnum::H_800->value,
+//                HallmarkNamesEnum::H_830->value,
+//                HallmarkNamesEnum::H_875->value,
                 HallmarkNamesEnum::H_925->value,
                 HallmarkNamesEnum::H_960->value,
-                HallmarkNamesEnum::H_999->value,
+//                HallmarkNamesEnum::H_999->value,
             ],
             self::PLATINUM => [
-                HallmarkNamesEnum::H_585->value,
-                HallmarkNamesEnum::H_850->value,
-                HallmarkNamesEnum::H_900->value,
+//                HallmarkNamesEnum::H_585->value,
+//                HallmarkNamesEnum::H_850->value,
+//                HallmarkNamesEnum::H_900->value,
                 HallmarkNamesEnum::H_950->value,
-                HallmarkNamesEnum::H_999->value,
+//                HallmarkNamesEnum::H_999->value,
             ],
             self::PALLADIUM => [
-                HallmarkNamesEnum::H_500->value,
+//                HallmarkNamesEnum::H_500->value,
                 HallmarkNamesEnum::H_850->value,
-                HallmarkNamesEnum::H_999->value,
+//                HallmarkNamesEnum::H_999->value,
             ],
         };
     }
