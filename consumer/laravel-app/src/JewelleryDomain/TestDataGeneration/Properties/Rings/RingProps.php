@@ -78,7 +78,7 @@ final readonly class RingProps implements PropertyGeneratorInterface
     private function getClassicSpecific(): array
     {
         $num = random_int(1, 100);
-        dump($num);
+
         return match (true) {
             $num < 10 => [RingSpecificNamesEnum::ENGAGEMENT->value, RingSpecificNamesEnum::COMBINATION->value],
             $num < 20 => [RingSpecificNamesEnum::WEDDING->value, RingSpecificNamesEnum::COMBINATION->value],
@@ -87,20 +87,6 @@ final readonly class RingProps implements PropertyGeneratorInterface
             $num < 90 => [RingSpecificNamesEnum::SET_RING->value],
             $num < 100 => [],
         };
-
-//        if ($num < 10) {
-//            return [RingSpecificNamesEnum::ENGAGEMENT->value, RingSpecificNamesEnum::COMBINATION->value];
-//        } else if ($num < 20) {
-//            return [RingSpecificNamesEnum::WEDDING->value, RingSpecificNamesEnum::COMBINATION->value];
-//        } else if ($num < 70) {
-//            return random_int(0, 1) === 0 ? [RingSpecificNamesEnum::ENGAGEMENT->value] : [RingSpecificNamesEnum::WEDDING->value];
-//        } else if ($num < 80) {
-//            return [RingSpecificNamesEnum::COMBINATION->value];
-//        } else if ($num < 90) {
-//            return [RingSpecificNamesEnum::SET_RING->value];
-//        } else {
-//            return [];
-//        }
     }
 
     /**
@@ -150,12 +136,10 @@ final readonly class RingProps implements PropertyGeneratorInterface
     {
         $num = random_int(1, 100);
 
-        if ($num < 10) {
-            return [RingSpecificNamesEnum::COMBINATION->value];
-        } else if ($num < 20) {
-            return [RingSpecificNamesEnum::SET_RING->value];
-        } else {
-            return [];
-        }
+        return match (true) {
+            $num < 10 => [RingSpecificNamesEnum::COMBINATION->value],
+            $num < 20 => [RingSpecificNamesEnum::SET_RING->value],
+            $num < 100 => [],
+        };
     }
 }

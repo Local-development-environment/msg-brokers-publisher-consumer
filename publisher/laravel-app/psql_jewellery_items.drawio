@@ -6317,7 +6317,7 @@
         <mxCell id="GfB_dr73g1_a4SQQwvGV-1" value="It maybe better to move &lt;i&gt;&lt;font style=&quot;color: rgb(153, 0, 0);&quot;&gt;quantity &lt;/font&gt;&lt;/i&gt;and &lt;i&gt;&lt;font style=&quot;color: rgb(153, 0, 0);&quot;&gt;price &lt;/font&gt;&lt;/i&gt;from &lt;b&gt;bracelet_metrics &lt;/b&gt;to &lt;b&gt;bracelets &lt;/b&gt;table" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;" parent="1" vertex="1">
           <mxGeometry x="670" y="240" width="140" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="zGwx0EpSk9j2axPybmKI-2" value="It&#39;s maybe better to do &lt;b&gt;fulness&lt;/b&gt; table and &lt;b&gt;FK fullness_id&lt;/b&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;" vertex="1" parent="1">
+        <mxCell id="zGwx0EpSk9j2axPybmKI-2" value="It&#39;s maybe better to do &lt;b&gt;fulness&lt;/b&gt; table and &lt;b&gt;FK fullness_id&lt;/b&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;" parent="1" vertex="1">
           <mxGeometry x="860" y="320" width="180" height="50" as="geometry" />
         </mxCell>
       </root>

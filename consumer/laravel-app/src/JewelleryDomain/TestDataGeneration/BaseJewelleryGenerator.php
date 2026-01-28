@@ -46,10 +46,10 @@ final class BaseJewelleryGenerator implements JewelleryGenerateInterface
      */
     public function buildPreciousMetals(): JewelleryGenerateInterface
     {
-        $preciousMetal = new PreciousMetalGenerator();
-
         $properties                          = get_object_vars($this->baseJewellery);
-        $this->baseJewellery->preciousMetals = $preciousMetal->getPreciousMetals($properties);
+        $preciousMetal = new PreciousMetalGenerator($properties);
+
+        $this->baseJewellery->preciousMetals = $preciousMetal->getPreciousMetals();
 
         return $this;
     }
@@ -78,7 +78,7 @@ final class BaseJewelleryGenerator implements JewelleryGenerateInterface
     {
         $jewellery['jewelleryCategory'] = $this->baseJewellery->jewelleryCategory;
         $jewellery ['specProperties']   = $this->baseJewellery->property;
-//        $jewellery['preciousMetals']    = $this->baseJewellery->preciousMetals;
+        $jewellery['preciousMetals']    = $this->baseJewellery->preciousMetals;
 //        $jewellery['coverages']         = $this->baseJewellery->coverages;
 //        $jewellery['inserts']           = $this->baseJewellery->inserts;
 //        $jewellery['jewelleryItem']  = $this->baseJewellery->jewelleryItem;
