@@ -27,8 +27,8 @@ final readonly class TieClipProps implements PropertyGeneratorInterface
         return [
             'nameFunction' => $this->getNameFunction($this->properties['jewelleryCategory']),
             'tieClipType' => $this->getTieClipType(),
-            'dimensions' => ['height' => random_int(5, 10), 'length' => random_int(30, 40)],
-            'quantity' => random_int(0, 10),
+            'dimensions' => ['height' => rand(5, 10), 'length' => rand(30, 40)],
+            'quantity' => rand(0, 10),
         ];
     }
 

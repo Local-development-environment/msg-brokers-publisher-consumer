@@ -54,6 +54,9 @@ final class BaseJewelleryGenerator implements JewelleryGenerateInterface
         return $this;
     }
 
+    /**
+     * @throws RandomException
+     */
     public function buildCoverages(): JewelleryGenerateInterface
     {
         $properties                     = get_object_vars($this->baseJewellery);
@@ -79,7 +82,7 @@ final class BaseJewelleryGenerator implements JewelleryGenerateInterface
         $jewellery ['specProperties']   = $this->baseJewellery->property;
         $jewellery['preciousMetals']    = $this->baseJewellery->preciousMetals;
         $jewellery['coverages']         = $this->baseJewellery->coverages;
-//        $jewellery['inserts']           = $this->baseJewellery->inserts;
+        $jewellery['inserts']           = $this->baseJewellery->inserts;
 //        $jewellery['jewelleryItem']  = $this->baseJewellery->jewelleryItem;
 //        $jewellery['media']          = $this->baseJewellery->media;
 

@@ -234,7 +234,7 @@ final class PreciousMetalGenerator
             PreciousMetalNamesEnum::GOLDEN_YELLOW->value,
         ]);
 
-        $num      = random_int(0, 5) === 0 ? 3 : 2;
+        $num      = rand(0, 5) === 0 ? 3 : 2;
         $randKeys = array_rand($goldCases, $num);
 
         $combinedMetals = [];

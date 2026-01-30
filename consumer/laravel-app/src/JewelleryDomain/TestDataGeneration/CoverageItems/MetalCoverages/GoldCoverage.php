@@ -14,7 +14,7 @@ final class GoldCoverage
      */
     public function getGoldCoverage(bool $enamel = true): array
     {
-        $num = random_int(1, 100);
+        $num = rand(1, 100);
 
         return match (true) {
             $num < 50 => [CoverageNamesEnum::RHODIUM_PLATING->value],

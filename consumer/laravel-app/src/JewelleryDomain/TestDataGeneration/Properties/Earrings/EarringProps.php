@@ -29,7 +29,7 @@ final readonly class EarringProps implements PropertyGeneratorInterface
             'nameFunction' => $this->getNameFunction($this->properties['jewelleryCategory']),
             'piercingClasp' => $this->getEarringClasp(),
             'piercingType' => $this->getEarringType(),
-            'quantity' => random_int(0, 10),
+            'quantity' => rand(0, 10),
         ];
     }
 

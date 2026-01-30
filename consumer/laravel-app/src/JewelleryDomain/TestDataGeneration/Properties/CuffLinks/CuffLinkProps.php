@@ -34,7 +34,7 @@ final readonly class CuffLinkProps implements PropertyGeneratorInterface
             'cuffLinkClasp' => $this->getCuffLinkClasp(),
             'cuffLinkType' => $this->getCuffLinkType(),
             'dimensions' => $this->getDimensions($cuffLinkForm),
-            'quantity' => random_int(0, 10),
+            'quantity' => rand(0, 10),
         ];
     }
 
@@ -69,14 +69,14 @@ final readonly class CuffLinkProps implements PropertyGeneratorInterface
     {
         if ($form === CuffLinkFormNamesEnum::ROUND->value) {
             return [
-                'height' => random_int(1, 4),
-                'diameter' => random_int(10, 16),
+                'height' => rand(1, 4),
+                'diameter' => rand(10, 16),
             ];
         } else {
             return [
-                'height' => random_int(1, 4),
-                'length' => random_int(8, 16),
-                'width' => random_int(8, 10),
+                'height' => rand(1, 4),
+                'length' => rand(8, 16),
+                'width' => rand(8, 10),
             ];
         }
     }

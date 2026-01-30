@@ -77,12 +77,12 @@ final readonly class RingProps implements PropertyGeneratorInterface
      */
     private function getClassicSpecific(): array
     {
-        $num = random_int(1, 100);
+        $num = rand(1, 100);
 
         return match (true) {
             $num < 10 => [RingSpecificNamesEnum::ENGAGEMENT->value, RingSpecificNamesEnum::COMBINATION->value],
             $num < 20 => [RingSpecificNamesEnum::WEDDING->value, RingSpecificNamesEnum::COMBINATION->value],
-            $num < 70 => random_int(0, 1) === 0 ? [RingSpecificNamesEnum::ENGAGEMENT->value] : [RingSpecificNamesEnum::WEDDING->value],
+            $num < 70 => rand(0, 1) === 0 ? [RingSpecificNamesEnum::ENGAGEMENT->value] : [RingSpecificNamesEnum::WEDDING->value],
             $num < 80 => [RingSpecificNamesEnum::COMBINATION->value],
             $num < 90 => [RingSpecificNamesEnum::SET_RING->value],
             $num <= 100 => [],
@@ -95,7 +95,7 @@ final readonly class RingProps implements PropertyGeneratorInterface
     private function getPhalanxSpecific(): array
     {
         return [
-            random_int(0, 10) === 0 ? [RingSpecificNamesEnum::COMBINATION->value] : [],
+            rand(0, 10) === 0 ? [RingSpecificNamesEnum::COMBINATION->value] : [],
         ];
     }
 
@@ -105,7 +105,7 @@ final readonly class RingProps implements PropertyGeneratorInterface
     private function getKnuckleSpecific(): array
     {
         return [
-            random_int(0, 10) === 0 ? [RingSpecificNamesEnum::COMBINATION->value] : [],
+            rand(0, 10) === 0 ? [RingSpecificNamesEnum::COMBINATION->value] : [],
         ];
     }
 
@@ -115,7 +115,7 @@ final readonly class RingProps implements PropertyGeneratorInterface
     private function getMassiveRingSpecific(): array
     {
         return [
-            random_int(0, 10) === 0 ? [RingSpecificNamesEnum::COMBINATION->value] : [],
+            rand(0, 10) === 0 ? [RingSpecificNamesEnum::COMBINATION->value] : [],
         ];
     }
 
@@ -125,7 +125,7 @@ final readonly class RingProps implements PropertyGeneratorInterface
     private function getSignetRingSpecific(): array
     {
         return [
-            random_int(0, 10) === 0 ? [RingSpecificNamesEnum::COMBINATION->value] : [],
+            rand(0, 10) === 0 ? [RingSpecificNamesEnum::COMBINATION->value] : [],
         ];
     }
 
@@ -134,7 +134,7 @@ final readonly class RingProps implements PropertyGeneratorInterface
      */
     private function getPedicletSpecific(): array
     {
-        $num = random_int(1, 100);
+        $num = rand(1, 100);
 
         return match (true) {
             $num < 10 => [RingSpecificNamesEnum::COMBINATION->value],

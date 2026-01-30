@@ -14,6 +14,6 @@ final class PalladiumCoverage
      */
     public function getPalladiumCoverage(): array
     {
-        return random_int(0, 1) === 0 ? [] : [CoverageNamesEnum::DIAMOND_CUT->value];
+        return rand(0, 1) === 0 ? [] : [CoverageNamesEnum::DIAMOND_CUT->value];
     }
 }
