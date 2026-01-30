@@ -27,7 +27,7 @@ final readonly class PiercingProps implements PropertyGeneratorInterface
         return [
             'nameFunction' => $this->getNameFunction($this->properties['jewelleryCategory']),
             'piercingTypeType' => $this->getPiercingType(),
-            'quantity' => random_int(0, 10),
+            'quantity' => rand(0, 10),
         ];
     }
 

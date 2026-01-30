@@ -29,8 +29,8 @@ final readonly class BroochProps implements PropertyGeneratorInterface
             'nameFunction' => $this->getNameFunction($this->properties['jewelleryCategory']),
             'broochClasp' => $this->getBroochClasp(),
             'broochType' => $this->getBroochType(),
-            'dimensions' => ['height' => random_int(15, 40), 'width' => random_int(15, 40)],
-            'quantity' => random_int(0, 10),
+            'dimensions' => ['height' => rand(15, 40), 'width' => rand(15, 40)],
+            'quantity' => rand(0, 10),
         ];
     }
 

@@ -91,7 +91,7 @@ final readonly class BraceletProps implements PropertyGeneratorInterface
             return [
                 'name'         => $this->getArrElement($enumCases, $enumClass),
                 'fullness'     => $fullness[array_rand($fullness, 1)],
-                'wireDiameter' => random_int(10, 40) / 10,
+                'wireDiameter' => rand(10, 40) / 10,
             ];
         } else {
             return [];

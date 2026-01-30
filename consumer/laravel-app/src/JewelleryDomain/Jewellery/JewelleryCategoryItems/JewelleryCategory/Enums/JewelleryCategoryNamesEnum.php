@@ -2,6 +2,8 @@
 
 namespace JewelleryDomain\Jewellery\JewelleryCategoryItems\JewelleryCategory\Enums;
 
+use JewelleryDomain\Jewellery\InsertItems\Stone\Enums\StoneNamesEnum;
+
 enum JewelleryCategoryNamesEnum: string
 {
     case BEADS          = 'бусы';
@@ -68,6 +70,80 @@ enum JewelleryCategoryNamesEnum: string
             self::PIERCINGS      => throw new \Exception('To be implemented'),
             self::RINGS          => throw new \Exception('To be implemented'),
             self::TIE_CLIPS      => throw new \Exception('To be implemented'),
+        };
+    }
+
+    public function stones(): array
+    {
+        return match ($this) {
+            self::BEADS          => [
+                StoneNamesEnum::NATURAL_SEA_PEARL->value,
+                StoneNamesEnum::CULTURED_SEA_PEARLS->value,
+                StoneNamesEnum::NATURAL_RIVER_PEARLS->value,
+                StoneNamesEnum::CULTURED_RIVER_PEARLS->value,
+                StoneNamesEnum::RHINESTONE->value,
+                StoneNamesEnum::SMOKEY_QUARTZ->value,
+                StoneNamesEnum::SNOW_QUARTZ->value,
+                StoneNamesEnum::ROSE_QUARTZ->value,
+                StoneNamesEnum::RUTILATED_QUARTZ->value,
+                StoneNamesEnum::SHUNGITE->value,
+                StoneNamesEnum::NEPHRITIS->value,
+                StoneNamesEnum::CORAL->value,
+                StoneNamesEnum::RHODONITE->value,
+                StoneNamesEnum::PARAIBA_TOURMALINE->value,
+                StoneNamesEnum::TOURMALINE->value,
+                StoneNamesEnum::BLUE_TURQUOISE->value,
+                StoneNamesEnum::GREEN_TURQUOISE->value,
+                StoneNamesEnum::MOTHER_PEARL->value,
+            ],
+            self::BRACELETS      => [
+                StoneNamesEnum::AGATE->value,
+                StoneNamesEnum::AMETHYST->value,
+                StoneNamesEnum::BLUE_TURQUOISE->value,
+                StoneNamesEnum::GREEN_TURQUOISE->value,
+                StoneNamesEnum::LABRADORITE->value,
+                StoneNamesEnum::HEMATITE->value,
+                StoneNamesEnum::TIGER_EYE->value,
+                StoneNamesEnum::LAZURITE->value,
+                StoneNamesEnum::NEPHRITIS->value,
+                StoneNamesEnum::SMOKEY_QUARTZ->value,
+                StoneNamesEnum::SNOW_QUARTZ->value,
+                StoneNamesEnum::ROSE_QUARTZ->value,
+                StoneNamesEnum::RUTILATED_QUARTZ->value,
+                StoneNamesEnum::NATURAL_SEA_PEARL->value,
+                StoneNamesEnum::CULTURED_SEA_PEARLS->value,
+                StoneNamesEnum::NATURAL_RIVER_PEARLS->value,
+                StoneNamesEnum::CULTURED_RIVER_PEARLS->value,
+                StoneNamesEnum::CORAL->value,
+                StoneNamesEnum::AMBER->value,
+                StoneNamesEnum::DIAMOND->value,
+                StoneNamesEnum::EMERALD->value,
+                StoneNamesEnum::RUBY->value,
+                StoneNamesEnum::SAPPHIRE->value,
+                StoneNamesEnum::SAPPHIRE_GREEN->value,
+                StoneNamesEnum::SAPPHIRE_PINK->value,
+                StoneNamesEnum::STAR_SAPPHIRE->value,
+                StoneNamesEnum::ALEXANDRITE->value,
+                StoneNamesEnum::PYROPE->value,
+                StoneNamesEnum::ALMANDINE->value,
+                StoneNamesEnum::SPESSARTINE->value,
+                StoneNamesEnum::GROSSULAR->value,
+                StoneNamesEnum::UVAROVITE->value,
+                StoneNamesEnum::DEMANTOID->value,
+                StoneNamesEnum::RHODOLITE->value,
+                StoneNamesEnum::ANDRADITE->value,
+                StoneNamesEnum::TOPAZOLITE->value,
+            ],
+            self::BROOCHES       => [],
+            self::CHAINS         => [],
+            self::CHARM_PENDANTS => [],
+            self::CUFF_LINKS     => [],
+            self::EARRINGS       => [],
+            self::NECKLACES      => [],
+            self::PENDANTS       => [],
+            self::PIERCINGS      => [],
+            self::RINGS          => [],
+            self::TIE_CLIPS      => [],
         };
     }
 }

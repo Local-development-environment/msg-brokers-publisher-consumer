@@ -43,7 +43,7 @@ trait SpecPropertyTrait
 
         foreach ($result as $key => $value) {
             $arrSizeQuantities[$key]['size']     = $value;
-            $arrSizeQuantities[$key]['quantity'] = random_int(0, 10);
+            $arrSizeQuantities[$key]['quantity'] = rand(0, 10);
         }
 
         return array_values($arrSizeQuantities);
@@ -59,23 +59,23 @@ trait SpecPropertyTrait
 
         if ($this->properties['jewelleryCategory'] === JewelleryCategoryNamesEnum::BROOCHES->value) {
             $dimensions = [
-                'height' => random_int(20, 50),
-                'width'  => random_int(10, 30),
+                'height' => rand(20, 50),
+                'width'  => rand(10, 30),
             ];
         } elseif ($this->properties['jewelleryCategory'] === JewelleryCategoryNamesEnum::CHARM_PENDANTS->value) {
             $dimensions = [
-                'height' => random_int(20, 40),
-                'width'  => random_int(5, 15),
+                'height' => rand(20, 40),
+                'width'  => rand(5, 15),
             ];
         } elseif ($this->properties['jewelleryCategory'] === JewelleryCategoryNamesEnum::PENDANTS->value) {
             $dimensions = [
-                'height' => random_int(10, 25),
-                'width'  => random_int(10, 15),
+                'height' => rand(10, 25),
+                'width'  => rand(10, 15),
             ];
         }
 
         $specProps['nameFunction']       = $this->getNameFunction($this->properties['jewelleryCategory']);
-        $specProps['metric']['quantity'] = random_int(0, 10);
+        $specProps['metric']['quantity'] = rand(0, 10);
         $specProps['dimensions']         = $dimensions;
 
         return $specProps;

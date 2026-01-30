@@ -14,21 +14,21 @@ final class SilverCoverage
      */
     public function getSilverCoverage(bool $enamel = true): array
     {
-        $num = random_int(1, 100);
+        $num = rand(1, 100);
 
         return match (true) {
-            $num < 30 => random_int(0, 1) === 0 ?
+            $num < 30 => rand(0, 1) === 0 ?
                 [CoverageNamesEnum::RHODIUM_PLATING->value] : [CoverageNamesEnum::OXIDATION->value],
             $num < 35 => $enamel ? [CoverageNamesEnum::ENAMEL->value] : [CoverageNamesEnum::RHODIUM_PLATING->value],
-            $num < 50 => random_int(0, 1) === 0 ?
+            $num < 50 => rand(0, 1) === 0 ?
                 [CoverageNamesEnum::DIAMOND_CUT->value] : [CoverageNamesEnum::GOLDING->value],
-            $num < 65 => [CoverageNamesEnum::RHODIUM_PLATING->value, random_int(0, 1) === 0 ?
+            $num < 65 => [CoverageNamesEnum::RHODIUM_PLATING->value, rand(0, 1) === 0 ?
                 CoverageNamesEnum::GOLDING->value : CoverageNamesEnum::DIAMOND_CUT->value],
             $num < 70 => $enamel ? [CoverageNamesEnum::RHODIUM_PLATING->value, CoverageNamesEnum::ENAMEL->value] :
                 [CoverageNamesEnum::OXIDATION->value],
             $num < 75 => $enamel ? [CoverageNamesEnum::OXIDATION->value, CoverageNamesEnum::ENAMEL->value] :
                 [CoverageNamesEnum::RHODIUM_PLATING->value],
-            $num < 90 => [CoverageNamesEnum::OXIDATION->value, random_int(0, 1) === 0 ?
+            $num < 90 => [CoverageNamesEnum::OXIDATION->value, rand(0, 1) === 0 ?
                 CoverageNamesEnum::DIAMOND_CUT->value : CoverageNamesEnum::GOLDING->value],
             $num <= 100 => [],
         };

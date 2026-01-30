@@ -201,6 +201,9 @@ final readonly class CoverageGenerator
         ];
     }
 
+    /**
+     * @throws RandomException
+     */
     private function getCoverageRing(array $properties): array
     {
         $metal = $properties['preciousMetals'][0]['preciousMetal'];
@@ -215,6 +218,9 @@ final readonly class CoverageGenerator
         };
     }
 
+    /**
+     * @throws RandomException
+     */
     private function getCoverageTieClip(array $properties): array
     {
         $metal = $properties['preciousMetals'][0]['preciousMetal'];
