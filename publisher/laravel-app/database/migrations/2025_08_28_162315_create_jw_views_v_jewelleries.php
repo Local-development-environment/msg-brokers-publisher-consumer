@@ -370,6 +370,8 @@ return new class extends Migration
                                     'clasp_description', c.description,
                                     'type_id', b.bracelet_type_id,
                                     'type_name', bt.name,
+                                    'group_id', bg.id,
+                                    'group_name', bg.name,
                                     'body_part_id', b.body_part_id,
                                     'body_part_name', bp.name
                             ) as details,
@@ -424,10 +426,11 @@ return new class extends Migration
                             ) as metrics on metrics.bracelet_id = b.id
                                 left join jw_properties.clasps as c on c.id = b.clasp_id
                                 left join jw_properties.bracelet_types as bt on bt.id = b.bracelet_type_id
+                                left join jw_properties.bracelet_groups as bg on bg.id = bt.bracelet_group_id
                                 left join jw_properties.body_parts as bp on bp.id = b.body_part_id
                                 left join jewelleries.jewelleries as jj on b.id = jj.id
                                 left join jw_properties.bracelet_metrics as brm on b.id = brm.bracelet_id
-                        group by b.id, metrics.metrics, weaving.weaving, jj.id, c. name, bt.name, bp.name, c.description
+                        group by b.id, metrics.metrics, weaving.weaving, jj.id, c.name, bt.name, bg.id, bp.name, c.description
 
                         union all
 

@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jw_properties.bracelet_types', function (Blueprint $table) {
+        Schema::create('jw_properties.bracelet_groups', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('bracelet_group_id');
             $table->string('name')->unique();
             $table->text('description');
             $table->string('slug')->unique();
             $table->timestamps();
-
-            $table->foreign('bracelet_group_id')->references('id')->on('jw_properties.bracelet_groups');
         });
     }
 
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jw_properties.bracelet_types');
+        Schema::dropIfExists('jw_properties.bracelet_groups');
     }
 };

@@ -9,7 +9,7 @@ with
                     'coverage_type', ct.name
                 )
             )
-                as coverages,
+                            as coverages,
             jc.jewellery_id as jewellery_id
         from
             jewelleries.jewelleries as jj
@@ -164,7 +164,7 @@ with
                 join jw_properties.brooch_clasps as jbc on jwb.brooch_clasp_id = jbc.id
                 join jw_properties.brooch_types as jbt on jwb.brooch_type_id = jbt.id
 
-         union all
+        union all
 
         select
             jj.id,jwchp.id as jewellery_id,
@@ -221,9 +221,9 @@ with
             jj.id,jwcl.id as jewellery_id,
             jsonb_build_object(
                 'cuff_links_id', jwcl.id,
-                'cuff_links_clasp', jclc.name,
-                'cuff_links_form', jclf.name,
-                'cuff_links_type', jclt.name,
+                'cuff_link_clasp', jclc.name,
+                'cuff_link_form', jclf.name,
+                'cuff_link_type', jclt.name,
                 'dimensions', jwcl.dimensions
             ) as spec_props,
             jwcl.quantity as quantity,
@@ -250,7 +250,7 @@ with
                         'piercing_site_id', jps.id,
                         'piercing_sites', jps.name
                     )
-                )
+                                  )
             ) as spec_props,
             jwprc.quantity as quantity,
             cast(jwprc.price as decimal(10, 2)) as avg_price,
@@ -291,14 +291,12 @@ with
         union all
 
         select
-            jj.id,jwr.id as jewellery_id,
+            jj.id, jwr.id as jewellery_id,
             jsonb_build_object(
                 'specifics', details.details,
                 'metrics', metrics.metrics,
                 'type_id', rt.id,
-                'type', rt.name,
-                'finger', rf.name,
-                'finger_id', rf.id
+                'type', rt.name
             ) as spec_props,
             metrics.quantity as quantity,
             metrics.avg_price,
@@ -307,44 +305,43 @@ with
         from
             jw_properties.rings as jwr
                 join (
-                    select
-                        r.id,
-                        jsonb_agg(
-                            jsonb_build_object(
-                                'ring_specific_id', rd.ring_specific_id,
-                                'ring_specific', rs.name,
-                                'description', rs.description
-                            )
-                        ) as details
-                    from jw_properties.rings as r
-                        join jw_properties.ring_details rd on r.id = rd.ring_id
-                        join jw_properties.ring_specifics rs on rd.ring_specific_id = rs.id
-                    group by r.id
-                ) as details on jwr.id = details.id
+                select
+                    r.id,
+                    jsonb_agg(
+                        jsonb_build_object(
+                            'ring_specific_id', rd.ring_specific_id,
+                            'ring_specific', rs.name,
+                            'description', rs.description
+                        )
+                    ) as details
+                from jw_properties.rings as r
+                         join jw_properties.ring_details rd on r.id = rd.ring_id
+                         join jw_properties.ring_specifics rs on rd.ring_specific_id = rs.id
+                group by r.id
+            ) as details on jwr.id = details.id
                 join (
-                    select
-                        r.id,
-                        sum(rm.quantity) as quantity,
-                        cast(avg(rm.price) as decimal(10, 2)) as avg_price,
-                        cast(max(rm.price) as decimal(10, 2)) as max_price,
-                        cast(min(rm.price) as decimal(10, 2)) as min_price,
-                        jsonb_agg(
-                            jsonb_build_object(
-                                'ring_size_id', rs.id,
-                                'quantity', rm.quantity,
-                                'price', rm.price,
-                                'size', rs.value,
-                                'unit', rs.unit
-                            )
-                        ) as metrics
-                    from jw_properties.rings as r
-                        join jw_properties.ring_metrics rm on r.id = rm.ring_id
-                        join jw_properties.ring_sizes rs on rm.ring_size_id = rs.id
-                    group by r.id
-                ) as metrics on jwr.id = metrics.id
-        join jw_properties.ring_fingers rf on rf.id = jwr.ring_finger_id
-        join jw_properties.ring_types rt on rt.id = jwr.ring_type_id
-        join jewelleries.jewelleries jj on jwr.id = jj.id
+                select
+                    r.id,
+                    sum(rm.quantity) as quantity,
+                    cast(avg(rm.price) as decimal(10, 2)) as avg_price,
+                    cast(max(rm.price) as decimal(10, 2)) as max_price,
+                    cast(min(rm.price) as decimal(10, 2)) as min_price,
+                    jsonb_agg(
+                        jsonb_build_object(
+                            'ring_size_id', rs.id,
+                            'quantity', rm.quantity,
+                            'price', rm.price,
+                            'size', rs.value,
+                            'unit', rs.unit
+                        )
+                    ) as metrics
+                from jw_properties.rings as r
+                         join jw_properties.ring_metrics rm on r.id = rm.ring_id
+                         join jw_properties.ring_sizes rs on rm.ring_size_id = rs.id
+                group by r.id
+            ) as metrics on jwr.id = metrics.id
+                join jw_properties.ring_types rt on rt.id = jwr.ring_type_id
+                join jewelleries.jewelleries jj on jwr.id = jj.id
 
         union all
 
@@ -356,8 +353,10 @@ with
                 'clasp_id', b.clasp_id,
                 'clasp_name', c.name,
                 'clasp_description', c.description,
-                'base_id', b.bracelet_type_id,
-                'base_name', bb.name,
+                'type_id', b.bracelet_type_id,
+                'type_name', bt.name,
+                'group_id', bg.id,
+                'group_name', bg.name,
                 'body_part_id', b.body_part_id,
                 'body_part_name', bp.name
             ) as details,
@@ -411,11 +410,12 @@ with
                 group by b.id
             ) as metrics on metrics.bracelet_id = b.id
                 left join jw_properties.clasps as c on c.id = b.clasp_id
-                left join jw_properties.bracelet_types as bb on bb.id = b.bracelet_type_id
+                left join jw_properties.bracelet_types as bt on bt.id = b.bracelet_type_id
+                left join jw_properties.bracelet_groups as bg on bg.id = bt.bracelet_group_id
                 left join jw_properties.body_parts as bp on bp.id = b.body_part_id
                 left join jewelleries.jewelleries as jj on b.id = jj.id
                 left join jw_properties.bracelet_metrics as brm on b.id = brm.bracelet_id
-        group by b.id, metrics.metrics, weaving.weaving, jj.id, c. name, bb.name, bp.name, c.description
+        group by b.id, metrics.metrics, weaving.weaving, jj.id, c.name, bt.name, bg.id, bp.name, c.description
 
         union all
 
@@ -490,19 +490,19 @@ with
         select
             jj.id,jwnck.id as jewellery_id,
             jsonb_build_object(
-                    'necklace_id', jwnck.id,
-                    'clasp_id', jwcls.id,
-                    'clasp', jwcls.name,
-                    'size_price_quantity',
-                    jsonb_agg(
-                        jsonb_build_object(
-                            'size', jwns.value,
-                            'price', jwnckm.price,
-                            'quantity', jwnckm.quantity,
-                            'length_name_id', jwln.id,
-                            'length_name', jwln.name
-                        )
+                'necklace_id', jwnck.id,
+                'clasp_id', jwcls.id,
+                'clasp', jwcls.name,
+                'size_price_quantity',
+                jsonb_agg(
+                    jsonb_build_object(
+                        'size', jwns.value,
+                        'price', jwnckm.price,
+                        'quantity', jwnckm.quantity,
+                        'length_name_id', jwln.id,
+                        'length_name', jwln.name
                     )
+                )
             ) as spec_props,
             sum(jwnckm.quantity) as quantity,
             cast(avg(jwnckm.price) as decimal(10, 2)) as avg_price,
@@ -523,21 +523,21 @@ with
         select
             jj.id,jwbd.id as jewellery_id,
             jsonb_build_object(
-                    'bead_id', jwbd.id,
-                    'clasp_id', jwcls.id,
-                    'clasp', jwcls.name,
-                    'base_id', jwbb.id,
-                    'base', jwbb.name,
-                    'size_price_quantity',
-                    jsonb_agg(
-                            jsonb_build_object(
-                                    'size', jwns.value,
-                                    'price', jwbdm.price,
-                                    'quantity', jwbdm.quantity,
-                                    'length_name_id', jwln.id,
-                                    'length_name', jwln.name
-                            )
+                'bead_id', jwbd.id,
+                'clasp_id', jwcls.id,
+                'clasp', jwcls.name,
+                'base_id', jwbb.id,
+                'base', jwbb.name,
+                'size_price_quantity',
+                jsonb_agg(
+                    jsonb_build_object(
+                        'size', jwns.value,
+                        'price', jwbdm.price,
+                        'quantity', jwbdm.quantity,
+                        'length_name_id', jwln.id,
+                        'length_name', jwln.name
                     )
+                )
             ) as spec_props,
             sum(jwbdm.quantity) as quantity,
             cast(avg(jwbdm.price) as decimal(10, 2)) as avg_price,
@@ -603,4 +603,5 @@ from
         left join cte_review as cr on jj.id = cr.jewellery_id
         left join cte_catalog as cc on jj.id = cc.jewellery_id
         left join cte_jw_props as cjp on  jj.id = cjp.jewellery_id
-;
+
+order by jj.id
