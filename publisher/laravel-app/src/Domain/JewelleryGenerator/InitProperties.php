@@ -10,6 +10,8 @@ use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricEnum;
 use Domain\JewelleryProperties\Beads\Beads\Enums\BeadEnum;
 use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartBuilderEnum;
 use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartEnum;
+use Domain\JewelleryProperties\Bracelets\BraceletGroups\Enums\BraceletGroupBuilderEnum;
+use Domain\JewelleryProperties\Bracelets\BraceletGroups\Enums\BraceletGroupEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Enums\BraceletMetricEnum;
 use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletEnum;
 use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeBuilderEnum;
@@ -106,16 +108,41 @@ final class InitProperties
         DB::table(BraceletMetricEnum::TABLE_NAME->value)->truncate();
         DB::table(BraceletWeavingEnum::TABLE_NAME->value)->truncate();
         DB::table(BraceletTypeEnum::TABLE_NAME->value)->truncate();
+        DB::table(BraceletGroupEnum::TABLE_NAME->value)->truncate();
 
         Schema::enableForeignKeyConstraints();
 
-        foreach (BraceletTypeBuilderEnum::cases() as $braceletBase) {
-            DB::table(BraceletTypeEnum::TABLE_NAME->value)->insert([
+        foreach (BraceletGroupBuilderEnum::cases() as $braceletBase) {
+            $braceletGroupId = DB::table(BraceletGroupEnum::TABLE_NAME->value)->insertGetId([
                 'name' => $braceletBase->value,
                 'slug' => Str::slug($braceletBase->value),
                 'description' => $braceletBase->description(),
                 'created_at' => now(),
             ]);
+
+            if ($braceletBase->value === BraceletGroupBuilderEnum::SOFT->value) {
+                foreach (BraceletGroupBuilderEnum::SOFT->types() as $braceletType) {
+                    $description = BraceletTypeBuilderEnum::from($braceletType)->description();
+                    DB::table(BraceletTypeEnum::TABLE_NAME->value)->insert([
+                        'bracelet_group_id' => $braceletGroupId,
+                        'name' => $braceletType,
+                        'slug' => Str::slug($braceletType),
+                        'description' => $description,
+                        'created_at' => now(),
+                    ]);
+                }
+            } else {
+                foreach (BraceletGroupBuilderEnum::HARD->types() as $braceletType) {
+                    $description = BraceletTypeBuilderEnum::from($braceletType)->description();
+                    DB::table(BraceletTypeEnum::TABLE_NAME->value)->insert([
+                        'bracelet_group_id' => $braceletGroupId,
+                        'name' => $braceletType,
+                        'slug' => Str::slug($braceletType),
+                        'description' => $description,
+                        'created_at' => now(),
+                    ]);
+                }
+            }
         }
 
         foreach (BraceletSizeBuilderEnum::cases() as $braceletSize) {

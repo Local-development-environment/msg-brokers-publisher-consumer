@@ -4,17 +4,20 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Bracelets\BraceletTypes\Enums;
 
+use Domain\JewelleryProperties\Bracelets\BraceletGroups\Enums\BraceletGroupBuilderEnum;
+
 enum BraceletTypeBuilderEnum: string
 {
     case HOOP      = 'обруч';
-    case OPEN_RING = 'размкнутое кольцо';
+    case OPEN_RING = 'разомкнутое кольцо';
     case SWIVEL    = 'шарнирный';
-    case SPIRAL        = 'спираль';
-    case CUFF          = 'манжета';
-    case CHAINED       = 'цепочка';
-    case GLIDER        = 'глидерный';
-    case WICKER        = 'плетеный';
-    case SLAVE         = 'слейв';
+    case SPIRAL    = 'спираль';
+    case CUFF      = 'манжета';
+    case CHAINED   = 'цепочка';
+    case GLIDER    = 'глидерный';
+    case WICKER    = 'плетеный';
+    case SLAVE     = 'слейв';
+    case BEADED    = 'из бусин';
 
     public function description(): string
     {
@@ -26,8 +29,9 @@ enum BraceletTypeBuilderEnum: string
             self::CUFF      => 'Широкая, часто разомкнутая пластина.',
             self::CHAINED   => 'Звенья разных форм, соединенные последовательно.',
             self::GLIDER    => 'Звенья соединены пружинами или шарнирами, часто растягиваются.',
-            self::WICKER    => 'Из нитей, кожи, бисера.',
+            self::WICKER    => 'Из нитей, кожи, бисера, бусин.',
             self::SLAVE     => 'Соединен цепочкой с кольцом на палец.',
+            self::BEADED    => 'Браслет собранный из бусин',
         };
     }
 
@@ -39,10 +43,27 @@ enum BraceletTypeBuilderEnum: string
             self::SWIVEL    => 5,
             self::SPIRAL    => 5,
             self::CUFF      => 5,
-            self::CHAINED   => 50,
+            self::CHAINED   => 45,
             self::GLIDER    => 5,
             self::WICKER    => 5,
             self::SLAVE     => 5,
+            self::BEADED    => 5,
+        };
+    }
+
+    public function groups(): string
+    {
+        return match ($this) {
+            self::HOOP,
+            self::CUFF,
+            self::SPIRAL,
+            self::SWIVEL,
+            self::OPEN_RING => BraceletGroupBuilderEnum::HARD->value,
+            self::CHAINED,
+            self::GLIDER,
+            self::WICKER,
+            self::SLAVE,
+            self::BEADED    => BraceletGroupBuilderEnum::SOFT->value,
         };
     }
 }
