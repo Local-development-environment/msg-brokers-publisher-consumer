@@ -22,6 +22,9 @@ return new class extends Migration
         DB::statement('CREATE SCHEMA jw_views');
         DB::statement('CREATE SCHEMA jw_users');
         DB::statement('CREATE SCHEMA spatie');
+        DB::statement('CREATE SCHEMA jw_stones');
+        DB::statement('CREATE SCHEMA jw_stone_exteriors');
+        DB::statement('CREATE SCHEMA jw_bead_items');
     }
 
     /**
@@ -38,5 +41,8 @@ return new class extends Migration
         DB::statement('DROP SCHEMA IF EXISTS jw_views CASCADE');
         DB::statement('DROP SCHEMA IF EXISTS jw_users CASCADE');
         DB::statement('DROP SCHEMA IF EXISTS spatie CASCADE');
+        DB::statement('DROP SCHEMA IF EXISTS jw_stones CASCADE');
+        DB::statement('DROP SCHEMA IF EXISTS jw_stone_exteriors CASCADE');
+        DB::statement('DROP SCHEMA IF EXISTS jw_bead_items CASCADE');
     }
 };
