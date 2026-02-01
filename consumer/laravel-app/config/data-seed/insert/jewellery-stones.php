@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-use JewelleryDomain\Jewellery\InsertItems\Facet\Enums\FacetNamesEnum;
 use JewelleryDomain\Jewellery\InsertItems\OpticalEffect\Enums\OpticalEffectNamesEnum;
 use JewelleryDomain\Jewellery\InsertItems\Stone\Enums\StoneNamesEnum;
-use JewelleryDomain\Jewellery\InsertItems\StoneColour\Enums\StoneColourNamesEnum;
 use JewelleryDomain\Jewellery\InsertItems\StoneFamily\Enums\StoneFamilyNamesEnum;
 use JewelleryDomain\Jewellery\InsertItems\StoneGrade\Enums\StoneGradeNamesEnum;
 use JewelleryDomain\Jewellery\InsertItems\StoneGroup\Enums\StoneGroupNamesEnum;
 use JewelleryDomain\Jewellery\InsertItems\TypeOrigin\Enums\TypeOriginNamesEnum;
+use JewelleryDomain\Jewellery\StoneExteriors\Facet\Enums\FacetNamesEnum;
+use JewelleryDomain\Jewellery\Stones\StoneColour\Enums\StoneColourNamesEnum;
 
 return [
     [

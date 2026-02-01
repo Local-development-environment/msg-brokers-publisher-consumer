@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace JewelleryDomain\TestDataGeneration\InsertItems\InsertBead;
 
-use JewelleryDomain\Jewellery\InsertItems\Facet\Enums\FacetNamesEnum;
+use JewelleryDomain\Jewellery\StoneExteriors\Facet\Enums\FacetNamesEnum;
 
 final readonly class BeadStoneDimensions
 {
