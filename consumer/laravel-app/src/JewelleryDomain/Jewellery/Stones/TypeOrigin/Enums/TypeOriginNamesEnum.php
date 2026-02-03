@@ -2,7 +2,9 @@
 
 namespace JewelleryDomain\Jewellery\Stones\TypeOrigin\Enums;
 
-enum TypeOriginNamesEnum
+use JewelleryDomain\Jewellery\Stones\Stone\Enums\StoneNamesEnum;
+
+enum TypeOriginNamesEnum: string
 {
     case NATURE    = 'природный';
     case IMITATION = 'имитация';
@@ -95,7 +97,7 @@ enum TypeOriginNamesEnum
                 StoneNamesEnum::DRAVITE->value,
                 StoneNamesEnum::CULTURED_RIVER_PEARLS->value,
                 StoneNamesEnum::IOLITE->value,
-                StoneNamesEnum::CASSETTERITE->value,
+                StoneNamesEnum::CASSITERITE->value,
                 StoneNamesEnum::KYANITE->value,
                 StoneNamesEnum::CLINOHUMITE->value,
                 StoneNamesEnum::CLEIOPHANES->value,

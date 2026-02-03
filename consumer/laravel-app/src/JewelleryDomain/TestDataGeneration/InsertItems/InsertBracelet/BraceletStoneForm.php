@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace JewelleryDomain\TestDataGeneration\InsertItems\InsertBracelet;
 
-use JewelleryDomain\Jewellery\InsertItems\Stone\Enums\StoneNamesEnum;
+use JewelleryDomain\Jewellery\Stones\Stone\Enums\StoneNamesEnum;
 
 final class BraceletStoneForm
 {
@@ -15,7 +15,7 @@ final class BraceletStoneForm
     {
         $enumName = StoneNamesEnum::from($stone);
 
-        $forms = data_get(StoneNamesEnum::{$enumName->name}->forms(), '*.0');
+        $forms = data_get(StoneNamesEnum::{$enumName->name}->stoneForms(), '*.0');
 
         return $forms[array_rand($forms)];
     }

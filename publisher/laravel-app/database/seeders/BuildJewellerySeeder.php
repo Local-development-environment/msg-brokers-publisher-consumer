@@ -117,6 +117,10 @@ final class BuildJewellerySeeder extends Seeder
         $properties->initCharmPendantProperties();
         $properties->initPendantProperties();
 
+        /** NEW INSERT OPTIONS */
+
+
+
         //        dd('ok');
         for ($i = 0; $i < $items; $i++) {
             dump($i);
@@ -269,17 +273,17 @@ final class BuildJewellerySeeder extends Seeder
     {
         $broochClaspId = DB::table(BroochClaspEnum::TABLE_NAME->value)
             ->where('name', $jewelleryData['property']['parameters']['broochClasp'])->value('id');
-        $broochTypeId = DB::table(BroochTypeEnum::TABLE_NAME->value)
+        $broochTypeId  = DB::table(BroochTypeEnum::TABLE_NAME->value)
             ->where('name', $jewelleryData['property']['parameters']['broochType'])->value('id');
 
         DB::table(BroochEnum::TABLE_NAME->value)->insertGetId([
-            'id'         => $jewelleryId,
+            'id'              => $jewelleryId,
             'brooch_clasp_id' => $broochClaspId,
-            'brooch_type_id' => $broochTypeId,
-            'quantity'   => $jewelleryData['property']['parameters']['quantity'],
-            'price'      => $jewelleryData['property']['parameters']['price'],
-            'dimensions' => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
-            'created_at' => now()
+            'brooch_type_id'  => $broochTypeId,
+            'quantity'        => $jewelleryData['property']['parameters']['quantity'],
+            'price'           => $jewelleryData['property']['parameters']['price'],
+            'dimensions'      => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
+            'created_at'      => now()
         ]);
     }
 
@@ -320,12 +324,12 @@ final class BuildJewellerySeeder extends Seeder
             ->where('name', $jewelleryData['property']['parameters']['tieClipType'])->value('id');
 
         DB::table(TieClipEnum::TABLE_NAME->value)->insertGetId([
-            'id'         => $jewelleryId,
+            'id'               => $jewelleryId,
             'tie_clip_type_id' => $tieClipTypeId,
-            'quantity'   => $jewelleryData['property']['parameters']['quantity'],
-            'price'      => $jewelleryData['property']['parameters']['price'],
-            'dimensions' => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
-            'created_at' => now()
+            'quantity'         => $jewelleryData['property']['parameters']['quantity'],
+            'price'            => $jewelleryData['property']['parameters']['price'],
+            'dimensions'       => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
+            'created_at'       => now()
         ]);
     }
 
@@ -336,20 +340,20 @@ final class BuildJewellerySeeder extends Seeder
     {
         $cuffLinkClaspId = DB::table(CuffLinkClaspEnum::TABLE_NAME->value)
             ->where('name', $jewelleryData['property']['parameters']['cuffLinkClasp'])->value('id');
-        $cuffLinkFormId = DB::table(CuffLinkFormEnum::TABLE_NAME->value)
+        $cuffLinkFormId  = DB::table(CuffLinkFormEnum::TABLE_NAME->value)
             ->where('name', $jewelleryData['property']['parameters']['cuffLinkForm'])->value('id');
-        $cuffLinkTypeId = DB::table(CuffLinkTypeEnum::TABLE_NAME->value)
+        $cuffLinkTypeId  = DB::table(CuffLinkTypeEnum::TABLE_NAME->value)
             ->where('name', $jewelleryData['property']['parameters']['cuffLinkType'])->value('id');
 
         DB::table(CuffLinkEnum::TABLE_NAME->value)->insertGetId([
-            'id' => $jewelleryId,
+            'id'                 => $jewelleryId,
             'cuff_link_clasp_id' => $cuffLinkClaspId,
-            'cuff_link_form_id' => $cuffLinkFormId,
-            'cuff_link_type_id' => $cuffLinkTypeId,
-            'quantity'     => $jewelleryData['property']['parameters']['quantity'],
-            'price'        => $jewelleryData['property']['parameters']['price'],
-            'dimensions' => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
-            'created_at'   => now()
+            'cuff_link_form_id'  => $cuffLinkFormId,
+            'cuff_link_type_id'  => $cuffLinkTypeId,
+            'quantity'           => $jewelleryData['property']['parameters']['quantity'],
+            'price'              => $jewelleryData['property']['parameters']['price'],
+            'dimensions'         => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
+            'created_at'         => now()
         ]);
     }
 
@@ -359,11 +363,11 @@ final class BuildJewellerySeeder extends Seeder
             ->where('name', $jewelleryData['property']['parameters']['piercingType'])->value('id');
 
         DB::table(PiercingEnum::TABLE_NAME->value)->insertGetId([
-            'id'         => $jewelleryId,
+            'id'               => $jewelleryId,
             'piercing_type_id' => $piercingTypeId,
-            'quantity'   => $jewelleryData['property']['parameters']['quantity'],
-            'price'      => $jewelleryData['property']['parameters']['price'],
-            'created_at' => now()
+            'quantity'         => $jewelleryData['property']['parameters']['quantity'],
+            'price'            => $jewelleryData['property']['parameters']['price'],
+            'created_at'       => now()
         ]);
     }
 
@@ -404,10 +408,10 @@ final class BuildJewellerySeeder extends Seeder
 
 
         $ringId = DB::table(RingEnum::TABLE_NAME->value)->insertGetId([
-            'id'             => $jewelleryId,
+            'id'           => $jewelleryId,
             'ring_type_id' => $ringTypeId,
-            'dimensions'     => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
-            'created_at'     => now()
+            'dimensions'   => json_encode($jewelleryData['property']['parameters']['dimensions'], JSON_THROW_ON_ERROR),
+            'created_at'   => now()
         ]);
 
         foreach ($jewelleryData['property']['parameters']['size_price_quantity'] as $sizePriceQuantity) {
@@ -424,10 +428,10 @@ final class BuildJewellerySeeder extends Seeder
 //        foreach ($jewelleryData['property']['parameters'] as $ringType) {
 //            dd($ringType);
         DB::table(RingDetailEnum::TABLE_NAME->value)->insertGetId([
-            'ring_id'      => $ringId,
+            'ring_id'          => $ringId,
             'ring_specific_id' => DB::table('jw_properties.ring_specifics')
                 ->where('name', $jewelleryData['property']['parameters']['ring_specific'])->value('id'),
-            'created_at'   => now()
+            'created_at'       => now()
         ]);
 //        }
     }

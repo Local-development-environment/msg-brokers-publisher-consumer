@@ -66,6 +66,9 @@ final class BaseJewelleryGenerator implements JewelleryGenerateInterface
         return $this;
     }
 
+    /**
+     * @throws RandomException
+     */
     public function buildInsert(): JewelleryGenerateInterface
     {
         $inserts    = new InsertGenerator();

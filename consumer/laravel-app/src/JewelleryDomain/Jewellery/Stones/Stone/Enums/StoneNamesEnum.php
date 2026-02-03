@@ -2,7 +2,8 @@
 
 namespace JewelleryDomain\Jewellery\Stones\Stone\Enums;
 
-use JewelleryDomain\Jewellery\StoneExteriors\Facet\Enums\FacetNamesEnum;
+use JewelleryDomain\Jewellery\StoneExteriors\StoneCabochonForm\Enums\StoneCabochonFormNamesEnum;
+use JewelleryDomain\Jewellery\StoneExteriors\StoneCutForm\Enums\StoneCutFormNamesEnum;
 use JewelleryDomain\Jewellery\Stones\StoneColour\Enums\StoneColourNamesEnum;
 
 enum StoneNamesEnum: string
@@ -33,8 +34,8 @@ enum StoneNamesEnum: string
     case MORGANITE            = 'морганит';
     case HYACINTH             = 'гиацинт';
     case HIDDEN               = 'Гидденит';
-    case NATURAL_RIVER_PEARLS = 'речной натуральный жемчуг';
-    case CULTURED_SEA_PEARLS  = 'морской культивированный жемчуг';
+    case NATURAL_RIVER_PEARLS = 'жемчуг речной натуральный';
+    case CULTURED_SEA_PEARLS  = 'жемчуг морской культивированный';
 //    case STAR_CORUNDUM         = 'корунд звездчатый'; // can be two corundum - ruby and sapphire
     case STAR_RUBY             = 'рубин звездчатый';
     case STAR_SAPPHIRE         = 'сапфир звездчатый';
@@ -90,7 +91,7 @@ enum StoneNamesEnum: string
     case VESUVIAN              = 'везувиан';
     case DANBURITE             = 'данбурит';
     case DRAVITE               = 'дравит';
-    case CULTURED_RIVER_PEARLS = 'культивированный речной жемчуг';
+    case CULTURED_RIVER_PEARLS = 'жемчуг культивированный речной';
     case IOLITE                = 'иолит';
     case CASSITERITE           = 'касситерит';
     case KYANITE               = 'кианит';
@@ -760,28 +761,28 @@ enum StoneNamesEnum: string
 
     }
 
-    public function forms(): array
+    public function stoneForms(): array
     {
         return match ($this) {
             self::DIAMOND               => [
-                [FacetNamesEnum::ROUND_CUT->value, 50],
-                [FacetNamesEnum::PRINCESS_CUT->value, 5],
-                [FacetNamesEnum::PEAR_CUT->value, 5],
-                [FacetNamesEnum::MARQUISE_CUT->value, 5],
-                [FacetNamesEnum::OVAL_CUT->value, 5],
-                [FacetNamesEnum::EMERALD_CUT->value, 5],
-                [FacetNamesEnum::HEART_CUT->value, 5],
-                [FacetNamesEnum::CUSHION_CUT->value, 5],
-                [FacetNamesEnum::RADIANT_CUT->value, 5],
-                [FacetNamesEnum::BAGUETTE_CUT->value, 5],
-                [FacetNamesEnum::TRILLION_CUT->value, 5],
-                [FacetNamesEnum::ASSCHER_CUT->value, 5],
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 50],
+                [StoneCutFormNamesEnum::PRINCESS_CUT->value, 5],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 5],
+                [StoneCutFormNamesEnum::MARQUISE_CUT->value, 5],
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 5],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 5],
+                [StoneCutFormNamesEnum::HEART_CUT->value, 5],
+                [StoneCutFormNamesEnum::CUSHION_CUT->value, 5],
+                [StoneCutFormNamesEnum::RADIANT_CUT->value, 5],
+                [StoneCutFormNamesEnum::BAGUETTE_CUT->value, 5],
+                [StoneCutFormNamesEnum::TRILLION_CUT->value, 5],
+                [StoneCutFormNamesEnum::ASSCHER_CUT->value, 5],
             ],
             self::ALEXANDRITE           => [
-                [FacetNamesEnum::OVAL_CUT->value, 25],
-                [FacetNamesEnum::ROUND_CUT->value, 25],
-                [FacetNamesEnum::PEAR_CUT->value, 25],
-                [FacetNamesEnum::BAGUETTE_CUT->value, 25]
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 25],
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 25],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 25],
+                [StoneCutFormNamesEnum::BAGUETTE_CUT->value, 25]
             ],
             self::NATURAL_SEA_PEARL,
             self::NATURAL_RIVER_PEARLS,
@@ -806,51 +807,53 @@ enum StoneNamesEnum: string
             self::LABRADORITE,
             self::HEMATITE,
             self::AMETHYST              => [
-                [FacetNamesEnum::CABOCHON_OVAL->value, 50],
-                [FacetNamesEnum::CABOCHON_ROUND->value, 50]
+                [StoneCabochonFormNamesEnum::OVAL_CABOCHON->value, 50],
+                [StoneCabochonFormNamesEnum::ROUND_CABOCHON->value, 50]
             ],
             self::EMERALD               => [
-                [FacetNamesEnum::EMERALD_CUT->value, 50],
-                [FacetNamesEnum::BAGUETTE_CUT->value, 50],
-                [FacetNamesEnum::OVAL_CUT->value, 50],
-                [FacetNamesEnum::PEAR_CUT->value, 50],
-                [FacetNamesEnum::CUSHION_CUT->value, 50]
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 50],
+                [StoneCutFormNamesEnum::BAGUETTE_CUT->value, 50],
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 50],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 50],
+                [StoneCutFormNamesEnum::CUSHION_CUT->value, 50]
             ],
             self::RUBY                  => [
-                [FacetNamesEnum::CABOCHON_OVAL->value, 5],
-                [FacetNamesEnum::CABOCHON_ROUND->value, 5],
-                [FacetNamesEnum::OVAL_CUT->value, 15],
-                [FacetNamesEnum::ROUND_CUT->value, 15],
-                [FacetNamesEnum::PEAR_CUT->value, 15],
-                [FacetNamesEnum::EMERALD_CUT->value, 15],
-                [FacetNamesEnum::CUSHION_CUT->value, 15],
-                [FacetNamesEnum::MARQUISE_CUT->value, 15],
+                [StoneCabochonFormNamesEnum::OVAL_CABOCHON->value, 5],
+                [StoneCabochonFormNamesEnum::ROUND_CABOCHON->value, 5],
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 15],
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 15],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 15],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 15],
+                [StoneCutFormNamesEnum::CUSHION_CUT->value, 15],
+                [StoneCutFormNamesEnum::MARQUISE_CUT->value, 15]
             ],
             self::SAPPHIRE,
             self::SAPPHIRE_PINK         => [
-                [FacetNamesEnum::ROUND_CUT->value, 15],
-                [FacetNamesEnum::OVAL_CUT->value, 15],
-                [FacetNamesEnum::PEAR_CUT->value, 15],
-                [FacetNamesEnum::EMERALD_CUT->value, 20],
-                [FacetNamesEnum::MARQUISE_CUT->value, 20],
-                [FacetNamesEnum::HEART_CUT->value, 15],
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 15],
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 15],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 15],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 20],
+                [StoneCutFormNamesEnum::MARQUISE_CUT->value, 20],
+                [StoneCutFormNamesEnum::HEART_CUT->value, 15],
             ],
-            self::DEMANTOID             => [[FacetNamesEnum::ROUND_CUT->value, 15],
-                [FacetNamesEnum::OVAL_CUT->value, 15],
-                [FacetNamesEnum::EMERALD_CUT->value, 15],
-                [FacetNamesEnum::CUSHION_CUT->value, 15],
-                [FacetNamesEnum::PEAR_CUT->value, 15],
-                [FacetNamesEnum::BAGUETTE_CUT->value, 20],
-                [FacetNamesEnum::PRINCESS_CUT->value, 20],],
+            self::DEMANTOID             => [
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 15],
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 15],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 15],
+                [StoneCutFormNamesEnum::CUSHION_CUT->value, 15],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 15],
+                [StoneCutFormNamesEnum::BAGUETTE_CUT->value, 20],
+                [StoneCutFormNamesEnum::PRINCESS_CUT->value, 20],
+        ],
             self::BLACK_OPAL            => [],
             self::PADPARADSCHA          => [],
             self::TANZANITE             => [],
             self::PARAIBA_TOURMALINE,
             self::TOURMALINE            => [
-                [FacetNamesEnum::EMERALD_CUT->value, 25],
-                [FacetNamesEnum::PEAR_CUT->value, 25],
-                [FacetNamesEnum::CABOCHON_OVAL->value, 25],
-                [FacetNamesEnum::CABOCHON_ROUND->value, 25],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 25],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 25],
+                [StoneCabochonFormNamesEnum::OVAL_CABOCHON->value, 25],
+                [StoneCabochonFormNamesEnum::ROUND_CABOCHON->value, 25],
             ],
             self::TSAVORITE             => [],
             self::RED_NOBLE_SPINEL      => [],
@@ -867,17 +870,17 @@ enum StoneNamesEnum: string
             self::NOBLE_FIRE_OPAL       => [],
             self::RUBELLITE             => [],
             self::SAPPHIRE_GREEN        => [
-                [FacetNamesEnum::ROUND_CUT->value, 15],
-                [FacetNamesEnum::OVAL_CUT->value, 15],
-                [FacetNamesEnum::EMERALD_CUT->value, 15],
-                [FacetNamesEnum::CUSHION_CUT->value, 15],
-                [FacetNamesEnum::PEAR_CUT->value, 15],
-                [FacetNamesEnum::MARQUISE_CUT->value, 15],
-                [FacetNamesEnum::PRINCESS_CUT->value, 10],
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 15],
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 15],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 15],
+                [StoneCutFormNamesEnum::CUSHION_CUT->value, 15],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 15],
+                [StoneCutFormNamesEnum::MARQUISE_CUT->value, 15],
+                [StoneCutFormNamesEnum::PRINCESS_CUT->value, 10],
             ],
             self::TOPAZOLITE            => [
-                [FacetNamesEnum::ROUND_CUT->value, 50],
-                [FacetNamesEnum::EMERALD_CUT->value, 50]
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 50],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 50]
             ],
             self::TOPAZ_IMPERIAL        => [],
             self::POLYCHROME_TOURMALINE => [],
@@ -887,13 +890,13 @@ enum StoneNamesEnum: string
             self::PINK_SPINEL           => [],
             self::ALMANDINE,
             self::SPESSARTINE           => [
-                [FacetNamesEnum::CABOCHON_OVAL->value, 15],
-                [FacetNamesEnum::CABOCHON_ROUND->value, 10],
-                [FacetNamesEnum::OVAL_CUT->value, 15],
-                [FacetNamesEnum::ROUND_CUT->value, 15],
-                [FacetNamesEnum::PEAR_CUT->value, 15],
-                [FacetNamesEnum::EMERALD_CUT->value, 15],
-                [FacetNamesEnum::CUSHION_CUT->value, 15]
+                [StoneCabochonFormNamesEnum::OVAL_CABOCHON->value, 15],
+                [StoneCabochonFormNamesEnum::ROUND_CABOCHON->value, 10],
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 15],
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 15],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 15],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 15],
+                [StoneCutFormNamesEnum::CUSHION_CUT->value, 15]
             ],
             self::VERDELITE             => [],
             self::HELIODOR              => [],
@@ -901,15 +904,15 @@ enum StoneNamesEnum: string
             self::INDIGOLITE            => [],
             self::LEUCO_SAPPHIRE        => [],
             self::PYROPE                => [
-                [FacetNamesEnum::CABOCHON_OVAL->value, 5],
-                [FacetNamesEnum::CABOCHON_ROUND->value, 5],
-                [FacetNamesEnum::OVAL_CUT->value, 15],
-                [FacetNamesEnum::ROUND_CUT->value, 15],
-                [FacetNamesEnum::PEAR_CUT->value, 15],
-                [FacetNamesEnum::EMERALD_CUT->value, 15],
-                [FacetNamesEnum::CUSHION_CUT->value, 10],
-                [FacetNamesEnum::MARQUISE_CUT->value, 10],
-                [FacetNamesEnum::BAGUETTE_CUT->value, 10]
+                [StoneCabochonFormNamesEnum::OVAL_CABOCHON->value, 5],
+                [StoneCabochonFormNamesEnum::ROUND_CABOCHON->value, 5],
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 15],
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 15],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 15],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 15],
+                [StoneCutFormNamesEnum::CUSHION_CUT->value, 10],
+                [StoneCutFormNamesEnum::MARQUISE_CUT->value, 10],
+                [StoneCutFormNamesEnum::BAGUETTE_CUT->value, 10]
             ],
             self::PRASIOLITE            => [],
             self::PINK_TOPAZ            => [],
@@ -923,13 +926,13 @@ enum StoneNamesEnum: string
             self::ANDALUSITE            => [],
             self::APATITE               => [],
             self::ANDRADITE             => [
-                [FacetNamesEnum::CABOCHON_OVAL->value, 5],
-                [FacetNamesEnum::CABOCHON_ROUND->value, 5],
-                [FacetNamesEnum::OVAL_CUT->value, 15],
-                [FacetNamesEnum::ROUND_CUT->value, 15],
-                [FacetNamesEnum::PEAR_CUT->value, 15],
-                [FacetNamesEnum::EMERALD_CUT->value, 15],
-                [FacetNamesEnum::CUSHION_CUT->value, 10]
+                [StoneCabochonFormNamesEnum::OVAL_CABOCHON->value, 5],
+                [StoneCabochonFormNamesEnum::ROUND_CABOCHON->value, 5],
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 15],
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 15],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 15],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 15],
+                [StoneCutFormNamesEnum::CUSHION_CUT->value, 10]
             ],
             self::ACHROITE              => [],
             self::BRAZILIANITE          => [],
@@ -963,9 +966,9 @@ enum StoneNamesEnum: string
             self::JADEITE               => [],
             self::CARNELIAN             => [],
             self::LAZURITE              => [
-                [FacetNamesEnum::CABOCHON_OVAL->value, 40],
-                [FacetNamesEnum::CABOCHON_ROUND->value, 40],
-                [FacetNamesEnum::BAGUETTE_CUT->value, 20]
+                [StoneCabochonFormNamesEnum::OVAL_CABOCHON->value, 40],
+                [StoneCabochonFormNamesEnum::ROUND_CABOCHON->value, 40],
+                [StoneCutFormNamesEnum::BAGUETTE_CUT->value, 20]
             ],
             self::MALACHITE             => [],
             self::MAMMOTH_BONE          => [],
@@ -982,14 +985,14 @@ enum StoneNamesEnum: string
             self::CHAROITE              => [],
             self::EUDIALYTE             => [],
             self::AMBER                 => [
-                [FacetNamesEnum::CABOCHON_OVAL->value, 35],
-                [FacetNamesEnum::CABOCHON_ROUND->value, 35],
-                [FacetNamesEnum::MARQUISE_CUT->value, 5],
-                [FacetNamesEnum::OVAL_CUT->value, 5],
-                [FacetNamesEnum::ROUND_CUT->value, 5],
-                [FacetNamesEnum::PEAR_CUT->value, 5],
-                [FacetNamesEnum::HEART_CUT->value, 5],
-                [FacetNamesEnum::EMERALD_CUT->value, 5],
+                [StoneCabochonFormNamesEnum::OVAL_CABOCHON->value, 35],
+                [StoneCabochonFormNamesEnum::ROUND_CABOCHON->value, 35],
+                [StoneCutFormNamesEnum::MARQUISE_CUT->value, 5],
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 5],
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 5],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 5],
+                [StoneCutFormNamesEnum::HEART_CUT->value, 5],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 5],
             ],
             self::AVENTURINE            => [],
             self::ADULARIA              => [],
@@ -998,12 +1001,12 @@ enum StoneNamesEnum: string
             self::ASTROFYLITIS          => [],
             self::BELOMORITE            => [],
             self::RHINESTONE            => [
-                [FacetNamesEnum::CABOCHON_OVAL->value, 20],
-                [FacetNamesEnum::CABOCHON_ROUND->value, 20],
-                [FacetNamesEnum::MARQUISE_CUT->value, 15],
-                [FacetNamesEnum::NATURAL->value, 15],
-                [FacetNamesEnum::PEAR_CUT->value, 15],
-                [FacetNamesEnum::HEART_CUT->value, 15],
+                [StoneCabochonFormNamesEnum::OVAL_CABOCHON->value, 20],
+                [StoneCabochonFormNamesEnum::ROUND_CABOCHON->value, 20],
+                [StoneCutFormNamesEnum::MARQUISE_CUT->value, 15],
+                [StoneCutFormNamesEnum::NATURAL->value, 15],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 15],
+                [StoneCutFormNamesEnum::HEART_CUT->value, 15],
             ],
             self::JADE                  => [],
             self::LARIMAR               => [],
@@ -1013,13 +1016,13 @@ enum StoneNamesEnum: string
             self::RHODUSITE             => [],
             self::CIMBIRCITE            => [],
             self::SMOKEY_QUARTZ         => [
-                [FacetNamesEnum::CABOCHON_ROUND->value, 15],
-                [FacetNamesEnum::CABOCHON_OVAL->value, 15],
-                [FacetNamesEnum::EMERALD_CUT->value, 15],
-                [FacetNamesEnum::ROUND_CUT->value, 15],
-                [FacetNamesEnum::OVAL_CUT->value, 15],
-                [FacetNamesEnum::PEAR_CUT->value, 15],
-                [FacetNamesEnum::MARQUISE_CUT->value, 10],
+                [StoneCabochonFormNamesEnum::OVAL_CABOCHON->value, 15],
+                [StoneCabochonFormNamesEnum::ROUND_CABOCHON->value, 15],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 15],
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 15],
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 15],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 15],
+                [StoneCutFormNamesEnum::MARQUISE_CUT->value, 10],
             ],
             self::SUNSTONE              => [],
             self::SPECTROLITE           => [],
@@ -1053,33 +1056,33 @@ enum StoneNamesEnum: string
             self::BANDED_JASPER         => [],
             self::SAPPHIRE_YELLOW,
             self::SAPPHIRE_PURPLE       => [
-                [FacetNamesEnum::ROUND_CUT->value, 5],
-                [FacetNamesEnum::OVAL_CUT->value, 5],
-                [FacetNamesEnum::PEAR_CUT->value, 5],
-                [FacetNamesEnum::EMERALD_CUT->value, 5],
-                [FacetNamesEnum::MARQUISE_CUT->value, 5],
-                [FacetNamesEnum::CABOCHON_OVAL->value, 50],
-                [FacetNamesEnum::CABOCHON_ROUND->value, 25]
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 5],
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 5],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 5],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 5],
+                [StoneCutFormNamesEnum::MARQUISE_CUT->value, 5],
+                [StoneCabochonFormNamesEnum::OVAL_CABOCHON->value, 50],
+                [StoneCabochonFormNamesEnum::ROUND_CABOCHON->value, 25]
             ],
             self::GROSSULAR             => [
-                [FacetNamesEnum::ROUND_CUT->value, 20],
-                [FacetNamesEnum::OVAL_CUT->value, 20],
-                [FacetNamesEnum::PEAR_CUT->value, 10],
-                [FacetNamesEnum::EMERALD_CUT->value, 10],
-                [FacetNamesEnum::PRINCESS_CUT->value, 10],
-                [FacetNamesEnum::RADIANT_CUT->value, 10],
-                [FacetNamesEnum::CABOCHON_OVAL->value, 10],
-                [FacetNamesEnum::CABOCHON_ROUND->value, 10]
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 20],
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 20],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 10],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 10],
+                [StoneCutFormNamesEnum::PRINCESS_CUT->value, 10],
+                [StoneCutFormNamesEnum::RADIANT_CUT->value, 10],
+                [StoneCabochonFormNamesEnum::OVAL_CABOCHON->value, 10],
+                [StoneCabochonFormNamesEnum::ROUND_CABOCHON->value, 10]
             ],
             self::RHODOLITE             => [
-                [FacetNamesEnum::ROUND_CUT->value, 20],
-                [FacetNamesEnum::OVAL_CUT->value, 20],
-                [FacetNamesEnum::PEAR_CUT->value, 10],
-                [FacetNamesEnum::EMERALD_CUT->value, 10],
-                [FacetNamesEnum::CUSHION_CUT->value, 10],
-                [FacetNamesEnum::MARQUISE_CUT->value, 10],
-                [FacetNamesEnum::CABOCHON_OVAL->value, 10],
-                [FacetNamesEnum::CABOCHON_ROUND->value, 10]
+                [StoneCutFormNamesEnum::ROUND_CUT->value, 20],
+                [StoneCutFormNamesEnum::OVAL_CUT->value, 20],
+                [StoneCutFormNamesEnum::PEAR_CUT->value, 10],
+                [StoneCutFormNamesEnum::EMERALD_CUT->value, 10],
+                [StoneCutFormNamesEnum::CUSHION_CUT->value, 10],
+                [StoneCutFormNamesEnum::MARQUISE_CUT->value, 10],
+                [StoneCabochonFormNamesEnum::OVAL_CABOCHON->value, 10],
+                [StoneCabochonFormNamesEnum::ROUND_CABOCHON->value, 10]
             ],
         };
     }

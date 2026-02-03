@@ -2,8 +2,8 @@
 
 namespace JewelleryDomain\Jewellery\Stones\StoneGroup\Enums;
 
-use JewelleryDomain\Jewellery\Stones\JwlyGrade\Enums\JwlyGradeNamesEnum;
-use JewelleryDomain\Jewellery\Stones\JwlyOrnamGrade\Enums\JwlyOrnamGradeNamesEnum;
+use JewelleryDomain\Jewellery\Stones\JewelleryOrnamentalGrade\Enums\JewelleryOrnamentalGradeNamesEnum;
+use JewelleryDomain\Jewellery\Stones\JwlyGrade\Enums\JewelleryGradeNamesEnum;
 use JewelleryDomain\Jewellery\Stones\Stone\Enums\StoneNamesEnum;
 
 enum StoneGroupNamesEnum: string
@@ -29,14 +29,14 @@ enum StoneGroupNamesEnum: string
             self::PRECIOUS,
             self::ORNAMENTAL => [],
             self::JEWELLERIES          => [
-                JwlyGradeNamesEnum::FIRST_JWLY_GRADE->value,
-                JwlyGradeNamesEnum::SECOND_JWLY_GRADE->value,
-                JwlyGradeNamesEnum::THIRD_JWLY_GRADE->value,
-                JwlyGradeNamesEnum::FOURTH_JWLY_GRADE->value,
+                JewelleryGradeNamesEnum::FIRST_JWLY_GRADE->value,
+                JewelleryGradeNamesEnum::SECOND_JWLY_GRADE->value,
+                JewelleryGradeNamesEnum::THIRD_JWLY_GRADE->value,
+                JewelleryGradeNamesEnum::FOURTH_JWLY_GRADE->value,
             ],
             self::JEWELLERY_ORNAMENTAL => [
-                JwlyOrnamGradeNamesEnum::FIRST_JWLY_ORNAM_GRADE->value,
-                JwlyOrnamGradeNamesEnum::SECOND_JWLY_ORNAM_GRADE->value,
+                JewelleryOrnamentalGradeNamesEnum::FIRST_JWLY_ORNAM_GRADE->value,
+                JewelleryOrnamentalGradeNamesEnum::SECOND_JWLY_ORNAM_GRADE->value,
             ],
         };
     }
