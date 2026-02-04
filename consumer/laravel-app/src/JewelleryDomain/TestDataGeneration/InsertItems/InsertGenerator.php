@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace JewelleryDomain\TestDataGeneration\InsertItems;
 
+use JewelleryDomain\Jewellery\BeadItems\BeadItem\Enums\BeadItemNamesEnum;
+use JewelleryDomain\Jewellery\InsertItems\InsertType\Enums\InsertTypeNamesEnum;
 use JewelleryDomain\Jewellery\JewelleryCategoryItems\JewelleryCategory\Enums\JewelleryCategoryNamesEnum;
+use JewelleryDomain\Jewellery\Stones\Stone\Enums\StoneNamesEnum;
+use JewelleryDomain\Jewellery\Stones\StoneTreatment\Enums\StoneTreatmentNamesEnum;
 use JewelleryDomain\TestDataGeneration\InsertItems\InsertBead\BeadStoneColour;
 use JewelleryDomain\TestDataGeneration\InsertItems\InsertBead\BeadStoneDimensions;
-use JewelleryDomain\TestDataGeneration\InsertItems\InsertBead\BeadStoneForm;
+use JewelleryDomain\TestDataGeneration\InsertItems\InsertBead\BeadItemForm;
 use JewelleryDomain\TestDataGeneration\InsertItems\InsertBead\BeadStoneQuantity;
-use JewelleryDomain\TestDataGeneration\InsertItems\InsertBead\BeadStone;
-use JewelleryDomain\TestDataGeneration\InsertItems\InsertBracelet\BraceletStone;
 use JewelleryDomain\TestDataGeneration\InsertItems\InsertBracelet\BraceletStoneColour;
 use JewelleryDomain\TestDataGeneration\InsertItems\InsertBracelet\BraceletStoneDimensions;
 use JewelleryDomain\TestDataGeneration\InsertItems\InsertBracelet\BraceletStoneForm;
@@ -44,15 +46,24 @@ final class InsertGenerator
 
     public function beadInserts(array $properties): array
     {
-        $stone = (new BeadStone($properties))->getStone();
-        $form = (new BeadStoneForm($properties))->getForm($stone);
-        $dimensions = (new BeadStoneDimensions())->getDimensions($form);
+        $insertType = (new InsertType($properties))->getInsertType();
+        $insertItem = (new InsertItem($properties))->getInsertItem($insertType);
+        $formType = (new FormType())->getFormType();
+        $formItem = (new FormItem($insertItem))->getFormItem($formType);
+
+        dd($formItem);
+//        $beadItem = (new BeadItem($properties))->getStone();
+//        $stone = BeadItemNamesEnum::from($beadItem)->stones();
+
+//        dd(StoneNamesEnum::from());
+        $beadForm = (new BeadItemForm($properties))->getBeadForm($beadItem);
+        $dimensions = (new BeadStoneDimensions())->getDimensions($beadForm);
 
         return [
             [
-                'stone' => $stone,
-                'form' => $form,
-                'colour' => (new BeadStoneColour($properties))->getColour($stone),
+                'insertItem' => $insertTypeItem,
+                'formItem' => $beadForm,
+                'colour' => (new BeadStoneColour($properties))->getColour($beadItem),
                 'quantity' => (new BeadStoneQuantity($properties))->getQuantity($dimensions),
                 'dimensions' => $dimensions
             ]
@@ -61,13 +72,18 @@ final class InsertGenerator
 
     public function braceletInserts(array $properties): array
     {
-        $stone = (new BraceletStone($properties))->getStone();
-        $color = (new BraceletStoneColour($properties))->getColour($stone);
-        $form = (new BraceletStoneForm($properties))->getForm($stone);
-        $dimensions = (new BraceletStoneDimensions())->getDimensions($form);
+        $insertType = (new InsertType($properties))->getInsertType();
+        $insertItem = (new InsertItem($properties))->getInsertItem($insertType);
+        $formType = (new FormType())->getFormType();
+        $formItem = (new FormItem($properties))->getFormItem($formType);
+        dd($formItem);
+
+//        $color = (new BraceletStoneColour($properties))->getColour($stone);
+//        $form = (new BraceletStoneForm($properties))->getForm($stone);
+//        $dimensions = (new BraceletStoneDimensions())->getDimensions($form);
 
         return [[
-            'stone' => $stone,
+            'insertItem' => $insertTypeItem,
             'form' => $form,
             'colour' => $color,
             'quantity' => (new BraceletStoneQuantity($properties))->getQuantity($dimensions),

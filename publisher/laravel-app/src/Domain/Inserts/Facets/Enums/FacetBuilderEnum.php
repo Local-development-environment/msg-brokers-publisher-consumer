@@ -8,20 +8,20 @@ use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
 
 enum FacetBuilderEnum: string
 {
-    case ROUND_CUT     = 'круглая';
-    case CUSHION_CUT   = 'кушон';
-    case PEAR_CUT      = 'груша';
-    case MARQUISE_CUT  = 'маркиз';
-    case OVAL_CUT      = 'овальная';
-    case RADIANT_CUT   = 'радиант';
-    case EMERALD_CUT   = 'изумрудная';
-    case PRINCESS_CUT  = 'принцесса';
-    case ASSCHER_CUT   = 'ашер';
+    case ROUND_CUT     = 'круглая'; // brilliant cut
+    case CUSHION_CUT   = 'кушон'; // brilliant cut
+    case PEAR_CUT      = 'груша'; // brilliant cut
+    case MARQUISE_CUT  = 'маркиз'; // brilliant cut
+    case OVAL_CUT      = 'овальная'; // brilliant cut
+    case RADIANT_CUT   = 'радиант'; // hybrid cut
+    case EMERALD_CUT   = 'изумрудная'; // step cut
+    case PRINCESS_CUT  = 'принцесса'; // brilliant cut
+    case ASSCHER_CUT   = 'ашер'; // step cut
     case CABOCHON_OVAL = 'кабошон-овал';
     case CABOCHON_ROUND = 'кабошон-круг';
-    case HEART_CUT     = 'сердце';
-    case TRILLION_CUT  = 'триллион';
-    case BAGUETTE_CUT = 'багет';
+    case HEART_CUT     = 'сердце'; // brilliant cut
+    case TRILLION_CUT  = 'триллион'; // brilliant cut
+    case BAGUETTE_CUT = 'багет'; // step cut
     case ROSE_CUT      = 'роза';
 
     public function description(): string

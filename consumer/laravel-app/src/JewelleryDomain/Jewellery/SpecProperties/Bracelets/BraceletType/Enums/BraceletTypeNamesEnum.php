@@ -10,13 +10,13 @@ enum BraceletTypeNamesEnum: string
     case HOOP      = 'обруч';
     case OPEN_RING = 'разомкнутое кольцо';
     case SWIVEL    = 'шарнирный';
-    case SPIRAL        = 'спираль';
-    case CUFF          = 'манжета';
-    case CHAINED       = 'цепочка';
-    case GLIDER        = 'глидерный';
-    case WICKER        = 'плетеный';
-    case SLAVE         = 'слейв';
-    case BEADED        = 'из бусин';
+    case SPIRAL    = 'спираль';
+    case CUFF      = 'манжета';
+    case CHAINED   = 'цепочка';
+    case GLIDER    = 'глидерный';
+    case WICKER    = 'плетеный';
+    case SLAVE     = 'слейв';
+    case BEADED    = 'из бусин';
 
     public function description(): string
     {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace JewelleryDomain\TestDataGeneration\InsertItems\InsertBracelet;
 
-use JewelleryDomain\Jewellery\InsertItems\Stone\Enums\StoneNamesEnum;
+use JewelleryDomain\Jewellery\Stones\Stone\Enums\StoneNamesEnum;
 
 final class BraceletStoneColour
 {

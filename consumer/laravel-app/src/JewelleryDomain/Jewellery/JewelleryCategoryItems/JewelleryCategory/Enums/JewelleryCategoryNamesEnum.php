@@ -2,7 +2,8 @@
 
 namespace JewelleryDomain\Jewellery\JewelleryCategoryItems\JewelleryCategory\Enums;
 
-use JewelleryDomain\Jewellery\InsertItems\Stone\Enums\StoneNamesEnum;
+use JewelleryDomain\Jewellery\Stones\Stone\Enums\StoneNamesEnum;
+
 
 enum JewelleryCategoryNamesEnum: string
 {
@@ -52,24 +53,6 @@ enum JewelleryCategoryNamesEnum: string
             self::CHAINS,
             self::RINGS,
             self::EARRINGS  => 15
-        };
-    }
-
-    public function facets(): array
-    {
-        return match ($this) {
-            self::BEADS          => throw new \Exception('To be implemented'),
-            self::BRACELETS      => throw new \Exception('To be implemented'),
-            self::BROOCHES       => throw new \Exception('To be implemented'),
-            self::CHAINS         => throw new \Exception('To be implemented'),
-            self::CHARM_PENDANTS => throw new \Exception('To be implemented'),
-            self::CUFF_LINKS     => throw new \Exception('To be implemented'),
-            self::EARRINGS       => throw new \Exception('To be implemented'),
-            self::NECKLACES      => throw new \Exception('To be implemented'),
-            self::PENDANTS       => throw new \Exception('To be implemented'),
-            self::PIERCINGS      => throw new \Exception('To be implemented'),
-            self::RINGS          => throw new \Exception('To be implemented'),
-            self::TIE_CLIPS      => throw new \Exception('To be implemented'),
         };
     }
 
@@ -134,6 +117,26 @@ enum JewelleryCategoryNamesEnum: string
                 StoneNamesEnum::ANDRADITE->value,
                 StoneNamesEnum::TOPAZOLITE->value,
             ],
+            self::BROOCHES       => [],
+            self::CHAINS         => [],
+            self::CHARM_PENDANTS => [],
+            self::CUFF_LINKS     => [],
+            self::EARRINGS       => [],
+            self::NECKLACES      => [],
+            self::PENDANTS       => [],
+            self::PIERCINGS      => [],
+            self::RINGS          => [],
+            self::TIE_CLIPS      => [],
+        };
+    }
+
+    public function beadItems(): array
+    {
+        return match ($this) {
+            self::BEADS          => [
+//                BeadItemNamesEnum::
+            ],
+            self::BRACELETS      => [],
             self::BROOCHES       => [],
             self::CHAINS         => [],
             self::CHARM_PENDANTS => [],

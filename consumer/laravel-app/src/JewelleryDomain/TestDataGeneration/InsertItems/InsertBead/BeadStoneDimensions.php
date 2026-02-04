@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace JewelleryDomain\TestDataGeneration\InsertItems\InsertBead;
 
-use JewelleryDomain\Jewellery\InsertItems\Facet\Enums\FacetNamesEnum;
+use JewelleryDomain\Jewellery\BeadItems\BeadCabochonForm\Enums\BeadCabochonFormNamesEnum;
+use JewelleryDomain\Jewellery\BeadItems\BeadCutForm\Enums\BeadCutFormNamesEnum;
 
 final readonly class BeadStoneDimensions
 {
@@ -15,22 +16,19 @@ final readonly class BeadStoneDimensions
     public function getDimensions(string $form): array
     {
         return match ($form) {
-            FacetNamesEnum::CABOCHON_ROUND->value,
-            FacetNamesEnum::ROUND_CUT->value,
-            FacetNamesEnum::ROSE_CUT->value     => $this->getDiameter(),
-            FacetNamesEnum::PEAR_CUT->value,
-            FacetNamesEnum::MARQUISE_CUT->value,
-            FacetNamesEnum::OVAL_CUT->value,
-            FacetNamesEnum::RADIANT_CUT->value,
-            FacetNamesEnum::EMERALD_CUT->value,
-            FacetNamesEnum::CABOCHON_OVAL->value,
-            FacetNamesEnum::BAGUETTE_CUT->value => $this->getRectangle(),
-            FacetNamesEnum::CUSHION_CUT->value,
-            FacetNamesEnum::PRINCESS_CUT->value,
-            FacetNamesEnum::ASSCHER_CUT->value,
-            FacetNamesEnum::HEART_CUT->value,
-            FacetNamesEnum::TRILLION_CUT->value => $this->getSquare(),
-            FacetNamesEnum::NATURAL->value      => $this->getNatural(),
+            BeadCabochonFormNamesEnum::SPHERE_CABOCHON->value,
+            BeadCutFormNamesEnum::SPHERE_CUT->value => $this->getDiameter(),
+            BeadCutFormNamesEnum::BRIOLETTE_CUT->value,
+            BeadCutFormNamesEnum::BICONE_CUT->value,
+            BeadCutFormNamesEnum::XILION_CUT->value,
+            BeadCutFormNamesEnum::BAROQUE_CUT->value,
+            BeadCutFormNamesEnum::OVAL_CUT->value,
+            BeadCutFormNamesEnum::PYRAMID_CUT->value,
+            BeadCabochonFormNamesEnum::OVAL_CABOCHON->value,
+            BeadCabochonFormNamesEnum::RONDEL_CABOCHON->value,
+            BeadCabochonFormNamesEnum::PEAR_CABOCHON->value => $this->getRectangle(),
+            BeadCutFormNamesEnum::CUBE_CUT->value => $this->getSquare(),
+            BeadCutFormNamesEnum::NATURAL->value      => $this->getNatural(),
         };
     }
 
