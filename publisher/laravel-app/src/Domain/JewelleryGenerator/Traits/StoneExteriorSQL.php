@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Traits;
 
-use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
-use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
 
 trait StoneExteriorSQL
 {
@@ -32,12 +32,12 @@ trait StoneExteriorSQL
     {
         if (!$exterior['colour'] && $exterior['facet']) {
 
-            return $this->allExteriorSQL() . " where s.name = '{$exterior['stone']}' 
+            return $this->allExteriorSQL() . " where s.name = '{$exterior['stone']}'
             and f.name = '{$exterior['facet']}'";
 
         } elseif (!$exterior['facet'] && $exterior['colour']) {
 
-            return $this->allExteriorSQL() . " where s.name = '{$exterior['stone']}' 
+            return $this->allExteriorSQL() . " where s.name = '{$exterior['stone']}'
             and c.name = '{$exterior['colour']}'";
 
         } elseif (!$exterior['facet'] && !$exterior['colour']) {
@@ -46,7 +46,7 @@ trait StoneExteriorSQL
 
         } else {
 
-            return $this->allExteriorSQL() . " where s.name = '{$exterior['stone']}' 
+            return $this->allExteriorSQL() . " where s.name = '{$exterior['stone']}'
             and c.name = '{$exterior['colour']}' and f.name = '{$exterior['facet']}'";
 
         }

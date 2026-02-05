@@ -6,9 +6,9 @@ namespace App\Http\Admin\SpecProperties\Bracelets\BraceletMetrics\Controllers;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletMetrics\Resources\BraceletMetricCollection;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletMetrics\Resources\BraceletMetricResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Services\BraceletMetricService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BraceletMetrics\Services\BraceletMetricService;
 
 final class BraceletMetricController extends Controller
 {

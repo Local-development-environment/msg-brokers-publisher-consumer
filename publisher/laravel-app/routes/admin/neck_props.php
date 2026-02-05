@@ -57,14 +57,14 @@ use App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Controllers\NecklaceM
 use App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Controllers\NecklaceMetricsNecklaceRelationshipController;
 use App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Controllers\NecklaceMetricsNeckSizeRelatedController;
 use App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Controllers\NecklaceMetricsNeckSizeRelationshipController;
-use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseNameRoutesEnum;
-use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricNameRoutesEnum;
-use Domain\JewelleryProperties\Beads\Beads\Enums\BeadNameRoutesEnum;
-use Domain\JewelleryProperties\Chains\ChainMetrics\Enums\ChainMetricNameRoutesEnum;
-use Domain\JewelleryProperties\Chains\Chains\Enums\ChainNameRoutesEnum;
-use Domain\JewelleryProperties\Chains\ChainWeavings\Enums\ChainWeavingNameRoutesEnum;
-use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Enums\NecklaceMetricNameRoutesEnum;
-use Domain\JewelleryProperties\Necklaces\Necklaces\Enums\NecklaceNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadBases\Enums\BeadBaseNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadMetrics\Enums\BeadMetricNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\Beads\Enums\BeadNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\ChainMetrics\Enums\ChainMetricNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\Chains\Enums\ChainNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\ChainWeavings\Enums\ChainWeavingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\NecklaceMetrics\Enums\NecklaceMetricNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\Necklaces\Enums\NecklaceNameRoutesEnum;
 
 Route::group([
     'middleware' => 'auth:admin'

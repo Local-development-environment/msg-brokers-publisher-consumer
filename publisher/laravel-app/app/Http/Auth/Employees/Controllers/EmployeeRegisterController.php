@@ -6,7 +6,6 @@ namespace App\Http\Auth\Employees\Controllers;
 
 use App\Http\Auth\Employees\Requests\EmployeeRegisterRequest;
 use App\Http\Auth\Shared\Controllers\BaseAuthController;
-use Domain\Users\Employees\Models\Employee;
 use Illuminate\Http\JsonResponse;
 
 final class EmployeeRegisterController extends BaseAuthController

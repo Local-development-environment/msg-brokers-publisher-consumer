@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\SharedProperty\NeckSizes\Requests;
 
-use Domain\Shared\JewelleryProperties\NeckSizes\Models\NeckSize;
 use Illuminate\Foundation\Http\FormRequest;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\NeckSizes\Models\NeckSize;
 
 final class NeckSizeStoreRequest extends FormRequest
 {

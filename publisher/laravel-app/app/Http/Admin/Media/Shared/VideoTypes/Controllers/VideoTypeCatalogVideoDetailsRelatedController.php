@@ -5,8 +5,8 @@ namespace App\Http\Admin\Media\Shared\VideoTypes\Controllers;
 
 use App\Http\Admin\Media\MediaVideos\VideoDetails\Resources\VideoDetailCollection;
 use App\Http\Controllers\Controller;
-use Domain\Medias\Shared\VideoTypes\Services\Relationships\VideoTypeCatalogVideoDetailsRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Medias\Shared\VideoTypes\Services\Relationships\VideoTypeCatalogVideoDetailsRelationshipService;
 
 final class VideoTypeCatalogVideoDetailsRelatedController extends Controller
 {

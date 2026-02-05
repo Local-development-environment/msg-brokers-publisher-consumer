@@ -8,10 +8,10 @@ use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Requests\BeadMetricUpdateReq
 use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Resources\BeadMetricCollection;
 use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Resources\BeadMetricResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricNameRoutesEnum;
-use Domain\JewelleryProperties\Beads\BeadMetrics\Services\BeadMetricService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadMetrics\Enums\BeadMetricNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadMetrics\Services\BeadMetricService;
 
 final class BeadMetricController extends Controller
 {

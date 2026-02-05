@@ -8,10 +8,10 @@ use App\Http\Admin\Jewellery\Jewelleries\Requests\JewelleryUpdateRequest;
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryCollection;
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Controllers\Controller;
-use Domain\Jewelleries\Jewelleries\Enums\JewelleryNameRoutesEnum;
-use Domain\Jewelleries\Jewelleries\Services\JewelleryService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewelleryBase\Enums\JewelleryNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewelleryBase\Services\JewelleryService;
 
 final class JewelleryController extends Controller
 {

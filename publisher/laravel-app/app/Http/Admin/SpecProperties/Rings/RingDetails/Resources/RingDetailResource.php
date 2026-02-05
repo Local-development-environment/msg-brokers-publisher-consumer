@@ -7,12 +7,11 @@ namespace App\Http\Admin\SpecProperties\Rings\RingDetails\Resources;
 use App\Http\Admin\SpecProperties\Rings\Ring\Resources\RingResource;
 use App\Http\Admin\SpecProperties\Rings\RingTypes\Resources\RingTypeResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailNameRoutesEnum;
-use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailRelationshipsEnum;
-use Domain\JewelleryProperties\Rings\RingDetails\Models\RingDetail;
-use Domain\JewelleryProperties\Rings\Rings\Models\Ring;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingDetails\Enums\RingDetailNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingDetails\Enums\RingDetailRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingDetails\Models\RingDetail;
 
 /** @mixin RingDetail */
 final class RingDetailResource extends JsonResource

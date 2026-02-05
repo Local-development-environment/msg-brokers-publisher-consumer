@@ -12,12 +12,12 @@ use App\Http\Admin\SpecProperties\Bracelets\BraceletSizes\Resources\BraceletSize
 use App\Http\Admin\SpecProperties\Bracelets\BraceletType\Resources\BraceletTypeResource;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletWeaving\Resources\BraceletWeavingResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletEnum;
-use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletNameRoutesEnum;
-use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletRelationshipsEnum;
-use Domain\JewelleryProperties\Bracelets\Bracelets\Models\Bracelet;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\Bracelets\Enums\BraceletEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\Bracelets\Enums\BraceletNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\Bracelets\Enums\BraceletRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\Bracelets\Models\Bracelet;
 
 /** @mixin Bracelet */
 final class BraceletResource extends JsonResource

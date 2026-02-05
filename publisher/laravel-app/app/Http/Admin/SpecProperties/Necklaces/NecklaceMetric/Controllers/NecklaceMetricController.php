@@ -8,10 +8,10 @@ use App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Requests\NecklaceMetr
 use App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Resources\NecklaceMetricCollection;
 use App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Resources\NecklaceMetricResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Enums\NecklaceMetricNameRoutesEnum;
-use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Services\NecklaceMetricService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\NecklaceMetrics\Enums\NecklaceMetricNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\NecklaceMetrics\Services\NecklaceMetricService;
 use Throwable;
 
 final class NecklaceMetricController extends Controller

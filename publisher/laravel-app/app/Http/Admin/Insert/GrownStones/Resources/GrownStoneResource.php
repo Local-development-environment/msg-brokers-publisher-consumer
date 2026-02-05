@@ -6,11 +6,11 @@ namespace App\Http\Admin\Insert\GrownStones\Resources;
 use App\Http\Admin\Insert\StoneFamilies\Resources\StoneFamilyResource;
 use App\Http\Admin\Insert\Stones\Resources\StoneResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\GrownStones\Enums\GrownStoneEnum;
-use Domain\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
-use Domain\Inserts\GrownStones\Enums\GrownStoneRelationshipsEnum;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\GrownStones\Enums\GrownStoneEnum;
+use JewelleryDomain\Jewelleries\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\GrownStones\Enums\GrownStoneRelationshipsEnum;
 
 final class GrownStoneResource extends JsonResource
 {

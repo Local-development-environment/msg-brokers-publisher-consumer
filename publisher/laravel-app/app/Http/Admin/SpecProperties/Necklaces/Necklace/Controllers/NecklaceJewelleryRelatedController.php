@@ -5,8 +5,8 @@ namespace App\Http\Admin\SpecProperties\Necklaces\Necklace\Controllers;
 
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Necklaces\Necklaces\Services\Relationships\NecklaceJewelleryRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\Necklaces\Services\Relationships\NecklaceJewelleryRelationshipService;
 
 final class NecklaceJewelleryRelatedController extends Controller
 {

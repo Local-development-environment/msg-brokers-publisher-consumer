@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\MetalItems;
 
-use Domain\PreciousMetals\Coverages\Enums\CoverageBuilderEnum;
-use Domain\PreciousMetals\Coverages\Enums\CoverageEnum;
-use Domain\PreciousMetals\CoverageTypes\Enums\CoverageTypeBuilderEnum;
-use Domain\PreciousMetals\CoverageTypes\Enums\CoverageTypeEnum;
-use Domain\PreciousMetals\Hallmarks\Enums\HallmarkBuilderEnum;
-use Domain\PreciousMetals\Hallmarks\Enums\HallmarkEnum;
-use Domain\PreciousMetals\JewelleryCoverages\Enums\JewelleryCoverageEnum;
-use Domain\PreciousMetals\JewelleryMetals\Enums\JewelleryMetalEnum;
-use Domain\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
-use Domain\PreciousMetals\PreciousMetals\Enums\PreciousMetalEnum;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use JewelleryDomain\Jewelleries\PreciousMetals\Coverages\Enums\CoverageBuilderEnum;
+use JewelleryDomain\Jewelleries\PreciousMetals\Coverages\Enums\CoverageEnum;
+use JewelleryDomain\Jewelleries\PreciousMetals\CoverageTypes\Enums\CoverageTypeBuilderEnum;
+use JewelleryDomain\Jewelleries\PreciousMetals\CoverageTypes\Enums\CoverageTypeEnum;
+use JewelleryDomain\Jewelleries\PreciousMetals\Hallmarks\Enums\HallmarkBuilderEnum;
+use JewelleryDomain\Jewelleries\PreciousMetals\Hallmarks\Enums\HallmarkEnum;
+use JewelleryDomain\Jewelleries\PreciousMetals\JewelleryCoverages\Enums\JewelleryCoverageEnum;
+use JewelleryDomain\Jewelleries\PreciousMetals\JewelleryMetals\Enums\JewelleryMetalEnum;
+use JewelleryDomain\Jewelleries\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
+use JewelleryDomain\Jewelleries\PreciousMetals\PreciousMetals\Enums\PreciousMetalEnum;
 
 final class InitMetalData
 {

@@ -9,10 +9,10 @@ use App\Http\Admin\SpecProperties\Chains\ChainMetrics\Requests\ChainMetricUpdate
 use App\Http\Admin\SpecProperties\Chains\ChainMetrics\Resources\ChainMetricCollection;
 use App\Http\Admin\SpecProperties\Chains\ChainMetrics\Resources\ChainMetricResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Chains\ChainMetrics\Enums\ChainMetricNameRoutesEnum;
-use Domain\JewelleryProperties\Chains\ChainMetrics\Services\ChainMetricService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\ChainMetrics\Enums\ChainMetricNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\ChainMetrics\Services\ChainMetricService;
 use Throwable;
 
 final class ChainMetricController extends Controller

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries;
 
-use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
-use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryEnum;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use JewelleryDomain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewelleryProperties\Enums\JewelleryEnum;
 
 final class JewelleryItem
 {

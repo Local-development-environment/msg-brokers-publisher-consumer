@@ -8,10 +8,10 @@ use App\Http\Admin\SharedProperty\Clasps\Requests\ClaspUpdateRequest;
 use App\Http\Admin\SharedProperty\Clasps\Resources\ClaspCollection;
 use App\Http\Admin\SharedProperty\Clasps\Resources\ClaspResource;
 use App\Http\Controllers\Controller;
-use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspNameRoutesEnum;
-use Domain\Shared\JewelleryProperties\Clasps\Services\ClaspService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Clasps\Enums\ClaspNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Clasps\Services\ClaspService;
 
 final class ClaspController extends Controller
 {

@@ -21,7 +21,6 @@ final readonly class BeadStoneDimensions
             BeadCutFormNamesEnum::BRIOLETTE_CUT->value,
             BeadCutFormNamesEnum::BICONE_CUT->value,
             BeadCutFormNamesEnum::XILION_CUT->value,
-            BeadCutFormNamesEnum::BAROQUE_CUT->value,
             BeadCutFormNamesEnum::ELLIPSOID_CUT->value,
             BeadCutFormNamesEnum::PYRAMID_CUT->value,
             BeadCabochonFormNamesEnum::ELLIPSOID_CABOCHON->value,

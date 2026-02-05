@@ -6,11 +6,11 @@ namespace App\Http\Admin\SpecProperties\Chains\ChainWeaving\Resources;
 use App\Http\Admin\SharedProperty\Weaving\Resources\WeavingResource;
 use App\Http\Admin\SpecProperties\Chains\Chain\Resources\ChainResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Chains\ChainWeavings\Enums\ChainWeavingNameRoutesEnum;
-use Domain\JewelleryProperties\Chains\ChainWeavings\Enums\ChainWeavingRelationshipsEnum;
-use Domain\JewelleryProperties\Chains\ChainWeavings\Models\ChainWeaving;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\ChainWeavings\Enums\ChainWeavingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\ChainWeavings\Enums\ChainWeavingRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\ChainWeavings\Models\ChainWeaving;
 
 /** @mixin ChainWeaving */
 final class ChainWeavingResource extends JsonResource

@@ -2,6 +2,7 @@
 
 namespace JewelleryDomain\Jewellery\Stones\StoneTreatment\Enums;
 
+use JewelleryDomain\Jewellery\BeadItems\BeadItem\Enums\BeadItemNamesEnum;
 use JewelleryDomain\Jewellery\Stones\Stone\Enums\StoneNamesEnum;
 
 enum StoneTreatmentNamesEnum: string
@@ -21,17 +22,17 @@ enum StoneTreatmentNamesEnum: string
     {
         return match ($this) {
             self::CABOCHON => [
-                // Precious
                 StoneNamesEnum::NATURAL_SEA_PEARL->value,
+                StoneNamesEnum::NATURAL_RIVER_PEARL->value,
+                StoneNamesEnum::CULTURED_RIVER_PEARL->value,
+                StoneNamesEnum::CULTURED_SEA_PEARL->value,
             ],
             self::CUT => [
-                // Precious stones
                 StoneNamesEnum::DIAMOND->value,
                 StoneNamesEnum::ALEXANDRITE->value,
                 StoneNamesEnum::EMERALD->value,
                 StoneNamesEnum::RUBY->value,
                 StoneNamesEnum::SAPPHIRE->value,
-                // Jewellery stones 1-st order
                 StoneNamesEnum::DEMANTOID->value,
                 StoneNamesEnum::PADPARADSCHA->value,
                 StoneNamesEnum::SAPPHIRE_PINK->value,
@@ -39,7 +40,22 @@ enum StoneTreatmentNamesEnum: string
                 StoneNamesEnum::PARAIBA_TOURMALINE->value,
                 StoneNamesEnum::TSAVORITE->value,
                 StoneNamesEnum::RED_NOBLE_SPINEL->value,
-                // Jewellery stones 2-nd order
+
+
+            ],
+        };
+    }
+
+    public function beads(): array
+    {
+        return match ($this) {
+            self::CABOCHON => [
+                BeadItemNamesEnum::NATURAL_RIVER_PEARL_BEAD->value,
+                BeadItemNamesEnum::CULTURED_RIVER_PEARL_BEAD->value,
+                BeadItemNamesEnum::NATURAL_SEA_PEARL_BEAD->value,
+                BeadItemNamesEnum::CULTURED_SEA_PEARL_BEAD->value,
+            ],
+            self::CUT      => [
 
             ],
         };

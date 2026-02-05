@@ -5,12 +5,12 @@ namespace App\Http\Admin\Insert\ImitationStones\Resources;
 
 use App\Http\Admin\Insert\Stones\Resources\StoneResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
-use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
-use Domain\Inserts\ImitationStones\Enums\ImitationStoneRelationshipsEnum;
-use Domain\Inserts\ImitationStones\Models\ImitationStone;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\ImitationStones\Enums\ImitationStoneEnum;
+use JewelleryDomain\Jewelleries\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\ImitationStones\Enums\ImitationStoneRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Inserts\ImitationStones\Models\ImitationStone;
 
 /** @mixin ImitationStone */
 final class ImitationStoneResource extends JsonResource

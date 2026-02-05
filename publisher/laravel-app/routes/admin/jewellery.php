@@ -24,8 +24,8 @@ use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryRingRelatedControl
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryRingRelationshipController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryTieClipRelatedController;
 use App\Http\Admin\Jewellery\Jewelleries\Controllers\JewelleryTieClipRelationshipController;
-use Domain\Jewelleries\Jewelleries\Enums\JewelleryNameRoutesEnum;
-use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewelleryBase\Enums\JewelleryNameRoutesEnum;
 
 Route::group([
     'middleware' => 'auth:admin'

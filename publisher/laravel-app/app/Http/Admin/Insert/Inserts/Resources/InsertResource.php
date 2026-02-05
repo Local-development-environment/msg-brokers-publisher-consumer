@@ -7,11 +7,11 @@ use App\Http\Admin\Insert\InsertOptionalInfos\Resources\InsertOptionalInfoResour
 use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorResource;
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\Inserts\Enums\InsertEnum;
-use Domain\Inserts\Inserts\Enums\InsertNameRoutesEnum;
-use Domain\Inserts\Inserts\Enums\InsertRelationshipsEnum;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\Inserts\Enums\InsertEnum;
+use JewelleryDomain\Jewelleries\Inserts\Inserts\Enums\InsertNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\Inserts\Enums\InsertRelationshipsEnum;
 
 final class InsertResource extends JsonResource
 {

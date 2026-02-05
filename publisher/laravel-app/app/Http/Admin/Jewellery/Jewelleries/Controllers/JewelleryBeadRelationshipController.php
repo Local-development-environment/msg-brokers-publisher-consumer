@@ -5,8 +5,8 @@ namespace App\Http\Admin\Jewellery\Jewelleries\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
-use Domain\Jewelleries\Jewelleries\Services\Relationships\JewelleryBeadRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewelleryBase\Services\Relationships\JewelleryBeadRelationshipService;
 
 final class JewelleryBeadRelationshipController extends Controller
 {

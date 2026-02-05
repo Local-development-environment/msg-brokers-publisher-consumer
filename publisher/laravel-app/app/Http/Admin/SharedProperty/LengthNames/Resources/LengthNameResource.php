@@ -5,11 +5,11 @@ namespace App\Http\Admin\SharedProperty\LengthNames\Resources;
 
 use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameNameRoutesEnum;
-use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameRelationshipsEnum;
-use Domain\Shared\JewelleryProperties\LengthNames\Models\LengthName;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\LengthNames\Enums\LengthNameNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\LengthNames\Enums\LengthNameRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\LengthNames\Models\LengthName;
 
 /** @mixin LengthName */
 final class LengthNameResource extends JsonResource

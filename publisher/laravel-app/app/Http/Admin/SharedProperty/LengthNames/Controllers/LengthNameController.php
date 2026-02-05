@@ -7,10 +7,10 @@ use App\Http\Admin\SharedProperty\LengthNames\Requests\LengthNameUpdateRequest;
 use App\Http\Admin\SharedProperty\LengthNames\Resources\LengthNameCollection;
 use App\Http\Admin\SharedProperty\LengthNames\Resources\LengthNameResource;
 use App\Http\Controllers\Controller;
-use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameNameRoutesEnum;
-use Domain\Shared\JewelleryProperties\LengthNames\Services\LengthNameService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\LengthNames\Enums\LengthNameNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\LengthNames\Services\LengthNameService;
 
 class LengthNameController extends Controller
 {

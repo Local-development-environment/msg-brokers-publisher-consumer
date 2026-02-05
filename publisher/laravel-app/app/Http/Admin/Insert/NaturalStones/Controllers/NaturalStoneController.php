@@ -4,9 +4,9 @@ namespace App\Http\Admin\Insert\NaturalStones\Controllers;
 
 use App\Http\Admin\Insert\NaturalStones\Resources\NaturalStoneCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\NaturalStones\Services\NaturalStoneService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\NaturalStones\Services\NaturalStoneService;
 
 class NaturalStoneController extends Controller
 {

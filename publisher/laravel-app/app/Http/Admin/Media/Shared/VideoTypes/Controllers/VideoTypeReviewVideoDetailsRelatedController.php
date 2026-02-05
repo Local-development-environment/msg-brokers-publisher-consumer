@@ -5,8 +5,8 @@ namespace App\Http\Admin\Media\Shared\VideoTypes\Controllers;
 
 use App\Http\Admin\Media\ReviewMedias\ReviewVideoDetails\Resources\ReviewVideoDetailCollection;
 use App\Http\Controllers\Controller;
-use Domain\Medias\ReviewMedias\ReviewVideoDetails\Services\Relationships\ReviewVideoDetailReviewVideoRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Medias\ReviewMedias\ReviewVideoDetails\Services\Relationships\ReviewVideoDetailReviewVideoRelationshipService;
 
 final class VideoTypeReviewVideoDetailsRelatedController extends Controller
 {

@@ -4,8 +4,8 @@ namespace App\Http\Admin\Insert\Inserts\Controllers;
 
 use App\Http\Admin\Insert\StoneExteriours\Resources\StoneExteriorResource;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\Inserts\Services\Relationships\InsertsStoneExteriorRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Inserts\Inserts\Services\Relationships\InsertsStoneExteriorRelationshipService;
 
 class InsertsInsertStoneRelatedController extends Controller
 {

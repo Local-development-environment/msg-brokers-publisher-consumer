@@ -22,9 +22,9 @@ use App\Http\Auth\Employees\Controllers\EmployeeProfileController;
 use App\Http\Auth\Employees\Controllers\EmployeeRefreshController;
 use App\Http\Auth\Employees\Controllers\EmployeeRegisterController;
 use App\Http\Auth\RegisterPhones\Controllers\RegisterPhoneController;
-use Domain\Users\Admins\Enums\AdminNameRoutesEnum;
-use Domain\Users\Customers\Enums\CustomerNameRoutesEnum;
-use Domain\Users\Employees\Enums\EmployeeNameRoutesEnum;
+use UserDomain\Users\Admins\Enums\AdminNameRoutesEnum;
+use UserDomain\Users\Customers\Enums\CustomerNameRoutesEnum;
+use UserDomain\Users\Employees\Enums\EmployeeNameRoutesEnum;
 
 Route::post('register-phone', [RegisterPhoneController::class, 'registerPhone']);
 

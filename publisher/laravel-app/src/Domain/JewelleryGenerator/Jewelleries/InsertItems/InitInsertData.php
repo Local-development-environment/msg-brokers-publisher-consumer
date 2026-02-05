@@ -4,31 +4,31 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems;
 
-use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
-use Domain\Inserts\Facets\Enums\FacetEnum;
-use Domain\Inserts\GroupGrades\Enums\GroupGradeEnum;
-use Domain\Inserts\GrownStones\Enums\GrownStoneEnum;
-use Domain\Inserts\ImitationStones\Enums\ImitationStoneEnum;
-use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
-use Domain\Inserts\OpticalEffects\Enums\OpticalEffectBuilderEnum;
-use Domain\Inserts\OpticalEffects\Enums\OpticalEffectEnum;
-use Domain\Inserts\StoneColours\Enums\StoneColourBuilderEnum;
-use Domain\Inserts\StoneColours\Enums\StoneColourEnum;
-use Domain\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
-use Domain\Inserts\StoneFamilies\Enums\StoneFamilyBuilderEnum;
-use Domain\Inserts\StoneFamilies\Enums\StoneFamilyEnum;
-use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
-use Domain\Inserts\StoneGrades\Enums\StoneGradeEnum;
-use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
-use Domain\Inserts\StoneGroups\Enums\StoneGroupEnum;
-use Domain\Inserts\StoneItemGrades\Enums\StoneItemGradeEnum;
-use Domain\Inserts\StoneOpticalEffects\Enums\StoneOpticalEffectEnum;
-use Domain\Inserts\Stones\Enums\StoneEnum;
-use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
-use Domain\Inserts\TypeOrigins\Enums\TypeOriginEnum;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use JewelleryDomain\Jewelleries\Inserts\Facets\Enums\FacetBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\Facets\Enums\FacetEnum;
+use JewelleryDomain\Jewelleries\Inserts\GroupGrades\Enums\GroupGradeEnum;
+use JewelleryDomain\Jewelleries\Inserts\GrownStones\Enums\GrownStoneEnum;
+use JewelleryDomain\Jewelleries\Inserts\ImitationStones\Enums\ImitationStoneEnum;
+use JewelleryDomain\Jewelleries\Inserts\NaturalStones\Enums\NatureStoneEnum;
+use JewelleryDomain\Jewelleries\Inserts\OpticalEffects\Enums\OpticalEffectBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\OpticalEffects\Enums\OpticalEffectEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneColours\Enums\StoneColourBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneColours\Enums\StoneColourEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneExteriors\Enums\StoneExteriorEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneFamilies\Enums\StoneFamilyBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneFamilies\Enums\StoneFamilyEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGrades\Enums\StoneGradeEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGroups\Enums\StoneGroupEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneItemGrades\Enums\StoneItemGradeEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneOpticalEffects\Enums\StoneOpticalEffectEnum;
+use JewelleryDomain\Jewelleries\Inserts\Stones\Enums\StoneEnum;
+use JewelleryDomain\Jewelleries\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\TypeOrigins\Enums\TypeOriginEnum;
 
 final class InitInsertData
 {

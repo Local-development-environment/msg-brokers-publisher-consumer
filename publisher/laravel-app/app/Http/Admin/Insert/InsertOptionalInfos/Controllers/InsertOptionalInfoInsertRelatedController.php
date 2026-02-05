@@ -5,8 +5,8 @@ namespace App\Http\Admin\Insert\InsertOptionalInfos\Controllers;
 
 use App\Http\Admin\Insert\Inserts\Resources\InsertResource;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\InsertOptionalInfos\Services\Relationships\InsertOptionalInfoInsertRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Inserts\InsertOptionalInfos\Services\Relationships\InsertOptionalInfoInsertRelationshipService;
 
 final class InsertOptionalInfoInsertRelatedController extends Controller
 {

@@ -9,11 +9,11 @@ use App\Http\Admin\SpecProperties\CharmPendants\CharmPendant\Requests\CharmPenda
 use App\Http\Admin\SpecProperties\CharmPendants\CharmPendant\Resources\CharmPendantCollection;
 use App\Http\Admin\SpecProperties\CharmPendants\CharmPendant\Resources\CharmPendantResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\CharmPendants\CharmPendants\Enums\CharmPendantEnum;
-use Domain\JewelleryProperties\CharmPendants\CharmPendants\Enums\CharmPendantNameRoutesEnum;
-use Domain\JewelleryProperties\CharmPendants\CharmPendants\Services\CharmPendantService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\CharmPendants\CharmPendants\Enums\CharmPendantEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\CharmPendants\CharmPendants\Enums\CharmPendantNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\CharmPendants\CharmPendants\Services\CharmPendantService;
 use Throwable;
 
 final class CharmPendantController extends Controller

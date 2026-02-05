@@ -11,11 +11,11 @@ use App\Http\Admin\SpecProperties\Rings\RingMetrics\Resources\RingMetricResource
 use App\Http\Admin\SpecProperties\Rings\RingSizes\Resources\RingSizeResource;
 use App\Http\Admin\SpecProperties\Rings\RingTypes\Resources\RingTypeResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Rings\Rings\Enums\RingNameRoutesEnum;
-use Domain\JewelleryProperties\Rings\Rings\Enums\RingRelationshipsEnum;
-use Domain\JewelleryProperties\Rings\Rings\Models\Ring;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\Rings\Enums\RingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\Rings\Enums\RingRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\Rings\Models\Ring;
 
 /** @mixin Ring */
 final class RingResource extends JsonResource

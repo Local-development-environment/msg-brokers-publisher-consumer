@@ -50,21 +50,21 @@ use App\Http\Admin\Media\Shared\MediaTypes\Controllers\MediaTypeCatalogMediasRel
 use App\Http\Admin\Media\Shared\MediaTypes\Controllers\MediaTypeController;
 use App\Http\Admin\Media\Shared\MediaTypes\Controllers\MediaTypeReviewMediasRelatedController;
 use App\Http\Admin\Media\Shared\MediaTypes\Controllers\MediaTypeReviewMediasRelationshipController;
-use App\Http\Admin\Media\Shared\VideoTypes\Controllers\VideoTypeController;
 use App\Http\Admin\Media\Shared\VideoTypes\Controllers\VideoTypeCatalogVideoDetailsRelatedController;
 use App\Http\Admin\Media\Shared\VideoTypes\Controllers\VideoTypeCatalogVideoDetailsRelationshipController;
+use App\Http\Admin\Media\Shared\VideoTypes\Controllers\VideoTypeController;
 use App\Http\Admin\Media\Shared\VideoTypes\Controllers\VideoTypeReviewVideoDetailsRelatedController;
 use App\Http\Admin\Media\Shared\VideoTypes\Controllers\VideoTypeReviewVideoDetailsRelationshipController;
-use Domain\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaNameRoutesEnum;
-use Domain\Medias\CatalogMedias\CatalogPictures\Enums\CatalogPictureNameRoutesEnum;
-use Domain\Medias\CatalogMedias\CatalogVideoDetails\Enums\CatalogVideoDetailNameRoutesEnum;
-use Domain\Medias\CatalogMedias\CatalogVideos\Enums\CatalogVideoNameRoutesEnum;
-use Domain\Medias\ReviewMedias\ReviewMedias\Enums\ReviewMediaNameRoutesEnum;
-use Domain\Medias\ReviewMedias\ReviewPictures\Enums\ReviewPictureNameRoutesEnum;
-use Domain\Medias\ReviewMedias\ReviewVideoDetails\Enums\ReviewVideoDetailNameRoutesEnum;
-use Domain\Medias\ReviewMedias\ReviewVideos\Enums\ReviewVideoNameRoutesEnum;
-use Domain\Medias\Shared\MediaTypes\Enums\MediaTypeNameRoutesEnum;
-use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\CatalogMedias\CatalogPictures\Enums\CatalogPictureNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\CatalogMedias\CatalogVideoDetails\Enums\CatalogVideoDetailNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\CatalogMedias\CatalogVideos\Enums\CatalogVideoNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\ReviewMedias\ReviewMedias\Enums\ReviewMediaNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\ReviewMedias\ReviewPictures\Enums\ReviewPictureNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\ReviewMedias\ReviewVideoDetails\Enums\ReviewVideoDetailNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\ReviewMedias\ReviewVideos\Enums\ReviewVideoNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\Shared\MediaTypes\Enums\MediaTypeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\Shared\VideoTypes\Enums\VideoTypeNameRoutesEnum;
 
 Route::group([
     'middleware' => 'auth:admin'

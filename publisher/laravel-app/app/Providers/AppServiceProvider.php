@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
-use Domain\Inserts\GrownStones\Models\GrownStone;
-use Domain\Inserts\GrownStones\Policies\GrownStonePolicy;
 use Domain\Integrations\UVIJewelleries\Services\JewelleryService;
 use Domain\Integrations\UVIJewelleries\UVIJewelleryInterface;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\ServiceProvider;
+use JewelleryDomain\Jewelleries\Inserts\GrownStones\Models\GrownStone;
+use JewelleryDomain\Jewelleries\Inserts\GrownStones\Policies\GrownStonePolicy;
 
 class AppServiceProvider extends ServiceProvider
 {

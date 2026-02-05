@@ -13,11 +13,11 @@ use App\Http\Admin\SpecProperties\Pendants\Pendants\Resources\PendantResource;
 use App\Http\Admin\SpecProperties\Rings\Ring\Resources\RingResource;
 use App\Http\Admin\SpecProperties\TieClips\TieClip\Resources\TieClipResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Jewelleries\Jewelleries\Enums\JewelleryNameRoutesEnum;
-use Domain\Jewelleries\Jewelleries\Enums\JewelleryRelationshipsEnum;
-use Domain\Jewelleries\Jewelleries\Models\Jewellery;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewelleryBase\Enums\JewelleryNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewelleryBase\Enums\JewelleryRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewelleryBase\Models\Jewellery;
 
 /** @mixin Jewellery */
 final class JewelleryResource extends JsonResource

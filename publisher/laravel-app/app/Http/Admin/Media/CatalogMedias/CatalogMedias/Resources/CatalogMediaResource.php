@@ -8,11 +8,11 @@ use App\Http\Admin\Media\CatalogMedias\CatalogPictures\Resources\CatalogPictureR
 use App\Http\Admin\Media\CatalogMedias\CatalogVideos\Resources\CatalogVideoResource;
 use App\Http\Admin\Media\Shared\MediaTypes\Resources\MediaTypeResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaNameRoutesEnum;
-use Domain\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaRelationshipsEnum;
-use Domain\Medias\CatalogMedias\CatalogMedias\Models\CatalogMedia;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Medias\CatalogMedias\CatalogMedias\Models\CatalogMedia;
 
 /** @mixin CatalogMedia */
 final class CatalogMediaResource extends JsonResource

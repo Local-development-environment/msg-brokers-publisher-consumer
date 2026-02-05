@@ -9,11 +9,11 @@ use App\Http\Admin\SpecProperties\TieClips\TieClip\Requests\TieClipUpdateRequest
 use App\Http\Admin\SpecProperties\TieClips\TieClip\Resources\TieClipCollection;
 use App\Http\Admin\SpecProperties\TieClips\TieClip\Resources\TieClipResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\TieClips\TieClips\Enums\TieClipEnum;
-use Domain\JewelleryProperties\TieClips\TieClips\Enums\TieClipNameRoutesEnum;
-use Domain\JewelleryProperties\TieClips\TieClips\Services\TieClipService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\TieClips\TieClips\Enums\TieClipEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\TieClips\TieClips\Enums\TieClipNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\TieClips\TieClips\Services\TieClipService;
 use Throwable;
 
 final class TieClipController extends Controller

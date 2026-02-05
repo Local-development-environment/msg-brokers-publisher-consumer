@@ -5,12 +5,12 @@ namespace App\Http\Admin\Insert\Facets\Resources;
 
 use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\Facets\Enums\FacetEnum;
-use Domain\Inserts\Facets\Enums\FacetNameRoutesEnum;
-use Domain\Inserts\Facets\Enums\FacetRelationshipsEnum;
-use Domain\Inserts\Facets\Models\Facet;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\Facets\Enums\FacetEnum;
+use JewelleryDomain\Jewelleries\Inserts\Facets\Enums\FacetNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\Facets\Enums\FacetRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Inserts\Facets\Models\Facet;
 
 /** @mixin Facet */
 final class StoneFacetResource extends JsonResource

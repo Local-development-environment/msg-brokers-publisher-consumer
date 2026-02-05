@@ -12,12 +12,12 @@ use App\Http\Admin\Insert\StoneColours\Resources\StoneColourResource;
 use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorResource;
 use App\Http\Admin\Insert\TypeOrigins\Resources\TypeOriginResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\Stones\Enums\StoneEnum;
-use Domain\Inserts\Stones\Enums\StoneNameRoutesEnum;
-use Domain\Inserts\Stones\Enums\StoneRelationshipsEnum;
-use Domain\Inserts\Stones\Models\Stone;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\Stones\Enums\StoneEnum;
+use JewelleryDomain\Jewelleries\Inserts\Stones\Enums\StoneNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\Stones\Enums\StoneRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Inserts\Stones\Models\Stone;
 
 /** @mixin Stone */
 final class StoneResource extends JsonResource

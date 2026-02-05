@@ -5,8 +5,8 @@ namespace App\Http\Admin\SpecProperties\Bracelets\BraceletMetrics\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
-use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Services\Relationships\BraceletMetricsBraceletRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BraceletMetrics\Services\Relationships\BraceletMetricsBraceletRelationshipService;
 
 final class BraceletMetricsBraceletRelationshipController extends Controller
 {

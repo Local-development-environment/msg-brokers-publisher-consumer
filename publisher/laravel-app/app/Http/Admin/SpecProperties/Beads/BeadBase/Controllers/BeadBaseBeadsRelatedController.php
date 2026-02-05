@@ -5,8 +5,8 @@ namespace App\Http\Admin\SpecProperties\Beads\BeadBase\Controllers;
 
 use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadCollection;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Beads\BeadBases\Services\Relationships\BeadBaseBeadsRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadBases\Services\Relationships\BeadBaseBeadsRelationshipService;
 
 final class BeadBaseBeadsRelatedController extends Controller
 {

@@ -8,10 +8,10 @@ use App\Http\Admin\SpecProperties\Chains\Chain\Requests\ChainUpdateRequest;
 use App\Http\Admin\SpecProperties\Chains\Chain\Resources\ChainCollection;
 use App\Http\Admin\SpecProperties\Chains\Chain\Resources\ChainResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Chains\Chains\Enums\ChainNameRoutesEnum;
-use Domain\JewelleryProperties\Chains\Chains\Services\ChainService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\Chains\Enums\ChainNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\Chains\Services\ChainService;
 use Throwable;
 
 final class ChainController extends Controller

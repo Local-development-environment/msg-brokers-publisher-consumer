@@ -5,12 +5,12 @@ namespace App\Http\Admin\Insert\StoneColours\Resources;
 
 use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\StoneColours\Enums\StoneColourEnum;
-use Domain\Inserts\StoneColours\Enums\StoneColourNameRoutesEnum;
-use Domain\Inserts\StoneColours\Enums\StoneColourRelationshipsEnum;
-use Domain\Inserts\StoneColours\Models\StoneColour;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\StoneColours\Enums\StoneColourEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneColours\Enums\StoneColourNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneColours\Enums\StoneColourRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneColours\Models\StoneColour;
 
 /** @mixin StoneColour */
 final class StoneColourResource extends JsonResource

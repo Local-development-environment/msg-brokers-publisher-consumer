@@ -1,8 +1,6 @@
 <?php
 declare(strict_types=1);
 
-use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
-
 return [
     'family' => [
         ['name' => 'алмаз', 'description'        => 'Алмаз — это необработанный бриллиант, наиболее твердый из минералов и дорогой среди драгоценных камней.'],

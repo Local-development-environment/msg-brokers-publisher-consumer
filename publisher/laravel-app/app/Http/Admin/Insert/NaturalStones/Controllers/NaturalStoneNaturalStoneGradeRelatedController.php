@@ -4,8 +4,8 @@ namespace App\Http\Admin\Insert\NaturalStones\Controllers;
 
 use App\Http\Admin\Insert\NaturalStoneGrades\Resources\NaturalStoneGradeResource;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\NaturalStones\Services\Relationships\NaturalStoneNaturalStoneGradeRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Inserts\NaturalStones\Services\Relationships\NaturalStoneNaturalStoneGradeRelationshipService;
 
 class NaturalStoneNaturalStoneGradeRelatedController extends Controller
 {

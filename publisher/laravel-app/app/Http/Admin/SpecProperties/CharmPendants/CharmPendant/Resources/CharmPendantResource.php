@@ -6,11 +6,11 @@ namespace App\Http\Admin\SpecProperties\CharmPendants\CharmPendant\Resources;
 
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\CharmPendants\CharmPendants\Enums\CharmPendantNameRoutesEnum;
-use Domain\JewelleryProperties\CharmPendants\CharmPendants\Enums\CharmPendantRelationshipsEnum;
-use Domain\JewelleryProperties\CharmPendants\CharmPendants\Models\CharmPendant;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\CharmPendants\CharmPendants\Enums\CharmPendantNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\CharmPendants\CharmPendants\Enums\CharmPendantRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\CharmPendants\CharmPendants\Models\CharmPendant;
 
 /** @mixin CharmPendant */
 final class CharmPendantResource extends JsonResource

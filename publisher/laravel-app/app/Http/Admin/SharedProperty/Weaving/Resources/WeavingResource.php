@@ -7,11 +7,11 @@ use App\Http\Admin\SharedProperty\BaseWeavings\Resources\BaseWeavingResource;
 use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Resources\BraceletResource;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletWeaving\Resources\BraceletWeavingResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingNameRoutesEnum;
-use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingRelationshipsEnum;
-use Domain\Shared\JewelleryProperties\Weavings\Models\Weaving;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Weavings\Enums\WeavingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Weavings\Enums\WeavingRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Weavings\Models\Weaving;
 
 /** @mixin Weaving */
 final class WeavingResource extends JsonResource

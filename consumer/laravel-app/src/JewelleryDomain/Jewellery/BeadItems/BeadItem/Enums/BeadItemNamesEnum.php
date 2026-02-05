@@ -9,9 +9,9 @@ use JewelleryDomain\Jewellery\Stones\Stone\Enums\StoneNamesEnum;
 enum BeadItemNamesEnum: string
 {
     case NATURAL_SEA_PEARL_BEAD    = 'жемчуг морской натурадьный';
-    case CULTURED_SEA_PEARLS_BEAD  = 'жемчуг морской культивированный';
-    case NATURAL_RIVER_PEARLS_BEAD = 'жемчуг речной натуральный';
-    case CULTURED_RIVER_PEARLS     = 'жемчуг речной культивированный';
+    case CULTURED_SEA_PEARL_BEAD   = 'жемчуг морской культивированный';
+    case NATURAL_RIVER_PEARL_BEAD  = 'жемчуг речной натуральный';
+    case CULTURED_RIVER_PEARL_BEAD = 'жемчуг речной культивированный';
     case RHINESTONE_BEAD           = 'горный хрусталь';
     case SMOKEY_QUARTZ_BEAD        = 'кварц дымчатый';
     case SNOW_QUARTZ_BEAD          = 'кварц льдистый';
@@ -37,9 +37,9 @@ enum BeadItemNamesEnum: string
     {
         return match ($this) {
             self::NATURAL_SEA_PEARL_BEAD    => 'бусина изготовлена из натурального морского жемчуга',
-            self::CULTURED_SEA_PEARLS_BEAD  => 'бусина изготовлена из культивированного морского жемчуга',
-            self::NATURAL_RIVER_PEARLS_BEAD => 'бусина изготовлена из натурального речного жемчуга',
-            self::CULTURED_RIVER_PEARLS     => 'бусина изготовлена из культивированного речного жемчуга',
+            self::CULTURED_SEA_PEARL_BEAD   => 'бусина изготовлена из культивированного морского жемчуга',
+            self::NATURAL_RIVER_PEARL_BEAD  => 'бусина изготовлена из натурального речного жемчуга',
+            self::CULTURED_RIVER_PEARL_BEAD => 'бусина изготовлена из культивированного речного жемчуга',
             self::RHINESTONE_BEAD           => 'бусина изготовлена из горного хрусталя',
             self::SMOKEY_QUARTZ_BEAD        => 'бусина изготовлена из дымчатого кварца',
             self::SNOW_QUARTZ_BEAD          => 'бусина изготовлена из льдистого кварца',
@@ -66,9 +66,9 @@ enum BeadItemNamesEnum: string
     {
         return match ($this) {
             self::NATURAL_SEA_PEARL_BEAD    => 5,
-            self::CULTURED_SEA_PEARLS_BEAD  => 3,
-            self::NATURAL_RIVER_PEARLS_BEAD => 5,
-            self::CULTURED_RIVER_PEARLS     => 2,
+            self::CULTURED_SEA_PEARL_BEAD   => 3,
+            self::NATURAL_RIVER_PEARL_BEAD  => 5,
+            self::CULTURED_RIVER_PEARL_BEAD => 2,
             self::RHINESTONE_BEAD           => 5,
             self::SMOKEY_QUARTZ_BEAD        => 4,
             self::SNOW_QUARTZ_BEAD          => 4,
@@ -95,9 +95,9 @@ enum BeadItemNamesEnum: string
     {
         return match ($this) {
             self::NATURAL_SEA_PEARL_BEAD    => StoneNamesEnum::NATURAL_SEA_PEARL->value,
-            self::CULTURED_SEA_PEARLS_BEAD  => StoneNamesEnum::CULTURED_SEA_PEARLS->value,
-            self::NATURAL_RIVER_PEARLS_BEAD => StoneNamesEnum::NATURAL_RIVER_PEARLS->value,
-            self::CULTURED_RIVER_PEARLS     => StoneNamesEnum::CULTURED_RIVER_PEARLS->value,
+            self::CULTURED_SEA_PEARL_BEAD   => StoneNamesEnum::CULTURED_SEA_PEARL->value,
+            self::NATURAL_RIVER_PEARL_BEAD  => StoneNamesEnum::NATURAL_RIVER_PEARL->value,
+            self::CULTURED_RIVER_PEARL_BEAD => StoneNamesEnum::CULTURED_RIVER_PEARL->value,
             self::RHINESTONE_BEAD           => StoneNamesEnum::RHINESTONE->value,
             self::SMOKEY_QUARTZ_BEAD        => StoneNamesEnum::SMOKEY_QUARTZ->value,
             self::SNOW_QUARTZ_BEAD          => StoneNamesEnum::SNOW_QUARTZ->value,
@@ -124,9 +124,9 @@ enum BeadItemNamesEnum: string
     {
         return match ($this) {
             self::NATURAL_SEA_PEARL_BEAD,
-            self::CULTURED_SEA_PEARLS_BEAD,
-            self::NATURAL_RIVER_PEARLS_BEAD,
-            self::CULTURED_RIVER_PEARLS,
+            self::CULTURED_SEA_PEARL_BEAD,
+            self::NATURAL_RIVER_PEARL_BEAD,
+            self::CULTURED_RIVER_PEARL_BEAD,
             self::MOTHER_PEARL_BEAD     => [
                 [BeadCabochonFormNamesEnum::BAROQUE_CABOCHON->value, 20],
                 [BeadCabochonFormNamesEnum::SPHERE_CABOCHON->value, 80]
@@ -170,9 +170,9 @@ enum BeadItemNamesEnum: string
     {
         return match ($this) {
             self::NATURAL_SEA_PEARL_BEAD,
-            self::CULTURED_SEA_PEARLS_BEAD,
-            self::NATURAL_RIVER_PEARLS_BEAD,
-            self::CULTURED_RIVER_PEARLS,
+            self::CULTURED_SEA_PEARL_BEAD,
+            self::NATURAL_RIVER_PEARL_BEAD,
+            self::CULTURED_RIVER_PEARL_BEAD,
             self::MOTHER_PEARL_BEAD     => [
                 [BeadCutFormNamesEnum::SPHERE_CUT->value, 80],
                 [BeadCutFormNamesEnum::BAROQUE_CUT->value, 20],

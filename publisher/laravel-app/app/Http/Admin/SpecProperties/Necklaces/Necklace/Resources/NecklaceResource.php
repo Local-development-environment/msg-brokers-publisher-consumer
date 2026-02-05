@@ -8,11 +8,11 @@ use App\Http\Admin\SharedProperty\Clasps\Resources\ClaspResource;
 use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeResource;
 use App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Resources\NecklaceMetricResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Necklaces\Necklaces\Enums\NecklaceNameRoutesEnum;
-use Domain\JewelleryProperties\Necklaces\Necklaces\Enums\NecklaceRelationshipsEnum;
-use Domain\JewelleryProperties\Necklaces\Necklaces\Models\Necklace;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\Necklaces\Enums\NecklaceNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\Necklaces\Enums\NecklaceRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\Necklaces\Models\Necklace;
 
 /** @mixin Necklace */
 final class NecklaceResource extends JsonResource

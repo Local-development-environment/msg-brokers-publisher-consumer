@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\Medias;
 
-use Domain\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaEnum;
-use Domain\Medias\CatalogMedias\CatalogPictures\Enums\CatalogPictureEnum;
-use Domain\Medias\CatalogMedias\CatalogVideoDetails\Enums\CatalogVideoDetailEnum;
-use Domain\Medias\CatalogMedias\CatalogVideos\Enums\CatalogVideoEnum;
-use Domain\Medias\ReviewMedias\ReviewMedias\Enums\ReviewMediaEnum;
-use Domain\Medias\ReviewMedias\ReviewPictures\Enums\ReviewPictureEnum;
-use Domain\Medias\ReviewMedias\ReviewVideoDetails\Enums\ReviewVideoDetailEnum;
-use Domain\Medias\ReviewMedias\ReviewVideos\Enums\ReviewVideoEnum;
-use Domain\Medias\Shared\MediaTypes\Enums\MediaTypeBuilderEnum;
-use Domain\Medias\Shared\MediaTypes\Enums\MediaTypeEnum;
-use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeBuilderEnum;
-use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeEnum;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use JewelleryDomain\Jewelleries\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaEnum;
+use JewelleryDomain\Jewelleries\Medias\CatalogMedias\CatalogPictures\Enums\CatalogPictureEnum;
+use JewelleryDomain\Jewelleries\Medias\CatalogMedias\CatalogVideoDetails\Enums\CatalogVideoDetailEnum;
+use JewelleryDomain\Jewelleries\Medias\CatalogMedias\CatalogVideos\Enums\CatalogVideoEnum;
+use JewelleryDomain\Jewelleries\Medias\ReviewMedias\ReviewMedias\Enums\ReviewMediaEnum;
+use JewelleryDomain\Jewelleries\Medias\ReviewMedias\ReviewPictures\Enums\ReviewPictureEnum;
+use JewelleryDomain\Jewelleries\Medias\ReviewMedias\ReviewVideoDetails\Enums\ReviewVideoDetailEnum;
+use JewelleryDomain\Jewelleries\Medias\ReviewMedias\ReviewVideos\Enums\ReviewVideoEnum;
+use JewelleryDomain\Jewelleries\Medias\Shared\MediaTypes\Enums\MediaTypeBuilderEnum;
+use JewelleryDomain\Jewelleries\Medias\Shared\MediaTypes\Enums\MediaTypeEnum;
+use JewelleryDomain\Jewelleries\Medias\Shared\VideoTypes\Enums\VideoTypeBuilderEnum;
+use JewelleryDomain\Jewelleries\Medias\Shared\VideoTypes\Enums\VideoTypeEnum;
 
 final class InitMedia
 {

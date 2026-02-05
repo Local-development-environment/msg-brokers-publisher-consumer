@@ -6,7 +6,6 @@ namespace App\Http\Auth\Customers\Controllers;
 
 use App\Http\Auth\Customers\Requests\CustomerRegisterRequest;
 use App\Http\Auth\Shared\Controllers\BaseAuthController;
-use Domain\Users\Customers\Models\Customer;
 use Illuminate\Http\JsonResponse;
 
 final class CustomerRegisterController extends BaseAuthController

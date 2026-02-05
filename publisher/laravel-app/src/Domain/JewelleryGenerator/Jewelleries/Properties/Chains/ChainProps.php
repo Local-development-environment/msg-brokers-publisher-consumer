@@ -7,10 +7,10 @@ namespace Domain\JewelleryGenerator\Jewelleries\Properties\Chains;
 use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
-use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspBuilderEnum;
-use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeBuilderEnum;
-use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingBuilderEnum;
 use Illuminate\Support\Arr;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Clasps\Enums\ClaspBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\NeckSizes\Enums\NeckSizeBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Weavings\Enums\WeavingBuilderEnum;
 
 final readonly class ChainProps implements CategoryPropsBuilderInterface
 {

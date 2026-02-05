@@ -3,15 +3,14 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use Domain\Users\Admins\Models\Admin;
 use Faker\Factory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
+use UserDomain\Users\Admins\Models\Admin;
 
 final class InitUserSeeder extends Seeder
 {

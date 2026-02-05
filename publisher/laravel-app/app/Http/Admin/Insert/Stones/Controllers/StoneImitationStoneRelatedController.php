@@ -5,9 +5,8 @@ namespace App\Http\Admin\Insert\Stones\Controllers;
 
 use App\Http\Admin\Insert\ImitationStones\Resources\ImitationStoneResource;
 use App\Http\Controllers\Controller;
-use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
-use Domain\Inserts\Stones\Services\Relationships\StoneImitationStoneRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Inserts\Stones\Services\Relationships\StoneImitationStoneRelationshipService;
 
 final class StoneImitationStoneRelatedController extends Controller
 {

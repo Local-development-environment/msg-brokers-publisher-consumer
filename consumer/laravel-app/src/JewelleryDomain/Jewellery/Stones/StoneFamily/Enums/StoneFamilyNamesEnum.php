@@ -142,9 +142,9 @@ enum StoneFamilyNamesEnum: string
             self::ORGANOGENIC  => [
                 StoneNamesEnum::CORAL->value,
                 StoneNamesEnum::NATURAL_SEA_PEARL->value,
-                StoneNamesEnum::CULTURED_SEA_PEARLS->value,
-                StoneNamesEnum::NATURAL_RIVER_PEARLS->value,
-                StoneNamesEnum::CULTURED_RIVER_PEARLS->value,
+                StoneNamesEnum::CULTURED_SEA_PEARL->value,
+                StoneNamesEnum::NATURAL_RIVER_PEARL->value,
+                StoneNamesEnum::CULTURED_RIVER_PEARL->value,
             ],
             self::CORUNDUM     => [
                 StoneNamesEnum::PADPARADSCHA->value,

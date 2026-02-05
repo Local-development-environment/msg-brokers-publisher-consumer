@@ -4,18 +4,14 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\Properties\Rings;
 
-use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
-use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryEnum;
 use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
 use Domain\JewelleryProperties\Rings\RingFingers\Enums\RingFingerBuilderEnum;
-use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeBuilderEnum;
-use Domain\JewelleryProperties\Rings\RingSpecifics\Enums\RingSpecificBuilderEnum;
-use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeBuilderEnum;
-use Domain\JewelleryProperties\Rings\RingTypes\Models\RingType;
-use Illuminate\Support\Arr;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingSizes\Enums\RingSizeBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingSpecifics\Enums\RingSpecificBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingTypes\Enums\RingTypeBuilderEnum;
 
 final readonly class RingProps implements CategoryPropsBuilderInterface
 {

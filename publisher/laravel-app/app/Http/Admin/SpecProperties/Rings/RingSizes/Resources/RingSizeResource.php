@@ -7,11 +7,11 @@ namespace App\Http\Admin\SpecProperties\Rings\RingSizes\Resources;
 use App\Http\Admin\SpecProperties\Rings\Ring\Resources\RingResource;
 use App\Http\Admin\SpecProperties\Rings\RingMetrics\Resources\RingMetricResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeNameRoutesEnum;
-use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeRelationshipsEnum;
-use Domain\JewelleryProperties\Rings\RingSizes\Models\RingSize;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingSizes\Enums\RingSizeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingSizes\Enums\RingSizeRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingSizes\Models\RingSize;
 
 /** @mixin RingSize */
 final class RingSizeResource extends JsonResource

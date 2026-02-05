@@ -6,11 +6,11 @@ namespace App\Http\Admin\SpecProperties\Chains\ChainMetrics\Resources;
 use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeResource;
 use App\Http\Admin\SpecProperties\Chains\Chain\Resources\ChainResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Chains\ChainMetrics\Enums\ChainMetricNameRoutesEnum;
-use Domain\JewelleryProperties\Chains\ChainMetrics\Enums\ChainMetricRelationshipsEnum;
-use Domain\JewelleryProperties\Chains\ChainMetrics\Models\ChainMetric;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\ChainMetrics\Enums\ChainMetricNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\ChainMetrics\Enums\ChainMetricRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\ChainMetrics\Models\ChainMetric;
 
 /** @mixin ChainMetric */
 final class ChainMetricResource extends JsonResource

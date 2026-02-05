@@ -16,11 +16,11 @@ use App\Http\Admin\SpecProperties\Piercings\Piercings\Controllers\PiercingJewell
 use App\Http\Admin\SpecProperties\TieClips\TieClip\Controllers\TieClipController;
 use App\Http\Admin\SpecProperties\TieClips\TieClip\Controllers\TieClipJewelleryRelatedController;
 use App\Http\Admin\SpecProperties\TieClips\TieClip\Controllers\TieClipJewelleryRelationshipController;
-use Domain\JewelleryProperties\Brooches\Brooches\Enums\BroochNameRoutesEnum;
-use Domain\JewelleryProperties\CharmPendants\CharmPendants\Enums\CharmPendantNameRoutesEnum;
-use Domain\JewelleryProperties\Pendants\Pendants\Enums\PendantNameRoutesEnum;
-use Domain\JewelleryProperties\Piercings\Piercings\Enums\PiercingNameRoutesEnum;
-use Domain\JewelleryProperties\TieClips\TieClips\Enums\TieClipNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Brooches\Brooches\Enums\BroochNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\CharmPendants\CharmPendants\Enums\CharmPendantNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Pendants\Pendants\Enums\PendantNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Piercings\Piercings\Enums\PiercingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\TieClips\TieClips\Enums\TieClipNameRoutesEnum;
 
 Route::group([
     'middleware' => 'auth:admin'

@@ -8,9 +8,9 @@ use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
-use Domain\JewelleryProperties\CuffLinks\CuffLinkClasps\Enums\CuffLinkClaspBuilderEnum;
-use Domain\JewelleryProperties\CuffLinks\CuffLinkForms\Enums\CuffLinkFormBuilderEnum;
-use Domain\JewelleryProperties\CuffLinks\CuffLinkTypes\Enums\CuffLinkTypeBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\CuffLinks\CuffLinkClasps\Enums\CuffLinkClaspBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\CuffLinks\CuffLinkForms\Enums\CuffLinkFormBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\CuffLinks\CuffLinkTypes\Enums\CuffLinkTypeBuilderEnum;
 use Random\RandomException;
 
 final readonly class CuffLinkProps implements CategoryPropsBuilderInterface

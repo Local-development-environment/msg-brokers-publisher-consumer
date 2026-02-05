@@ -32,11 +32,11 @@ use App\Http\Admin\SpecProperties\Rings\RingTypes\Controllers\RingTypeRingDetail
 use App\Http\Admin\SpecProperties\Rings\RingTypes\Controllers\RingTypeRingDetailsRelationshipController;
 use App\Http\Admin\SpecProperties\Rings\RingTypes\Controllers\RingTypesRingsRelatedController;
 use App\Http\Admin\SpecProperties\Rings\RingTypes\Controllers\RingTypesRingsRelationshipController;
-use Domain\JewelleryProperties\Rings\RingDetails\Enums\RingDetailNameRoutesEnum;
-use Domain\JewelleryProperties\Rings\RingMetrics\Enums\RingMetricNameRoutesEnum;
-use Domain\JewelleryProperties\Rings\Rings\Enums\RingNameRoutesEnum;
-use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeNameRoutesEnum;
-use Domain\JewelleryProperties\Rings\RingTypes\Enums\RingTypeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingDetails\Enums\RingDetailNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingMetrics\Enums\RingMetricNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\Rings\Enums\RingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingSizes\Enums\RingSizeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingTypes\Enums\RingTypeNameRoutesEnum;
 
 Route::group([
     'middleware' => 'auth:admin'

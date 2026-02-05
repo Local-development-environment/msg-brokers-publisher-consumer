@@ -4,8 +4,8 @@ namespace App\Http\Admin\Insert\ImitationStones\Controllers;
 
 use App\Http\Admin\Insert\ImitationStones\Resources\ImitationStoneResource;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\ImitationStones\Services\Relationships\ImitationStoneStoneRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Inserts\ImitationStones\Services\Relationships\ImitationStoneStoneRelationshipService;
 
 class ImitationStoneStoneRelatedController extends Controller
 {

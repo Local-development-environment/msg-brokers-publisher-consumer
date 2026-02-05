@@ -7,11 +7,11 @@ use App\Http\Admin\SpecProperties\Pendants\Pendants\Requests\PendantStoreRequest
 use App\Http\Admin\SpecProperties\Pendants\Pendants\Requests\PendantUpdateRequest;
 use App\Http\Admin\SpecProperties\Pendants\Pendants\Resources\PendantCollection;
 use App\Http\Admin\SpecProperties\Pendants\Pendants\Resources\PendantResource;
-use Domain\JewelleryProperties\Pendants\Pendants\Enums\PendantEnum;
-use Domain\JewelleryProperties\Pendants\Pendants\Enums\PendantNameRoutesEnum;
-use Domain\JewelleryProperties\Pendants\Pendants\Services\PendantService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Pendants\Pendants\Enums\PendantEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Pendants\Pendants\Enums\PendantNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Pendants\Pendants\Services\PendantService;
 use Throwable;
 
 final class PendantController extends \App\Http\Controllers\Controller

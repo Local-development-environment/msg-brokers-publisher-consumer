@@ -10,11 +10,11 @@ use App\Http\Admin\SharedProperty\Weaving\Resources\WeavingResource;
 use App\Http\Admin\SpecProperties\Chains\ChainMetrics\Resources\ChainMetricResource;
 use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Resources\ChainWeavingResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Chains\Chains\Enums\ChainNameRoutesEnum;
-use Domain\JewelleryProperties\Chains\Chains\Enums\ChainRelationshipsEnum;
-use Domain\JewelleryProperties\Chains\Chains\Models\Chain;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\Chains\Enums\ChainNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\Chains\Enums\ChainRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\Chains\Models\Chain;
 
 /** @mixin Chain */
 final class ChainResource extends JsonResource

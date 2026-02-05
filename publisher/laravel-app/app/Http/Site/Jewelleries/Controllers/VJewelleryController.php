@@ -5,9 +5,9 @@ namespace App\Http\Site\Jewelleries\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Site\Jewelleries\Resources\VJewelleryCollection;
 use App\Http\Site\Jewelleries\Resources\VJewelleryResource;
-use Domain\Jewelleries\JewelleryViews\Services\VJewelleryService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryViews\Services\VJewelleryService;
 
 class VJewelleryController extends Controller
 {

@@ -5,9 +5,9 @@ namespace App\Http\Admin\Insert\StoneColours\Controllers;
 
 use App\Http\Admin\Insert\StoneColours\Resources\StoneColourCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\StoneColours\Services\StoneColourService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\StoneColours\Services\StoneColourService;
 
 final class StoneColourController extends Controller
 {

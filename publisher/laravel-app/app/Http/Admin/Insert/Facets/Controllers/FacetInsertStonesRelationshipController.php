@@ -5,8 +5,8 @@ namespace App\Http\Admin\Insert\Facets\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
-use Domain\Inserts\Facets\Services\Relationships\FacetInsertStonesRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Inserts\Facets\Services\Relationships\FacetInsertStonesRelationshipService;
 
 final class FacetInsertStonesRelationshipController extends Controller
 {

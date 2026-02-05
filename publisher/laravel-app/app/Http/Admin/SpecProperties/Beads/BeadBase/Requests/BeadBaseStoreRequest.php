@@ -3,9 +3,8 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\SpecProperties\Beads\BeadBase\Requests;
 
-use Domain\JewelleryProperties\Beads\BeadBases\Models\BeadBase;
-use Domain\JewelleryProperties\Beads\Beads\Models\Bead;
 use Illuminate\Foundation\Http\FormRequest;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadBases\Models\BeadBase;
 
 final class BeadBaseStoreRequest extends FormRequest
 {

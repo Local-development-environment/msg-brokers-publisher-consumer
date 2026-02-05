@@ -80,10 +80,10 @@ use App\Http\Admin\Insert\Stones\Controllers\StoneImitationStoneRelatedControlle
 use App\Http\Admin\Insert\Stones\Controllers\StoneImitationStoneRelationshipController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneNaturalStoneRelatedController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneNaturalStoneRelationshipController;
-use App\Http\Admin\Insert\Stones\Controllers\StonesStoneColoursRelatedController;
-use App\Http\Admin\Insert\Stones\Controllers\StonesStoneColoursRelationshipController;
 use App\Http\Admin\Insert\Stones\Controllers\StonesFacetsRelatedController;
 use App\Http\Admin\Insert\Stones\Controllers\StonesFacetsRelationshipController;
+use App\Http\Admin\Insert\Stones\Controllers\StonesStoneColoursRelatedController;
+use App\Http\Admin\Insert\Stones\Controllers\StonesStoneColoursRelationshipController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneStoneExteriorsRelatedController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneStoneExteriorsRelationshipController;
 use App\Http\Admin\Insert\Stones\Controllers\StoneStoneOpticalEffectRelatedController;
@@ -93,23 +93,23 @@ use App\Http\Admin\Insert\Stones\Controllers\StonesTypeOriginStoneRelationshipCo
 use App\Http\Admin\Insert\TypeOrigins\Controllers\TypeOriginController;
 use App\Http\Admin\Insert\TypeOrigins\Controllers\TypeOriginStonesRelatedController;
 use App\Http\Admin\Insert\TypeOrigins\Controllers\TypeOriginStonesRelationshipController;
-use Domain\Inserts\Facets\Enums\FacetNameRoutesEnum;
-use Domain\Inserts\GroupGrades\Enums\GroupGradeNameRoutesEnum;
-use Domain\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
-use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
-use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoNameRoutesEnum;
-use Domain\Inserts\Inserts\Enums\InsertNameRoutesEnum;
-use Domain\Inserts\NaturalStones\Enums\NatureStoneNameRoutesEnum;
-use Domain\Inserts\OpticalEffects\Enums\OpticalEffectNameRoutesEnum;
-use Domain\Inserts\StoneColours\Enums\StoneColourNameRoutesEnum;
-use Domain\Inserts\StoneExteriors\Enums\StoneExteriorNameRoutesEnum;
-use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
-use Domain\Inserts\StoneGrades\Enums\StoneGradeNameRoutesEnum;
-use Domain\Inserts\StoneGroups\Enums\StoneGroupNameRoutesEnum;
-use Domain\Inserts\StoneItemGrades\Enums\StoneItemGradeNameRoutesEnum;
-use Domain\Inserts\StoneOpticalEffects\Enums\StoneOpticalEffectNameRoutesEnum;
-use Domain\Inserts\Stones\Enums\StoneNameRoutesEnum;
-use Domain\Inserts\TypeOrigins\Enums\TypeOriginNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\Facets\Enums\FacetNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\GroupGrades\Enums\GroupGradeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\GrownStones\Enums\GrownStoneNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\Inserts\Enums\InsertNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\NaturalStones\Enums\NatureStoneNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\OpticalEffects\Enums\OpticalEffectNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneColours\Enums\StoneColourNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneExteriors\Enums\StoneExteriorNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGrades\Enums\StoneGradeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGroups\Enums\StoneGroupNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneItemGrades\Enums\StoneItemGradeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneOpticalEffects\Enums\StoneOpticalEffectNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\Stones\Enums\StoneNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\TypeOrigins\Enums\TypeOriginNameRoutesEnum;
 
 Route::group([
     'middleware' => 'auth:admin'

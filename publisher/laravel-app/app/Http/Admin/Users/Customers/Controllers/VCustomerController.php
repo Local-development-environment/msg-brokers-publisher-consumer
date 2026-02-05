@@ -6,9 +6,9 @@ namespace App\Http\Admin\Users\Customers\Controllers;
 
 use App\Http\Admin\Users\Customers\Resources\VCustomerCollection;
 use App\Http\Controllers\Controller;
-use Domain\Users\VCustomers\Services\VCustomerService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use UserDomain\Users\VCustomers\Services\VCustomerService;
 
 final class VCustomerController extends Controller
 {

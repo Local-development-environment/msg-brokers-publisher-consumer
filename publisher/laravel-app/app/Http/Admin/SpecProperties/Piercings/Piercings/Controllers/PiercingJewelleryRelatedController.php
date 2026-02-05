@@ -5,8 +5,8 @@ namespace App\Http\Admin\SpecProperties\Piercings\Piercings\Controllers;
 
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Piercings\Piercings\Services\Relationships\PiercingJewelleryRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Piercings\Piercings\Services\Relationships\PiercingJewelleryRelationshipService;
 
 final class PiercingJewelleryRelatedController extends Controller
 {

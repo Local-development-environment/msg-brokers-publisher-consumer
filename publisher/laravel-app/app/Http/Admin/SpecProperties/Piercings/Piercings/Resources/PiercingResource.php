@@ -5,11 +5,11 @@ namespace App\Http\Admin\SpecProperties\Piercings\Piercings\Resources;
 
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Piercings\Piercings\Enums\PiercingNameRoutesEnum;
-use Domain\JewelleryProperties\Piercings\Piercings\Enums\PiercingRelationshipsEnum;
-use Domain\JewelleryProperties\Piercings\Piercings\Models\Piercing;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Piercings\Piercings\Enums\PiercingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Piercings\Piercings\Enums\PiercingRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Piercings\Piercings\Models\Piercing;
 
 /** @mixin Piercing */
 final class PiercingResource extends JsonResource

@@ -5,11 +5,11 @@ namespace App\Http\Admin\Jewellery\Categories\Resources;
 
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryNameRoutesEnum;
-use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryRelationshipsEnum;
-use Domain\Jewelleries\JewelleryCategories\Models\JewelleryCategory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryCategories\Models\JewelleryCategory;
 
 /** @mixin JewelleryCategory */
 final class JewelleryCategoryResource extends JsonResource

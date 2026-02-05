@@ -5,10 +5,10 @@ namespace App\Http\Admin\Insert\StoneGroups\Controllers;
 
 use App\Http\Admin\Insert\StoneGroups\Resources\StoneGroupCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\StoneGroups\Models\StoneGroup;
-use Domain\Inserts\StoneGroups\Services\StoneGroupService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\StoneGroups\Models\StoneGroup;
+use JewelleryDomain\Jewelleries\Inserts\StoneGroups\Services\StoneGroupService;
 
 final class StoneGroupController extends Controller
 {

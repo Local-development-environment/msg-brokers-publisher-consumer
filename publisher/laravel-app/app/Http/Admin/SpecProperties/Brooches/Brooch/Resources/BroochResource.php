@@ -5,11 +5,11 @@ namespace app\Http\Admin\SpecProperties\Brooches\Brooch\Resources;
 
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Brooches\Brooches\Enums\BroochNameRoutesEnum;
-use Domain\JewelleryProperties\Brooches\Brooches\Enums\BroochRelationshipsEnum;
-use Domain\JewelleryProperties\Brooches\Brooches\Models\Brooch;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Brooches\Brooches\Enums\BroochNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Brooches\Brooches\Enums\BroochRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Brooches\Brooches\Models\Brooch;
 
 /** @mixin Brooch */
 final class BroochResource extends JsonResource

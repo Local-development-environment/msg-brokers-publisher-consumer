@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\SpecProperties\Beads\BeadMetrics\Requests;
 
-use Domain\JewelleryProperties\Beads\BeadMetrics\Models\BeadMetric;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadMetrics\Models\BeadMetric;
 
 final class BeadMetricStoreRequest extends FormRequest
 {

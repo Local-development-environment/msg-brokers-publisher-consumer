@@ -6,9 +6,9 @@ namespace App\Http\Admin\SpecProperties\Bracelets\BraceletWeaving\Controllers;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletWeaving\Resources\BraceletWeavingCollection;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletWeaving\Resources\BraceletWeavingResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Bracelets\BraceletWeavings\Services\BraceletWeavingService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BraceletWeavings\Services\BraceletWeavingService;
 
 final class BraceletWeavingController extends Controller
 {

@@ -5,12 +5,12 @@ namespace App\Http\Admin\Insert\StoneGrades\Resources;
 
 use App\Http\Admin\Insert\StoneItemGrades\Resources\StoneItemGradeResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\StoneGrades\Enums\StoneGradeEnum;
-use Domain\Inserts\StoneGrades\Enums\StoneGradeNameRoutesEnum;
-use Domain\Inserts\StoneGrades\Enums\StoneGradeRelationshipsEnum;
-use Domain\Inserts\StoneGrades\Models\StoneGrade;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\StoneGrades\Enums\StoneGradeEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGrades\Enums\StoneGradeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGrades\Enums\StoneGradeRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGrades\Models\StoneGrade;
 
 /** @mixin StoneGrade */
 final class StoneGradeResource extends JsonResource

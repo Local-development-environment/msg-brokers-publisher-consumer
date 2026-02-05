@@ -5,8 +5,8 @@ namespace App\Http\Admin\Insert\StoneExteriors\Controllers;
 
 use App\Http\Admin\Insert\Facets\Resources\StoneFacetResource;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\StoneExteriors\Services\Relationships\StoneExteriorsStoneFacetRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Inserts\StoneExteriors\Services\Relationships\StoneExteriorsStoneFacetRelationshipService;
 
 final class StoneExteriorsStoneFacetRelatedController extends Controller
 {

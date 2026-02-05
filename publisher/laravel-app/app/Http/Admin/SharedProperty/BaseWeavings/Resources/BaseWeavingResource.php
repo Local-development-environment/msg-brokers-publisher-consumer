@@ -5,11 +5,11 @@ namespace App\Http\Admin\SharedProperty\BaseWeavings\Resources;
 
 use App\Http\Admin\SharedProperty\Weaving\Resources\WeavingResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingNameRoutesEnum;
-use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingRelationshipsEnum;
-use Domain\Shared\JewelleryProperties\BaseWeavings\Models\BaseWeaving;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\BaseWeavings\Enums\BaseWeavingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\BaseWeavings\Enums\BaseWeavingRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\BaseWeavings\Models\BaseWeaving;
 
 /** @mixin BaseWeaving */
 final class BaseWeavingResource extends JsonResource

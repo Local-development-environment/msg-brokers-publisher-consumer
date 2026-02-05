@@ -7,11 +7,11 @@ namespace App\Http\Admin\Insert\StoneItemGrades\Resources;
 use App\Http\Admin\Insert\GroupGrades\Resources\GroupGradeResource;
 use App\Http\Admin\Insert\StoneGrades\Resources\StoneGradeResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\StoneItemGrades\Enums\StoneItemGradeNameRoutesEnum;
-use Domain\Inserts\StoneItemGrades\Enums\StoneItemGradeRelationshipsEnum;
-use Domain\Inserts\StoneItemGrades\Models\StoneItemGrade;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\StoneItemGrades\Enums\StoneItemGradeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneItemGrades\Enums\StoneItemGradeRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneItemGrades\Models\StoneItemGrade;
 
 /** @mixin StoneItemGrade */
 final class StoneItemGradeResource extends JsonResource

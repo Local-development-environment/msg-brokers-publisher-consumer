@@ -2,12 +2,10 @@
 
 declare(strict_types=1);
 
-use Domain\Inserts\InsertViews\Repositories\VInsertCachedRepository;
-use Domain\Inserts\InsertViews\Repositories\VInsertCachedRepositoryInterface;
-use Domain\Inserts\InsertViews\Repositories\VInsertRepository;
-use Domain\Jewelleries\JewelleryViews\Repositories\VJewelleryCachedRepository;
-use Domain\Jewelleries\JewelleryViews\Repositories\VJewelleryCachedRepositoryInterface;
-use Domain\Jewelleries\JewelleryViews\Repositories\VJewelleryRepository;
+use JewelleryDomain\Jewelleries\Inserts\InsertViews\Repositories\VInsertCachedRepositoryInterface;
+use JewelleryDomain\Jewelleries\Inserts\InsertViews\Repositories\VInsertRepository;
+use JewelleryDomain\Jewelleries\JewelleryViews\Repositories\VJewelleryCachedRepositoryInterface;
+use JewelleryDomain\Jewelleries\JewelleryViews\Repositories\VJewelleryRepository;
 
 return [
     [

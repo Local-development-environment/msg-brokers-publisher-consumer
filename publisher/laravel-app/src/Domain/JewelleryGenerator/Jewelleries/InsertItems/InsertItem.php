@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems;
 
-use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
-use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
-use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
+use JewelleryDomain\Jewelleries\Inserts\Facets\Enums\FacetBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\Stones\Enums\StoneBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
 
 final class InsertItem
 {

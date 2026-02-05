@@ -2,8 +2,8 @@
 
 namespace App\Http\Admin\SharedProperty\LengthNames\Requests;
 
-use Domain\Shared\JewelleryProperties\LengthNames\Models\LengthName;
 use Illuminate\Foundation\Http\FormRequest;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\LengthNames\Models\LengthName;
 
 class LengthNameStoreRequest extends FormRequest
 {

@@ -5,12 +5,12 @@ namespace App\Http\Admin\Insert\TypeOrigins\Resources;
 
 use App\Http\Admin\Insert\Stones\Resources\StoneResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\TypeOrigins\Enums\TypeOriginEnum;
-use Domain\Inserts\TypeOrigins\Enums\TypeOriginNameRoutesEnum;
-use Domain\Inserts\TypeOrigins\Enums\TypeOriginRelationshipsEnum;
-use Domain\Inserts\TypeOrigins\Models\TypeOrigin;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\TypeOrigins\Enums\TypeOriginEnum;
+use JewelleryDomain\Jewelleries\Inserts\TypeOrigins\Enums\TypeOriginNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\TypeOrigins\Enums\TypeOriginRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Inserts\TypeOrigins\Models\TypeOrigin;
 
 /** @mixin TypeOrigin */
 final class TypeOriginResource extends JsonResource

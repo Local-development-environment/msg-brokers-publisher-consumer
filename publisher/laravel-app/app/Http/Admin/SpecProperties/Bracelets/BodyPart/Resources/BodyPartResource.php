@@ -5,11 +5,11 @@ namespace App\Http\Admin\SpecProperties\Bracelets\BodyPart\Resources;
 
 use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Resources\BraceletResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartNameRoutesEnum;
-use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartRelationshipsEnum;
-use Domain\JewelleryProperties\Bracelets\BodyParts\Models\BodyPart;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BodyParts\Enums\BodyPartNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BodyParts\Enums\BodyPartRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BodyParts\Models\BodyPart;
 
 /** @mixin BodyPart */
 final class BodyPartResource extends JsonResource

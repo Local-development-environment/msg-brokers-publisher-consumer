@@ -9,10 +9,10 @@ use App\Http\Admin\SpecProperties\Rings\RingMetrics\Requests\RingMetricUpdateReq
 use App\Http\Admin\SpecProperties\Rings\RingMetrics\Resources\RingMetricCollection;
 use App\Http\Admin\SpecProperties\Rings\RingMetrics\Resources\RingMetricResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Rings\RingMetrics\Enums\RingMetricNameRoutesEnum;
-use Domain\JewelleryProperties\Rings\RingMetrics\Services\RingMetricService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingMetrics\Enums\RingMetricNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingMetrics\Services\RingMetricService;
 use Throwable;
 
 final class RingMetricController extends Controller

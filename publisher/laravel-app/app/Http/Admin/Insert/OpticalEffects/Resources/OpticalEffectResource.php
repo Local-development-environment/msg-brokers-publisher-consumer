@@ -5,12 +5,12 @@ namespace App\Http\Admin\Insert\OpticalEffects\Resources;
 
 use App\Http\Admin\Insert\OpticalEffectStones\Resources\StoneOpticalEffectResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\OpticalEffects\Enums\OpticalEffectEnum;
-use Domain\Inserts\OpticalEffects\Enums\OpticalEffectNameRoutesEnum;
-use Domain\Inserts\OpticalEffects\Enums\OpticalEffectRelationshipsEnum;
-use Domain\Inserts\OpticalEffects\Models\OpticalEffect;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\OpticalEffects\Enums\OpticalEffectEnum;
+use JewelleryDomain\Jewelleries\Inserts\OpticalEffects\Enums\OpticalEffectNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\OpticalEffects\Enums\OpticalEffectRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Inserts\OpticalEffects\Models\OpticalEffect;
 
 /** @mixin OpticalEffect */
 final class OpticalEffectResource extends JsonResource
