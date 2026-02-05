@@ -4,9 +4,9 @@ namespace App\Http\Admin\Users\Users\Controllers;
 
 use App\Http\Admin\Users\Users\Resources\VUserCollection;
 use App\Http\Controllers\Controller;
-use Domain\Users\VUsers\Services\VUserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use UserDomain\Users\VUsers\Services\VUserService;
 
 class VUserController extends Controller
 {

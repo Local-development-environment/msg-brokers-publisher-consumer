@@ -9,10 +9,10 @@ use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Requests\ChainWeavingUpdat
 use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Resources\ChainWeavingCollection;
 use App\Http\Admin\SpecProperties\Chains\ChainWeaving\Resources\ChainWeavingResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Chains\ChainWeavings\Enums\ChainWeavingNameRoutesEnum;
-use Domain\JewelleryProperties\Chains\ChainWeavings\Services\ChainWeavingService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\ChainWeavings\Enums\ChainWeavingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\ChainWeavings\Services\ChainWeavingService;
 use Throwable;
 
 final class ChainWeavingController extends Controller

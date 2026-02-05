@@ -8,8 +8,8 @@ use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
-use Domain\JewelleryProperties\Brooches\BroochClasps\Enums\BroochClaspBuilderEnum;
-use Domain\JewelleryProperties\Brooches\BroochTypes\Enums\BroochTypeBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Brooches\BroochClasps\Enums\BroochClaspBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Brooches\BroochTypes\Enums\BroochTypeBuilderEnum;
 use Random\RandomException;
 
 final readonly class BroochProps implements CategoryPropsBuilderInterface

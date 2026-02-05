@@ -6,11 +6,11 @@ namespace App\Http\Admin\SpecProperties\Bracelets\BraceletWeaving\Resources;
 use App\Http\Admin\SharedProperty\Weaving\Resources\WeavingResource;
 use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Resources\BraceletResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Bracelets\BraceletWeavings\Enums\BraceletWeavingNameRoutesEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletWeavings\Enums\BraceletWeavingRelationshipsEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletWeavings\Models\BraceletWeaving;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BraceletWeavings\Enums\BraceletWeavingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BraceletWeavings\Enums\BraceletWeavingRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BraceletWeavings\Models\BraceletWeaving;
 
 /** @mixin BraceletWeaving */
 final class BraceletWeavingResource extends JsonResource

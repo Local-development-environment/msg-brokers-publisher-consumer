@@ -8,10 +8,10 @@ use App\Http\Admin\Media\CatalogMedias\CatalogMedias\Requests\CatalogMediaUpdate
 use App\Http\Admin\Media\CatalogMedias\CatalogMedias\Resources\CatalogMediaCollection;
 use App\Http\Admin\Media\CatalogMedias\CatalogMedias\Resources\CatalogMediaResource;
 use App\Http\Controllers\Controller;
-use Domain\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaNameRoutesEnum;
-use Domain\Medias\CatalogMedias\CatalogMedias\Services\CatalogMediaService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Medias\CatalogMedias\CatalogMedias\Enums\CatalogMediaNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\CatalogMedias\CatalogMedias\Services\CatalogMediaService;
 use Throwable;
 
 final class CatalogMediaController extends Controller

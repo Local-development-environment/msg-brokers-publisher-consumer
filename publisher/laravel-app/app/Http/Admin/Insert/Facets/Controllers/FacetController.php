@@ -5,9 +5,9 @@ namespace App\Http\Admin\Insert\Facets\Controllers;
 
 use App\Http\Admin\Insert\Facets\Resources\StoneFacetCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\Facets\Services\FacetService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\Facets\Services\FacetService;
 
 final class FacetController extends Controller
 {

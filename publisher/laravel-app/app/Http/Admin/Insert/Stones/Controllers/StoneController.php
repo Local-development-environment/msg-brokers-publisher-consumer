@@ -5,11 +5,9 @@ namespace App\Http\Admin\Insert\Stones\Controllers;
 
 use App\Http\Admin\Insert\Stones\Resources\StoneCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\ImitationStones\Models\ImitationStone;
-use Domain\Inserts\Stones\Models\Stone;
-use Domain\Inserts\Stones\Services\StoneService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\Stones\Services\StoneService;
 
 final class StoneController extends Controller
 {

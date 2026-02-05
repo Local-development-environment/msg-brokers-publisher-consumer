@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\SpecProperties\Necklaces\Necklace\Requests;
 
-use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Models\NecklaceMetric;
-use Domain\JewelleryProperties\Necklaces\Necklaces\Models\Necklace;
 use Illuminate\Foundation\Http\FormRequest;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\NecklaceMetrics\Models\NecklaceMetric;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\Necklaces\Models\Necklace;
 
 final class NecklaceUpdateRequest extends FormRequest
 {

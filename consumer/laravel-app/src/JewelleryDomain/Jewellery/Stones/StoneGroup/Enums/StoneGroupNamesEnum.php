@@ -102,7 +102,7 @@ enum StoneGroupNamesEnum: string
                 StoneNamesEnum::DRAVITE->value,
                 StoneNamesEnum::RIVER_PEARL_NATURE->value,
                 StoneNamesEnum::SEA_PEARL_CULTURED->value,
-                StoneNamesEnum::CULTURED_RIVER_PEARLS->value,
+                StoneNamesEnum::CULTURED_RIVER_PEARL->value,
                 StoneNamesEnum::INDIGOLITE->value,
                 StoneNamesEnum::IOLITE->value,
                 StoneNamesEnum::CASSETTERITE->value,

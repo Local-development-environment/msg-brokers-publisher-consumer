@@ -9,11 +9,11 @@ use App\Http\Admin\SharedProperty\BaseWeavings\Requests\BaseWeavingUpdateRequest
 use App\Http\Admin\SharedProperty\BaseWeavings\Resources\BaseWeavingCollection;
 use App\Http\Admin\SharedProperty\BaseWeavings\Resources\BaseWeavingResource;
 use App\Http\Controllers\Controller;
-use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingEnum;
-use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingNameRoutesEnum;
-use Domain\Shared\JewelleryProperties\BaseWeavings\Services\BaseWeavingService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\BaseWeavings\Enums\BaseWeavingEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\BaseWeavings\Enums\BaseWeavingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\BaseWeavings\Services\BaseWeavingService;
 use Throwable;
 
 final class BaseWeavingController extends Controller

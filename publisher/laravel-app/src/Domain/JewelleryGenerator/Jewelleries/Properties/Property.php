@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\Properties;
 
-use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
 
 final class Property
 {

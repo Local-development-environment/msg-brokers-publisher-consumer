@@ -40,12 +40,12 @@ use App\Http\Admin\SpecProperties\Bracelets\BraceletWeaving\Controllers\Bracelet
 use App\Http\Admin\SpecProperties\Bracelets\BraceletWeaving\Controllers\BraceletWeavingsBraceletRelationshipController;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletWeaving\Controllers\BraceletWeavingsBraceletSizeRelatedController;
 use App\Http\Admin\SpecProperties\Bracelets\BraceletWeaving\Controllers\BraceletWeavingsBraceletSizeRelationshipController;
-use Domain\JewelleryProperties\Bracelets\BodyParts\Enums\BodyPartNameRoutesEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Enums\BraceletMetricNameRoutesEnum;
-use Domain\JewelleryProperties\Bracelets\Bracelets\Enums\BraceletNameRoutesEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletSizes\Enums\BraceletSizeNameRoutesEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletTypes\Enums\BraceletTypeNameRoutesEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletWeavings\Enums\BraceletWeavingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BodyParts\Enums\BodyPartNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BraceletMetrics\Enums\BraceletMetricNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\Bracelets\Enums\BraceletNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BraceletSizes\Enums\BraceletSizeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BraceletTypes\Enums\BraceletTypeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BraceletWeavings\Enums\BraceletWeavingNameRoutesEnum;
 
 
 Route::group([

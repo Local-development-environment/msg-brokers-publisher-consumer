@@ -24,8 +24,8 @@ class JewelleryGeneratorTestSeeder extends Seeder
 //        dd(rand(5, 10));
         $builder = new Jeweller();
         for ($i = 1; $i <= 2000; $i++) {
-            $test = $builder->buildJewellery(new BaseJewelleryGenerator());
-            if ($test['jewelleryCategory'] === JewelleryCategoryNamesEnum::BRACELETS->value) {
+//            $test = $builder->buildJewellery(new BaseJewelleryGenerator());
+//            if ($test['jewelleryCategory'] === JewelleryCategoryNamesEnum::BRACELETS->value) {
 //                if (in_array(RingSpecificNamesEnum::COMBINATION->value, $test['specProperties']['ringSpecific'])) {
 //                    dd($test);
 //                }
@@ -33,12 +33,12 @@ class JewelleryGeneratorTestSeeder extends Seeder
 //                if (in_array(BeadBaseNamesEnum::B->value, $test['specProperties']['ringSpecific'])) {
 //                    dd($test);
 //                }
-                dd($test);
+//                dd($test);
 //
 //                if (BraceletTypeNamesEnum::WICKER->value === $test['specProperties']['braceletType']) {
 //                    dump($test);
 //                }
-            }
+//            }
         }
         dd($builder->buildJewellery(new BaseJewelleryGenerator()));
     }

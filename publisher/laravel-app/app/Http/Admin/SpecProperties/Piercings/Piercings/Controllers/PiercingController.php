@@ -8,11 +8,11 @@ use App\Http\Admin\SpecProperties\Piercings\Piercings\Requests\PiercingUpdateReq
 use App\Http\Admin\SpecProperties\Piercings\Piercings\Resources\PiercingCollection;
 use App\Http\Admin\SpecProperties\Piercings\Piercings\Resources\PiercingResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Piercings\Piercings\Enums\PiercingEnum;
-use Domain\JewelleryProperties\Piercings\Piercings\Enums\PiercingNameRoutesEnum;
-use Domain\JewelleryProperties\Piercings\Piercings\Services\PiercingService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Piercings\Piercings\Enums\PiercingEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Piercings\Piercings\Enums\PiercingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Piercings\Piercings\Services\PiercingService;
 use Throwable;
 
 final class PiercingController extends Controller

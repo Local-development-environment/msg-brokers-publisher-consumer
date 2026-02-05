@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
-use Domain\Inserts\OpticalEffects\Enums\OpticalEffectBuilderEnum;
-use Domain\Inserts\StoneColours\Enums\StoneColourBuilderEnum;
-use Domain\Inserts\StoneFamilies\Enums\StoneFamilyBuilderEnum;
-use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
-use Domain\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\Facets\Enums\FacetBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\OpticalEffects\Enums\OpticalEffectBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneColours\Enums\StoneColourBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneFamilies\Enums\StoneFamilyBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\Stones\Enums\StoneBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\TypeOrigins\Enums\TypeOriginBuilderEnum;
 
 return [
     [

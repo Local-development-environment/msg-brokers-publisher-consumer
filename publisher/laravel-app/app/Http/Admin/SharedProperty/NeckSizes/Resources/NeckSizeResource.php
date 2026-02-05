@@ -9,11 +9,11 @@ use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Resources\BeadMetricResource
 use App\Http\Admin\SpecProperties\Chains\Chain\Resources\ChainResource;
 use App\Http\Admin\SpecProperties\Necklaces\Necklace\Resources\NecklaceResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeNameRoutesEnum;
-use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeRelationshipsEnum;
-use Domain\Shared\JewelleryProperties\NeckSizes\Models\NeckSize;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\NeckSizes\Enums\NeckSizeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\NeckSizes\Enums\NeckSizeRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\NeckSizes\Models\NeckSize;
 
 /** @mixin NeckSize */
 final class NeckSizeResource extends JsonResource

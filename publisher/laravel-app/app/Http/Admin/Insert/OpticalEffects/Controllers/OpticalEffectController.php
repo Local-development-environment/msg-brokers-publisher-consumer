@@ -4,9 +4,9 @@ namespace App\Http\Admin\Insert\OpticalEffects\Controllers;
 
 use App\Http\Admin\Insert\OpticalEffects\Resources\OpticalEffectCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\OpticalEffects\Services\OpticalEffectService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\OpticalEffects\Services\OpticalEffectService;
 
 class OpticalEffectController extends Controller
 {

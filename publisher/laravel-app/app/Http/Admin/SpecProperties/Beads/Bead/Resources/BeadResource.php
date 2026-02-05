@@ -3,17 +3,17 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\SpecProperties\Beads\Bead\Resources;
 
-use App\Http\Admin\SpecProperties\Beads\BeadBase\Resources\BeadBaseResource;
-use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Resources\BeadMetricResource;
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Admin\SharedProperty\Clasps\Resources\ClaspResource;
 use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeResource;
+use App\Http\Admin\SpecProperties\Beads\BeadBase\Resources\BeadBaseResource;
+use App\Http\Admin\SpecProperties\Beads\BeadMetrics\Resources\BeadMetricResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Beads\Beads\Enums\BeadNameRoutesEnum;
-use Domain\JewelleryProperties\Beads\Beads\Enums\BeadRelationshipsEnum;
-use Domain\JewelleryProperties\Beads\Beads\Models\Bead;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\Beads\Enums\BeadNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\Beads\Enums\BeadRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\Beads\Models\Bead;
 
 /** @mixin Bead */
 final class BeadResource extends JsonResource

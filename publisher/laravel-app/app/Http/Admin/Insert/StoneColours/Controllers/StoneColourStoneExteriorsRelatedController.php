@@ -5,8 +5,8 @@ namespace App\Http\Admin\Insert\StoneColours\Controllers;
 
 use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\StoneColours\Services\Relationships\StoneColourStoneExteriorsRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Inserts\StoneColours\Services\Relationships\StoneColourStoneExteriorsRelationshipService;
 
 final class StoneColourStoneExteriorsRelatedController extends Controller
 {

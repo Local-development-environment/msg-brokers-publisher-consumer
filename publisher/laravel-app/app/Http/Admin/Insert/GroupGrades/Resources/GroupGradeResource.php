@@ -8,11 +8,11 @@ use App\Http\Admin\Insert\NaturalStones\Resources\NaturalStoneResource;
 use App\Http\Admin\Insert\StoneGroups\Resources\StoneGroupResource;
 use App\Http\Admin\Insert\StoneItemGrades\Resources\StoneItemGradeResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\GroupGrades\Enums\GroupGradeNameRoutesEnum;
-use Domain\Inserts\GroupGrades\Enums\GroupGradeRelationshipsEnum;
-use Domain\Inserts\GroupGrades\Models\GroupGrade;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\GroupGrades\Enums\GroupGradeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\GroupGrades\Enums\GroupGradeRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Inserts\GroupGrades\Models\GroupGrade;
 
 /** @mixin GroupGrade */
 final class GroupGradeResource extends JsonResource

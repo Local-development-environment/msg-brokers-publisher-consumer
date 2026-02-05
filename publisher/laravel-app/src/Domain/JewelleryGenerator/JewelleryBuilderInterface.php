@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator;
 
-use Domain\Jewelleries\Jewelleries\Models\Jewellery;
-
 interface JewelleryBuilderInterface
 {
     public function reset(): jewelleryBuilderInterface;

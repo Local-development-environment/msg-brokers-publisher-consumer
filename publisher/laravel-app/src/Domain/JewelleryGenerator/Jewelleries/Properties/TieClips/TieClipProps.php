@@ -8,7 +8,7 @@ use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
-use Domain\JewelleryProperties\TieClips\TieClipTypes\Enums\TieClipTypeBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\TieClips\TieClipTypes\Enums\TieClipTypeBuilderEnum;
 use Random\RandomException;
 
 final readonly class TieClipProps implements CategoryPropsBuilderInterface

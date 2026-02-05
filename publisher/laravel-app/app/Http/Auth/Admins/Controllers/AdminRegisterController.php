@@ -6,8 +6,8 @@ namespace App\Http\Auth\Admins\Controllers;
 
 use App\Http\Auth\Admins\Requests\AdminRegisterRequest;
 use App\Http\Auth\Shared\Controllers\BaseAuthController;
-use Domain\Users\Admins\Services\AdminRegisterService;
 use Illuminate\Http\JsonResponse;
+use UserDomain\Users\Admins\Services\AdminRegisterService;
 
 final class AdminRegisterController extends BaseAuthController
 {

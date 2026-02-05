@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use Domain\Inserts\Stones\Enums\StoneEnum;
-use Domain\Inserts\Stones\Models\Stone;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use JewelleryDomain\Jewelleries\Inserts\Stones\Enums\StoneEnum;
+use JewelleryDomain\Jewelleries\Inserts\Stones\Models\Stone;
 
 final class SQLTestSeeder extends Seeder
 {

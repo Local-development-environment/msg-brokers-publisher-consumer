@@ -5,8 +5,8 @@ namespace App\Http\Admin\SharedProperty\NeckSizes\Controllers;
 
 use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadCollection;
 use App\Http\Controllers\Controller;
-use Domain\Shared\JewelleryProperties\NeckSizes\Services\Relationships\NeckSizesBeadsRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\NeckSizes\Services\Relationships\NeckSizesBeadsRelationshipService;
 
 final class NeckSizesBeadsRelatedController extends Controller
 {

@@ -26,6 +26,7 @@
             "App\\": "app/",
             "JewelleryDomain\\": "src/JewelleryDomain/",
             "UserDomain\\": "src/UserDomain/",
+            "JewelleryGenerator\\": "src/JewelleryGenerator/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

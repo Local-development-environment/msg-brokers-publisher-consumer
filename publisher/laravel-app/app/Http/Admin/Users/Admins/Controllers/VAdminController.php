@@ -6,9 +6,9 @@ namespace App\Http\Admin\Users\Admins\Controllers;
 
 use App\Http\Admin\Users\Admins\Resources\VAdminCollection;
 use App\Http\Controllers\Controller;
-use Domain\Users\VAdmins\Services\VAdminService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use UserDomain\Users\VAdmins\Services\VAdminService;
 
 final class VAdminController extends Controller
 {

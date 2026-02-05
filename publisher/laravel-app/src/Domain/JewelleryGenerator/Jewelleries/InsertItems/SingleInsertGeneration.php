@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems;
 
 use Domain\JewelleryGenerator\Jewelleries\InsertItems\OrderInserts\FirstInsertGeneration;
-use Domain\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
+use JewelleryDomain\Jewelleries\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
 
 final class SingleInsertGeneration
 {

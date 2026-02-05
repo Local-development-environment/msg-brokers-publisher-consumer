@@ -6,9 +6,9 @@ namespace App\Http\Admin\Insert\StoneItemGrades\Controllers;
 
 use App\Http\Admin\Insert\StoneItemGrades\Resources\StoneItemGradeCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\StoneItemGrades\Services\StoneItemGradeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\StoneItemGrades\Services\StoneItemGradeService;
 
 final class StoneItemGradeController extends Controller
 {

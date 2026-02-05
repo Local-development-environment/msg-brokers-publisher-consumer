@@ -9,10 +9,10 @@ use App\Http\Admin\SpecProperties\Rings\RingSizes\Requests\RingSizeUpdateRequest
 use App\Http\Admin\SpecProperties\Rings\RingSizes\Resources\RingSizeCollection;
 use App\Http\Admin\SpecProperties\Rings\RingSizes\Resources\RingSizeResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Rings\RingSizes\Enums\RingSizeNameRoutesEnum;
-use Domain\JewelleryProperties\Rings\RingSizes\Services\RingSizeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingSizes\Enums\RingSizeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Rings\RingSizes\Services\RingSizeService;
 use Throwable;
 
 final class RingSizeController extends Controller

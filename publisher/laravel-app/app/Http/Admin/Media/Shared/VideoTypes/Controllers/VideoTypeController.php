@@ -8,11 +8,10 @@ use App\Http\Admin\Media\Shared\VideoTypes\Requests\VideoTypeUpdateRequest;
 use App\Http\Admin\Media\Shared\VideoTypes\Resources\VideoTypeCollection;
 use App\Http\Admin\Media\Shared\VideoTypes\Resources\VideoTypeResource;
 use App\Http\Controllers\Controller;
-use Domain\Medias\Shared\MediaTypes\Services\MediaTypeService;
-use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeNameRoutesEnum;
-use Domain\Medias\Shared\VideoTypes\Services\VideoTypeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Medias\Shared\VideoTypes\Enums\VideoTypeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\Shared\VideoTypes\Services\VideoTypeService;
 use Throwable;
 
 final class VideoTypeController extends Controller

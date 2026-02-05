@@ -2,8 +2,8 @@
 
 namespace App\Http\Admin\SharedProperty\Clasps\Requests;
 
-use Domain\Shared\JewelleryProperties\Clasps\Models\Clasp;
 use Illuminate\Foundation\Http\FormRequest;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Clasps\Models\Clasp;
 
 class ClaspStoreRequest extends FormRequest
 {

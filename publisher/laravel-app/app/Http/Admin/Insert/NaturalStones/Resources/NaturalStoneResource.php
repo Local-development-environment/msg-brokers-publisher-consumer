@@ -8,12 +8,12 @@ use App\Http\Admin\Insert\StoneFamilies\Resources\StoneFamilyResource;
 use App\Http\Admin\Insert\StoneGroups\Resources\StoneGroupResource;
 use App\Http\Admin\Insert\Stones\Resources\StoneResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\NaturalStones\Enums\NatureStoneEnum;
-use Domain\Inserts\NaturalStones\Enums\NatureStoneNameRoutesEnum;
-use Domain\Inserts\NaturalStones\Enums\NatureStoneRelationshipsEnum;
-use Domain\Inserts\NaturalStones\Models\NaturalStone;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\NaturalStones\Enums\NatureStoneEnum;
+use JewelleryDomain\Jewelleries\Inserts\NaturalStones\Enums\NatureStoneNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\NaturalStones\Enums\NatureStoneRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Inserts\NaturalStones\Models\NaturalStone;
 
 /** @mixin NaturalStone */
 final class NaturalStoneResource extends JsonResource

@@ -5,8 +5,8 @@ namespace App\Http\Admin\Insert\GrownStones\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
-use Domain\Inserts\GrownStones\Services\Relationships\GrownStonesStoneFamilyRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Inserts\GrownStones\Services\Relationships\GrownStonesStoneFamilyRelationshipService;
 
 final class GrownStonesStoneFamilyRelationshipController extends Controller
 {

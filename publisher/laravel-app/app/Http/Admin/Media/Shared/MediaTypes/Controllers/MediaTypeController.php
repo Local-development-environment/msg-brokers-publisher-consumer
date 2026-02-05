@@ -8,10 +8,10 @@ use App\Http\Admin\Media\Shared\MediaTypes\Requests\MediaTypeUpdateRequest;
 use App\Http\Admin\Media\Shared\MediaTypes\Resources\MediaTypeCollection;
 use App\Http\Admin\Media\Shared\MediaTypes\Resources\MediaTypeResource;
 use App\Http\Controllers\Controller;
-use Domain\Medias\Shared\MediaTypes\Enums\MediaTypeNameRoutesEnum;
-use Domain\Medias\Shared\MediaTypes\Services\MediaTypeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Medias\Shared\MediaTypes\Enums\MediaTypeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\Shared\MediaTypes\Services\MediaTypeService;
 use Throwable;
 
 final class MediaTypeController extends Controller

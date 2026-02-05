@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace App\Http\Admin\Users\Users\Resources;
 
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Users\VUsers\Enums\VUserEnum;
-use Domain\Users\VUsers\Models\VUser;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use UserDomain\Users\VUsers\Enums\VUserEnum;
+use UserDomain\Users\VUsers\Models\VUser;
 
 /** @mixin VUser */
 class VUserResource extends JsonResource

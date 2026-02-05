@@ -3,12 +3,11 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\SpecProperties\Bracelets\BraceletMetrics\Resources;
 
-use App\Http\Shared\Resources\Identifiers\ApiEntityIdentifierResource;
-use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Enums\BraceletMetricEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Enums\BraceletMetricNameRoutesEnum;
-use Domain\JewelleryProperties\Bracelets\BraceletMetrics\Models\BraceletMetric;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BraceletMetrics\Enums\BraceletMetricEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BraceletMetrics\Enums\BraceletMetricNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BraceletMetrics\Models\BraceletMetric;
 
 /** @mixin BraceletMetric */
 final class BraceletMetricResource extends JsonResource

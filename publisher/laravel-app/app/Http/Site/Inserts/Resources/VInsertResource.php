@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace App\Http\Site\Inserts\Resources;
 
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\InsertViews\Models\VInsert;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\InsertViews\Models\VInsert;
 
 /**
  * @mixin VInsert

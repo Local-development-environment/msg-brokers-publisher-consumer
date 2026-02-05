@@ -4,11 +4,11 @@ declare(strict_types=1);
 namespace App\Http\Admin\SpecProperties\Beads\Bead\Requests;
 
 use Domain\Jewelleries\Categories\Enums\CategoryBuilderEnum;
-use Domain\JewelleryProperties\Beads\BeadMetrics\Models\BeadMetric;
-use Domain\JewelleryProperties\Beads\Beads\Models\Bead;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadMetrics\Models\BeadMetric;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\Beads\Models\Bead;
 
 final class BeadStoreRequest extends FormRequest
 {

@@ -6,9 +6,9 @@ namespace App\Http\Admin\SpecProperties\Bracelets\BodyPart\Controllers;
 use App\Http\Admin\SpecProperties\Bracelets\BodyPart\Resources\BodyPartCollection;
 use App\Http\Admin\SpecProperties\Bracelets\BodyPart\Resources\BodyPartResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Bracelets\BodyParts\Services\BodyPartService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Bracelets\BodyParts\Services\BodyPartService;
 
 final class BodyPartController extends Controller
 {

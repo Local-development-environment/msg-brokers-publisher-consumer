@@ -37,11 +37,11 @@ use App\Http\Admin\SharedProperty\Weaving\Controllers\WeavingsBaseWeavingRelated
 use App\Http\Admin\SharedProperty\Weaving\Controllers\WeavingsBaseWeavingRelationshipController;
 use App\Http\Admin\SharedProperty\Weaving\Controllers\WeavingsBraceletsRelatedController;
 use App\Http\Admin\SharedProperty\Weaving\Controllers\WeavingsBraceletsRelationshipController;
-use Domain\Shared\JewelleryProperties\BaseWeavings\Enums\BaseWeavingNameRoutesEnum;
-use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspNameRoutesEnum;
-use Domain\Shared\JewelleryProperties\LengthNames\Enums\LengthNameNameRoutesEnum;
-use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeNameRoutesEnum;
-use Domain\Shared\JewelleryProperties\Weavings\Enums\WeavingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\BaseWeavings\Enums\BaseWeavingNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Clasps\Enums\ClaspNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\LengthNames\Enums\LengthNameNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\NeckSizes\Enums\NeckSizeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Weavings\Enums\WeavingNameRoutesEnum;
 
 Route::group([
     'middleware' => 'auth:admin'

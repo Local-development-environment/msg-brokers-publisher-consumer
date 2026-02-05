@@ -8,10 +8,10 @@ use App\Http\Admin\SharedProperty\NeckSizes\Requests\NeckSizeUpdateRequest;
 use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeCollection;
 use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeResource;
 use App\Http\Controllers\Controller;
-use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeNameRoutesEnum;
-use Domain\Shared\JewelleryProperties\NeckSizes\Services\NeckSizeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\NeckSizes\Enums\NeckSizeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\NeckSizes\Services\NeckSizeService;
 
 final class NeckSizeController extends Controller
 {

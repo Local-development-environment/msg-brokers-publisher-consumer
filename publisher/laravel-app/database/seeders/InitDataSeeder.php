@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use Domain\Jewelleries\Jewelleries\Enums\JewelleryEnum;
-use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeBuilderEnum;
-use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewelleryBase\Enums\JewelleryEnum;
+use JewelleryDomain\Jewelleries\Medias\Shared\VideoTypes\Enums\VideoTypeBuilderEnum;
+use JewelleryDomain\Jewelleries\Medias\Shared\VideoTypes\Enums\VideoTypeEnum;
 
 final class InitDataSeeder extends Seeder
 {

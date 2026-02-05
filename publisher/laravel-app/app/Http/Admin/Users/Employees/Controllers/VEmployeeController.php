@@ -6,9 +6,9 @@ namespace App\Http\Admin\Users\Employees\Controllers;
 
 use App\Http\Admin\Users\Employees\Resources\VEmployeeCollection;
 use App\Http\Controllers\Controller;
-use Domain\Users\VEmployees\Services\VEmployeeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use UserDomain\Users\VEmployees\Services\VEmployeeService;
 
 final class VEmployeeController extends Controller
 {

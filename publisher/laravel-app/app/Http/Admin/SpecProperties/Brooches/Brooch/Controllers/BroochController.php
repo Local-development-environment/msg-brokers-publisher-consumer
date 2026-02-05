@@ -8,11 +8,11 @@ use app\Http\Admin\SpecProperties\Brooches\Brooch\Requests\BroochUpdateRequest;
 use app\Http\Admin\SpecProperties\Brooches\Brooch\Resources\BroochCollection;
 use app\Http\Admin\SpecProperties\Brooches\Brooch\Resources\BroochResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Brooches\Brooches\Enums\BroochEnum;
-use Domain\JewelleryProperties\Brooches\Brooches\Enums\BroochNameRoutesEnum;
-use Domain\JewelleryProperties\Brooches\Brooches\Services\BroochService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Brooches\Brooches\Enums\BroochEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Brooches\Brooches\Enums\BroochNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Brooches\Brooches\Services\BroochService;
 use Throwable;
 
 final class BroochController extends Controller

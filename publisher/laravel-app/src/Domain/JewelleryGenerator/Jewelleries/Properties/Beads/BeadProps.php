@@ -6,9 +6,9 @@ namespace Domain\JewelleryGenerator\Jewelleries\Properties\Beads;
 
 use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
-use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspBuilderEnum;
-use Domain\Shared\JewelleryProperties\NeckSizes\Enums\NeckSizeBuilderEnum;
 use Illuminate\Support\Facades\DB;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Clasps\Enums\ClaspBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\NeckSizes\Enums\NeckSizeBuilderEnum;
 
 final readonly class BeadProps implements CategoryPropsBuilderInterface
 {

@@ -6,11 +6,11 @@ namespace App\Http\Admin\SpecProperties\TieClips\TieClip\Resources;
 
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\TieClips\TieClips\Enums\TieClipNameRoutesEnum;
-use Domain\JewelleryProperties\TieClips\TieClips\Enums\TieClipRelationshipsEnum;
-use Domain\JewelleryProperties\TieClips\TieClips\Models\TieClip;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\TieClips\TieClips\Enums\TieClipNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\TieClips\TieClips\Enums\TieClipRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\TieClips\TieClips\Models\TieClip;
 
 /** @mixin TieClip */
 final class TieClipResource extends JsonResource

@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\SpecProperties\Necklaces\Necklace\Requests;
 
-use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
-use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Models\NecklaceMetric;
-use Domain\JewelleryProperties\Necklaces\Necklaces\Models\Necklace;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use JewelleryDomain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\NecklaceMetrics\Models\NecklaceMetric;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\Necklaces\Models\Necklace;
 
 final class NecklaceStoreRequest extends FormRequest
 {

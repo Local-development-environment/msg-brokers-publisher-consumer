@@ -5,8 +5,8 @@ namespace App\Http\Admin\SpecProperties\Chains\Chain\Controllers;
 
 use App\Http\Admin\SharedProperty\Weaving\Resources\WeavingCollection;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Chains\Chains\Services\Relationships\ChainsWeavingsRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\Chains\Services\Relationships\ChainsWeavingsRelationshipService;
 
 final class ChainsWeavingsRelatedController extends Controller
 {

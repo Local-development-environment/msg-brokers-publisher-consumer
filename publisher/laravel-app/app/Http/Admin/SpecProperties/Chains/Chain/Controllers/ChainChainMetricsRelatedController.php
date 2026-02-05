@@ -5,8 +5,8 @@ namespace App\Http\Admin\SpecProperties\Chains\Chain\Controllers;
 
 use App\Http\Admin\SpecProperties\Chains\ChainMetrics\Resources\ChainMetricCollection;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Chains\Chains\Services\Relationships\ChainChainMetricsRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Chains\Chains\Services\Relationships\ChainChainMetricsRelationshipService;
 
 final class ChainChainMetricsRelatedController extends Controller
 {

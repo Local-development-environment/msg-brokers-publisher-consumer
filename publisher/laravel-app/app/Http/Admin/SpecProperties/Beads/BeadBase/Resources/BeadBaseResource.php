@@ -5,11 +5,11 @@ namespace App\Http\Admin\SpecProperties\Beads\BeadBase\Resources;
 
 use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseNameRoutesEnum;
-use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseRelationshipsEnum;
-use Domain\JewelleryProperties\Beads\BeadBases\Models\BeadBase;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadBases\Enums\BeadBaseNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadBases\Enums\BeadBaseRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadBases\Models\BeadBase;
 
 /** @mixin BeadBase */
 final class BeadBaseResource extends JsonResource

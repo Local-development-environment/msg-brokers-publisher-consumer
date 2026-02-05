@@ -6,11 +6,11 @@ namespace App\Http\Admin\Media\Shared\VideoTypes\Resources;
 use App\Http\Admin\Media\CatalogMedias\CatalogVideoDetails\Resources\CatalogVideoDetailCollection;
 use App\Http\Admin\Media\ReviewMedias\ReviewVideoDetails\Resources\ReviewVideoDetailCollection;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeNameRoutesEnum;
-use Domain\Medias\Shared\VideoTypes\Enums\VideoTypeRelationshipsEnum;
-use Domain\Medias\Shared\VideoTypes\Models\VideoType;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Medias\Shared\VideoTypes\Enums\VideoTypeNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Medias\Shared\VideoTypes\Enums\VideoTypeRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Medias\Shared\VideoTypes\Models\VideoType;
 
 /** @mixin VideoType */
 final class VideoTypeResource extends JsonResource

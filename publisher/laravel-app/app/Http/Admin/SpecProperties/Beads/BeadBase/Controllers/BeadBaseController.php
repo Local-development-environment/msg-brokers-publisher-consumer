@@ -8,10 +8,10 @@ use App\Http\Admin\SpecProperties\Beads\BeadBase\Requests\BeadBaseUpdateRequest;
 use App\Http\Admin\SpecProperties\Beads\BeadBase\Resources\BeadBaseCollection;
 use App\Http\Admin\SpecProperties\Beads\BeadBase\Resources\BeadBaseResource;
 use App\Http\Controllers\Controller;
-use Domain\JewelleryProperties\Beads\BeadBases\Enums\BeadBaseNameRoutesEnum;
-use Domain\JewelleryProperties\Beads\BeadBases\Services\BeadBaseService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadBases\Enums\BeadBaseNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadBases\Services\BeadBaseService;
 
 final class BeadBaseController extends Controller
 {

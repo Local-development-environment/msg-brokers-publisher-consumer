@@ -5,12 +5,12 @@ namespace App\Http\Admin\Insert\StoneGroups\Resources;
 
 use App\Http\Admin\Insert\GroupGrades\Resources\GroupGradeResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\StoneGroups\Enums\StoneGroupEnum;
-use Domain\Inserts\StoneGroups\Enums\StoneGroupNameRoutesEnum;
-use Domain\Inserts\StoneGroups\Enums\StoneGroupRelationshipsEnum;
-use Domain\Inserts\StoneGroups\Models\StoneGroup;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\StoneGroups\Enums\StoneGroupEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGroups\Enums\StoneGroupNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGroups\Enums\StoneGroupRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGroups\Models\StoneGroup;
 
 /** @mixin StoneGroup */
 final class StoneGroupResource extends JsonResource

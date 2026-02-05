@@ -5,9 +5,9 @@ namespace App\Http\Admin\Insert\InsertOptionalInfos\Controllers;
 
 use App\Http\Admin\Insert\InsertOptionalInfos\Resources\InsertOptionalInfoCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\InsertOptionalInfos\Services\InsertOptionalInfoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\InsertOptionalInfos\Services\InsertOptionalInfoService;
 
 final class InsertOptionalInfoController extends Controller
 {

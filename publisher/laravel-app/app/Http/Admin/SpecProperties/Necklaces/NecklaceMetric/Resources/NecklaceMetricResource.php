@@ -6,11 +6,11 @@ namespace App\Http\Admin\SpecProperties\Necklaces\NecklaceMetric\Resources;
 use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeResource;
 use App\Http\Admin\SpecProperties\Necklaces\Necklace\Resources\NecklaceResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Enums\NecklaceMetricNameRoutesEnum;
-use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Enums\NecklaceMetricRelationshipsEnum;
-use Domain\JewelleryProperties\Necklaces\NecklaceMetrics\Models\NecklaceMetric;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\NecklaceMetrics\Enums\NecklaceMetricNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\NecklaceMetrics\Enums\NecklaceMetricRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Necklaces\NecklaceMetrics\Models\NecklaceMetric;
 
 /** @mixin NecklaceMetric */
 final class NecklaceMetricResource extends JsonResource

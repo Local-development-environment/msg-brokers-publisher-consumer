@@ -4,9 +4,9 @@ namespace App\Http\Admin\Insert\TypeOrigins\Controllers;
 
 use App\Http\Admin\Insert\TypeOrigins\Resources\TypeOriginCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\TypeOrigins\Services\StoneTypeOriginService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\TypeOrigins\Services\StoneTypeOriginService;
 
 class TypeOriginController extends Controller
 {

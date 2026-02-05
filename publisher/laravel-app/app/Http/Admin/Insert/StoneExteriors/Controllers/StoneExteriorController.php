@@ -5,9 +5,9 @@ namespace App\Http\Admin\Insert\StoneExteriors\Controllers;
 
 use App\Http\Admin\Insert\StoneExteriors\Resources\StoneExteriorCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\StoneExteriors\Services\StoneExteriorService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\StoneExteriors\Services\StoneExteriorService;
 
 final class StoneExteriorController extends Controller
 {

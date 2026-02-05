@@ -6,12 +6,10 @@ namespace App\Http\Admin\Insert\GrownStones\Controllers;
 use App\Http\Admin\Insert\GrownStones\Resources\GrownStoneCollection;
 use App\Http\Admin\Insert\GrownStones\Resources\GrownStoneResource;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\GrownStones\Models\GrownStone;
-use Domain\Inserts\GrownStones\Services\GrownStoneService;
-use Domain\Users\Admins\Models\Admin;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use JewelleryDomain\Jewelleries\Inserts\GrownStones\Models\GrownStone;
+use JewelleryDomain\Jewelleries\Inserts\GrownStones\Services\GrownStoneService;
 
 final class GrownStoneController extends Controller
 {

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\InsertItems\OrderInserts;
 
-use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
-use Domain\Inserts\Stones\Enums\StoneBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
+use JewelleryDomain\Jewelleries\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\Stones\Enums\StoneBuilderEnum;
 
 final class SecondInsertGeneration
 {

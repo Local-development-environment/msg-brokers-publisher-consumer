@@ -5,9 +5,9 @@ namespace App\Http\Admin\SharedProperty\Weaving\Controllers;
 
 use App\Http\Admin\SharedProperty\Weaving\Resources\WeavingCollection;
 use App\Http\Controllers\Controller;
-use Domain\Shared\JewelleryProperties\Weavings\Services\WeavingService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Weavings\Services\WeavingService;
 
 final class WeavingController extends Controller
 {

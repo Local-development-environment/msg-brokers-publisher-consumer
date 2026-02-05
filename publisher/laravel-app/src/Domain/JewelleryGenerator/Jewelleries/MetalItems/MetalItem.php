@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Jewelleries\MetalItems;
 
-use Domain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
 use Domain\JewelleryGenerator\Traits\ProbabilityArrayElementTrait;
-use Domain\PreciousMetals\Coverages\Enums\CoverageBuilderEnum;
-use Domain\PreciousMetals\Hallmarks\Enums\HallmarkBuilderEnum;
-use Domain\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
 use Illuminate\Support\Arr;
+use JewelleryDomain\Jewelleries\JewelleryCategories\Enums\JewelleryCategoryBuilderEnum;
+use JewelleryDomain\Jewelleries\PreciousMetals\Coverages\Enums\CoverageBuilderEnum;
+use JewelleryDomain\Jewelleries\PreciousMetals\Hallmarks\Enums\HallmarkBuilderEnum;
+use JewelleryDomain\Jewelleries\PreciousMetals\PreciousMetals\Enums\PreciousMetalBuilderEnum;
 
 final class MetalItem
 {

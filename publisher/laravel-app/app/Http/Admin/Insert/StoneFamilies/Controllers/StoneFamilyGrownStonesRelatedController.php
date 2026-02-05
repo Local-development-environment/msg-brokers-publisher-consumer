@@ -4,8 +4,8 @@ namespace App\Http\Admin\Insert\StoneFamilies\Controllers;
 
 use App\Http\Admin\Insert\GrownStones\Resources\GrownStoneCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\StoneFamilies\Services\Relationships\StoneFamilyGrownStonesRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Inserts\StoneFamilies\Services\Relationships\StoneFamilyGrownStonesRelationshipService;
 
 class StoneFamilyGrownStonesRelatedController extends Controller
 {

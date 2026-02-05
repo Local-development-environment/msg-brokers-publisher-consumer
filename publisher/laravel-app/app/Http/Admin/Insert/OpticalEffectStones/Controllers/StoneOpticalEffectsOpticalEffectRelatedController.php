@@ -5,8 +5,8 @@ namespace App\Http\Admin\Insert\OpticalEffectStones\Controllers;
 
 use App\Http\Admin\Insert\OpticalEffects\Resources\OpticalEffectResource;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\StoneOpticalEffects\Services\Relationships\StoneOpticalEffectsOpticalEffectRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Inserts\StoneOpticalEffects\Services\Relationships\StoneOpticalEffectsOpticalEffectRelationshipService;
 
 final class StoneOpticalEffectsOpticalEffectRelatedController extends Controller
 {

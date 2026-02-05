@@ -5,9 +5,9 @@ namespace App\Http\Site\Inserts\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Site\Inserts\Resources\VInsertCollection;
 use App\Http\Site\Inserts\Resources\VInsertResource;
-use Domain\Inserts\InsertViews\Services\VInsertService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\InsertViews\Services\VInsertService;
 
 class VInsertController extends Controller
 {

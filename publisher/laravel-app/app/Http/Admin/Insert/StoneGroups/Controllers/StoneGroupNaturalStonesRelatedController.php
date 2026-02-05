@@ -5,8 +5,8 @@ namespace App\Http\Admin\Insert\StoneGroups\Controllers;
 
 use App\Http\Admin\Insert\NaturalStones\Resources\NaturalStoneCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\StoneGroups\Services\Relationships\StoneGroupNaturalStonesRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Inserts\StoneGroups\Services\Relationships\StoneGroupNaturalStonesRelationshipService;
 
 final class StoneGroupNaturalStonesRelatedController extends Controller
 {

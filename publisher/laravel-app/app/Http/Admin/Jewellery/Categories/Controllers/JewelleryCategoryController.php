@@ -6,9 +6,9 @@ namespace App\Http\Admin\Jewellery\Categories\Controllers;
 use App\Http\Admin\Jewellery\Categories\Resources\JewelleryCategoryCollection;
 use App\Http\Admin\Jewellery\Categories\Resources\JewelleryCategoryResource;
 use App\Http\Controllers\Controller;
-use Domain\Jewelleries\JewelleryCategories\Services\JewelleryCategoryService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\JewelleryCategories\Services\JewelleryCategoryService;
 
 final class JewelleryCategoryController extends Controller
 {

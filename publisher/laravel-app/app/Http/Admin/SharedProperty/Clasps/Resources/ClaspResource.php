@@ -3,16 +3,15 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\SharedProperty\Clasps\Resources;
 
-use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadCollection;
 use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadResource;
 use App\Http\Admin\SpecProperties\Bracelets\Bracelet\Resources\BraceletResource;
 use App\Http\Admin\SpecProperties\Chains\Chain\Resources\ChainResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspNameRoutesEnum;
-use Domain\Shared\JewelleryProperties\Clasps\Enums\ClaspRelationshipsEnum;
-use Domain\Shared\JewelleryProperties\Clasps\Models\Clasp;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Clasps\Enums\ClaspNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Clasps\Enums\ClaspRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Shared\Clasps\Models\Clasp;
 
 /** @mixin Clasp */
 final class ClaspResource extends JsonResource

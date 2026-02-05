@@ -5,10 +5,10 @@ namespace App\Http\Admin\Insert\ImitationStones\Controllers;
 use App\Http\Admin\Insert\ImitationStones\Resources\ImitationStoneCollection;
 use App\Http\Admin\Insert\ImitationStones\Resources\ImitationStoneResource;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
-use Domain\Inserts\ImitationStones\Services\ImitationStoneService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\ImitationStones\Enums\ImitationStoneNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\ImitationStones\Services\ImitationStoneService;
 use Throwable;
 
 class ImitationStoneController extends Controller

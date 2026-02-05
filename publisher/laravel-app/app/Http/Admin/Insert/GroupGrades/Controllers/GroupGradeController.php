@@ -7,9 +7,9 @@ namespace App\Http\Admin\Insert\GroupGrades\Controllers;
 use App\Http\Admin\Insert\GroupGrades\Resources\GroupGradeCollection;
 use App\Http\Admin\Insert\GroupGrades\Resources\GroupGradeResource;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\GroupGrades\Services\GroupGradeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\GroupGrades\Services\GroupGradeService;
 
 final class GroupGradeController extends Controller
 {

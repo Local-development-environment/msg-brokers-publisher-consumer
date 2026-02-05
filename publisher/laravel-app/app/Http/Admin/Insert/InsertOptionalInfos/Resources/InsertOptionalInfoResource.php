@@ -5,12 +5,12 @@ namespace App\Http\Admin\Insert\InsertOptionalInfos\Resources;
 
 use App\Http\Admin\Insert\Inserts\Resources\InsertResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
-use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoNameRoutesEnum;
-use Domain\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoRelationshipsEnum;
-use Domain\Inserts\InsertOptionalInfos\Models\InsertOptionalInfo;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoEnum;
+use JewelleryDomain\Jewelleries\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\InsertOptionalInfos\Enums\InsertOptionalInfoRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Inserts\InsertOptionalInfos\Models\InsertOptionalInfo;
 
 /** @mixin InsertOptionalInfo */
 final class InsertOptionalInfoResource extends JsonResource

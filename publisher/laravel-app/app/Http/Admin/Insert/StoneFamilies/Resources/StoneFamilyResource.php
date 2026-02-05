@@ -6,12 +6,12 @@ namespace App\Http\Admin\Insert\StoneFamilies\Resources;
 use App\Http\Admin\Insert\GrownStones\Resources\GrownStoneResource;
 use App\Http\Admin\Insert\NaturalStones\Resources\NaturalStoneResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Inserts\StoneFamilies\Enums\StoneFamilyEnum;
-use Domain\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
-use Domain\Inserts\StoneFamilies\Enums\StoneFamilyRelationshipsEnum;
-use Domain\Inserts\StoneFamilies\Models\StoneFamily;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\Inserts\StoneFamilies\Enums\StoneFamilyEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneFamilies\Enums\StoneFamilyNameRoutesEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneFamilies\Enums\StoneFamilyRelationshipsEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneFamilies\Models\StoneFamily;
 
 /** @mixin StoneFamily */
 final class StoneFamilyResource extends JsonResource

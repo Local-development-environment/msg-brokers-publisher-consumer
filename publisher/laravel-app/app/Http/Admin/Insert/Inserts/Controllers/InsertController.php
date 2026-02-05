@@ -5,9 +5,9 @@ namespace App\Http\Admin\Insert\Inserts\Controllers;
 
 use App\Http\Admin\Insert\Inserts\Resources\InsertCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\Inserts\Services\InsertService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\Inserts\Services\InsertService;
 
 final class InsertController extends Controller
 {

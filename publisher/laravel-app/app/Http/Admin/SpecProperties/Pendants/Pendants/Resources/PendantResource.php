@@ -6,11 +6,11 @@ namespace App\Http\Admin\SpecProperties\Pendants\Pendants\Resources;
 
 use App\Http\Admin\Jewellery\Jewelleries\Resources\JewelleryResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Pendants\Pendants\Enums\PendantNameRoutesEnum;
-use Domain\JewelleryProperties\Pendants\Pendants\Enums\PendantRelationshipsEnum;
-use Domain\JewelleryProperties\Pendants\Pendants\Models\Pendant;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Pendants\Pendants\Enums\PendantNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Pendants\Pendants\Enums\PendantRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Pendants\Pendants\Models\Pendant;
 
 /** @mixin Pendant */
 final class PendantResource extends JsonResource

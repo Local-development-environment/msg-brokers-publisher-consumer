@@ -7,8 +7,8 @@ namespace Domain\JewelleryGenerator\Jewelleries\Properties\Earrings;
 use Domain\JewelleryGenerator\CategoryPropsBuilderInterface;
 use Domain\JewelleryGenerator\Traits\MetalPriceDifferentiationTrait;
 use Domain\JewelleryGenerator\Traits\SizePricePropsTrait;
-use Domain\JewelleryProperties\Earrings\EarringClasps\Enums\EarringClaspBuilderEnum;
-use Domain\JewelleryProperties\Earrings\EarringTypes\Enums\EarringTypeBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Earrings\EarringClasps\Enums\EarringClaspBuilderEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Earrings\EarringTypes\Enums\EarringTypeBuilderEnum;
 
 final readonly class EarringProps implements CategoryPropsBuilderInterface
 {

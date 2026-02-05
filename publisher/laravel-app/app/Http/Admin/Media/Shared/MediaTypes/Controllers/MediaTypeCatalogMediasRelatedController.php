@@ -5,8 +5,8 @@ namespace App\Http\Admin\Media\Shared\MediaTypes\Controllers;
 
 use App\Http\Admin\Media\CatalogMedias\CatalogMedias\Resources\CatalogMediaCollection;
 use App\Http\Controllers\Controller;
-use Domain\Medias\Shared\MediaTypes\Services\Relationships\MediaTypeCatalogMediasRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Medias\Shared\MediaTypes\Services\Relationships\MediaTypeCatalogMediasRelationshipService;
 
 final class MediaTypeCatalogMediasRelatedController extends Controller
 {

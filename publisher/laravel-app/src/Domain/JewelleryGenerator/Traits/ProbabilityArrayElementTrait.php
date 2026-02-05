@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryGenerator\Traits;
 
-use Domain\Inserts\Facets\Enums\FacetBuilderEnum;
-use Domain\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
-use Domain\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\Facets\Enums\FacetBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGrades\Enums\StoneGradeBuilderEnum;
+use JewelleryDomain\Jewelleries\Inserts\StoneGroups\Enums\StoneGroupBuilderEnum;
 
 trait ProbabilityArrayElementTrait
 {

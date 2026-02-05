@@ -17,18 +17,17 @@ final readonly class BeadStoneDimensions
     {
         return match ($form) {
             BeadCabochonFormNamesEnum::SPHERE_CABOCHON->value,
-            BeadCutFormNamesEnum::SPHERE_CUT->value => $this->getDiameter(),
+            BeadCutFormNamesEnum::SPHERE_CUT->value              => $this->getDiameter(),
             BeadCutFormNamesEnum::BRIOLETTE_CUT->value,
             BeadCutFormNamesEnum::BICONE_CUT->value,
             BeadCutFormNamesEnum::XILION_CUT->value,
-            BeadCutFormNamesEnum::BAROQUE_CUT->value,
-            BeadCutFormNamesEnum::OVAL_CUT->value,
+            BeadCutFormNamesEnum::ELLIPSOID_CUT->value,
             BeadCutFormNamesEnum::PYRAMID_CUT->value,
-            BeadCabochonFormNamesEnum::OVAL_CABOCHON->value,
+            BeadCabochonFormNamesEnum::ELLIPSOID_CABOCHON->value,
             BeadCabochonFormNamesEnum::RONDEL_CABOCHON->value,
-            BeadCabochonFormNamesEnum::PEAR_CABOCHON->value => $this->getRectangle(),
-            BeadCutFormNamesEnum::CUBE_CUT->value => $this->getSquare(),
-            BeadCutFormNamesEnum::NATURAL->value      => $this->getNatural(),
+            BeadCabochonFormNamesEnum::BRIOLETTE_CABOCHON->value => $this->getRectangle(),
+            BeadCutFormNamesEnum::CUBE_CUT->value                => $this->getSquare(),
+            BeadCutFormNamesEnum::BAROQUE_CUT->value             => $this->getNatural(),
         };
     }
 

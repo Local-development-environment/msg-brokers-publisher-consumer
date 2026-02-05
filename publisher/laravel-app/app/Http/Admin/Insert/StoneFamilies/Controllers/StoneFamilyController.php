@@ -4,9 +4,9 @@ namespace App\Http\Admin\Insert\StoneFamilies\Controllers;
 
 use App\Http\Admin\Insert\StoneFamilies\Resources\StoneFamilyCollection;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\StoneFamilies\Services\StoneFamilyService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use JewelleryDomain\Jewelleries\Inserts\StoneFamilies\Services\StoneFamilyService;
 
 class StoneFamilyController extends Controller
 {

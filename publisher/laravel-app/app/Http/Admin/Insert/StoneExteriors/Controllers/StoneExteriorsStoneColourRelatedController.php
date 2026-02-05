@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace App\Http\Admin\Insert\StoneExteriors\Controllers;
 
-use Resources\StoneColourResource;
 use App\Http\Controllers\Controller;
-use Domain\Inserts\StoneExteriors\Services\Relationships\StoneExteriorsStoneColourRelationshipService;
 use Illuminate\Http\JsonResponse;
+use JewelleryDomain\Jewelleries\Inserts\StoneExteriors\Services\Relationships\StoneExteriorsStoneColourRelationshipService;
+use Resources\StoneColourResource;
 
 final class StoneExteriorsStoneColourRelatedController extends Controller
 {

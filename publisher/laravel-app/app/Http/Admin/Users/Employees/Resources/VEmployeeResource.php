@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace App\Http\Admin\Users\Employees\Resources;
 
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\Users\VEmployees\Models\VEmployee;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use UserDomain\Users\VEmployees\Models\VEmployee;
 
 /** @mixin VEmployee */
 final class VEmployeeResource extends JsonResource

@@ -6,11 +6,11 @@ namespace App\Http\Admin\SpecProperties\Beads\BeadMetrics\Resources;
 use App\Http\Admin\SharedProperty\NeckSizes\Resources\NeckSizeResource;
 use App\Http\Admin\SpecProperties\Beads\Bead\Resources\BeadResource;
 use App\Http\Shared\Resources\Traits\JsonApiSpecificationResourceTrait;
-use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricNameRoutesEnum;
-use Domain\JewelleryProperties\Beads\BeadMetrics\Enums\BeadMetricRelationshipsEnum;
-use Domain\JewelleryProperties\Beads\BeadMetrics\Models\BeadMetric;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadMetrics\Enums\BeadMetricNameRoutesEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadMetrics\Enums\BeadMetricRelationshipsEnum;
+use JewelleryDomain\Jewelleries\JewelleryItems\JewellerySpec\Beads\BeadMetrics\Models\BeadMetric;
 
 /** @mixin BeadMetric */
 final class BeadMetricResource extends JsonResource
