@@ -33,7 +33,7 @@ enum StoneNamesEnum: string
     case BIXBIT               = 'биксбит';
     case MORGANITE            = 'морганит';
     case HYACINTH             = 'гиацинт';
-    case HIDDEN               = 'Гидденит';
+    case HIDDEN               = 'гидденит';
     case NATURAL_RIVER_PEARLS = 'жемчуг речной натуральный';
     case CULTURED_SEA_PEARLS  = 'жемчуг морской культивированный';
 //    case STAR_CORUNDUM         = 'корунд звездчатый'; // can be two corundum - ruby and sapphire
@@ -155,7 +155,6 @@ enum StoneNamesEnum: string
     case  BELOMORITE          = 'беломорит';
     case  HEMATITE            = 'гематит';
     case  RHINESTONE          = 'горный хрусталь';
-    case  JADE                = 'жад';
     case  LABRADORITE         = 'лабрадорит';
     case  LARIMAR             = 'ларимар';
     case  OBSIDIAN_IRIDESCENT = 'обсидиан иризирующий';
@@ -189,11 +188,9 @@ enum StoneNamesEnum: string
     case PETRIFIED_WOOD        = 'окаменелое дерево';
     case MARBLED_ONYX          = 'оникс мраморный';
     case OPHIOCALCITE          = 'офиокальцит';
-    case ORNAMENTAL_PORPHYRIES = 'порфиры декоративные';
     case SELENITE              = 'селенит';
     case SERPENTINITE          = 'серпентинит';
     case SKARN                 = 'скарн';
-    case SOAPSTONE             = 'талькохлорид';
     case THUILITE              = 'тулит';
     case FLUORITE              = 'флюорит';
     case SHUNGITE              = 'шунгит';
@@ -242,7 +239,9 @@ enum StoneNamesEnum: string
             self::CHRYSOLITE,
             self::CHROME_DIOPSID,
             self::ANYOLITE,
-            self::MALACHITE             => [
+            self::MALACHITE,
+            self::ACTINOLITE,
+            self::AMAZONITE             => [
                 [StoneColourNamesEnum::GREEN->value, 100],
             ],
             self::RUBY,
@@ -264,15 +263,24 @@ enum StoneNamesEnum: string
             self::BLUE_TOPAZ,
             self::HAWKEYE,
             self::AZURITE,
-            self::LAZURITE              => [
-                [StoneColourNamesEnum::BLUE->value, 100],
+            self::LAZURITE,
+            self::RHODOCHROSITE => [
+                [StoneColourNamesEnum::BLUE->value, 100]
             ],
             self::DEMANTOID             => [
                 [StoneColourNamesEnum::GREEN->value, 95],
-                [StoneColourNamesEnum::YELLOW->value, 5],
+                [StoneColourNamesEnum::YELLOW->value, 5]
             ],
-            self::BLACK_OPAL            => [
-                [StoneColourNamesEnum::BLACK->value, 100],
+            self::BLACK_OPAL,
+            self::GAGAT,
+            self::MARMATITE,
+            self::MORION,
+            self::SHUNGITE,
+            self::HEMATITE,
+            self::OBSIDIAN_IRIDESCENT,
+            self::SPECTROLITE,
+            self::OBSIDIAN => [
+                [StoneColourNamesEnum::BLACK->value, 100]
             ],
             self::PADPARADSCHA          => [
                 [StoneColourNamesEnum::ORANGE->value, 100],
@@ -328,7 +336,8 @@ enum StoneNamesEnum: string
                 [StoneColourNamesEnum::ORANGE->value, 50],
                 [StoneColourNamesEnum::PINK->value, 50],
             ],
-            self::WHITE_NOBLE_OPAL      => [
+            self::WHITE_NOBLE_OPAL,
+            self::BELOMORITE            => [
                 [StoneColourNamesEnum::WHITE->value, 100],
             ],
             self::NOBLE_FIRE_OPAL       => [
@@ -502,16 +511,11 @@ enum StoneNamesEnum: string
                 [StoneColourNamesEnum::BROWN->value, 15],
                 [StoneColourNamesEnum::COLOURLESS->value, 15],
             ],
-            self::MARMATITE,
-            self::MORION,
-            self::SHUNGITE,
-            self::HEMATITE              => [
-                [StoneColourNamesEnum::BLACK->value, 100]
-            ],
             self::MOLDAVITE,
             self::TIGER_EYE,
             self::GREEN_TURQUOISE,
-            self::HELIOTROPE            => [
+            self::HELIOTROPE,
+            self::SERAPHINITIS          => [
                 [StoneColourNamesEnum::GREEN->value, 100]
             ],
             self::MOTHER_PEARL          => [
@@ -607,25 +611,29 @@ enum StoneNamesEnum: string
                 [StoneColourNamesEnum::WHITE->value, 50],
                 [StoneColourNamesEnum::BROWN->value, 50],
             ],
-            self::NEPHRITIS             => [
+            self::NEPHRITIS                     => [
                 [StoneColourNamesEnum::WHITE->value, 15],
                 [StoneColourNamesEnum::GREEN->value, 15],
                 [StoneColourNamesEnum::LIGHT_BLUE->value, 15],
                 [StoneColourNamesEnum::BLACK->value, 15],
                 [StoneColourNamesEnum::YELLOW->value, 15],
                 [StoneColourNamesEnum::RED->value, 10],],
-            self::ONYX                  => [],
-            self::RHODOCHROSITE         => [
-                [StoneColourNamesEnum::BLUE->value, 100]
+            self::ONYX                          => [
+                [StoneColourNamesEnum::BLACK->value, 15],
+                [StoneColourNamesEnum::GREEN->value, 25],
+                [StoneColourNamesEnum::WHITE->value, 30],
+                [StoneColourNamesEnum::PINK->value, 15],
+                [StoneColourNamesEnum::ORANGE->value, 15],
             ],
-            self::RHODONITE             => [
+            self::RHODONITE,
+            self::TUGTUPITE                     => [
                 [StoneColourNamesEnum::RED->value, 50],
                 [StoneColourNamesEnum::PINK->value, 50],
             ],
-            self::SAPPHIRINE            => [
+            self::SAPPHIRINE                    => [
                 [StoneColourNamesEnum::LIGHT_BLUE->value, 100],
             ],
-            self::CORNELIAN             => [
+            self::CORNELIAN                     => [
                 [StoneColourNamesEnum::YELLOW->value, 30],
                 [StoneColourNamesEnum::RED->value, 40],
                 [StoneColourNamesEnum::BROWN->value, 30],
@@ -661,7 +669,9 @@ enum StoneNamesEnum: string
             self::SAPPHIRE_PURPLE       => [
                 [StoneColourNamesEnum::PURPLE->value, 100]
             ],
-            self::EUDIALYTE             => [],
+            self::EUDIALYTE             => [
+                [StoneColourNamesEnum::RED->value, 100]
+            ],
             self::AMBER                 => [
                 [StoneColourNamesEnum::COLOURLESS->value, 70],
                 [StoneColourNamesEnum::YELLOW->value, 5],
@@ -671,59 +681,159 @@ enum StoneNamesEnum: string
                 [StoneColourNamesEnum::WHITE->value, 5],
                 [StoneColourNamesEnum::LIGHT_BLUE->value, 5],
             ],
-            self::AVENTURINE            => [],
-            self::ADULARIA              => [],
-            self::ACTINOLITE            => [],
-            self::AMAZONITE             => [],
-            self::ASTROFYLITIS          => [],
-            self::BELOMORITE            => [],
+            self::AVENTURINE            => [
+                [StoneColourNamesEnum::GREEN->value, 50],
+                [StoneColourNamesEnum::RED->value, 10],
+                [StoneColourNamesEnum::BROWN->value, 10],
+                [StoneColourNamesEnum::WHITE->value, 10],
+                [StoneColourNamesEnum::PINK->value, 10],
+                [StoneColourNamesEnum::BLUE->value, 10],
+            ],
+            self::ADULARIA              => [
+                [StoneColourNamesEnum::COLOURLESS->value, 25],
+                [StoneColourNamesEnum::MULTI_COLOUR->value, 25],
+                [StoneColourNamesEnum::GRAY->value, 10],
+                [StoneColourNamesEnum::WHITE->value, 20],
+                [StoneColourNamesEnum::ORANGE->value, 10],
+                [StoneColourNamesEnum::BLACK->value, 10],
+            ],
+            self::ASTROFYLITIS          => [
+                [StoneColourNamesEnum::YELLOW->value, 50],
+                [StoneColourNamesEnum::BROWN->value, 50]
+            ],
             self::RHINESTONE,
             self::RUTILATED_QUARTZ      => [
                 [StoneColourNamesEnum::COLOURLESS->value, 100]
             ],
-            self::JADE                  => [],
             self::LABRADORITE           => [
                 [StoneColourNamesEnum::BLACK->value, 50],
                 [StoneColourNamesEnum::BROWN->value, 50],
                 [StoneColourNamesEnum::GRAY->value, 50]
             ],
-            self::LARIMAR               => [],
-            self::OBSIDIAN_IRIDESCENT   => [],
-            self::OPAL                  => [],
-            self::PETALITE              => [],
-            self::RHODUSITE             => [],
-            self::CIMBIRCITE            => [],
-            self::SUNSTONE              => [],
-            self::SPECTROLITE           => [],
-            self::STAUROLITE            => [],
-            self::TUGTUPITE             => [],
-            self::ELEOLITHIC            => [],
-            self::JASPER_SMALL_DRAWN    => [],
-            self::JASPER_LANDSCAPE      => [],
-            self::AGALMATALITE          => [],
-            self::BRECCIA               => [],
-            self::GAGAT                 => [],
-            self::WRITING_GRANITE       => [],
-            self::GOLDITE               => [],
-            self::CACHOLONG             => [],
-            self::QUARTZITE             => [],
-            self::SERAPHINITIS          => [],
-            self::CONGLOMERATE          => [],
-            self::PATTERNED_FLINT       => [],
-            self::OBSIDIAN              => [],
-            self::PETRIFIED_WOOD        => [],
-            self::MARBLED_ONYX          => [],
-            self::OPHIOCALCITE          => [],
-            self::ORNAMENTAL_PORPHYRIES => [],
-            self::SELENITE              => [],
-            self::SERPENTINITE          => [],
-            self::SKARN                 => [],
-            self::SOAPSTONE             => [],
-            self::THUILITE              => [],
-            self::FLUORITE              => [],
-            self::MONOCHROMATIC_JASPER  => [],
-            self::BANDED_JASPER         => [],
-            self::TOURMALINE            => [
+            self::LARIMAR               => [
+                [StoneColourNamesEnum::LIGHT_BLUE->value, 50],
+                [StoneColourNamesEnum::BLUE->value, 25],
+                [StoneColourNamesEnum::WHITE->value, 25]
+            ],
+            self::OPAL                  => [
+                [StoneColourNamesEnum::BLACK->value, 30],
+                [StoneColourNamesEnum::COLOURLESS->value, 10],
+                [StoneColourNamesEnum::WHITE->value, 10],
+                [StoneColourNamesEnum::RED->value, 10],
+                [StoneColourNamesEnum::YELLOW->value, 10],
+                [StoneColourNamesEnum::ORANGE->value, 10],
+                [StoneColourNamesEnum::GREEN->value, 10],
+                [StoneColourNamesEnum::BLUE->value, 10],
+            ],
+            self::PETALITE              => [
+                [StoneColourNamesEnum::COLOURLESS->value, 30],
+                [StoneColourNamesEnum::WHITE->value, 40],
+                [StoneColourNamesEnum::GRAY->value, 40],
+            ],
+            self::RHODUSITE             => [
+                [StoneColourNamesEnum::BLUE->value, 80],
+                [StoneColourNamesEnum::BROWN->value, 20]
+            ],
+            self::CIMBIRCITE,
+            self::SUNSTONE              => [
+                [StoneColourNamesEnum::YELLOW->value, 50],
+                [StoneColourNamesEnum::ORANGE->value, 50]
+            ],
+            self::STAUROLITE            => [
+                [StoneColourNamesEnum::BLACK->value, 50],
+                [StoneColourNamesEnum::BROWN->value, 50],
+            ],
+            self::ELEOLITHIC            => [
+                [StoneColourNamesEnum::WHITE->value, 50],
+                [StoneColourNamesEnum::GRAY->value, 50],
+            ],
+            self::JASPER_SMALL_DRAWN,
+            self::JASPER_LANDSCAPE,
+            self::BRECCIA,
+            self::QUARTZITE,
+            self::PETRIFIED_WOOD => [
+                [StoneColourNamesEnum::RED->value, 20],
+                [StoneColourNamesEnum::GREEN->value, 10],
+                [StoneColourNamesEnum::YELLOW->value, 10],
+                [StoneColourNamesEnum::BROWN->value, 10],
+                [StoneColourNamesEnum::GRAY->value, 10],
+                [StoneColourNamesEnum::WHITE->value, 10],
+                [StoneColourNamesEnum::BLACK->value, 10],
+                [StoneColourNamesEnum::PURPLE->value, 10],
+                [StoneColourNamesEnum::MULTI_COLOUR->value, 10]
+            ],
+            self::AGALMATALITE          => [
+                [StoneColourNamesEnum::WHITE->value, 40],
+                [StoneColourNamesEnum::RED->value, 30],
+                [StoneColourNamesEnum::BROWN->value, 30],
+            ],
+            self::WRITING_GRANITE       => [
+                [StoneColourNamesEnum::GRAY->value, 100]
+            ],
+            self::GOLDITE                         => [
+                [StoneColourNamesEnum::YELLOW->value, 40],
+                [StoneColourNamesEnum::RED->value, 30],
+                [StoneColourNamesEnum::PINK->value, 30]
+            ],
+            self::CACHOLONG                       => [
+                [StoneColourNamesEnum::WHITE->value, 100]
+            ],
+            self::CONGLOMERATE                    => [
+                [StoneColourNamesEnum::BROWN->value, 100]
+            ],
+            self::PATTERNED_FLINT                 => [
+                [StoneColourNamesEnum::BLACK->value, 50],
+                [StoneColourNamesEnum::GRAY->value, 50]
+            ],
+            self::MARBLED_ONYX,
+            self::FLUORITE => [
+                [StoneColourNamesEnum::GREEN->value, 30],
+                [StoneColourNamesEnum::YELLOW->value, 10],
+                [StoneColourNamesEnum::WHITE->value, 10],
+                [StoneColourNamesEnum::BROWN->value, 10],
+                [StoneColourNamesEnum::RED->value, 10],
+                [StoneColourNamesEnum::BLUE->value, 10],
+                [StoneColourNamesEnum::GRAY->value, 10],
+                [StoneColourNamesEnum::BLACK->value, 10]
+            ],
+            self::OPHIOCALCITE                    => [
+                [StoneColourNamesEnum::GREEN->value, 25],
+                [StoneColourNamesEnum::YELLOW->value, 25],
+                [StoneColourNamesEnum::WHITE->value, 25],
+                [StoneColourNamesEnum::BROWN->value, 25]
+            ],
+            self::SELENITE                     => [
+                [StoneColourNamesEnum::WHITE->value, 20],
+                [StoneColourNamesEnum::PINK->value, 20],
+                [StoneColourNamesEnum::ORANGE->value, 20],
+                [StoneColourNamesEnum::YELLOW->value, 20],
+                [StoneColourNamesEnum::BLACK->value, 20]
+            ],
+            self::SERPENTINITE                 => [
+                [StoneColourNamesEnum::GREEN->value, 50],
+                [StoneColourNamesEnum::BLACK->value, 50]
+            ],
+            self::SKARN                        => [
+                [StoneColourNamesEnum::GREEN->value, 40],
+                [StoneColourNamesEnum::BLACK->value, 30],
+                [StoneColourNamesEnum::YELLOW->value, 30]
+            ],
+            self::MONOCHROMATIC_JASPER         => [
+                [StoneColourNamesEnum::GREEN->value, 20],
+                [StoneColourNamesEnum::BLACK->value, 20],
+                [StoneColourNamesEnum::RED->value, 20],
+                [StoneColourNamesEnum::YELLOW->value, 20],
+                [StoneColourNamesEnum::GRAY->value, 20]
+            ],
+            self::BANDED_JASPER                => [
+                [StoneColourNamesEnum::GREEN->value, 20],
+                [StoneColourNamesEnum::RED->value, 20],
+                [StoneColourNamesEnum::BROWN->value, 20],
+                [StoneColourNamesEnum::YELLOW->value, 20],
+                [StoneColourNamesEnum::GRAY->value, 20],
+                [StoneColourNamesEnum::WHITE->value, 20]
+            ],
+            self::TOURMALINE                   => [
                 [StoneColourNamesEnum::COLOURLESS->value, 10],
                 [StoneColourNamesEnum::BLUE->value, 20],
                 [StoneColourNamesEnum::YELLOW->value, 20],
@@ -742,14 +852,15 @@ enum StoneNamesEnum: string
                 [StoneColourNamesEnum::COLOURLESS->value, 50],
                 [StoneColourNamesEnum::WHITE->value, 50],
             ],
-            self::SAPPHIRE_YELLOW       => [
+            self::SAPPHIRE_YELLOW           => [
                 [StoneColourNamesEnum::YELLOW->value, 100]
             ],
-            self::GROSSULAR             => [
+            self::GROSSULAR                 => [
                 [StoneColourNamesEnum::YELLOW->value, 50],
                 [StoneColourNamesEnum::GREEN->value, 50]
             ],
-            self::RHODOLITE             => [
+            self::RHODOLITE,
+            self::THUILITE => [
                 [StoneColourNamesEnum::RED->value, 50],
                 [StoneColourNamesEnum::PINK->value, 50]
             ],
@@ -844,7 +955,7 @@ enum StoneNamesEnum: string
                 [StoneCutFormNamesEnum::PEAR_CUT->value, 15],
                 [StoneCutFormNamesEnum::BAGUETTE_CUT->value, 20],
                 [StoneCutFormNamesEnum::PRINCESS_CUT->value, 20],
-        ],
+            ],
             self::BLACK_OPAL            => [],
             self::PADPARADSCHA          => [],
             self::TANZANITE             => [],
@@ -1008,7 +1119,6 @@ enum StoneNamesEnum: string
                 [StoneCutFormNamesEnum::PEAR_CUT->value, 15],
                 [StoneCutFormNamesEnum::HEART_CUT->value, 15],
             ],
-            self::JADE                  => [],
             self::LARIMAR               => [],
             self::OBSIDIAN_IRIDESCENT   => [],
             self::OPAL                  => [],
@@ -1045,11 +1155,9 @@ enum StoneNamesEnum: string
             self::PETRIFIED_WOOD        => [],
             self::MARBLED_ONYX          => [],
             self::OPHIOCALCITE          => [],
-            self::ORNAMENTAL_PORPHYRIES => [],
             self::SELENITE              => [],
             self::SERPENTINITE          => [],
             self::SKARN                 => [],
-            self::SOAPSTONE             => [],
             self::THUILITE              => [],
             self::FLUORITE              => [],
             self::MONOCHROMATIC_JASPER  => [],

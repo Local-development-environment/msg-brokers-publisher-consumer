@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\BeadItems\BeadTypeCuts;
+namespace Domain\BeadItems\BeadTypeCuts\Enums;
 
 enum BeadTypeCutBuilderEnum: string
 {

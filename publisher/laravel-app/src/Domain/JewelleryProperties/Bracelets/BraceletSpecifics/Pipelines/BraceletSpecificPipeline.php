@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Domain\JewelleryProperties\Bracelets\BraceletSpecifics\Pipelines;
 
+use Domain\Shared\AbstractPipeline;
 use Illuminate\Database\Eloquent\Model;
 
-final class BraceletSpecificPipeline extends \Domain\Shared\AbstractPipeline
+final class BraceletSpecificPipeline extends AbstractPipeline
 {
 
     /**

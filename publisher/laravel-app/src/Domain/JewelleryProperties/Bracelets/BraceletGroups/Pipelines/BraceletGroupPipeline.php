@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Domain\JewelleryProperties\Bracelets\BraceletSpecifics\Pipelines;
+namespace Domain\JewelleryProperties\Bracelets\BraceletGroups\Pipelines;
 
 use Illuminate\Database\Eloquent\Model;
 
-final class BraceletSpecificPipeline extends \Domain\Shared\AbstractPipeline
+final class BraceletGroupPipeline extends \Domain\Shared\AbstractPipeline
 {
 
     /**

@@ -2,6 +2,8 @@
 
 namespace JewelleryDomain\Jewellery\BeadItems\BeadItem\Enums;
 
+use JewelleryDomain\Jewellery\BeadItems\BeadCabochonForm\Enums\BeadCabochonFormNamesEnum;
+use JewelleryDomain\Jewellery\BeadItems\BeadCutForm\Enums\BeadCutFormNamesEnum;
 use JewelleryDomain\Jewellery\Stones\Stone\Enums\StoneNamesEnum;
 
 enum BeadItemNamesEnum: string
@@ -115,6 +117,102 @@ enum BeadItemNamesEnum: string
             self::BLUE_TURQUOISE_BEAD       => StoneNamesEnum::BLUE_TURQUOISE->value,
             self::GREEN_TURQUOISE_BEAD      => StoneNamesEnum::GREEN_TURQUOISE->value,
             self::MOTHER_PEARL_BEAD         => StoneNamesEnum::MOTHER_PEARL->value,
+        };
+    }
+
+    public function beadItemCabochon(): array
+    {
+        return match ($this) {
+            self::NATURAL_SEA_PEARL_BEAD,
+            self::CULTURED_SEA_PEARLS_BEAD,
+            self::NATURAL_RIVER_PEARLS_BEAD,
+            self::CULTURED_RIVER_PEARLS,
+            self::MOTHER_PEARL_BEAD     => [
+                [BeadCabochonFormNamesEnum::BAROQUE_CABOCHON->value, 20],
+                [BeadCabochonFormNamesEnum::SPHERE_CABOCHON->value, 80]
+            ],
+            self::RHINESTONE_BEAD,
+            self::SMOKEY_QUARTZ_BEAD,
+            self::SNOW_QUARTZ_BEAD,
+            self::ROSE_QUARTZ_BEAD,
+            self::RUTILATED_QUARTZ_BEAD,
+            self::NEPHRITIS_BEAD,
+            self::RHODONITE_BEAD,
+            self::TOURMALINE_PARAIBA_BEAD,
+            self::RUBELLITE,
+            self::VERDELITE,
+            self::INDIGOLITE,
+            self::DRAVITE,
+            self::ACHROITE,
+            self::POLYCHROME_TOURMALINE => [
+                [BeadCabochonFormNamesEnum::BRIOLETTE_CABOCHON->value, 20],
+                [BeadCabochonFormNamesEnum::ELLIPSOID_CABOCHON->value, 20],
+                [BeadCabochonFormNamesEnum::RONDEL_CABOCHON->value, 20],
+                [BeadCabochonFormNamesEnum::SPHERE_CABOCHON->value, 40]
+            ],
+            self::SHUNGITE_BEAD         => [
+                [BeadCabochonFormNamesEnum::ELLIPSOID_CABOCHON->value, 30],
+                [BeadCabochonFormNamesEnum::SPHERE_CABOCHON->value, 70]
+            ],
+            self::CORAL_BEAD,
+            self::BLUE_TURQUOISE_BEAD,
+            self::GREEN_TURQUOISE_BEAD  => [
+                [BeadCabochonFormNamesEnum::BRIOLETTE_CABOCHON->value, 10],
+                [BeadCabochonFormNamesEnum::ELLIPSOID_CABOCHON->value, 20],
+                [BeadCabochonFormNamesEnum::RONDEL_CABOCHON->value, 20],
+                [BeadCabochonFormNamesEnum::SPHERE_CABOCHON->value, 40],
+                [BeadCabochonFormNamesEnum::BAROQUE_CABOCHON->value, 10]
+            ],
+        };
+    }
+
+    public function beadItemCut(): array
+    {
+        return match ($this) {
+            self::NATURAL_SEA_PEARL_BEAD,
+            self::CULTURED_SEA_PEARLS_BEAD,
+            self::NATURAL_RIVER_PEARLS_BEAD,
+            self::CULTURED_RIVER_PEARLS,
+            self::MOTHER_PEARL_BEAD     => [
+                [BeadCutFormNamesEnum::SPHERE_CUT->value, 80],
+                [BeadCutFormNamesEnum::BAROQUE_CUT->value, 20],
+            ],
+            self::RHINESTONE_BEAD,
+            self::SMOKEY_QUARTZ_BEAD,
+            self::SNOW_QUARTZ_BEAD,
+            self::ROSE_QUARTZ_BEAD,
+            self::RUTILATED_QUARTZ_BEAD,
+            self::NEPHRITIS_BEAD,
+            self::RHODONITE_BEAD,
+            self::TOURMALINE_PARAIBA_BEAD,
+            self::RUBELLITE,
+            self::VERDELITE,
+            self::INDIGOLITE,
+            self::DRAVITE,
+            self::ACHROITE,
+            self::POLYCHROME_TOURMALINE => [
+                [BeadCutFormNamesEnum::RONDEL_CUT->value, 10],
+                [BeadCutFormNamesEnum::BICONE_CUT->value, 10],
+                [BeadCutFormNamesEnum::BRIOLETTE_CUT->value, 10],
+                [BeadCutFormNamesEnum::ELLIPSOID_CUT->value, 20],
+                [BeadCutFormNamesEnum::PYRAMID_CUT->value, 10],
+                [BeadCutFormNamesEnum::SPHERE_CUT->value, 40]
+            ],
+            self::SHUNGITE_BEAD         => [
+                [BeadCutFormNamesEnum::ELLIPSOID_CUT->value, 30],
+                [BeadCutFormNamesEnum::SPHERE_CUT->value, 70]
+            ],
+            self::CORAL_BEAD,
+            self::BLUE_TURQUOISE_BEAD,
+            self::GREEN_TURQUOISE_BEAD  => [
+                [BeadCutFormNamesEnum::RONDEL_CUT->value, 10],
+                [BeadCutFormNamesEnum::BICONE_CUT->value, 10],
+                [BeadCutFormNamesEnum::BRIOLETTE_CUT->value, 10],
+                [BeadCutFormNamesEnum::ELLIPSOID_CUT->value, 10],
+                [BeadCutFormNamesEnum::BAROQUE_CUT->value, 10],
+                [BeadCutFormNamesEnum::PYRAMID_CUT->value, 10],
+                [BeadCutFormNamesEnum::SPHERE_CUT->value, 40]
+            ],
         };
     }
 }
